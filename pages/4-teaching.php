@@ -22,6 +22,10 @@
             My seminar notes are available <a href="4-didactica.php" target="_parent">in Romanian.</a>
         </p>
 
+        <p>
+            The source (LaTeX) files are available on <a href="https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/latex" target="_blank">GitLab</a>, where contributions or comments are more than welcome.
+    </p>
+
         <h3>Other materials</h3>
         <p>To be added.</p>
     </div>

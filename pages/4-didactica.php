@@ -201,6 +201,9 @@
                 <li>Culegere algebră (Bălan): &nbsp; <a href="../docs/altele/balan-ag.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
                 <li>Culegere algebră (Purcaru): &nbsp; <a href="../docs/altele/purcaru-ag" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
             </ul>
+
+        <br />
+        <p>Sursele LaTeX pentru documentele incluse sînt disponibile <a href="https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/latex" target="_blank">pe GitLab</a>, unde încurajez orice comentarii sau contribuții.</p>
         </div>
         <script src="../scripts/bookmarks-script.js"></script>
 </body>
