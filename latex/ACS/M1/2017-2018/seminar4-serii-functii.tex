@@ -1,0 +1,501 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} M1-ACS, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 4 \\ Șiruri și serii de funcții}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Convergență punctuală și convergență uniformă}
+\label{sec:pc-uc}
+
+\begin{definition}[Convergență punctuală]\label{def:pc}
+  Fie $(X, d)$ un spațiu metric și fie $f_n : X \to \RR$ un șir de funcții.
+  Fie $f : X \to \RR$ o funcție.
+
+  Spunem că șirul $(f_n)$ \emph{converge punctual (simplu)} la $f$ dacă:
+  \[
+    \lim_{n \to \infty} f_n(x) = f(x), \forall x \in X.
+  \]
+
+  Scriem $f_n \xrar{PC} f$ și numim funcția $f$ \emph{limita punctuală} a șirului $(f_n)$.
+\end{definition}
+
+\begin{definition}[Convergență uniformă]\label{def:uc}
+  În condițiile și cu notațiile din teorema anterioară, spunem că șirul $(f_n)$ este
+  \emph{uniform convergent} la $f$ dacă:
+  \[
+    \forall \varepsilon > 0, \exists N_\varepsilon > 0 \ai |f_n(x) - f(x)| < \varepsilon, %
+    \forall n \geq N_\varepsilon, \forall x \in X.
+  \]
+\end{definition}
+
+Echivalent, în exerciții, se va folosi caracterizarea:
+
+\begin{proposition}\label{pr:uc}
+  În condițiile și cu notațiile de mai sus, șirul $(f_n)$ converge uniform la $f$
+  dacă și numai dacă:
+  \[
+    \lim_{n \to \infty} \sup_{x \in X} |f_n(x) - f(x)| = 0.
+  \]
+\end{proposition}
+
+Legătura între aceste două tipuri de convergență este foarte importantă:
+
+\begin{theorem}\label{thm:pc-uc}
+  Orice șir de funcții $f_n : [a, b] \to \RR$, uniform convergent pe $[a, b]$
+  este punctual convergent pe $[a, b]$.
+
+  Reciproca este falsă.
+\end{theorem}
+
+Iată un contraexemplu pentru reciprocă. Fie $[a, b] = [0, 1]$ și $f_n(x) = x^n, n \geq 1$.
+
+Pentru orice argument $x \in [a, b]$, avem:
+\[
+  \lim_{n \to \infty} f_n(x) =
+  \begin{cases}
+    0, & x \in [0, 1) \\
+    1, & x = 1.
+  \end{cases}
+\]
+Din aceasta, rezultă că $f_n \xrar{PC} f$, unde $f$ este funcția definită de limita de mai sus.
+Dar:
+\begin{align*}
+  ||f_n - f|| &= \sup_{x \in [0, 1)} |f_n(x) - f(x)| \\
+              &= \max( \sup_{x \in [0, 1)} \big( |f_n(x) - f(x)|, |f_n(1) - f(1)|\big)) \\
+              &= \max \big( \sup_{x \in [0, 1)} (x^n, 0) \big) \\
+              &= 1,
+\end{align*}
+de unde rezultă că $\ds\lim_{n \to \infty} ||f_n - f|| = 1 \neq 0$. Rezultă că $(f_n)$ este punctual
+convergent, nu uniform convergent pe $[0, 1)$.
+
+Pentru funcții mărginite, convergența uniformă coincide cu noțiunea clasică de convergență.
+
+De asemenea, proprietatea de continuitate nu se transferă automat în cazul șirurilor de funcții.
+Dacă funcțiile $f_n$ sînt continue, iar șirul $f_n$ converge simplu la $f$, nu rezultă, în general,
+că $f$ este continuă. De exemplu, să luăm șirul de funcții continue:
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = x^n.
+\]
+Acesta converge punctual la funcția discontinuă:
+\[
+  f(x) = \begin{cases}
+    0, & x \in [0, 1) \\
+    1, & x = 1.
+  \end{cases}
+\]
+
+Continuitatea se transferă în următorul caz:
+
+\begin{theorem}[Transfer de continuitate]\label{thm:transfer-cont}
+  Dacă $f_n$ sînt funcții continue, iar șirul $f_n$ converge uniform la $f$,
+  atunci funcția $f$  este continuă.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Derivare și integrare termen cu termen}
+\label{sec:der-int-termen}
+
+Pentru șiruri de funcții, operația de integrare și cea de derivare pot comuta,
+în anumite situații. Fie $f_n, f : [a, b] \to \RR$ funcții continue. Dacă
+$f_n$ converge uniform la $f$, atunci are loc proprietatea de integrare
+termen cu termen:
+\[
+  \lim_{n \to \infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx.
+\]
+
+Similar, pentru cazul derivatelor, să luăm un exemplu. Considerăm șirul
+$f_n(x) = \frac{\sin (nx)}{x}, x \in \RR$. Acest șir converge uniform la
+funcția nulă:
+\[
+  \lim_{n \to \infty} \sup_{x \in \RR} | f(x) | \leq \lim_{n \to \infty} \frac{1}{n} = 0.
+\]
+
+Următorul rezultat dă condiții suficiente pentru convergența șirului derivatelor:
+
+\begin{theorem}[Derivare termen cu termen]\label{thm:derivare-termen}
+  Presupunem că funcțiile $f_n$ sînt derivabile, pentru orice $n \in \NN$. Dacă
+  șirul $f_n$ converge punctual la $f$ și dacă există $g: [a, b] \to \RR$,
+  astfel încît $f'_n$ converge uniform la $g$, atunci $f$ este derivabilă și avem
+  $f' = g$.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de funcții}
+\label{sec:serii-f}
+
+Pentru studiul seriilor de funcții, vom folosi noțiunile cunoscute de la serii
+de numere, transferînd proprietățile la șirul sumelor parțiale.
+
+Fie $u_n : X \to \RR$ un șir de funcții și fie $s_n = \ds\sum_{k = 1}^n u_k$ șirul
+sumelor parțiale.
+
+Spunem că seria $\sum u_n$ este punctual (simplu) convergentă dacă $s_n$ este punctual
+convergent, ca șir de funcții.
+
+Seria se numește \emph{uniform convergentă} dacă $s_n$ converge uniform.
+
+Suma seriei este limita (punctuală sau uniformă) a șirului sumelor parțiale.
+
+În calcule, se va folosi următorul rezultat:
+
+\begin{theorem}[Weierstrass]\label{thm:weierstrass-uc}
+  Dacă există un șir cu termeni pozitivi $a_n$, astfel încît $|u_n(x)| \leq a_n$, pentru
+  orice $x \in X$, iar seria $\sum a_n$ converge, atunci seria $\sum u_n$ converge uniform.
+\end{theorem}
+
+Rezultatul privitor la transferul de continuitate se regăsește și în acest caz:
+
+\begin{theorem}[Transfer de continuitate]\label{thm:transfer-cont}
+  Dacă $u_n$ sînt funcții continue, iar seria $\sum u_n$ converge uniform la $f$, atunci
+  funcția $f$ este continuă.
+\end{theorem}
+
+De asemenea, avem și rezultatele privitoare la \emph{derivare și integrare termen cu termen}
+pentru serii de funcții.
+
+Spunem că o serie de funcții $\sum f_n$ are proprietatea de integrare termen cu termen pe
+intervalul $[a, b]$ dacă:
+\[
+  \int_a^b \Big( \sum_n f_n(x) \Big) dx = \sum_n \Big( \int_a^b f_n(x) dx \Big).
+\]
+
+Similar, spunem că o serie de funcții are proprietatea de derivare termen cu termen
+pe mulțimea $D$ dacă:
+\[
+  \Big( \sum_n f_n(x) \Big)^\prime = \sum_n f'_n(x), \forall x \in D.
+\]
+
+Aceste proprietăți sînt verificate în condițiile date de rezultatul următor.
+
+\begin{theorem}\label{thm:der-int-ter}
+  Fie $u_n : [a, b] \to \RR$ un șir de funcții continue.
+  \begin{enumerate}[(a)]
+  \item Dacă seria $\sum u_n$ converge uniform la $f$, atunci $f$ este integrabilă și avem:
+    \[
+      \int_a^b \sum_n u_n(x) dx = \sum_n \int_a^b u_n(x) dx.
+    \]
+  \item Presupunem că toate funcțiile $u_n$ sînt derivabile. Dacă seria $\sum u_n$ converge
+    punctual la $f$ și dacă există $g : [a, b] \to \RR$, astfel încît $\sum_n u'_n$ converge
+    uniform la $g$, atunci $f$ este derivabilă și $f' = g$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}\label{rk:der-int-suf}
+  Se poate arăta că mai sus avem condiții \emph{suficiente}, nu și necesare pentru ca o serie să
+  se poată integra (respectiv deriva) termen cu termen.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula lui Taylor}
+\label{sec:taylor}
+
+Orice funcție cu anumite proprietăți poate fi aproximată cu un polinom.
+Rezultatul formal este următorul.
+
+\begin{definition}\label{def:taylor-pol}
+  Fie $I \seq \RR$ un interval deschis și $f : I \to \RR$ o funcție de clasă $C^m(I)$.
+  Pentru orice $a \in I$, definim \emph{polinomul Taylor} de gradul $n \leq m$ asociat
+  funcției $f$ în punctul $a$ prin:
+  \[
+    T_{n, f, a} (x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k.
+  \]
+
+  \emph{Restul} (eroarea de aproximare) este definit prin:
+  \[
+    R_{n, f, a} = f(x) - T_{n, f, a}(x).
+  \]
+\end{definition}
+
+Primele polinoame (de gradul întîi și al doilea) se numesc, respectiv, \emph{aproximarea %
+  liniară} și \emph{pătratică} a lui $f$, în jurul lui $a$.
+
+
+Acest polinom se regăsește și în \emph{formula lui Taylor}, care ne arată legătura lui
+strînsă cu orice funcție.
+
+\begin{theorem}[Formula lui Taylor cu restul Lagrange]\label{thm:taylor-lagr}
+  Fie $f : I \to \RR$ o funcție de clasă $C^{n+1}(I)$ și $a \in I$. Atunci, pentru orice
+  $x \in I$, există $\xi \in (a, x)$ sau $(x, a)$ astfel încît:
+  \[
+    f(x) = T_{n, f, a}(x) + \frac{(x - a)^{n+1}}{(n + 1)!} f^{(n + 1)} (\xi).
+  \]
+\end{theorem}
+
+Așadar, din această teoremă știm mai precis eroarea aproximării unei funcții cu polinomul
+Taylor asociat.
+
+Următoarele sînt consecințe ale teoremei:
+\begin{enumerate}[(a)]
+\item Restul poate fi scris sub \emph{forma Peano}: există o funcție $\omega : I \to \RR$,
+  cu $\ds\lim_{x \to a} \omega(x) = \omega(a) = 0$ și restul se scrie:
+  \[
+    R_{n, f, a}(x) = \frac{(x - a)^n}{n!} \omega(x).
+  \]
+\item Restul poate fi scris și sub \emph{formă integrală}:
+  \[
+    R_{n, f, a}(x) = \frac{1}{n!} \int_a^x f^{(n + 1)}(t) (x - t)^n dt;
+  \]
+\item $\ds\lim_{x \to a} \frac{R_{n, f, a}(x)}{(x - a)^n} = 0$.
+\end{enumerate}
+
+Aceste noțiuni pot fi mai departe utilizate pentru a studia \emph{seria Taylor}
+asociată unei funcții.
+
+\begin{definition}\label{def:seria-taylor}
+  Fie $I \seq \RR$ un interval deschis și fie $f : I \to \RR$ o funcție de clasă
+  $C^\infty(I)$. Pentru orice $x_0 \in I$, se definește \emph{seria Taylor} asociată
+  funcției $f$ în punctul $x_0$ seria de puteri:
+  \[
+    T = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n.
+  \]
+
+  Dacă $x_0 = 0$, seria se mai numește \emph{Maclaurin}.
+\end{definition}
+
+Importanța seriilor Taylor este dată de rezultatul următor:
+
+\begin{theorem}\label{thm:serie-taylor}
+  Fie $a < b$ și fie $f \in C^\infty([a, b])$ astfel încît să existe $M > 0$ cu
+  proprietatea că $\forall n \in \NN, \forall x \in [a, b], |f^{(n)}(x) | \leq M$.
+
+  Atunci pentru orice $x_0 \in (a, b)$, seria Taylor a lui $f$ în jurul lui $x_0$
+  este uniform convergentă pe $[a, b]$ și suma ei este funcția $f$. Adică avem:
+  \[
+    f(x) = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n, \forall x \in [a, b].
+  \]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de puteri}
+\label{sec:serii-puteri}
+
+Seriile de puteri constituie un caz particular al seriilor de funcții, luînd funcții
+de tip polinomial.
+
+\begin{definition}\label{def:serii-p}
+  Fie $(a_n)$ un șir de numere reale (complexe) și fie $a \in \RR$.
+
+  Seria $\ds\sum_{n \geq 0} a_n(x - a)^n$ se numește \emph{seria de puteri centrată în $a$},
+  definită de șirul $a_n$.
+\end{definition}
+
+Toate rezultatele privitoare la seriile de funcții sînt valabile și pentru seriile de
+puteri. În plus, avem:
+
+\begin{theorem}[Abel 1]\label{thm:abel-1}
+  Pentru orice serie de puteri $\sum a_nx^n$ există un număr $0 \leq R \leq \infty$,
+  astfel încît:
+  \begin{enumerate}[(a)]
+  \item Seria este absolut convergentă pe intervalul $(-R, R)$;
+  \item Pentru orice $x$, cu $|x| > R$, seria este divergentă;
+  \item Pentru orice $0 < r < R$, seria este uniform convergentă pe $[-r, r]$.
+  \end{enumerate}
+
+  Numărul $R$ se numește \emph{raza de convergență} a seriei de puteri, iar intervalul
+  $(-R, R)$ se numește \emph{intervalul de convergență} a seriei.
+\end{theorem}
+
+În plus, datorită naturii sale, suma unei serii de puteri este o funcție continuă în
+orice punct interior intervalului de convergență.
+
+\begin{theorem}[Abel 2]\label{thm:abel-2}
+  Fie $\sum a_n x^n$ o serie de puteri, $R$ raza de convergență și $f$ suma sa.
+  Dacă seria este convergentă în $R$, atunci $f$ este continuă în $R$.
+
+  Rezultatul similar are loc și pentru punctul $-R$.
+\end{theorem}
+
+Calculul razei de convergență se face cu următoarea:
+
+\begin{theorem}[Cauchy---Hadamard]\label{thm:cauchy-had}
+  Fie $\sum a_n x^n$ o serie de puteri, $R$ raza sa de convergență și definim
+  \[
+    \omega = \limsup \sqrt[n]{|a_n|}.
+  \]
+  Atunci:
+  \begin{itemize}
+  \item $R = \omega^{-1}$, dacă $0 < \omega < \infty$;
+  \item $R = 0$ dacă $\omega = \infty$;
+  \item $R = \infty$ dacă $\omega = 0$.
+  \end{itemize}
+\end{theorem}
+
+Din nou, mulțumită naturii particulare a seriilor de puteri, teoremele de derivare și
+integrare termen cu termen sînt verificate. Dacă $\sum a_n (x - a)^n$ este o serie de
+puteri, iar $S(x)$ este suma sa, atunci:
+\begin{enumerate}[(a)]
+\item Seria derivatelor $\sum na_n (x - a)^{n - 1}$ are aceeași rază de convergență
+  cu seria inițială și suma sa este $S'(x)$;
+\item Seria primitivelor $\sum a_n \frac{(x - a)^{n + 1}}{n + 1}$ are aceeași rază
+  de convergență cu seria inițială, iar suma sa este o primitivă a lui $S$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:ex}
+
+\indent\indent 1. Să se studieze convergența punctuală și uniformă a șirurilor de funcții:
+\begin{enumerate}[(a)]
+\item $u_n : (0, 1) \to \RR, u_n(x) = \frac{1}{nx + 1}, n \geq 0$;
+\item $u_n : [0, 1] \to \RR, u_n(x) = x^n - x^{2n}, n \geq 0$ ($\sup$ în $\frac{1}{\sqrt{2}}$);
+\item $u_n : \RR \to \RR, u_n(x) = \sqrt{x^2 + \frac{1}{n^2}}, n > 0$;
+\item $u_n : [-1, 1] \to \RR, u_n(x) = \frac{x}{1 + nx^2}$;
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie șirul $u_n : \RR \to \RR, u_n(x) = \frac{\sin nx}{\sqrt{n}}, n > 0$.
+
+Să se studieze convergența șirurilor $u_n$ și $u'_n$.
+
+\vspace{1cm}
+
+3. Să se studieze convergența seriilor de funcții și să se decidă dacă
+se pot deriva termen cu termen:
+\begin{enumerate}[(a)]
+\item $\sum n^{-x}, x \in \RR$ (Weierstrass, comparație cu armonică);
+\item $\sum \frac{\sin nx}{2^n}, x \in \RR$;
+\item $\sum \frac{\sin nx}{n(n+1)}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se dezvolte următoarele funcții în serie Maclaurin, precizînd și domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $f(x) = e^x$ ($R = \RR$);
+\item $f(x) = \sin x$ ($R = \RR$);
+\item $f(x) = \cos x$ ($R = \RR$);
+\item $f(x) = (1 + x)^\alpha, \alpha \in \RR$ ($R = \{ |x| < 1 \}$);
+\item $f(x) = \frac{1}{1 + x}$ ($R = (-1, 1)$);
+\item $f(x) = \ln(1 + x)$;
+\item $f(x) = \arctan x$.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Să se calculeze cu o eroare mai mică decît $10^{-3}$ integralele (dezvoltînd
+integrandul în jurul lui 0, integrînd termen cu termen și aproximînd seria alternată
+rezultată):
+\begin{enumerate}[(a)]
+\item $\ds\int_0^{\frac{1}{2}} \frac{\sin x}{x} dx$;
+\item $\ds\int_0^{\frac{1}{2}} \frac{\ln(1 + x)}{x} dx$;
+\item $\ds\int_0^{\frac{1}{3}} \frac{\arctan x}{x} dx$;
+\item $\ds\int_0^1 e^{-x^2} dx$.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se calculeze raza de convergență și mulțimea de convergență în $\RR$ pentru
+următoarele serii de puteri:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} x^n$;
+\item $\ds\sum_{n \geq 1} n^n x^n$;
+\item $\ds\sum_{n \geq 1} (-1)^{n + 1} \frac{x^n}{n}$;
+\item $\ds\sum_{n \geq 1} \frac{n^n x^n}{n!}$.
+\end{enumerate}
+
+\end{document}

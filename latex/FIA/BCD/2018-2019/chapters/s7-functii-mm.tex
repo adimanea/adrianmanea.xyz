@@ -1,0 +1,306 @@
+\chapter{Funcții de mai multe variabile}
+
+\section{Limite și continuitate}
+
+În cazul funcțiilor de mai multe variabile, atît studiul continuității,
+cît și al derivabilității și calculului limitelor sau derivatelor
+parțiale, se fac cu variabilele pe rînd, adică dînd prioritate
+uneia dintre ele și considerînd pe celelalte drept parametri.
+
+\subsection{Exerciții rezolvate}
+
+1. Să se arate, folosind definiția, că următoarele funcții nu au limită în origine:
+\begin{enumerate}[(a)]
+\item $f(x, y) = \frac{2xy}{x^2 + y^2}, (x, y) \neq (0, 0)$;
+\item $f(x, y) = \frac{x^2 + 2x}{y^2 - 2x}, (x, y) \neq (0, 0)$.
+\end{enumerate}
+
+\emph{Soluție:} Vom folosi definiția cu șiruri, punînd în evidență șiruri de puncte,
+convergente către $(0, 0)$.
+
+(a) Folosim șiruri de puncte care se află pe drepte care trec prin origine. Aceste drepte
+au ecuații de forma $y = mx$. Dacă funcția ar avea limită în origine, ar trebui ca:
+\[
+  \lim_{(x, y) \to (0, 0)} f(x, y) = \lim_{x \to 0, y = mx} \frac{2x(mx)}{x^2 + x^2 m^2} = %
+  \frac{2m}{1 + m^2}.
+\]
+Cu această limită depinde de șirul folosit (de $m$, mai exact), rezultă că limita nu
+există, în general.
+
+(b) Calculăm, similar:
+\[
+  \lim_{(x, y) \to (0, 0)} f(x, y) = %
+  \lim_{x \to 0, y = mx} \frac{m^2 x^2 + 2x}{m^2 x^2 - 2x} = -1.
+\]
+
+Însă, dacă luăm $y^2 = px$, adică $(x, y) \to (0, 0)$ pe parabola care trece prin origine,
+cu $p \in \RR - \{2 \}$, obținem:
+\[
+  \lim_{x \to 0, y^2 = px} \frac{px + 2x}{px - 2x} = \frac{p + 2}{p - 2}.
+\]
+Rezultă că, pentru șiruri diferite, obținem limite diferite, deci funcția nu are limită
+în origine.
+
+\vspace{1cm}
+
+2. Să se calculeze limitele:
+\begin{enumerate}[(a)]
+\item $\ds\lim_{(x, y) \to (0, 0)} \frac{xy}{\sqrt{xy + 1} - 1}$;
+\item $\ds\lim_{(x, y) \to (0, 2)} \frac{\sin xy}{x}$;
+\item $\ds\lim_{(x, y) \to (\infty, \infty)} \frac{x + y}{x^2 + y^2}$.
+\end{enumerate}
+
+\emph{Soluție:} (a) Calculăm direct:
+\begin{align*}
+  \lim_{(x, y) \to (0, 0)} \frac{xy}{\sqrt{xy + 1} - 1} &= \lim_{u \to 0} \frac{u}{\sqrt{u + 1} - 1} \\
+                                                        &= \lim_{u \to 0} \frac{(\sqrt{u + 1} + 1)u}{u}\\
+                                                        &= 2.
+\end{align*}
+
+(b) Similar:
+\[
+  \lim_{(x, y) \to (0, 2)} \frac{\sin xy}{x} = \lim_{(x, y) \to (0, 2)} \frac{\sin xy}{xy} \cdot y = 2.
+\]
+
+(c) Pentru $x, y > 0$, avem:
+\[
+  0 < \frac{x + y}{x^2 + y^2} = \frac{x}{x^2 + y^2} + \frac{y}{x^2 + y^2} \leq \frac{x}{x^2} + \frac{y}{y^2}.
+\]
+
+Cum $\ds\lim_{(x, y) \to (\infty, \infty)} \Big( \frac{1}{x} + \frac{1}{y} \Big) = 0$, rezultă
+că și limita inițială este nulă.
+
+\vspace{1cm}
+
+3. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{xy^2 + \sin(x^3 + y^5)}{x^2 + y^4}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă parțial în origine, dar nu este continuă în acest punct.
+
+\emph{Soluție:} Considerăm variabilele separat. Funcția:
+\[
+  f(x, 0) = \begin{cases}
+    \frac{\sin x^3}{x^2}, & x \neq 0 \\
+    0, & x = 0
+  \end{cases}
+\]
+este continuă în origine, deoarece $\ds\lim_{x \to 0} f(x, 0) = 0 = f(0, 0)$.
+
+Similar, funcția $f(0, y)$ este continuă în $y = 0$.
+
+Dar funcția $f(x, y)$ nu este continuă în origine, deoarece avem:
+\begin{align*}
+  \lim_{(x, y) \to (0, 0)} f(x, y) &= \lim_{x \to 0, y^2 = px} \frac{px^2 + \sin(x^3 + p^\frac{5}{2} x^{\frac{5}{2}})}{x^2 + p^2 x^2} \\
+                                   &= \lim_{x \to 0, y^2 = px} \Bigg[ \frac{p}{1 + p^2} + %
+                                     \frac{\sin(x^3 + p^{\frac{5}{2}} x^{\frac{5}{2}})}{x^3 + p^{\frac{5}{2}} x^{\frac{5}{2}}} \cdot %
+                                     \frac{x^3 + p^{\frac{5}{2}} x^{\frac{5}{2}}}{x^2 + p^2 x^2} \Bigg] \\
+                                   &= \frac{p}{1 + p^2},
+\end{align*}
+care depinde de $p$.
+
+\vspace{1cm}
+
+4. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{2xy}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă în raport cu fiecare variabilă în parte, dar nu este continuă în raport
+cu ansamblul variabilelor.
+
+\emph{Indicație:} Considerăm $y = b$, fixat. Avem $f(x, b)$ continuă. Similar, $f(a, y)$.
+
+Pentru continuitatea globală în origine, luăm $y = mx$ și obținem o limită care depinde de $m$.
+
+\vspace{1cm}
+
+5. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{xy + x^2 y \ln |x + y|}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă parțial în origine, dar nu este continuă în raport cu ansamblul
+variabilelor în acest punct.
+
+\emph{Indicație:} Limitele iterate în origine sînt ambele nule, indiferent de ordine.
+
+Însă pentru $x \to 0$ și $y = mx$, limita globală depinde de $m$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Derivate parțiale}
+
+Dată o funcție de mai multe variabile, se pot calcula derivatele parțiale ale
+acesteia în funcție de fiecare dintre variabile, pe rînd. De exemplu,
+fie funcția:
+\[
+  f : \RR^2 \to \RR, \quad f(x, y) = 3x \sin y + e^y + 4xy.
+\]
+Calculăm:
+\[
+  \frac{\partial f}{\partial x} = 3 \sin y + 4y, \quad %
+  \frac{\partial f}{\partial y} = 3x\cos y + e^y + 4x.
+\]
+
+Mai departe, putem calcula și derivatele de ordin superior, după
+regula:
+\[
+  \frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial x} %
+  \Big( \frac{\partial f}{\partial x} \Big)
+\]
+și similar pentru celelalte derivate parțiale, adică $ \dfrac{\partial^2 f}{\partial y^2} $,
+$ \dfrac{\partial^2 f}{\partial x \partial y} $, respectiv
+$ \dfrac{\partial^2 f}{\partial y \partial x} $.
+
+De asemenea, pentru o funcție de două variabile $ f = f(x, y) $, se definește
+\emph{laplacianul} funcției ca fiind:
+\[
+  \Delta f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}.
+\]
+Definiția se extinde natural pentru $ n $ variabile.
+
+Dacă $ f $ este astfel încît $ \Delta f = 0 $, atunci funcția $ f $
+se numește \emph{armonică}. \index{funcții!laplacian} \index{funcții!armonice}
+
+În plus, dată o funcție de două variabile $ f = f(x, y) $, se definește
+\emph{diferențiala totală} $ df $ ca fiind:
+\[
+  df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy.
+\]
+
+Similar se poate defini pentru funcții de $ n $ variabile, precum și
+diferențiala totală de ordinul 2:
+\[
+  d^2 f = \frac{\partial^2 f}{\partial x^2} dx^2 + \frac{\partial^2 f}{\partial y^2} + %
+  2 \frac{\partial^2 f}{\partial x \partial y} dxdy.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+0. Calculați următoarele derivate parțiale folosind definiția:
+\begin{enumerate}[(a)]
+\item pentru $ f(x, y) = 3x^2 - 2xy + 5y^2 - 3x + 2 $, $ \dfrac{\partial f}{\partial x}(1, 2) $;
+\item pentru $ f(x, y) = 5x^2 + xy - 3x + 2 $, $ \dfrac{\partial f}{\partial x}(-1, 1) $ și
+  $ \dfrac{\partial f}{\partial y}(1, 2) $;
+\item pentru $ f(x, y) = 3x - 2y^2 + 2xy + 5 $, $ \dfrac{\partial f}{\partial x}(0, 1) $ și
+  $ \dfrac{\partial f}{\partial y}(-1, 0) $.
+\end{enumerate}
+
+1. Să se calculeze derivatele parțiale de ordinul întîi pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = e^{x - y^2} $;
+\item $ f(x, y) = \arctan \dfrac{x}{y} + \arctan \dfrac{y}{x} $;
+\item $ f(x, y) = e^{x^2 + y^2} $;
+\item $ f(x, y, z) = \sqrt{x^2  + y^2 + z^2} $;
+\item $ f(x, y) = x^{\sqrt{y}} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați derivatele parțiale de ordinul întîi pentru funcțiile compuse:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \ln(u^2 + v), u(x, y) = e^{x + y^2}, v(x, y) = x^2 + y $;
+\item $ f(x, y) = \varphi(2xe^y + 3y \sin 2x) $;
+\item $ f(x, y) = \varphi(u, v, w) $, unde $ u(x, y) = xy, v(x, y) = x^2 + y^2 $ și
+  $ w(x, y) = 2x + 3y $;
+\item $ f(x, y) = \arctan \dfrac{2u}{v} $, unde $ u(x, y) = x\sin y $ și
+  $ v(x, y) = x \cos y $;
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze derivatele parțiale de ordinul întîi și al doilea
+pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = e^x \cos y $;
+\item $ f(x, y) = \dfrac{x - y}{x + y}, (x, y) \neq (0, 0) $;
+\item $ f(x, y) = \ln(x^2 + y^2), (x, y) \neq (0, 0) $;
+\item $ f(x, y) = x^3 + xy $;
+\item $ f(x, y, z) = y \sin (x + z) $;
+\item $ f(x, y, z) = \ln(x^2 + y^2 + z^2), (x, y, z) \neq (0, 0, 0) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se calculeze derivatele parțiale în punctele indicate:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = 2x^2 + xy, \dfrac{\partial f}{\partial x}(1, 1), %
+  \dfrac{\partial f}{\partial y} (3, 2) $;
+\item $ f(x, y) = \sqrt{\sin^2 x + \sin^2 y}, \dfrac{\partial f}{\partial x} %
+  \Big( \dfrac{\pi}{4}, 0 \Big), \dfrac{\partial f}{\partial y} %
+  \Big( \dfrac{\pi}{4}, \dfrac{\pi}{4} \Big) $;
+\item $ f(x, y) = \ln(1 + x^2 + y^2), \dfrac{\partial f}{\partial x}(1, 1), %
+  \dfrac{\partial f}{\partial y}(1, 1) $;
+\item $ f(x, y) = \sqrt[3]{x^2 y}, \dfrac{\partial f}{\partial x}(-2, 2) $,
+  $ \dfrac{\partial f}{\partial y}(-2, 2) $, $\dfrac{\partial^2 f}{\partial x\partial y}(-2, 2) $;
+\item $ f(x, y) = xy\ln x, x \neq 0, \dfrac{\partial^2 f}{\partial x\partial y}(1, 1) $,
+  $ \dfrac{\partial^2 f}{\partial y}{\partial x}(1, 1) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Arătați că funcțiile următoare verifică ecuațiile indicate:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \varphi \Big( \dfrac{y}{x} \Big) $,
+  \[
+    x \frac{\partial f}{\partial x} + y \frac{\partial f}{\partial y} = 0.
+  \]
+\item $ f(x, y, z) = \varphi(xy, x^2 + y^2 + z^2) $,
+  \[
+    xz \frac{\partial f}{\partial x} - yz \frac{\partial f}{\partial y} + %
+    (y^2 - x^2) \frac{\partial f}{\partial z} = 0.
+  \]
+\item $ f(x, y) = y \varphi(x^2 - y^2) $,
+  \[
+    \frac{1}{x} \frac{\partial f}{\partial x} + \frac{1}{y} \frac{\partial f}{\partial y} = %
+    \frac{1}{y^2} f(x, y);
+  \]
+\item $ f(x, y, z) = \dfrac{xy}{z} \ln x + x\varphi \Big( \dfrac{x}{y}, \dfrac{z}{x} \Big) $,
+  pentru $ x > 0 $ și $ z \neq 0 $, ecuația fiind:
+  \[
+    x \frac{\partial f}{\partial x} + y \frac{\partial y}{\partial y} + z \frac{\partial f}{\partial z} - %
+    \frac{xy}{z} - f(x, y, z) = 0.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Verificați dacă următoarele funcții sînt armonice:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \ln(x^2 + y^2) $;
+\item $ f(x, y, z) = \ln(x^2 + y^2 + z^2) $;
+\item $ f(x, y) = \sqrt{x^2 + y^2} $;
+\item $ f(x, y, z) = \sqrt{x^2 + y^2 + z^2} $;
+\item $ f(x, y) = (x^2 + y^2)^{-1} $;
+\item $ f(x, y, z) = (x^2 + y^2 + z^2)^{-1} $.
+\end{enumerate}
+
+
+\vspace{1cm}
+
+7. Reprezentați grafic domeniile date de următoarele (in)ecuații:
+\begin{enumerate}[(a)]
+\item $ D_1 = \{ (x, y) \in \RR^2 \mid y = x^2, y^2 = x \} $;
+\item $ D_2 = \{ (x, y) \in \RR^2 \mid x = 2, y = x, xy = 1 \} $;
+\item $ D_3 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 2y \} $;
+\item $ D_4 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y \geq 0 \} $;
+\item $ D_5 = \{ (x, y) \in \RR^2 \mid y = 0, x + y - 6 = 0, y^2 = 8x \} $;
+\item $ D_6 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 2x + 2y - 1 \} $.
+\end{enumerate}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-18-19"
+%%% End:

@@ -1,0 +1,128 @@
+\chapter{Metoda celor mai mici pătrate. Integrale improprii}
+
+
+\section{Regresie liniară}
+\index{regresie liniară}
+Problema regresiei liniare se adresează unor cazuri de tip statistic, atunci
+cînd avem la dispoziție o serie de date experimentale și vrem să le corelăm
+cu un model teoretic \emph{liniar}, adică dat de o funcție de gradul întîi.
+
+Așadar, dată o serie de perechi de forma $ (x_i, y_i) $, care reprezintă
+datele colectate într-un experiment și care verifică o teorie bazată pe
+ecuații liniare, ne punem problema găsirii celei mai potrivite drepte care
+să reprezinte o abatere minimă față de punctele colectate (eng.\ \emph{``best fit''}).
+
+Fie, așadar, dreapta $ y = f(x) = ax + b$ modelul teoretic pe care îl urmărim.
+Dacă $ (x_i, y_i) $ reprezintă colecția de puncte experimentale, vom impune
+condiția minimizării abaterii acestor puncte de la funcția $ f $ folosind
+\emph{metoda celor mai mici pătrate}. Aceasta cere ca \emph{suma pătratelor}
+abaterilor să fie minimă, motivația fiind, pe de o parte de a se lua în calcul
+atît abateri pozitive, cît și negative, cu aceeași pondere, dar și de
+amplificare a abaterilor mari și minimizare a celor mici (prin ridicare la
+pătrat).
+
+Așadar, putem privi funcția $ y = f(x) = ax + b $ ca pe o funcție de două variabile
+$ a $ și $ b $, pe care vrem să le determinăm. Expresia corespunzătoare
+sumei pătratelor abaterilor este:
+\[
+  S(a, b) = \sum \big( f(x_i) - y_i \big)^2.
+\]
+Această funcție se dorește minimizată, deci problema revine la găsirea punctelor
+ei de minim, folosind metoda cunoscută pentru extreme libere.
+
+În fine, găsind punctul (sau punctele) de minim $ (a, b) $, obținem
+\emph{dreapta} (sau \emph{dreptele}) \emph{de regresie liniară} $ y = ax + b $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+Găsiți dreapta de regresie liniară care mediază între punctele:
+\begin{enumerate}[(a)]
+\item $ M_1(1, 2), M_2(2, 0), M_3(3, 1) $;
+\item $ M_1(-1, 0), M_2(1, 1), M_3(2, 1), M_4(3, 2) $;
+\item $ M_1(-2, 1), M_2(0, 2), M_3(1, 3), M_4(2, 4) $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integrale improprii}
+\index{integrale!improprii}
+În cazul în care funcția integrată pe un interval $ [a, b] $ nu este mărginită
+în cel puțin unul dintre capete, integrala se numește \emph{improprie}.
+De exemplu:
+\begin{itemize}
+\item $ \ds\int_0^1 \frac{\ln x}{x} dx $, improprie în $ x = 0 $;
+\item $ \ds\int_0^\infty \frac{\ln x}{x} dx $, improprie în ambele capete;
+\end{itemize}
+
+Calculul acestor integrale se poate face prin trecere la limită. Dacă integrala
+pe $ [a, b] $ este improprie în $ b $, de exemplu, avem:
+\[
+  \int_a^b f(x) dx = \lim_{t \to b} \int_a^t f(x) dx.
+\]
+
+Dacă valoarea limitei de mai sus este finită, integrala se numește \emph{convergentă},
+iar valoarea limitei este valoarea integralei. În caz contrar, integrala se
+numește \emph{divergentă}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integrale improprii cu parametri. Funcțiile lui Euler}
+\index{integrale!improprii!cu parametri}
+\index{integrale!improprii!Beta, Gamma}
+Fie $ f : [a, b) \times A \to \RR $ o funcție astfel încît pentru orice
+$ y \in A $, aplicația $ [a, b) \ni x \mapsto f(x, y) \in \RR $ are
+proprietatea că integrala $ \ds\int_a^b f(x, y) dx $ converge.
+
+Atunci putem defini funcția:
+\[
+  F(x, y) = \int_a^b f(x, y) dx,
+\]
+care se numește \emph{integrală improprie cu parametru}. Un exemplu simplu este:
+\[
+  I(m) = \int_0^{\frac{\pi}{2}} \ln(\cos^2 x + m^2 \sin^2 x) dx, m > 0.
+\]
+
+Dintre acestea, vom studia doar un exemplu particular, cunoscute sub numele
+de \emph{funcțiile lui Euler}, $ B $ și $ \Gamma $. Ele se definesc astfel:
+\begin{align*}
+  \Gamma(t) &= \int_0^\infty x^{t - 1} e^{-x} dx, t > 0 \\
+  B(p, q) &= \int_0^1 x^{p-1} (1 - x)^{q - 1} dx, p > 0, q > 0.
+\end{align*}
+
+Proprietățile lor, pe care le vom folosi în calcule, sînt:
+\begin{enumerate}[(1)]
+\item $ B(p, q) = B(q, p), \forall p, q > 0 $;
+\item $ B(p, q) = \dfrac{\Gamma(p) \cdot \Gamma(q)}{\Gamma(p + q)} $;
+\item $ B(p, q) = \ds\int_0^\infty \frac{y^{p - 1}}{(1 + y)^{p + q}} dy $;
+\item $ \Gamma(1) = 1 $;
+\item $ \Gamma(t + 1) = t \cdot \Gamma(t), \forall t > 0 $;
+\item $ \Gamma(n) = (n - 1)!, \forall n \in \NN^\ast $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+Calculați, folosind funcțiile $ B $ și $ \Gamma $, integralele:
+\begin{enumerate}[(a)]
+\item $ \ds\int_0^\infty e^{-x^p} dx, p > 0 $;
+\item $ \ds\int_0^\infty \dfrac{x^{\frac{1}{4}}}{(x + 1)^2} dx $;
+\item $ \ds\int_0^\infty \dfrac{dx}{x^3 + 1} dx $;
+\item $ \ds\int_0^{\frac{\pi}{2}} \sin^p x \cos^q x dx, p > -1, q > -1 $;
+\item $ \ds\int_0^1 x^{p + 1}(1 - x^m)^{q - 1} dx, p, q, m > 0 $;
+\item $ \ds\int_0^\infty x^p e^{-x^q} dx, p > -1, q > 0 $;
+\item $ \ds\int_0^1 \ln^p x^{-1} dx, p > -1 $;
+\item $ \ds\int_0^1 \dfrac{dx}{(1 - x^n)^{\frac{1}{n}}}, n \in \NN $;
+\item $ \ds\int_1^e \dfrac{1}{x} \ln^3 x \cdot (1 - \ln x)^4 dx $;
+\item $ \ds\int_0^1 \sqrt{\ln\dfrac{1}{x}} dx $;
+\item $ \ds\int_0^\infty \dfrac{x^2}{(1 + x^4)^2} dx $;
+\item $ \ds\int_{-1}^\infty e^{-x^2 - 2x + 3} dx $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-18-19"
+%%% End:

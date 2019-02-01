@@ -1,0 +1,298 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}
+\newtheorem{proposition}{Propozi\c{t}ie}
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}
+\newtheorem{definition}{Defini\c{t}ie}
+\newtheorem{remark}{Observa\c{t}ie}
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 8.1 \\
+      Recapitulare parțial}}
+\end{center}
+
+\vspace{2cm}
+
+\section*{Ecuații diferențiale de ordin superior}
+
+1. Să se integreze următoarele ecuații diferențiale:
+\begin{enumerate}[(a)]
+\item $ y^{\prime\prime\prime} = \sin x + \cos x $;
+\item $ y\cdot y^{\prime\prime} - 2{y^\prime}^2 = 0 $ (omogenă, $ y' = z $);
+\item $ y^{\prime\prime} + {y^\prime}^2 = \frac{2}{e^y} $ (autonomă, $ y' = p = p(y) $);
+\item $ yy^{\prime\prime} - {y^\prime}^2 = 0 $ (autonomă);
+\item $ (x^2 + 1)y^{\prime\prime} - 2xy^\prime + 2y = 0 $ ($ x > 0 $), știind
+  că are o soluție particulară de forma $ y_p(x) = ax + b $;
+\item $ y^{(4)} - 3y^{(3)} + 3y^{(2)} - y^\prime = 0 $;
+\item $ y^{(4)} - 2y^{(3)} + 2y^{(2)} - 2y^\prime + y = 0$;
+\item $ y^{(2)} + 10y' + 25y = 4e^{-5x} $;
+\item $ y^{(3)} - y^{(2)} + y' - y = \cos x $;
+\item $ y^{(2)} - y = 4e^x $;
+\item $ x^2 y^{(2)} + 3xy' + 4y = 5x, x > 0 $ (Euler);
+\item $ x^2y^{(2)} - xy' + y = x + \ln x, x > 0 $ (Euler);
+\item $ 4(x + 1)^2 y^{(2)} + y = 0, x > -1 $ (Euler).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Sisteme diferențiale}
+
+1. Să se determine soluția generală $ X = \begin{pmatrix} x(t) \\ y(t) \end{pmatrix} $
+a sistemelor diferențiale:
+\begin{enumerate}[(a)]
+\item
+  $
+  \begin{cases}
+    x'(t) &= x + 2y \\
+    y'(t) &= 2x + 4y
+  \end{cases}
+  $
+\item
+  $
+  \begin{cases}
+    x'(t) &= 2x + y \\
+    y'(t) &= 3x + 4y
+  \end{cases}
+  $
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Teoria stabilității}
+
+1. Scriind ecuațiile diferențiale sub forma unor sisteme, să se studieze
+stabilitatea soluțiilor:
+\begin{enumerate}[(a)]
+\item $ x^{\prime\prime} + 3x' + 5 = f(t) $, cu $ f $ continuă pe $ [0, \infty) $;
+\item $ x^{\prime\prime} + 9x = 0 $;
+\item $ x^{\prime\prime} + {x'}^2 + x' + x = 0 $;
+\item $ x^{\prime\prime\prime} + 10{x^{\prime\prime}} ^2 + 4x' - 8x^3 = 0 $.
+\end{enumerate}
+
+\emph{Indicație:} Notînd $ x = x_1 $ și $ x' = x_2 $, putem rescrie ecuațiile
+sub forma unor sisteme, pe care le interpretăm matriceal.
+
+\vspace{1cm}
+
+2. Să se studieze stabilitatea spre $ \infty $ a soluțiilor sistemelor:
+\begin{enumerate}[(a)]
+\item
+  $
+  \begin{cases}
+    x' &= -x + z \\
+    y' &= -2y - z \\
+    z' &= y - z
+  \end{cases}
+  $
+\item
+  $
+  \begin{cases}
+    x' &= x + 2y - 2z + t^2 \\
+    y' &= 2x + y + 2z + t \\
+    z' &= -2x + 2y + z
+  \end{cases}
+  $
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se studieze stabilitatea soluției nule a sistemului:
+\[
+  \begin{cases}
+    x' &= x + y^2 - \cos x + 1 + 4y \\
+    y' &= \sin y + (x + 1)^2 - \cos x
+  \end{cases}.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Linii și suprafețe de cîmp}
+
+1. Determinați liniile de cîmp pentru cîmpurile vectoriale:
+\begin{enumerate}[(a)]
+\item $ \vec{v} = x\vec{i} + y\vec{j} + xyz \vec{k} $;
+\item $ \vec{v} = (xz + y)\vec{i} + (x + yz) \vec{j} + (1 - z^2)\vec{k} $;
+\item $ \vec{v} = (x^2 + y^2)\vec{i} + 2xy\vec{j} - z^2 \vec{k} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Scriind sistemele diferențiale autonome asociate, să se determine
+soluția ecuațiilor liniare cu derivate parțiale de ordinul întîi:
+\begin{enumerate}[(a)]
+\item $ (y - z) \frac{\partial u}{\partial x} + (z - x)\frac{\partial u}{\partial y} + %
+  (x - y) \frac{\partial u}{\partial z} = 0 $;
+\item $ z(x - y) \frac{\partial u}{\partial x} + z(x + y) \frac{\partial u}{\partial y} + %
+  (x^2 + y^2) \frac{\partial u}{\partial z} = 0 $;
+\item $ (4z - 5y) \frac{\partial u}{\partial x} + (5x - 3z) \frac{\partial u}{\partial y} + %
+  (3y - 4x)\frac{\partial u}{\partial z} = 0 $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Ecuații cu derivate parțiale}
+
+1. Să se determine soluțiile ecuațiilor cvasiliniare de ordinul întîi:
+\begin{enumerate}[(a)]
+\item $ (z - y)^2 \frac{\partial z}{\partial x} + xz \frac{\partial z}{\partial y} = xy $;
+\item $ x(y^3 - 2x^3) \frac{\partial z}{\partial x} + y(2y^3 - x^3) %
+  \frac{\partial z}{\partial y} = 9z(x^3 - y^3) $;
+\item $ 2xu \frac{\partial u}{\partial x} + 2yu\frac{\partial u}{\partial y} = %
+  u^2 - x^2 - y^2 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se determine suprafața de cîmp a cîmpului vectorial
+\[
+  \vec{v} = yz\vec{i} + xz \vec{j} + xy\vec{k},
+\]
+care trece prin curba de ecuație:
+\[
+  \begin{cases}
+    x^2 + y^2 &= 4 \\
+    y &= 0
+  \end{cases}.
+\]
+
+\vspace{1cm}
+
+3. Să se determine suprafața de cîmp a cîmpului vectorial:
+\[
+  \vec{v} = 2xz\vec{i} + 2yz\vec{j} + (z^2 - x^2 - y^2)\vec{k},
+\]
+care conține cercul de ecuații:
+\[
+  \begin{cases}
+    z &= 0 \\
+    x^2 + y^2 - 2x &= 0
+  \end{cases}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Ecuații cu derivate parțiale de ordinul al doilea}
+
+1. Să se aducă următoarele ecuații la forma canonică, precizînd natura lor:
+\begin{enumerate}[(a)]
+\item $ u_{xx} + u_{xy} - 12 u_{yy} = 0 $;
+  \footnote{Am folosit notația prescurtată, %
+    $ u_{xx} = \frac{\partial^2 u}{\partial x^2} $ etc.}
+\item $ u_{xx} - 6u_{xy} + 9 u_{yy} = 0 $;
+\item $ u_{xx} + 4u_{xy} + 13u_{yy} = 0 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Rezolvați ecuațiile următoare, cu condițiile inițiale date:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    u_{xx} - 4x^2 u_{yy} - \frac{1}{x} u_x &= 0, x > 0 \\
+    u(1, y) &= y^2 + 1 \\
+    u_x(1, y) &= 4
+  \end{cases}
+  $
+\item $ \begin{cases}
+    xu_{xx} - u_{yy} + \frac{1}{2} u_x &= 0, x > 0 \\
+    u(x, 0) &= x \\
+    u_y(x, 0) &= 0
+  \end{cases}
+$
+\end{enumerate}
+
+
+
+\end{document}

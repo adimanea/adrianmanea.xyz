@@ -1,0 +1,242 @@
+\chapter{Probleme de extrem}
+
+\section{Extreme libere}
+
+Dată o funcție de două sau trei variabile (așa cum vom folosi în majoritatea
+cazurilor), se pune problema studiului punctelor de extrem. Vom împărți
+aceasta în două: \emph{extreme libere}, în care domeniul de definiție
+este $ \RR^2 $ sau $ \RR^3 $, fără constrîngeri suplimentare și
+cazul \emph{extremelor cu legături}, cînd domeniul este fie un
+dreptunghi (respectiv, paralelipiped), fie este dat de o anumită ecuație.
+
+Cazul extremelor libere este foarte simplu și se aseamănă cu studiul
+punctelor de extrem pentru funcții de o variabilă. Astfel, avem
+de parcurs următorii pași (vom presupune, pentru simplitate, că
+lucrăm cu o funcție de două variabile, $ f : \RR^2 \to \RR $):
+\begin{enumerate}[(1)]
+\item Se rezolvă sistemul de ecuații dat de anularea derivatelor
+  parțiale de ordinul întîi, pentru a afla \emph{punctele critice}
+  (puncte care \emph{este posibil} să fie de extrem):
+  \[
+    \begin{cases}
+      \frac{\partial f}{\partial x} &= 0 \\
+      \frac{\partial f}{\partial y} &= 0
+    \end{cases}
+  \]
+\item Pentru fiecare dintre aceste puncte, se alcătuiește \emph{matricea %
+    hessiană} a funcției, alcătuită din derivatele de ordinul al doilea,
+  și se evaluează matricea în punctele critice:
+  \[
+    H_f = \begin{pmatrix} f_x{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}
+  \]
+\item Fie $ A(x_A, y_A) $ un punct critic. Alcătuim matricea $ H_f(A) $
+  și îi calculăm \emph{valorile proprii}, $ \lambda_1 $ și $ \lambda_2 $.
+  \begin{itemize}
+  \item Dacă $ \lambda_1 $ și $ \lambda_2 $ sînt ambele \emph{pozitive}, atunci
+    punctul $ A $ este \emph{punct de minim local};
+  \item Dacă $ \lambda_1 $ și $ \lambda_2 $ sînt ambele \emph{negative}, atunci
+    punctul $ A $ este \emph{punct de maxim local};
+  \item Dacă $ \lambda_1 $ și $ \lambda_2 $ au \emph{semne contrare}, atunci
+    punctul $ A $ \emph{nu este de extrem}.
+  \end{itemize}
+\item Se repetă procedura pentru fiecare dintre punctele critice.
+\end{enumerate}
+
+\begin{remark}\label{rk:lambda-0}
+  Dacă una dintre valorile proprii ale unei matrice hessiene este 0, metoda
+  nu decide și se aplică tehnici specifice, care sînt dincolo de scopul acestui seminar.
+\end{remark}
+\index{extreme!libere}
+\index{matrice!hessiană}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Extreme cu legături}
+
+În cazul în care domeniul de definiție este specificat cu o ecuație sau este
+dat de un produs de intervale, se aplică o metodă specifică, numită, în general,
+\emph{metoda multiplicatorilor lui Lagrange}.
+
+Astfel, fie funcția $ f : D \seq \RR^2 \to \RR $ ca mai sus, căreia vrem să îi determinăm
+extremele și presupunem că vrem să o facem numai într-un domeniu dat de:
+\[
+  D = \{ (x, y) \in \RR^2 \mid x^2 + y^2 = 4 \}.
+\]
+
+Atunci, ecuația $ x^2 + y^2 = 4 $ se numește \emph{legătură} și o scriem sub
+forma unei funcții $ g(x, y) = x^2 + y^2 - 4 $, pentru ca legătura să devină
+$ g(x, y) = 0 $.
+
+Cu aceasta, metoda multiplicatorilor lui Lagrange înseamnă să alcătuim
+\emph{funcția lui Lagrange}\footnotemark:
+\[
+  F(x, y) = f(x, y) - \lambda g(x, y), \quad \lambda \in \RR.
+\]
+\index{funcții!Lagrange}
+\index{funcții!multiplicator Lagrange}
+\footnotetext{Detalii și explicații geometrice sînt date, de exemplu, %
+  foarte clar în această %
+  \href{https://www.youtube.com/watch?v=CQnZy4n85fE}{lecție video}}
+
+Cu aceasta, singura modificare care trebuie aplicată metodei de mai sus este
+că sistemul pentru găsirea punctelor critice devine:
+\[
+  \begin{cases}
+    f_x &= 0 \\
+    f_y &= 0 \\
+    g &= 0
+  \end{cases} \Longrightarrow (x, y, \lambda).
+\]
+Pentru punctele critice, ne putem dispensa de $ \lambda $, iar rezolvarea funcționează
+ca mai devreme.
+
+\begin{remark}\label{rk:leg-simpla}
+  Nu întotdeauna este nevoie să ne complicăm cu funcția lui Lagrange.
+  Dacă, de exemplu, legătura era $ x + y = 3 $, putem să o scriem ca $ y = 3 - x $,
+  iar funcția inițială devine o funcție de o variabilă, $ f(x, 3 - x) $,
+  căreia îi studiem extremele ca în liceu.
+\end{remark}
+
+\begin{remark}\label{rk:mm-leg}
+  Dacă legăturile sînt multiple, de exemplu, $ g_1, g_2, g_3, \dots, g_k $,
+  funcția lui Lagrange corespunzătoare este:
+  \[
+    F(x, y) = f(x, y) - \sum \lambda_i g_i(x, y),
+  \]
+  iar sistemul de rezolvat este dat de anularea derivatelor parțiale și
+  a tuturor legăturilor.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsection{Cazul compact}
+
+Dacă domeniul de definiție este un \emph{spațiu compact} --- ceea ce, în esență,
+pentru uzul acestui seminar înseamnă un produs de intervale (semi)închise
+sau legături date de inegalități ---, problema se studiază în două etape:
+\begin{itemize}
+\item \textbf{În interiorul domeniului}, caz în care legătura este inexistentă;
+\item \textbf{Pe frontieră}, caz în care legătura este dată de egalitate.
+\end{itemize}
+
+De exemplu, pentru domeniile:
+\[
+  D_1 = [3, 4] \times [1, 5], \quad D_2 = \{ (x, y) \in \RR^2 \mid 3x + 2y \leq 2 \}
+\]
+\begin{itemize}
+\item Interiorul înseamnă:
+  \begin{itemize}
+  \item pentru $ D_1 $, $ \dr{Int}D_1 = (3, 4) \times (1, 5) $, caz în care avem
+    doar de verificat că punctele critice se găsesc în intervalele date;
+  \item pentru $ D_2 $, avem legătura $ 3x + 2y < 2 $, caz în care, din nou,
+    verificăm dacă punctele critice satisfac inegalitatea \emph{strictă}
+  \end{itemize}
+\item Frontierele înseamnă:
+  \begin{itemize}
+  \item pentru $ D_1 $, cazurile separate $ x = 3, y \in [1, 5] $, apoi
+    $ x = 4, y \in [1, 5] $ și invers;
+  \item pentru $ D_2 $, legătura devine $ 3x + 2y = 2 $, pe care o putem rezolva
+    cu Lagrange sau cu metoda simplificată din observația \ref{rk:leg-simpla}.
+  \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Fie funcția:
+\[
+  f : D \seq \RR^2 \to \RR, f(x, y) = x^2 + xy + y^2 - 4\ln x - 10 \ln y + 3.
+\]
+Determinați punctele de extrem și calculați valorile funcției în aceste puncte.
+
+\vspace{1cm}
+
+2. Fie $f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + y^3 - 6xy$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $D = \{ (x,y) \in \RR^2 \mid x \geq 0, y \geq 0, x + y \geq 5 \}$,
+  determinați valoarea minimă și maximă a funcției.
+\end{enumerate}
+
+Indicație (b): Considerați funcțiile $g_1(x) = f(x,0), g_2 = f(0, y)$ și apoi
+funcția $g_3 = f(x, 5-x)$, cărora le găsiți punctele de extrem.
+
+\vspace{1cm}
+
+3. Fie $f : D \to \RR^2, f(x, y) = 3xy^2 - x^3 - 15x - 36y + 9$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $D = [-4, 4] \times [-3, 3]$ determinați valoarea minimă și valoarea
+  maximă a funcției.
+\end{enumerate}
+
+Indicație (b): Considerați funcțiile $f(x, -3), f(4, y), f(x, 3), f(-4, y)$.
+
+\vspace{1cm}
+
+4. Fie $f : D \seq \RR^2 \to \RR, f(x, y) = 4xy - x^4 - y^4$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $D = [-1, 2] \times [0, 2]$, determinați valoarea minimă și
+  maximă a funcției.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Fie $f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + 3x^2 y - 15x - 12 y$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați
+  valorile funcției în aceste puncte;
+\item Pentru $D = \{ (x, y) \in \RR^2 \mid x \geq 0, y \geq 0, 3y + x \leq 3 \}$
+  determinați valoarea minimă și valoarea maximă a funcției.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Determinați valorile extreme pentru funcțiile $f$, definite pe domeniile $D$,
+unde:
+\begin{enumerate}[(a)]
+\item $f(x, y) = x^3 + y^3 - 6xy, D = \RR^2$;
+\item $f(x, y) = xy(1 - x - y), D = [0, 1] \times [0, 1]$;
+\item $f(x, y) = x^4 + y^4 - 2x^2 + 4xy - 2y^2, D = (-\infty, 0) \times (0, \infty)$;
+\item $f(x, y) = x^3 + 8y^3 - 2xy, D = \{(x, y) \in \RR^2 \mid x, y \geq 0, y + 2x \leq 2\}$;
+\item $f(x, y) = x^4 + y^3 - 4x^3 - 3y^2 + 3y, D = \{ (x, y) \in \RR^2 \mid x^2 + y^2 < 4 \}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7*. Dintre toate paralelipipedele dreptunghice cu volum constant 1, determinați
+pe cel cu aria totală minimă.
+
+\vspace{1cm}
+8. Fie funcția $ f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + y^3 - 6xy $.
+\begin{enumerate}[(a)]
+\item Pentru $ D = \RR^2 $, determinați punctele de extrem și calculați
+  valorile funcției în aceste puncte;
+\item Pentru $ D = \{ (x, y) \in \RR^2 \mid x, y \geq 0, x + y \leq 5 \} $
+  determinați valoarea minimă și valoarea maximă a funcției.
+\end{enumerate}
+
+9. Fie $ f : D \seq \RR^2 \to \RR, f(x, y) = 4xy - x^4 - y^4 $.
+\begin{enumerate}[(a)]
+\item Pentru $ D = \RR^2 $, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $ D = [-1, 2] \times [0, 2] $, determinați valoarea minimă
+  și valoarea maximă a funcției.
+\end{enumerate}
+
+10. Fie $ f : D \seq \RR^2 \to \RR, f(x, y) = x^4 + y^3 - 4x^3 = 3y^2 + 3y $.
+Pentru domeniul de definiție:
+\[
+  D = \{(x, y) \in \RR^2 \mid x^2 + y^2 < 4 \},
+\]
+determinați punctele de extrem ale funcției.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-18-19"
+%%% End:

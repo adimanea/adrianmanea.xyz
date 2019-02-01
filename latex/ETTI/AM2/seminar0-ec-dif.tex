@@ -1,0 +1,359 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 0 \\ Ecuații diferențiale}}
+\end{center}
+
+\vspace{2cm}
+
+Rezolvați următoarele ecuații diferențiale:
+
+1. $(1 + y^2) + xyy' = 0$, cu condiția inițială $x_0 = 1, y_0 = 0$.
+
+\emph{Indicație:} Ecuația este cu variabile separabile. Împărțim cu
+$x(1 + y^2)$, pentru $x \neq 0$ (altfel, avem $y^2 = -1$, fals).
+Folosind și condiția inițială, găsim soluția: $x^2(1 + y^2) = 1$.
+
+\vspace{1cm}
+
+2. $y' = 1 + \frac{1}{x} - \frac{1}{y^2 + 2}$.
+
+\emph{Indicație}: Ecuație cu variabile separabile. Grupînd termenii, obținem:
+\[
+  y' = \big(1 + \frac{1}{x}\big) \frac{y^2 + 1}{y^2 + 2}.
+\]
+Prin integrare, găsim soluția generală:
+\[
+  y + \arctan y = \ln|x| + x + c.
+\]
+
+\vspace{1cm}
+
+\section*{Ecuații diferențiale omogene --- Observații teoretice}
+
+Ecuația diferențială $P(x, y) dx + Q(x, y) dy = 0$, cu $P, Q : D \seq \RR^2 \to \RR^2$
+se numește \emph{omogenă} dacă funcțiile $P, Q$ sînt funcții omogene de același grad
+de omogenitate. Mai precis, dacă $P(\alpha x, \alpha y) = \alpha^k P(x, y)$, pentru
+orice $\alpha \in \RR$, unde $k$ se numește \emph{gradul de omogenitate}.
+
+O ecuație diferențială omogenă poate fi scrisă sub forma:
+\[
+  y' = f\big( \frac{y}{x} \big), x \neq 0
+\]
+și atunci, făcînd substituția $z(x) = \frac{y(x)}{x}$, obținem o ecuație cu variabile
+separabile în $z$:
+\[
+  xz' = f(z) - z.
+\]
+
+Un alt caz ce poate fi rezolvat algoritmic este:
+\[
+  y' = f \Big( \frac{ax + by + c}{a_1 x + b_1 y + c_1} \Big), a, b, c, a_1, b_1, c_1 \in \RR.
+\]
+\begin{itemize}
+\item Dacă $\frac{a}{a_1} \neq \frac{b}{b_1}$, facem schimbarea de variabile $x = u + x_0$
+  și $y = v + y_0$, pentru $ax_0 + by_0 + c = 0, a_1 x_0 + b_1y_0 + c_1 = 0$;
+\item Dacă $\frac{a}{a_1} = \frac{b}{b_1}$, facem schimbarea de funcție $u(x) = a_1 x + b_1y(x)$,
+  unde $u(x)$ devine noua funcție necunoscută.
+\end{itemize}
+
+\vspace{1cm}
+
+3. $y' = \frac{y^2 + x^2}{xy}$, cu $x_0 = -1$ și $y_0 = 0$.
+
+\emph{Indicație:} Facem schimbarea de funcție $z(x) = \frac{y(x)}{x}$ și
+găsim $z' x + z = \frac{1}{z} + z$, care este cu variabile separabile.
+
+\vspace{1cm}
+
+4. $ydx + (2 \sqrt{xy} - x) dy = 0$.
+
+\emph{Indicație:} Facem schimbarea de funcție $z(x) = \frac{y(x)}{x}$ și
+găsim:
+\[
+  z + (2 \sqrt{z} - 1) (z' x + z) = 0.
+\]
+Desfacem parantezele, împărțim prin $z$ și găsim ecuația cu variabile separabile:
+\[
+  \frac{dz}{dx} \Big( \frac{1}{z} - \frac{1}{2z^{\frac{3}{2}}} \Big) = -\frac{1}{x}.
+\]
+
+\vspace{1cm}
+
+5. $(3x + 3y - 1) dx + (x + y + 1) dy = 0$.
+
+\emph{Indicație:} Observăm că dreptele $3x + 3y - 1 = 0$ și $x + y + 1 = 0$ sînt
+paralele. Deci facem schimbarea de funcție $x + y = u(x)$, iar ecuația devine:
+\[
+  2dx + du + 2 \frac{du}{u - 1} = 0.
+\]
+Integrăm și găsim:
+\[
+  2x + u + 2\ln|u - 1| = c_1,
+\]
+de unde putem reveni la soluția în $y$ și găsim:
+\[
+  3x + y + \ln(x + y - 1)^2 = c_1 \Rightarrow (x + y - 1)^2 = ce^{-(3x + y)}.
+\]
+
+\vspace{1cm}
+
+6. $y' + y\cos x = \sin x \cos x$, cu $x_0 = 0, y_0 = 1$.
+
+\emph{Indicație:} Ecuația este liniară neomogenă. Atașăm ecuația omogenă, care
+este cu variabile separabile: $y' + y\cos x = 0$ și găsim:
+\[
+  -\frac{dy}{y} = \cos x dx \Rightarrow \overline{y}(x) = ce^{-\sin x}.
+\]
+Mai departe, aplicăm variația constantelor $y_p(x) = c(x)e^{-\sin x}$ și
+găsim $c'(x) = \sin x \cos x e^{\sin x}$, de unde $c(x) = e^{\sin x}(\sin x - 1)$.
+
+Soluția generală este $y(x) = \sin x - 1 + ce^{-\sin x}$, iar din condițiile inițiale
+găsim $c = 2$.
+
+\vspace{1cm}
+
+7. $y' - \frac{4y}{x} = x \sqrt{y}, y \geq 0, x \neq 0$.
+
+\emph{Indicație:} Avem o ecuație Bernoulli cu $\alpha = \frac{1}{2}$, deci facem
+schimbarea de funcție $z(x) = y^{\frac{1}{2}}$. Obținem o ecuație liniară neomogenă:
+\[
+  z' - 2\frac{z}{x} = \frac{x}{2},
+\]
+pe care o rezolvăm corespunzător.
+
+\vspace{1cm}
+
+8. $xy' + y = -x^2 + y^2, x_0 = 1, y_0 = 1$.
+
+\emph{Indicație:} Avem o ecuație Bernoulli cu $\alpha = 2$, deci facem schimbarea
+de funcție $z(x) = \frac{1}{y}$. Obținem ecuația liniară neomogenă $z' - \frac{2}{x} = x$,
+pe care o rezolvăm corespunzător.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Ecuații exacte. Factor integrant}
+
+\begin{definition}\label{def:f-dif}
+  Fie $D \seq \RR^2$ un domeniu și $P, Q : D \to \RR$ funcții continue.
+  Se numește \emph{formă diferențială} expresia $\omega = P(x, y) dx + Q(x, y)dy$.
+
+  Forma diferențială $\omega$ se numește \emph{închisă} dacă $P_y = Q_x$.
+
+  Forma diferențială $\omega$ se numește \emph{exactă} dacă există o funcție
+  $U \in \kal{C}^1(D)$, cu proprietatea că $dU = P(x, y) dx + Q(x, y) dy$.
+\end{definition}
+
+Presupunem că avem o ecuație diferențială de ordinul întîi de forma:
+\[
+  y' = f(x, y),
+\]
+pe care o putem rescrie în forma:
+\[
+  \frac{dy}{dx} = -\frac{P(x, y)}{Q(x, y)},
+\]
+cu $P, Q \in \kal{C}^1(D \seq \RR^2)$, iar $Q \neq 0$ pe $D$, astfel încît
+forma diferențială $\omega = Pdx + Qdy$ să fie închisă. Atunci orice soluție
+a ecuației diferențiale de mai sus se obține în forma implicită $U(x, y) = c$,
+unde:
+\begin{equation}
+  \label{eq:u-inchis}
+  U(x, y) = \int_{x_0}^x P(t, y_0) dt + \int_{y_0}^y Q(x, t) dt,
+\end{equation}
+cu $(x_0, y_0) \in D$ fixat.
+
+Dacă forma diferențială $\omega$ nu este închisă, ea se poate înmulți cu o funcție
+$\mu : D \to \RR$, de clasă $\kal{C}^1$, numită \emph{factor integrant}, astfel încît
+forma $\mu\omega$ să fie închisă.
+
+Pentru a găsi factorul integrant, verificăm:
+\begin{itemize}
+\item Dacă $-\frac{1}{Q} (Q_x - P_y) = g(x)$ este o funcție doar de $x$, atunci
+  factorul integrant $\mu$ este o funcție doar de $x$ și se determină din ecuația
+  diferențială $\frac{d\mu}{\mu} = g(x) dx$;
+\item Dacă $\frac{1}{P} (Q_x - P_y) = h(y)$ este o funcție doar de $y$, atunci factorul
+  integrant $\mu$ este o funcție doar de $y$ și se determină din ecuația diferențială
+  $\frac{d\mu}{\mu} = h(y) dy$.
+\end{itemize}
+
+\vspace{1cm}
+
+9. $(ye^{xy} - 4xy) dx + (xe^{xy} - 2x^2) dy = 0$.
+
+\emph{Indicație:} Forma diferențială asociată este închisă, deci ecuația se poate rezolva
+direct găsind $U$ din ecuația ~\eqref{eq:u-inchis}.
+
+\vspace{1cm}
+
+10. $(x \sin y + y \cos y) dx + (x \cos y - y \sin y) dy = 0$.
+
+\emph{Indicație:} Forma diferențială asociată nu este închisă, dar se poate căuta
+un factor integrant ca funcție doar de $x$. Găsim $\frac{d\mu}{\mu} = dx$,
+deci $\mu = e^x$. Obținem apoi o ecuație exactă și o rezolvăm cu formula ~\eqref{eq:u-inchis}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Ecuații Lagrange}
+
+Forma generală:
+\[
+  y = x\varphi(y') + \psi(y').
+\]
+
+Pentru rezolvare, notăm $y' = p$.
+
+11. $y = 2xy' - {y'}^2$.
+
+\emph{Indicație:} Facem substituția $y' = p$ și găsim:
+\[
+  y = 2xp - p^2.
+\]
+Derivăm în raport cu $x$ și obținem:
+\[
+  p = 2p + 2xp' - 2pp' \Rightarrow p'(2p - 2x) = p.
+\]
+Echivalent, putem scrie:
+\[
+  \frac{dp}{dx}(2p - 2x) = p \Rightarrow p\frac{dx}{dp} = -2x + 2p.
+\]
+Soluția se obține parametric în forma:
+\[
+  x = \frac{2}{3}p + \frac{c}{p^2}.
+\]
+Înlocuind în ecuația inițială, după introducerea lui $p$, avem:
+\[
+  y = \frac{p^2}{3} + \frac{2c}{p}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Ecuații Clairaut}
+
+Ecuațiile Clairaut sînt o formă particulară a ecuațiilor Lagrange, cu $\varphi(y') = y'$:
+\[
+  y = xy' + \psi(y').
+\]
+
+Rezolvarea este similară cu cazul Lagrange.
+
+\vspace{1cm}
+
+12. $y = xy' + \frac{1}{y'}$.
+
+\emph{Soluție:} Notînd $y' = p$ și derivăm, găsim:
+\[
+  p = p + x \frac{dp}{dx} - \frac{1}{p^2} \frac{dp}{dx} \Rightarrow %
+  \frac{dp}{dx} \Big( x - \frac{1}{p^2} \Big) = 0.
+\]
+
+Avem de tratat cazurile:
+\begin{itemize}
+\item $\frac{dp}{dx} = 0 \Rightarrow p = c$, deci $y = cx + \frac{1}{c}$ este
+  \emph{soluția generală};
+\item $x = \frac{1}{p^2}$, de unde $y = \frac{2}{p}$, adică $y^2 = 4x$, care
+  se numește \emph{soluția singulară}.
+\end{itemize}
+
+
+\end{document}
+

@@ -1,0 +1,250 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+% \usepackage[unicode]{hyperref} 
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} Aero-BCD, 2017---2018, M. Olteanu \& L. Costache}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large \textbf{Seminar 4 --- Supliment \\ Densitatea lui $\QQ$ în $\RR$}}
+\end{center}
+
+\vspace{2cm}
+
+\section{Principiul lui Arhimede}
+\label{sec:arhimede}
+
+Vom aborda problema densității lui $\QQ$ în $\RR$ pas cu pas:
+
+\begin{lemma}\label{le:z-nemarg}
+  Fie $S \seq \ZZ$ o submulțime nevidă. Presupunem că $S$ este mărginită superior.
+  Atunci $S$ are un cel mai mare element.
+\end{lemma}
+
+\begin{proof}
+  Deoarece $S$ este nevidă și mărginită superior, rezultă că există $w = \sup S$.
+  Arătăm că $w \in S$.
+
+  Dacă o mulțime conține supremumul, acela este și cel mai mare element al său, evident. Ne vom
+  baza pe această observație pentru a demonstra. Presupunem că $w \notin S$. Deoarece $w - 1 < 2$,
+  rezultă că există $m \in S$, cu $w - 1 < m \leq w$. Cum $w \notin S$, inegalitățile pot fi ambele
+  luate ca stricte.
+
+  Continuăm, putînd găsi $n \in S$, cu $m < n < w$. Deci:
+  \[
+    w - 1 < m < n < w.
+  \]
+  Dar, din $n < w$, avem $-w < - n$, pe care o putem aduna cu cea de mai sus și
+  obținem $-1 < m - n$. Deoarece $m < n$, avem $n - m > 0$, deci $0 < n - m < 1$.
+  Cum $m, n \in S$, sînt numere întregi, deci $n - m \in \ZZ$, contradicție.
+
+  Concluzia este că $w \in S$.
+\end{proof}
+
+\begin{remark}\label{rk:pentru-r}
+  De remarcat este faptul că acest argument nu poate funcționa pentru o mulțime
+  continuă. În demonstrație, am folosit în mod esențial faptul că orice număr
+  întreg are un predecesor și un succesor, lucru care nu este adevărat pentru $\RR$,
+  de exemplu.
+\end{remark}
+
+Similar se demonstrează și:
+
+\begin{lemma}\label{le:min-elem-z}
+  Fie $S \seq \ZZ$ și presupunem $S \neq \emptyset$ și $S$ mărginită inferior.
+  Atunci $S$ are un cel mai mic element.
+\end{lemma}
+
+Din aceste rezultate, avem:
+
+\begin{theorem}\label{thm:z-nemarg}
+  $\ZZ$ este nemărginită și superior, și inferior.
+\end{theorem}
+
+\begin{proof}
+  Rezultatul reiese imediat din cele două leme de mai sus, deoarece $\ZZ$ nu are
+  nici un cel mai mare element, nici un cel mai mic element.
+\end{proof}
+
+\begin{theorem}[Principiul lui Arhimede]\label{thm:arhimede}
+  Fie $x \in \RR$ și $x > 0$. Atunci există un întreg pozitiv $n$, astfel încît $\frac{1}{n} < x$.
+\end{theorem}
+
+\begin{proof}
+  Fie $x$ ca în teoremă. Atunci $\frac{1}{x}$ nu poate fi o margine superioară pentru $\ZZ$, deoarece
+  $\ZZ$ nu este mărginită superior. Așadar, putem găsi $n \in \ZZ$, chiar $n > 0$, cu $\frac{1}{x} < n$.
+
+  Rezultă $\frac{1}{n} < x$.
+\end{proof}
+
+Această teoremă ne arată că, alegînd $n$ suficient de mare, putem face $\frac{1}{n}$
+cît de aproape de 0 dorim.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Densitatea lui $\QQ$ în $\RR$}
+\label{sec:densitate}
+
+\begin{definition}\label{def:densitate}
+  O submulțime $S \seq \RR$ se numește \emph{densă în $\RR$} dacă între oricare
+  două numere reale există un element al lui $S$.
+
+  Echivalent, $\forall a < b \in \RR, S \cap (a, b) \neq \emptyset$.
+\end{definition}
+
+Rezultatul principal este următorul:
+
+\begin{theorem}\label{thm:q-densa}
+  $\QQ$ este densă în $\RR$. Cu alte cuvinte, între oricare două numere reale
+  există un număr rațional.
+\end{theorem}
+
+\begin{proof}
+  Fie $a < b$ două numere reale. Atunci $b - a > 0$, iar din principiul lui Arhimede,
+  putem alege $n \in \ZZ$, astfel încît:
+  \[
+    0 < \frac{1}{n} < b - a \Leftrightarrow a < a + \frac{1}{b} < b.
+  \]
+  Demonstrația se încheie dacă arătăm că există $m \in \ZZ$, cu $a < \frac{m}{n} < b$.
+
+  Definim:
+  \[
+    S = \{x \in \ZZ \mid \frac{x}{n} > a \} = \{x \in \ZZ \mid x > na, n > 0 \}.
+  \]
+  Această mulțime este mărginită inferior de $na$ și este nevidă, deoarece $\ZZ$ nu
+  este mărginită superior. Așadar, $S$ are un cel mai mic element, $m$. Arătăm că $m$
+  este întregul căutat.
+
+  Cum $\frac{m}{n} > a$, dar $\frac{m - 1}{n} \leq a$, putem scrie:
+  \[
+    \frac{m}{n} = \frac{m - 1}{n} + \frac{1}{n} \Rightarrow %
+    a < \frac{m}{n} = \frac{m - 1}{n} + \frac{1}{n}.
+  \]
+
+  Totodată, avem și $a < \frac{m}{n} \leq a + \frac{1}{n} < b$, ceea ce încheie demonstrația.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Mulțimi complete}
+\label{sec:complete}
+
+\begin{definition}\label{def:completa}
+  O submulțime $S \seq \RR$ se numește \emph{completă} dacă satisface proprietatea supremumului
+  (implicit, și pe cea a infimumului).
+
+  Cu alte cuvinte, $S$ este completă dacă orice submulțime nevidă și mărginită a lui $S$
+  are și un supremum, și un infimum \emph{în $S$}.
+\end{definition}
+
+De exemplu, $[0, 1]$ este completă, $(0, 1)$ nu este completă, iar $\RR$ este completă.
+
+\begin{proposition}\label{pr:q-completa}
+  $\QQ$ nu este completă.
+\end{proposition}
+
+\begin{proof}
+  Fie $S = \{ x \in \QQ \mid 0 < x < \sqrt{2} \} \seq \QQ$.
+
+  Arătăm că $\QQ$ nu este completă, deoarece $S$ nu satisface proprietatea supremumului.
+
+  Cum $\sqrt{2}$ este o margine superioară pentru $S$, avem $\sup S \leq \sqrt{2}$. Presupunem
+  inegalitatea strictă. Din densitatea lui $\QQ$ în $\RR$, găsim $q \in \QQ$ cu $\sup S < q < \sqrt{2}$.
+  Atunci $q \in S$ și rezultă $q \leq \sup S$, iar nu $\sup S < q < \sqrt{2}$.
+
+  Așadar, $\sup S = \sqrt{2} \notin \QQ$, iar demonstrația este încheiată.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,495 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 5 \\
+      Ecuații cu derivate parțiale \\
+      de ordinul întîi}}
+\end{center}
+
+\vspace{2cm}
+
+\section{Ecuații cu derivate parțiale}
+
+\begin{definition}\label{def:edp1-omogena}
+  Fie $ v : U \to \RR^n $ un cîmp de vectori de clasă $ \kal{C}^r(U) $, cu
+  $ r \geq 2 $ și $ v_1, \dots, v_n : U \to \RR $ componentele sale.
+
+  Se numește \emph{ecuație cu derivate parțiale de ordinul întîi, liniară și omogenă}
+  pentru funcția necunoscută $ u : U \to \RR $, de clasă $ \kal{C}^1 $ egalitatea:
+  \begin{equation} \label{eq:edp1-omogena}
+    \sum_{i = 1}^n v_i(x_1, \dots, x_n) \frac{\partial u}{\partial x_i}(x_1, \dots, x_n) = 0,
+  \end{equation}
+  unde $ x = (x_1, \dots, x_n) \in U $.
+
+  Funcția $ u : U \to \RR $ de clasă $ \kal{C}^1 $ care verifică relația de mai sus pentru
+  orice $ x \in U $ se numește \emph{soluție} a ecuației pe domeniul $ U $.
+\end{definition}
+
+Relevanța integralelor prime pentru ecuațiile cu derivate parțiale rezultă din următoarea.
+
+\begin{theorem}\label{thm:int-prim-edp}
+  Orice integrală primă pe $ U $ a sistemului autonom $ x' = v(x) $ este soluție pe $ U $
+  a ecuației ~\eqref{eq:edp1-omogena} și, reciproc, orice soluție pe $ U $ a ecuației
+  este integrală primă pe $ U $ a sistemului $ x' = v(x) $.
+\end{theorem}
+
+În contextul și cu notațiile de mai sus, sistemul diferențial autonom:
+\[
+  \frac{dx_1}{v_1(x_1, \dots, x_n)} = \frac{dx_2}{v_2(x_1, \dots, x_n)} = \dots = %
+  \frac{dx_n}{v_n(x_1, \dots, x_n)}
+\]
+se numește \emph{sistemul caracteristic} asociat ecuației ~\eqref{eq:edp1-omogena}.
+
+De \textbf{exemplu}, să considerăm ecuația:
+\[
+  xy \frac{\partial u}{\partial x} - y \sqrt{1 - y^2} \frac{\partial u}{\partial y} + %
+  (z \sqrt{1 - y^2} - axy) \frac{\partial u}{\partial z} = 0.
+\]
+
+\emph{Soluție:} Sistemul autonom caracteristic este:
+\[
+  \frac{dx}{xy} = \frac{dy}{-y\sqrt{1 - y^2}} = \frac{dz}{z\sqrt{1 - y^2} - axy}.
+\]
+
+Lucrînd cu primele două rapoarte, obținem:
+\[
+  \frac{dx}{x} = \frac{dy}{-\sqrt{1 - y^2}} \Rightarrow \ln |x| + \arcsin y = c \Rightarrow %
+  xe^{\arcsin y} = c_1.
+\]
+
+Lucrînd cu ultimele două egalități și folosind soluția pentru $ x $, avem:
+\[
+  \frac{dy}{-y\sqrt{1 - y^2}} = \frac{dz}{z \sqrt{1 - y^2} - axy} \Rightarrow %
+  \frac{dz}{dy} - \frac{z}{y} = ac_1 \frac{e^{-\arcsin y}}{\sqrt{1 - y^2}}.
+\]
+
+Aceasta este o ecuație diferențială liniară privind funcția $ z = z(y) $, deci o putem rezolva
+cu metoda specifică și găsim soluția generală:
+\[
+  z = \frac{c_2}{y} \cdot \frac{ac_1 e^{-\arcsin y}}{2y} (y + \sqrt{1 - y^2}) \Leftrightarrow %
+  2yz + ax(y + \sqrt{1 - y^2}) = 2c_2.
+\]
+
+Soluția generală se alcătuiește, atunci:
+\[
+  u(x, y, z) = \Phi(xe^{\arcsin y}, 2yz + ax(y + \sqrt{1 - y^2})), \quad \Phi \in \kal{C}^1(U).
+\]
+
+Un alt caz de interes este:
+\begin{definition}\label{def:edp1-qlin}
+  Se numește \emph{ecuație cu derivate parțiale de ordinul întîi cvasiliniară} egalitatea:
+  \begin{equation} \label{eq:edp1-qlin}
+    \sum_{i = 1}^n g_i(x_1, \dots, x_n, u) \frac{\partial u}{\partial x_i} = g(x_1, \dots, x_n, u),
+  \end{equation}
+  unde $ g_i, g : D \to \RR $ sînt funcții de clasă $ \kal{C}^1(D \seq \RR^{n+1}) $.
+\end{definition}
+
+\begin{definition}\label{def:sol-edp1-qlin}
+  Se numește \emph{soluție} a ecuației (\ref{eq:edp1-qlin}) orice funcție de clasă $ \kal{C}^1 $
+  definită pe un domeniu $ U \seq \RR^n $, $ u : U \to \RR $, astfel încît $ \forall x \in U $
+  să avem $ (x, u(x)) \in D$ și:
+  \[
+    \sum_{i = 1}^n g_i(x, u(x)) \frac{\partial u}{\partial x_i} (x) = g(x, u(x)), \forall x \in U.
+  \]
+\end{definition}
+
+Pentru rezolvarea ecuației (\ref{eq:edp1-qlin}) procedăm astfel: căutăm soluția $ u $ sub formă
+implicită, $ F(x_1, \dots, x_n, u) = 0 $, unde $F : D \to \RR $ este o funcție de clasă $ \kal{C}^1 $
+și $ \frac{\partial F}{\partial u} \neq 0 $ pe $D$. Atunci obținem:
+\[
+  \frac{\partial u}{\partial x_i} = - \frac{\frac{\partial F}{\partial x_i}}{\frac{\partial F}{\partial u}},
+\]
+pentru orice $ i = 1, \dots n $, iar ecuația (\ref{eq:edp1-qlin}) devine:
+\[
+  \sum_{i = 1}^n g_i(x_1, \dots, x_n, u) \frac{\partial u}{x_i} (x_1, \dots, x_n, u) + %
+  g(x_1, \dots, x_n, u) \frac{\partial F}{\partial u} (x_1, \dots x_n, u) = 0,
+\]
+care este o ecuație cu derivate parțiale de ordinul întîi, liniară și omogenă, așadar redusă la
+cazul anterior.
+
+De \textbf{exemplu}:
+\[
+  (1 + \sqrt{z - x - y}) \frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} = 2.
+\]
+
+\emph{Soluție:} Scriem sistemul caracteristic:
+\[
+  \frac{dx}{1 + \sqrt{z - x - y}} = \frac{dy}{1} = \frac{dz}{2}.
+\]
+Din ultimele două rapoarte, obținem o integrală primă de forma $ z - 2y = c_1 $.
+
+De asemenea, prelucrînd rapoartele, obținem:
+\[
+  dy = \frac{dz - dx - dy}{- \sqrt{z - x - y}},
+\]
+de unde rezultă că $ y + 2\sqrt{z - x - y} = c_2 $, care este o altă integrală primă.
+
+Așadar, soluția generală se poate scrie sub forma:
+\[
+  u(x, y, z) = \Phi(z - 2y, y + 2\sqrt{z - x - y}) = 0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linii și suprafețe de cîmp}
+
+Putem acum să descriem noțiuni precum liniile de cîmp și liniile de forță, în contextul
+ecuațiilor cu derivate parțiale.
+
+\begin{definition}\label{def:linii-cimp}
+  Fie $ U \seq \RR^3 $ un domeniu și $ \vec{v} : U \to \RR $ un cîmp de clasă $ \kal{C}^1 $
+  fără puncte singulare pe $ U $, adică $ \vec{v} $ nu se anulează pe $ U $), unde:
+  \[
+    \vec{v} = P(x, y, z) \vec{i} + Q(x, y, z) \vec{j} + R(x, y, z) \vec{k}.
+  \]
+
+  Integralele prime (orbitele) care rezultă din sistemul diferențial autonom:
+  \begin{equation} \label{eq:sist-cimp}
+    \frac{dx}{P(x, y, z)} = \frac{dy}{Q(x, y, z)} = \frac{dz}{R(x, y, z)}, \quad (x, y, z) \in U
+  \end{equation}
+  se numesc \emph{linii de cîmp} pentru $ \vec{v} $.
+\end{definition}
+
+Liniile de cîmp pentru un cîmp vectorial $ \vec{v} $ sînt suporturi de curbe $ \gamma: x = x(t), t \in I$,
+în lungul cărora vectorul tangent în fiecare punct $ t $ coincide cu $ \vec{v}(x(t)) $.
+
+Dacă lucrăm cu aplicații fizice concrete, de exemplu, cazul cîmpului electromagnetic, liniile
+de cîmp se mai numesc și \emph{linii de forță}.
+
+De \textbf{exemplu}, să determinăm liniile de cîmp pentru cîmpul vectorial:
+\[
+  \vec{v} = \frac{x^2 + y^2 + z^2}{x^2 z} \vec{i} - \frac{2y}{xz} \vec{j} + \frac{-x^2 + y^2 - z^2}{xz^2}.
+\]
+
+\emph{Soluție:} Scriem sistemul simetric asociat:
+\[
+  \frac{x^2 z dx}{x^2 + y^2 + z^2} = \frac{xzdy}{-2y} = \frac{xz^2 dz}{-x^2 + y^2 - z^2},
+\]
+pe care îl putem scrie și:
+\[
+  \frac{2xdx}{x^2 + y^2 + z^2} = \frac{2ydy}{-2y^2} = \frac{2zdz}{-x^2 + y^2 - z^2} = %
+  \frac{2xdx + 2ydy + 2zdz}{x^2 + y^2 + z^2 - 2x - x^2 + y^2 - z^2} = %
+  \frac{2xdx + 2ydy + 2zdz}{0}
+\]
+
+Rezultă că avem o integrală primă de forma $ x^2 + y^2 + z^2 = c_1 $.
+
+Introducînd această integrală primă în primul raport, obținem, împreună cu al doilea:
+\[
+  \frac{2xdx}{c_1} = -\frac{dy}{y} \Rightarrow y = c_2 e^{-\frac{x^2}{c_1^2}}.
+\]
+
+Obținem liniile de cîmp:
+\[
+  \begin{cases}
+    x^2 + y^2 + z^2 &= c_1 \\
+    y &= c_2 e^{-\frac{x^2}{c_1^2}}
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+Trecem acum în dimensiune superioară, introducînd \emph{suprafețele de cîmp}.
+
+\begin{definition}\label{def:supr-cimp}
+  O suprafață $ S \seq U $ de clasă $ \kal{C}^1 $, fără puncte singulare se numește
+  \emph{suprafață de cîmp} pentru vectorul $ \vec{v} $ dacă în orice punct $ P \in S $,
+  vectorul $ \vec{v}(M) $ este tangent la suprafață.
+\end{definition}
+
+Pentru a obține ecuația suprafețelor de cîmp procedăm astfel. Presupunem că avem o suprafață $ S $
+cu ecuația $ F(x, y, z) = 0 $ în $U$, unde $ F : U \to \RR $ este o funcție de clasă $ \kal{C}^1 $.
+Deoarece $ S $ nu are puncte singulare, admite tangentă și normală în orice punct $ M \in S $, iar
+un vector director al normalei în $ P $ este dat de ecuația:
+\[
+  \nabla_M F = \frac{\partial F}{\partial x}(M) \vec{i} + \frac{\partial F}{\partial y}(M)\vec{j} + %
+  \frac{\partial F}{\partial z}(M) \vec{k} \neq 0.
+\]
+
+Rezultă că $ \vec{v}(M) $ este tangent la $ S $ dacă și numai dacă $ \vec{v}(M) $ este perpendicular
+pe vectorul $ \nabla_M F $, adică:
+\begin{equation} \label{eq:supr-cimp}
+  \vec{v}(M) \cdot \nabla_M F = P \cdot F_x + Q \cdot F_y + R \cdot F_z = 0,
+\end{equation}
+pentru orice punct $ M = (x, y, z) $. Rezultă că $ S $ este o suprafață de cîmp pentru $ \vec{v} $
+dacă și numai dacă este dată de o ecuație de forma $ F(x, y, z) = 0 $, unde funcția $ F : U \to \RR $
+este de clasă $ \kal{C}^1 $, are $ \nabla F \neq 0 $ și satisface ecuația (\ref{eq:supr-cimp}),
+care se numește \emph{ecuația suprafețelor de cîmp} ale lui $ \vec{v} $. Sistemul diferențial autonom
+și simetric (\ref{eq:sist-cimp}) se numește \emph{sistem caracteristic} ale ecuației
+(\ref{eq:supr-cimp}), iar liniile de cîmp se mai numesc \emph{curbe caracteristice}.
+
+Determinarea unei suprafețe de cîmp care trece printr-o curbă dată este, de fapt, o problemă
+Cauchy pentru ecuația (\ref{eq:supr-cimp}).
+
+\vspace{1cm}
+
+\textbf{Exemplu:} Determinăm soluția ecuației:
+\[
+  x \frac{\partial z}{\partial x} + y \frac{\partial z}{\partial y} = z,
+\]
+care trece prin curba $ x^2 + y^2 = 1, z = 2 $.
+
+\emph{Soluție:} Sistemul caracteristic asociat este simplu:
+\[
+  \frac{dx}{x} = \frac{dy}{y} = \frac{dz}{z}.
+\]
+Integralele prime se obțin egalînd primele două și ultimele două rapoarte, ca fiind:
+\[
+  \frac{x}{y} = c_1, \quad \frac{x}{z} = c_2.
+\]
+Folosindu-le, împreună cu curbele date, avem:
+\[
+  \begin{cases}
+    x &= c_1 y \\
+    x &= c_2 z \\
+    x^2 + y^2 &= 1 \\
+    z &= 2
+  \end{cases} \Rightarrow c_1^2 c_2^2 + c_2^2 = %
+  \frac{c_1^2}{4} \Rightarrow x^2 + y^2 = \frac{z^2}{4},
+\]
+care este un con cu vîrful în origine.
+
+% \vspace{1cm}
+
+% \textbf{Exemplu 2:} Fie cîmpul vectorial:
+% \[
+%   \vec{v} = (x + y) \vec{i} + (y - x) \vec{j} - 2z\vec{k}.
+% \]
+% Să se determine:
+% \begin{enumerate}[(a)]
+% \item liniile de cîmp;
+% \item linia de cîmp ce conține punctul $ M(1, 0, 1) $;
+% \item suprafața de cîmp;
+% \item suprafața de cîmp ce conține dreapta $ z = 1, y - x\sqrt{3} = 0 $.
+% \end{enumerate}
+
+% \emph{Soluție:} (a) Sistemul caracteristic asociat este:
+% \[
+%   \frac{dx}{x + y} = \frac{dy}{y - x} = \frac{dz}{-2z} \Rightarrow %
+%   \frac{xdx + ydy}{x^2 + y^2} = \frac{dz}{-2z}.
+% \]
+
+% Obținem de aici:
+% \[
+%   \frac{1}{2} \cdot \frac{d(x^2 + y^2)}{x^2 + y^2} = -\frac{1}{2} \frac{dz}{z} \Rightarrow %
+%   (x^2 + y^2)z = c_1.
+% \]
+
+% Din primele două rapoarte, obținem: $ \frac{dx}{dy} = \frac{x + y}{y - x} $, care este o
+% ecuație diferențială omogenă, pentru care facem substituția $ y = tx $. Rezultă:
+% \[
+%   x \frac{dt}{dx} + t = \frac{t - 1}{t + 1} \Rightarrow \frac{dx}{x} = %
+%   -\frac{t + 1}{t^2 + 1} dt,
+% \]
+% care are soluția $ \ln(x^2 + y^2) + 2 \arctan \frac{y}{x} = c_2 $, care este cea de-a
+% doua integrală primă.
+
+% Așadar, liniile de cîmp sînt:
+% \[
+%   \begin{cases}
+%     (x^2 + y^2) z &= c_1 \\
+%     \ln(x^2 + y^2) + 2 \arctan \frac{y}{x} &= c_2
+%   \end{cases}
+% \]
+
+% (b) Cum $ M(1, 0, 1) $ aparține liniei de cîmp, putem afla constantele din sistemul de mai
+% sus. Găsim $ c_1 = c_2 = 0 $. \\
+
+% (c) Ecuația suprafeței de cîmp se obține folosind liniile de cîmp:
+% \[
+%   \Phi \big((x^2 + y^2) z, \ln(x^2 + y^2) + 2 \arctan \frac{y}{x} \big) = 0.
+% \]
+
+% (d) Suprafața de cîmp ce conține dreapta dată rezultă cu metoda substituției din
+% sistemul:
+% \[
+%   \begin{cases}
+%     (x^2 + y^2)z &= c_1 \\
+%     \ln(x^2 + y^2) + 2 \arctan \frac{y}{x} &= c_2 \\
+%     z &= 1 \\
+%     y - x\sqrt{3} &= 0
+%   \end{cases}
+% \]
+
+% Obținem:
+% \[
+%   \ln c_1 + 2\arctan \sqrt{3} = c_2 \Rightarrow z = e^{\arctan \frac{y}{x} - \frac{\pi}{3}},
+% \]
+% care este ecuația suprafeței de cîmp ce trece prin dreapta dată.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent 1. Rezolvați ecuațiile:
+\begin{enumerate}[(a)]
+\item $ (z - y)^2 \frac{\partial z}{\partial x} + xz \frac{\partial z}{\partial y} = xy $;
+\item $ x(y^3 - 2x^3) \frac{\partial z}{\partial x} + %
+  y(2y^3 - x^3) \frac{\partial z}{\partial y} = 9z(x^3 - y^3) $;
+\item $ 2xu \frac{\partial u}{\partial x} + 2yu \frac{\partial u}{\partial y} = %
+  u^2 - x^2 - y^2 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Determinați suprafețele de cîmp pentru cîmpurile vectoriale:
+\begin{enumerate}[(a)]
+\item $ \vec{v} = (x + y + z)\vec{i} + (x - y)\vec{j} + (y - x)\vec{k} $;
+\item $ \vec{v} = (x - y)\vec{i} + (x + y) \vec{j} + \vec{k} $;
+\item $ \vec{v} = xy^2 \vec{i} + x^2y \vec{j} + z(x^2 + y^2) \vec{k}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Determinați suprafața de cîmp a cîmpului vectorial:
+\[
+  \vec{v} = yz \vec{i} + xz \vec{j} + xy \vec{k},
+\]
+care trece prin curba de ecuație $ x^2 + y^2 = 4, y = 0 $.
+
+\vspace{1cm}
+
+4. Determinați suprafața de cîmp a cîmpului vectorial:
+\[
+  \vec{v} = 2zx\vec{i} + 2zy\vec{j} + (z^2 - x^2 - y^2) \vec{k},
+\]
+care conține cercul de ecuații:
+\[
+  \begin{cases}
+    z &= 0 \\
+    x^2 + y^2 - 2x &= 0.
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+5. Fie cîmpul vectorial:
+\[
+  \vec{v} = (x + y) \vec{i} + (y - x) \vec{j} - 2z\vec{k}.
+\]
+Să se determine:
+\begin{enumerate}[(a)]
+\item liniile de cîmp;
+\item linia de cîmp ce conține punctul $ M(1, 0, 1) $;
+\item suprafața de cîmp;
+\item suprafața de cîmp ce conține dreapta $ z = 1, y - x\sqrt{3} = 0 $.
+\end{enumerate}
+
+\emph{Indicație:} Pentru liniile de cîmp, scriem sistemul autonom asociat:
+\[
+  \frac{dx}{x + y} = \frac{dy}{y-x} = \frac{dz}{-2z}.
+\]
+
+Amplificînd prima fracție cu $ x $ și pe a doua cu $ y $, prin adunare, obținem:
+\[
+  \frac{xdx + ydy}{x^2 + y^2} = \frac{dz}{-2z} \Rightarrow %
+  \frac{1}{2} \cdot \frac{d(x^2 + y^2)}{x^2 + y^2} = -\frac{1}{2} \frac{dz}{z}.
+\]
+Rezultă $(x^2 + y^2)z = c_1$ este o integrală primă.
+
+Din primele două rapoarte, obținem apoi o ecuație diferențială de ordinul întîi,
+omogenă:
+\[
+  \frac{dx}{dy} = \frac{x + y}{y - x},
+\]
+pe care o putem rezolva cu substituția $y = tx$.
+
+\end{document}

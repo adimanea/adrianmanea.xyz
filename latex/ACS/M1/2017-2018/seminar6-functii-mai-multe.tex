@@ -1,0 +1,477 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} M1-ACS, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 6 \\ Funcții de mai multe variabile}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Limite și continuitate}
+\label{sec:limite-cont}
+
+Ne vom ocupa acum de studiul funcțiilor de mai multe variabile. Pentru simplitate,
+rezultatele vor fi enunțate pentru funcții de două variabile, i.e.\
+$f : A \seq \RR^2 \to \RR$, însă ele se extind identic și pentru $n$ variabile, pentru
+orice $n \in \NN^\ast$.
+
+Începem cu studiul limitelor iterate și continuității, pentru a ne adresa apoi
+derivabilității și derivatelor parțiale.
+
+\begin{definition}\label{def:lim-iter}
+  Fie $f : A \to \RR$, cu $A \seq \RR^2$ și fie $(x_0, y_0)$ un punct de acumulare pentru
+  mulțimea $A$.
+
+  Atunci $\ell = \ds\lim_{(x, y) \to (x_0, y_0)} f(x, y)$ dacă și numai dacă, pentru orice
+  $\varepsilon > 0$, există $\delta_\varepsilon > 0$, cu proprietatea că:
+  \[
+    \big( |x - x_0| < \delta_\varepsilon \land | y - y_0 | < \delta_\varepsilon \big) \Rightarrow %
+    |f (x, y) - \ell | < \varepsilon.
+  \]
+
+  De asemenea, pentru o funcție de două variabile, se pot considera și \emph{limitele iterate},
+  adică:
+  \[
+    \lim_{x \to x_0} \lim_{y \to y_0} f(x, y), \quad %
+    \lim_{y \to y_0} \lim_{x \to x_0} f(x, y).
+  \]
+  Aceste limite, dacă există, nu sînt neapărat egale. Dacă există \emph{limita globală}, definită
+  mai sus și dacă există fiecare din limitele din iterațiile de mai sus, atunci există și
+  limitele iterate, iar acestea sînt egale.
+
+  Dacă limitele iterate nu sînt egale, limita globală nu există.
+
+  Se poate întîmpla, însă, ca limitele iterate să fie egale, dar limita globală să nu existe.
+\end{definition}
+
+Continuitatea se studiază separat:
+
+\begin{definition}\label{def:cont-mm}
+  Fie $f : A \to \RR$, cu $A \seq \RR^2$ o funcție de două variabile. Dacă funcția $f(x, y_0)$
+  este continuă în orice punct $x_0$, cu $(x_0, y_0) \in A$, atunci $f$ este \emph{continuă parțial}
+  în raport cu variabila $x$.
+
+  Similar se definește continuitatea parțială în raport cu $y$.
+\end{definition}
+
+Continuitatea funcției implică continuitatea parțială în raport cu fiecare variabilă. Reciproca
+este falsă.
+
+O altă variantă specifică de continuitate este:
+\begin{definition}\label{def:uc}
+  Funcția $f$ se numește \emph{uniform continuă} pe $A$ dacă $\forall \varepsilon > 0$, există
+  $\delta_\varepsilon > 0$ astfel încît $\forall (x_1, y_1), (x_2, y_2) \in A$:
+  \[
+    \big( | x_1 - x_2 | < \delta_\varepsilon \land | y_1 - y_2 | < \delta_\varepsilon \big) %
+    \Rightarrow | f(x_1, y_1) - f(x_2, y_2) | < \varepsilon.
+  \]
+\end{definition}
+
+Cu aceasta, avem următorul rezultat:
+
+\begin{theorem}\label{thm:uc-c}
+  Orice funcție uniform continuă pe $A$ este continuă pe $A$.
+
+  O funcție continuă pe o mulțime închisă și mărginită (caz în care se numește \emph{compactă})
+  este uniform continuă.
+\end{theorem}
+
+\begin{remark}\label{rk:siruri-limite}
+  Limitele se mai pot calcula folosind legătura cu funcțiile. Amintim, $\ds\lim_{x \to x_0} f(x) = \ell$
+  dacă și numai dacă, pentru orice șir $(a_n)$, cu limita $x_0$, avem $f(a_n) \to \ell$.
+
+  Similar, putem folosi șiruri pentru doar una dintre variabilele unei funcții atunci cînd
+  calculăm limite iterate.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții: Limite și continuitate}
+\label{sec:ex-lim-cont}
+
+1. Să se arate, folosind definiția, că următoarele funcții nu au limită în origine:
+\begin{enumerate}[(a)]
+\item $f(x, y) = \frac{2xy}{x^2 + y^2}, (x, y) \neq (0, 0)$;
+\item $f(x, y) = \frac{x^2 + 2x}{y^2 - 2x}, (x, y) \neq (0, 0)$.
+\end{enumerate}
+
+\emph{Soluție:} Vom folosi definiția cu șiruri, punînd în evidență șiruri de puncte,
+convergente către $(0, 0)$.
+
+(a) Folosim șiruri de puncte care se află pe drepte care trec prin origine. Aceste drepte
+au ecuații de forma $y = mx$. Dacă funcția ar avea limită în origine, ar trebui ca:
+\[
+  \lim_{(x, y) \to (0, 0)} f(x, y) = \lim_{x \to 0, y = mx} \frac{2x(mx)}{x^2 + x^2 m^2} = %
+  \frac{2m}{1 + m^2}.
+\]
+Cu această limită depinde de șirul folosit (de $m$, mai exact), rezultă că limita nu
+există, în general.
+
+(b) Calculăm, similar:
+\[
+  \lim_{(x, y) \to (0, 0)} f(x, y) = %
+  \lim_{x \to 0, y = mx} \frac{m^2 x^2 + 2x}{m^2 x^2 - 2x} = -1.
+\]
+
+Însă, dacă luăm $y^2 = px$, adică $(x, y) \to (0, 0)$ pe parabola care trece prin origine,
+cu $p \in \RR - \{2 \}$, obținem:
+\[
+  \lim_{x \to 0, y^2 = px} \frac{px + 2x}{px - 2x} = \frac{p + 2}{p - 2}.
+\]
+Rezultă că, pentru șiruri diferite, obținem limite diferite, deci funcția nu are limită
+în origine.
+
+\vspace{1cm}
+
+2. Să se calculeze limitele:
+\begin{enumerate}[(a)]
+\item $\ds\lim_{(x, y) \to (0, 0)} \frac{xy}{\sqrt{xy + 1} - 1}$;
+\item $\ds\lim_{(x, y) \to (0, 2)} \frac{\sin xy}{x}$;
+\item $\ds\lim_{(x, y) \to (\infty, \infty)} \frac{x + y}{x^2 + y^2}$.
+\end{enumerate}
+
+\emph{Soluție:} (a) Calculăm direct:
+\begin{align*}
+  \lim_{(x, y) \to (0, 0)} \frac{xy}{\sqrt{xy + 1} - 1} &= \lim_{u \to 0} \frac{u}{\sqrt{u + 1} - 1} \\
+                                                        &= \lim_{u \to 0} \frac{(\sqrt{u + 1} + 1)u}{u}\\
+                                                        &= 2.
+\end{align*}
+
+(b) Similar:
+\[
+  \lim_{(x, y) \to (0, 2)} \frac{\sin xy}{x} = \lim_{(x, y) \to (0, 2)} \frac{\sin xy}{xy} \cdot y = 2.
+\]
+
+(c) Pentru $x, y > 0$, avem:
+\[
+  0 < \frac{x + y}{x^2 + y^2} = \frac{x}{x^2 + y^2} + \frac{y}{x^2 + y^2} \leq \frac{x}{x^2} + \frac{y}{y^2}.
+\]
+
+Cum $\ds\lim_{(x, y) \to (\infty, \infty)} \Big( \frac{1}{x} + \frac{1}{y} \Big) = 0$, rezultă
+că și limita inițială este nulă.
+
+\vspace{1cm}
+
+3. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{xy^2 + \sin(x^3 + y^5)}{x^2 + y^4}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă parțial în origine, dar nu este continuă în acest punct.
+
+\emph{Soluție:} Considerăm variabilele separat. Funcția:
+\[
+  f(x, 0) = \begin{cases}
+    \frac{\sin x^3}{x^2}, & x \neq 0 \\
+    0, & x = 0
+  \end{cases}
+\]
+este continuă în origine, deoarece $\ds\lim_{x \to 0} f(x, 0) = 0 = f(0, 0)$.
+
+Similar, funcția $f(0, y)$ este continuă în $y = 0$.
+
+Dar funcția $f(x, y)$ nu este continuă în origine, deoarece avem:
+\begin{align*}
+  \lim_{(x, y) \to (0, 0)} f(x, y) &= \lim_{x \to 0, y^2 = px} \frac{px^2 + \sin(x^3 + p^\frac{5}{2} x^{\frac{5}{2}})}{x^2 + p^2 x^2} \\
+                                   &= \lim_{x \to 0, y^2 = px} \Bigg[ \frac{p}{1 + p^2} + %
+                                     \frac{\sin(x^3 + p^{\frac{5}{2}} x^{\frac{5}{2}})}{x^3 + p^{\frac{5}{2}} x^{\frac{5}{2}}} \cdot %
+                                     \frac{x^3 + p^{\frac{5}{2}} x^{\frac{5}{2}}}{x^2 + p^2 x^2} \Bigg] \\
+                                   &= \frac{p}{1 + p^2},
+\end{align*}
+care depinde de $p$.
+
+\vspace{1cm}
+
+4. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{2xy}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă în raport cu fiecare variabilă în parte, dar nu este continuă în raport
+cu ansamblul variabilelor.
+
+\emph{Indicație:} Considerăm $y = b$, fixat. Avem $f(x, b)$ continuă. Similar, $f(a, y)$.
+
+Pentru continuitatea globală în origine, luăm $y = mx$ și obținem o limită care depinde de $m$.
+
+\vspace{1cm}
+
+5. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{xy + x^2 y \ln |x + y|}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă parțial în origine, dar nu este continuă în raport cu ansamblul variabilelor în acest punct.
+
+\emph{Indicație:} Limitele iterate în origine sînt ambele nule, indiferent de ordine.
+
+Însă pentru $x \to 0$ și $y = mx$, limita globală depinde de $m$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Derivate parțiale. Diferențiabilitate}
+\label{sec:der-part}
+
+Studiem acum proprietatea de derivabilitate a unei funcții de mai multe variabile. Deoarece
+o funcție de două variabile, de exemplu, reprezintă o suprafață în spațiul tridimensional,
+trebuie să ne orientăm după anumiți versori pentru a putea face operații de analiză.
+
+De aceea, avem:
+
+\begin{definition}\label{def:der-vers}
+  Spunem că funcția $f$ este \emph{derivabilă în punctul $a$ după versorul $s$} dacă funcția
+  reală $g : (-r, r) \to \RR, g(t) = f(a + ts)$ este derivabilă în punctul $t = 0$.
+
+  În acest caz, numărul real $\frac{df}{ds}(a) = g'(0)$ se numește \emph{derivata lui $f$ %
+    după versorul $s$ în punctul $a$} sau \emph{derivata lui $f$ după direcția $s$}.
+
+  Echivalent, ca în cazul 1-dimensional, putem defini:
+  \[
+    \frac{df}{ds}(a) = \lim_{t \to 0} \frac{f(a + ts) - f(a)}{t}.
+  \]
+\end{definition}
+
+Derivata parțială se definește prin limita după versorul $e_k$, din baza canonică
+a spațiului $\RR^n$, unde funcția este considerată $f : \RR^n \to \RR$.
+
+Dacă există derivata după $e_k$, ea se notează $\frac{\partial f}{\partial x_k}$
+și se numește \emph{derivabilă parțial în raport cu variabila $x_k$}.
+
+Dacă este derivabilă în raport cu toate derivatele, atunci spunem că $f$ este derivabilă
+parțial pe domeniul de definiție.
+
+Funcția $f$ se numește \emph{de clasă $C^1$ pe domeniul de definiție} dacă toate
+derivatele parțiale ale sale există și sînt continue pe $D$.
+
+Următoarea noțiune va fi de folos pentru a studia monotonia unei funcții de mai
+multe variabile:
+\begin{definition}\label{def:grad}
+  Presupunem că $f : D \seq \RR^n \to \RR$ și că $f \in C^1(D)$. Atunci, pentru
+  orice $a \in D$, vectorul din $\RR^n$ definit prin:
+  \[
+    \mathrm{grad}_a(f) = (\nabla f)(a) = \Big( \frac{\partial f}{\partial x_i}(a) \Big)_i
+  \]
+  se numește \emph{gradientul lui $f$ în punctul $a$}.
+
+  De asemenea se mai definește numărul:
+  \[
+    \mathrm{div}_a(f) = (\nabla \cdot f)(a) = \sum_{i = 1}^n \frac{\partial f}{\partial x_i} (a),
+  \]
+  care se numește \emph{divergența} lui $f$.
+\end{definition}
+
+Fie $F : D \to \RR^m, F = (f_1, \dots, f_m)$, cu fiecare $f_i : \RR^n \to \RR$. Atunci:
+\[
+  J_F (a) = \Big( \frac{\partial f_i}{\partial x_j}(a) \Big)_{i, j}.
+\]
+Matricea se numește \emph{matricea jacobiană} a lui $f$, iar determinantul său
+se numește \emph{jacobianul} aplicației.
+
+Jacobianul se mai notează:
+\[
+  \det(J_f(a)) = \frac{D(f_1, \dots, f_m)}{D(x_1, \dots, x_m)}.
+\]
+
+Funcția $F$ se numește \emph{de clasă $C^1$ pe $D$} dacă fiecare componentă
+a sa este de clasă $C^1$ pe domeniul de definiție.
+
+Dată o funcție de mai multe variabile, se poate defini \emph{diferențiala} ei,
+care joacă rol de \qq{derivată totală}, definită prin formula:
+\[
+  Df(a)(x_1, \dots, x_n) = \sum_{i = 1}^n \frac{\partial f}{\partial x_i}(a) dx_i.
+\]
+
+Ca în cazul funcțiilor de o singură variabilă, avem \emph{formula de derivare a %
+  funcțiilor compuse} (numită și \emph{regula lanțului}, eng.\ ``chain rule''):
+\[
+  \frac{\partial f}{\partial x} = \frac{\partial f}{\partial y} \cdot \frac{\partial y}{\partial x}.
+\]
+
+Pentru diferențiale, se scrie în forma cunoscută:
+\[
+  D(G \circ F)(a) = DG(b) \circ DF(a),
+\]
+unde $A \seq \RR^n, B \seq \RR^m$, iar $A \xrar{F} B \xrar{G} \RR^k$, cu condiția
+ca $F$ să fie diferențiabilă în $a \in A$ iar $G$ să fie diferențiabilă în $b = F(a)$.
+
+Relația între matricele jacobiene este:
+\[
+  J_{G \circ F}(a) = J_G(b) \cdot J_F(a).
+\]
+
+Mai mult, aplicarea succesivă a operatorului de derivare parțială sau a celui de
+diferențiere rezultă în derivate și diferențiale de ordin superior.
+
+De exemplu:
+\[
+  \frac{\partial}{\partial x} \Big( \frac{\partial f}{\partial y} \Big) = %
+  \frac{\partial^2 f}{\partial x \partial y}.
+\]
+
+Un rezultat util este:
+
+\begin{theorem}[Teorema de simetrie a lui Schwartz]\label{thm:schwartz}
+  Dacă $f \in C^2(D)$, atunci:
+  \[
+    \frac{\partial^2 f}{\partial x_j \partial x_k} (a) = %
+    \frac{\partial^2 f}{\partial x_k \partial x_j} (a), \forall j, k, \forall a \in D.
+  \]
+\end{theorem}
+
+Pentru diferențiala a doua, se definește o nouă matrice, numită \emph{matricea hessiană}:
+\[
+  H_f(a) = \Big( \frac{\partial^2 f}{\partial x_i \partial x_j} \Big)_{i, j}.
+\]
+Iar diferențiala a doua se scrie, atunci:
+\[
+  D^2f(a)(x_1, \dots, x_n) = \sum_i \sum_j \frac{\partial^2 f}{\partial x_i \partial x_j} (a) dx_i dx_j.
+\]
+
+Se poate defini un nou operator, pentru derivatele de ordinul al doilea, numit \emph{laplacian},
+sau \emph{operatorul lui Laplace}:
+\[
+  \Delta f = \sum_i \frac{\partial^2 f}{\partial x_i^2}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții: Derivate parțiale}
+\label{sec:ex-dp}
+
+1. Fie $f : \RR^2 \to \RR, f(x, y) = 2x^3y - e^{x^2}$.
+
+Folosind definiția, să se calculeze derivatele parțiale de ordinul întîi ale lui $f$
+în punctele $(0, 0)$ și $(-1, 1)$.
+
+\vspace{1cm}
+
+2. Fie $f : \RR^3 \to \RR^2, f(x, y, z) = (x^2 - yz, y^2 - z^2)$.
+
+Să se calculeze, folosind definiția, derivata după direcția $h = \big( \frac{1}{3}, \frac{2}{3}, \frac{2}{3} \big)$
+a funcție $f$ în punctul $(x, y, z) = (1, 1, 2)$.
+
+\vspace{1cm}
+
+3. Fie $f : \RR^3 \to \RR^2, f(x, y, z) = (x^3 - y^3, x^3 + y^3 + z^3)$.
+
+Să se calculeze derivata după direcția $h = \frac{1}{\sqrt{6}} (1, 1, -2)$ a lui $f$ în
+punctul $(1, -1, 1)$.
+
+\vspace{1cm}
+
+4. Determinați gradientul, divergența  și laplacianul în punctul
+$a = (1, 2)$, precum și matricea hessiană pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $f(x, y) = 3\sin x + e^{\cos(x + y)}$;
+\item $f(x, y) = x^3 y + 2x^2\cos y$;
+\item $f(x, y) = \ln(x^2 + y^2) + 3xy$;
+\item $f(x, y) = 2\sqrt{xy} + x^2y^3 - 3x + 2y$;
+\item $f(x, y) = 5xe^y + x^2 + 5y^3$;
+\item $f(x, y) = \frac{1}{\sqrt{x^2 + y^2}}$;
+\item $f(x, y) = \sin(x^2y^3) - \arctan (x^3 y^2)$.
+\end{enumerate}
+
+
+\end{document}

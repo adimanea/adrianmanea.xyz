@@ -1,0 +1,795 @@
+\chapter{Spații vectoriale}
+
+
+\section{Definiții}
+
+\indent\indent Noțiunea de spațiu vectorial este una foarte importantă în 
+algebră, dar totodată ea face legătura și cu geometria, oferind cadrul 
+structural în care se poate studia geometria analitică.
+
+În cele ce urmează, dacă nu se specifică altfel, $V$ o mulțime nevidă 
+(pe care o vom înzestra cu structura de spațiu vectorial), iar $K$ va fi 
+corpul de bază (al scalarilor), în practică luat cel mai adesea 
+$K = \mathbb{R}$ sau $K = \mathbb{C}$.
+
+\begin{definition}
+O aplicație $\varphi : V \times V \to V$, definită prin 
+$(x, y) \mapsto \varphi(x, y) \in V$ se numește \emph{lege de compoziție 
+internă} sau \emph{operație algebrică} pe $V$.
+
+O aplicație $f : K \times V \to V$, definită prin $(\alpha, x) \mapsto 
+f(\alpha, x) \in V$ se numește \emph{lege de compoziție externă} pe $V$.
+\end{definition}
+
+Cu acestea, avem definiția fundamentală:
+\begin{definition}\index{spațiu vectorial}
+O mulțime nevidă $V$, înzestrată cu două legi de compoziție, una internă 
+$+ : V \times V \to V$ și alta externă $\cdot : K \times V \to V$ se 
+numește \emph{spațiu vectorial peste $K$} sau $K$-spațiu vectorial, 
+notat pe scurt $_K V$ dacă sînt îndeplinite axiomele:
+\begin{enumerate}[(1)]
+\item $(V, +)$ este grup abelian, adică:
+\begin{enumerate}[(a)]
+    \item $(x + y) + z = x + (y + z), \forall x,y,z \in V$;
+    \item $\exists 0_V \in V \ai x + 0_V = 0_V + x = x, \forall x \in V$;
+    \item $\forall x \in V, \exists (-x) \in V \ai x + (-x) = (-x)+x = 0_V$;
+    \item $x + y = y + x, \forall x, y \in V$
+\end{enumerate}
+\item Au loc:
+\begin{enumerate}[(a)]
+    \item $\alpha \cdot (x + y) = \alpha \cdot x + \alpha \cdot y, 
+    \forall \alpha \in K, \forall x,y \in V$;
+    \item $(\alpha + \beta) \cdot x = \alpha \cdot x + \beta \cdot x, 
+    \forall \alpha, \beta \in K, \forall x \in V$;
+    \item $\alpha \cdot (\beta \cdot x) = (\alpha \beta) \cdot x, 
+    \forall \alpha,\beta \in K, \forall x \in V$;
+    \item $1_K \cdot x = x, \forall x \in V$.
+\end{enumerate}
+\end{enumerate}
+
+În acest context, elementele corpului $K$ se numesc \emph{scalari}, iar 
+elementele din $V$ se numesc \emph{vectori}. Legea de compoziție externă se 
+numește \emph{înmulțirea vectorilor cu scalari}. Dacă $K = \mathbb{R}$ 
+sau $\mathbb{C}$, spațiul vectorial $V$ se numește real sau, respectiv, complex.
+
+Uneori, în loc de \enquote{spațiu vectorial} se mai poate spune 
+\enquote{\emph{spațiu liniar}} sau, pe scurt, dacă nu există riscul de 
+confuzie, vom spune simplu \enquote{spațiu}.
+\end{definition}
+
+În general, pentru a nu complica notația, nu vom face distincție în scris 
+între operațiile din corpul $K$, cele din $V$ și legea externă. Însă trebuie 
+avută atenție, conform definiției, să utilizăm operațiile corespunzătoare.
+
+\begin{remark}
+În situații diverse, spațiile vectoriale pot fi definite peste corpuri 
+\emph{necomutative} $K$, caz în care înmulțirea dintre un vector și un 
+scalar să fie permisă doar în una dintre părți sau, dacă este permisă în ambele, 
+rezultatele să nu coincidă. Pentru acele situații există noțiunea de 
+\emph{spațiu vectorial stîng}, respectiv \emph{drept}, notate $_K V$ și 
+$V_K$.
+
+Deoarece în această lucrare vom avea nevoie doar de cazul comutativ, nu vom 
+mai face precizarea de fiecare dată, dar vom lucra cu un corp comutativ de 
+scalari, ceea ce face ca spațiul vectorial să fie bilateral.
+\end{remark}
+
+\begin{proposition}
+Fie $V$ un $K$-spațiu vectorial. Au loc următoarele proprietăți:
+\begin{enumerate}[(a)]
+\item $(\alpha - \beta) \cdot x = \alpha \cdot x - \beta \cdot x, 
+\forall \alpha, \beta \in K, \forall x \in V$;
+\item $\alpha \cdot (x - y) = \alpha \cdot x - \alpha \cdot y, \forall 
+\alpha \in K, \forall x, y \in V$;
+\item $0_K \cdot x = 0_V, \forall x \in V$;
+\item $(-\alpha) \cdot x = \alpha \cdot (-x) = - \alpha \cdot x, \forall 
+\alpha \in K, \forall x \in V$;
+\item Dacă $\alpha \cdot x = 0_V$, atunci $\alpha = 0_K$ sau $x = 0_V$.
+\end{enumerate}
+\end{proposition}
+
+Demonstrația propoziției este simplă și lăsată ca exercițiu, folosind axiomele 
+din definiție.
+
+Primele exemple simple, dar foarte importante (prototipice, după cum vom vedea) 
+sînt următoarele:
+\begin{example} \index{spațiu vectorial!exemple}
+(1) $K$ este un spațiu vectorial peste el însuși, cu operațiile de corp, 
+legea externă confundîndu-se cu cea internă.
+
+(2) Mulțimea $K^n = K \times K \times \dots \times K 
+= \{(x_1,\dots,x_n) \mid x_i \in K\}$, unde $K$ este un corp comutativ, 
+este un spațiu vectorial peste $K$, numit \emph{spațiul aritmetic}, în 
+raport cu legile de compoziție pe componente, pentru 
+$x = (x_1,\dots,x_n), y = (y_1,\dots,y_n) \in K^n$:
+\begin{align*}
++ : K^n \times K^n \to K^n, x + y 
+&= (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n); \\
+\cdot : K \times K^n \to K^n, \alpha \cdot x 
+&= (\alpha x_1, \alpha x_2, \dots, \alpha x_n).
+\end{align*}
+
+(3) Mulțimea matricelor $\mathcal{M}_{m,n}(K)$ este un spațiu vectorial 
+peste $K$, operația internă fiind adunarea obișnuită a matricelor, iar 
+operația de înmulțire cu scalari fiind cea corespunzătoare, prin care se 
+înmulțesc toate elementele matricei cu scalarul respectiv. \\
+
+(4) Fie mulțimea 
+$\mathbb{R}[X]_{\leq n} = \{p \in \mathbb{R}[X] \mid grad(p) \leq n \}$. 
+Această mulțime este un spațiu vectorial real, cu operațiile de adunare a 
+polinoamelor și înmulțire cu scalari. \\
+
+(5) Mulțimea soluțiilor unui sistem liniar și omogen formează un spațiu 
+vectorial peste corpul coeficienților acestui sistem, $K$. Soluțiile unui 
+sistem cu $m$ ecuații și $n$ necunoscute pot fi privite ca elemente din 
+$K^n$, care se adună și înmulțesc cu scalari respectînd operațiile din 
+spațiul aritmetic de mai sus. Datorită transformărilor elementare care produc 
+matrice echivalente, rezultatul va fi alcătuit tot din soluții ale sistemului.
+\end{example}
+
+Ca în toate cazurile cînd introducem o nouă structură, este de folos să 
+studiem \emph{substructuri} ale acesteia.
+\index{spațiu vectorial!subspațiu}
+Așadar, fie $V$ un $K$-spațiu vectorial și $W \seq V$ o submulțime nevidă.
+\begin{definition}
+$W$ se numește \emph{subspațiu vectorial} al lui $V$ dacă operațiile algebrice 
+pe $V$ induc pe $W$ o structură de spațiu vectorial peste $K$.
+
+Vom nota $W \leq_K V$.
+\end{definition}
+
+\begin{remark}
+Condiția ca $0_V \in W$ este una necesară pentru structura de subspațiu, 
+datorită structurii subiacente de subgrup aditiv.
+\end{remark}
+
+Așa cum în cazul subgrupurilor, verificarea substructurii se face printr-un 
+rezultat ajutător mai degrabă decît prin definiție, și în cazul spațiilor 
+vectoriale avem:
+\begin{proposition}
+Dacă $W$ este o submulțime nevidă a $K$-spațiului vectorial $V$, atunci 
+următoarele afirmații sînt echivalente:
+\begin{enumerate}[(1)]
+\item $W \leq_K V$;
+\item $\forall x,y \in W, \forall \alpha \in K$, avem $x + y \in W$ și 
+$\alpha \cdot x \in W$;
+\item $\forall x,y \in W, \forall \alpha, \beta \in K$, avem 
+$\alpha \cdot x + \beta \cdot y \in W$.
+\end{enumerate}
+\end{proposition}
+
+Propoziția poate fi pusă sub forma: 
+\[
+W \leq_K V \Longleftrightarrow \alpha \cdot x + \beta \cdot y \in W, 
+\forall x,y \in W, \alpha, \beta \in K.
+\]
+
+Să luăm cîteva exemple corespunzătoare spațiilor introduse mai sus:
+\begin{example}
+(1) Mulțimea $\{0_V\}$ este un subspațiu vectorial al lui $V$, numit 
+\emph{subspațiul nul}. De asemenea, $V \leq_K V$, iar aceste două exemple 
+se numesc \emph{subspații improprii}, celelalte fiind \emph{proprii}. \\
+
+(2) Mulțimea $\mathbb{R}[X]_{\leq n}$ definită mai sus este un subspațiu 
+vectorial al spațiului polinoamelor cu coeficienți reali. \\
+
+(3) Submulțimea $W = \{ (x_1, x_2) \mid 3x_1 - 5x_2 = 0 \}$ este un subspațiu 
+vectorial al spațiului aritmetic $\mathbb{R}^2$. Ea poate fi asimilată cu 
+spațiul soluțiilor unui sistem liniar și omogen cu o ecuație și două 
+necunoscute. \\
+
+(4) În spațiul aritmetic $\mathbb{R}^3$, dreptele și planele care conțin 
+originea sînt subspații vectoriale.
+\end{example}
+
+În continuare, vom vedea cum putem obține subspații noi din unele deja 
+existente, prin diverse operații permise.
+
+\begin{definition}
+Fie $V$ un $K$-spațiu vectorial și $V_1, V_2$ două subspații ale sale. 
+Mulțimea: 
+\[
+V_1 + V_2 = \{ x \in V \mid x = x_1 + x_2, x_1 \in V_1, x_2 \in V_2 \}
+\]
+se numește \emph{suma subspațiilor} $V_1$ și $V_2$.
+\end{definition}
+\index{spațiu vectorial!suma subspațiilor}
+\begin{proposition}
+Fie $V$ un $K$-spațiu vectorial și $V_1, V_2$ două subspații ale sale. 
+Atunci:
+\begin{enumerate}[(a)]
+\item $V_1 \cap V_2 \leq_K V$;
+\item $V_1 + V_2 \leq_K V$.
+\end{enumerate}
+\end{proposition}
+
+Trebuie remarcat că, în general, reuniunea a două subspații \emph{nu} este un 
+subspațiu vectorial.
+
+Pentru a pregăti o nouă operații pe baza sumei, avem nevoie de următoarea:
+\begin{proposition}
+Fie $V_1, V_2$ două subspații vectoriale ale $K$-spațiului $V$. Orice 
+vector din $V$ se scrie în mod unic ca suma dintre un vector din $V_1$ și 
+unul din $V_2$ dacă și numai dacă $V_1 \cap V_2 = \{ 0_V \}$.
+\end{proposition}
+
+Pe baza acesteia, introducem:
+\begin{definition}
+\index{spațiu vectorial!suma directă dde subspații}
+Fie $V_1, V_2 \leq_K V$, cu $V_1 \cap V_2 = \{ 0_V \}$. Suma $V_1 + V_2$ se 
+numește \emph{suma directă} și se notează $V_1 \oplus V_2$. În acest caz, 
+subspațiile $V_1$ și $V_2$ se numesc \emph{suplementare}
+\end{definition}
+
+Un exemplu care ne arată utilizarea spațiilor vectoriale pornind de la o 
+problemă \enquote{normală} este următorul. Orice funcție 
+$f : (-a, a) \to \mathbb{R}$ este suma dintre o funcție pară și una impară: 
+\[
+f(x) = \dfrac{1}{2} \big[ f(x) + f(-x) \big] + \dfrac{1}{2} 
+\big[ f(x) - f(-x) \big], \forall x \in (-a, a).
+\]
+
+Mai mult, singura funcție care este simultan pară și impară este funcția nulă. 
+Rezultă de aici că subspațiul funcțiilor pare și subspațiul funcțiilor impare 
+sînt suplementare. În prealabil, ar trebui notat că mulțimea 
+$\mathcal{F}(\mathbb{R}) = \{f : \mathbb{R} \to \mathbb{R}\}$ de funcții 
+reale formează un spațiu vectorial real, operațiile fiind cele punctuale: 
+\[
+(f + g)(x) = f(x) + g(x), \quad (\alpha \cdot f)(x) = \alpha \cdot f(x), 
+\forall f,g \in \kal{F}(\mathbb{R}), \forall \alpha, x \in \mathbb{R}.
+\]
+
+\begin{definition}
+Fie $V$ un $K$-spațiu vectorial și $S = \{x_1, \dots, x_n\} \seq V$ o 
+submulțime nevidă a lui $V$: Un vector de forma: 
+\[
+v = \alpha_1 x_1 + \alpha_2 x_2 + \dots + \alpha_n \cdot x_n, 
+\alpha_i \in K, x_i \in S, \forall i
+\] \index{spațiu vectorial!combinație liniară}
+se numește \emph{combinație liniară} finită de elemente din $S$. Se notează, 
+folosind terminologia engleză, $Sp(S)$\footnotemark sau, în unele cazuri, 
+$\langle S \rangle_K$.
+\end{definition}
+\footnote{de la englezescul \emph{span}, adică acoperire, întindere}
+
+Din definiție, se vede imediat că are loc:
+\begin{proposition}
+Cu notațiile și contextul de mai sus, $Span(S)$ este subspațiu vectorial al 
+lui $V$. El se mai numește \emph{subspațiul generat de $S$} sau 
+\emph{acoperirea liniară} a lui $S$.
+\end{proposition}
+
+Se pot demonstra și observa cu ușurință următoarele:
+\begin{remark}
+\begin{enumerate}[(1)]
+\item $S = \emptyset \Longrightarrow Span(S) = \{0_V\}$;
+\item $V_1 + V_2 = Span(V_1 \cup V_2)$;
+\item $Span(S)$ este intersecția tuturor subspațiilor lui $V$ ce conțin pe $S$;
+\item Diferite submulțimi de vectori din $V$ pot avea aceeași acoperire liniară.
+\end{enumerate}
+\end{remark}
+
+Ne pregătim pentru introducerea unei noțiuni fundamentale pentru spații 
+vectoriale, anume aceea de \emph{bază}. Dar mai întîi, avem nevoie de alte 
+preliminarii.
+\begin{definition} \index{spațiu vectorial!vectori liniar independenți}
+Păstrînd notațiile și contextul de mai sus, sistemul de vectori $S$ se numește 
+\emph{liniar independent} sau \emph{liber} dacă din egalitatea 
+$\sum_i \alpha_i x_i = 0_V$, cu $\alpha_i \in K$ rezultă cu necesitate că 
+toți $\alpha_i = 0$.
+
+Sistemul se numește \emph{liniar dependent} sau \emph{legat} dacă există 
+$\alpha_i$, nu toți nuli, astfel încît $\sum_i \alpha_i x_i = 0_V$.
+\end{definition}
+
+Cu acestea, avem:
+\begin{proposition}
+Fie $K$-spațiul vectorial $V$ și submulțimea 
+$S = \{x_1, x_2, \dots, x_n \} \seq V$.
+\begin{enumerate}[(a)]
+\item Dacă $0_V \in S$, atunci $S$ este liniar dependent;
+\item Dacă $S$ este liniar independent, atunci $x_i \neq 0_V, \forall i$;
+\item Dacă $S$ este liniar dependent, atunci pentru orice 
+$S^{\prime} \seq V, S \seq S^{\prime}$, rezultă că $S^{\prime}$ este 
+liniar dependent;
+\item Dacă $S$ este liniar independent, atunci pentru orice 
+$S^{\prime\prime} \seq S$, rezultă că $S^{\prime\prime}$ este liniar 
+independent.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Fie $x_n = 0_V \in S$. Deoarece are loc egalitatea: 
+\[
+0 \cdot x_1 + 0 \cdot x_2 + \dots + 1 \cdot x_n = 0_V,
+\]
+care nu are toți coeficienții nuli, rezultă că $S$ este liniar dependent.
+
+(b) Dacă $x_i = 0_V \in S$, atunci, conform punctului anterior, $S$ este 
+liniar dependent, care este o contradicție.
+
+(c) Deoarece $S$ este liniar dependent, rezultă că există o combinație liniară 
+nulă, care nu are toți coeficienții nuli. Atunci putem mări oricît această 
+combinație liniară, adăugînd scalari nuli pentru toți ceilalți vectori și 
+rezultă că, oricum am mări pe $S$, obținem un sistem liniar dependent.
+
+(d) Dacă $S^{\prime\prime}$ ar fi liniar dependent, atunci și $S$ ar trebui să 
+fie liniar dependent, din subpunctul anterior, contradicție.
+\end{proof}
+
+
+Păstrînd notațiile și contextul, avem:
+\begin{definition}\index{spațiu vectorial!sistem de generatori}
+Mulțimea $S$ se numește \emph{sistem de generatori} pentru $V$ dacă orice 
+vector $x \in V$ se exprimă ca o combinație liniară de vectori din $S$. În acest
+caz, spațiul vectorial $V$ se numește \emph{finit generat}, deoarece $S$ 
+conține un număr finit de elemente.
+\end{definition}
+
+De exemplu, folosind și intuiția geometrică, avem că mulțimea 
+$S = \{(1, 0), (0, 1)\}$ este un sistem de generatori pentru planul 
+$\mathbb{R}^2$.
+
+Operațiile permise asupra unui sistem de generatori, care să-l facă să rămînă 
+sistem de generatori sînt prezentate în rezultatul următor.
+
+\begin{proposition}
+Fie $K$-spațiul vectorial $V$ și $S = \{x_1, \dots, x_n\} \seq V$ un 
+sistem de generatori. Următoarele operații transformă sistemul $S$ într-un nou 
+sistem $S^{\prime}$, care rămîne sistem de generatori pentru $V$:
+\begin{enumerate}[(a)]
+\item schimbarea ordinii vectorilor din $S$;
+\item înmulțirea unui vector din $S$ cu un scalar nenul;
+\item adăugarea la un vector din $S$ a unui alt vector din $S$, înmulțit, 
+eventual, cu un scalar nenul.
+\end{enumerate}
+\end{proposition}
+
+Demonstrația este evidentă și se bazează pe \enquote{stabilitatea} spațiilor 
+vectoriale la combinații liniare.
+
+\begin{theorem}[Teorema schimbului]\index{teorema!schimbului}
+Fie $V$ un $K$-spațiu vectorial, $S = \{u_1, u_2, \dots, u_s\}$ un sistem 
+liniar independent din $V$ și $S^{\prime} = \{v_1, \dots, v_m\}$ un sistem de 
+generatori pentru $V$. Atunci $s \leq m$ și, după o eventuală reindexare a 
+vectorilor din $S^{\prime}$, sistemul: 
+\[
+S^{\prime\prime} = \{u_1, u_2, \dots, u_s, v_{s+1}, \dots, v_m\}
+\]
+este tot un sistem de generatori pentru $V$.
+\end{theorem}
+
+Demonstrația se poate face simplu prin inducție după $s$.
+
+Din această teoremă rezultă că, într-un spațiu vectorial finit generat, orice 
+sistem de vectori liniar independenți are mai puține elemente decît orice 
+sistem de generatori. În plus, în orice sistem de generatori, se pot înlocui 
+vectorii cu alții, liniar independenți, fără ca proprietatea de a fi sistem de 
+generatori a sistemului să fie afectată.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Bază și dimensiune}
+
+\indent\indent Ajungem, în sfîrșit, la elementul fundamental din studiul 
+spațiilor vectoriale, anume noțiunea de \emph{bază}, care ne va permite să 
+extragem toate informațiile relevante în studiul spațiilor vectoriale.
+
+\begin{definition}\index{spațiu vectorial!bază} \index{spațiu vectorial!dimensiune}
+Fie $V$ un $K$-spațiu vectorial. Un sistem de vectori $\mathcal{B} \seq V$ 
+se numește \emph{bază} în $V$ dacă $\mathcal{B}$ este simultan un sistem liniar 
+independent și sistem de generatori pentru $V$.
+\end{definition}
+
+De exemplu, în spațiul aritmetic $K^n$, mulțimea $B = \{e_1, \dots, e_n\}$, 
+unde $e_i$ este un șir de $n$ zerouri, cu elementul $1$ pe poziția $i$ este o 
+bază, denumită \emph{baza canonică}. \index{spațiu vectorial!baza canonică}
+
+În spațiul real al polinoamelor cu coeficienți reali și de grad cel mult $n$, 
+notat $\mathbb{R}[X]_{\leq n}$, mulțimea $B = \{1, X, X^2, \dots, X^n\}$ este 
+o bază.
+
+În spațiul vectorial al matricelor de tip $(m, n)$ cu elemente din $K$, o 
+bază este dată de matricele $E_{ij} = (e_{ij})$, care au 1 la intersecția linei 
+$i$ cu coloana $j$ și zero în rest.
+
+\begin{definition}
+Un spațiu vectorial $V$ se numește \emph{finit dimensional} dacă admite o bază 
+finită. În caz contrar, el se numește \emph{infinit dimensional}.
+\end{definition}
+
+Un rezultat foarte important este următorul:
+\begin{proposition}
+Orice două baze dintr-un $K$-spațiu vectorial finit dimensional au același 
+număr de elemente.
+\end{proposition}
+
+Demonstrația rezultă imediat din teorema schimbului, aplicată pentru două din 
+bazele spațiului.
+
+Datorită acestui rezultat, avem:
+\begin{definition} \index{spațiu vectorial!dimensiune}
+Numărul comun de elemente ale tuturor bazelor unui spațiu vectorial $V$ se 
+numește \emph{dimensiune} a spațiului, notată $dim_K V$.
+\end{definition}
+
+Din exemplele de mai sus, rezultă că 
+$\dim_\mathbb{R} \mathbb{R}[X]_{\leq n} = n + 1$ și 
+$\dim_\mathbb{R} \mathcal{M}_{m,n}(K) = m \cdot n$.
+
+De asemenea, din proprietățile și noțiunile de pînă acum, avem imediat:
+\begin{proposition}
+Fie $V$ un $K$-spațiu vectorial finit dimensional și 
+$B = \{x_1, \dots, x_n\}$ o submulțime a sa. Atunci $B$ este o bază în $V$ dacă 
+și numai dacă orice vector din $V$ are o exprimare unică sub forma unei 
+combinații liniare de vectori din $B$.
+\end{proposition}
+
+\begin{proof}
+Dacă $B$ este bază, atunci $B$ este sistem de generatori pentru $V$. Rezultă că 
+orice vector din $V$ poate fi scris ca o combinație liniară de elemente din $B$. 
+Unicitatea reprezentării se obține astfel: fie 
+$x = \sum_i \alpha_i x_i = \sum \beta_i x_i$ două scrieri diferite pentru $x$. 
+Atunci $\sum (\alpha_i - \beta_i) \cdot x_i = 0$ și, deoarece $B$ este și sistem 
+liniar independent, avem $\alpha_i = \beta_i$, pentru orice $i$.
+
+Reciproc, din ipoteză, avem că $B$ este sistem de generatori pentru $V$. Pentru 
+a arăta independența liniară, considerăm o combinație liniară nulă. Dar și 
+vectorul nul poate fi scris ca o combinație liniară a vectorilor din $B$, cu 
+scalari nuli. Din unicitatea reprezentării vectorului $0_V$, rezultă că toți 
+scalarii din prima combinație sînt egali cu cei dintr-a doua, adică nuli.
+\end{proof}
+
+\begin{definition} \index{spațiu vectorial!coordonatele unui vector}
+Fie $V$ un $K$-spațiu vectorial și $B$ o bază a sa. Fie $x \in V$, scris în 
+baza $B$ sub forma $x = \sum_i \alpha_i x_i$. Scalarii (unici) 
+$\alpha_i \in K$ se numesc \emph{coordonatele} vectorului $x$ în baza $B$. 
+Funcția bijectivă $f : V \to K^n$, care asociază unui vector coordonatele 
+sale într-o bază se numește \emph{sistem de coordonate}.
+\end{definition}
+
+Următorul rezultat ne poate ajuta să găsim o bază într-un spațiu vectorial 
+finit dimensional.
+
+\begin{proposition}
+Fie $V$ un $K$-spațiu vectorial de dimensiune $n$. Atunci:
+\begin{enumerate}[(a)]
+\item Orice sistem liniar independent are cel mult $n$ vectori;
+\item Orice sistem liniar independent care are exact $n$ vectori este bază;
+\item Orice sistem de generatori are cel puțin $n$ vectori;
+\item Orice sistem de generatori care are exact $n$ vectori este bază.
+\end{enumerate}
+\end{proposition}
+
+De asemenea, avem și:
+\begin{theorem}
+Fie $V$ un $K$-spațiu vectorial de dimensiune $n$ și 
+$S = \{x_1, x_2, \dots, x_k\}$, cu $k \leq n$ o submulțime a sa, liniar 
+independentă. Atunci există vectorii $\{x_{k+1}, \dots, x_{k+p}\}$ astfel 
+încît mulțimea $\{x_1,\dots, x_{k+p}\}$ să formeze o bază, cu $k + p = n$.
+\end{theorem}
+
+Din aceste ultime două rezultate, obținem:
+\begin{remark}
+\begin{enumerate}[(a)]
+\item Din orice sistem liniar independent se poate extrage o bază.
+\item Orice sistem de generatori poate fi completat la o bază.
+\end{enumerate}
+\end{remark}
+
+Date două subspații ale unui spațiu vectorial, ele contribuie la dimensiunea 
+spațiului așa cum arată următorul rezultat.
+\begin{theorem}[\textsc{H. Grassmann}] \index{teorema!Grassmann}
+Dacă $V_1$ și $V_2$ sînt două subspații vectoriale ale $K$-spațiului 
+vectorial finit dimensional $V$, atunci: 
+\[
+\dim_K V_1 + \dim_K V_2=\dim_K(V_1 + V_2) + \dim_K(V_1\cap V_2).
+\]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Matricea unei aplicații liniare}
+\label{sec:matrice-apl-lin}
+
+Strînsa legătură între aplicații liniare și matrice, care justifică și importanța
+studiului aprofundat al exemplului dat de spațiul vectorial $M_n(\RR)$ constă
+în faptul că oricărei aplicații liniare i se poate asocia o matrice, într-o bază
+a spațiului vectorial. Aceasta se definește și se calculează foarte simplu:
+
+\begin{definition}\label{def:matrice-apl-lin} \index{spațiu vectorial!matricea aplicației}
+  Fie $V, W$ două $K$-spații vectoriale și fie $B_1 = \{ e_i \}_{i \in I}$
+  o bază a lui $V$, iar $B_2 = \{ f_j \}_{j \in J}$ o bază a lui $W$.
+
+  Fie $f : V \to W$ o aplicație liniară. Atunci, pentru orice vector $v \in V$,
+  $f(v) \in W$, deci se poate scrie în baza $B_2$. În particular, pentru $v \in B_1$,
+  obținem:
+  \[
+    f(e_i) = \sum_j \alpha_{ij} f_j.
+  \]
+
+  Matricea $A = (\alpha_{ij})_{i,j}$ se numește \emph{matricea aplicației $f$ în baza $B_2$}.
+\end{definition}
+
+De exemplu: fie $V = \RR^3$ și $W = \RR^2$. Luăm bazele canonice:
+\begin{align*}
+  B_1 &= \{ (1, 0, 0), (0, 1, 0), (0, 0, 1) \} \\
+  B_2 &= \{ (1, 0), (0, 1) \}.
+\end{align*}
+
+Definim o aplicație liniară:
+\[
+  f : \RR^3 \to \RR^2, \quad f(x_1, x_2, x_3) = (x_1 + x_2, 2x_2 + 3x_3).
+\]
+
+Pentru a calcula matricea lui $f$ în baza $B_2$, avem:
+\begin{align*}
+  f(e_1) &= f(1, 0, 0) = (1, 0) = 1 \cdot e_1 + 0 \cdot e_2 \\
+  f(e_2) &= f(0, 1, 0) = (1, 2) = 1 \cdot e_1 + 2 \cdot e_2 \\
+  f(e_3) &= f(0, 0, 1) = (0, 3) = 0 \cdot e_1 + 3 \cdot e_2.
+\end{align*}
+
+Matricea se obține acum din scalarii care sînt coeficienți în expresia de mai sus:
+\[
+  A = M_{B_2}(f) =
+  \begin{pmatrix}
+    1 & 0 \\
+    1 & 2 \\
+    0 & 3
+  \end{pmatrix}.
+\]
+
+\begin{remark}\label{rk:sau-trans}
+  În unele cazuri, se lucrează cu $A^t$, deci coeficienții sînt puși \emph{pe coloane}
+  în matricea aplicației liniare. Urmăriți convenția de la curs, pe care o vom folosi.
+\end{remark}
+
+Cu această legătură, multe din proprietățile morfismelor de spații vectoriale pot fi
+transferate studiului matriceal. În particular, calculul valorii aplicației liniare
+într-un vector oarecare coincide cu înmulțirea matricei aplicației liniare cu vectorul
+linie (sau coloană) respectiv. Avem și:
+
+\textbf{Exercițiu:} Fie $A \in M_n(\RR)$ o matrice nenulă, dar cu $\det(A) = 0$.
+Să se arate că există o matrice $B \in M_n(\RR)$, nenulă, dar cu $AB = 0_n$.
+
+\emph{Soluție:} Reformulăm problema în context de spații vectoriale. Așadar,
+lucrăm în spațiul vectorial $\RR^{n^2}$, iar matricea $A$ este gîndită ca matrice
+a unei aplicații liniare $f : \RR^{n^2} \to \RR^{n^2}$.
+
+\emph{Proprietate importantă:} Deoarece $\det(A) = 0$, deci $A$ nu este inversabilă,
+rezultă că morfismul $f$ nu este injectiv. Demonstrăm prin reducere la absurd. Fie
+$x \in \RR^{n^2}$. Atunci a calcula $f(x)$ este echivalent cu a înmulți matricea $A$
+cu vectorul coloană $x$. Presupunem că avem $f(x) = f(y)$, pentru doi vectori
+$x, y \in \RR^{n^2}$. Matriceal, avem $AX = AY$. Dar, deoarece $A$ nu este inversabilă,
+nu o putem reduce pentru a concluziona că $X = Y$. Așadar, $f$ nu este injectivă.
+
+Dar, dacă $f$ nu este injectivă, înseamnă că $\mathrm{Ker}(f)$ nu conține doar
+vectorul nul. În particular, rezultă că există un vector nenul $b \in \mathrm{Ker}(f)$,
+cu $f(b) = 0_{R^{n^2}}$. Trecînd la matrice, vectorul $b$ corespunde unei matrice nenule $B$,
+astfel încît $f(B) = AB = 0_n$.
+
+\vspace{1cm}
+
+Am demonstrat, astfel, parțial exercițiul. Pentru a finaliza demonstrația, arătați și:
+
+\textbf{Exercițiu:} Orice morfism injectiv este inversabil la dreapta. Adică,
+dacă $f : A \to B$ este un morfism injectiv (de grupuri, spații vectoriale, sau chiar funcție),
+există $g : B \to A$, astfel încît $f \circ g = \mathrm{Id}$, morfismul identitate.
+
+Deduceți, în exercițiul anterior, că putem găsi chiar $B \in M_n(\RR)$ cu proprietatea
+din enunț. (Indicație: considerați $g$ o posibilă inversă la dreapta a lui $f$, fie $B$
+matricea lui $g$ în baza canonică și deduceți că $(f \circ g)(v) = ABV$.)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Matricea de trecere (schimbare de bază)}
+\label{sec:matrice-trecere}
+\index{spațiu vectorial!matricea de trecere}
+Date mai multe baze ale unui spațiu vectorial, sîntem interesați de schimbarea
+de coordonate ale vectorilor. Fie, pentru aceasta, un $K$-spațiu vectorial 
+$V$ de dimensiune $n$ și $B_1 = \{u_1, \dots, u_n\}, B_2 = \{v_1,\dots,v_n\}$ 
+baze în $V$.
+
+Orice vector din $B_2$ se poate exprima unic în funcție de vectorii bazei $B_1$, 
+deci $v_i = \sum_j c_{ji} u_j$. Acest sistem definește o matrice pătratică de 
+ordin $n$, $M = (c_{ij}) \in \mathcal{M}_n(K)$, transpusa coeficienților.
+
+Fie $\overline{B}_1$ și $\overline{B}_2$ matricele-coloană cu elemente din cele 
+două baze. Atunci, folosind ecuația de mai sus, relația de legătură dintre 
+vectorii celor două baze poate fi scrisă matriceal: 
+\[
+\overline{B}_2 = M^T \cdot \overline{B}_1.
+\]
+
+\begin{definition}
+Matricea $M$, astfel determinată, se numește \emph{matricea de trecere} de la 
+baza $B_1$ la baza $B_2$.
+\end{definition}
+
+Pentru schimbarea coordonatelor, avem:
+\begin{theorem}[Schimbarea coordonatelor]
+Dacă $M$ este matricea de trecere de la baza $B_1$ la baza $B_2$, iar $X_1$, 
+respectiv $X_2$ sînt vectorii coloană ai coordonatelor unui vector $x \in V$ în 
+bazele $B_1$, respectiv $B_2$, atunci: 
+\[
+X_2 = M^{-1} \cdot X_1.
+\]
+
+În particular, rezultă că matricea de trecere $M$ este inversabilă.
+\end{theorem}
+
+\begin{definition}\label{def:rang-defect}
+  Fie $T \in \kal{L}(V, W)$. Se numește \emph{rangul} lui $T$, notat $\mathrm{rang}(T)$,
+  dimensiunea subspațiului $\mathrm{Im}(T)$.
+
+  Se numește \emph{defectul} lui $T$, notat $\mathrm{def}(T)$, dimensiunea subspațiului
+  $\mathrm{Ker}(T)$.
+\end{definition}
+\index{teorema!rang-defect}
+\begin{theorem}[Teorema rang-defect]\label{thm:rang-defect}
+  Fie $V$ și $W$ două spații vectoriale peste același corp comutativ $K$,
+  cu $\dim_K V = n$ și fie $T \in \kal{L}(V, W)$. Atunci:
+  \[
+    \mathrm{rang}(T) + \mathrm{def}(T) = n.
+  \]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Fie $a \in \RR$ fixat. Să se stabilească dacă legile de compoziție:
+\begin{align*}
+  & \oplus : \RR \times \RR \to \RR, x \oplus y = x + y - a \\
+  & \otimes : \RR \times \RR \to \RR, \alpha \otimes x = \alpha x + (1 - \alpha) a
+\end{align*}
+determină o structură de spațiu vectorial real pe mulțimea $\RR$.
+
+\vspace{1cm}
+
+2. Să se arate că mulțimea $(0, \infty)$ este un spațiu vectorial real în raport
+cu legile de compoziție:
+\begin{align*}
+  & \oplus : (0, \infty) \times (0, \infty) \to (0, \infty) x \oplus y = xy \\
+  & \odot : \RR \times (0, \infty) \to (0, \infty), \alpha \odot x = x^\alpha.
+\end{align*}
+
+\vspace{1cm}
+
+3. Să se arate că mulțimea
+\[
+  S = \{(\alpha - 2 \beta; \alpha + 3 \beta; \beta) \mid \alpha, \beta \in \RR \}
+\]
+este un subspațiu vectorial al spațiului vectorial real $\RR^3$. Determinați
+o bază în $S$, precum și $\dim_\RR S$.
+
+\vspace{1cm}
+
+4. Se consideră mulțimea:
+\[
+  L = \Big\{ A \in M_{2,3}(\RR) \mid %
+  A = \begin{pmatrix}
+    x & 0 & y \\
+    0 & u & z
+  \end{pmatrix}, x, y, z, u \in \RR, x = y + z \Big\}
+\]
+\begin{enumerate}[(a)]
+\item Să se arate că $L$ este un subspațiu vectorial al lui $M_{2,3}(\RR)$;
+\item Determinați o bază în $L$, precum și $\dim_\RR L$.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Se consideră sistemul omogen:
+\[
+  \begin{cases}
+    x_1 - 2x_2 + 3x_3 + x_4 &= 0 \\
+    2x_1 - x_2 + x_3 - x_4 &= 0
+  \end{cases}
+\]
+Să se rezolve sistemul. Să se arate că mulțimea soluțiilor sistemului este un
+subspațiu vectorial al lui $\RR^4$. Determinați o bază în subspațiul soluțiilor.
+
+\vspace{1cm}
+
+6. Să se arate că sistemul de vectori $\{ v_1, \dots, v_4 \}$ din $\RR^3$ este
+liniar dependent, unde:
+\[
+  v_1 = (1, 1, 0), v_2 = (1, 0, 1), v_3 = (0, 1, 1), v_4 = (1, 1, 1).
+\]
+
+\vspace{1cm}
+
+7. Să se stabilească dacă vectorul $v = (4, -2, 0, 3)$ din spațiul vectorial
+real $\RR^4$ este o combinație liniară a vectorilor $v_1 = (3, 9, -4, -2)$,
+$v_2 = (2, 3, 0, -1)$, $v_3 = (2, -1, 2, 1)$.
+
+\vspace{1cm}
+
+8. În $\RR[X]_{\leq 2}$, spațiul polinoamelor reale de grad cel mult 2,
+să se găsească coordonatele polinomului $p(x) = 3x^2 - x + 4$ în raport
+cu baza $B$ formată din $p_1(x) = x^2 - 1, p_2(x) = 2x + 1, p_3(x) = x^2 + 3$.
+
+\vspace{1cm}
+
+9. În spațiul vectorial real $\RR^3$ se consideră baza canonică:
+\[
+  B = \{ (1, 0, 0), (0, 1, 0), (0, 0, 1) \}
+\]
+și o altă bază:
+\[
+  B' = \{(1, 2, 1), (1, -1, 0), (3, 1, -2) \}.
+\]
+Să se determine matricea de trecere de la baza $B$ la baza $B'$, precum și
+coordonatele vectorului $v = (2, 3, -5)$ în baza $B'$.
+
+\vspace{1cm}
+
+10. Fie $V, W$ două spații vectoriale și $f : V \to W$ o aplicație liniară.A
+Arătați că $\Ker(f) = \{x \in V \mid f(x) = 0_W\}$ este un subspațiu al lui
+$V$, iar $\Img(f) = \{ y \in W \mid \exists x \in V \ai f(x) = y \}$ este
+subspațiu al lui $W$.
+
+\vspace{1cm}
+
+11. Fie $V$ și $W$ două $K$-spații vectoriale. Dați exemplu de astfel de
+spații și de o aplicație $f : V \to W$ care să fie morfism între grupurile
+aditive $(V, +)$ și $(W, +)$, dar să nu fie $K$-liniară.
+
+\vspace{1cm}
+
+12. În spațiul vectorial real $\RR^3$ se consideră vectorii:
+\[
+  v_1 = (1, 2, 3), v_2 = (2, 3, 1), v_3 = (\alpha + 3, \alpha + 1, \alpha + 2), %
+  \alpha \in \RR.
+\]
+Să se determine $\alpha$, știind că vectorii sînt liniar dependenți.
+
+\vspace{1cm}
+
+13. Fie $f : \RR^3 \to \RR^4, f(x_1, x_2, x_3) = (x_1 + x_2, x_2 - x_3, x_1 + x_3, 2x_1 + x_2)$.
+\begin{enumerate}[(a)]
+\item Arătați că $f$ este morfism de spații vectoriale;
+\item Determinați $\Ker(f)$;
+\item Determinați matricea aplicației liniare în baza canonică.
+\item Verificați teorema rang-defect.
+\end{enumerate}
+
+\vspace{1cm}
+
+14. Fie $f : \RR^4 \to \RR^2, f(x_1, x_2, x_3, x_4) = (2x_1 - x_2 - x_3, x_1 + 3x_2 + x_4)$.
+\begin{enumerate}[(a)]
+\item Arătați că $f$ este morfism de spații vectoriale.
+\item Determinați matricea aplicației $f$ în baza canonică.
+\item Determinați $\Ker(f)$ și $\Img(f)$.
+\item Verificați teorema rang-defect.
+\end{enumerate}
+
+\vspace{1cm}
+
+15. Dați exemplu de un $K$-spațiu vectorial $V$ și o submulțimea $W \seq V$
+care să fie subgrup al lui $(V, +)$, dar să nu fie subspațiu vectorial al lui $V$.
+
+\vspace{1cm}
+
+16. Fie $V$ un $K$-spațiu vectorial și $S = \{v_1, \dots, v_n\}$ o mulțime
+de vectori din $V$. Fie $f : V \to W$ o aplicație liniară. Notăm cu $f(S)$
+imaginea mulțimii $S$ prin morfismul $f$, deci $f(S) = \{ f(v_i) \}$.
+Arătați că:
+\begin{enumerate}[(a)]
+\item Dacă $S$ este liniar dependentă în $V$, atunci $f(S)$ este liniar dependentă
+  în $W$;
+\item Dacă $S$ este liniar independentă în $V$ și $f$ este injectivă, atunci
+  $f(S)$ este liniar independentă în $W$;
+\item Dacă $S$ este sistem de generatori în $V$ și $f$ este surjectiv, atunci
+  $f(S)$ este sistem de generatori în $W$;
+\item Dacă $S$ este bază în $V$ și $f$ este bijectiv, atunci $f(S)$ este
+  bază în $W$. Deduceți de aici că orice două spații vectoriale izomorfe
+  au aceeași dimensiune.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-18-19"
+%%% End:

@@ -1,0 +1,196 @@
+\chapter{Polinomul Taylor și extreme libere}
+
+
+\section{Polinomul Taylor în 2 variabile}
+
+Fie $ f : D \seq \RR^2 \to \RR $ o funcție de două variabile,
+de clasă $ \kal{C}^\infty $. \emph{Polinomul Taylor} al lui $ f $
+în jurul punctului $A(x_0, y_0) $ se scrie:
+\begin{align*}
+  T(x, y) &= f(x_0, y_0) + \frac{1}{1!} \Big[ (x - x_0) \frac{\partial f}{\partial x}_A + %
+            (y - y_0) \frac{\partial f}{\partial y}_A \Big] + \\
+          &+ \frac{1}{2!} \Big[ (x - x_0)^2 \frac{\partial^2 f}{\partial x^2}_A + %
+            2(x - x_0)(y - y_0) \frac{\partial^2 f}{\partial x \partial y}_A + %
+            (y - y_0)^2 \frac{\partial^2 f}{\partial y^2}_A \Big] + \\
+          &+ \frac{1}{3!} \Big[ (x - x_0)^3 \frac{\partial^3 f}{\partial x^3}_A + %
+            3(x - x_0)^2(y - y_0) \frac{\partial^3 f}{\partial^2 x \partial y}_A + %
+            3(x - x_0)(y - y_0)^2 \frac{\partial^3 f}{\partial x \partial^2 y}_A + %
+            (y - y_0)^3 \frac{\partial^3 f}{\partial y^3}_A \Big] \\
+          &+ \dots
+\end{align*}
+
+Gradul polinomului Taylor este dat de ordinul ultimei derivate parțiale
+care se calculează. Astfel, avem, în particular:
+\begin{align*}
+  T_1(x, y) &= f(x_0, y_0) + \frac{1}{1!} \Big[ %
+    (x - x_0) \frac{\partial f}{\partial x}_A + %
+    (y - y_0) \frac{\partial f}{\partial y}_A \Big] \\
+  T_2(x, y) &= T_1(x, y) + \frac{1}{2!} \Big[ %
+    (x - x_0)^2 \frac{\partial^2 f}{\partial x^2}_A + %
+    2(x - x_0)(y - y_0) \frac{\partial^2 f}{\partial x \partial y}_A + %
+    (y - y_0)^2 \frac{\partial^2 f}{\partial y^2}_A \Big].
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Extreme libere}
+
+Fie $ f : D \seq \RR^2 \to \RR $ o funcție de două variabile. Pentru a
+găsi punctele de extrem ale funcției, parcurgem următoarele etape:
+\begin{enumerate}[(1)]
+\item rezolvăm sistemul de ecuații dat de anularea derivatelor parțiale:
+  \[
+    \begin{cases}
+      \dfrac{\partial f}{\partial x} &= 0 \\
+      & \\
+      \dfrac{\partial f}{\partial y} &= 0
+    \end{cases}
+  \]
+  Soluțiile acestui sistem se numesc \emph{puncte critice} ale funcției.
+\item scriem \emph{matricea hessiană} a funcției, adică:
+  \[
+    H_f =
+    \begin{pmatrix}
+      \dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
+      & \\
+      \dfrac{\partial^2 f}{\partial y \partial x} & \dfrac{\partial^2 f}{\partial y^2}
+    \end{pmatrix}
+  \]
+\item Evaluăm matricea în fiecare punct critic. Astfel, dacă $ A(x_0, y_0) $ este
+  punct critic, calculăm $ H_f(x_0, y_0) $;
+\item Determinăm \emph{valorile proprii} $ \lambda_{1,2} $ ale matricei hessiene,
+  adică rădăcinile polinomului caracteristic $ P_M(X) = \det (M - XI_2) $,
+  unde $ M = H_f(x_0, y_0)$.
+  \begin{itemize}
+  \item Dacă $ \lambda_1, \lambda_2 > 0 $, atunci punctul $ A(x_0, y_0) $
+    este \emph{punct de minim local};
+  \item Dacă $ \lambda_1, \lambda_2 < 0 $, atunci punctul $ A(x_0, y_0) $
+    este \emph{punct de maxim local};
+  \item Dacă $ \lambda_1 \cdot \lambda_2 < 0 $, atunci punctul $ A(x_0, y_0) $
+    \emph{nu este de extrem}
+  \item Dacă $ \lambda_1 \cdot \lambda_2 = 0 $, problema necesită un studiu
+    separat, acesta fiind un caz mai dificil și pe care îl omitem la acest curs.
+  \end{itemize}
+\item Se repetă procedura pentru fiecare punct critic.
+\end{enumerate}
+
+Procedura de mai sus se aplică în cazul așa-numitelor \emph{extreme libere},
+adică atunci cînd domeniul este $ D = \RR^2 $ sau un dreptunghi dat de un
+produs cartezian de intervale.
+
+Pentru cazul cînd domeniul este dat de (in)ecuații, procedura este diferită
+și o vom exemplifica mai jos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții rezolvate}
+
+Fie funcția $ f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + y^3 - 6xy $.
+\begin{enumerate}[(a)]
+\item Pentru $ D = \RR^2 $, determinați punctele de extrem și calculați
+  valorile funcției în aceste puncte.
+\item Pentru $ D = \{ (x, y) \in \RR^2 \mid x \geq 0, y \geq 0, x + y \leq 5 \} $,
+  determinați punctele de extrem și valorile extreme.
+\end{enumerate}
+
+\emph{Soluție:}
+
+(a) Punctele critice se determină din anularea derivatelor parțiale. Avem:
+\[
+  \frac{\partial f}{\partial x} = 3x^2 - 6y, \quad %
+  \frac{\partial f}{\partial y} = 3y^2 - 6x.
+\]
+Se obțin $ A(0, 0) $ și $ B(2, 2) $.
+
+Apoi matricea hessiană:
+\[
+  H_f = \begin{pmatrix}
+    6x & -6 \\
+    -6 & 6y
+  \end{pmatrix}
+\]
+
+Pentru $ A(0, 0) $, hessiana este:
+\[
+  H_f(A) = \begin{pmatrix}
+    0 & -6 \\
+    -6 & 0
+  \end{pmatrix} = M.
+\]
+
+Polinomul caracteristic $ P_M(X) = \det (M - XI_2) = X^2 - 36 \Rightarrow \lambda_{1,2} = \pm 6 $.
+Rezultă că punctul $ A $ nu este de extrem.
+
+Pentru $ B(2, 2) $, hessiana este:
+\[
+  H_f(B) = \begin{pmatrix}
+    12 & -6 \\
+    -6 & 12
+  \end{pmatrix} = M.
+\]
+
+Polinomul caracteristic $ P_M(X) = (12 - X)^2 - 36 \Rightarrow \lambda_1 = 6, \lambda_2 = 18 $.
+Cum ambele valori proprii sînt pozitive, punctul $ B $ este punct de minim local.
+
+Valoarea minimă a funcției este $ f(2, 2) = -8 $.
+
+\vspace{1cm}
+
+(b) Problema se studiază pe 2 cazuri: pe interiorul lui $ D $ și pe frontiera lui $ D $.
+
+Pentru frontieră, avem $ x \geq 0, y \geq 0 $ și $ x + y = 5 $. Atunci putem
+studia funcția $ g(x) = f(x, 5-x) = 21x^2 - 105x + 125 $, care are un punct
+de minim în vîrful acestei parabole. Se obține $ f(2,5; 2,5) = -6,25 $.
+De asemenea, mai avem și valorile $ f(0, 5) = 125 $, respectiv $ f(5, 0) = 125 $.
+
+Apoi mai avem de studiat cazurile $ y = 0, x \in [0, 5] $, deci funcția
+$ f(x, 0) = h(x) $, precum și $ x = 0, y \in [0, 5] $, deci funcția
+$ f(0, y) = j(y) $.
+
+Pentru interiorul domeniului, avem:
+\[
+  \dr{Int}(D) = \{ (x, y) \in \RR^2 \mid x > 0, y > 0, x + y < 5.
+\]
+
+Putem folosi calculele din cazul anterior și constatăm că $ B(2, 2) \in \dr{Int}(D) $,
+deci avem o valoare de minim pe interior, cu $ f(2, 2) = -8 $.
+
+Așadar, răspunsul final este $ \max f = 125 $ și $ \min f = -8 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții propuse}
+
+1. Determinați punctele de extrem și valorile extreme pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f : D \seq \RR^2 \to \RR, f(x, y) = x^2 + xy + y^2 - 4 \ln x - 10\ln y + 3 $;
+\item $ f(x, y) = 3x^2 - x^3 - 15x - 36y + 9 $, definită (i) pe $ \RR^2 $
+  și (ii) pe $ [-4,4] \times [-3, 3] $;
+\item $ f(x, y) = 4xy - x^4 - y^4 $, definită (i) pe $ \RR^2 $ și (ii) pe
+  $ [-1, 2] \times [0, 2] $;
+\item $ f(x, y) = x^3 + 3x^2y - 15x - 12y $ definită (ii) pe $ \RR^2 $ și
+  (ii) pe $ D = \{ x \geq 0, y \geq 0, 3y + x \leq 3 \} $;
+\item $ f(x, y) = xy(1 - x - y) $, definită pe $ [0, 1] \times [0, 1] $;
+\item $ f(x, y) = x^3 + 8y^3 - 2xy $, definită pe $ D = \{ x, y \geq 0, y + 2x \leq 2 \} $;
+\item $ f(x, y) = x^4 + y^3 - 4x^3 - 3y^2 + 3y $, definită pe
+  $ D = \{ x^2 + y^2 \leq 4 \} $.
+\end{enumerate}
+ 
+În toate exercițiile de mai sus este recomandabil să reprezentați
+grafic domeniile de definiție.
+
+\vspace{1cm}
+
+2. Fie funcția $ f(x,y) = x \ln(x^2 + y^2) $. Calculați polinoamele Taylor
+de gradul 1 și respectiv 2, $ T_1, T_2 $ în jurul punctului $ (1, 0) $.
+
+\vspace{1cm}
+
+3. Aceeași cerință pentru funcția $ f(x, y) = 3xe^{x^2 + y^2} $ și pentru
+funcția $ g(x, y) = \arctan \dfrac{x}{y} $.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-18-19"
+%%% End:

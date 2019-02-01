@@ -1,0 +1,321 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {
+    \large\textbf{
+      Seminar 9 \\
+      Extremele funcțiilor de mai multe variabile \\
+      Metoda celor mai mici pătrate.
+    }}
+\end{center}
+
+\vspace{1cm}
+
+\section{Extreme în mai multe dimensiuni}
+\label{sec:extreme}
+
+Pornim cu următoarea:
+
+\begin{definition}\label{def:p-critic}
+  Fie $f : A \to \RR$, cu $A \seq \RR^n$.
+
+  Un punct $a \in A$ se numește \emph{punct critic} pentru $f$ dacă $f$ este
+  diferențiabilă în $a$ și $df(a) = 0$, adică $\frac{\partial f}{\partial x_k} = 0$,
+  pentru orice $k = 1, \dots, n$.
+\end{definition}
+
+Rezultă de aici că punctele de extrem local ale lui $f$ sînt printre soluțiile
+sistemului:
+\[
+  \Big\{ \frac{\partial f}{\partial x_k}(x_1, \dots, x_n) = 0 \Big\}_k.
+\]
+
+În studiul naturii punctelor critice pentru o funcție $f$, pașii de urmat sînt:
+\begin{enumerate}[(1)]
+\item Se determină punctele critice, din anularea derivatelor parțiale;
+\item Fie $a$ un punct critic. Se calculează matricea hessiană corespunzătoare,
+  adică $H_f(a) = \Big( \frac{\partial^2 f}{\partial x_i \partial x_j} (a) \Big)_{i,j}$;
+\item Se calculează valorile proprii ale lui $H$:
+  \begin{enumerate}[(a)]
+  \item Dacă toate valorile proprii sînt pozitive, $a$ este un minim local;
+  \item Dacă toate sînt negative, $a$ este un maxim local;
+  \item Dacă valorile proprii nu au semn uniform, $a$ nu este de extrem;
+  \item Dacă 0 este valoare proprie, nu se poate decide. Astfel, se dezvoltă
+    în serie Taylor a lui $f$ în jurul lui $a$, de unde se calculează semnul
+    diferenței $f(x) - f(a)$.
+  \end{enumerate}
+\end{enumerate}
+
+Pentru cazul bidimensional ($n = 2$), avem o metodă simplificată:
+\begin{enumerate}[(1)]
+\item Se determină punctele de extrem din sistemul:
+  \[
+    \frac{\partial f}{\partial x} = \frac{\partial f}{\partial y} = 0;
+  \]
+\item Fie $a = (a_1, a_2)$ un asemenea punct critic. Calculăm numerele:
+  \begin{align*}
+    r_0 &= \frac{\partial^2 f}{\partial x^2} (a_1, a_2) \\
+    s_0 &= \frac{\partial^2 f}{\partial x\partial y}(a_1, a_2) \\
+    t_0 &= \frac{\partial^2 f}{\partial y^2} (a_1, a_2).
+  \end{align*}
+  Observăm că avem:
+  \[
+    d^2 f(a_1, a_2) = r_0 dx^2 + 2s_0 dxdy + t_0 dy^2.
+  \]
+  \begin{enumerate}[(a)]
+  \item Dacă $r_0 > 0$ și $r_0 t_0 - s_0^2 > 0$, atunci $a$ e punct de minim local;
+  \item Dacă $r_0 < 0$ și $r_0 t_0 - s_0^2 > 0$, atunci $a$ e punct de maxim local;
+  \item Dacă $r_0 t_0 < 0$, atunci $a$ nu este punct de extrem local;
+  \item Dacă $r_0t_0 - s_0^2$, atunci studiem semnul $f(x_1, x_2) - f(a_1, a_2)$
+    prin dezvoltare în serie Taylor.
+  \end{enumerate}
+\end{enumerate}
+
+\textbf{Dezvoltarea în serie Taylor pentru o funcție de două variabile reale}
+în jurul punctului $a = (x_0, y_0)$ este dată de formula:
+\begin{align*}
+  f(x, y) &= f(a) + \frac{1}{1!} \Big[ (x - x_0) \frac{\partial f}{\partial x}(a) + %
+            (y - y_0) \frac{\partial f}{\partial y}(a) \Big]\\
+          &+ \frac{1}{2!} \Big[ (x - x_0)^2 \frac{\partial^2 f}{\partial x^2}(a) + %
+            2(x - x_0)(y - y_0) \frac{\partial^2 f}{\partial x \partial y}(a) + %
+            (y - y_0)^2 \frac{\partial^2 f}{\partial y^2}(a) \Big] + \\
+          &+ \frac{1}{3!} \Big[ (x - x_0)^3 \frac{\partial^3 f}{\partial x^3} (a) + %
+            3(x - x_0)^2(y - y_0) \frac{\partial^3 f}{\partial x^2 \partial y}(a) + %
+            3(x - x_0)(y - y_0)^3 \frac{\partial^3 f}{\partial x \partial y^2}(a) + %
+            (y - y_0)^3 \frac{\partial^3 f}{\partial y^3}(a) \\
+          &+ \dots
+\end{align*}
+
+\begin{remark}\label{rk:frontiera}
+  În cazul în care se impun constrîngeri pentru domeniul de definiție a funcției,
+  se studiază separat problema punctelor de extrem în interiorul domeniului,
+  precum și pe frontieră.
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Regresia liniară}
+\label{sec:reg-lin}
+
+Regresia liniară se adresează unor probleme de tip statistic, atunci cînd avem
+la dispoziție o serie de date experimentale, pe care trebuie să le corelăm cu
+un model teoretic \emph{liniar}.
+
+Așadar, date o serie de perechi de puncte de forma $(x_i, y_i)$, care reprezintă
+datele colectate într-un experiment care verifică o teorie bazată pe ecuații
+liniare, ne punem problema găsirii celei mai potrivite drepte care să prezinte
+o abatere minimă față de punctele colectate (eng. ``best fit'').
+
+Fie, așadar, dreapta $y = f(x) = ax + b$ modelul teoretic pe care îl studiem.
+Dacă $(x_i, y_i)$ reprezintă colecția de puncte experimentale, atunci vom minimiza
+abaterea lor de la funcția $f$ prin intermediul \emph{metodei celor mai mici pătrate}.
+Vom impune, așadar, ca suma pătratelor distanțelor de la punctele colectate la
+dreapta teoretică să fie minimă.
+
+În expresia $f(x) = ax + b$, necunoscutele sînt $a$ și $b$, deoarece ele determină
+dreapta experimentală pe care o căutăm. Așadar, putem privi $f$ ca pe o funcție
+de variabilele $a$ și $b$. Scriem, deci, expresia corespunzătoare celor mai
+mici pătrate:
+\[
+  S(a, b) = \sum_{i = 1}^n [ f(x_i) - y_i ]^2.
+\]
+
+Această funcție se dorește minimizată, așadar problema revine la găsirea punctelor
+de minim pentru ea.
+
+Se studiază punctele critice cu metoda din secțiunea de mai sus, apoi se
+găsesc punctele $(a, b)$ care să fie de minim.
+
+În fine, \emph{dreapta de regresie} este $y = ax + b$.
+
+Se poate face și \emph{calculul erorilor}, folosind variabilele:
+\begin{align*}
+  S_r &= \sum_i (y_i - b - ax_i)^2 \\
+  S_t &= \sum_i (y_i - \overline{y})^2,
+\end{align*}
+unde $\overline{y}$ este media (aritmetică) a valorilor $y_i$ experimentale.
+
+În fine, se pot calcula \emph{eroarea standard} a estimării și, respectiv,
+abaterea medie pătratică:
+\[
+  \varepsilon = \sqrt{\frac{S_r}{n - 2}}, \quad \sigma = \sqrt{\frac{S_t}{n - 1}}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+\indent\indent 1. Fie funcția:
+\[
+  f : D \seq \RR^2 \to \RR, f(x, y) = x^2 + xy + y^2 - 4\ln x - 10 \ln y + 3.
+\]
+Determinați punctele de extrem și calculați valorile funcției în aceste puncte.
+
+\vspace{1cm}
+
+2. Fie $f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + y^3 - 6xy$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $D = \{ (x,y) \in \RR^2 \mid x \geq 0, y \geq 0, x + y \geq 5 \}$,
+  determinați valoarea minimă și maximă a funcției.
+\end{enumerate}
+
+Indicație (b): Considerați funcțiile $g_1(x) = f(x,0), g_2 = f(0, y)$ și apoi
+funcția $g_3 = f(x, 5-x)$, cărora le găsiți punctele de extrem.
+
+\vspace{1cm}
+
+3. Fie $f : D \to \RR^2, f(x, y) = 3xy^2 - x^3 - 15x - 36y + 9$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $D = [-4, 4] \times [-3, 3]$ determinați valoarea minimă și valoarea
+  maximă a funcției.
+\end{enumerate}
+
+Indicație (b): Considerați funcțiile $f(x, -3), f(4, y), f(x, 3), f(-4, y)$.
+
+\vspace{1cm}
+
+4. Fie $f : D \seq \RR^2 \to \RR, f(x, y) = 4xy - x^4 - y^4$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $D = [-1, 2] \times [0, 2]$, determinați valoarea minimă și
+  maximă a funcției.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Fie $f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + 3x^2 y - 15x - 12 y$.
+\begin{enumerate}[(a)]
+\item Pentru $D = \RR^2$, determinați punctele de extrem și calculați
+  valorile funcției în aceste puncte;
+\item Pentru $D = \{ (x, y) \in \RR^2 \mid x \geq 0, y \geq 0, 3y + x \leq 3 \}$
+  determinați valoarea minimă și valoarea maximă a funcției.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Determinați valorile extreme pentru funcțiile $f$, definite pe domeniile $D$,
+unde:
+\begin{enumerate}[(a)]
+\item $f(x, y) = x^3 + y^3 - 6xy, D = \RR^2$;
+\item $f(x, y) = xy(1 - x - y), D = [0, 1] \times [0, 1]$;
+\item $f(x, y) = x^4 + y^4 - 2x^2 + 4xy - 2y^2, D = (-\infty, 0) \times (0, \infty)$;
+\item $f(x, y) = x^3 + 8y^3 - 2xy, D = \{(x, y) \in \RR^2 \mid x, y \geq 0, y + 2x \leq 2\}$;
+\item $f(x, y) = x^4 + y^3 - 4x^3 - 3y^2 + 3y, D = \{ (x, y) \in \RR^2 \mid x^2 + y^2 < 4 \}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Să se determine dreapta de regresie care mediază printre punctele
+$M_1(1, 2), M_2(2, 0), M_3(3, 1)$.
+
+\vspace{1cm}
+
+8*. Dintre toate paralelipipedele dreptunghice cu volum constant 1, determinați
+pe cel cu aria totală minimă.
+
+\end{document}

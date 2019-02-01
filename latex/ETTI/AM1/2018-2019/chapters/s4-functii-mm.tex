@@ -1,0 +1,181 @@
+\chapter{Funcții de mai multe variabile}
+
+\section{Probleme de extrem}
+
+Studiul problemelor de extrem pentru funcții de mai multe variabile
+se face prin următorii pași. Presupunem că pornim cu o funcție
+$ f = f(x, y) : D \seq \RR^2 \to \RR $.
+
+\begin{enumerate}[(1)]
+\item Se determină punctele care anulează \emph{simultan} derivatele
+  parțiale. Adică, rezolvăm sistemul de ecuații:
+  \[
+    \begin{cases}
+      \frac{\partial f}{\partial x} &= 0 \\
+      \frac{\partial f}{\partial y} &= 0
+    \end{cases}
+  \]
+\item Pentru fiecare dintre punctele determinate anterior, se alcătuiește
+  \emph{matricea hessiană} asociată, alcătuită din derivatele parțiale
+  de ordinul al doilea: \index{matrice!hessiană}
+  \[
+    H_f =
+    \begin{pmatrix}
+      \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\
+      \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2}
+    \end{pmatrix}
+  \]
+\item Se determină valorile proprii ale matricei hessiene (pentru fiecare dintre
+  punctele găsite la primul pas).
+\item Fie $ \lambda_1, \lambda_2 $ valorile proprii.
+  \begin{itemize}
+  \item Dacă ambele valori proprii sînt pozitive, punctul găsit este \emph{de minim local};
+  \item Dacă ambele valori proprii sînt negative, punctul găsit este \emph{de maxim local};
+  \item Dacă valorile proprii au semne opuse, punctul găsit \emph{nu este de extrem}.
+  \end{itemize}
+\end{enumerate}
+
+Alternativ, se poate proceda astfel. Fie elementele matricei hessiene:
+\[
+  r_0 = \frac{\partial^2 f}{\partial x^2}, s_0 = \frac{\partial^2 f}{\partial x \partial y}, %
+  t_0 = \frac{\partial^2 f}{\partial y^2}.
+\]
+
+Se calculează $ r_0, s_0, t_0 $ și expresia $ p = r_0 t_0 - s_0^2 $ (pentru fiecare
+dintre punctele critice găsite).
+\begin{enumerate}[(a)]
+\item Dacă $ p > 0 $ și $ r_0 > 0 $, punctul găsit este de \emph{minim local};
+\item Dacă $ p > 0 $ și $ r_0 < 0 $, punctul găsit este de \emph{maxim local};
+\item Dacă $ p < 0 $, punctul găsit \emph{nu este de extrem}.
+\end{enumerate}
+
+Indiferent de metodă, dacă $ p = 0 $ sau una dintre valorile proprii ale $ H_f $
+este nulă corespunzător punctului $ A(x_0, y_0) $, se evaluează semnul diferenței
+$ f(x, y) - f(x_0, y_0) $ într-o vecinătate a lui $ A $:
+\begin{enumerate}[(i)]
+\item Dacă $ f(x, y) - f(x_0, y_0) $ nu are semn constant în orice vecinătate
+  a lui $ (x_0, y_0) $, punctul $ A $ nu este de extrem;
+\item Dacă $ f(x, y) - f(x_0, y_0) $ este pozitiv în orice vecinătate a lui
+  $ (x_0, y_0) $, punctul $ A $ este de minim local;
+\item Dacă $ f(x, y) - f(x_0, y_0) $ este negativ în orice vecinătate a lui
+  $ (x_0, y_0) $, punctul $ A $ este de maxim local.
+\end{enumerate}
+
+Diferența $ f(x, y) - f(x_0, y_0) $ se studiază cu ajutorul formulei lui Taylor
+pentru 2 variabile reale. Fie $ A(x_0, y_0) \in D $, pentru $ f : D \to \RR^2 $
+și presupunem că $ f \in \kal{C}^2(D) $. Atunci avem dezvoltarea:
+\begin{align*}
+  f(x, y) &= f(a) + \frac{1}{1!} \Big[ (x - x_0) \frac{\partial f}{\partial x}_A + %
+            (y - y_0) \frac{\partial f}{\partial y}_A \Big] + \\
+          &+ \frac{1}{2!} \Big[ (x - x_0)^2 \frac{\partial^2 f}{\partial x^2}_A + %
+            2(x - x_0)(y - y_0) \frac{\partial^2 f}{\partial x \partial y}_A + %
+            (y - y_0)^2 \frac{\partial^2 f}{\partial y^2}_A \Big] + \\
+          &+ \frac{1}{3!} \Big[ (x - x_0)^3 \frac{\partial^3 f}{\partial x^3}_A + %
+            3(x - x_0)^2(y - y_0) \frac{\partial^3 f}{\partial^2 x \partial y}_A + %
+            3(x - x_0)(y - y_0)^2 \frac{\partial^3 f}{\partial x \partial^2 y}_A + %
+            (y - y_0)^3 \frac{\partial^3 f}{\partial y^3}_A \Big] \\
+          &+ \dots
+\end{align*}
+
+\begin{remark}\label{rk:int-fr}
+  În general, dacă domeniul de definiție al funcției este o mulțime compactă
+  (de exemplu, interval închis), problema de extrem se studiază în două etape:
+  \begin{enumerate}[(1)]
+  \item Pentru interiorul lui $ D $, unde se procedează ca mai sus;
+  \item Pentru frontiera lui $ D $, care devine o problemă pentru o funcție
+    de o singură variabilă sau o problemă de extreme cu legături.
+  \end{enumerate}
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Să se calculeze derivatele parțiale de ordinul întîi pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = e^{x - y^2} $;
+\item $ f(x, y) = \arctan \dfrac{x}{y} + \arctan \dfrac{y}{x} $;
+\item $ f(x, y) = e^{x^2 + y^2} $;
+\item $ f(x, y, z) = \sqrt{x^2  + y^2 + z^2} $.
+\end{enumerate}
+
+2. Să se calculeze derivatele parțiale de ordinul întîi și al doilea
+pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = e^x \cos y $;
+\item $ f(x, y) = \dfrac{x - y}{x + y}, (x, y) \neq (0, 0) $;
+\item $ f(x, y) = \ln(x^2 + y^2), (x, y) \neq (0, 0) $;
+\item $ f(x, y) = x^3 + xy $;
+\item $ f(x, y, z) = y \sin (x + z) $;
+\item $ f(x, y, z) = \ln(x^2 + y^2 + z^2), (x, y, z) \neq (0, 0, 0) $.
+\end{enumerate}
+
+3. Să se calculeze derivatele parțiale în punctele indicate:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = 2x^2 + xy, \dfrac{\partial f}{\partial x}(1, 1), %
+  \dfrac{\partial f}{\partial y} (3, 2) $;
+\item $ f(x, y) = \sqrt{\sin^2 x + \sin^2 y}, \dfrac{\partial f}{\partial x} %
+  \Big( \dfrac{\pi}{4}, 0 \Big), \dfrac{\partial f}{\partial y} %
+  \Big( \dfrac{\pi}{4}, \dfrac{\pi}{4} \Big) $;
+\item $ f(x, y) = \ln(1 + x^2 + y^2), \dfrac{\partial f}{\partial x}(1, 1), %
+  \dfrac{\partial f}{\partial y}(1, 1) $;
+\item $ f(x, y) = \sqrt[3]{x^2 y}, \dfrac{\partial f}{\partial x}(-2, 2) $,
+  $ \dfrac{\partial f}{\partial y}(-2, 2) $, $\dfrac{\partial^2 f}{\partial x\partial y}(-2, 2) $;
+\item $ f(x, y) = xy\ln x, x \neq 0, \dfrac{\partial^2 f}{\partial x\partial y}(1, 1) $,
+  $ \dfrac{\partial^2 f}{\partial y}{\partial x}(1, 1) $.
+\end{enumerate}
+
+4. Calculați derivatele parțiale de ordinul I pentru funcțiile compuse:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \ln(u^2 + v) $, unde $u(x, y) = e^{x + y^2} $ și
+  $ v(x, y) = x^2 + y $;
+\item $ f(x, y) = \arctan \dfrac{2u}{v} $, unde $ u(x, y) = x\sin y $ și
+  $ v(x, y) = x \cos y $;
+\item $ f(x, y) = \varphi(2x e^y + 3y \sin 2x) $.
+\end{enumerate}
+
+5. Arătați că funcțiile următoare verifică ecuațiile indicate:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \varphi \Big( \dfrac{y}{x} \Big) $,
+  \[
+    x \frac{\partial f}{\partial x} + y \frac{\partial f}{\partial y} = 0.
+  \]
+\item $ f(x, y, z) = \varphi(xy, x^2 + y^2 + z^2) $,
+  \[
+    xz \frac{\partial f}{\partial x} - yz \frac{\partial f}{\partial y} + %
+    (y^2 - x^2) \frac{\partial f}{\partial z} = 0.
+  \]
+\item $ f(x, y) = y \varphi(x^2 - y^2) $,
+  \[
+    \frac{1}{x} \frac{\partial f}{\partial x} + \frac{1}{y} \frac{\partial f}{\partial y} = %
+    \frac{1}{y^2} f(x, y).
+  \]
+\end{enumerate}
+
+6. Fie funcția $ f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + y^3 - 6xy $.
+\begin{enumerate}[(a)]
+\item Pentru $ D = \RR^2 $, determinați punctele de extrem și calculați
+  valorile funcției în aceste puncte;
+\item Pentru $ D = \{ (x, y) \in \RR^2 \mid x, y \geq 0, x + y \leq 5 \} $
+  determinați valoarea minimă și valoarea maximă a funcției.
+\end{enumerate}
+
+7. Fie $ f : D \seq \RR^2 \to \RR, f(x, y) = 4xy - x^4 - y^4 $.
+\begin{enumerate}[(a)]
+\item Pentru $ D = \RR^2 $, determinați punctele de extrem și calculați valorile
+  funcției în aceste puncte;
+\item Pentru $ D = [-1, 2] \times [0, 2] $, determinați valoarea minimă
+  și valoarea maximă a funcției.
+\end{enumerate}
+
+8. Fie $ f : D \seq \RR^2 \to \RR, f(x, y) = x^4 + y^3 - 4x^3 + 3y^2 + 3y $.
+Pentru domeniul de definiție:
+\[
+  D = \{(x, y) \in \RR^2 \mid x^2 + y^2 < 4 \},
+\]
+determinați punctele de extrem ale funcției.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am1-18-19"
+%%% End:

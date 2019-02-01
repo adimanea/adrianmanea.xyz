@@ -1,0 +1,391 @@
+\chapter{Recapitulare structuri algebrice și matrice}
+
+\section{Structuri algebrice}
+
+Amintim cîteva noțiuni esențiale în ce privește structurile algebrice. Începem
+cu noțiuni preliminare, anume \emph{relații binare}.
+
+\begin{definition}\label{def:rel-bin} \index{relație!binară}
+  Fie $ A $ o mulțime nevidă. O submulțime a produsului cartezian $ A \times A $
+  se numește \emph{relație binară pe $ A $}.
+\end{definition}
+
+Dacă $ R \seq A \times A $ este o asemenea relație, în locul notației
+$ a, b \in R $, pentru două elemente aflate în relație, vom folosi $ a R b $ și
+vom citi \qq{$a$ este în relația $ R $ cu b}.
+
+De exemplu, relația de rudenie este o relație binară, definită pe mulțimea oamenilor,
+relația de ordine este o relație binară definită pe mulțimea numerelor naturale, de
+pildă, relația de paralelism este o relație binară definită pe mulțimea curbelor din
+plan și altele.
+
+Relațiile binare pot avea una sau mai multe din următoarele proprietăți:
+
+Vom păstra notațiile și contextul de mai sus. Relația $R$ se numește:
+\begin{itemize} \index{relație!reflexivă} \index{relație!simetrică}
+  \index{relație!antisimetrică} \index{relație!tranzitivă}
+  \item \emph{reflexivă}, dacă orice element este în relația $R$ cu sine, i.e.\
+    $a R a, \forall a \in A$;
+  \item \emph{simetrică}, dacă oricînd $a R b$ implică $b R a$, pentru niște $a, b \in A$;
+  \item \emph{antisimetrică}, dacă din $a R b$ și $b R a$, pentru niște $a, b \in A$,  
+    rezultă că $a$ și $b$ coincid.
+  \item \emph{tranzitivă}, dacă din $a R b$ și $b R c$ putem deduce $a R c$, pentru orice
+    $a, b, c \in A$ care satisfac ipoteza.
+\end{itemize}
+\index{relație!ordine} \index{relație!echivalență}
+În funcție de proprietățile respectate, relațiile se pot clasifica. De exemplu, cel mai des
+se întîlnește relația de \emph{ordine}, care este reflexivă, antisimetrică și tranzitivă,
+precum și relația de \emph{echivalență}, care este reflexivă, simetrică și tranzitivă.
+
+Exemple clasice: relația \qq{$\leq$} este o relație de ordine pe mulțimea $\RR$. Egalitatea
+este o relație de echivalență, definită pe aproape orice mulțime de obiecte matematice de
+același tip (mulțimi de numere, de matrice, de funcții ș.a.m.d.).
+
+\vspace{1cm}
+
+Dacă relațiile binare nu returnează un al treilea element, deci nu dau o dependență funcțională,
+ele avînd doar o valoare de adevăr (i.e.\ putem spune doar dacă $aRb$ este adevărat, nu și
+\qq{cît face} $a R b$), \emph{operațiile} sau \emph{legile de compoziție} au această proprietate.
+\index{operație}
+Mai precis:
+
+\begin{definition}\label{def:lege-comp}
+  Fie $A$ o mulțime nevidă. Se numește \emph{lege de compoziție} sau \emph{operație (binară)} orice
+  funcție de tipul $f : A \times A \to A$.
+\end{definition}
+
+Exemplele tipice sînt operațiile algebrice, pe mulțimi de numere. Însă înainte de a le folosi,
+mai avem nevoie de terminologie.
+
+Păstrînd notațiile și contextul de mai sus, o lege de compoziție $f$ se numește:
+\begin{itemize} \index{operație!internă} \index{operație!asociativă}
+  \index{operație!comutativă} \index{operație!cu element neutru}
+  \index{operație!cu elemente inversabile}
+  \item \emph{internă}, dacă $\forall a, b \in A, f(a, b) \in A$ (automat verificată, dacă
+    în definiție impunem condiția ca $f$ să fie \emph{funcție} și nu doar o asociere abstractă);
+  \item \emph{asociativă}, dacă $\forall a, b, c \in A, f(a, f(b, c)) = f(f(a, b), c)$;
+  \item \emph{comutativă}, dacă $\forall a, b \in A$, are loc $f(a, b) = f(b, a)$;
+  \item \emph{cu element neutru}, dacă există un element distins (unic) $e \in A$, astfel încît
+    $f(a, e) = f(e, a) = a, \forall a \in A$;
+  \item \emph{cu elemente inversabile (simetrizabile)} dacă pentru un $a \in A$ există $a^{-1} \in A$
+    astfel încît $f(a, a^{-1}) = f(a^{-1}, a) = e$, elementul neutru.
+\end{itemize}
+
+Cum spuneam, exemplele tipice sînt operațiile algebrice elementare. Cum ar fi adunarea, definită
+pe mulțimea numerelor reale, care are toate proprietățile de mai sus. Înmulțirea, definită pe
+mulțimea numerelor naturale, nu admite decît un singur element inversabil, anume 1.
+
+Compunerea funcțiilor reale, pe de altă parte, nu este comutativă, dar are elemente inversabile
+(chiar dacă nu toate), anume funcțiile bijective. 
+
+Există suficiente exemple de operații care nu au una sau mai multe din proprietățile de mai sus,
+după cum vă puteți convinge.
+
+\vspace{1cm}
+
+Deoarece, ca în cazul relațiilor binare, există o legătură strînsă între operație și mulțimea
+pe care a fost definită, se definesc \emph{structurile algebrice} ca fiind exact perechi
+alcătuite din mulțimi și operații definite pe ele, satisfăcînd anumite proprietăți,
+conform definițiilor de mai jos.
+
+\begin{definition}\label{def:str-alg} \index{structuri algebrice!monoid}
+  \index{structuri algebrice!grup}
+  Fie $A$ o mulțime nevidă și $\circ$ o operație definită pe $A$.
+
+  Perechea $(A, \circ)$ se numește:
+  \begin{itemize}
+    \item \emph{monoid}, dacă operația este internă, asociativă și admite element neutru;
+    \item \emph{grup}, dacă este monoid și orice element este inversabil.
+  \end{itemize}
+
+  Dacă, în plus, operația este și comutativă, se adaugă adjectivul \qq{comutativ} pentru
+  structura corespunzătoare (i.e.\ monoid comutativ, grup comutativ). În onoarea
+  matematicianului norvegian N. H. Abel, grupurile comutative se mai numesc \emph{abeliene}.
+\end{definition}
+
+Există situații în care ar fi de folos să putem lucra cu mai multe operații pe o mulțime.
+Gîndiți-vă, de exemplu, la cazul numerelor reale, pe care le putem și aduna, și înmulți, ba
+chiar putem opera în expresii care să conțină ambele legi, simultan.
+Pentru aceasta, se pot defini structuri algebrice mai bogate, adăugînd condiții suplimentare
+de compatibilitate pentru operațiile folosite.
+
+\begin{definition}\label{def:inel-corp}
+  \index{structuri algebrice!inel}
+  \index{structuri algebrice!corp}
+  Fie $A$ o mulțime nevidă și $\circ, \ast$ două operații, ambele definite pe $A$.
+
+  Tripletul $(A, \circ, \ast)$ se numește:
+  \begin{itemize} \index{operație!distributivă}
+    \item \emph{inel}, dacă perechea $(A, \circ)$ este grup comutativ, perechea $(A, \ast)$
+      este monoid, iar operația $\ast$ este \emph{distributivă} față de $\circ$, adică au loc:
+      \[
+        a \ast (b \circ c) = (a \ast b) \circ (a \ast c) \text{ și } %
+        (b \circ c) \ast a = (b \ast a) \circ (c \ast a), \forall a, b, c \in A.
+      \]
+    \item \emph{corp}, dacă este inel și, în plus, perechea $(A, \ast)$ este chiar grup.
+  \end{itemize}
+
+  Ca mai sus, dacă și operația $\ast$ este comutativă, se adaugă atributul \qq{comutativ}
+  numelui structurii (i.e.\ inel comutativ, corp comutativ).
+\end{definition}
+
+Exemplele tipice sînt la îndemînă: $(\RR, +, \cdot)$ este corp comutativ,
+$(M_n(\RR), +, \cdot)$ este inel necomutativ, $(\RR[X], +, \cdot)$ este inel
+comutativ și altele.
+
+Făcînd verificările, veți recunoaște în proprietatea de distributivitate
+procedura obișnuită de \emph{desfacere a parantezelor} într-o expresie algebrică.
+
+Date două structuri algebrice, eventual cu mulțimi subiacente și operații diferite,
+există o modalitate de a le relaționa, prin intermediul \emph{morfismelor}:
+
+\begin{definition}\label{def:morfism} \index{structuri algebrice!morfism}
+  Fie $(G, \circ)$ și $(H, \ast)$ două structuri algebrice (monoizi, grupuri).
+
+  O funcție $f: G \to H$ se numește \emph{morfism} dacă respectă operațiile, i.e.:
+  \[
+    f(g_1 \circ g_2) = f(g_1) \ast f(g_2), \forall g_1, g_2 \in G.
+  \]
+
+  În plus, cerem ca morfismul să fie și \emph{unitar}, adică $f(e_G) = e_H$
+  (elementele neutre corespund).
+\end{definition}
+
+Dacă vrem să definim morfismele pentru inele, cerem în plus ca funcțiile să
+respecte și cea de-a doua operație, iar ambele elemente neutre să corespundă.
+
+Dacă morfismul este chiar o funcție bijectivă, atunci el se numește \emph{izomorfism},
+iar structurile, \emph{izomorfe}.
+
+O ultimă noțiune utilă:
+
+\begin{definition}\label{def:substruct} \index{structuri algebrice!substructuri}
+  Dată o structură algebrică $(G, \circ)$ și o submulțime a sa, $H$, spunem
+  că $H$ este \emph{substructură} pentru $G$ (în particular, submonoid,
+  subgrup) dacă $(H, \circ)$ are aceeași structură ca $G$, i.e.\ de monoid
+  sau grup.
+\end{definition}
+
+În cazul structurilor cu două operații, definiția se păstrează, cerînd ca
+$H$ să aibă aceeași structură cu $G$, împreună cu \emph{ambele} operații.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Metoda Gauss-Jordan}
+\index{metoda Gauss-Jordan}
+Această metodă ne permite să aducem orice matrice la o formă foarte simplă,
+anume forma matricei identitate, operînd numai cu transformări elementare
+asupra liniilor sau coloanelor acesteia.
+
+Într-o formă mai relaxată, numită de obicei \emph{eliminarea gaussiană}, este suficient
+să aducem matricea în formă \emph{superior triunghiulară}, adică astfel încît
+elementele de sub diagonala principală să fie toate nule.
+
+Metoda Gauss-Jordan are 2 principale aplicații (pe lîngă simplificarea matricei,
+care ar putea să fie utilă în numeroase contexte). Prima aplicație este în aflarea
+inversei unei matrice, iar cea de-a doua, în rezolvarea sistemelor liniare.
+
+\subsection{Inversarea matricelor cu metoda Gauss-Jordan}
+
+Procedura se bazează pe următorul algoritm: \index{metoda Gauss-Jordan!inversare}
+\begin{itemize}
+  \item Dată matricea $A$, pătrată și nesingulară (inversabilă), se alcătuiește
+    matricea $B = (A \mid I_n)$, unde $n$ este dimensiunea matricei. Matricea $B$
+    va fi o matrice cu $n$ linii și $2n$ coloane, în care trasăm, pentru conveniență,
+    linia verticală care separă cele două componente;
+  \item În partea stîngă a matricei $B$ (corespunzătoare matricei $A$), operăm cu
+    \emph{transformări elementare} ale liniilor și coloanelor, pînă cînd această parte
+    devine $I_n$, transformările reflectîndu-se și în partea dreaptă
+    a matricei $B$;
+  \item Atunci cînd în partea stîngă $A$ a devenit $I_n$, partea dreaptă a devenit $A^{-1}$.
+\end{itemize}
+
+Iată un exemplu, notînd și transformările:
+\begin{align*}
+  \begin{pmatrix}
+    2 & 1 & 3 & \mid & 1 & 0 & 0 \\
+    -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+    5 & 1 & 1 & \mid & 0 & 0 & 1
+  \end{pmatrix} &\xrightarrow{L_1 \to (1/2)L_1}
+  \begin{pmatrix}
+    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+    -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+    5 & 1 & 1 & \mid & 0 & 0 & 1 
+  \end{pmatrix} \\
+  &\stackrel{L_2 \to 2L_1 + L_2}{\xrightarrow{L_3 \to -5L_1 + L_3}}
+  \begin{pmatrix}
+    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+    0 & 4 & 7 & \mid & 1 & 1 & 0 \\
+    0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1
+  \end{pmatrix} \\
+  &\xrightarrow{L_2 \to (1/4)L_2}
+  \begin{pmatrix}
+    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+    0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+    0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1 
+  \end{pmatrix} \\
+  &\stackrel{L_1 \to (-1/2)L_2 + L_1}{\xrightarrow{L_3 \to (3/2)L_2 + L_3}}
+  \begin{pmatrix}
+    1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+    0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+    0 & 0 & -31/8 & \mid & -17/8 & 3/8 & 1
+  \end{pmatrix} \\
+  &\xrightarrow{L_3 \to (-31/8)L_3}
+  \begin{pmatrix}
+    1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+    0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+    0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+  \end{pmatrix} \\
+  &\stackrel{L_1 \to (-5/8)L_3 + L_1}{\xrightarrow{L_2 \to (-7/4)L_3 + L_2}}
+  \begin{pmatrix}
+    1 & 0 & 0 & \mid & 1/31 & -2/31 & 5/31 \\
+    0 & 1 & 0 & \mid & -22/31 & 13/31 & 14/31 \\
+    0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+  \end{pmatrix}
+\end{align*}
+
+Rezultă că $A^{-1} = \begin{pmatrix} 1/31 & -2/31 & 5/31 \\
+  -22/31 & 13/31 & 14/31 \\
+  17/31 & -3/31 & -8/31
+\end{pmatrix}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Aplicație: Sisteme liniare}
+\index{metoda Gauss-Jordan!sisteme liniare}
+Vom proceda similar, însă vom opera pe matricea $M = (A | B)$, unde
+$A$ este matricea asociată sistemului liniar, iar $B$ este matricea
+termenilor liberi (rezultatelor). Cînd, după procedeul Gauss-Jordan,
+am obținut $M = (I_n | C)$, atunci $C$ va fi matricea-coloană a soluțiilor.
+
+Iată un exemplu: Considerăm sistemul de mai jos.
+\[
+  \begin{cases}
+    mx_1 + x_2 + x_3  &= 1 \\
+    x_1 + mx_2 + x_3 &= m \\
+    x_1 + x_2 + mx_3 &= m^2,
+  \end{cases}
+\]
+cu $m \in \RR$. Îi vom discuta compatibilitatea în funcție de $m$ și, în caz
+favorabil, îl vom rezolva. Totul va rezulta din metoda Gauss-Jordan.
+
+Considerăm matricea $M$ de mai sus:
+\begin{align*}
+  (A | B) &= \begin{pmatrix}
+    m & 1 & 1 & \mid & 1 \\
+    1 & m & 1 & \mid & m \\
+    1 & 1 & m & \mid & m^2
+  \end{pmatrix} \\
+  &\xrightarrow{L_1 \leftrightarrow L_2}
+  \begin{pmatrix}
+    1 & m & 1 & \mid & m \\
+    m & 1 & 1 & \mid & 1 \\
+    1 & 1 & m & \mid & m^2
+  \end{pmatrix} \\
+  &\stackrel{L_2 \to L_2 - mL_1}{\xrightarrow{L_3 \to L_3 - L_1}}
+  \begin{pmatrix}
+    1 & m & 1 & \mid & m \\
+    0 & 1 - m^2 & 1 - m & \mid & 1 - m^2 \\
+    0 & 1 - m & m - 1 & \mid & m^2 - m.
+  \end{pmatrix}
+\end{align*}
+
+În acest punct, avem o discuție:
+
+(a) Dacă $m = 1$, atunci sistemul se reduce la prima ecuație, deci este compatibil
+dublu nedeterminat. Rezultă soluția
+\[
+  \{ (1 - \alpha - \beta, \alpha, \beta) \mid \alpha, \beta \in \RR \}.
+\]
+
+(b) Dacă $m \neq 1$, atunci putem continua transformările și ajungem, în fine, la:
+\[
+  M = \begin{pmatrix}
+    1 & 0 & 1 + m & \mid & m + m^2 \\
+    0 & 1 & -1 & \mid & -m \\
+    0 & 0 & 2 & \mid & (m + 1)^2
+  \end{pmatrix}
+\]
+
+Aici discutăm din nou:
+
+(b1) Dacă $m = -2$, sistemul este incompatibil, deoarece ultima ecuație devine $0 = 1$.
+
+(b2) Dacă $m \neq -2$, putem continua transformările și ajungem, în cele din urmă, la:
+\[
+  M = \begin{pmatrix}
+    1 & 0 & 0 & \mid & - \frac{m+1}{m_2}  \\
+    0 & 1 & 0 & \mid & \frac{1}{m+2} \\
+    0 & 0 & 1 & \mid & \frac{(m + 1)^2}{m + 2}.
+  \end{pmatrix}
+\]
+
+În acest ultim caz, sistemul este compatibil determinat, soluția fiind dată de ultima coloană:
+\[
+  \begin{cases}
+    x_1  &= -\frac{m + 1}{2} \\
+    x_2  &= \frac{1}{m + 2} \\
+    x_3  &= \frac{(m + 1)^2}{m + 2}.
+  \end{cases}
+\]
+
+Concluzia generală este:
+\begin{enumerate}[(a)]
+  \item Dacă $m \in \RR - \{-2, 1\}$, sistemul are soluție unică;
+  \item Dacă $m = -2$, sistemul este incompatibil;
+  \item Dacă $m = -1$, sistemul este compatibil nedeterminat.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Rezolvați următoarele sisteme, atît cu metoda matriceală clasică, cît și cu
+metoda lui Gauss:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    x + 3y - z &= 1 \\
+    3x + y + 2z &= 4 \\
+    5x - 2y + z &= 2
+  \end{cases} $
+\item $ \begin{cases}
+    3x - y + 2z + 3t &= 4 \\
+    x + 3y - z + t &= -1
+  \end{cases} $
+\item $ \begin{cases}
+    2x - y + 3z &= 1 \\
+    3x + 2y - z &= 4 \\
+    x + 3y - 4z &= 3
+  \end{cases} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați inversele matricelor, atît cu metoda folosind matricea adjunctă,
+cît și folosind metoda lui Gauss:
+\begin{enumerate}[(a)]
+\item $ A =
+  \begin{pmatrix}
+1 & 0 & -1 \\
+3 & 2 & 1 \\
+0 & 1 & 1
+\end{pmatrix} $;
+\item $ B =
+  \begin{pmatrix}
+    -1 & 2 & 4 & 1 \\
+    3 & 0 & 1 & 4 \\
+    0 & 1 & 1 & 0 \\
+    2 & 1 & 0 & 1
+  \end{pmatrix} $;
+\item $ C =
+  \begin{pmatrix}
+    1 & 1 & 2 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+  \end{pmatrix} $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-18-19"
+%%% End:

@@ -1,0 +1,248 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 11 \\
+    Probleme de extrem cu forme pătratice}}
+\end{center}
+
+\vspace{1cm}
+
+
+\section{Forme pătratice. Aplicație}
+\label{sec:f-patr}
+
+În afară de studiul semnului valorilor proprii ale matricei hessiene, mai putem
+decide natura punctelor de extrem pentru o funcție de mai multe variabile și
+altfel.
+
+Pentru aceasta, vom utiliza o noțiune algebrică, aceea a \emph{formelor pătratice}.
+Mai precis, vom folosi faptul că diferențiala a doua a unei funcții de mai multe
+variabile este o formă pătratică.
+
+Din teoria formelor pătratice, ne este de folos următoarea:
+
+\begin{theorem}[Sylvester]\label{thm:sylv-f-patr}
+  Fie $\varphi : \RR^n \to \RR, \varphi(x) = \sum a_{ij} x_i x_j$ o formă pătratică
+  simetrică ($a_{ij} = a_{ji}, \forall i, j$). Fie matricea sa asociată $A = (a_{ij})$.
+
+  Definim \emph{minorii principali ai matricei} prin:
+  \[
+    \Delta_1 = a_{11}, %
+    \Delta_2 = \begin{vmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22}
+    \end{vmatrix}, %
+    \dots, %
+    \Delta_n = \det A.
+  \]
+
+  Atunci:
+  \begin{enumerate}[(a)]
+  \item $\varphi$ este \emph{pozitiv definită} (i.e.\ $\varphi(x) > 0, \forall x$ nenul)
+    dacă și numai dacă $\Delta_i > 0, \forall i$;
+  \item $\varphi$ este \emph{negativ definită} (i.e.\ $\varphi(x) < 0, \forall x$ nenul)
+    dacă și numai dacă $\Delta_1 < 0, \Delta_2 > 0, \dots, (-1)^n \Delta_n > 0$.
+  \end{enumerate}
+\end{theorem}
+
+Pentru a aplica această teoremă la studiul problemelor de extrem, să remarcăm faptul
+că diferențiala a doua a unei funcții de mai multe variabile este o formă pătratică
+simetrică. În plus, matricea hessiană este matricea acestei forme pătratice.
+Așadar, avem:
+
+\begin{theorem}\label{thm:hes-patr}
+  Fie $a \in \RR^n$ un punct critic pentru funcția $f : \RR^n \to \RR$.
+  \begin{enumerate}[(a)]
+  \item Dacă toți minorii principali ai matricei hessiene sînt strict pozitivi în $a$,
+    atunci $a$ este punct de minim local pentru $f$;
+  \item Dacă minorii principali ai matricei hessiene au semnele alternate, începînd
+    cu primul negativ, atunci $a$ este punct de maxim local;
+  \item Dacă toți minorii principali ai matricei hessiene sînt nenuli, dar semnele
+    lor nu sînt ca în cazurile de mai sus, atunci $a$ nu este punct de extrem local;
+  \item Dacă cel puțin unul din minorii principali ai matricei hessiene este nul,
+    nu se poate preciza natura punctului $a$. În acest caz, se evaluează semnul
+    diferenței $f(x) - f(a)$, folosind formula lui Taylor pentru funcții de mai
+    multe variabile (pînă la termenul de ordin cel puțin 2).
+  \end{enumerate}
+\end{theorem}
+
+\textbf{Dezvoltarea în serie Taylor pentru o funcție de două variabile reale}
+în jurul punctului $a = (x_0, y_0)$ este dată de formula:
+\begin{align*}
+  f(x, y) &= f(a) + \frac{1}{1!} \Big[ (x - x_0) \frac{\partial f}{\partial x}(a) + %
+            (y - y_0) \frac{\partial f}{\partial y}(a) \Big]\\
+          &+ \frac{1}{2!} \Big[ (x - x_0)^2 \frac{\partial^2 f}{\partial x^2}(a) + %
+            2(x - x_0)(y - y_0) \frac{\partial^2 f}{\partial x \partial y}(a) + %
+            (y - y_0)^2 \frac{\partial^2 f}{\partial y^2}(a) \Big] + \\
+          &+ \frac{1}{3!} \Big[ (x - x_0)^3 \frac{\partial^3 f}{\partial x^3} (a) + %
+            3(x - x_0)^2(y - y_0) \frac{\partial^3 f}{\partial x^2 \partial y}(a) + %
+            3(x - x_0)(y - y_0)^3 \frac{\partial^3 f}{\partial x \partial y^2}(a) + %
+            (y - y_0)^3 \frac{\partial^3 f}{\partial y^3}(a) \\
+          &+ \dots
+\end{align*}
+
+\textbf{Exemplu:} Fie funcția
+\[
+  f : \RR^3 \to \RR, f(x, y, z) = (x - y)^2 + (y - 1)^3 +
+  (z - 1)^2.
+\]
+Găsim punctele critice.
+
+\emph{Soluție:} Rezolvăm sistemul dat de anularea derivatelor parțiale și obținem
+punctul $M(1, 1, 1)$. Matricea hessiană are $\Delta_2 = 0$, deci nu putem folosi
+teoria formelor pătratice. Folosim definiția.
+
+$M(1, 1, 1)$ este punct de extrem local dacă și numai dacă există o sferă $S((1, 1, 1), r)$
+în care diferența $f(x, y, z) - f(1, 1, 1)$ are semn constant (echivalent, într-o dimensiune,
+studiem semnul diferenței într-o \emph{vecinătate} a punctului).
+
+În particular, să observăm că $f(x, x, 1) = (x - 1)^3$, care nu are semn constant pentru
+$(x, x, 1)$ în orice vecinătate a punctului $(1, 1, 1)$. Deducem că punctul $M$ nu este
+de extrem.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Să se arate că funcțiile următoare verifică ecuațiile indicate:
+\begin{enumerate}[(a)]
+\item $f(x, y) = 2x^2 + 2y^2 + 5xy$,
+  $\frac{\partial f}{\partial x} \cdot \frac{\partial f}{\partial y} - %
+  5x \frac{\partial f}{\partial x} - 5y \frac{\partial f}{\partial y} + 9xy = 0$;
+\item $f(x, y) = xg(x^2 - y^2)$,
+  $xy \frac{\partial f}{\partial x} + x^2 \frac{\partial f}{\partial y} = yf$;
+\item $f(x, y, z) = g\big(xy, xyz + \frac{x^2}{2} + \frac{x^4}{4} \big)$,
+  $-xy \frac{\partial f}{\partial x} + y^2 \frac{\partial f}{\partial y} + %
+  x(1 + x^2) \frac{\partial f}{\partial z} = 0$;
+\item $f(x, y, z) = g(x - yz, y^2 + z^2)$, $(z^2 - y^2) \frac{\partial f}{\partial x} + %
+  z \frac{\partial f}{\partial y} - y \frac{\partial f}{\partial z} = 0$;
+\item $f(x, y, z) = g(xyz, x + y + z)$,
+  $x(y - z) \frac{\partial f}{\partial x} + y(z - x) \frac{\partial f}{\partial y} +
+  z(x - y) \frac{\partial f}{\partial z} = 0$;
+\item $f(x, y, z) = g(xyz, yz + zx - xy)$,
+  $x^2(y + z) \frac{\partial f}{\partial x} - y^2(z + x) \frac{\partial f}{\partial y} + %
+  z^2(y - x) \frac{\partial f}{\partial z} = 0$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se determine punctele de extrem local pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $f : \RR^2 \to \RR, f(x, y) = x^3 + 4xy - 2x^2 - 2y^2 - 22x + 10 y$;
+\item $f : \RR^2 \to \RR, f(x, y) = (x + y^2) \cdot e^{(x + 2y)}$;
+\item $f : \RR^2 \to \RR, f(x, y) = e^{(x^2 - y)} + e^{x + y}$;
+\item $f : \RR^2 - \{(0, 0)\} \to \RR, f(x, y) = xy \ln (x^2 + y^2)$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se determine punctele de extrem pentru funcțiile $f$ definite pe mulțimile $K$:
+\begin{enumerate}[(a)]
+\item $f(x, y) = 5x^2 + 4xy + 8y^2$, $K = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1\}$;
+\item $f(x, y) = xy^2(x + y - 2)$, $K = \{(x, y) \in \RR^2 \mid x + y \leq 3, x, y \geq 0\}$;
+\item $f(x, y) = \frac{x + y}{1 + xy}, \ K = [0, 1] \times [0, 1]$;
+\item $f(x, y) = 2x + 3y - \frac{x^2 + y^2}{2}$, $K = \{(x, y) \in \RR^2 \mid x + y \leq 4, %
+  5x + 3y \geq 16, x, y \geq 0 \}$;
+\item $f(x, y) = x^2 + y^2 + xz - yz$, $K = \{(x, y, z) \in \RR^3 \mid x + y + z = 1, %
+  x, y, z \geq 0 \}$.
+\end{enumerate}
+
+\end{document}

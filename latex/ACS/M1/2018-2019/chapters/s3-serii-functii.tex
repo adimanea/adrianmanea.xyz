@@ -1,0 +1,357 @@
+\chapter{Șiruri și serii de funcții}
+
+\section{Convergență punctuală și convergență uniformă}
+
+\begin{definition}\label{def:conv-punct}
+  \index{șiruri funcții!convergență!punctuală}
+  Fie $(X, d) $ un spațiu metric și $ f_n : X \to \RR $ termenul general
+  al unui șir de funcții.
+
+  Fie $ f : X \to \RR $ o funcție arbitrară.
+
+  Spunem că șirul $ (f_n) $ \emph{converge punctual} (\emph{simplu}) la $ f $
+  dacă are loc:
+  \[
+    \lim_{n \to \infty} f_n(x) = f(x), \quad \forall x \in X.
+  \]
+
+  Notăm acest lucru cu $ f_n \xrar{PC} f $ și numim $ f $ \emph{limita punctuală}
+  a șirului $ (f_n) $.
+\end{definition}
+
+Celălalt tip de convergență care ne va interesa este definit mai jos:
+\begin{definition}\label{def:conv-unif}
+  \index{șiruri funcții!convergență!uniformă}
+  În condițiile și cu notațiile de mai sus, spunem că șirul $ (f_n) $ este
+  \emph{uniform convergent} la $ f $ dacă:
+  \[
+    \forall \varepsilon > 0, \exists N_\varepsilon > 0 \text{ a.î. } %
+    |f_n(x) - f(x)| < \varepsilon, \forall n \geq N_\varepsilon, \forall x \in X.
+  \]
+
+  Vom nota această situație cu $ f_n \xrar{UC} f $.
+\end{definition}
+
+În exerciții se va folosi mai mult caracterizarea:
+\begin{proposition}\label{pr:conv-unif}
+  În condițiile și cu notațiile de mai sus, șirul $(f_n)$ converge
+  uniform la $ f $ dacă și numai dacă:
+  \[
+    \lim_{n \to \infty} \sup_{x \in X} |f_n(x) - f(x)| = 0.
+  \]
+\end{proposition}
+
+Legătura între cele două tipuri de convergență este dată de:
+\begin{theorem}\label{thm:UC-PC}
+  Orice șir de funcții uniform convergent pe un interval este punctual
+  convergent pe același interval.
+\end{theorem}
+
+Reciproca este falsă, după cum arată contraexemplul: fie $ [a, b] = [0,1] $
+și definim șirul de funcții $ f_n(x) = x^n, n \geq 1 $.
+
+Pentru orice $ x \in [a, b] $, avem:
+\[
+  \lim_{n \to \infty} f_n(x) = %
+  \begin{cases}
+    0, & x \in [0, 1) \\
+    1, & x = 1
+  \end{cases}
+\]
+
+Rezultă că $ f_n \xrar{PC} f $, unde $ f $ este funcția definită pe
+cazuri de limita de mai sus. Dar se poate vedea imediat că
+\[
+  \lim_{n \to \infty} \sup_{x \in X} |f_n(x) - f(x)| = 1 \neq 0,
+\]
+deci șirul este doar punctual convergent, nu uniform convergent.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transferul proprietăților}
+
+Unele dintre proprietățile funcțiilor sînt transferate de la termenii șirurilor
+la funcția-limită, iar altele nu, aceasta oferindu-ne uneori metode de calcul,
+iar alteori, metode de demonstrație.
+
+\begin{theorem}[Transfer de continuitate]\label{thm:transf-cont}
+  \index{șiruri funcții!transfer de continuitate}
+  Dacă $ f_n $ sînt funcții continue, iar șirul $ f_n $ converge uniform
+  la $ f $, atunci funcția $ f $ este continuă.
+\end{theorem}
+
+Rezultă de aici că avem o metodă de a demonstra că nu are loc
+continuitatea uniformă: dacă $ f_n $ sînt funcții continue, iar $ f $,
+obținută din convergența punctuală, \emph{nu} este continuă, rezultă
+că $ f_n $ \emph{nu} tinde uniform la $ f $.
+
+\begin{theorem}[Integrare termen cu termen]\label{thm:int-termen}
+  \index{șiruri funcții!integrare termen cu termen}
+  Fie $ f_n, f : [a, b] \to \RR $ funcții continue. Dacă $ f_n $
+  converge uniform la $ f $, atunci are loc proprietatea de
+  integrare termen cu termen, adică:
+  \[
+    \lim_{n \to \infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx.
+  \]
+\end{theorem}
+
+\begin{theorem}[Derivare termen cu termen]\label{thm:derivare-termen}
+  \index{șiruri funcții!derivare termen cu termen}
+  Presupunem că funcțiile $ f_n $ sînt derivabile, pentru orice $ n \in \NN $.
+  Dacă șirul $ f_n $ converge punctual la $ f $ și dacă există funcția
+  $ g : [a, b] \to \RR $ astfel încît $ f'_n $ converge uniform la $ g $,
+  atunci $ f $ este derivabilă și $ f' = g $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de funcții}
+
+Pentru convergența seriilor de funcții, avem un singur criteriu de utilizat:
+\begin{theorem}[Weierstrass]\label{thm:wei-serii-f}
+  \index{serii!funcții!Weierstrass}
+  Dacă există un șir cu termeni pozitivi $ a_n $ astfel încît $ |u_n(x)| \leq a_n $
+  pentru orice $ x \in X $, iar seria $ \sum a_n $ converge, atunci seria
+  $ \sum u_n $ converge uniform.
+\end{theorem}
+
+Pentru proprietățile de transfer, avem:
+\begin{theorem}\label{thm:transfer}
+  \begin{itemize}
+  \item \emph{Transfer de continuitate:} Dacă $ u_n $ sînt funcții continue,
+    iar seria $ \sum u_n $ converge uniform la $ f $, atunci funcția $ f $
+    este continuă.
+  \item \emph{Integrare termen cu termen}: Dacă seria $ \sum u_n $ converge
+    uniform la $ f $, atunci $ f $ este integrabilă și avem:
+    \[
+      \int_a^b \sum_n u_n(x) dx = \sum_n \int_a^b u_n(x) dx.
+    \]
+  \item \emph{Derivare termen cu termen:} Presupunem că toate funcțiile $ u_n $
+    sînt derivabile. Dacă seria $ \sum u_n $ converge punctual la $ f $ și
+    dacă există $ g : [a,b] \to \RR $ astfel încît $ \sum_n u'_n $
+    converge uniform la $ g $, atunci $ f $ este derivabilă și $ f' = g $.
+  \end{itemize}
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Polinomul Taylor și seria Taylor}
+
+Orice funcție cu anumite proprietăți poate fi aproximată cu un polinom:
+
+\begin{definition}\label{def:pol-taylor}
+  \index{serii!polinom Taylor}
+  Fie $ I \seq \RR $ un interval deschis și $ f: I \to \RR $ o funcție de clasă
+  $ \kal{C}^m(I) $. Pentru orice $ a \in I $, definim \emph{polinomul Taylor}
+  de gradul $ n \leq m $ asociat funcției $ f $ în punctual $ a $ prin:
+  \[
+    T_{n,f,a}(x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k.
+  \]
+  \emph{Restul} (eroarea de aproximare) este definit prin:
+  \[
+    R_{n,f,a} = f(x) - T_{n,f,a}(x).
+  \]
+\end{definition}
+
+Acest polinom poate fi mai departe utilizat pentru a studia \emph{seria Taylor}
+asociată unei funcții.
+
+\begin{theorem}\label{thm:seria-taylor}
+  \index{serii!Taylor}
+  Fie $ a < b $ și $ f \in \kal{C}^\infty([a,b]) $ astfel încît să existe
+  $ M > 0 $ cu proprietatea că $ \forall n \in \NN $ și $ x \in [a, b] $, avem
+  $ |f^{(n)}(x)| \leq M $.
+
+  Atunci pentru orice $ x_0 \in (a,b) $, seria Taylor a lui $ f $ în jurul
+  punctului $ x_0 $ este uniform convergentă pe $ [a,b] $ și suma ei este
+  funcția $ f $, adică avem:
+  \[
+    f(x) = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n, \quad %
+    \forall x \in [a,b].
+  \]
+\end{theorem}
+
+Pentru cazul particular $ x_0 = 0 $, seria se numește \emph{Maclaurin}.
+\index{serii!Maclaurin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de puteri}
+
+Seriile de puteri sînt un caz particular al seriilor de funcții, luînd doar
+funcții de tip polinomial.
+
+\begin{definition}\label{def:serii-puteri}
+  \index{serii!puteri}
+  Fie $ (a_n) $ un șir de numere reale și fie $ a \in \RR $.
+
+  Seria $ \sum_{n \geq 0} a_n(x - a)^n $ se numește \emph{seria de puteri %
+  centrată în $ a $}, definită de șirul $ a_n $.
+\end{definition}
+
+Toate rezultatele privitoare la serii de funcții sînt valabile
+și pentru serii de puteri. Rezultatele specifice urmează.
+
+\begin{theorem}[Abel]\label{thm:abel-s-put}
+  \index{serii!puteri!Abel}
+  Pentru orice serie de puteri $ \sum a_n x^n $ există un număr
+  $ 0 \leq R \leq \infty $ astfel încît:
+  \begin{itemize}
+  \item Seria este absolut convergentă pe intervalul $ (-R, R) $;
+  \item Seria este divergentă pentru orice $ |x| > R $;
+  \item Seria este uniform convergentă pe $ [-r, r] $, unde $ 0 < r < R $.
+  \end{itemize}
+
+  Numărul $ R $ se numește \emph{raza de convergență} a seriei, iar
+  intervalul $ (-R, R) $ se numește \emph{intervalul de convergență}.
+\end{theorem}
+
+Calculul razei de convergență se poate face cu unul dintre următoarele criterii:
+
+\begin{theorem}[Cauchy-Hadamard]\label{thm:c-h-raza}
+  \index{serii!puteri!Cauchy-Hadamard}
+  Fie $ \sum a_n x^n $ o serie de puteri, $ R $ raza sa de
+  convergență și definim:
+  \[
+    \omega = \lim \sup \sqrt[n]{|a_n|}.
+  \]
+  Atunci:
+  \begin{itemize}
+  \item $ R = \omega^{-1} $ dacă $ 0 < \omega < \infty $;
+  \item $ R = 0 $ dacă $ \omega = \infty $;
+  \item $ R = \infty $ dacă $ \omega = 0 $.
+  \end{itemize}
+\end{theorem}
+
+\begin{theorem}\label{thm:raport-raza}
+  \index{serii!puteri!raport}
+  Raza de convergență se poate calcula cu formula:
+  \[
+    R = \lim_{n \to \infty} \frac{|a_n|}{|a_{n+1}|}.
+  \]
+\end{theorem}
+
+\begin{remark}\label{rk:transfer-puteri}
+  Din natura seriilor de puteri, teoremele de derivare și integrare termen
+  cu termen sînt automate. Așadar, dacă $ \sum a_n (x - a)^n $ este o
+  serie de puteri iar $ S(x) $ este suma sa, atunci:
+  \begin{itemize}
+  \item Seria derivatelor, $ \sum na_n(x - a)^{n-1} $, are aceeași rază de
+    convergență cu seria inițială, iar suma sa este $ S'(x) $;
+  \item Seria primitivelor, $ \sum a_n \dfrac{(x - a)^{n+1}}{n+1} $,
+    are aceeași rază de convergență cu seria inițială, iar suma sa este o
+    primitivă a lui $ S $.
+  \end{itemize}
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Să se studieze convergența punctuală și uniformă a șirurilor de funcții:
+\begin{enumerate}[(a)]
+\item $ f_n : (0, 1) \to \RR, f_n(x) = \dfrac{1}{nx + 1}, n \geq 0 $;
+\item $ f_n : [0, 1] \to \RR, f_n(x) = x^n - x^{2n}, n \geq 0 $;
+\item $ f_n : \RR \to \RR, f_n(x) = \sqrt{x^2 + \dfrac{1}{n^2}}, n > 0 $;
+\item $ f_n : [-1,1] \to \RR, f_n(x) = \dfrac{x}{1 + nx^2} $;
+\item $ f_n : (-1, 1) \to \RR, f_n(x) = \dfrac{1 - x^n}{1 - x} $;
+\item $ f_n : [0, 1] \to \RR, f_n(x) = \dfrac{2nx}{1 + n^2 x^2} $;
+\item $ f_n : \RR_+ \to \RR, f_n(x) = \dfrac{x + n}{x + n + 1} $;
+\item $ f_n : \RR_+ \to \RR, f_n(x) = \dfrac{x}{1 + nx^2} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se arate că șirul de funcții dat de:
+\[
+  f_n : \RR \to \RR, \quad f_n(x) = \frac{1}{n} \arctan x^n
+\]
+converge uniform pe $ \RR $, dar:
+\[
+  \Big( \lim_{n \to \infty} f_n(x) \Big)'_{x = 1} \neq \lim_{n \to \infty} f'_n(1).
+\]
+
+Rezultatele diferă deoarece șirul derivatelor nu converge uniform pe $ \RR $.
+
+\vspace{1cm}
+
+3. Să se arate că șirul de funcții dat de:
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = nxe^{-nx^2}
+\]
+este convergent, dar:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) dx \neq \int_0^1 \lim_{n \to \infty} f_n(x) dx.
+\]
+Rezultatul se explică prin faptul că șirul nu este uniform convergent.
+De exemplu, pentru $ x_n = \dfrac{1}{n} $, avem $ f_n(x_n) \to 1 $, dar,
+în general, $ f_n(x) \to 0 $.
+
+\vspace{1cm}
+
+4. Să se dezvolte următoarele funcții în serie Maclaurin, precizînd și
+domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $ f(x) = e^x $;
+\item $ f(x) = \sin x $;
+\item $ f(x) = \cos x $;
+\item $ f(x) = (1 + x)^\alpha, \alpha \in \RR $;
+\item $ f(x) = \dfrac{1}{1 + x} $;
+\item $ f(x) = \ln(1 + x) $;
+\item $ f(x) = \arctan x $;
+\item $ f(x) = \ln(1 + 5x)$;
+\item $ f(x) = 3 \ln(2 + 3x) $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+5. Să se calculeze raza de convergență și mulțimea de convergență pentru
+următoarele serii de puteri:
+\begin{enumerate}[(a)]
+\item $ \sum_{n \geq 0} x^n $;
+\item $ \sum_{n \geq 1} n^n x^n $;
+\item $ \sum_{n \geq 1} (-1)^{n+1} \dfrac{x^n}{n} $;
+\item $ \sum_{n \geq 1} \dfrac{n^nx^n}{n!} $;
+\item $ \sum \dfrac{(x - 1)^{2n}}{n \cdot 9^n} $;
+\item $ \sum \dfrac{(x + 3)^n}{n^2} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Găsiți mulțimea de convergență și suma seriei:
+\[
+  \sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1}.
+\]
+\emph{Indicație}: Se derivează termen cu termen și rezultă seria
+geometrică de rază $ -x^2 $, căreia i se poate calcula suma, care apoi
+se integrează.
+
+\vspace{1cm}
+
+7. Să se calculeze cu o eroare mai mică decît $ 10^{-3}$ integralele:
+\begin{enumerate}[(a)]
+\item $ \ds\int_0^{\frac{1}{2}} \dfrac{\sin x}{x} dx $;
+\item $ \ds\int_0^{\frac{1}{2}} \dfrac{\ln(1 + x)}{x} dx $;
+\item $ \ds\int_0^1 e^{-x^2} dx $.
+\end{enumerate}
+
+
+\vspace{1cm}
+
+8. Să se calculeze polinomul Taylor de grad 3 în jurul originii
+pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x) = 3 \ln(2 + x) $;
+\item $ f(x) = \arctan x $;
+\item $ f(x) = \sqrt{1 + 2x} $.
+\end{enumerate}
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-18-19"
+%%% End:

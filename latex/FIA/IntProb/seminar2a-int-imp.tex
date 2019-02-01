@@ -1,0 +1,542 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 2 \\ Integrale improprii}}
+\end{center}
+
+
+\vspace{2cm}
+
+
+\section{Recapitulare --- Integrale Riemann}
+
+Calculați:
+\begin{multicols}{2}
+  \begin{enumerate}[(a)]
+  \item $\ds\int \frac{2x + 1}{\sqrt{x^2 - 16}} dx, x > 4$;
+  \item $\ds\int \frac{2x - 5}{x^2 - 5x + 7} dx$;
+  \item $\ds\int \frac{x - 1}{3x^2 - 6x + 11} dx$;
+  \item $\ds\int \frac{2x}{x^4 - 1} dx, x \in (-1, 1)$;
+  \item $\ds\int \arcsin x dx$;
+  \item $\ds\int_1^{\sqrt{e}} x \log_3 x dx$;
+  \item $\ds\int_1^e \sin(\ln x) dx$;
+  \item $\ds\int_0^{\frac{1}{\sqrt{2}}} \frac{3 - 2x}{2x^2 + 1} dx$;
+  \item $\ds\int_1^e \frac{\ln x}{x(2 + \ln x)} dx$;
+  \end{enumerate}
+\end{multicols}
+
+Indicații:
+\begin{itemize}
+\item $\ds\int \frac{dx}{x^2 + a^2} = \frac{1}{a} \arctan \frac{x}{a} + c$;
+\item $\ds\int \frac{dx}{x^2 - a^2} = \frac{1}{2a} \ln \Big| \frac{x - a}{x + a} \Big| + c$;
+\item $\ds\int \frac{dx}{\sqrt{x^2 + a^2}} = \ln(x + \sqrt{x^2 + a^2}) + c$;
+\item $\ds\int \frac{dx}{\sqrt{x^2 - a^2}} = \ln|x + \sqrt{x^2 - a^2}| + c$;
+\item $\ds\int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}{a} + c$;
+\item $\ds\int \frac{-dx}{\sqrt{a^2 - x^2}} = \arccos \frac{x}{a} + c$;
+\end{itemize}
+
+
+\section{Integrale improprii. Criterii de convergență}
+\label{sec:int-imp}
+
+Integralele improprii reprezintă cazul în care funcția care se integrează
+nu este mărginită la cel puțin unul dintre capetele domeniului de integrare.
+
+Fie $a, b \in \RR$ și $f : [a, b) \to \RR$ o funcție \emph{local integrabilă}
+(i.e.\ integrabilă pe orice interval compact $[u, v] \seq [a, b)$).
+
+Integrala improprie (în $b$) $\ds\int_a^b f(x) dx$ se numește \emph{convergentă}
+dacă limita:
+\[
+  \lim_{t \to b} \int_a^t f(x) dx
+\]
+există și este finită. Valoarea limitei este valoarea integralei. În caz contrar,
+integrala se numește \emph{divergentă}.
+
+Dacă $f : [a, \infty) \to \RR$ este local integrabilă, atunci integrala
+improprie (la $\infty$) $\ds\int_a^\infty f(x) dx$ se numește \emph{convergentă}
+dacă limita:
+\[
+  \lim_{t \to \infty} \int_a^t f(x) dx
+\]
+există și este finită. Valoarea limitei este egală cu valoarea integralei.
+
+Integrala improprie $\ds\int_a^b f(x) dx$ se numește \emph{absolut convergentă}
+dacă integrala $\ds\int_a^b |f(x)| dx$ este convergentă.
+
+Criteriile de convergență pentru integralele improprii sînt foarte asemănătoare
+cu cele pentru serii (amintiți-vă, că, de fapt, integralele definite se construiesc
+cu ajutorul sumelor infinite, adică serii, v.\ \emph{sumele Riemann}).
+
+Așadar, avem:
+
+\textbf{Criteriul lui Cauchy} (general): Fie $f:[a, b) \to \RR$ local integrabilă.
+Atunci integrala $\ds\int_a^b f(t) dt$ este convergentă dacă și numai dacă:
+\[
+  \forall \varepsilon > 0, \exists b_\varepsilon \in [a, b) \ai %
+  \forall x, y \in (b_\varepsilon, b), \big| \int_x^y f(t) dt \big| < \varepsilon.
+\]
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație} (\qq{termen cu termen}): Fie $f, g : [a, b) \to \RR$
+astfel încît $0 \leq f \leq g$.
+\begin{itemize}
+\item Dacă $\ds\int_a^b g(x) dx$ este convergentă, atunci și integrala
+  $\ds\int_a^b f(x) dx$ este convergentă;
+\item Dacă integrala $\ds\int_a^b f(x) dx$ este divergentă, atunci și integrala
+  $\ds\int_a^b g(x) dx$ este divergentă.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație la limită}: Fie $f, g : [a, b) \to [0, \infty)$,
+astfel încît să existe limita:
+\[
+  \ell = \lim_{x \to b} \frac{f(x)}{g(x)}.
+\]
+\begin{itemize}
+\item Dacă $\ell \in [0, \infty)$, iar $\ds\int_a^b g(x) dx$ este convergentă,
+  atunci $\ds\int_a^b f(x) dx$ este convergentă;
+\item Dacă $\ell \in (0, \infty)$ sau $\ell = \infty$, iar $\ds\int_a^b g(x) dx$
+  este divergentă, atunci și $\ds\int_a^b f(x) dx$ este divergentă.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație cu $\frac{1}{x^\alpha}$}:
+Fie $a \in \RR$ și $f : [a, \infty) \to [0, \infty)$ local integrabilă, astfel
+încît să existe:
+\[
+  \ell = \lim_{x \to \infty} x^\alpha f(x).
+\]
+\begin{itemize}
+\item Dacă $\alpha > 1$ și $0 \leq \ell < \infty$, atunci $\ds\int_a^\infty f(x) dx$
+  este convergentă;
+\item Dacă $\alpha \leq 1$, iar $0 < \ell \leq \infty$, atunci $\ds\int_a^\infty f(x) dx$
+  este divergentă.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație cu $\frac{1}{(b - x)^\alpha}$}: Fie $a < b$ și
+$f : [a, b) \to [0, \infty)$, local integrabilă, astfel încît să existe:
+\[
+  \ell = \lim_{x \to b} (b - x)^\alpha f(x).
+\]
+\begin{itemize}
+\item Dacă $\alpha < 1$ și $0 \leq \ell < \infty$, atunci $\ds\int_a^b f(x) dx$
+  este convergentă;
+\item Dacă $\alpha \geq 1$ și $0 < \ell \leq \infty$, atunci $\ds\int_a^b f(x) dx$
+  este divergentă.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Criteriul lui Abel}: Fie $f, g : [a, \infty) \to \RR$, cu proprietățile:
+\begin{itemize}
+\item $f$ este de clasă $\kal{C}^1$, $\ds\lim_{x \to \infty} f(x) = 0$, iar
+  $\ds\int_a^\infty f'(x) dx$ este absolut convergentă;
+\item $g$ este continuă, iar $G(x) = \ds\int_a^x f(t) dt$ este mărginită pe
+  $[a, \infty)$.
+\end{itemize}
+Atunci integrala $\ds\int_a^\infty f(x) g(x) dx$ este convergentă.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pe scurt --- Convergența integralelor improprii}
+
+
+Fie $f, g : [a, b) \to \RR$, cu $b \in \overline{\RR}$, funcții local integrabile,
+pozitive, cu $0 \leq f(x) \leq g(x), \forall x$.
+
+\textbf{Criteriul de comparație cu inegalități}:
+\begin{enumerate}[(a)]
+\item Dacă $\ds\int_a^b g(x) dx$ este convergentă $\Rightarrow \ds\int_a^b f(x) dx$ este
+  convergentă;
+\item Dacă $\ds\int_a^b g(x) dx$ este divergentă $\Rightarrow \ds\int_a^b f(x) dx$ este
+  divergentă.
+\end{enumerate}
+
+\textbf{Criteriul de comparație la limită}: Dacă există limita:
+\[
+  \ds\lim_{x \nearrow b} \frac{f(x)}{g(x)} = L,
+\]
+atunci:
+\begin{enumerate}[(a)]
+\item Dacă $L \in [0, \infty)$ și $\ds\int_a^b g(x)dx$ este convergentă, atunci
+  $\ds\int_a^b f(x) dx$ este convergentă;
+\item Dacă $L \in (0, \infty]$ și $\ds\int_a^b g(x) dx$ este divergentă, atunci
+  $\ds\int_a^b f(x) dx$ este divergentă.
+\end{enumerate}
+
+\textbf{Cum alegem funcția $g$ ?}
+\begin{itemize}
+\item Pentru $[a, \infty)$, luăm $g(x) = \frac{1}{x^\alpha}$;
+\item Pentru $(-\infty, a]$, luăm $g(x) = \frac{1}{(-x)^\alpha}$
+  \begin{center}
+    $\ds\int_a^b g(x) dx$ convergentă pentru $\alpha > 1$ și divergentă pentru $\alpha \leq 1$;
+  \end{center}
+\item Pentru $[a, b)$, luăm $g(x) = \frac{1}{(b - x)^\alpha}$;
+\item Pentru $(a, b]$, luăm $g(x) = \frac{1}{(x - a)^\alpha}$;
+  \begin{center}
+    $\ds\int_a^b g(x) dx$ convergentă pentru $\alpha < 1$ și divergentă pentru $\alpha \geq 1$;
+  \end{center}
+\item Pentru $(-\infty, \infty)$, descompunem integrala după $a \in \RR$ fixat și lucrăm
+  pe $(-\infty, a]$, apoi pe $[a, \infty)$.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Integrale cu parametri}
+\label{sec:int-param}
+
+Fie $A \neq \vid$ și $[a, b] \seq \RR$ un interval compact. Considerăm funcția
+$f : [a, b] \times A \to \RR$, astfel încît, pentru orice $y \in A$, funcția
+$[a, b] \ni x \mapsto f(x, y) \in \RR$ să fie integrabilă Riemann.
+
+Funcția definită prin:
+\[
+  F : A \to \RR, \quad F(y) = \int_a^b f(x, y) dx
+\]
+se numește \emph{integrală cu parametru}.
+
+Proprietățile pe care le vom utiliza sînt cele de mai jos.
+
+\textbf{Continuitate}: Dacă $f : [a, b] \times A \to \RR$ este continuă, atunci
+integrala cu parametru $F(y)$ definită mai sus este funcție continuă.
+
+\vspace{1cm}
+
+\textbf{Formula de derivare (Leibniz)}: Fie $f : [a, b] \times (c, d) \to \RR$
+o funcție continuă, astfel încît derivata parțială $\frac{\partial f}{\partial y}$
+există și este continuă pe $[a, b] \times (c, d)$. Atunci integrala cu parametru
+$F(y)$ definită mai sus este derivabilă și are loc:
+\[
+  F'(y) = \int_a^b \frac{\partial f}{\partial y}(x, y) dx, \forall y \in (c, d).
+\]
+
+\vspace{1cm}
+
+\textbf{Formula generală de derivare:} Dacă $f : [a, b] \times (c, d) \to \RR$
+este o funcție continuă, astfel încît derivata parțială $\frac{\partial f}{\partial y}$
+să existe și să fie continuă pe $[a, b] \times (c, d)$, definim
+$\varphi, \psi : (c, d) \to [a, b)$ două funcții de clasă $\kal{C}^1$.
+
+Atunci funcția $G(y) = \int_{\varphi(y)}^{\psi(y)} f(x, y) dx$ este derivabilă
+și are loc formula de derivare:
+\[
+  G'(y) = \int_{\varphi(y)}^{\psi(y)} \frac{\partial f}{\partial y}(x, y) dx + %
+  f(\varphi(y), y) \psi'(y) - f(\varphi(y), y) \varphi'(y), \forall y \in (c, d).
+\]
+
+\vspace{1cm}
+
+\textbf{Schimbarea ordinii de integrare:} Dacă $f: [a, b] \times [c, d] \to \RR$
+este o funcție continuă, atunci are loc:
+\[
+  \int_a^b \Big( \int_c^d f(x, y) dy \Big) dx = %
+  \int_c^d \Big( \int_a^b f(x, y) dx \Big) dy.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integrale improprii cu parametri}
+\label{sec:int-imp-par}
+
+Putem considera acum integrale improprii, definite cu parametri, astfel.
+Luăm o funcție $f : [a, b) \times A \to \RR$, astfel încît pentru orice $y \in A$,
+aplicația $[a, b) \ni x \mapsto f(x, y) \in \RR$ este local integrabilă și integrala
+$\ds\int_a^b f(x, y) dx$ converge. Atunci putem defini funcția:
+\[
+  F(x,y) = \int_a^b f(x, y) dx,
+\]
+care se numește \emph{integrală improprie cu parametru}.
+
+\begin{definition}\label{def:uc}
+  Integrala $F(x, y)$ de mai sus se numește \emph{uniform convergentă} (UC) (în raport cu $y$)
+  pe mulțimea $A$ dacă:
+  \[
+    \forall \varepsilon > 0, \exists b_\varepsilon \in (a, b) \ai %
+    \Big| \int_t^b f(x, y) dx \Big| < \varepsilon, \forall t \in (b_\varepsilon, b), %
+    \forall y \in A.
+  \]
+\end{definition}
+
+Pentru aceste integrale, se pot adapta proprietățile integralelor cu parametri
+din secțiunea anterioară:
+
+\textbf{Continuitate}: Dacă $f : [a, b) \times A \to \RR$ este continuă, iar
+integrala $\ds\int_a^b f(x, y) dx$ este UC pe $A$, atunci funcția $F(x,y)$
+definită mai sus este continuă.
+
+\vspace{1cm}
+
+\textbf{Derivare}: Fie $f: [a, b) \times (c, d) \to \RR$ o funcție continuă, astfel
+încît derivata parțială $\frac{\partial f}{\partial y}$ există și este continuă pe
+$[a, b) \times (c, d)$ și pentru orice $y \in (c, d)$ fixat, integrala
+$F(y) = \ds\int_a^b f(x,y) dx$ este convergentă.
+
+Dacă integrala $\ds\int_a^b \frac{\partial f}{\partial y}(x, y) dx$ este UC
+pe $(c, d)$, atunci integrala improprie cu parametru $F(y)$ de mai sus este
+derivabilă și are loc:
+\[
+  F'(y) = \int_a^b \frac{\partial f}{\partial y}(x, y) dx, \forall y \in (c, d).
+\]
+
+\vspace{1cm}
+
+\textbf{Schimbarea ordinii de integrare}: Dacă $f : [a, b) \times [c, d] \to \RR$
+este continuă și integrala $F(y) = \ds\int_a^b f(x, y) dx$ este UC pe $(c, d)$,
+atunci are loc:
+\[
+  \int_c^d \Big( \int_a^b f(x, y) dx \Big) dy = %
+  \int_a^b \Big( \int_c^d f(x, y) dy \Big) dx.
+\]
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație pentru UC}: Fie $f: [a, b) \times A \to \RR$ o
+funcție cu proprietatea că, pentru orice $y \in A$, aplicația
+$[a, b) \ni x \mapsto f(x, y) \in \RR$ este local integrabilă. Fie $g : [a, b) \to \RR$,
+astfel încît $|f(x, y)| \leq g(x), \forall x \in [a, b), \forall y \in A$.
+
+Dacă integrala $\ds\int_a^b g(x) dx$ este convergentă, atunci integrala
+$\ds\int_a^b f(x, y) dx$ este UC.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Funcțiile lui Euler}
+\label{subsec:f-euler}
+
+Următoarele integrale improprii cu parametri se numesc \emph{funcțiile lui Euler}:
+\begin{align*}
+  \Gamma(\alpha) &= \int_0^\infty x^{\alpha - 1} e^{-x} dx, \alpha > 0 \\
+  B(p, q) &= \int_0^1 x^{p-1} (1 - x)^{q - 1} dx, p > 0, q > 0.
+\end{align*}
+
+Proprietățile lor, pe care le vom utiliza în calcule, sînt:
+\begin{itemize}
+\item $B(p, q) = B(q, p)$;
+\item $B(p, q) = \frac{\Gamma(p)\Gamma(q)}{\Gamma(p + q)}$;
+\item $B(p, q) = \ds\int_0^\infty \frac{y^{p-1}}{(1 + y)^{p + q}} dy$;
+\item $\Gamma(1) = 1$;
+\item $\Gamma(\alpha + 1) = \alpha \cdot \Gamma(\alpha)$;
+\item $\Gamma(n) = (n - 1)!, \forall n \in \NN$;
+\item $\Gamma\big( \frac{1}{2} \big) = \sqrt{\pi}$;
+\item $\Gamma\big( n + \frac{1}{2} \big) = (2n - 1)!! \cdot 2^{-n} \cdot \sqrt{\pi}, %
+  \forall n \in \NN$;
+\item $\Gamma(\alpha) \Gamma(1 - \alpha) = \frac{\pi}{\sin(\alpha \pi)}, %
+  \forall \alpha \in (0, 1)$.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Folosind criteriile de comparație, să se studieze natura integralelor improprii:
+\begin{enumerate}[(a)]
+	\item $\ds\int_1^\infty \frac{dx}{\sqrt{x^2 + 1}}$ \hfill(D);
+	\item $\ds\int_0^1 \frac{x^2}{\sqrt{1 - x^2}} dx$ \hfill(C);
+	\item $\ds\int_0^1 \frac{\sin x}{1 - x^2} dx$ \hfill(D);
+	\item $\ds\int_1^\infty \frac{x}{\sqrt{x^3 - 1}} dx$ \hfill(C $x = 1$, D
+	  $x \to \infty \Rightarrow$ D);
+	\item $\ds\int_1^\infty \frac{dx}{x \sqrt{x} - 1}$ \hfill (C $x \to \infty$, D $x \to 1$);
+	\item $\ds\int_1^\infty \frac{\ln x}{\sqrt{x^3 - 1}} dx$ \hfill(C);
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se arate că integrala $\ds\int_0^\infty \frac{\sin x}{x} dx$ este convergentă,
+dar nu este absolut convergentă.
+
+\emph{Indicație:} Pentru $x \to \infty$, convergența rezultă din criteriul
+lui Abel. Pentru $x = 0$, putem prelungi funcția prin continuitate, deoarece
+limita sa este finită.
+
+Pentru AC, se aplică criteriul de comparație.
+
+\vspace{1cm}
+
+3. Să se calculeze integralele, folosind derivarea sub integrală:
+\begin{enumerate}[(a)]
+\item $I(m) = \ds\int_0^{\frac{\pi}{2}} \ln(\cos^2 x + m^2 \sin^2 x) dx, m > 0$;
+\item $I(a) = \ds\int_0^{\frac{\pi}{2}} \frac{\ln(1 + a \cos x)}{\cos x} dx, |a| < 1$;
+\end{enumerate}
+
+\emph{Soluție (a):} Dacă considerăm funcția:
+\[
+  f(x, m) = \ln(\cos^2 x + m^2 \sin^2 x),
+\]
+observăm că este continuă și admite o derivată parțială continuă în raport cu $m$.
+
+Atunci obținem:
+\[
+  \frac{\partial f}{\partial m} = I'(m) = 2m \int_0^{\frac{\pi}{2}} %
+  \frac{\sin^2 x}{\cos^2 x + m^2 \sin^2 x} dx
+\]
+
+Pentru a calcula integrala, facem schimbarea de variabilă $\tan x = t$ și atunci:
+\[
+  dt = \frac{1}{\cos^2 x} dx.
+\]
+
+Integrala inițială se poate prelucra:
+\[
+  I'(m) = 2m \int_0^{\frac{\pi}{2}} \frac{\sin^2 x}{cos^2 x(1 + m^2 \tan^2 x)} dx.
+\]
+Așadar, pentru a obține $\sin^2 x$ în funcție de $t$ calculăm:
+\[
+  \frac{\sin^2 x}{1 - \sin^2 x} = t^2 \Rightarrow \sin^2 x = \frac{t^2}{1 + t^2}.
+\]
+
+În fine, integrala devine:
+\[
+  I'(m) = 2m \int_0^\infty \frac{t^2}{(1 + m^2 t^2)(1 + t^2)} dt.
+\]
+Făcînd descompunerea în fracții simple, obținem:
+\[
+  \frac{t^2}{(1 + m^2 t^2)(1 + t^2)} = \frac{1}{m^2 - 1} \Big( \frac{1}{t^2 + 1} - %
+  \frac{1}{m^2 t^2 + 1} \Big).
+\]
+și calculăm în fine integrala $I'(m) = \frac{\pi}{m + 1}$. Integrăm și găsim
+$I(m) = \pi \ln(m + 1) + c$. Deoarece $I(1) = 0$, rezultă $c = -\pi \ln 2$
+și, în fine:
+\[
+  I(m) = \pi \ln \frac{m + 1}{2}.
+\]
+
+\vspace{1cm}
+
+Indicație (b): Derivăm în raport cu $a$ sub integrală și apoi integrăm cu schimbarea de variabilă
+$\tan \frac{x}{2} = t$.
+
+\vspace{1cm}
+
+4. Să se calculeze, folosind funcțiile $\Gamma$ și $B$, integralele:
+\begin{enumerate}[(a)]
+\item $\ds\int_0^\infty e^{-x^p} dx, p > 0$;
+\item $\ds\int_0^{\infty} \frac{x^{\frac{1}{4}}}{(x + 1)^2} dx$;
+\item $\ds\int_0^\infty \frac{dx}{x^3 + 1} dx$;
+\item $\ds\int_0^{\frac{\pi}{2}} \sin^p x \cos^q x dx, p > -1, q > - 1$;
+\item $\ds\int_0^1 x^{p+1}(1-x^m)^{q - 1} dx, p, q, m > 0$;
+\item $\ds\int_0^\infty x^p e^{-x^q} dx, p > -1, q > 0$;
+\item $\ds\int_0^1 \ln^p x^{-1} dx, p > -1$;
+\item $\ds\int_0^1 \frac{dx}{(1 - x^n)^{\frac{1}{n}}}, n \in \NN$.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Facem schimbarea de variabilă $x^p = y$ și obținem $\Gamma\Big(\frac{1}{p} + 1\Big)$;
+\item Folosind proprietățile, obținem $B \Big( \frac{5}{4}, \frac{3}{4} \Big)$, pe care
+  îl scriem în funcție de $\Gamma$. Răspuns: $\frac{\pi \sqrt{2}}{4}$;
+\item Facem schimbarea de variabilă $x^3 = y$ și găsim
+  $\frac{1}{3} B \Big( \frac{1}{3}, \frac{2}{3} \Big)$;
+\item Facem schimbarea de variabilă $\sin^2 x = y$ și scriem în funcție de $B$;
+\item $x^m = y$ și scriem în funcție de $B$
+\item $x^q = y$ și scriem în funcție de $\Gamma$;
+\item $\ln x^{-1} = y$ și scriem în funcție de $\Gamma$;
+\item $x^n = y$ și scriem în funcție de $B$.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,305 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} M1-ACS, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 10 \\ Integrale duble și triple}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Măsură și integrală Lebesgue}
+\label{sec:int-leb}
+
+Ideea integrării în mai multe dimensiuni pornește cu o redefinire a conceptului
+de \emph{măsură}. Dacă în plan, integrala Riemann permitea calculul de lungimi,
+arii și volume pentru funcții de o variabilă, într-un spațiu multidimensional,
+este necesară adaptarea măsurii respective, i.e.\ a funcției cu ajutorul căreia
+exprimăm ``cantități măsurabile''. Acestea vor fi generalizări ale conceptelor
+de tip \emph{lungime, arie, volum}, în sensul că, în cazul particular al două
+sau trei dimensiuni, vor coincide cu intuiția geometrică.
+
+Fără a intra în detalii suplimentare, menționăm că măsura care se utilizează
+în acest caz, al problemelor din $\RR^n$, se numește \textbf{măsura Lebesgue}.
+
+În particular, \emph{elementul de lungime} față de măsura Lebesgue, va fi notat
+$dl$ sau $dx$, \emph{elementul de arie}, cu $dA = dx dy$, iar elementul de volum,
+$dV = dxdydz$ (sau corespunzător unor eventuale schimbări de coordonate).
+
+Față de măsura Lebesgue, putem defini \emph{integrala Lebesgue} din $\RR^k$, pe
+o submulțime $A \seq \RR^k$, pe care o vom nota prin:
+\[
+  \int_A f(x_1, \dots, x_k) dx_1 dx_2 \cdots dx_k.
+\]
+
+În cazurile particulare $k = 1, 2, 3$, vom folosi notațiile uzuale:
+\[
+  \int_A f(x) dx, \quad \iint_A f(x, y) dx dy, \quad \iiint_A f(x, y, z) dx dy dz.
+\]
+
+Următorul rezultat ne arată că putem inversa ordinea de integrare:
+
+\begin{theorem}[Fubini]\label{thm:fubini}
+  Fie $(x, y) \in \RR^{k + p}$ un punct oarecare, notăm măsura Lebesgue din $\RR^k$
+  cu $dx$, măsura Lebesgue din $\RR^p$ cu $dy$, iar măsura Lebesgue din $\RR^{k + p}$
+  cu $dx dy$.
+
+  Fie $f : \RR^{k + p} \to \RR$ o funcție integrabilă Lebesgue. Atunci are loc:
+  \[
+    \int_{\RR^k} \Big( \int_{\RR^p} f(x, y) dy \Big) dx = %
+    \iint_{\RR^{k+p}} f(x, y) dx dy = %
+    \int_{\RR^p} \Big( \int_{\RR^k} f(x, y) dx \Big) dy.
+  \]
+\end{theorem}
+
+Următoarele aplicații ale teoremei vor fi utile în exerciții.
+
+(1) Fie $\varphi, \psi : [a, b] \to \RR$ două funcții continue astfel încît
+$\varphi \leq \psi$ și fie mulțimea:
+\[
+  K = \{(x, y) \in \RR^2 \mid x \in [a, b], \varphi(x) \leq y \leq \psi(x) \}.
+\]
+
+Fie $f : K \to \RR$ o funcție continuă. Atunci $f$ este integrabilă Lebesgue
+pe $K$ și are loc:
+\[
+  \iint_K f(x, y) dx dy = \int_a^b \Big( \int_{\varphi(x)}^{\psi(x)} f(x, y) dy \Big) dx.
+\]
+
+În particular, putem calcula \emph{aria mulțimi} $K$ cu funcția identitate:
+\[
+  \mu(K) = \iint_K dx dy = \int_a^b (\psi(x) - \varphi(x)) dx.
+\]
+
+(2) Fie acum $D \seq \RR^2$ o mulțime compactă și fie $\varphi, \psi : D \to \RR$
+două funcții continue, cu $\varphi \leq \psi$. Considerăm mulțimea:
+\[
+  \Omega = \{ (x, y, z) \in \RR^3 \mid (x, y) \in D, \varphi(x, y) \leq z \leq \psi(x, y) \}.
+\]
+
+Fie $f : \Omega \to \RR$ o funcție continuă. Atunci $f$ este integrabilă Lebesgue
+pe $\Omega$ și are loc:
+\[
+  \iiint_\Omega f(x, y, z) dx dy dz = \iint_D \Big( \int_{\varphi(x, y)}^{\psi(x, y)} %
+  f(x, y, z) dz \Big) dx dy.
+\]
+
+În particular, putem calcula \emph{volumul mulțimii} $\Omega$ cu funcția identitate:
+\[
+  \mu(\Omega) = \iiint_\Omega dx dy dz = \iint_D (\psi(x, y) - \varphi(x, y)) dx dy.
+\]
+
+Atunci cînd vrem să calculăm o integrală cu \emph{metoda schimbării de variabile},
+teorema următoare ne arată procedura:
+
+\begin{theorem}[Schimbare de variabile]\label{thm:sch-var}
+  Fie $A \seq \RR^n$ o mulțime deschisă și fie $\varphi$ un \emph{difeomorfism} \footnote{%
+    aplicație continuă și bijectivă, cu inversa continuă} al lui $A$. Pentru orice
+  funcție continuă $f : \varphi(A) \to \RR$, are loc:
+  \[
+    \int_{\varphi(A)} f(x) dx = \int_A (f \circ \varphi)(y) \cdot |J_\varphi (y)| dy,
+  \]
+  unde $J_\varphi$ este jacobianul difeomorfismului $\varphi$.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Să se calculeze următoarele integrale duble:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D xy^2 dx dy$, unde $D = [0, 1] \times [2, 3]$;
+\item $\ds\iint_D xy dx dy$, unde $D = \{(x, y) \in \RR^2 \mid y \in [0, 1], y^2 \leq x \leq y \}$;
+\item $\ds\iint_D y dxdy$, unde $D = \{(x, y) \in \RR^2 \mid (x - 2)^2 + y^2 \leq 1\}$.
+\end{enumerate}
+
+\emph{Indicații:} Integralele duble se pot gîndi ca \emph{integrale succesive}, adică:
+\[
+  \iint_D xy^2 dx dy = \int_0^1 \int_2^3 xy^2 dy dx = \int_0^1 \Big( \int_2^3 xy^2 dy \Big) dx.
+\]
+
+\vspace{1cm}
+
+2. Să se calculeze integralele duble:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D (x + 3y) dx dy$, unde $D$ este mulțimea plană mărginită de
+  curbele de ecuații:
+  \[
+    y = x^2 + 1, \quad y = -x^2, \quad x = -1, \quad x = 3.
+  \]
+\item $\ds\iint_D e^{|x + y|} dx dy$, unde $D$ este mulțimea plană mărginită de
+  curbele de ecuații:
+  \[
+    x + y = 3, \quad x + y = -3, \quad y = 0, \quad y = 3.
+  \]
+\item $\ds\iint_D xdxdy$, unde $D$ este mulțimea plană mărginită de:
+  \[
+    x^2 + y^2 = 9, \quad x \geq 0.
+  \]
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item $\ds\iint_D (x + 3y) dx dy = \ds\int_{-1}^3 dx \ds\int_{-x^2}^{x^2 + 1} (x + 3y) dy$;
+\item Pentru explicitarea modulului, considerăm $D_1 = \{(x, y) \in D \mid x + y \leq 0 \}$
+  și $D_2 = D - D_1$. Atunci avem:
+  \begin{align*}
+    \iint_D e^{|x + y|} dx dy &= \iint_{D_1} e^{-x-y} dx dy + \iint_{D_2} e^{x+y} dx dy \\
+                              &= \int_0^3 dy \int_{-3-y}^{-y} e^{-x - y} dx + %
+                                \int_0^3 dy \int_{-y}^{3 - y} e^{x + y} dx.
+  \end{align*}
+\item $\ds\iint_D xdxdy = \int_{-3}^3 dy \int_0^{\sqrt{9 - y^2}} xdx$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Folosind coordonatele polare, să se calculeze:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D e^{x^2 + y^2} dx dy$, unde $D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \}$;
+\item $\ds\iint_D \big( 1 + \sqrt{x^2 + y^2} \big) dx dy$, pe mulțimea:
+  \[
+    D = \{(x, y) \in \RR^2 \mid x^2 + y^2 - y \leq 0, x \geq 0\}.
+  \]
+\item $\ds\iint_D \ln(1 + x^2 + y^2) dx dy$, unde $D$ este mărginit de:
+  \[
+    x^2 + y^2 = e^2, \quad y = x \sqrt{3}, \quad x = y\sqrt{3}, \quad x \geq 0.
+  \]
+\end{enumerate}
+
+\emph{Indicație:} Coordonatele polare sînt $x = r \cos \theta, y = r \sin \theta$,
+jacobianul este $r$, iar domeniul maxim de definiție este:
+\[
+  (r, \theta) \in [0, \infty) \times [0, 2\pi).
+\]
+
+(b) Obținem restricții suplimentare pentru domeniu, din:
+\[
+  r \leq \sin \theta, \quad \cos \theta \geq 0 \Rightarrow %
+  \theta \in \big[0, \frac{\pi}{2}\big), \quad r \in [0, \sin \theta].
+\]
+
+\vspace{1cm}
+
+4. Fie $D \seq \RR^2$ și $f : D \to [0, \infty)$. Să se calculeze volumul
+mulțimii:
+\[
+  \Omega = \{(x, y, z) \in \RR^3 \mid (x, y) \in D, 0 \leq z \leq f(x, y) \},
+\]
+în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 2y \}, f(x, y) = x^2 + y^2$;
+\item $D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y > 0 \}, f(x, y) = xy$;
+\item $D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 2x + 2y - 1 \}, f(x, y) = y$.
+\end{enumerate}
+
+\emph{Indicație:} $\mu(\Omega) = \ds\iint_D f(x, y) dx dy$. Folosiți coordonate polare.
+
+\vspace{1cm}
+
+5. Să se calculeze ariile mulțimilor plane $D$ mărginite de curbele de ecuații:
+\begin{enumerate}[(a)]
+\item $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ (elipsa), cu $a, b > 0$;
+\item $(x^2 + y^2)^2 = a^2(x^2 - y^2), x > 0, a > 0$;
+\item $(x^2 + y^2)^2 = 2a^2 xy$ (lemniscata lui Bernoulli) \footnote{\color{blue} \href{https://en.wikipedia.org/wiki/Lemniscate_of_Bernoulli}{[wiki]}},
+  cu $a > 0$.
+\end{enumerate}
+
+\emph{Indicație:} $\mu(D) = \ds\iint_D dx dy$. Folosiți coordonate polare.
+
+\end{document}

@@ -1,0 +1,205 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 7 \\
+      Formula Green-Riemann}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Formula Green-Riemann}
+
+Fie $ (K, \partial K) $ un compact cu bord orientat inclus în $ \RR^2 $ și
+considerăm o 1-formă diferențială de clasă $ \kal{C}^1 $ pe o vecinătate a lui $ K $,
+$ \alpha = P dx + Q dy $.
+Atunci are loc \emph{formula Green-Riemann}:
+\[
+  \int_{\partial K} Pdx + Qdy =
+  \iint_K \Big( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \Big) dxdy.
+\]
+
+Această formulă ne permite să calculăm integrale curbilinii cu ajutorul
+integralelor duble, însă doar în cazul în care forma diferențială are proprietățile
+din ipoteză.
+
+O consecință imediată este o formulă de calcul pentru arie:
+\[
+  \kal{A}(K) = \frac{1}{2} \int_{\partial K} xdy - ydx.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Calculați integralele duble:
+\begin{enumerate}[(a)]
+\item $ \ds\iint_D ydxdy $, unde $ D $ este mărginit de parabola $ y^2 = x $,
+  cercul $ x^2 + y^2 - 2x = 0 $ și dreapta $ x = 2 $;
+\item $ \ds\iint_D e^{x^2 + y^2} dxdy $, unde $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \} $;
+\item $ \ds\iint_D ydxdy $, unde $ D = \{(x, y) \in \RR^2 \mid (x - 2)^2 + y^2 \leq 1 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie $ D \seq \RR^2 $ și $ f : D \to [0, \infty) $ o funcție continuă. Definim
+mulțimea:
+\[
+  \Omega = \{ (x, y, z) \in \RR^3 \mid (x, y) \in D, 0 \leq z \leq f(x, y) \}.
+\]
+Să se calculeze volumul mulțimii $ \Omega $, folosind formula:
+\[
+  \kal{V}(\Omega) = \iint_D f(x, y) dxdy,
+\]
+în cazurile:
+\begin{enumerate}[(a)]
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 2y \}, f(x, y) = x^2 + y^2 $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y > 0 \}, f(x, y) = xy $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 2x + 2y - 1 \}, f(x, y) = y $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Calculați direct și aplicînd formula Green-Riemann integrala curbilinie
+$ \ds\int_\Gamma \alpha $ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $ \alpha = y^2 dx + xdy $, unde $ \Gamma $ este pătratul cu vîrfurile
+  $ A(0, 0), B(2, 0), C(2, 2), D(0, 2)$;
+\item $ \alpha = ydx + x^2 dy $, unde $ \Gamma $ este cercul cu centrul în
+  origine și rază 2;
+\item $ \alpha = ydx - xdy $, unde $ \Gamma $ este elipsa de semiaxe
+  $ a $ și $ b $ și de centru $ O $.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Fie forma diferențială:
+\[
+  \alpha = \frac{-y}{x^2 + y^2} dx + \frac{x}{x^2 + y^2} dy.
+\]
+
+Să se calculeze $ \int_\Gamma \alpha $, unde $ \Gamma $ este cercul cu centrul
+în origine și rază 2.
+
+\vspace{1cm}
+
+5. Să se calculeze integrala curbilinie $ \ds\int_\Gamma xydx + \frac{x^2}{2} dy $,
+pe conturul:
+\[
+  \Gamma = \{(x, y) \mid x^2 + y^2 = 1, x \leq 0 \leq y \} \cup %
+  \{(x, y) \mid x + y = -1, x, y \leq 0 \}.
+\]
+
+\emph{Indicație:} curba $ \Gamma $ nu este închisă, deci nu putem aplica
+formula Green-Riemann. Considerăm segmentul orientat $ [AB] $, cu $ A(0, -1) $ și
+$ B(0, 1) $, cu care închidem curba, definind $ \Lambda = \Gamma \cup [AB] $.
+
+Acum putem aplica formula Green-Riemann pe $ \Lambda $ și găsim:
+\[
+  \int_\Lambda xydx + \frac{x^2}{2} dy = \iint_K 0dxdy = 0,
+\]
+unde $ K $ este compactul mărginit de $ \Lambda $.
+
+Atunci:
+\[
+  \int_\Gamma xydx + \frac{x^2}{2} dy = -\int_{[AB]} xydx + \frac{x^2}{2} dy = 0.
+\]
+
+
+\end{document}

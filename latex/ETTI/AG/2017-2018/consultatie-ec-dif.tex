@@ -1,0 +1,902 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hfill\large\textsc}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, Consultație}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Consultație \\
+      Ecuații și sisteme diferențiale }}
+\end{center}
+
+\vspace{2cm}
+
+\tableofcontents
+
+\newpage
+
+{\color{red} Dacă nu se precizează altfel, vom presupune că lucrăm cu funcții
+  de forma $y = y(x)$, deci $y'$ va însemna $\frac{dy}{dx}$.}
+
+\section{Ecuații cu variabile separabile/separate}
+\label{sec:sep}
+
+Acesta este cel mai simplu exemplu de ecuații diferențiale și se rezolvă direct
+prin integrare, după o reordonare corespunzătoare.
+
+\textbf{Exemplu 1}: $(1 + x^2) yy' + x(1 + y^2) = 0$, știind că $y(1) = 2$.
+
+\emph{Soluție:} Separăm variabilele și diferențialele și obținem succesiv:
+\begin{align*}
+  (1 + x^2) y \cdot \frac{dy}{dx} + x(1 + y^2) &= 0 \Leftrightarrow\\
+  (1 + x^2) y dy &= -x(1 + y^2) dx \Leftrightarrow \\
+  \frac{y}{1 + y^2} dy &= -\frac{x}{1 + x^2} dx \Leftrightarrow \\
+  \frac{1}{2} \ln (y^2 + 1) &= -\frac{1}{2} \ln(x^2 + 1) + c.
+\end{align*}
+
+Pentru uniformitate, putem pune $\frac{1}{2} \ln c$ în locul constantei.
+
+Rezultă $1 + y^2 = \frac{c}{1 + x^2}$, cu $c > 0$, pentru existența logaritmului.
+
+Înlocuim în condiția inițială $y(1) = 2$ și obținem $c = 10$. În fine:
+\[
+  y(x) = \sqrt{\frac{9 - x^2}{1 + x^2}}, \quad x \in (-3, 3),
+\]
+punînd și condițiile de existență.
+
+\vspace{2cm}
+
+În unele cazuri, este util să facem schimbări de variabilă. De exemplu:
+
+\textbf{Exemplu 2}: $y' = \sin^2(x - y)$.
+
+\emph{Soluție}: Notăm $x - y = z$ și avem că $y' = 1 - z'$, de unde, în
+ecuație, obținem succesiv:
+\begin{align*}
+  z' & = 1 - \sin^2 z = \cos^2 z \Rightarrow\\
+  \frac{dz}{dx} &= \cos^2 z \Rightarrow \\
+  \frac{dz}{\cos^2 z} &= dx \Rightarrow \\
+  \tan z &= x + c \Rightarrow \\
+  \tan (x - y) &= x + c,
+\end{align*}
+care poate fi prelucrată pentru a obține $y(x)$ sau lăsată în forma implicită.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații liniare}
+\label{sec:lin}
+
+Forma generală a acestor ecuații este:
+\[
+  y' = P(x) \cdot y + Q(x).
+\]
+Distingem două cazuri:
+\begin{itemize}
+\item Dacă $Q = 0$, atunci ecuația se numește \emph{omogenă};
+\item Dacă $Q \neq 0$, ecuația este \emph{neomogenă}.
+\end{itemize}
+
+Metoda generală de rezolvare este să folosim formula:
+\[
+  y(x) = c \cdot \exp \Big( -\int_{x_0}^x P(t) dt \Big),
+\]
+pentru a obține o \emph{soluție particulară pentru ecuația omogenă}. Apoi, din teorie,
+știm că putem folosi \emph{metoda variației constantelor (Lagrange)} pentru a obține
+soluția ecuației neomogene. Pentru aceasta, în locul constantei $c$ vom considera
+o funcție $c(x)$ și înlocuim în ecuația inițială.
+
+Pe scurt, pentru ecuația liniară:
+\[
+  y' + P(x) y = Q(x),
+\]
+avem:
+\begin{itemize}
+  \item Soluția particulară pentru varianta omogenă $y_p = c \cdot \exp\Big( -\int P(x) dx \Big)$;
+  \item Soluția generală (din Lagrange):
+    \[
+      y_g = \exp\Big(-\int P(x) dx\Big) \cdot \Big( C + \int Q(x) \cdot \exp\Big( \int P(x) dx \Big) dx \Big)
+    \]
+\end{itemize}
+
+Soluția generală a problemei este suma între soluția particulară și cea generală.
+
+
+\textbf{Exemplu 1}: $y' + y \sin x = -\sin x \cos x$.
+
+\emph{Soluție}: Putem înlocui direct în formulă și obținem $y = C \cdot e^{\cos x} - \cos x - 1$.
+
+\vspace{1cm}
+
+\textbf{Exemplu 2}: $y' + xy = x e^{-\frac{x^2}{2}}$.
+
+\emph{Soluție}: Asociem ecuația omogenă $y' + xy = 0$, pe care o rescriem:
+\[
+  \frac{dy}{dx} + xy = 0 \Rightarrow \frac{dy}{y} = -xdx \Rightarrow y_p = ce^{-\frac{x^2}{2}}.
+\]
+
+Acum, folosind metoda lui Lagrange, căutăm o soluție de forma $y(x) = c(x) e^{-\frac{x^2}{2}}$.
+
+Înlocuim în ecuația inițială și găsim $y' + xy = c'(x) e^{-\frac{x^2}{2}}$, dar, comparînd
+cu ecuația dată, găsim $c'(x) = x$, de unde $c(x) = \frac{x^2}{2}$.
+
+Așadar, avem $y_g = \frac{x^2}{2} e^{-\frac{x^2}{2}}$, iar soluția finală este suma celor două:
+\[
+  y = \Big( \frac{x^2}{2} + c \Big) e^{-\frac{x^2}{2}}.
+\]
+
+\vspace{1cm}
+
+\textbf{Exemplu 3}: $2xyy' + 2y^2 - x^4 = 0$.
+
+\emph{Soluție:} Putem face o substituție $y^2 = z$, cu care
+ecuația devine $z' + \frac{2}{x} z = x^3$. Avem, în acest caz, $P(x) = \frac{2}{x}$,
+iar $Q(x) = x^3$. Cum $\int P(x) dx = 2 \ln x$, iar $\int Q(x) e^{\int P(x) dx} dx = \frac{x^6}{6}$,
+obținem soluția generală:
+\[
+  y(x) = \frac{1}{x} \sqrt{c + \frac{x^6}{6}}, x > 0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuația Bernoulli}
+\label{sec:bernoulli}
+
+Forma generală a ecuației Bernoulli este:
+\[
+  y' + P(x) y = Q(x) y^\alpha.
+\]
+
+Remarcăm că:
+\begin{itemize}
+\item Dacă $\alpha = 0$, obținem o ecuație omogenă;
+\item Dacă $\alpha \neq 0$, obținem o ecuație neomogenă, ca în secțiunea anterioară.
+\end{itemize}
+
+Pașii de rezolvare sînt:
+\begin{itemize}
+\item Se împarte cu $y^\alpha$ și obținem:
+  \[
+    y^{-\alpha} y' + P(x) y^{1 - \alpha} = Q(x);
+  \]
+\item Facem substituția $y^{1 - \alpha} = z$ și ajungem la ecuația:
+  \[
+    (1 - \alpha) y^{1 - \alpha} \cdot y' = z',
+\]
+de unde $\frac{z'}{1 - \alpha} + P(x) z = Q(x)$, care este o ecuație
+neomogenă, rezolvabilă ca în secțiunea anterioară.
+\end{itemize}
+
+\textbf{Exemplu 1}: $y' - \frac{y}{3x} = \frac{1}{3} y^4 \ln x, x > 0$.
+
+\emph{Soluție:} Avem $\alpha = 4$, deci împărțim la $y^4$ și obținem:
+\[
+  y^{-4} y' - \frac{1}{3x} y^{-3} = \frac{1}{3} \ln x.
+\]
+
+Cu substituția $z = y^{-3}$, ajungem la:
+\[
+  z' = - 3y^4 y' \Rightarrow z' + \frac{1}{x} z = -\ln x.
+\]
+Avem $P(x) = \frac{1}{x}$ și $Q(x) = -\ln x$, deci putem aplica formula pentru
+soluția generală a ecuației neomogene:
+\[
+  z = e^{-\ln x} \Big( c - \int \ln x e^{\ln x} dx \Big) = \frac{1}{x} \Big( c - \int x \ln x \Big).
+\]
+
+În fine:
+\[
+  y^{-3} = \frac{c}{x} + \frac{x}{4} - \frac{x}{2} \ln x, x > 0.
+\]
+
+\vspace{1cm}
+
+\textbf{Exemplu 2}: $y' + \frac{2}{3x}y = \frac{1}{3} y^2$.
+
+\emph{Soluție}: Avem $\alpha = 2$, deci împărțim la $y^2$ și ajungem la:
+\[
+  \frac{y'}{y^2} + \frac{2}{3x} \cdot \frac{1}{y} = \frac{1}{3}.
+\]
+
+Cu substituția $z = \frac{1}{y}$, avem $z' + \frac{2}{3x} z = \frac{1}{3}$,
+care este liniară și neomogenă.
+
+Lucrăm cu ecuația omogenă $z' + \frac{2}{3x} = 0$, de unde $\frac{z'}{z} = \frac{2}{3x}$,
+care este cu variabile separabile și găsim $z = cx^{\frac{2}{3}}$, \emph{pentru ecuația omogenă}.
+
+Aplicăm acum metoda variației constantelor și luăm $z = c(x) x^{\frac{2}{3}}$. După înlocuire
+în ecuația inițială, avem $c(x) = -x^{\frac{1}{3}}$.
+
+Soluția finală este acum suma $z = -x + cx^{\frac{2}{3}} = \frac{1}{y}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuația Riccati}
+\label{sec:ec-ric}
+
+Forma generală este:
+\[
+  y' = P(x) y^2 + Q(x) y + R(x).
+\]
+
+Observăm că:
+\begin{itemize}
+\item Dacă $Q = 0$, avem o ecuație liniară și neomogenă;
+\item Dacă $R = 0$, este o ecuație Bernoulli, cu $\alpha = 2$.
+\end{itemize}
+  
+În general, ecuația Riccati se rezolvă știind o soluție particulară $y_p$. Apoi,
+folosind formula $y = y_p + z$ și înlocuind, se ajunge la o ecuație Bernoulli:
+\[
+  z' + \big(p(x) + 2q(x) y_p\big)z + q(x) z^2 = 0.
+\]
+
+Pentru a găsi soluții particulare, următoarea teoremă ne ajută într-un anumit caz:
+
+\begin{theorem}\label{thm:ric}
+  Dacă avem ecuația Riccati de forma:
+  \[
+    y' = Ay^2 + \frac{B}{x}y + \frac{C}{x^2},
+  \]
+  unde $(B + 1)^2 - 4AC \geq 0$, atunci o soluție particulară este $y_p = \frac{c}{x}$.
+\end{theorem}
+
+\textbf{Exemplu 1}: $y' = -\frac{1}{3} y^2 - \frac{2}{3x^2}, x > 0$.
+
+\emph{Soluție}: Aplicînd teorema, putem lua $y_p = \frac{1}{x}$ ca soluție particulară.
+Apoi căutăm o soluție generală de forma $y = \frac{1}{x} + z$, dar, pentru conveniență,
+putem lua $z \leadsto \frac{1}{z}$. Înlocuim în ecuație și obținem succesiv:
+\begin{align*}
+  -\frac{1}{x^2} - \frac{z'}{z^2} &= -\frac{1}{3} \Big( \frac{1}{x^2} + \frac{2}{xz} + \frac{1}{z^2} \Big) - \frac{2}{3x} \Rightarrow \\
+  z' - \frac{2}{3x} z &= \frac{1}{3} \Rightarrow \\
+  z &= Cx^{\frac{2}{3}} + x,
+\end{align*}
+de unde $y = \frac{1}{x} + \frac{1}{Cx^{\frac{2}{3}} + x}$, cu $x > 0$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuația Clairaut}
+\label{sec:clairaut}
+
+Forma generală a ecuației este:
+\[
+  y = xy' + \varphi(y').
+\]
+
+Pentru rezolvare, se notează $y' = p$ și, înlocuind, avem:
+\[
+  y = xp + \varphi(p).
+\]
+
+Derivăm după $x$ și găsim:
+\[
+  p = p + x \cdot \frac{dp}{dx} + \varphi'(p) \cdot \frac{dp}{dx},
+\]
+de unde $\big( x + \varphi'(p) \big) \frac{dp}{dx} = 0$.
+
+Mai departe:
+\begin{itemize}
+\item Dacă $\frac{dp}{dx} = 0$, atunci $p = C$ și avem $y = C \cdot x + \varphi(c)$, ca soluție generală;
+\item Dacă $x + \varphi'(p) = 0$, obținem \emph{soluția singulară}, care se prezintă parametric, adică
+  în funcție de $p$, astfel:
+  \[
+    \begin{cases}
+      x &= -\varphi'(p) \\
+      y &= -p\varphi'(p) + \varphi(p)
+    \end{cases}
+  \]
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Exemplu:} $y = xy' - {y'}^2$.
+
+\emph{Soluție:} Notăm $y' = p$, deci $y = xp - p^2$.
+
+Obținem, înlocuind în ecuație:
+\[
+  pdx + xdp - 2pdp = pdx \Rightarrow (x - 2p) dp = 0.
+\]
+
+Distingem cazurile:
+\begin{itemize}
+\item Dacă $dp = 0$, atunci $p = C$ și $y = Cx - C_2$, o soluție particulară;
+\item Soluția singulară se reprezintă parametric, corespunzător cazului $x - 2p = 0$, prin:
+  \[
+    \begin{cases}
+      x &= 2p \\
+      y &= p^2
+    \end{cases}
+  \]
+\end{itemize}
+
+Revenind la $y$, găsim $y = \frac{x^2}{4}$.
+
+\begin{remark}\label{rk:infas}
+  Geometric, soluția generală este \emph{înfășurătoarea} soluției particulare, adică o curbă
+  care aproximează, din aproape în aproape, dreapta soluției particulare.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații exacte. Factor integrant}
+\label{sec:exc-int}
+
+Forma generală este:
+\[
+  P(x, y) + Q(x, y) y' = 0.
+\]
+
+Dacă are loc $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$, atunci
+ecuația se numește \emph{exactă}, iar soluția ei generală se prezintă prin:
+\[
+  F(x, y) = \int_{x_0}^x P(t, y_0) dt + \int_{y_0}^y Q(x, t) dt,
+\]
+pentru orice $(x, y)$ din domeniul de definiție, iar $(x_0, y_0)$ un punct arbitrar fixat,
+în jurul căruia determinăm soluția.
+
+\begin{remark}\label{rk:partial}
+  Pentru simplitate, vom mai folosi notațiile $P_y = \frac{\partial P}{\partial y}$ și
+  similar pentru $Q_x$. Deci condiția de exactitate se mai scrie, pe scurt, $P_y = Q_x$.
+\end{remark}
+
+\vspace{1cm}
+
+\textbf{Exemplu:} $(3x^2 - y) + (3y^2 - x) y' = 0$.
+
+\emph{Soluție:} Remarcăm că avem $P(x, y) = 3x^2 - x$ și $Q(x, y) = 3y^2 - x$, deci
+$P_y = Q_x = -1$, ecuația fiind exactă. Obținem direct, din formula pentru soluția generală:
+\[
+  F(x, y) = x^3 + y^3 - xy + x_0y_0 - x_0^3 - y_0^3.
+\]
+
+Cum $(x_0, y_0)$ sînt fixate, putem prezenta soluția în \emph{forma implicită} $y = \varphi$,
+unde $\varphi = x^3 + y^3 - xy = c$, constanta fiind expresia de $(x_0, y_0)$ de mai sus.
+
+\vspace{1cm}
+
+Dacă ecuația nu este exactă, se caută \emph{un factor integrant}, adică o funcție $\mu(x, y)$
+cu care se înmulțește ecuația pentru a deveni exactă.
+
+Există două cazuri particulare în care factorul integrant se găsește simplu:
+\begin{itemize}
+\item Dacă expresia $\frac{P_y - Q_x}{Q}$ depinde doar de $x$, se poate lua $\mu = \mu(x)$;
+\item Dacă expresia $\frac{Q_x - P_y}{P}$ depinde doar de $y$, se poate lua $\mu = \mu(y)$.
+\end{itemize}
+
+În celelalte cazuri, factorul integrant, de obicei, se dă în enunțul problemei, deoarece este
+dificil de găsit, dar o teoremă de existență ne arată că el poate fi mereu găsit.
+
+\begin{remark}\label{rk:int}
+  Pentru a reține mai ușor condițiile simple de căutare a factorului integrant, pornim cu
+  ecuația în forma generală, înmulțim cu $\mu$, ceea ce ne schimbă și $P$ și $Q$, apoi scriem
+  condiția de exactitate. Pentru primul caz, de exemplu, obținem:
+  \[
+    \frac{\mu_x}{\mu} = \frac{P_y - Q_x}{Q},
+  \]
+  deci dacă membrul drept depinde doar de $x$, putem lua $\mu = \mu(x)$ și similar în al doilea caz.
+\end{remark}
+
+Odată găsit factorul integrant, să presupunem $\mu = \mu(x)$, integrăm condiția de exactitate și găsim:
+\[
+  \ln \mu(x) = \int \varphi(x) + c,
+\]
+unde $\varphi(x) = \frac{P_y - Q_x}{Q}$ și deci $\mu(x) = \exp \Big( \int \varphi(x) dx \Big)$.
+
+\vspace{1cm}
+
+\textbf{Exemplu}: $(1 - x^2 y) + x^2 (y - x) y' = 0$.
+
+\emph{Soluție:} Observăm că ecuația nu este exactă, dar verificînd condițiile pentru factorul
+integrant, putem lua $\mu(x) = \frac{1}{x^2}$. Înmulțim ecuația cu $\mu$ și găsim:
+\[
+  \Big( \frac{1}{x^2} - y \Big) + (y - x)y' = 0,
+\]
+care este exactă. Atunci putem scrie direct soluția generală:
+\[
+  F(x, y) = \frac{y^2}{2} - \frac{1}{x} - xy + C,
+\]
+soluția implicită fiind $\frac{y^2}{2} - \frac{1}{x} - xy = \text{const.}$.
+
+\vspace{1cm}
+
+\textbf{Exercițiu:} Rezolvați ecuația $y^2 (2x - 3y) + (7 - 3xy^2) y' = 0$, căutînd
+(după verificare) un factor integrant $\mu(y)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuația Lagrange}
+\label{sec:lagr}
+
+Forma generală a ecuației Lagrange este:
+\[
+  A(y')\cdot y + B(y')\cdot x + C(y') = 0.
+\]
+
+Dacă avem $A(y') \neq 0$, putem împărți și obținem:
+\[
+  y = f(y') + g(y'), \quad f(y') = \frac{- B(y')}{A(y')}, g(y') = -\frac{C(y')}{A(y')}.
+\]
+
+Dacă $f(y') = y'$, obținem o ecuație de tip Clairaut.
+
+Altfel, fie $y' = p$, deci $dy = pdx$. Înlocuim în ecuația inițială și găsim:
+\[
+  y = xf(p) + g(p) \Rightarrow dy = f(p) dx + xf'(p) dp + g'(p) dp.
+\]
+
+Egalăm cele două expresii pentru $dy$ și ajungem la:
+\[
+  pdx = f(p) dx + xf'(p) dp + g'(p) dp.
+\]
+
+În fine:
+\[
+  \big( f(p) - p \big) dx + \big( xf'(p) + g'(p) \big) dp = 0.
+\]
+
+În acest caz, dacă $f(p)$ este o constantă, obținem o ecuație cu variabile separabile.
+
+Altfel, putem împărți la $(f(p) - p) dp$ și ajungem la:
+\[
+  \frac{dx}{dp} + \frac{f'(p)}{f(p) - p} x + \frac{g'(p)}{f(p) - p} = 0.
+\]
+
+Aceasta este o ecuație liniară și neomogenă în $x(p)$ și o rezolvăm corespunzător.
+
+Dacă $f(p) = p$, obținem o soluție particulară.
+
+\vspace{1cm}
+
+\textbf{Exemplu:} $y = x - \frac{4}{9} {y'}^2 + \frac{8}{27} {y'}^3$.
+
+\emph{Soluție:} Facem notația $y' = p$, deci $dy = pdx$. Obținem:
+\[
+  y = x - \frac{4}{9} p^2 + \frac{8}{27} p^3 \Rightarrow %
+  dy = dx - \frac{8}{9} pdp + \frac{8}{9} p^2 dp.
+\]
+
+Rezultă $pdx = dx - \frac{8}{9} pdp + \frac{8}{9} p^2 dp$, deci:
+\[
+  (p - 1)(dx - \frac{8}{9} pdp) = 0.
+\]
+
+Distingem cazurile:
+
+Dacă $dx = \frac{8}{9} pdp$, atunci $x = \frac{4}{9} p^2 + c$ și, înlocuind în
+ecuația inițială, găsim $y = \frac{8}{27} p^3 + c$. Soluția poate fi prezentată parametric:
+\[
+  \begin{cases}
+    x &= \frac{4}{9} p^2 + c \\
+    y &= \frac{8}{27} p^3 + c
+  \end{cases}
+\]
+
+Dacă $p = 1$, avem o soluție particulară $y = x + c$, iar constanta se obține a fi $c = -\frac{4}{27}$,
+din ecuația inițială.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sisteme diferențiale cu coeficienți constanți}
+\label{sec:sist-ct}
+
+Ca în cazul sistemelor de ecuații liniare, putem scrie un sistem în formă matriceală $X' = A \cdot X$,
+unde $A$ este matricea coeficienților.
+
+Distingem mai multe cazuri, în funcție de proprietățile matricei $A$.
+
+\textbf{Dacă $A$ se diagonalizează}, fie $\{\lambda_i\}$ valorile proprii ale sale,
+iar $\{u_i\}$ vectorii proprii asociați. Atunci funcțiile:
+\[
+  \{ x_i(t) = e^{\lambda_i t} \cdot u_i \}_i
+\]
+dau o bază în spațiul vectorial al soluțiilor. Soluția generală poate fi scrisă,
+atunci, ca o combinație liniară a acestora:
+\[
+  x(t) = \sum_i c_i x_i(t).
+\]
+
+Se obișnuiește ca soluția să fie prezentată sub formă matriceală, alcătuind
+\textbf{matricea fundamentală} a sistemului: $X(t) = {}^t (e^{\lambda_i t} u_i)$.
+
+\vspace{1cm}
+
+\textbf{Exemplu:}
+\[
+  \begin{cases}
+    x' &= x - y \\
+    y' &= -4x + y.
+  \end{cases}
+\]
+
+Matricea sistemului este $A = \begin{pmatrix} 1 & -1 \\ -4 & 1 \end{pmatrix}$.
+
+Obținem $\lambda_1 = 1$ și $\lambda_2 = 3$. Cum acestea au multiplicitatea algebrică
+egală cu 1, rezultă că matricea se diagonalizează. Se obțin subspații proprii de dimensiune
+1, bazele fiind, de exemplu:
+\[
+  X_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \quad
+  X_2 = \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+\]
+
+Atunci soluția generală se scrie:
+\[
+  X(t) = \begin{pmatrix} x(t) \\ y(t) \end{pmatrix} = %
+  C_1 e^{\lambda_1 t} \begin{pmatrix} 1 \\ 2 \end{pmatrix} + %
+  C_2 e^{\lambda_2 t} \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+\]
+
+Atunci matricea fundamentală se scrie:
+\[
+  X(t) = \begin{pmatrix}
+    C_1 e^{-t} + C_2 e^{3t} \\
+    2C_1 e^{-t} - 2C_2 e^{3t}
+  \end{pmatrix}.
+\]
+
+\vspace{2cm}
+
+\textbf{Dacă $A$ nu se diagonalizează}, fie $\lambda_1, \dots, \lambda_k$ valorile proprii,
+de multiplicități algebrice $n_1, \dots, n_k$. Atunci se caută soluții de forma:
+\[
+  x_j(t) = \sum_{i = 1}^k P_{ij}(t) e^{\lambda_i t}, \quad \mathrm{grad}P_{ij} \leq n_i - 1.
+\]
+
+Înlocuim în ecuația inițială și găsim $P_{ij}$. Această metodă poartă numele de
+\textbf{metoda coeficienților nedeterminați}.
+
+\vspace{1cm}
+
+\textbf{Exemplu:}
+\[
+  \begin{cases}
+    x_1' &= x_2 \\
+    x_2' &= -x_1 + 2x_2
+  \end{cases}
+\]
+
+\emph{Soluție:} Matricea sistemului este $A = \begin{pmatrix} 0 & 1 \\ -1 & 2 \end{pmatrix}$,
+care are valoarea proprie $\lambda = 1$, de multiplicitate algebrică 2. Se poate verifica faptul
+că matricea nu este diagonalizabilă și atunci căutăm soluții de forma:
+\[
+  \begin{cases}
+    x_1(t) &= (A_1 + B_1 t) e^t \\
+    x_2(t) &= (A_2 + B_2 t) e^t
+  \end{cases}
+\]
+
+Înlocuim în sistem și obținem un sistem liniar cu necunoscutele $A_1, A_2, B_1, B_2$,
+care va fi dublu nedeterminat. Așadar, soluția se prezintă cu 2 parametri în forma:
+\[
+  (A_1, A_2, B_1, B_2) \in \{ (\alpha, \alpha + \beta, \beta, \beta) \mid \alpha, \beta \in \RR \}.
+\]
+
+Rezultă că matricea fundamentală este:
+\[
+  X(t) = \begin{pmatrix}
+    (\alpha + \beta t) e^t \\
+    (\alpha + \beta + \beta t) e^t
+  \end{pmatrix}
+\]
+
+\vspace{1cm}
+
+\textbf{Dacă matricea $A$ nu se diagonalizează, iar $\lambda_i \in \CC$}, lucrăm cu numere complexe.
+
+\textbf{Exemplu:}
+\[
+  \begin{cases}
+    x'_1 &= 2x_1 + x_2 \\
+    x'_2 &= -8x_1 - 2x_2
+  \end{cases}
+\]
+știind că soluția conține la $t = 0$ punctul $M_0(1, 0)$.
+
+\emph{Soluție:} Matricea sistemului este $A = \begin{pmatrix} 2 & 1 \\ -8 & 2 \end{pmatrix}$.
+
+Valorile sale proprii sînt $\lambda_{1,2} = \pm 2i$. Atunci subspațiul invariant va fi:
+\[
+  V_{\lambda_1} = \mathrm{Sp} \{(1, -2 + 2i )\}.
+\]
+
+Obținem o soluție generală în forma:
+\[
+  x_1(t) = e^{2it} \begin{pmatrix} 1 \\ -2 + 2i \end{pmatrix} = %
+  (\cos 2t + i \sin 2t) \begin{pmatrix} 1 \\ -2 + 2i \end{pmatrix}.
+\]
+
+Din proprietățile algebrice ale numerelor complexe, avem că $x_t(t) = \overline{x_1(t)}$ și atunci
+soluția generală va fi $x(t) = c_1 x_1(t) + c_2 x_2(t)$.
+
+Folosind condițiile inițiale, avem că $x_1(0) = 1$ și $x_2(0) = 0$, deci $c_1 = c_2 = 1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exponențiale matriceale și sisteme folosind forma Jordan}
+\label{sec:jordan}
+
+\textbf{Exemplu:} Fie matricea:
+\[
+  A = \begin{pmatrix}
+    1 & -1 & 1 \\
+    1 & 1 & -1 \\
+    0 & -1 & 2 
+  \end{pmatrix}
+\]
+\begin{enumerate}[(a)]
+\item Să se calculeze $e^{At}$, pentru $t \in \RR$;
+\item Să se determine soluția generală a sistemului $X' = AX$, apoi soluția particulară
+  care verifică condiția $x(0) = 1, y(0) = 2, z(0) = 0$.
+\end{enumerate}
+
+\emph{Soluție:}
+
+(a) Matricea $A$ are valorile proprii $\lambda_1 = \lambda_2 = 1, \lambda_3 = 2$.
+Vectorii proprii (baze în subspațiile invariante) sînt:
+\[
+  v_1 = (1, 1, 1), \quad v_2 = (1, 0, 1).
+\]
+
+Forma canonică Jordan a matricei se obține a fi:
+\[
+  J = \begin{pmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 2
+  \end{pmatrix},
+\]
+folosind matricea de trecere
+\[
+  T = \begin{pmatrix}
+    2 & 1 & 1 \\ 0 & 1 & 0 \\ 1 & 1 & 1
+  \end{pmatrix}.
+\]
+
+Deci $A = TJT^{-1}$.
+
+Știm din teorie că $e^{At} = T \cdot e^{Jt} \cdot T^{-1}$.
+
+Folosim acum dezvoltarea în serie Taylor a funcției exponențiale:
+\[
+  e^x = \sum_{n \geq 0} \frac{x}{n!},
+\]
+adevărată și pentru matrice. În plus, dacă matricea este diagonală,
+exponențiala sa va conține ex\-po\-nen\-ți\-a\-la pe diagonală, adică, dacă
+$M = \mathrm{diag}(x_1, x_2, \dots, x_n)$, atunci
+$e^M = \mathrm{diag}(e^{x_1},\dots, e^{x_n})$.
+
+Pentru a folosi această proprietate, ne legăm de descompunerea în blocuri
+Jordan a lui $A$. Fie $J_1$ blocul Jordan de dimensiune 2, corespunzător
+valorii proprii $\lambda_1 = \lambda_2 = 1$ și $J_2$ blocul Jordan de dimensiune 1
+corespunzător valorii proprii $\lambda_3 = 2$. Avem descompunerea pe blocuri și
+pentru exponențială:
+\[
+  e^{Jt} = \begin{pmatrix}
+    e^{J_1 t} & 0 \\
+    0 & e^{J_2 t}
+  \end{pmatrix}
+\]
+
+Cum $e^{J_2 t} = e^{2t}$, calculăm celălalt bloc:
+\begin{align*}
+  e^{J_1 t} &= e^{\begin{pmatrix} t & 0 \\ t & t \end{pmatrix}} \\
+            &= e^{\begin{pmatrix} t & 0 \\ 0 & t \end{pmatrix}
+                                               \begin{pmatrix} 0 & 0 \\ t & 0 \end{pmatrix}} \\
+            &= \begin{pmatrix} e^t & 0 \\ 0 & e^t \end{pmatrix} \cdot
+                                              \Bigg[ \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} +
+                                                                                  \frac{1}{1!} \begin{pmatrix} 0 & 0 \\ t & 0 \end{pmatrix} \Bigg] \\
+            &= \begin{pmatrix}
+              e^t & 0 \\
+              te^t & e^t 
+            \end{pmatrix}
+\end{align*}
+
+Am folosit faptul că $\begin{pmatrix} 0 & 0 \\ t & 0 \end{pmatrix}^2 = 0$, așadar
+din seria Taylor va fi suficient să păstrăm primii 2 termeni. Calculăm și $T^{-1}$,
+obținînd:
+\[
+  T^{-1} = \begin{pmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & 0 \\
+    -1 & -1 & 2
+  \end{pmatrix}
+\]
+găsim, în fine:
+\[
+  e^{At} = T \cdot e^{Jt} \cdot T^{-1} =
+  \begin{pmatrix}
+    e^t(t + 2) - e^{2t} & e^t - e^{2t} & -e^t(t + 2) + 2e^{2t} \\
+    te^t & e^t & -te^t \\
+    e^t(t + 1) - e^{2t} & e^t - e^{2t} & -e^t(t + 1) + 2e^{2t}
+  \end{pmatrix}
+\]
+
+(b) Conform teoriei, soluția generală a sistemului este:
+\[
+  X(t) = e^{At} \cdot \begin{pmatrix}
+    C_1 \\ C_2 \\ C_3
+  \end{pmatrix},
+\]
+constantele $C_i$ determinîndu-se din condițiile inițiale. În acest caz:
+\[
+  X(t) = e^{At} X(0) = e^{At}
+  \begin{pmatrix}
+    1 \\ 2 \\ 0 
+  \end{pmatrix}
+\]
+
+\vspace{2cm}
+
+\textbf{Exemplu 2}: Să se determine soluția sistemului diferențial liniar neomogen:
+\[
+  \begin{cases}
+    x' &= 2x - y \\
+    y' &= -x + 2z + e^t z \\
+    z' &= -y + 2,
+  \end{cases}
+\]
+știind că satisface condițiile inițiale $X(0) = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$.
+
+\emph{Soluție:} Fie matricele:
+\[
+  X = \begin{pmatrix}
+    x \\ y \\ z 
+  \end{pmatrix}, \quad
+  A = \begin{pmatrix}
+    2 & -1 & 0 \\
+    -1 & 0 & 2 \\
+    0 & -1 & 2 
+  \end{pmatrix}, \quad
+  B(t) = \begin{pmatrix}
+    0 \\ e^t \\ 0
+  \end{pmatrix}.
+\]
+
+Atunci sistemul se scrie matriceal $X' = AX + B(t)$. Valorile proprii ale matricei $A$
+sînt $\lambda_1 = \lambda_2 = 1$ și $\lambda_3 = 2$. Avem vectorul propriu $(1, 1, 1)$
+bază în $V_{\lambda_{1,2}}$ și vectorul $(2, 0, 1)$ bază în $V_{\lambda_3}$.
+
+Aducem matricea $A$ la forma canonică Jordan, folosind matricea de trecere:
+\[
+  T = \begin{pmatrix}
+    0 & 1 & 2 \\
+    -1 & 1 & 0 \\
+    0 & 1 & 1
+  \end{pmatrix} \Rightarrow
+  T^{-1} = \begin{pmatrix}
+    -1 & -1 & 2 \\
+    -1 & 0 & 2 \\
+    1 & 0 & -1
+  \end{pmatrix}
+\]
+
+Forma canonică Jordan se obține a fi:
+\[
+  J = \begin{pmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 2
+  \end{pmatrix}.
+\]
+
+Putem descompune matricea Jordan în două blocuri, unul de dimensiune 2 și unul de
+dimensiune 1, ceea ce ne ajută să calculăm:
+\[
+  e^{At} = \begin{pmatrix}
+    2e^{2t} - (t + 1)e^t & -te^t & 2e^t(t + 1) - 2 e^{2t} \\
+    -te^t & (1 - t)e^t & 2te^t \\
+    2e^{2t} - (t + 1)e^t & -te^t & 2e^t(t + 1) -2e^{2t}
+  \end{pmatrix}
+\]
+
+Conform teoriei, obținem soluția problemei Cauchy (ținînd cont de valorile inițiale) sub forma:
+\[
+  X(t) = e^{At} X(0) + \int_0^t e^{A(t-s)} B(s) ds.
+\]
+
+Integrala se calculează integrînd fiecare din elementele matricei și obținem, în final:
+\[
+  X(t) = e^t \begin{pmatrix}
+    -t - \frac{t^2}{2} \\
+    1 - \frac{t^2}{2} \\
+    -t - \frac{t^2}{2}
+  \end{pmatrix}
+\]
+
+
+\end{document}

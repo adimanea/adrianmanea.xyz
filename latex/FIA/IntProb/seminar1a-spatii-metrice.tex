@@ -1,0 +1,263 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 1 \\ Spații metrice}}
+\end{center}
+
+\vspace{2cm}
+
+
+\section{Spații metrice}
+\label{sec:sp-metrice}
+
+\begin{definition}\label{def:distanta}
+  Fie $X$ o mulțime nevidă. O aplicație $d : X \times X \to \RR$ se numește \emph{distanță}
+  (metrică) pe $X$ dacă:
+  \begin{enumerate}[(a)]
+  \item $d(x, y) \geq 0, \forall x, y \in \RR$;
+  \item $d(x, y) = 0 \Leftrightarrow x = y$;
+  \item $d(x, y) = d(y, x), \forall x, y \in X$;
+  \item $d(x, z) \leq d(x, y) + d(y, z)$ (\emph{inegalitatea triunghiului}).
+  \end{enumerate}
+
+  În acest context, perechea $(X, d)$ se numește \emph{spațiu metric}.
+\end{definition}
+
+Această noțiune vine să generalizeze calculul distanțelor cu ajutorul modulului,
+cum se procedează în cazul mulțimii numerelor reale, de exemplu. În consecință,
+avem și următoarele \emph{mulțimi remarcabile în spații metrice $(X, d)$}:
+\begin{itemize}
+\item \emph{bila deschisă de centru $a$ și rază $r$}, definită pentru $a, r \in \RR$ prin:
+  \[
+    B(a, r) = \{ x \in X \mid d(a, x) < r \};
+  \]
+\item \emph{sfera de centru $a$ și rază $r$}, definită prin:
+  \[
+    S(a, r) = \{ x \in X \mid d(a, x) = r \};
+  \]
+\item \emph{bila închisă de centru $a$ și rază $r$}, definită prin:
+  \[
+    \overline{B(a, r)} = B(a, r) \cup S(a, r) = \{x \in X \mid d(a, x) \leq r \}.
+  \]
+\end{itemize}
+
+Aceste mulțimi generalizează \emph{intervalele de numere reale}. Mai general, avem:
+\begin{definition}\label{def:m-deschisa}
+  Fie $X$ un spațiu metric. O submulțime $D \seq X$ se numește \emph{deschisă} dacă
+  $\forall a \in D, \exists r > 0$ astfel încît $B(a, r) \seq D$. Cu alte cuvinte,
+  mulțimea conține o bilă deschisă, centrată în orice punct al său.
+
+  O mulțime se numește \emph{închisă} dacă complementara ei, relativ la spațiul total,
+  este o mulțime deschisă.
+\end{definition}
+
+Adaptînd noțiunile specifice pentru analiza matematică, precum convergență,
+limită ș.a.m.d. folosindu-ne de funcția distanță, putem defini construcțiile
+și conceptele uzuale. În particular, au sens noțiuni precum \emph{șiruri convergente}
+și \emph{șiruri Cauchy}, definite ca în cazul mulțimii numerelor reale, doar
+cu ajutorul funcției generale distanță. În plus, avem și următoarea noțiune:
+
+\begin{definition}\label{def:spatiu-complet}
+  Un spațiu metric $(X, d)$ se numește \emph{complet} dacă noțiunile de
+  \qq{șir Cauchy} și \qq{șir convergent} coincid pentru $X$.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Principiul contracției. Metoda aproximațiilor succesive}
+\label{sec:contractie}
+
+\begin{definition}\label{def:contractie}
+  Fie $(X, d)$ un spațiu metric și fie $f : X \to X$ o funcție.
+
+  Aplicația $f$ se numește \emph{contracție pe $X$} dacă există $k \in [0, 1)$
+  astfel încît:
+  \[
+    d(f(x), f(y)) \leq k \cdot d(x, y), \forall x, y \in X.
+  \]
+
+  Numărul $k$ se numește \emph{factor de contracție}.
+\end{definition}
+
+\begin{remark}\label{rk:contr-der}
+  De remarcat că în cazul clasic, unde $d(x, y) = |x - y|$, formula contracției
+  se poate gîndi ca o aproximație finită a derivatei. Mai precis, avem:
+  \[
+    \frac{d(f(x), f(y))}{d(x, y)} = \frac{|f(x) - f(y)|}{|x - y|} \leq k.
+  \]
+
+  Așadar, calculînd $\sup |f'(x)|$ putem găsi valoarea maximă a factorului
+  de contracție.
+\end{remark}
+
+Un rezultat important este următorul:
+
+\begin{theorem}[Banach]\label{thm:banach-fix}
+  Fie $(X, d)$ un spațiu metric complet și fie $f : X \to X$ o contracție de factor
+  $k$. Atunci există un unic punct $\xi \in X$, astfel încît $f(\xi) = \xi$.
+
+  În acest context, $\xi$ se numește \emph{punct fix} pentru $f$.
+\end{theorem}
+
+Pentru a găsi punctul fix al unei aplicații, se folosește \emph{metoda %
+  aproximațiilor succesive}. Se construiește un șir recurent astfel.
+
+Fie $x_0 \in X$, arbitrar și definim șirul recurent $x_{n+1} = f(x_n)$.
+Se poate demonstra că șirul $x_n$ este convergent, iar limita sa este punctul
+fix căutat. În plus, eroarea aproximației cu acest șir este dată de:
+\[
+  d(x_n, \xi) \leq \frac{k^n}{1 - k} \cdot d(x_0, x_1), \forall n \in \NN.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exemplu rezolvat}
+\label{sec:ex-rez}
+
+Aplicațiile interesante pentru această temă sînt date de calculul aproximativ
+al soluțiilor unor ecuații, definite în spații metrice.
+
+1. Să se aproximeze cu o eroare mai mică decît $10^{-3}$ soluția reală a
+ecuației $x^3 + 4x - 1 = 0$.
+
+\emph{Soluție:} Folosind, eventual, metode de analiză (șirul lui Rolle),
+se poate arăta că ecuația are o singură soluție reală $\xi \in (0, 1)$.
+Folosim metoda aproximațiilor succesive pentru a o găsi.
+
+Fie $X = [0, 1]$ și $f: X \to X, f(x) = \frac{1}{x^2 + 4}$. Ecuația dată este
+echivalentă cu $f(x) = x$, adică a găsi un punct fix pentru funcția $f$.
+
+Spațiul metric $X$ este complet. Mai demonstrăm că $f$ este contracție
+pe $X$. Derivata este $f'(x) = \frac{-2x}{(x^2 + 4)^2}$, și avem:
+\[
+  \sup_{x \in X} | f'(x) | = -f'(1) = \frac{2}{25} < 1,
+\]
+deci $f$ este o contracție, de factor $k = \frac{2}{25}$.
+
+Șirul aproximațiilor succesive este dat de:
+\[
+  x_0 = 0, \quad x_{n + 1} = f(x_n) = \frac{1}{x_n^2 + 4}.
+\]
+
+Evaluarea erorii:
+\[
+  |x_n - \xi| < \frac{k^n}{1 - k}|x_0 - x_1| = \frac{1}{3} \Big( \frac{2}{25} \Big)^n,
+\]
+de unde rezultă că putem lua $\xi \simeq x_3 = f \big(\frac{16}{65}\big) \simeq 0,235$.
+
+\begin{remark}\label{rk:alternativ}
+  Alternativ, puteam lucra cu $g(x) = \frac{1}{4} (1 - x^3)$, cu $x \in [0, 1]$.
+  Se arată că și $g$ este o contracție, de factor $k = \frac{3}{4}$. În acest caz,
+  șirul aproximațiilor succesive converge mai încet și avem $\xi \simeq x_6$.
+\end{remark}
+
+\vspace{1cm}
+
+Similar, puteți rezolva următoarele ecuații, cu eroarea $\varepsilon$:
+\begin{enumerate}[(a)]
+\item $x^3 + 12x - 1 = 0, \quad \varepsilon = 10^{-3}$;
+\item $x^5 + x - 15 = 0, \quad \varepsilon = 10^{-3}$;
+\item $3x + e^{-x} = 1, \quad \varepsilon = 10^{-3}$;
+\item $x^3 - x + 5 = 0, \quad \varepsilon = 10^{-2}$;
+\item $x^5 + 3x - 2 = 0, \quad \varepsilon = 10^{-3}$.
+\end{enumerate}
+
+
+\end{document}

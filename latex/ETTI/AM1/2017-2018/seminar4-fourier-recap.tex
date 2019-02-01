@@ -1,0 +1,486 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AN1, 2017---2018, C. Ghiu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 4 \\ Serii Fourier și recapitulare}}
+\end{center}
+
+\section{Serii Fourier}
+\label{sec:fourier}
+
+Pentru dezvoltarea în serie Fourier (care se poate aplica atunci cînd seriile
+Taylor sînt imposibile), trebuie satisfăcute \emph{condițiile Dirichlet}:
+\begin{enumerate}[(D1)]
+\item Funcția trebuie să fie periodică;
+\item Funcția trebuie să aibă un număr finit de discontinuități;
+\item Funcția trebuie să aibă un număr finit de extreme într-o perioadă;
+\item $\ds\int_0^T |f(x)| dx$ trebuie să fie convergentă.
+\end{enumerate}
+
+Convențional, seria se scrie:
+\[
+  f(x) = \frac{a_0}{2} + \sum_{r = 1}^\infty \Bigg[ a_r \cos \Big( \frac{2\pi rx}{L} \Big) +
+  b_r \sin \Big( \frac{2\pi rx}{L} \Big) \Bigg],
+\]
+unde $a_r, b_r, a_0$ sînt \emph{coeficienții Fourier}, iar $L$ este perioada.
+
+Coeficienții se calculează:
+\begin{align*}
+  a_r &= \frac{2}{L} \int_{x_0}^{x_0 + L} f(x) \cos \Big( \frac{2\pi rx}{L} \Big) dx \\
+  b_r &= \frac{2}{L} \int_{x_0}^{x_0 + L} f(x) \sin \Big( \frac{2\pi rx}{L} \Big) dx.
+\end{align*}
+
+De obicei, se ia $x_0 = 0$ sau $x_0 = -L/2$.
+
+\begin{theorem}[Parseval]\label{thm:parseval}
+  \[
+    \frac{1}{L} \int_{x_0}^{x_0 + L} |f(x)|^2 dx =
+    \sum_{r = -\infty}^\infty |c_r|^2 =
+    \Big( \frac{a_0}{2} \Big)^2 + \frac{1}{2} \sum_{r = 1}^\infty (a_r^2 + b_r^2).
+  \]
+\end{theorem}
+
+De exemplu, putem calcula $\sum r^{-4}$.
+
+Luăm funcția $f(x) = x^2$ și calculăm media funcției $f^2(x)$ pe $-2 < x \leq 2$:
+\[
+  \frac{1}{4} \int_{-2}^2 x^4 dx = \frac{16}{5}.
+\]
+Acum calculăm membrul drept din Parseval:
+\[
+  \Big( \frac{a_0}{2} \Big)^2 + \frac{1}{2} \sum_{r = 1}^\infty (a_r^2 + b_r^2) =
+  \Big( \frac{4}{3} \Big)^2 + \frac{1}{2} \sum_{r \geq 1} \frac{16^2}{\pi^4 r^4}.
+\]
+Egalăm cele două expresii și obținem $\sum_{r \geq 1} \frac{1}{r^4} = \frac{\pi^4}{90}$.
+
+
+Folosind forma polară a unui număr complex și formula lui Euler, putem scrie seria:
+\begin{align*}
+  \widehat{f} &= \frac{a_0}{2} + \sum_{n = 1}^\infty (a_n \cos nt + b_n \sin nt), \\
+  a_n &= \frac{1}{\pi} \int_0^{2\pi} f(t) \cos nt dt, n \geq 0 \\
+  b_n &= \frac{1}{\pi} \int_0^{2\pi} f(t) \sin nt dt, n \geq 1.
+\end{align*}
+
+\begin{lemma}[Riemann]\label{le:riemann-fourier}
+  Dacă $f$ este integrabilă, atunci:
+  \[
+    \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = 0.
+  \]
+\end{lemma}
+
+\begin{theorem}[Dirichlet]\label{thm:dirichlet-fourier}
+  Dacă $f : \RR \to \RR$ este o funcție periodică, de perioadă $2\pi$, măsurabilă,
+  mărginită, avînd cel mult un număr finit de discontinuități de speța întîi și cu
+  derivate laterale în orice punct, atunci seria Fourier converge în fiecare punct
+  $x \in \RR$ la:
+  \[
+    \frac{1}{2} \big( f(x + 0) + f(x - 0) \big).
+  \]
+  În particular, dacă $f$ este chiar continuă, are loc:
+  \[
+    f(t) = \frac{a_0}{2} + \sum_{n = 1}^\infty (a_n \cos nt + b_n \sin nt).
+  \]
+\end{theorem}
+
+
+
+\subsection{Exerciții}
+
+Să se dezvolte în serie Fourier:
+
+1. $f(x) = x$, pe $(-\pi, \pi)$.
+
+\emph{Soluție:} Funcția este impară, deci $a_k = 0, \forall k \geq 0$, iar:
+\[
+  b_k = \frac{2}{\pi} \int_0^\pi x \sin kx dx =
+  \frac{2 \cdot (-1)^{k+1}}{k}, k > 0.
+\]
+Egalitatea se obține ținînd cont că $\sin k \pi = 0, \cos k\pi = (-1)^k$.
+
+Deci, pentru orice $x \in \RR$, avem:
+\[
+  x = 2 \sum_{k = 1}^\infty \frac{(-1)^{k + 1}}{k} \sin kx.
+\]
+Pentru $x = \frac{\pi}{2}$, avem:
+\[
+  \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \dots.
+\]
+
+\vspace{1cm}
+
+2. $f(x) = \pi^2 - x^2$, pe $(-\pi, \pi)$.
+
+\emph{Soluție:} Funcția este pară, deci $b_k = 0, \forall k > 0$ și:
+\begin{align*}
+  a_0 &= \frac{2}{\pi} \int_0^{\pi} (\pi^2 - x^2) dx = \frac{4\pi^2}{3} \\
+  a_k &= \frac{2}{\pi} \int_0^{\pi} (\pi^2 - x^2) \cos kx dx \\
+      &= \frac{4 \cdot (-1)^{k - 1}}{k^2}, k > 0.
+\end{align*}
+
+Deci:
+\[
+  \pi^2 - x^2 = \frac{2\pi^2}{3} + 4 \cdot \sum_{k = 1}^\infty \frac{(-1)^{k-1}}{k^2} \cos kx.
+\]
+Sînt îndeplinite condițiile din teorema Dirichlet, deci descompunerea este
+valabilă pentru $x \in [-\pi, \pi]$.
+
+În particular, dacă $x = \pi$, avem formula:
+\[
+  \sum_{k = 1}^\infty \frac{1}{k^2} = \frac{\pi^2}{6}.
+\]
+
+\vspace{1cm}
+
+3.
+\[
+  f(x) =
+  \begin{cases}
+    ax, & x \in (-\pi, 0) \\
+    bx, & x \in [0, \pi).
+  \end{cases}
+\]
+
+Coeficienții:
+\begin{align*}
+  a_0 &= \frac{1}{\pi} \int_{-\pi}^\pi f(x) dx = \frac{\pi}{2} (b - a) \\
+  a_n &= \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos nx dx \\
+      &= \frac{1}{\pi} \Big( \int_{-\pi}^0 ax \cos nx dx + \int_0^\pi bx \cos nx dx \Big) \\
+  b_n &= \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin nx dx \\
+      &= \frac{1}{\pi} \Big( \int_{-\pi}^0 ax \sin nx dx + \frac{1}{\pi} \int_0^x ax \sin nx dx \Big)
+\end{align*}
+
+Rezultă, prin calcule (integrare prin părți):
+\[
+  a_k = \frac{a - b}{\pi} \cdot \frac{1 - (-1)^k}{k^2}, \quad
+  b_k = (a + b) \cdot \frac{(-1)^{k - 1}}{k}.
+\]
+
+\textbf{Observație:} Putem folosi această dezvoltare pentru a calcula suma
+seriei numerice $\sum \frac{1}{(2n - 1)^2}$, care este convergentă.
+
+Funcția $f$ este continuă pentru $t = 0$ și, din Dirichlet, suma seriei Fourier
+în punctul $t = 0$ este egală cu $f(0)$. Obținem:
+\[
+  0 = f(0) = - \frac{a - b}{4} \pi + \frac{2(a - b)}{\pi}
+  \sum_{n = 1}^\infty \frac{1}{(2n - 1)^2}.
+\]
+
+Rezultă $\sum_{n = 1}^\infty \frac{1}{(2n - 1)^2} = \frac{\pi^2}{8}$.
+
+\vspace{1cm}
+
+4. $f(x) = e^{ax}, a \neq 0$, pe $(-\pi, \pi)$.
+
+\emph{Soluție:} Coeficienții:
+\begin{align*}
+  a_0 &= \frac{1}{\pi} \int_{-\pi}^\pi e^{ax} dx = \frac{2}{a\pi} \sinh a\pi \\
+  a_n &= \frac{1}{\pi} \int_{-\pi}^\pi e^{ax} \cos nx dx \\
+      &= (-1)^n \frac{1}{\pi} \cdot \frac{2a}{a^2 + n^2} \sinh a\pi \\
+  b_n &= \frac{1}{\pi} \int_{-\pi}^\pi e^{ax} \sin nx dx \\
+      &= (-1)^{n - 1} \frac{1}{\pi} \cdot \frac{2n}{a^2 + n^2} \sinh a\pi.
+\end{align*}
+
+Rezultă:
+\[
+  e^{ax} = \frac{2\pi} \sinh a\pi \cdot
+  \Bigg[ \frac{1}{2a} + \sum_{n = 1}^\infty \frac{(-1)^n}{a^2 + n^2} \cdot
+  (a \cos nx - n \sin nx) \Bigg].
+\]
+
+\vspace{1cm}
+
+5. $f(x) = |x|$, pe $[-\pi, \pi]$.
+
+\emph{Soluție:} Funcția este pară, deci $b_n = 0, \forall n \geq 1$.
+\begin{align*}
+  a_0 &= \frac{2}{\pi} \int_0^\pi x dx = \pi \\
+  a_n &= \frac{2}{\pi} \int_0^\pi x \cos nx dx =
+        \frac{2}{\pi n^2} [(-1)^n - 1].
+\end{align*}
+
+Rezultă:
+\[
+  |x| = \frac{\pi}{2} - \frac{4}{\pi} \cdot
+  \sum_{n = 1}^\infty \frac{\cos(2n - 1) x}{(2n - 1)^2}.
+\]
+
+\vspace{1cm}
+
+6. Să se dezvolte în serie de sinusuri funcția $f(x) = \frac{|x|}{x}$, definită
+în intervalul $(0, 1)$.
+
+\emph{Soluție:} Prelungim funcția impar față de origine:
+\[
+  f(x) =
+  \begin{cases}
+    1,  & 0 < 1 < 1\\
+    0,  & x = 0 \\
+    -1, & -1 < x < 0
+  \end{cases}
+\]
+Calculăm coeficienții Fourier ai acestei funcții periodice impare, definite
+pe $(-1, 1)$:
+\begin{align*}
+  a_n &= 0, \forall n \geq 0 \\
+  b_n &= \frac{2}{1} \int_0^1 1 \cdot \sin \frac{n \pi x}{1} dx \\
+      &= \frac{2}{\pi} \cdot \frac{1 - (-1)^n}{n} \\
+      &= \begin{cases}
+        \frac{4}{\pi} \cdot \frac{1}{2n +1}  & n = 2k + 1 \\
+        0, & n = 2k
+      \end{cases}
+\end{align*}
+
+Rezultă:
+\[
+  f(x) = \frac{4}{\pi} \sum_{n = 0}^\infty \frac{1}{2n + 1} \sin(2n + 1) \frac{\pi x}{1}.
+\]
+
+\textbf{Observație:} 1 poate fi înlocuit cu $l$, orice perioadă aleasă.
+
+\vspace{1cm}
+
+7. Să se demonstreze formula:
+\[
+  \frac{\pi - x}{2} = \sum_{n \geq 1} \frac{\sin nx}{n}, \forall x \in (0, 2\pi).
+\]
+
+\emph{Soluție:} Considerăm funcția $f(x) = \frac{\pi - x}{2}, x \in [0, 2\pi]$,
+prelungită prin periodicitate la $\RR$. Calculăm coeficienții Fourier:
+\begin{align*}
+  a_0 &= \frac{1}{\pi} \int_0^{2 \pi} \frac{\pi - x}{2} dx \\
+      &= \frac{1}{2\pi} \Big( \pi x - \frac{x^2}{2} \Big) \Big|_0^{2 \pi} = 0; \\
+  a_n &= \frac{1}{\pi} \int_0^{2\pi} \frac{\pi - x}{2} \cos nx dx \\
+      &= \frac{\pi - x}{\sin nx} 2n\pi \Big|_0^{2 \pi} -
+        \frac{1}{2n \pi} \int_0^{2\pi} \sin nx dx = 0, \forall n \geq 1 \\
+  b_n &= \frac{1}{n} \int_0^{2\pi} \frac{\pi - x}{2} \sin nx dx \\
+      &= \frac{-(\pi - x) \cos nx}{2n \pi} \Big|_0^{2\pi} -
+        \frac{1}{2n\pi} \int_0^{2\pi} \cos nx dx \\
+      &= \frac{1}{n}, \forall n \geq 1.
+\end{align*}
+
+Aplicăm acum teorema lui Dirichlet și obținem:
+\[
+  \frac{\pi - x}{2} = \sum_{n \geq 1} \frac{\sin nx}{n}, \forall x \in (0, 2\pi).
+\]
+Pentru $x = 0, 2\pi$, funcția nu este continuă. Seria trigonometrică
+asociată are suma 0.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții recapitulative}
+\label{sec:recap}
+
+\textbf{Serii numerice}:
+
+1. Decideți convergența următoarelor serii cu termenul general dat de:
+\begin{enumerate}[(a)]
+\item $x_n = \frac{n!}{n^{2n}}$ \hfill (C, raport);
+\item $x_n = \Big( 1 - \frac{3 \ln n}{2n} \Big)^n$ \hfill(C, logaritmic);
+\item $x_n = \Big( \frac{1}{\ln n} \Big)^{\ln(\ln n)}$ \hfill(D, logaritmic);
+\item $x_n = \frac{1}{n \ln^2 n}$ \hfill (C, integral);
+\item $x_n = \frac{1}{n \sqrt[n]{n}}$ \hfill (D, comparație $\sim \frac{1}{n}$);
+\item $x_n = a^{\ln n}, a > 0$ \hfill (discuție, Raabe);
+\item $x_n = \frac{(-1)^n \sqrt{n} + 1}{n}$ \hfill (D, Leibniz + armonică);
+\item $x_n = n^2 e^{-\sqrt{n}}$ \hfill (C, logaritmic).
+\end{enumerate}
+
+\vspace{1cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Calcul aproximativ de sume de serii}:
+
+2. Calculați cu eroare $\varepsilon$ sumele seriilor:
+\begin{enumerate}[(a)]
+\item $x_n = \frac{(-1)^n}{n!}, \varepsilon = 10^{-3}$ \hfill (n = 7);
+\item $x_n = \frac{(-1)^n}{n^3 \sqrt{n}}, \varepsilon = 10^{-2}$ \hfill (n = 4);
+\end{enumerate}
+
+\textbf{Șiruri de funcții}:
+
+3. Studiați convergența punctuală și convergența uniformă pentru șirurile
+de funcții:
+\begin{enumerate}[(a)]
+\item $f_n : [-1, 1] \to \RR, f_n(x) = \frac{x}{1 + nx^2}$;
+\item $f_n : [0, 1] \to \RR, f_n(x) = x^n(1 - x^n)$;
+\item $f_n : (-1, 1) \to \RR, f_n(x) = \frac{1 - x^n}{1 - x}$;
+\item $f_n : [0, 1] \to \RR, f_n(x) = \frac{2nx}{1 + n^2 x^2}$;
+\item $f_n : \RR \to \RR, f_n(x) = \arctan(nx)$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Verificați dacă șirul de funcții poate fi integrat termen cu termen:
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = nxe^{-nx^2}.
+\]
+Arătați, deci, că:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) \neq \int_0^1 \lim_{n \to \infty} f_n(x) dx.
+\]
+
+\vspace{1cm}
+
+5. Verificați dacă șirul de funcții poate fi derivat termen cu termen:
+\[
+  f_n : \RR \to \RR, \quad f_n(x) = \frac{1}{n} \arctan x^n.
+\]
+Arătați, deci, că:
+\[
+  \Big( \lim_{n\to \infty} f_n(x) \Big)^\prime_{x = 1} \neq %
+  \lim_{n \to \infty} f'_n(1).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Serii Taylor}
+
+6. Să se dezvolte în serie Maclaurin următoarele funcții, precizînd și
+domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $f(x) = e^x$;
+\item $f(x) = \sin x$;
+\item $f(x) = \cos x$;
+\item $f(x) = \ln(1 + x)$;
+\item $f(x) = \frac{1}{x + 1}$;
+\item $f(x) = \arctan x$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Calculați, cu ajutorul seriilor Taylor, cu o eroare de $10^{-3}$:
+\begin{enumerate}[(a)]
+\item $\ds\int_0^{\frac{1}{2}} \frac{\ln ( 1 + x )}{x} dx$;
+\item $\ds\int_0^{\frac{1}{3}} \frac{\sin x}{x} dx$;
+\item $\ds\int_0^{\frac{1}{3}} \frac{\arctan x}{x} dx$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Serii de puteri}:
+
+8. Găsiți raza de convergență și domeniul de convergență pentru seriile:
+\begin{enumerate}[(a)]
+\item $\sum x^n$;
+\item $\sum n^n x^n$;
+\item $\sum \frac{(x + 3)^n}{n^2}$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Serii de funcții}:
+
+9. Studiați convergența seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $\sum \frac{nx}{1 + n^5 x^2}, x \in \RR$; \hfill (Weierstrass);
+\item $\sum \arctan \frac{2x}{x^2 + n^4}, x \in \RR$; \hfill (Weierstrass);
+\item $\sum \frac{\sin nx}{2^n}, x \in \RR$; \hfill (Weierstrass);
+\item $\sum \Big( \sin \frac{x}{n + 1} - \sin \frac{x}{n} \Big)$; \hfill (șirul sumelor
+  parțiale);
+\item $x + \sum \Big( \frac{x}{1 + nx} - \frac{x}{1 + (n-1) x} \Big), 0 \leq x \leq 1$;
+  \hfill (șirul sumelor parțiale).
+\end{enumerate}
+
+
+
+
+
+\end{document}
+

@@ -1,0 +1,456 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță \& A. Oprina}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 4 \\ Matricea unei aplicații liniare. Utilizări}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Matricea unei aplicații liniare}
+\label{sec:mat-ap}
+
+Există o foarte strînsă legătură între matrice și aplicații liniare, definite
+pentru orice spațiu vectorial. De aceea, așa cum vom vedea, multe din noțiunile
+pe care le știm de la spații vectoriale cu ajutorul aplicațiilor liniare pot fi
+reformulate în contextul matricelor.
+
+Punctul de pornire este următorul.
+
+\begin{definition}\label{def:lvw}
+  Fie $V$ și $W$ două spații vectoriale peste același corp comutativ $\Bbbk$.
+
+  Definim mulțimea:
+  \[
+    \kal{L}(V, W) = \{ f : V \to W \mid f \text{ aplicație liniară } \}.
+  \]
+\end{definition}
+
+Se arată că $\kal{L}(V, W)$ devine chiar un spațiu vectorial peste $\Bbbk$,
+cu operațiile:
+\begin{align*}
+  (f + g)(v) &= f(v) + g(v), \forall v \in V, \forall f, g \in \kal{L}(V, W); \\
+  (\alpha f)(v) &= f(\alpha v), \forall \alpha \in \Bbbk, f \in \kal{L}(V, W), v \in V.
+\end{align*}
+
+În plus, se poate demonstra următoarea teoremă:
+
+\begin{theorem}\label{thm:mmn-apl}
+  În contextul și cu notațiile de mai sus, dacă $\dim V = n, \dim W = m$, atunci
+  $\dim \kal{L}(V, W) = m \cdot n$. În particular, $\kal{L}(V, W) \simeq M_{m, n}(\Bbbk)$.
+\end{theorem}
+
+Rezultă, așadar, că oricărei aplicații liniare i se poate asocia în mod unic
+o matrice. Este vorba despre \emph{matricea aplicației într-o bază}, definită
+astfel.
+
+Să luăm un exemplu particular. Considerăm spațiul vectorial real $\RR^3$ și
+baza sa canonică, $B = \{ e_1 = (1, 0, 0), e_2 = (0, 1, 0), e_3 = (0, 0, 1) \}$.
+
+Fie aplicația liniară $f : \RR^3 \to \RR^2, f(x, y, z) = (3x - 5y, 2z - x)$.
+
+Matricea aplicației $f$ în baza $B$, notată $M^B(f)$, se definește prin $(f(e_i))^t$.
+Adică se calculează $f$ în fiecare element al bazei, iar vectorii obținuți devin
+\emph{coloanele} matricei rezultate. Concret:
+\[
+  \begin{cases}
+    f(e_1) &= (3, -1) \\
+    f(e_2) &= (-5, 0) \\
+    f(e_3) &= (0, 2)
+  \end{cases} \Rightarrow %
+  M^B(f) =
+  \begin{pmatrix}
+    3 & -5 & 0 \\
+    -1 & 0 & 2
+  \end{pmatrix}
+\]
+
+Această corespondență este foarte utilă, deoarece, ulterior, în loc să calculăm
+valoarea aplicației $f$ într-un vector, se poate \emph{înmulți matricea aplicației %
+  cu vectorul respectiv} (pe coloană, așa cum are sens produsul de matrice).
+
+De exemplu, dacă luăm, în cazul de mai sus, vectorul $v = (1, -1, 3) \in \RR^3$,
+se arată prin calcul direct că:
+\[
+  f(v) = (8, 5) = M^B(f) \cdot \begin{pmatrix} 1 \\ -1 \\ 3 \end{pmatrix}.
+\]
+
+\textbf{Exercițiu:} Verificați egalitatea de mai sus!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Schimbarea matricei la schimbarea bazei}
+\label{sec:mat-trecere}
+
+Dacă avem o aplicație liniară $f : V \to W$ și două baze fixate în
+cele două spații, atunci matricea lui $f$ în raport cu cele două baze
+se obține exprimînd imaginea primei baze în raport cu cea de-a doua.
+
+De exemplu, fie aplicația:
+\[
+  f : \RR^2 \to \RR^3, \quad f(x_1, x_2) = (3x_1 - 3x_2, x_1 + 2x_2, x_1 - x_2).
+\]
+Considerăm bazele
+\[
+  B_1 = \{ v_1 = (1, 1), v_2 = (1, -1) \} \seq \RR^2
+\]
+și
+\[
+  B_2 = \{ w_1 = (1, 0, 0), w_2 = (0, 1, 0), w_3 = (0, 0, 1) \} \seq \RR^3.
+\]
+Atunci, \emph{matricea lui $f$ în raport cu cele două baze} se obține din calculul:
+\begin{align*}
+  f(v_1) &= (-1, 3, 0) = -1 \cdot w_1 + 3 \cdot w_2 + 0 \cdot w_3 \\
+  f(v_2) &= (5, -1, 2) = 5 \cdot w_1 - 1 \cdot w_2 + 2 \cdot w_3.
+\end{align*}
+Așadar, avem:
+\[
+  {}^{B_1} M^{B_2} (f) =
+  \begin{pmatrix}
+    -1 & 5 \\
+    3 & -1 \\
+    0 & 2
+  \end{pmatrix}
+\]
+
+Definim acum următorul concept:
+\begin{definition}\label{def:matrecere}
+  Fie $V$ un $\Bbbk$-spațiu vectorial și $B_1, B_2$ două baze ale sale.
+
+  \emph{Matricea de trecere} de la baza $B_1$ la baza $B_2$ are drept coloane
+  coordonatele vectorilor din baza $B_1$ scriși în funcție de baza $B_2$.
+\end{definition}
+
+De exemplu, să luăm $V = \RR^3$ și baza canonică $B_1 = \{ e_1, e_2, e_3 \}$,
+precum și baza $B_2 = \{ v_1 = (-1, 2, 1), v_2 = (0, -1, -1), v_3 = (1, 1, 1) \}$
+(\textbf{Exercițiu:} verificați că $B_2$ este, într-adevăr, bază!).
+
+Atunci avem:
+\begin{align*}
+  e_1 = (1, 0, 0) &= \alpha_1 v_1 + \alpha_2 v_2 + \alpha_3 v_3 \\
+  e_2 = (0, 1, 0) &= \beta_1 v_1 + \beta_2 v_2 + \beta_3 v_3 \\
+  e_3 = (0, 0, 1) &= \gamma_1 v_1 + \gamma_2 v_2 + \gamma_3 v_3.
+\end{align*}
+
+Rezultă trei sisteme:
+\[
+  \begin{cases}
+    -\alpha_1 + \alpha_3 &= 1 \\
+    2 \alpha_1 - \alpha_2 + \alpha_3 &= 0 \\
+    \alpha_1 - \alpha_2 + \alpha_3 &= 0
+  \end{cases}, \quad
+  \begin{cases}
+    -\beta_1 + \beta_3 &= 0 \\
+    2 \beta_1 - \beta_2 + \beta_3 &= 1 \\
+    \beta_1 - \beta_2 + \beta_3 &= 0
+  \end{cases}, \quad
+  \begin{cases}
+    -\gamma_1 + \gamma_3 &= 0 \\
+    2 \gamma_1 - \gamma_2 + \gamma_3 &= 0 \\
+    \gamma_1 - \gamma_2 + \gamma_3 &= 1
+  \end{cases}
+\]
+
+Matricea de trecere va fi, atunci:
+\[
+  {}^{B_1} M^{B_2} =
+  \begin{pmatrix}
+    \alpha_1 & \beta_1 & \gamma_1 \\
+    \alpha_2 & \beta_2 & \gamma_2 \\
+    \alpha_3 & \beta_3 & \gamma_3
+  \end{pmatrix}
+\]
+
+\textbf{Exercițiu:} Finalizați calculele pentru exercițiul de mai sus! (Determinați
+explicit coordonatele $\alpha_i, \beta_i, \gamma_i$ și matricea ${}^{B_1} M^{B_2}$.)
+
+Cu aceasta, avem următorul rezultat:
+\begin{theorem}\label{thm:sch-trecere}
+  Fie $A$ matricea unei aplicații liniare în baza $B$ a unui spațiu vectorial.
+  Fie $B'$ o altă bază și $S$ matricea de trecere de la baza $B$ la baza $B'$.
+
+  Atunci matricea aplicației se schimbă după formula:
+  \[
+    A' = S^{-1} \cdot A \cdot S.
+  \]
+\end{theorem}
+
+În cazul schimbării bazelor în domeniul și codomeniul unei aplicații
+liniare, avem rezultatul:
+
+\begin{theorem}\label{thm:mat-trecere-ambele}
+  Fie $V, W$ două $\Bbbk$-spații vectoriale, cu $\dim V = n, \dim W = m$ și
+  fie $f \in \kal{L}(V, W)$.
+
+  Fie $B_1 = \{v_i\}$ și $\overline{B}_1 = \{\overline{v}_u\}$ două baze
+  în $V$ și $B_2 = \{w_j\}$, respectiv $\overline{B}_2 = \{ \overline{w}_j \}$
+  două baze în $W$.
+
+  Fie $A$ matricea de trecere de la $B_1$ la $\overline{B}_1$ și $B$ matricea
+  de trecere de la $B_2$ la $\overline{B}_2$.
+
+  Atunci are loc relația:
+  \[
+    {}^{\overline{B}_1} M^{\overline{B}_2} (f) =
+    B^{-1} \cdot {}^{B_1} M^{B_2} (f) \cdot A.
+  \]
+\end{theorem}
+
+Modificarea coordonatelor unui vector la schimbarea bazei se face conform:
+
+\begin{theorem}\label{thm:sch-coord}
+  Fie $x \in V$ un vector care are coordonatele $\pmb{x} = (x_1, \dots, x_n)$ în
+  baza $B$ și coordonatele $\pmb{x'} = (x'_1, \dots, x'_n)$ în baza $B'$ ale spațiului
+  vectorial $V$.
+
+  Fie $A$ matricea de trecere de la baza $B$ la baza $B'$.
+
+  Atunci legătura între coordonate este dată de:
+  \[
+    \pmb{x'}^t = A^{-1} \cdot \pmb{x}.
+  \]
+\end{theorem}
+
+Mai definim:
+
+\begin{definition}\label{def:mat-asemenea}
+  Două matrice $P, Q \in M_n(\Bbbk)$ se numesc \emph{asemenea} dacă există o matrice
+  inversabilă $A$ astfel încît:
+  \[
+    Q = A^{-1} \cdot P \cdot A.
+  \]
+
+  Notăm relația de asemănare prin ``$\sim$'', deci $P \sim Q$.
+\end{definition}
+
+\textbf{Exercițiu:} Arătați că relația de asemănare a matricelor pătratice
+de un ordin $n$ dat este o relație de echivalență (reflexivă, simetrică, tranzitivă).
+
+\vspace{.3cm}
+
+Folosind cele de mai sus, rezultă:
+\begin{enumerate}[(1)]
+\item Două matrice asemenea au același rang.
+\item Matricele asociate unei aplicații liniare $f : V \to V$ în două baze
+  diferite ale lui $V$ sînt asemenea. Are loc și rezultatul reciproc.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Fie transformarea liniară $f : \RR^3 \to \RR^2$ definită prin:
+\[
+  f(x_1, x_2, x_3) = (x_1 + 2x_3, x_1 + x_2 - x_3).
+\]
+
+\begin{enumerate}[(a)]
+\item Verificați teorema rang-defect;
+\item Găsiți matricea aplicației $f$ în baza canonică a $\RR^3$;
+\item Arătați că $B' = \{ v_1 = (-1, 0, 1), v_2 = (0, -1, 2), v_3 = (-1, 1, -1) \}$
+  este bază a lui $\RR^3$;
+\item Găsiți matricea lui $f$ în baza $B'$;
+\item Găsiți matricea de trecere de la baza canonică $B$ la baza $B'$
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie transformarea liniară $f \in \kal{L}(\RR^3, \RR^4)$, definită prin:
+\[
+  f(x_1, x_2, x_3) = (x_1 + x_2, x_1 + x_3, x_2 - x_3, x_1 - x_2 + 2x_3).
+\]
+\begin{enumerate}[(a)]
+\item Verificați teorema rang-defect;
+\item Fie bazele:
+  \begin{align*}
+    B_1 &= \{ u_1 = (1, 1, -1), u_2 = (1, -1, 1), u_3 = (-1, 1, 1) \} \seq \RR^3 \\
+    B_2 &= \{ v_1 = (0, 1, 1, 1), v_2 = (1, 0, 1, 1), v_3 = (1, 1, 0, 1), v_4 = (1, 1, 1, 0) \} \seq \RR^4.
+  \end{align*}
+  Găsiți matricele de trecere de la bazele canonice la $B_1$, respectiv $B_2$;
+\item Determinați matricea aplicației $f$ în baza $B_1$, față de baza canonică
+  din $\RR^4$;
+\item Determinați matricea aplicației $f$ în baza $B_1$, față de baza $B_2$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie $V = \RR[X]_2$ și mulțimea:
+\[
+  B' = \{ p_1 = 3X^2 + 2, p_2 = X - 5, p_3 = X^2 + 4 \}.
+\]
+\begin{enumerate}[(a)]
+\item Arătați că $B'$ este bază a lui $V$;
+\item Determinați matricea de trecere de la baza canonică la baza $B'$;
+\item Fie $f : V \to \RR[X]_1$ morfismul de derivare (în raport cu $X$).
+  Determinați matricea lui $f$ în baza canonică a lui $V$, față de baza canonică
+  alui $\RR[X]_1$, precum și matricea lui $f$ în baza $B'$ a lui $V$
+  față de baza $B^{\prime\prime} = \{ q_1 = 7, q_2 = X - 2 \}$ a lui $\RR[X]_1$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4*. Fie $V$ spațiul vectorial al funcțiilor reale, generat de baza:
+\[
+  B = \{1, \cos x, \sin x, \cos 2x, \sin 2x, \cos 3x, \sin 3x \}.
+\]
+Fie aplicația $\varphi : V \to V$, definită prin:
+\[
+  (\varphi(f))(x) = 4 \int_0^{2 \pi} \sin^3(x + y) f(y) dy.
+\]
+\begin{enumerate}[(a)]
+\item Arătați că $\varphi$ este aplicație liniară;
+\item Determinați $\mathrm{Ker}\varphi$ și $\mathrm{Im}\varphi$;
+\item Determinați matricea lui $\varphi$ în baza $B$.
+\end{enumerate}
+
+\vspace{1cm}
+
+5*. Fie aplicația urmă $tr : M_n(\RR) \to \RR$, definită prin $tr(A) = \sum a_{ii}$,
+unde $A = (a_{ij}) \in M_n(\RR)$.
+
+Arătați că $\mathrm{def}(tr) = n^2 - 1$, unde $\mathrm{def}(tr) = \dim \mathrm{Ker}(tr)$,
+se numește \emph{defectul} aplicației $tr$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții suplimentare}
+\label{sec:exc-supl}
+
+6. Fie vectorii $v_1 = (x, 3x, 2), v_2 = (5, -1, x + 4), v_3 = (0, -x, x)$.
+\begin{enumerate}[(a)]
+\item Determinați $x$ astfel încît mulțimea $B' = \{ v_1, v_2, v_3 \}$ să formeze
+  o bază pentru spațiul $\RR^3$.
+\item Găsiți matricea de trecere de la baza $B'$ la baza canonică a lui $\RR^3$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Fie aplicația:
+\[
+  f : \RR^3 \to \RR^2, \quad f(x, y, z) = (3x - 5y, 2x + z, 5x - 5y + z).
+\]
+\begin{enumerate}[(a)]
+\item Arătați că $f$ este aplicație liniară;
+\item Determinați matricea lui $f$ în baza canonică a lui $\RR^3$ și baza canonică
+  a lui $\RR^2$;
+\item Determinați $\mathrm{Ker}f, \mathrm{Im}f$;
+\item Verificați teorema rang-defect și găsiți baze în $\mathrm{Ker}f$ și $\mathrm{Im}f$;
+\item Fie mulțimile $B_1 = \{ (-1, 0, 1), (2, 2, 0), (1, 0, 0) \}$ și
+  $B_2 = \{ (3, 1), (-2, 2) \}$. Arătați că $B_1$ este bază în $\RR^3$ și
+  $B_2$ este bază în $\RR^2$;
+\item Găsiți matricele de trecere de la bazele canonice la bazele $B_1$, respectiv $B_2$;
+\item Găsiți matricea aplicației $f$ în raport cu bazele $B_1$, respectiv $B_2$.
+\end{enumerate}
+
+\vspace{1cm}
+
+8. Fie spațiul $V = \RR^3$ și mulțimile:
+\begin{align*}
+  S_1 &= \{ (x, y, z) \in \RR^3 \mid 3x + 5y - z = 0 \}; \\
+  S_2 &= \{ (x, y, z) \in \RR^3 \mid x = 4z - y \text{ și } z = 2x - y \}.
+\end{align*}
+\begin{enumerate}[(a)]
+\item Arătați că $S_1 \hookrightarrow V$ și $S_2 \hookrightarrow V$;
+\item Verificați teorema lui Grassmann pentru $S_1$ și $S_2$, adică:
+  \[
+    \dim(S_1 + S_2) = \dim S_1 + \dim S_2 - \dim (S_1 \cap S_2).
+  \]
+\end{enumerate}
+\end{document}

@@ -1,0 +1,217 @@
+\chapter{Integrale curbilinii. Formule integrale 1}
+
+\section{Integrala curbilinie de prima speță}
+
+Fie $ \gamma : [a, b] \to \RR^3 $ un drum neted, adică dat de o funcție
+de clasă $ \kal{C}^1 $ și fie $ f : D \to \RR $ o funcție continuă, cu
+proprietatea că $ D \supseteq \gamma([a, b]) $.
+\index{integrala!curbilinie!speță întîi}
+
+Se definește \emph{integrala curbilinie de speța întîi} a funcției $ f $
+în lungul drumului $ \gamma $ prin:
+\[
+  \int_\gamma f(x, y, z) ds = \int_a^b f(x(t), y(t), z(t)) \cdot %
+  \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2} dt,
+\]
+unde $ (x(t), y(t), z(t)) $ este o \emph{parametrizare} a drumului $ \gamma $.
+\index{integrala!curbilinie!lungimea drumului}
+În particular, pentru $ f = 1 $, obținem \emph{lungimea drumului} $ \gamma $:
+\[
+  L(\gamma) = \int_a^b  \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2} dt.
+\]
+
+Mai sînt relevante și alte două interpretări fizice:
+\begin{itemize}
+\item presupunem că $ \gamma $ reprezintă un fir material, iar $ f $ este
+  funcția care dă \emph{densitatea} firului. Atunci \emph{masa} firului se
+  poate calcula prin integrala curbilinie:
+  \[
+    M = \int_\gamma fds;
+  \]
+\item dacă $ x_i^G $ sînt coordonatele centrului de greutate ale firului
+  ($ x_1 = x, x_2 = y, x_3 = z $), acestea se pot calcula prin integrala
+  curbilinie:
+  \[
+    x_i^G = \frac{1}{M} \int_\gamma x_i f ds.
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integrala curbilinie de speța a doua}
+\index{integrala!curbilinie!circulația cîmpului}
+Fie $ \alpha = Pdx + Qdy + R dz $ o 1-formă diferențială, unde $ P, Q, R $
+sînt funcții continue definite pe $ D \seq \RR^3 $. Fie, de asemenea,
+$ \gamma : [a, b] \to \RR^3, \gamma(t) = (x(t), y(t), z(t)), t \in [a, b] $
+un drum parametrizat, neted, cu $ \gamma([a, b]) \seq D $.
+
+Se definește \emph{integrala curbilinie a formei diferențiale $ \alpha $}
+în lungul drumului $ \gamma $ prin formula:
+\[
+  \int_\gamma \alpha = \int_a^b (P \circ \gamma) x'(t) + (Q \circ \gamma) y'(t) + %
+  (R \circ \gamma) z'(t) dt.
+\]
+
+Interpretările fizice relevante sînt următoarele:
+\begin{itemize}
+\item formei diferențiale $ \alpha $ i se poate asocia un cîmp vectorial tridimensional,
+  cu aceleași componente: $ \vec{V} = (P, Q, R) $. Atunci integrala curbilinie a
+  lui $ \alpha $ în lungul curbei $ \gamma $ se numește \emph{circulația cîmpului}
+  $ \vec{V}$ de-a lungul drumului $ \gamma $, notată:
+  \[
+    \int_\gamma \alpha = \int_\gamma \vec{V} \cdot d\vec{r};
+  \]
+\item dacă interpretăm cîmpul $ \vec{V} $ de mai sus ca pe un \emph{cîmp de forțe},
+  atunci integrala de mai sus este \emph{lucrul mecanic al forței $ \vec{F} $},
+  care acționează asupra unui corp punctiform în lungul drumului $ \gamma $:
+  \[
+    \int_\gamma \alpha = \int_\gamma \vec{F} \cdot d\vec{r}.
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula Green-Riemann}
+\index{formula!Green-Riemann}
+
+Această formulă, care face parte din formulele integrale esențiale pe care
+le vom studia, ne permite să transformăm o integrală curbilinie de speța a doua
+într-una dublă.
+
+Mai precis, avem formula:
+\[
+  \int_\gamma Pdx + Qdy = %
+  \iint_K \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} dxdy,
+\]
+unde $ K $ este suprafața bidimensională închisă de curba $ \gamma $.
+
+\textbf{Observație importantă:} Pentru a putea aplica formula Green-Riemann,
+este necesar ca drumul $ \gamma $ să fie închis, pentru a putea descrie
+o suprafață închisă $ K $! De asemenea, evident, forma diferențială trebuie
+să fie de clasă $ \kal{C}^1 $, inclusiv în $ K $, pentru a putea calcula
+derivatele parțiale.
+
+\subsection{Forme diferențiale închise}
+
+Fie $ \alpha = Pdx + Qdy $ o 1-formă diferențială de clasă $ \kal{C}^1 $ pe o
+vecinătate a $ K = \dr{Int}(\gamma) $. Această formă diferențială se numește
+\emph{închisă} dacă are loc:
+\[
+  \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}.
+\]
+
+Se poate observa, folosind formula Green-Riemann, că pentru forme diferențiale
+închise, integrala curbilinie în lungul oricărui drum este nulă. Această observație
+se mai numește \emph{independența de drum a integralei curbilinii}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Să se calculeze următoarele integrale curbilinii de speța întîi:
+\begin{enumerate}[(a)]
+\item $ \ds\int_\gamma xds $, unde $ \gamma : y = x^2, x \in [0, 2] $;
+\item $ \ds\int_\gamma y^5ds $, unde $ \gamma : x = \dfrac{y^4}{4}, y \in [0, 2] $;
+\item $ \ds\int_\gamma x^2ds $, unde $ \gamma: x^2 + y^2 = 2, x, y \geq 0 $;
+\item $ \ds\int_\gamma y^2ds $, unde $ \gamma: x^2 + y^2 = 4, x \leq 0, y \geq 0 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați, direct și aplicînd formula Green-Riemann, integrala curbilinie
+$ \ds\int_\gamma \alpha $ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $ \alpha = y^2 dx + x dy $, unde $ \gamma $ este pătratul cu vîrfurile
+  $ A(0,0), B(2, 0), C(2, 2), D(0, 2) $;
+\item $ \alpha = ydx + x^2 dy $, unde $ \gamma $ este cercul centrat în origine
+  și de rază $ 2 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Calculați următoarele integrale curbilinii de speța a doua:
+\begin{enumerate}[(a)]
+\item $ \ds\int_\gamma xdy - ydx $, unde $ \gamma: x^2 + y^2 = 4, y = x\sqrt{3} \geq 0 $
+  și $ y = \dfrac{x}{\sqrt{3}} $;
+\item $ \ds\int_\gamma (x + y) dx + (x - y) dy $, pe domeniul:
+  \[
+    \gamma: x^2 + y^2 = 4, y \geq 0;
+  \]
+\item $ \ds\int_\gamma \dfrac{y}{x + 1} dx + dy $, unde $ \gamma $ este
+  triunghiul cu vîrfurile $ A(2, 0), B(0, 0), C(0, 2) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se calculeze $ \ds\int_\gamma ydx + xdy $ pe un drum de la $ A(2, 1) $
+la $ B(1, 3) $.
+
+\vspace{1cm}
+
+5. Să se calculeze circulația cîmpului de vectori $ \vec{V} $ de-a lungul curbei
+$ \gamma $, pentru:
+\begin{enumerate}[(a)]
+\item $ \vec{V} = -(x^2 + y^2) \vec{i} - \vec{x^2 - y^2} \vec{j} $, cu:
+  \[
+    \gamma: \{ x^2 + y^2 = 4, y < 0 \} \cap \{ x^2 + y^2 - 2x = 0, y \geq 0 \}
+  \]
+\item $ \vec{V} = x\vec{y} + xy \vec{j} $, unde:
+  \[
+    \gamma: \{ x^2 + y^2 = 1 \} \cap \{ x + y = 3 \}.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se calculeze masa firului material $ \gamma $, cu ecuațiile parametrice:
+\[
+  \begin{cases}
+    x(t) &= t \\
+    y(t) &= t^2/2, t \in [0, 1] \\
+    z(t) &= t^3/3
+  \end{cases}
+\]
+iar densitatea $ f(x, y, z) = \sqrt{2y} $.
+
+\vspace{1cm}
+
+7. Fie forma diferențială:
+\[
+  \alpha = \dfrac{-y}{x^2 + y^2} dx + \dfrac{x}{x^2 + y^2} dy.
+\]
+Să se calculeze $ \ds\int_\gamma \alpha $, unde $ \gamma $ este cercul centrat
+în origine și cu raza 2.
+
+\vspace{1cm}
+
+8. Să se calculeze integrala curbilinie $ \ds\int_\gamma xydx + \dfrac{x^2}{2} dy $,
+pe conturul:
+\[
+  \gamma : \{ x^2 + y^2 = 1, x \leq 0 \leq y \} \cap \{ x + y = -1, x, y < 0 \}.
+\]
+\emph{Indicație:} Curba $ \gamma $ nu este închisă, deci nu putem aplica
+formula Green-Riemann. Considerăm segmentul orientat $ [AB] $, cu
+$ A(0, -1), B(0, 1) $, cu care închidem curba. Definim $ C = \gamma \cup [AB] $
+și acum putem aplica Green-Riemann pe $ C $. Vom avea, de fapt:
+\[
+  \int_C \alpha = \int_\gamma \alpha + \int_{[AB]} \alpha,
+\]
+unde $ \alpha $ este forma diferențială de integrat.
+
+Putem calcula acum integrala pe $ C $ cu Green-Riemann, iar cea pe $ [AB] $ cu
+definiția, obținînd în final integrala pe $ \gamma $.
+
+\vspace{1cm}
+
+9. Calculați, folosind integrala curbilinie:
+\begin{enumerate}[(a)]
+\item lungimea unui cerc de rază 2;
+\item lungimea segmentului $ AB $, cu $ A(1, 2) $ și $ B(3, 5) $;
+\item lungimea arcului de parabolă $ y = 3x^2 $, cu $ x \in [-2, 2] $;
+\item lungimea arcului de hiperbolă $ xy = 1 $, cu $ x \in [1, 2] $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-18-19"
+%%% End:

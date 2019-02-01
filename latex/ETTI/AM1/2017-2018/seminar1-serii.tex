@@ -1,0 +1,474 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AN1, 2017---2018, C. Ghiu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 1 \\ Șiruri și serii de numere reale}}
+\end{center}
+
+\section{Serii --- Noțiuni generale}
+
+\begin{definition}\label{def:sir}
+  Se numește \emph{șir de numere reale (complexe)} orice funcție de forma
+  $f : \mathbb{N} \to \mathbb{R}$ (respectiv $\mathbb{C}$).
+
+  În această notație, se obișnuiește ca în loc de imaginea numărului
+  natural $n$ să se scrie sub formă de indice, i.e.\ $x_n = f(n)$, iar
+  șirul în ansamblu să se noteze cu $(x_n)_{n \in \NN}$.
+\end{definition}
+
+\begin{definition}\label{def:serie}
+  Fie $(x_n)_n$ un șir de numere reale și fie seria $\sum_n x_n$, definită
+  de șirul sumelor parțiale $s_n = \ds\sum_{k=1}^n u_k$.
+
+  Seria se numește \emph{convergentă} dacă șirul $s_n$ este convergent, iar
+  limita șirului se numește \emph{suma seriei}. În caz contrar, seria se numește
+  \emph{divergentă}, adică șirul sumelor parțiale nu are limită sau aceasta este
+  infinită.
+\end{definition}
+
+Cîteva proprietăți, care ne ajută să lucrăm cu operații cu serii:
+\begin{enumerate}[(1)]
+  \item Dacă într-o serie schimbăm ordinea unui număr finit de termeni, obținem
+    o serie nouă, care are aceeași natură. Dacă există, suma seriei nu se schimbă.
+  \item Dacă eliminăm un număr finit de termeni dintr-o serie, se obține o nouă serie
+    cu aceeași natură. Suma, dacă există, poate să se schimbe.
+  \item Fie seria $\sum_n x_n$ convergentă. Atunci pentru orice șir $(k_n)$ crescător
+    și divergent, cu numere naturale, seria obținută prin reordonare:
+    \[
+      (x_1 + x_2 + \dots + x_{k_1}) + (x_{k_1 + 1} + \dots + x_{k_2}) + \dots
+    \]
+    este de asemenea convergentă și are aceeași sumă. Dacă seria inițială are sumă
+    infinită, atunci și seria de mai sus are sumă infinită.
+
+    Dacă există un șir $(k_n)$ ca mai sus, care să facă astfel încît noua serie
+    reordonată să devină divergentă, atunci și seria inițială este divergentă.
+  \item Dacă o serie este convergentă, atunci ea are șirul sumelor parțiale mărginit.
+  \item Fie $\sum_{n \geq 1} x_n$ o serie convergentă și $\sum_{n \geq p} x_n$ seria
+    obținută prin eliminarea primilor $p$ termeni. Suma seriei translatate se notează
+    $R_p$ și se numește \emph{restul de ordin $p$} al seriei inițiale.
+
+    Se poate observa faptul că resturile unei serii convergente formează un șir
+    convergent către zero.
+  \item Seriile $\sum_n x_n$ și $\sum_n \alpha x_n$, cu $\alpha \in \RR^\ast$ au
+    aceeași natură.
+  \item Dacă seria $\sum_n x_n$ este convergentă, atunci șirul $(x_n)$ al termenilor
+    săi este convergent către zero. Reciproca este falsă $\Big( \sum_n \frac{1}{n} \Big)$.
+
+    Proprietatea aceasta oferă, însă, \textbf{condiția necesară de convergență}, anume:
+  \item Dacă șirul termenilor unei serii nu este convergent către zero, seria este
+    divergentă.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii cu termeni pozitivi}
+
+Cîteva proprietăți simple care rezultă din particularizarea celor de mai sus:
+
+\begin{enumerate}[(1)]
+  \item Șirul sumelor parțiale ale unei serii cu termeni pozitivi este strict
+    crescător;
+  \item O serie cu termeni pozitivi are întotdeauna sumă (finită sau nu);
+  \item O serie cu termeni pozitivi este convergentă dacă și numai dacă șirul
+    sumelor parțiale este mărginit;
+  \item Dacă $\sum_n x_n$ este o serie cu termeni pozitivi, atunci ea are aceeași
+    natură cu seria obținută prin reordonare după un șir de numere naturale (cf.\
+    proprietății (3) de mai sus). 
+\end{enumerate}
+
+Pentru a stabili natura unei serii cu termeni pozitivi, se pot folosi următoarele
+criterii:
+
+\begin{enumerate}[(1)]
+  \item \textbf{Primul criteriu de comparație:} O serie care are termeni mai mari
+    (doi cîte doi) decît o serie divergentă este divergentă. O serie care are termeni
+    mai mici (doi cîte doi) decît o serie convergentă este convergentă.
+  \item \textbf{Al doilea criteriu de comparație:} Fie $\sum_n x_n$ și $\sum_n y_n$
+    două serii cu termeni pozitivi. Presupunem că $\frac{x_{n+1}}{x_n} \leq \frac{y_{n+1}}{y_n}$.
+    Atunci:
+    \begin{itemize}
+      \item Dacă seria $\sum_n y_n$ este convergentă, atunci și seria $\sum_n x_n$ este
+        convergentă;
+      \item Dacă seria $\sum_n x_n$ este divergentă, atunci și seria $\sum_n y_n$ este
+        divergentă.
+    \end{itemize}
+  \item \textbf{Al treilea criteriu de comparație:} Fie $\sum_n x_n$ și $\sum_n y_n$ serii
+    cu termeni pozitivi, astfel încît $\ds\lim_{n \to \infty} \frac{x_n}{y_n} = \ell$.
+    \begin{itemize}
+      \item Dacă $0 < \ell < \infty$, atunci cele două serii au aceeași natură;
+      \item Dacă $\ell = 0$, iar seria $\sum_n y_n$ este convergentă, atunci și seria
+        $\sum_n x_n$ este convergentă;
+      \item Dacă $\ell = +\infty$, iar seria $\sum_n y_n$ este divergentă, atunci seria
+        $\sum_n x_n$ este divergentă.
+    \end{itemize}
+  \item \textbf{Criteriul radical (Cauchy)}: Fie $\sum_n x_n$ o serie cu termeni pozitivi,
+    astfel încît $\ds\lim_{n \to \infty} \sqrt[n]{x_n} = \ell$. Atunci:
+    \begin{itemize}
+      \item Dacă $\ell < 1$, seria este convergentă;
+      \item Dacă $\ell > 1$, seria este divergentă;
+      \item Dacă $\ell = 1$, criteriul nu decide.
+    \end{itemize}
+  \item \textbf{Criteriul raportului (D'Alembert)}: Fie $\sum_n x_n$ o serie cu termeni
+    pozitivi, astfel încît $\ds\lim_{n \to \infty} \frac{x_{n+1}}{x_n} = \ell$. Atunci:
+    \begin{itemize}
+      \item Dacă $\ell < 1$, seria este convergentă;
+      \item Dacă $\ell > 1$, seria este divergentă;
+      \item Dacă $\ell = 1$, criteriul nu decide.
+    \end{itemize}
+  \item \textbf{Criteriul lui Raabe-Duhamel:} Fie $\sum_n x_n$ o serie cu termeni
+    pozitivi și notăm:
+    \[
+      \ell = \lim_{n \to \infty} n \Big( \frac{x_n}{x_{n+1}} - 1 \Big).
+    \]
+    Atunci:
+    \begin{itemize}
+      \item Dacă $\ell < 1$, seria este divergentă;
+      \item Dacă $\ell > 1$, seria este convergentă;
+      \item Dacă $\ell = 1$, criteriul nu decide.
+    \end{itemize}
+  \item \textbf{Criteriul logaritmic:} Fie $\sum_n x_n$ o serie cu termeni pozitivi
+    și presupunem că există limita:
+    \[
+      \ell \stackrel{\text{not.}}{=\joinrel=} \lim_{n \to \infty} %
+    \frac{\ln \frac{1}{x_n}}{\ln n}.
+    \]
+    Atunci:
+    \begin{itemize}
+      \item Dacă $\ell < 1$, seria este divergentă;
+      \item Dacă $\ell > 1$, seria este convergentă;
+      \item Dacă $\ell = 1$, criteriul nu decide.
+    \end{itemize}
+  \item \textbf{Criteriul integral:} Fie $f: (0, \infty) \to [0, \infty)$ o funcție
+    crescătoare și șirul $a_n = \int_1^n f(t) dt$. Atunci seria $\sum_n f(n)$ este
+    convergentă dacă și numai dacă șirul $(a_n)_n$ este convergent.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Convergență absolută și semiconvergență}
+
+Atunci cînd nu lucrăm cu serii care au doar termeni pozitivi, convergența trebuie
+studiată ceva mai atent. De fapt, ea se subdivide în cel puțin două tipuri, pe
+care le vom prezenta.
+
+Însă, cel mai simplu exemplu de serie care nu are toți termenii pozitivi este
+\emph{seria alternată:}
+
+\begin{definition}\label{def:serie-alt}
+  O serie $\sum_n x_n$ se numește \emph{alternată} dacă produsul
+  $x_n \cdot x_{n+1} < 0, \forall n \in \NN$.
+\end{definition}
+
+Pentru astfel de serii, avem \textbf{criteriul lui Leibniz} care ne arată
+convergența: Fie $\sum_n (-1)^{n+1} u_n$ o serie alternată. Dacă șirul
+$(u_n)_n$ este descrescător și converge către $0$, atunci seria este
+convergentă.
+
+Ajungem, în fine, la noțiunile anunțate.
+
+\begin{definition}\label{def:abs-conv}
+  O serie $\sum_n x_n$ se numește \emph{absolut convergentă} dacă seria
+  modulelor $\sum_n |x_n|$ este convergentă.
+\end{definition}
+
+Următoarele proprietăți sînt evidente:
+\begin{itemize}
+  \item Orice serie absolut convergentă este convergentă;
+  \item Prin orice permutare a termenilor unei serii absolut convergente se
+    obține una tot absolut convergentă și cu aceeași sumă.
+\end{itemize}
+
+\begin{remark}\label{rk:abs-conv-poz}
+  Deoarece știm că pentru o serie absolut convergentă, proprietatea de
+  convergență se păstrează și cînd trecem la module, putem să aplicăm pentru
+  seriile absolut convergente criteriile din cazul seriilor cu termeni pozitivi.
+\end{remark}
+
+
+\begin{definition}\label{def:semiconv}
+  O serie se numește \emph{semiconvergentă} dacă are seria modulelor divergentă.
+\end{definition}
+
+Așadar, dacă seria este absolut convergentă, ne putem reduce la cazul seriilor
+cu termeni pozitivi, prin aplicarea modulului. În caz contrar (cel de semiconvergență),
+avem la dispoziție următoarele criterii:
+
+\begin{enumerate}[(1)]
+  \item \textbf{Criteriul general (Cauchy)}: O serie $\sum_n x_n$ este convergentă
+    dacă și numai dacă pentru orice $\varepsilon > 0$, există $N_\varepsilon \in \NN$
+    astfel încît, pentru orice $n \geq N_\varepsilon$, are loc:
+    \[
+      |x_{n+1} + x_{n+2} + \dots + x_{n + p} | < \varepsilon, \forall p \geq 1.
+    \]
+    
+  \item \textbf{Criteriul lui Abel}: Dacă seria $\sum_n x_n$ se poate scrie sub forma
+    $\sum_n \alpha_n y_n$, cu $(\alpha_n)$ un șir monoton și mărginit, iar seria
+    $\sum_n y_n$ este convergentă, atunci și seria inițială este convergentă.
+
+  \item \textbf{Criteriul lui Dirichlet}: Dacă seria $\sum_n x_n$ se poate scrie
+    sub forma $\sum_n \alpha_n y_n$, în care $(\alpha_n)$ este un șir monoton care
+    tinde către zero, iar șirul de termen general $V_n = v_1 + \dots + v_n$ este
+    mărginit, atunci seria inițială este convergentă.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Operații cu serii}
+
+În unele situații, dacă o serie este mai complicată, putem să o descompunem
+în două sau mai multe serii. Apoi, problema convergenței se reduce la studiul
+componentelor, iar rezultatul final se formulează ținînd seama de operațiile
+permise între serii (convergente).
+
+Operațiile elementare cu serii sînt:
+\begin{itemize}
+  \item \emph{suma și diferența}, care se realizează termen cu termen, adică:
+    \[
+      \sum_n x_n + \sum_n y_n = \sum_n (x_n + y_n);
+    \]
+  \item \emph{produsul}, care se mai numește și \emph{convoluție}, deoarece nu
+    se realizează termen cu termen, ci avem:
+    \[
+      \sum_n x_n \cdot \sum_n y_n = \sum_n \Big( \sum_j x_j y_{n - 1 - j} \Big).
+    \]
+\end{itemize}
+
+Cu aceste operații, rezultatele principale care ne arată utilitatea lor sînt:
+
+\begin{enumerate}[(1)]
+  \item Suma și diferența a două serii convergente este o serie convergentă. Suma
+    seriei rezultate se calculează corespunzător, i.e.\ ca suma sau diferența
+    sumelor seriilor implicate.
+  \item \textbf{Abel:} Suma unei serii produs se calculează ca produsul sumelor
+    seriilor-factori.
+  \item \textbf{Mertens:} Dacă seriile $\sum_n u_n, \sum_n v_n$ sînt convergente și
+    cel puțin una dintre ele este absolut convergentă, atunci seria produs
+    $\sum_n w_n$ este convergentă și avem $U \cdot V = W$, unde am notat cu majuscule
+    sumele seriilor corespunzătoare.
+  \item \textbf{Cauchy:} Dacă seriile factori sînt absolut convergente, atunci și seria
+    produs este absolut convergentă.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Aproximarea sumelor seriilor convergente}
+
+Putem calcula numeric sumele unor serii convergente, cu anumite aproximații,
+chiar dacă suma finală nu poate fi calculată în întregime (sau poate rezultatul
+exact nu este de interes). În acest sens, avem următoarele două rezultate:
+
+\begin{theorem}[Aproximarea sumelor seriilor cu termeni pozitivi]\label{thm:aprox-poz}
+  
+  Fie $x_n \geq 0$ și $k \geq 0$, astfel încît $\frac{x_{n+1}}{x_n} < k < 1, \forall n \in \NN$.
+  Dacă $S$ este suma seriei convergente $\sum_n x_n$, iar $s_n$ este suma primilor $n + 1$
+  termeni, atunci avem următoarea aproximație:
+  \[
+    | S - s_n | < \frac{k}{1 - k} x_n.
+  \]
+\end{theorem}
+
+\begin{theorem}[Aproximarea sumelor seriilor alternate]\label{thm:aprox-alt}
+  Fie $\sum_n (-1)^n x_n$ o serie alternată convergentă și fie $S$ suma sa. Dacă $S_n$ este suma
+  primilor $n + 1$ termeni, atunci avem:
+  \[
+    | S - S_n | \leq x_{n + 1}.
+  \]
+\end{theorem}
+
+În esență, ambele teoreme arată că \emph{eroarea aproximației are ordinul de mărime %
+al primului termen neglijat}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exemple și exerciții}
+
+Să studiem două serii care au fost deja întîlnite:
+
+\textbf{Seria geometrică:} Fie $a \in \RR$ și $q \in \RR$, pe care îl numim \emph{rație}.
+Considerăm seria geometrică $\sum_n aq^n$. După cum știm, suma parțială de rang $n$
+a seriei este:
+\[
+  s_n = a + aq + \dots + aq^{n-1} = %
+  \begin{cases}
+    a \cdot \frac{1 - q^n}{1 - q}  & q \neq 1 \\
+    na, & q = 1.
+  \end{cases}
+\]
+
+În ce privește convergența, rezultă că dacă $|q| < 1$, atunci avem:
+\[
+  \lim_{n \to \infty} s_n = \frac{a}{1 - q},
+\]
+deci seria este convergentă și are suma chiar $\frac{a}{1 - q}$.
+
+În caz contrar, dacă $|q| \geq 1$, se poate verifica folosind criteriul necesar că seria
+geometrică este divergentă. \\
+
+Un caz mai general îl constituie \textbf{seria armonică generalizată}, definită prin
+$\sum_n \frac{1}{n^\alpha}$, cu $\alpha \in \RR$.
+
+Dacă $\alpha \leq 0$, atunci termenul general al seriei nu converge către zero, deci din
+criteriul necesar, obținem că seria este divergentă.
+
+Dacă $\alpha > 0$, atunci termenii seriei formează un șir descrescător de numere pozitive.
+Se poate constata, în acest caz, că seria este convergentă pentru $\alpha > 1$ și divergentă
+pentru $\alpha \leq 1$.
+
+Pentru $\alpha = 1$, seria se numește simplu \emph{seria armonică}.
+
+\vspace{1cm}
+
+1. Studiați natura următoarelor serii cu termeni pozitivi, definite de șirul $x_n$:
+\begin{multicols}{2}
+  \begin{enumerate}[(a)]
+    \item $x_n = \Big( \frac{3n}{3n + 1} \Big)^n$ (D, necesar);
+    \item $x_n = \frac{1}{n!}$ (C, comparație);
+    \item $x_n = \frac{1}{n \sqrt{n + 1}}$ (C, comparație);
+    \item $x_n = \frac{n!}{n^{2n}}$ (C, D'Alembert);
+    \item $x_n = n! \cdot \Big( \frac{a}{n} \Big)^n, a \in \RR$ (discuție, raport);
+    \item $x_n = \frac{(n!)^2}{(2n)!}$ (C, raport);
+    \item $x_n = \frac{n!}{(a + 1)(a + 2) \cdots (a + n)}, a > -1$ (discuție, Raabe);
+    \item $x_n = \frac{1 \cdot 3 \cdot 5 \cdots (2n - 1)}{2 \cdot 4 \cdot 6 \cdots 2n}$ (D, Raabe);
+    \item $x_n = \Big( 1 - \frac{3 \ln n}{2n} \Big)^n$ (C, logaritmic);
+    \item $x_n = \Big( \frac{n + 1}{3n + 1} \Big)^n$ (C, rădăcină);
+    \item $x_n = \Big( \frac{an + 1}{bn + 1} \Big)^n, a, b > 0$ (discuție, rădăcină);
+    \item $x_n = \Big( \frac{1}{\ln n} \Big)^{\ln(\ln n)}$ (D, logaritmic);
+    \item $x_n = \frac{1}{n \ln n}$ (D, integral);
+    \item $x_n = \frac{1}{n \ln^2 n}$ (C, integral);
+    \item $x_n = \frac{\sqrt[n]{(n + 1) (n+2) \cdots (n + n)}}{n}$ (D, necesar + rădăcină);
+    \item $x_n = \frac{1}{7^n + 3^n}$ (C, comparație);
+    \item $x_n = 3^n \sin \frac{\pi}{5^n}$ (C, comparație $\sin x < x$);
+    \item $x_n = \frac{1}{n \sqrt[n]{n}}$ (D, comparație 3 $\sim \frac{1}{n}$);
+    \item $x_n = a^{\ln n}, a > 0$ (discuție, Raabe).
+  \end{enumerate}
+\end{multicols}
+
+\vspace{1cm}
+
+2. Studiați natura următoarelor serii, definite de șirul $x_n$:
+\begin{enumerate}[(a)]
+  \item $x_n = \frac{(-1)^n}{n}$ (C, Leibniz, nu AC);
+  \item $x_n = (-1)^n$ (D, necesar);
+  \item $x_n = \frac{1}{n + i}$ (D, descompune, una divergentă);
+  \item $x_n = \frac{\cos n \alpha}{n^2}, \alpha \in \RR$ (AC, comparație);
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Dați exemplu de serii divergente a căror sumă este o serie convergentă.
+($(-1)^n$ și $(-1)^{n + 1}$).
+
+\vspace{1cm}
+
+4. Să se aproximeze cu o eroare mai mică decît $\varepsilon$ sumele
+seriilor definite de șirul $x_n$:
+\begin{enumerate}[(a)]
+  \item $x_n = \frac{(-1)^n}{n!}, \varepsilon = 10^{-3}$. ($x_n < \varepsilon \Rightarrow n = 7$,
+    deci calculăm $S_7$);
+  \item $x_n = \frac{(-1)^n}{n^3 \sqrt{n}}, \varepsilon = 10^{-2}$ ($n = 4$);
+  \item $x_n = \frac{1}{n! 2^n}$ ($\frac{x_{n + 1}}{x_n} < \frac{1}{6} = k, \forall n \geq 2$,
+    deci $S - s_n \leq x_n \frac{k}{1 - k}$, de unde $n = 5$);
+  \item $x_n = \frac{1}{n^4 (2n)!}, \varepsilon = 10^{-6}$.
+\end{enumerate}
+
+
+\end{document}
+

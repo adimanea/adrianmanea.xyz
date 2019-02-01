@@ -1,0 +1,237 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 2 \\ Integrale improprii cu parametri}}
+\end{center}
+
+\vspace{1cm}
+
+1. Să se calculeze integralele, folosind derivarea sub integrală:
+\begin{enumerate}[(a)]
+\item $ I(m) = \ds\int_0^{\frac{\pi}{2}} \ln(\cos^2 x + m^2 \sin^2 x) dx, m > 0 $;
+\item $ I(a) = \ds\int_0^{\frac{\pi}{2}} \ln(a^2 - \sin^2 \theta) d\theta, a > 1 $;
+\item $ I(a) = \ds\int_0^1 \frac{\arctan ax}{x \sqrt{1 - x^2}} dx, a > 0 $.
+\end{enumerate}
+
+\emph{Soluții:}
+
+(a) Dacă considerăm funcția:
+\[
+  f(x, m) = \ln(\cos^2 x + m^2 \sin^2 x),
+\]
+observăm că este continuă și admite o derivată parțială continuă în raport cu $m$.
+
+Atunci obținem:
+\[
+  \frac{\partial f}{\partial m} = I'(m) = 2m \int_0^{\frac{\pi}{2}} %
+  \frac{\sin^2 x}{\cos^2 x + m^2 \sin^2 x} dx
+\]
+
+Pentru a calcula integrala, facem schimbarea de variabilă $\tan x = t$ și atunci:
+\[
+  dt = \frac{1}{\cos^2 x} dx.
+\]
+
+Integrala inițială se poate prelucra:
+\[
+  I'(m) = 2m \int_0^{\frac{\pi}{2}} \frac{\sin^2 x}{cos^2 x(1 + m^2 \tan^2 x)} dx.
+\]
+Așadar, pentru a obține $\sin^2 x$ în funcție de $t$ calculăm:
+\[
+  \frac{\sin^2 x}{1 - \sin^2 x} = t^2 \Rightarrow \sin^2 x = \frac{t^2}{1 + t^2}.
+\]
+
+În fine, integrala devine:
+\[
+  I'(m) = 2m \int_0^\infty \frac{t^2}{(1 + m^2 t^2)(1 + t^2)} dt.
+\]
+Făcînd descompunerea în fracții simple, obținem:
+\[
+  \frac{t^2}{(1 + m^2 t^2)(1 + t^2)} = \frac{1}{m^2 - 1} \Big( \frac{1}{t^2 + 1} - %
+  \frac{1}{m^2 t^2 + 1} \Big).
+\]
+și calculăm în fine integrala $I'(m) = \frac{\pi}{m + 1}$. Integrăm și găsim
+$I(m) = \pi \ln(m + 1) + c$. Deoarece $I(1) = 0$, rezultă $c = -\pi \ln 2$
+și, în fine:
+\[
+  I(m) = \pi \ln \frac{m + 1}{2}.
+\]
+
+\vspace{1cm}
+
+(b) Dacă considerăm funcția:
+\[
+  f(\theta, a) = \ln(a^2 - \sin^2 \theta),
+\]
+observăm că este continuă și admite o derivată parțială continuă în raport cu $a$.
+
+Atunci avem:
+\[
+  I'(a) = \frac{\partial f}{\partial a} = \ds\int_0^{\frac{\pi}{2}} \frac{2a}{a^2 - \sin^2 \theta} d\theta.
+\]
+
+Cu schimbarea de variabilă $t = \tan \theta $, avem succesiv:
+\begin{align*}
+  I'(a) &= \int_0^\infty \frac{2a}{a^2 - \frac{t^2}{1 + t^2}} \cdot \frac{1}{1 + t^2} dt \\
+        &= \int_0^\infty \frac{2a}{t^2(a^2 - 1) + a^2} dt \\
+        &= \frac{2a}{a^2 - 1} \int_0^\infty \frac{1}{t^2 + \frac{a^2}{a^2 - 1}} dt \\
+        &= \frac{2a}{a^2 - 1} \cdot \frac{\sqrt{a^2 - 1}}{a} \cdot \arctan t \frac{\sqrt{a^2 - 1}}{a} \Big|_0^\infty \\
+        &= \frac{2}{\sqrt{a^2 - 1}} \cdot \frac{\pi}{2} \\
+        &= \frac{\pi}{\sqrt{a^2 - 1}}.
+\end{align*}
+
+Integrăm pentru a obține $I(a)$ și găsim:
+\[
+  I(a) = \int \frac{\pi}{\sqrt{a^2 - 1}} da = \pi \ln(a + \sqrt{a^2 - 1}) + c.
+\]
+
+Pentru a calcula constanta $c$, putem rescrie integrala din forma inițială:
+\begin{align*}
+  I(a) &= \int_0^{\frac{\pi}{2}} \ln\Big( a^2\Big(1 - \frac{\sin^2 \theta}{a^2}\Big) \Big) d\theta \\
+       &= \int_0^{\frac{\pi}{2}} \ln a^2 d\theta + \int_0^{\frac{\pi}{2}} \ln \Big(1 - \frac{\sin^2 \theta}{a^2} \Big) d\theta.
+\end{align*}
+
+Putem considera limita $ a \to \infty $ și atunci integrala de calculat tinde la 0, deci $ c = -\pi \ln 2 $.
+
+Concluzie: $ I(a) = \pi \ln \frac{a + \sqrt{a^2 - 1}}{2} $.
+
+\vspace{1cm}
+
+(c) Dacă considerăm funcția $ f(x, a) = \frac{\arctan ax}{x \sqrt{1 - x^2}}$, observăm că este continuă
+și admite o derivată parțială continuă în raport cu $ a $. Atunci:
+\[
+  I'(a) = \frac{\partial f}{\partial a} = \int_0^1 \frac{dx}{(1 + a^2 x^2) \sqrt{1 - x^2}}.
+\]
+
+Pentru a calcula integrala, facem schimbarea de variabilă $ x = \sin t $ și obținem:
+\[
+  I'(a) = \int_0^{\frac{\pi}{2}} \frac{dt}{1 + a^2 \sin^2 t}.
+\]
+
+Mai departe, aplicăm schimbarea de variabilă $ \tan t = u $ și obținem succesiv:
+\begin{align*}
+  I'(a) &= \int_0^\infty \frac{du}{(1 + a^2)u^2 + 1} \\
+        &= \frac{\pi}{2} \cdot \frac{1}{\sqrt{1 + a^2}}.
+\end{align*}
+
+Așadar, printr-o integrare în funcție de $ a $, găsim:
+\[
+  I(a) = \frac{\pi}{2} \ln(a + \sqrt{1 + a^2}) + c.
+\]
+
+Cum $ I(0) = 0 $, găsim $ c = 0 $.
+
+\vspace{2cm}
+
+2. Să se calculeze, folosind funcțiile $ B $ și $ \Gamma $:
+\begin{enumerate}[(a)]
+\item $ \ds\int_1^e \frac{1}{x} \ln^3 x \cdot (1 - \ln x)^4 dx $;
+\item $ \ds\int_0^1 \sqrt{\ln \frac{1}{x}} dx $;
+\item $ \ds\int_0^\infty \frac{x^2}{(1 + x^4)^2} dx $;
+\item $ \ds\int_{-1}^\infty e^{-x^2 - 2x + 3} dx $;
+\end{enumerate}
+
+Indicație (d):
+\[
+  \int_{-1}^\infty e^{-(x + 1)^2 + 4} dx = e^4 \int_{-1}^\infty e^{-(x + 1)^2 } dx.
+\]
+Notînd acum $ x + 1 = y $, integrala se rezolvă cu formula pentru $ \Gamma $.
+
+\end{document}

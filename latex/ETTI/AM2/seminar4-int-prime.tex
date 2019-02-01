@@ -1,0 +1,463 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 4 \\
+      Ecuații și sisteme autonome. \\
+      Stabilitate. Integrale prime}}
+\end{center}
+
+\vspace{2cm}
+
+\section{Ecuații autonome (nu conțin pe $x$)}
+
+În cazul acestor ecuații, putem micșora ordinul cu o unitate dacă notăm $y' = p$
+și luăm pe $y$ variabilă independentă.
+
+\begin{remark}\label{rk:autonom-pierd}
+  Există posibilitatea să pierdem soluții de forma $y = c$ prin această metodă,
+  deci trebuie verificat ulterior dacă a fost cazul.
+\end{remark}
+
+Exemplu 1: $1 + {y'}^2 = 2yy^{\prime\prime}$.
+
+\emph{Soluție:} Luăm $y' = p$ drept funcție și pe $y$ drept variabilă independentă.
+Obținem:
+\[
+  y^{\prime\prime} = \frac{d}{dx} \big( \frac{dy}{dx} \big) = p \frac{dp}{dy}.
+\]
+
+Atunci ecuația devine $\frac{2pdp}{1 + p^2} = \frac{dy}{y}$, ce are drept soluție
+$y = c_1(1 + p^2)$.
+
+Acum trebuie să obținem pe $x$ ca funcție de $p$ și $c_1$. Deoarece $dx = \frac{1}{p}dy$,
+iar $dy = 2c_1 pdp$, rezultă $dx = 2c_1 dp$. Așadar, $x = 2c_1 p + c_2$, iar soluția
+generală este $x(p) = 2c_1 p + c_2$. Cum $y(p) = c_1(1 + p^2)$, rezultă:
+\[
+  y = c_1 + \frac{(x - c_2)^2}{4c_1}.
+\]
+
+\vspace{1cm}
+
+Exemplu 2: $y^{\prime\prime} + {y'}^2 = 2e^{-y}$.
+
+\emph{Soluție:} Notăm $y' = p$ și luăm ca necunoscută $p = p(y)$,
+de unde obținem:
+\[
+  y^{\prime\prime} = \frac{dy'}{dx} = p'p \Rightarrow p'p + p^2 = 2e^{-y}.
+\]
+Dacă notăm $p^2 = z$, obținem o ecuație liniară neomogenă:
+\[
+  z' + 2z = 4e^{-y},
+\]
+ce are ca soluție generală $z(y) = c_1 e^{-2y} + 4e^{-y}$. Revenind la $y$,
+avem:
+\[
+  z = p^2 = {y'}^2 \Rightarrow y' = \pm \sqrt{c_1 e^{-2y} + 4e^{-y}},
+\]
+adică ecuația:
+\[
+  \frac{dy}{\pm\sqrt{c_1 e^{2y} + 4e^{-y}}} = dx,
+\]
+ce are ca soluție: $x + c_2 = \pm \frac{1}{2} \sqrt{c_1 + 4e^y}$. Echivalent, în forma
+implicită:
+\[
+  e^y + \frac{c_1}{4} = (x + c_2)^2.
+\]
+
+\vspace{1cm}
+
+Similar putem proceda și în cazul:
+\[
+  y^{\prime\prime\prime} + y^{\prime\prime} = \sin x.
+\]
+
+\emph{Indicație:} Putem nota $y^{\prime\prime} = z$ și atunci ecuația devine:
+\[
+  z' + z = \sin x,
+\]
+care este o ecuație liniară neomogenă, cu soluția:
+\[
+  z(x) = e^{-x}(c_1 + \frac{e^x}{2}(\sin x - \cos x)).
+\]
+Mai departe, integrăm succesiv:
+\begin{align*}
+  y'(x) &= \int z(x) dx + c_2 = -c_1 e^{-x} - \frac{1}{2} \cos x - \frac{1}{2}\sin x + c_2 \\
+  y(x) &= \int y'(x) dx + c_3 = c_1 e^{-x} - \frac{1}{2} \sin x + \frac{1}{2} \cos x + c_2 x + c_3.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Sisteme diferențiale autonome. Integrale prime}
+\begin{definition}\label{def:s-d-autonom}
+  Un sistem diferențial de forma:
+  \[
+    x'_j = v_j(x_1, \dots, x_n), \quad j = 1, 2, \dots, n,
+  \]
+  unde $v = (v_1, \dots, v_n) : U \to \RR^n$ este un cîmp de vectori de
+  clasă $\kal{C}^r, r \geq 1$, definit într-un domeniu $U \seq \RR^n$
+  se numește \emph{sistem diferențial autonom}.
+\end{definition}
+
+Sistemul de mai sus poate fi scris și într-o \emph{formă simetrică}:
+\[
+  \frac{dx_1}{v_1} = \dots = \frac{dx_n}{v_n}.
+\]
+
+Dacă $f : U \to \RR$ este o funcție de clasă $\kal{C}^1(U)$, atunci pentru orice
+$x \in U$ se poate considera \emph{derivata lui $f$ în $x$ și în direcția vectorului %
+  $v(x)$}, notată $\frac{df}{dv}(x)$, definită prin formula cunoscută:
+\[
+  \frac{df}{dv}(x) = \sum_{i = 1}^n \frac{\partial f}{\partial x_i} v_i(x).
+\]
+
+\begin{definition}\label{def:int-prim}
+  Fie $v : U \to \RR^n$ un cîmp de vectori și $f : U \to \RR$ o funcție de clasă
+  $\kal{C}^1(U)$. Funcția se numește o \emph{integrală primă} a sistemului diferențial
+  autonom $x' = v(x), x \in U$ dacă derivata sa în direcția cîmpului de vectori $v$
+  este nulă în fiecare punct din $U$, adică $\frac{df}{dv} = 0$.
+\end{definition}
+
+Echivalent, putem formula definiția astfel: $f : U \to \RR$ este o integrală
+primă pentru sistemul diferențial autonom $x' = v(x)$ dacă și numai dacă oricare
+ar fi soluția $x = \varphi(t), \varphi : I \to U$, funcția $f \circ \varphi$ este
+constantă pe $I$. Uneori, mai putem scrie pe scurt $f(x_1, \dots, x_n) = c$, constant.
+De aceea, putem spune că integralele prime reprezintă \emph{legi de conservare}.
+
+Tehnic, pentru a găsi integralele prime asociate unui sistem autonom, se scrie
+sistemul în forma simetrică, iar apoi, folosind proprietățile rapoartelor egale,
+se ajunge la un raport de forma $\frac{df}{0}$, egal cu rapoartele precedente.
+Atunci $f$ va fi integrală primă, deoarece va rezulta $df = 0$, adică $f$ constantă
+în lungul curbelor integrale.
+
+\textbf{Exemplu:} Să se găsească integralele prime ale sistemului simetric:
+\[
+  \frac{dx}{z - y} = \frac{dy}{x - z} = \frac{dz}{y - x}.
+\]
+
+\emph{Soluție:} Folosind proprietățile proporțiilor, putem scrie sistemul:
+\[
+  \frac{dx}{z - y} = \frac{dy}{x - z} = \frac{dz}{y - x} = %
+  \frac{dx + dy + dz}{z - x + x - z + y - x} = \frac{dx + dy + dz}{0}
+\]
+
+De asemenea, mai putem obține o integrală primă astfel:
+\[
+  \frac{dx}{z - y} = \frac{dy}{x - z} = \frac{dz}{y - x} = %
+  \frac{xdx + ydy + zdz}{x(z - x) + y(x - z) + z(y - x)} = %
+  \frac{xdx + ydy + zdz}{0}.
+\]
+
+Așadar, avem:
+\begin{align*}
+  dx + dy + dz &= 0 \\
+  xdx + ydy + zdz &= 0,
+\end{align*}
+de unde obținem două integrale prime:
+\[
+  x + y + z = c_1, \quad x^2 + y^2 + z^2 = c_2.
+\]
+
+\begin{remark}\label{rk:int-prima-t}
+  Dacă avem un sistem diferențial neautonom, adică $x' = v(x, t)$, cu $t \in \RR$
+  și $x \in U$, atunci o integrală primă a sistemului va fi o funcție
+  $f : U \times \RR \to \RR$, diferențiabilă și \emph{dependentă de timp}. Ea
+  se obține din sistemul anterior, adăugînd ecuația $t' = 1$.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Stabilitatea soluțiilor sistemelor diferențiale}
+
+Considerăm un sistem diferențial $x' = v(t, x)$. Presupunem că sînt îndeplinite
+condițiile teoremei fundamentale de existență și unicitate a soluției problemei
+Cauchy pentru $t \in [t_0, \infty)$ și $x \in U, U \seq \RR^n$ este un deschis.
+Așadar, pentru orice $x_0 \in U$, există și este unică o soluție $x = \varphi(t)$,
+cu $\varphi : [t_0, \infty) \to U$, astfel încît $\varphi(t_0) = x_0$.
+
+\begin{definition}\label{def:stabila-PL}
+  O soluție $x = \varphi(t), \varphi : [t_0, \infty) \to U$ se numește \emph{stabilă %
+    spre $\infty$ în sens Poincar\'{e}-Liapunov} sau, echivalent, $x_0 = \varphi(t_0)$
+  se numește \emph{poziție de echilibru} dacă la variații mici ale lui $x_0$ obținem
+  variații mici ale soluției. Formal, pentru orice $\varepsilon > 0$, există
+  $\delta(\varepsilon) > 0$ astfel încît pentru $\widetilde{x_0}\in\RR^n$ cu
+  $||\widetilde{x}_0 - x_0|| < \delta(\varepsilon)$, soluțiile $\widetilde{\varphi}(t)$
+  și $\varphi(t)$ satisfac inegalitatea $|\widetilde{\varphi}(t) - \varphi(t)| < \varepsilon$,
+  pentru orice $t \in [t_0, \infty)$.
+\end{definition}
+
+\begin{definition}\label{def:stabila-0}
+  Poziția de echilibru $x = 0$ se numește \emph{stabilă în sens Poincar\'{e}-Liapunov}
+  dacă pentru orice $\varepsilon > 0$, există $\delta > 0$, care depinde doar de
+  $\varepsilon$ astfel încît pentru orice $x_0 \in U$ pentru care $||x_0|| < \delta$,
+  soluția $\varphi$ a sistemului cu condiția inițială $\varphi(0) = x_0$ se prelungește
+  pe întreaga semiaxă $t > 0$ și satisface inegalitatea $||\varphi(t)|| < \varepsilon$
+  pentru orice $t > 0$.
+\end{definition}
+
+\begin{definition}\label{def:as-stabila}
+  Poziția de echilibru $x = 0$ a sistemului diferențial autonom se numește
+  \emph{asimptotic stabilă} dacă este stabilă și, în plus, pentru soluția $\varphi(t)$
+  din definiția de mai sus, avem:
+  \[
+    \lim_{t \to \infty} \varphi(t) = 0.
+  \]
+\end{definition}
+
+În cazul sistemelor diferențiale liniare și omogene, de forma:
+\[
+  x' = Ax, \quad A : \RR^n \to \RR^n, x \in \RR^n
+\]
+presupunem că $A$ este izomorfism (echivalent, matricea $A$ este inversabilă).
+Atunci $x = 0$ este singurul punct singular al cîmpului $v(x) = Ax$, deci $x = 0$
+este singura poziție de echilibru a sistemului.
+
+În exerciții, stabilitatea se va studia folosind următoarea:
+
+\begin{theorem}[Poincar\'{e}-Liapunov]\label{thm:stab-pl}
+  Păstrînd contextul și notațiile de mai sus, dacă toate valorile proprii ale
+  matricei $A$ au partea reală negativă, atunci poziția de echilibru $x = 0$ este
+  asimptotic stabilă.
+
+  Dacă există $\lambda \in \sigma(A)$ cu $\mathrm{Re}\lambda > 0$, atunci $x = 0$
+  este instabilă.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Studiați stabilitatea poziției de echilibru $x = 0$ pentru sistemele diferențiale:
+\begin{enumerate}[(a)]
+\item $\begin{cases}
+    x' &= -4x + y \\
+    y' &= -x - 2y
+  \end{cases}$;
+\item $\begin{cases}
+    x' &= -x + z \\
+    y' &= -2y - z \\
+    z' &= y - z
+  \end{cases}$;
+\item $\begin{cases}
+    x' &= 2y \\
+    y' &= x + a
+  \end{cases}, a \in \RR$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se afle pentru ce valori ale lui $a \in \RR$ soluția nulă a sistemului
+de mai jos este asimptotic stabilă:
+\[
+  \begin{cases}
+    x' &= ax + y + z^2 \\
+    y' &= (2 + a)x + ay + \cos y - 1 \\
+    z' &= x + y - z
+  \end{cases},
+\]
+unde derivatele sînt considerate în raport cu variabila $t$.
+
+\emph{Indicație:} Considerăm sistemul liniarizat:
+\[
+  \begin{cases}
+    x' &= ax + y \\
+    y' &= (2 + a)x + ay \\
+    z' &= x + y - z
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+3. Să se determine liniile de cîmp pentru cîmpurile vectoriale de pe $\RR^3$:
+\begin{enumerate}[(a)]
+\item $\vec{v} = x\vec{i} + y \vec{j} + xyz \vec{k}$;
+\item $\vec{v} = (2z - 3y)\vec{i} + (6x - 2z)\vec{j} + (3y - 6x)\vec{k}$;
+\item $\vec{v} = (xz + y) \vec{i} + (x + yz) \vec{j} + (1 - z^2)\vec{k}$;
+\item $\vec{v} = (x^2 + y^2)\vec{i} + 2xy \vec{j} - z^2 \vec{k}$.
+\end{enumerate}
+
+\emph{Indicație (a):} Scriem sistemul autonom asociat cîmpului vectorial $\vec{v}$
+sub forma:
+\[
+  \frac{dx}{x} = \frac{dy}{y} = \frac{dz}{xyz}.
+\]
+Din prima egalitate, rezultă $x = c_1 y$, deci a doua egalitate devine:
+\[
+  c_1 ydy = \frac{dz}{z} \Rightarrow c_1 \frac{y^2}{2} = \ln |z| + c_2.
+\]
+Așadar, obținem $\frac{x}{y} \cdot \frac{y^2}{2} = \ln |z| + c_2$.
+
+Rezultă că liniile de cîmp pentru $\vec{v}$ sînt curbele:
+\[
+  \begin{cases}
+    \frac{x}{y} &= c_1 \\
+    xy - \ln|z| &= c_2.
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+(b) Sistemul poate fi scris sub forma:
+\[
+  \frac{dx}{2z - 3y} = \frac{dy}{6x - 2z} = \frac{dz}{3y-6x} = \frac{dx + dy + dz}{0}.
+\]
+Așadar, $dx + dy + dz = 0$, deci $x + y + z = c_1$.
+
+Din forma inițială obținem și:
+\[
+  \frac{3xdx}{3x(2z - 3y)} = \frac{\frac{3}{2}ydy}{\frac{3}{2}y(3x - z)} = \frac{zdz}{z(y - 2x)} = %
+  \frac{3xdx + \frac{3}{2}ydy + zdz}{0},
+\]
+deci $3xdx + \frac{3}{2}ydy + zdz = 0$, adică
+$3\frac{x^2}{2} + \frac{3}{4}y^2 + \frac{z^2}{22} = c_2$.
+
+\vspace{1cm}
+
+(c) Obținem:
+\[
+  \frac{dx + dy}{(x + y)(z + 1)} = \frac{dz}{1 - z^2} \Rightarrow %
+  \frac{d(x + y)}{x + y} = -\frac{dz}{z - 1}.
+\]
+Rezultă $\ln|x + y| + \ln|z - 1| = \ln c_1$, adică $(x + y)(z - 1) = c_1$.
+
+Apoi:
+\[
+  \frac{dy - dx}{x + zy - xz - y} = \frac{dy - dx}{(x - y)(1 - z)} = \frac{dz}{1 - z^2}.
+\]
+
+Rezultă $-\frac{d(x - y)}{x - y} = \frac{dz}{z + 1}$, de unde $(x - y)(z + 1) = c_2$.
+
+Așadar, liniile de cîmp sînt curbele:
+\[
+  \begin{cases}
+    (x + y)(z - 1) &= c_1 \\
+    (x - y)(z + 1) &= c_2
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+(d) Sistemul simetric rezultat este:
+\[
+  \frac{dx}{x^2 + y^2} = \frac{dy}{2xy} = \frac{dz}{-z^2}.
+\]
+
+Prin adunarea primelor două rapoarte, obținem:
+\[
+  \frac{d(x + y)}{(x + y)^2} = \frac{dz}{-z^2},
+\]
+adică $\frac{1}{x + y} + \frac{1}{z} = c_1$.
+
+Prin scădere, avem $\frac{d(x - y)}{(x - y)^2} = \frac{dz}{-z^2}$, deci
+$\frac{1}{x - y} + \frac{1}{z} = c_2$.
+
+Liniile de cîmp se obțin:
+\[
+  \begin{cases}
+    \frac{1}{x + y} + \frac{1}{z} &= c_1 \\
+    \frac{1}{x - y} + \frac{1}{z} &= c_2
+  \end{cases}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

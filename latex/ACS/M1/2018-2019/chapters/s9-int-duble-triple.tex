@@ -1,0 +1,157 @@
+\chapter{Integrale duble și triple}
+\index{integrala!dublă}
+\index{integrala!triplă}
+\index{integrala!dublă!arie}
+\index{integrala!triplă!volum}
+\section{Exerciții}
+
+1. Reprezentați grafic domeniile date de următoarele (in)ecuații:
+\begin{enumerate}[(a)]
+\item $ D_1 = \{ (x, y) \in \RR^2 \mid y = x^2, y^2 = x \} $;
+\item $ D_2 = \{ (x, y) \in \RR^2 \mid x = 2, y = x, xy = 1 \} $;
+\item $ D_3 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 2y \} $;
+\item $ D_4 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y \geq 0 \} $;
+\item $ D_5 = \{ (x, y) \in \RR^2 \mid y = 0, x + y - 6 = 0, y^2 = 8x \} $;
+\item $ D_6 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 2x + 2y - 1 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați $ \ds\iint_D f(x, y) dx dy $ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $ D = [0, 1] \times [2, 3] $, iar $ f(x, y) = xy^2 $;
+\item $ D = \{(x, y) \in \RR^2 \mid 0 \leq x \leq 1, 2x \leq y \leq x^2 + 1 \} $,
+  iar $ f(x, y) = x $;
+\item $ D = \{(x, y) \in \RR^2 \mid y = x, y = x^2 \} $, iar
+  $ f(x, y) = 3x - y + 2 $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \} $,
+  iar $ f(x, y) = e^{x^2 + y^2} $;
+\item $ D = \{(x, y) \in \RR^2 \mid x \geq 0, y \geq 0 \} $,
+  iar $ f(x, y) = e^{-2(x^2 + y^2)} $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y \geq 0 \} $,
+  iar $ f(x, y) = xy $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Calculați ariile domeniilor de mai sus.
+
+\vspace{1cm}
+
+4. Calculați aria domeniului:
+\[
+  D = \{(x, y) \in \RR^2 \mid 2 \leq x^2 + y^2 \leq 4, x + y \geq 0 \}.
+\]
+
+\vspace{1cm}
+
+5. Calculați volumul corpului mărginit de suprafețele de ecuații date:
+\begin{enumerate}[(a)]
+\item $ z = x^2 + y^2 \text{ (paraboloid)}, z = x + y \text{ (plan)}$;
+\item $ z = x^2 + y^2 - 1, z = 2 - x^2 - y^2 $;
+\item $ x^2 + y^2 + z^2 = 1 \text{ (sferă)}, x^2 + y^2 = \dfrac{1}{2} %
+  \text{ (cilindru)} $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Indicații teoretice}
+\index{aria domeniului}
+\index{volumul domeniului}
+\index{coordonate!polare}
+\index{coordonate!sferice}
+\index{coordonate!cilindrice}
+\index{coordonate!jacobian}
+
+Pentru un domeniu $ D $, mărginit de (in)ecuații date, \emph{aria domeniului}
+se calculează cu integrala dublă:
+\[
+  A(D) = \iint_D dxdy.
+\]
+
+Similar, \emph{volumul corpului} $ \Omega $ închis de suprafețe date se
+calculează cu integrala triplă:
+\[
+  V(\Omega) = \iiint_\Omega dxdydz.
+\]
+
+Atunci cînd domeniul plan este de natură circulară, este de preferat să
+se folosească trecerea la \emph{coordonate polare} ($r,\theta$). Astfel, pentru
+coordonate carteziene $ (x, y) $, trecerea la coordonatele polare se face cu formula:
+\[
+  \begin{cases}
+    x &= r \cos \theta \\
+    y &= r \sin \theta
+  \end{cases},
+\]
+domeniul fiind, în general, $ r \in [0, \infty) $, iar $ \theta \in [0, 2 \pi] $,
+dacă nu există restricții suplimentare.
+
+Similar, pentru cazul tridimensional, pot fi necesare următoarele sisteme de coordonate,
+descrise împreună cu trecerea de la coordonatele carteziene $ (x, y, z) $:
+\begin{itemize}
+\item \emph{Coordonate sferice} ($r, \theta, \varphi$):
+  \[
+    \begin{cases}
+      x &= r \sin \theta \cos \varphi \\
+      y &= r \sin \theta \sin \varphi \\
+      z &= r \cos \theta
+    \end{cases},
+  \]
+  cu domeniul, respectiv, $ [0, \infty) \times [0, 2\pi] \times [0, \pi] $;
+\item \emph{Coordonate cilindrice} ($r, \theta, z$):
+  \[
+    \begin{cases}
+      x &= r \cos \theta \\
+      y &= r \sin \theta \\
+      z &= z
+    \end{cases},
+  \]
+  cu domeniul, respectiv, $ [0, \infty) \times [0, 2 \pi] \times \RR $.
+\end{itemize}
+
+Ca în cazul 1-dimensional, atunci cînd se face schimbarea de coordonate, trebuie
+calculată și modificarea diferențialei. Aceasta se face cu ajutorul
+\emph{matricei jacobiene}, al cărui determinant se numește \emph{jacobianul}
+transformării. \index{matrice!jacobiană}
+
+Dacă $ \varphi $ este, în general, funcția care dă schimbarea de coordonate,
+matricea jacobiană se definește prin derivatele parțiale ale vechilor coordonate
+în raport cu noile coordonate.
+
+De exemplu, pentru coordonatele polare, avem:
+\[
+  J_\varphi(r, \theta) = %
+  \begin{pmatrix}
+    \dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \theta} \\
+    & \\
+    \dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial \theta}
+  \end{pmatrix} \Rightarrow \det J = %
+  \begin{vmatrix}
+    \cos \theta & -r \sin \theta \\
+    \sin \theta & r \cos \theta
+  \end{vmatrix} = r.
+\]
+
+Similar, pentru coordonatele cilindrice, $ |J_\varphi(r, \theta, z)| = r \sin \theta $,
+iar pentru coordonatele sferice, $ |J_\varphi(r, \theta, \varphi)| = r^2 \sin \theta $.
+
+O notație alternativă, care pune în evidență și coordonatele, este:
+\[
+  J_\varphi(r, \theta) = \frac{\partial (x, y)}{\partial (r, \theta)}
+\]
+și celelalte.
+
+\begin{remark}\label{rk:geo-kow}
+  Pentru resurse electronice suplimentare, puteți folosi:
+  \begin{itemize}
+  \item \href{https://www.geogebra.org/}{GeoGebra}\faLink --- pentru reprezentări grafice;
+  \item Lecțiile online ale  Prof.\ \href{https://www.youtube.com/watch?v=le1JlwBkAog\&list=PLE7F8F33E161D1425\&index=23}{Travis Kowalski} \faYoutube
+    (în special secțiunea \texttt{Calculus 3}, începînd cu lecția 17 pentru integrale duble).
+  \end{itemize}
+\end{remark}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-18-19"
+%%% End:

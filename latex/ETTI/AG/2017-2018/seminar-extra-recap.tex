@@ -1,0 +1,258 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar suplimentar \\ Recapitulare pentru parțial}}
+\end{center}
+
+\vspace{1cm}
+
+1. Să se determine coordonatele vectorului $u \in \RR^3$ în baza canonică,
+dacă în baza
+\[
+  B = \{ (2, 1, 2), (1, 1, 0), (3, 0, 0) \}
+\]
+el are coordonatele $(4, 0, 5)$.
+
+\vspace{1cm}
+
+2. În spațiul real $\RR^3$, considerăm vectorii:
+\[
+  x_1 = (1, 0, 2), x_2 = (4, 1, -1), y_1 = (1, 2, 3), y_2 = (0, 5, 4), %
+  y_3 = (1, 1, 1)
+\]
+și spațiile vectoriale:
+\[
+  V_1 = \mathrm{Sp}(x_1, x_2), \quad V_2 = \mathrm{Sp}(y_1, y_2, y_3).
+\]
+
+Să se determine o bază pentru $V_1, V_2, V_1 + V_2, V_1 \cap V_2$ și
+un subspațiu $U \seq \RR^3$, astfel încît $U \oplus V_1 = \RR^3$.
+
+\vspace{1cm}
+
+3. Fie $V_1 = \{ P \in \RR[X]_3 \mid P(1) = 0 \}$ și subspațiul:
+\[
+  V_2 = \mathrm{Sp}(X + 8, X^2, 2X + 3X^2 + 4X^3).
+\]
+
+Să se determine cîte o bază în spațiile vectoriale reale $V_1, V_2$,
+$V_1 + V_2, V_1 \cap V_2$ și un subspațiu $V \seq \RR[X]_3$ (dacă există),
+astfel încît $V \oplus (V_1 + V_2) = \RR[X]_3$.
+
+\vspace{1cm}
+
+4. Fie aplicația liniară:
+\[
+  f : \RR^3 \to \RR^2, \quad f(x, y, z) = (x - 2y, z - 8y).
+\]
+
+Să se determine nucleul și imaginea sa și cîte o bază în fiecare subspațiu.
+Completați baza nucleului pînă la o bază a lui $\RR^3$.
+
+\vspace{1cm}
+
+5. Fie aplicația liniară:
+\[
+  f : M_2(\RR) \to \RR[X]_2, \quad %
+  f(\begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix}) = aX^2 + (b - c)X + 8d.
+\]
+
+\begin{enumerate}[(a)]
+\item Găsiți matricea asociată aplicației liniare în bazele canonice;
+\item Determinați $\mathrm{Ker}f$ și $\mathrm{Im}f$ și verificați teorema
+  rang-defect.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Fie matricea:
+\[
+  A = \begin{pmatrix}
+    2 & 1 & 3 \\
+    1 & 0 & a \\
+    2 & 2 & 4
+  \end{pmatrix}, \quad a \in \RR.
+\]
+\begin{enumerate}[(a)]
+\item Găsiți aplicația liniară $f : \RR^3 \to \RR^3$, a cărei matrice
+  în baza canonică este matricea $A$ de mai sus;
+\item Găsiți $a \in \RR$ astfel încît aplicația determinată mai sus să fie
+  izomorfism;
+\item Determinați defectul aplicației $f$ (discuție după $a$).
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Fie $V = \RR[X]_2$ și mulțimea:
+\[
+  B' = \{ p_1 = 3X^2 + 2, p_2 = X - 5, p_3 = X^2 + 4 \}.
+\]
+\begin{enumerate}[(a)]
+\item Arătați că $B'$ este bază a lui $V$;
+\item Determinați matricea de trecere de la baza canonică la baza $B'$;
+\item Fie $f : V \to \RR[X]_1$ morfismul de derivare (în raport cu $X$).
+  Determinați matricea lui $f$ în baza canonică a lui $V$, față de baza canonică
+  alui $\RR[X]_1$, precum și matricea lui $f$ în baza $B'$ a lui $V$
+  față de baza $B^{\prime\prime} = \{ q_1 = 7, q_2 = X - 2 \}$ a lui $\RR[X]_1$.
+\end{enumerate}
+
+\vspace{1cm}
+
+8. Fie spațiul $V = \RR^3$ și mulțimile:
+\begin{align*}
+  S_1 &= \{ (x, y, z) \in \RR^3 \mid x + y + z = 0 \} \\
+  S_2 &= \{ (x, y, z) \in \RR^3 \mid x = 4z - y \text{ și } z = 2x - y \}
+\end{align*}
+
+\begin{enumerate}[(a)]
+\item Arătați că $S_1 \hookrightarrow V$ și $S_2 \hookrightarrow V$;
+\item Determinați $S_1 \cap S_2$ și o bază în acest subspațiu;
+\item Este suma $S_1 + S_2$ directă?
+\item Determinați $S_1 + S_2$ și o bază în acest subspațiu.
+\end{enumerate}
+
+\vspace{1cm}
+
+9. Să se determine vectorii și valorile proprii pentru matricele:
+\[
+  A = \begin{pmatrix}
+    1 & 0 \\
+    8 & 2
+  \end{pmatrix}, \quad
+  B = \begin{pmatrix}
+    0 & 2 & 2 \\
+    2 & 0 & -2 \\
+    2 & -2 & 0
+  \end{pmatrix}, \quad
+  C = \begin{pmatrix}
+    0 & 1 & -2 \\
+    1 & 1 & 1 \\
+    1 & -1 & -1
+  \end{pmatrix}.
+\]
+
+\vspace{1cm}
+
+10. Fie aplicația liniară $f : M_2(\RR) \to M_2(\RR)$, definită prin:
+\[
+  f \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix} = \begin{pmatrix}
+    2a + b + d & 2b + 4c + 5d \\
+    2c + d & 8d
+  \end{pmatrix}
+\]
+
+Să se arate că $f$ nu este diagonalizabilă.
+
+\vspace{1cm}
+
+11. Determinați vectorii și valorile proprii pentru aplicațiile:
+\begin{enumerate}[(a)]
+\item $f : \RR[X]_3 \to \RR[X]_3, f(P) = 2P'$;
+\item $f : \RR^3 \to \RR^3, f(a, b, c) = (a - b + c, b, b - c)$.
+\end{enumerate}
+
+
+\end{document}

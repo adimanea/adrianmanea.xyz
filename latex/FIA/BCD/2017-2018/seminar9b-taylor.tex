@@ -1,0 +1,277 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 9 \\ Polinom Taylor. Serii Taylor}}
+\end{center}
+
+\vspace{2cm}
+
+
+\section{Formula lui Taylor}
+\label{sec:taylor}
+
+
+Orice funcție cu anumite proprietăți poate fi aproximată cu un polinom.
+Rezultatul formal este următorul.
+
+\begin{definition}\label{def:taylor-pol}
+  Fie $I \seq \RR$ un interval deschis și $f : I \to \RR$ o funcție de clasă $C^m(I)$.
+  Pentru orice $a \in I$, definim \emph{polinomul Taylor} de gradul $n \leq m$ asociat
+  funcției $f$ în punctul $a$ prin:
+  \[
+    T_{n, f, a} (x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k.
+  \]
+
+  \emph{Restul} (eroarea de aproximare) este definit prin:
+  \[
+    R_{n, f, a} = f(x) - T_{n, f, a}(x).
+  \]
+\end{definition}
+
+Primele polinoame (de gradul întîi și al doilea) se numesc, respectiv, \emph{aproximarea %
+  liniară} și \emph{pătratică} a lui $f$, în jurul lui $a$.
+
+
+Acest polinom se regăsește și în \emph{formula lui Taylor}, care ne arată legătura lui
+strînsă cu orice funcție.
+
+\begin{theorem}[Formula lui Taylor cu restul Lagrange]\label{thm:taylor-lagr}
+  Fie $f : I \to \RR$ o funcție de clasă $C^{n+1}(I)$ și $a \in I$. Atunci, pentru orice
+  $x \in I$, există $\xi \in (a, x)$ sau $(x, a)$ astfel încît:
+  \[
+    f(x) = T_{n, f, a}(x) + \frac{(x - a)^{n+1}}{(n + 1)!} f^{(n + 1)} (\xi).
+  \]
+\end{theorem}
+
+Așadar, din această teoremă știm mai precis eroarea aproximării unei funcții cu polinomul
+Taylor asociat.
+
+Următoarele sînt consecințe ale teoremei:
+\begin{enumerate}[(a)]
+\item Restul poate fi scris sub \emph{forma Peano}: există o funcție $\omega : I \to \RR$,
+  cu $\ds\lim_{x \to a} \omega(x) = \omega(a) = 0$ și restul se scrie:
+  \[
+    R_{n, f, a}(x) = \frac{(x - a)^n}{n!} \omega(x).
+  \]
+\item Restul poate fi scris și sub \emph{formă integrală}:
+  \[
+    R_{n, f, a}(x) = \frac{1}{n!} \int_a^x f^{(n + 1)}(t) (x - t)^n dt;
+  \]
+\item $\ds\lim_{x \to a} \frac{R_{n, f, a}(x)}{(x - a)^n} = 0$.
+\end{enumerate}
+
+Aceste noțiuni pot fi mai departe utilizate pentru a studia \emph{seria Taylor}
+asociată unei funcții.
+
+\begin{definition}\label{def:seria-taylor}
+  Fie $I \seq \RR$ un interval deschis și fie $f : I \to \RR$ o funcție de clasă
+  $C^\infty(I)$. Pentru orice $x_0 \in I$, se definește \emph{seria Taylor} asociată
+  funcției $f$ în punctul $x_0$ seria de puteri:
+  \[
+    T = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n.
+  \]
+
+  Dacă $x_0 = 0$, seria se mai numește \emph{Maclaurin}.
+\end{definition}
+
+Importanța seriilor Taylor este dată de rezultatul următor:
+
+\begin{theorem}\label{thm:serie-taylor}
+  Fie $a < b$ și fie $f \in C^\infty([a, b])$ astfel încît să existe $M > 0$ cu
+  proprietatea că $\forall n \in \NN, \forall x \in [a, b], |f^{(n)}(x) | \leq M$.
+
+  Atunci pentru orice $x_0 \in (a, b)$, seria Taylor a lui $f$ în jurul lui $x_0$
+  este uniform convergentă pe $[a, b]$ și suma ei este funcția $f$. Adică avem:
+  \[
+    f(x) = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n, \forall x \in [a, b].
+  \]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Să se dezvolte în serie Maclaurin funcțiile, indicînd și domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $f(x) = (1 + x)^\alpha, \alpha \in \RR$;
+\item $f(x) = \frac{1}{1 + x}$;
+\item $f(x) = \sqrt{1 + x}$;
+\item $f(x) = \ds\int_0^x \frac{\sin t}{t} dt$;
+\item $f(x) = \sin^2 x$;
+\item $f(x) = \frac{3}{(1 - x)(1 + 2x)}$;
+\item $f(x) = \arcsin x$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se dezvolte în jurul punctului $a \in \RR$ funcțiile:
+\begin{enumerate}[(a)]
+\item $f: \RR^\ast \to \RR, f(x) = \frac{1}{x}, a = 1$;
+\item $f: \RR - \{-2, -1\} \to \RR, f(x) = \frac{1}{x^2 + 3x + 2}, a = -4$;
+\item $f: \RR \to \RR, f(x) = \cos^2 x, a = \frac{\pi}{4}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se determine aproximările liniare și pătratice ale următoarelor
+funcții în jurul punctelor indicate:
+\begin{enumerate}[(a)]
+\item $f(x) = x \ln x$ în jurul punctului $a = 1$;
+\item $f(x) = \sqrt[3]{x + 1} \sin x$, în jurul punctului $a = 0$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se arate că seria numerică $\ds\sum_{n \geq 0} \frac{(-1)^n}{3n + 1}$ este
+convergentă și să se afle suma ei cu ajutorul seriilor de puteri.
+
+\emph{Indicație:} Considerăm seria $\ds\sum_{n \geq 0} (-1)^n \frac{x^{3n+1}}{3n + 1}$
+și luăm $x = 1$. Derivăm termen cu termen și obținem seria pentru $\frac{1}{1 + x^3}$.
+
+\vspace{1cm}
+
+5. Să se afle suma seriilor:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1}$;
+\item $\ds\sum_{n \geq 1} \frac{(-1)^{n+1}}{n}$;
+\item $\ds\sum_{n \geq 0} \frac{(n + 1)^2}{n!}$;
+\item $\ds\sum_{n \geq 1} \frac{n^2(3^n - 2^n)}{6^n}$;
+\item $\ds\sum_{n \geq 0} \frac{(-1)^n}{2n + 1}$;
+\item $\sum_{n \geq 0} \frac{(-1)^n}{3n + 1} x^{3n+1}$.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Se folosește seria pentru $\arctan x$, derivată termen cu termen;
+\item Folosim seria pentru $e^x + xe^x$, din care o obținem pe cea pentru
+  $(x + x^2)e^x$, pe care o derivăm termen cu termen. Pentru $x = 1$, avem
+  seria cerută.
+\item Se calculează seria $\ds\sum_{n \geq 1} n^2 x^n$, obținută din seria
+  pentru $x^n$;
+\item Se folosește seria pentru $\arctan x$.
+\item
+  \[
+    \sum_{n \geq 0} \frac{(-1)^n}{3n + 1} = %
+    \lim_{x \to 1} \sum_{n \geq 0} \frac{(-1)^n}{3n + 1} x^{3n + 1} = %
+    \lim_{x \to 1} \int_0^x \sum_{n \geq 0} (-1)^n x^{3n} dx.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se calculeze $\sqrt[4]{10004}$ cu 4 zecimale exacte.
+
+\emph{Indicație:} Se folosește dezvoltarea binomială:
+\[
+  \sqrt[4]{10004} = 10 \sqrt[4]{1 + \frac{4}{10000}}.
+\]
+
+\vspace{1cm}
+
+7. Să se calculeze cu o eroare mai mică decît $10^{-3}$ integralele:
+\begin{enumerate}[(a)]
+\item $\ds\int_0^{\frac{1}{3}} \frac{\arctan x}{x} dx$;
+\item $\ds\int_0^1 e^{-x^2} dx$;
+\item $\ds\int_0^{\frac{1}{2}} \frac{\ln(1 + x^2)}{x} dx$;
+\item $\ds\int_0^{\frac{1}{2}} \frac{1 - \cos x^2}{x^2} dx$.
+\end{enumerate}
+
+\end{document}

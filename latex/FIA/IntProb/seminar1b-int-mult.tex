@@ -1,0 +1,168 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 1 \\ Integrale multiple}}
+\end{center}
+
+
+\vspace{2cm}
+
+
+1.  Calculați:
+\begin{multicols}{2}
+  \begin{enumerate}[(a)]
+  \item $\ds\int \frac{2x + 1}{\sqrt{x^2 - 16}} dx, x > 4$;
+  \item $\ds\int \frac{2x - 5}{x^2 - 5x + 7} dx$;
+  \item $\ds\int \frac{x - 1}{3x^2 - 6x + 11} dx$;
+  \item $\ds\int \frac{2x}{x^4 - 1} dx, x \in (-1, 1)$;
+  \item $\ds\int \arcsin x dx$;
+  \item $\ds\int_1^{\sqrt{e}} x \log_3 x dx$;
+  \item $\ds\int_1^e \sin(\ln x) dx$;
+  \item $\ds\int_0^{\frac{1}{\sqrt{2}}} \frac{3 - 2x}{2x^2 + 1} dx$;
+  \item $\ds\int_1^e \frac{\ln x}{x(2 + \ln x)} dx$;
+  \end{enumerate}
+\end{multicols}
+
+Indicații:
+\begin{itemize}
+\item $\ds\int \frac{dx}{x^2 + a^2} = \frac{1}{a} \arctan \frac{x}{a} + c$;
+\item $\ds\int \frac{dx}{x^2 - a^2} = \frac{1}{2a} \ln \Big| \frac{x - a}{x + a} \Big| + c$;
+\item $\ds\int \frac{dx}{\sqrt{x^2 + a^2}} = \ln(x + \sqrt{x^2 + a^2}) + c$;
+\item $\ds\int \frac{dx}{\sqrt{x^2 - a^2}} = \ln|x + \sqrt{x^2 - a^2}| + c$;
+\item $\ds\int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}{a} + c$;
+\item $\ds\int \frac{-dx}{\sqrt{a^2 - x^2}} = \arccos \frac{x}{a} + c$;
+\end{itemize}
+
+
+\vspace{1cm}
+
+
+2. Să se calculeze integralele duble:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D xy^2 dxdy$, unde $D = [0, 1] \times [2, 3]$;
+\item $\ds\iint_D xy dxdy$, unde $D = \{(x, y) \in \RR^2 \mid y \in [0, 1], y^2 \leq x \leq y\}$;
+\item $\ds\iint_D (x + 3y) dxdy$, unde $D$ este mulțimea plană mărginită de curbele
+  de ecuații $y = x^2 + 1, y = -x^2, x = -1, x = 3$;
+\item $\ds\iint_D xdxdy$, unde $D$ este mulțimea plană mărginită de $x^2 + y^2 = 9, x \geq 0$;
+\item $\ds\iint_D xy dxdy$, unde $D$ este domeniul delimitat de curbele $xy = 1$ și
+  $x + y = \frac{5}{2}$;
+\item $\ds\iint_D ydxdy$, unde $D$ este domeniul mărginit de parabola $y^2 = 2x$,
+  cercul $x^2 + y^2 - 2x = 0$ și dreapta $x = 2$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze, trecînd la coordonate polare, integralele:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D e^{x^2 + y^2} dxdy$, unde $D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \}$;
+\item $\ds\iint_D 1 + \sqrt{x^2 + y^2} dxdy$, unde $D = \{(x, y) \in \RR^2 \mid %
+  x^2 + y^2 - y \leq 0, x \geq 0\}$;
+\item $\ds\iint_D \ln(1 + x^2 + y^2) dxdy$, unde $D$ este mărginit de curbele de ecuații:
+  \[
+    \begin{cases}
+      x^2 + y^2 &= e^2 \\
+      y &= x \sqrt{3} \\
+      x &= y\sqrt{3} \\
+      x &\geq 0
+    \end{cases}
+  \]
+\end{enumerate}
+
+\end{document}

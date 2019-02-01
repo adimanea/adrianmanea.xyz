@@ -1,0 +1,243 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 6 \\ Integrale triple}}
+\end{center}
+
+\vspace{1cm}
+
+1. Considerăm mulțimea:
+\[
+  \Omega = \{ (x, y, z) \in \RR^3 \mid x^2 + \frac{y^2}{4} \leq 1, x^2 + y^2 \geq 1, x,y \geq 0, 0 \leq z \leq 5 \}.
+\]
+
+Calculați integrala $ \ds\iiint_\Omega \frac{yz}{\sqrt{x^2 + y^2}} dxdydz $ prin două metode:
+\begin{enumerate}[(a)]
+\item proiectînd mulțimea $ \Omega $ pe planul $ XOY $;
+\item folosind coordonate cilindrice.
+\end{enumerate}
+
+\emph{Soluție:} (a) Pentru a proiecta mulțimea $ \Omega $ pe planul $ XOY $, studiem doar
+ecuațiile corespunzătoare acestui plan. Astfel, avem intervalul $ z \in [0, 5] $, iar pentru
+$ x $ și $ y $, obținem:
+\[
+  D = \{(x, y) \in \RR^2 \mid x \in [0, 1], \sqrt{1 - x^2} \leq y \leq 2 \sqrt{1 - x^2} \}.
+\]
+
+Atunci integrala se obține:
+\begin{align*}
+  \iiint_\Omega \frac{yz}{\sqrt{x^2 + y^2}} dxdydz &= \iint_D dxdy \int_0^5 \frac{yz}{\sqrt{x^2 + y^2}} dz \\
+                                                   &= \frac{25}{2} \iint_D \frac{y}{\sqrt{x^2 + y^2}} dxdy,
+\end{align*}
+integrală pe care o calculăm folosind coordonate polare.
+
+(b) Coordonatele cilindrice sînt:
+\[
+  \begin{cases}
+    x &= \rho \cos \varphi \\
+    y &= \rho \sin \varphi \\
+    z & = z
+  \end{cases}, \quad (\rho, \varphi, z) \in [0, \infty) \times [0, 2\pi) \times \RR,
+\]
+iar jacobianul transformării este $ J = \rho $.
+
+Pentru $ \Omega $, avem:
+\[
+  z \in [0, 5], \quad \varphi \in \big[ 0, \frac{\pi}{2} \big], %
+  \rho \in \big[ 1, \frac{2}{\sqrt{3 \cos^2 \varphi + 1}} \big].
+\]
+
+Obținem, atunci:
+\begin{align*}
+  \iiint_\Omega \frac{yz}{\sqrt{x^2 + y^2}} dxdydz &= \int_0^5 dz \int_0^{\frac{\pi}{2}} \int_1^{\frac{2}{\sqrt{3\cos^2 \varphi + 1}}} %
+                                                     \frac{z \rho \sin \varphi}{\rho} \rho d\rho \\
+                                                   &= \frac{25}{2} \int_0^{\frac{\pi}{2}} \frac{3(1 - \cos^2 \varphi)}{3 \cos^2 \varphi + 1} \sin \varphi d\varphi \\
+                                                   &= \frac{25}{18} (4 \pi \sqrt{3} - 9).
+\end{align*}
+
+\vspace{1cm}
+
+2. Folosind coordonatele sferice (generalizate) să se calculeze integralele:
+\begin{enumerate}[(a)]
+\item $ \ds\iiint_\Delta ( y - x ) dxdydz $, unde domeniul este:
+  \[
+    \Delta = \{(x, y, z) \in \RR^3 \mid x^2 + y^2 + z^2 \leq 1, y > 0 \};
+  \]
+\item $ \ds\iiint_\Omega \Big( 1 - x^2 - \frac{y^2}{9} - \frac{z^2}{4} \Big)^{\frac{3}{2}} dxdydz $,
+  domeniul fiind:
+  \[
+    \Omega = \{ (x, y, z) \in \RR^3 \mid y \geq 0, z \geq 0, x^2 + \frac{y^2}{9} + \frac{z^2}{4} \leq 1 \};
+  \]
+\item $ \ds\iiint_\Pi z dxdydz $, unde domeniul este:
+  \[
+    \Pi = \{(x, y, z) \in \RR^3 \mid x^2 + y^2 + (z - 1)^2 \leq 1 \}.
+  \]
+\end{enumerate}
+
+\emph{Indicații:} Coordonatele sferice sînt:
+\[
+  \begin{cases}
+    x &= \rho \sin \theta \cos \varphi \\
+    y &= \rho \sin \theta \sin \varphi \\
+    z &= \rho \cos \theta
+  \end{cases}, \quad (\rho, \theta, \varphi) \in [0, \infty) \times [0, \pi] \times [0, 2\pi).
+\]
+
+Jacobianul transformării este $ J = \rho^2 \sin \theta $.
+
+Pentru coordonatele sferice generalizate (utile pentru elipsoizi) sînt:
+\[
+  \begin{cases}
+    x &= a \rho \sin \theta \cos \varphi \\
+    y &= b \rho \sin \theta \sin \varphi \\
+    z &= c \rho \cos \theta
+  \end{cases},
+\]
+definite pe același domeniu de mai sus, iar jacobianul este $ J = abc\rho^2 \sin \theta $.
+
+\vspace{1cm}
+
+3. Calculați volumele mulțimilor $ \Omega $, mărginite de suprafețele de ecuații:
+\begin{enumerate}[(a)]
+\item $ 2x^2 + y^2 + z^2 = 1, \quad 2x^2 + y^2 - z^2 = 0, z \geq 0 $;
+\item $ z = x^2 + y^2 - 1, \quad z = 2 - x^2 - y^2 $;
+\item $ z = 4 - x^2 - y^2, \quad 2z = 5 + x^2 + y^2 $;
+\item $ x^2 + y^2 = 1, \quad z^2 = x^2 + y^2, \quad z \geq 0 $.
+\end{enumerate}
+
+\emph{Indicații:} (a) Intersectăm cele două suprafețe, egalînd primele două ecuații și
+obținem:
+\[
+  4x^2 + 2y^2 = 1, \quad z = \frac{1}{\sqrt{2}}.
+\]
+Atunci, proiecția acestui domeniu pe planul $ XOY $ este:
+\[
+  D = \{(x, y) \mid 4x^2 + 2y^2 \leq 1 \}.
+\]
+Iar coordonata $ z $ o putem lua între cele două suprafețe, adică:
+\[
+  \sqrt{2x^2 + y^2} \leq z \leq \sqrt{1 - 2x^2 - y^2}.
+\]
+Rezultă că putem calcula volumul mulțimii astfel:
+\[
+  V(\Omega) = \iiint_\Omega dxdydz = \iint_D dxdy \int_{\sqrt{2x^2 + y^2}}^{\sqrt{1 - 2x^2 - y^2}} dz,
+\]
+iar apoi pe domeniul $ D $ putem folosi coordonate polare generalizate (pentru parametrizarea
+elipsei).
+
+\vspace{1cm}
+
+(b) Similar, intersectăm cele două suprafețe rezolvînd sistemul de ecuații
+și găsim:
+\[
+  x^2 + y^2 = \frac{3}{2}, \quad z = \frac{1}{2}.
+\]
+Proiecția pe planul $ XOY $ este:
+\[
+  D = \big\{ (x, y) \mid x^2 + y^2 \leq \frac{3}{2} \big\}.
+\]
+Atunci:
+\[
+  V(\Omega) = \iiint_\Omega dxdydz = \iint_D dxdy \int_{x^2 + y^2 - 1}^{2 - x^2 - y^2} dz.
+\]
+
+
+
+\end{document}

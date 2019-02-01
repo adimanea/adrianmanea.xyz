@@ -1,0 +1,458 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță \& A. Oprina}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 6 \\
+    Spații euclidiene}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Produs scalar}
+\label{sec:teorie}
+
+Spațiile euclidiene lărgesc definițiile spațiilor vectoriale generale,
+adăugînd construcții foarte utile în perspectiva aplicațiilor în geometrie.
+
+Prima definiție importantă este:
+
+\begin{definition}\label{def:prod-sc}
+  Fie $V$ un spațiu vectorial real. Se numește \emph{produs scalar} pe $V$
+  o aplicație $\langle \cdot, cdot \rangle : V \times V \to \RR$, care, pentru orice
+  vectori $x, y, z \in V$ și orice scalar $\alpha \in \RR$ are proprietățile:
+  \begin{itemize}
+  \item \emph{comutativitate:} $\langle x, y \rangle = \langle y, x \rangle$;
+  \item \emph{aditivitate:} $\langle x + z, y \rangle = \langle x, y \rangle + %
+    \langle z, y \rangle$;
+  \item \emph{balansare:} $\langle \alpha x, y \rangle = \alpha \langle x, y \rangle$;
+  \item \emph{pozitivitate:} $\langle x, x \rangle = 0 \Leftrightarrow x = 0$.
+  \end{itemize}
+\end{definition}
+
+Cu această construcție, avem:
+
+\begin{definition}\label{def:preh-euc}
+  Un spațiu vectorial real pe care s-a definit un produs scalar se numește
+  \emph{spațiu prehilbertian (real)}. \footnote{Denumirea provine de la %
+    matematicianul german David Hilbert (1862---1943), iar particular \emph{pre-} arată %
+    că aceste spații sînt utilizate pentru a obține \emph{spațiile Hilbert}, extrem %
+    de importante în fizica teoretică. Ele adaugă și proprietăți de analiză %
+    vectorilor, studiind, de fapt, \emph{spații vectoriale de funcții}.}
+
+  Dacă spațiul este finit dimensional, el se numește \emph{euclidian}.
+\end{definition}
+
+În continuare, vom presupune că spațiul $V$ pe care îl folosim este un spațiu
+euclidian.
+
+Ca în geometrie, numim doi vectori $x, y \in V$ \emph{ortogonali} dacă
+$\langle x, y \rangle = 0$. Vom mai nota aceasta și prin $x \perp y$.
+
+Folosind noțiunea de produs scalar, putem defini, pentru orice vectori $x \in V$,
+aplicația \emph{normă}, definită prin:
+\[
+  || x || = \sqrt{ \langle x, x \rangle }.
+\]
+Această aplicație generalizează noțiunea de \emph{modul} al unui vector.
+
+Exemplele pe care le vom întîlni cel mai des sînt:
+\begin{itemize}
+\item Pentru spațiul euclidian $\RR^n$, produsul scalar standard este:
+  \[
+    \langle x, y \rangle = \sum_{i = 1}^n x_i \cdot y_i,
+  \]
+  unde $x = (x_1, \dots, x_n)$, iar $y = (y_1, \dots, y_n)$;
+\item Pentru spațiul de matrice $M_{m,n}(\RR)$, putem defini produsul scalar:
+  \[
+    \langle A, B \rangle = \mathrm{tr}(A^t \cdot B).
+  \]
+\item Pentru $V = C^0([a, b])$, spațiul vectorial al tuturor funcțiilor continue
+  de forma $f : [a, b] \to \RR$, definim:
+  \[
+    \langle f, g \rangle = \int_a^b f(x) \cdot g(x) dx,
+  \]
+  structură cu care obținem un spațiu prehilbertian infinit dimensional.
+\end{itemize}
+
+În contextul unui spațiu euclidian, au loc relațiile cunoscute din cazul
+geometriei plane:
+\begin{itemize}
+\item $\forall x,y \in V, |\langle x, y \rangle| \leq ||x|| \cdot ||y||$ (inegalitatea
+  lui Cauchy-Buniakowski-Schwartz);
+\item $\forall x, y \in V, ||x + y||^2 + ||x - y||^2 = 2(||x||^2 + ||y||^2)$ (regula %
+  paralelogramului);
+\item Dacă $x \perp y$, atunci $||x + y||^2 = ||x||^2 + ||y||^2$ (teorema lui Pitagora).
+\end{itemize}
+
+În cazul spațiilor complexe, se impun modificări la definiții.
+
+\begin{definition}\label{def:prod-sc-compl}
+  Fie $V$ un spațiu vectorial complex. Se numește \emph{produs scalar} pe $V$
+  o aplicație $\langle \cdot, \cdot \rangle : V \times V \to \CC$,
+  care, pentru orice vectori $x, y, z \in V$ și orice scalar $\alpha \in \CC$,
+  are proprietățile:
+  \begin{itemize}
+  \item $\langle x, y \rangle = \overline{\langle y, x \rangle}$, unde prin $\overline{()}$
+    am notat conjugata complexă;
+  \item $\langle x + z, y \rangle = \langle x, y \rangle + \langle z, y \rangle$;
+  \item $\langle \alpha x, y \rangle = \alpha \langle x, y \rangle$;
+  \item $\langle x, x \rangle \geq 0$, cu egalitate dacă și numai dacă $x = 0$.
+  \end{itemize}
+\end{definition}
+
+\begin{remark}\label{rk:conj}
+  Remarcați că, folosind prima și a treia proprietate, obținem:
+  \[
+    \langle x, \alpha y \rangle = \overline{\alpha} \langle x, y \rangle.
+  \]
+\end{remark}
+
+Cu aceasta, avem:
+
+\begin{definition}\label{def:sp-unit}
+  Un spațiu vectorial complex, pe care s-a definit un produs scalar se numește
+  \emph{spațiu prehilbertian complex}.
+
+  Spațiile prehilbertiene complexe cu dimensiune finită se numesc \emph{spații unitare}.
+\end{definition}
+
+Exemplele din cazul real pot fi adaptate:
+\begin{itemize}
+\item Fie $V = \CC^n$. Atunci, cu notațiile de mai sus, produsul scalar se
+  poate defini prin:
+  \[
+    \langle x, y \rangle = \sum_{i = 1}^n x_i \cdot \overline{y_i}.
+  \]
+\item În spațiul vectorial complex al funcțiilor continue $f : [a, b] \to \CC$,
+  putem defini produsul scalar complex prin:
+  \[
+    \langle f, g \rangle = \int_a^b f(x) \overline{g(x)} dx.
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ortonormare}
+\label{sec:orton}
+
+Date aceste noțiuni, pornind cu conceptul de produs scalar, utilizările
+pe care le vom studia sînt în următoarea direcție:
+
+\begin{definition}\label{def:orton}
+  Fie $V$ un spațiu prehilbertian (real sau complex).
+  \begin{itemize}
+  \item Un sistem finit sau numărabil $\{ e_i \}$ de vectori din $V$ se
+    numește \emph{sistem ortogonal} dacă toți vectorii sînt nenuli și
+    ortogonali doi cîte doi.
+  \item Sistemul se numește \emph{ortonormat} dacă este ortogonal, iar
+    norma (\qq{lungimea}) fiecărui vector este 1.
+  \end{itemize}
+\end{definition}
+
+Cazul care ne interesează este acela în care sistemul de vectori de mai
+sus este o \emph{bază} pentru $V$, situație în care se numește
+\emph{bază ortonormată}. \footnote{Acesta este, de fapt, cazul din geometria
+  tridimensională, \qq{clasică}. Baza este dată de versorii $\vec{i}, \vec{j}, %
+  \vec{k}$, care sînt ortonormați.}
+
+Dată o bază \qq{obișnuită} a unui spațiu vectorial (euclidian sau unitar), din
+ea se poate obține una \emph{ortonormată}, folosind \textbf{procedeul Gram-Schmidt}.
+
+Fie $B = \{ u_1, \dots, u_n \}$ o bază oarecare în $V$. Construim din ea o bază
+\emph{ortogonală} $B_1 = \{ v_1, \dots, v_n \}$, apoi o normăm, înmulțind fiecare
+vector cu inversul normei sale, obținînd baza \emph{ortonormată} %
+$B_2 = \{ \frac{v_i}{||v_i||} \}$.
+
+Procedeul pornește astfel:
+\begin{itemize}
+\item Luăm $v_1 = u_1$;
+\item Mai departe, definim $v_2 = u_2 + \alpha v_1$, cu $\alpha$ ales astfel
+  încît $v_2 \perp v_1$. Din această condiție, găsim:
+  \[
+    \alpha = - \frac{\langle u_2, v_1 \rangle}{\langle v_1, v_1 \rangle}.
+  \]
+\item În continuare, luăm $v_3 = u_3 + \alpha_1 v_1 + \alpha_2 v_2$, cu $\alpha_{1,2}$
+  astfel încît $v_3 \perp v_1$ și $v_3 \perp v_2$. Se obțin:
+  \[
+    \alpha_1 = -\frac{\langle u_3, v_1 \rangle}{\langle v_1, v_1 \rangle}, \quad %
+    \alpha_2 = -\frac{\langle u_3, v_2 \rangle}{\langle v_2, v_2 \rangle}.
+  \]
+\item Procedeul continuă similar pînă obținem baza $B_1$, pe care apoi o normăm.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Complement ortogonal}
+\label{sec:compl-ort}
+
+Extindem noțiunea de ortogonalitate la spații.
+
+\begin{definition}\label{def:compl-ort}
+  Fie $E$ un spațiu euclidian (sau unitar) cu $\dim E = n < \infty$ și $V$ un
+  subspațiu vectorial al lui $E$, cu $\dim V = p$, astfel încît $1 \leq p \leq n - 1$.
+
+  Se numește \emph{complementul ortogonal} al lui $V$, notat $V^\perp$, un
+  subspațiu $V^\perp \seq E$, astfel încît $V \oplus V^\perp = E$ și
+  $V \perp V^\perp$, adică $\forall x \in V, \forall y \in V^\perp, x \perp y$.
+\end{definition}
+
+În calcule, ne vom baza pe următoarea:
+
+\begin{theorem}\label{thm:comp-ort}
+  Fie $E$ un spațiu euclidian (unitar). Pentru orice subspațiu vectorial nenul
+  $V \seq E$, există și este unic complementul ortogonal $V^\perp$ al lui $V$.
+\end{theorem}
+
+Așadar, următoarele proprietăți vor fi fundamentale în exercițiile de
+determinare a complementului ortogonal al unui spațiu. Fie $S \hookrightarrow V$.
+Atunci:
+\begin{itemize}
+\item $S \oplus S^\perp \simeq V$, deci (cf. Grassmann):
+  \[
+    \dim S + \dim S^\perp = \dim V.
+  \]
+\item $(S^\perp)^\perp \simeq S$;
+\item Putem scrie matricea formată din vectorii bazei lui $S$ și căutăm vectorii
+  bazei lui $S^\perp$ (tot matriceal), astfel încît produsul celor două matrice
+  să fie nul. Problema se reduce, astfel, la un sistem de ecuații omogene.
+\end{itemize}
+
+Avem nevoie și de:
+
+\begin{definition}\label{def:end-ort}
+  Fie $E$ un spațiu euclidian (unitar). Un endomorfism $f : E \to E$ se numește
+  \emph{ortogonal (unitar)} dacă duce baze ortonormate în baze ortonormate.
+\end{definition}
+
+Pentru ele, avem următoarea:
+
+\begin{theorem}\label{thm:car-end-ort}
+  Dacă $E$ este un spațiu euclidian (unitar), iar $f : E \to E$ este un endomorfism,
+  următoarele afirmații sînt echivalente:
+  \begin{enumerate}[(a)]
+  \item $f$ este ortogonal (unitar);
+  \item $\forall x, y \in E, \langle x, y \rangle = \langle f(x), f(y) \rangle$;
+  \item matricea lui $f$, scrisă în orice bază ortonormată, este inversabilă,
+    iar $(M_f^B)^{-1} = (M_f^B)^t$ (respectiv $\overline{(M_f^B)^t}$ pentru cazul
+    complex).
+  \end{enumerate}
+\end{theorem}
+
+De fapt, putem defini în general:
+
+\begin{definition}\label{def:mat-sim-ort}
+  O matrice $A \in M_n(\RR)$ se numește \emph{simetrică} atunci cînd $A = A^t$
+  și \emph{ortogonală} cînd $A^{-1} = A^t$.
+
+  Pentru cazul complex, o matrice $A \in M_n(\CC)$ se numește \emph{hermitică}
+  \footnote{Charles Hermite (1822--1901) %
+    {\color{blue} \href{https://en.wikipedia.org/wiki/Charles_Hermite}{[wiki]}}.}
+  atunci cînd $A = \overline{A^t}$ și \emph{unitară} dacă este inversabilă
+  și $A^{-1} = \overline{A^t}$.
+\end{definition}
+
+Se poate demonstra simplu că:
+\begin{itemize}
+\item Matricea asociată unui endomorfism ortogonal într-o bază ortonormată
+  este ortogonală;
+\item Dacă $A$ este ortogonală, atunci $\det A = \pm 1$;
+\item Matricea asociată unui endomorfism unitar într-o bază ortonormată este
+  unitară;
+\item Dacă $A$ este unitară, atunci $|\det A| = 1$.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+\indent\indent 1. Aplicați algoritmul Gram-Schmidt pentru:
+\begin{enumerate}[(a)]
+\item Baza $\kal{B} = \{(1, 1, -1), (3, -1, -1), (0, -1, 1) \}$ a spațiului $\RR^3$;
+\item Baza $\kal{B} = \{(0, 1, -1), (2, 0, 1), (-1, 1, -1) \}$ a spațiului $\RR^3$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie $V = \RR_3[X]$. Definim aplicația $\langle \cdot, \cdot \rangle : V \times V \to \RR$
+prin:
+\[
+  \langle p, q \rangle = \sum_{k = 0}^3 (k!)^2 a_k b_k,
+\]
+unde $p = \sum a_i X^i$ și $q = \sum b_j X^j$.
+
+\begin{enumerate}[(a)]
+\item Arătați că aplicația este un produs scalar;
+\item Calculați $||h||$, unde $h = 1 + 5x - 4x^2 + 5x^3$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie $C = \kal{C}^\infty([1, e])$ și aplicația definită prin:
+\[
+  \langle f, g \rangle = \int_1^e f(x) g(x) \ln x dx.
+\]
+\begin{enumerate}[(a)]
+\item Arătați că aplicația este un produs scalar;
+\item Calculați $||h||$, pentru $h : [1, e] \to \RR, h(x) = \sqrt{x}$;
+\item Aflați o funcție de gradul întîi $g$ care să fie perpendiculară pe
+  funcția constantă $f(x) = 5$ (în raport cu produsul scalar de mai sus).
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Fie $S = \{ (x, y, z) \in \RR^3 \mid x + y = 0 \}$.
+\begin{enumerate}[(a)]
+\item Determinați $S^\perp$;
+\item Fie vectorul $v = (1, 4, 5)$. Găsiți coordonatele lui $v$ în $S$,
+  respectiv în $S^\perp$.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Calculați complementul ortogonal al subspațiului al $\RR^4$, generat
+peste $\RR$ de vectorii
+\[
+  (1, 3, 0, 2), (3, 7, -1, 2), (2, 4, -1, 0).
+\]
+
+\vspace{1cm}
+
+6. În spațiul $\RR_2[X]$ se consideră vectorii:
+\begin{align*}
+  p_1 &= 3x^2 + 2x + 1 \\
+  p_2 &= 3x^2 + 2x + 5 \\
+  p_3 &= -x^2 + 2x + 1 \\
+  p_4 &= 3x^2 + 5x + 2.
+\end{align*}
+
+Să se determine un polinom $p$ echidistant de vectorii $p_1, p_2, p_3, p_4$,
+în raport cu distanța euclidiană.
+
+\vspace{1cm}
+
+7. În spațiul $\RR^4$, se consideră vectorii:
+\[
+  x = (1, 0, 1, 3), \quad y = (-1, 1, 1, 0).
+\]
+Să se completeze acești vectori pînă la o bază ortogonală, apoi să se normeze baza
+rezultată.
+
+\vspace{1cm}
+
+8. Se consideră subspațiul $S = \mathrm{Sp}(x_1, x_2, x_3) \hookrightarrow \RR^4$,
+unde:
+\[
+  x_1 = (1, 1, 2, 1), x_2 = (-1, 0, 2, 3), x_3 = (1, 2, -1, -3).
+\]
+
+\begin{enumerate}[(a)]
+  \item Găsiți un vector $v \in \RR^4$, astfel încît $v \perp S$;
+  \item Găsiți $S^\perp$.
+\end{enumerate}
+  
+\vspace{1cm}
+
+9. Să se determine o bază ortonormată a subspațiului:
+\[
+  S = \{(x_1, x_2, x_3, x_4) \in \RR^4 \mid x_1 - x_2 + 2x_3 - x_4 = 0 \} %
+  \hookrightarrow \RR^4.
+\]
+
+\end{document}

@@ -1,0 +1,260 @@
+\chapter{Modele de parțial}
+
+
+\section{Model 1}
+
+1. Fie spațiile vectoriale:
+\begin{align*}
+  V_1 &= \{ (x, y, z) \in \RR^3 \mid 3x + y = 0 \} \\
+  V_2 &= \dr{Sp} \{(1, -1, 1), (2, -1, 1) \}.
+\end{align*}
+\begin{enumerate}[(a)]
+\item Să se determine, cu bază și dimensiune, $ V_1, V_2 $;
+
+  \emph{Răspuns:} $ \dim V_1 = \dim V_2 = 2 $. Baza în $ V_2 $
+  poate fi luată ca fiind cei doi vectori dați, iar în $ V_1 $ avem,
+  de exemplu, $ \{ (1, -3, 0), (0, 0, 1) \} $.
+\item Să se determine, cu bază și dimensiune, $ V_1 \cap V_2 $,
+  respectiv $ V_1 + V_2 $. Decideți dacă suma $ V_1 + V_2 $ este directă;
+
+  \emph{Răspuns:} $ \dim(V_1 + V_2) = 3 \Rightarrow \dim(V_1 \cap V_2) = 1 $,
+  deci suma \emph{nu} este directă.
+\item Să se determine un subspațiu $ W $ al lui $ \RR^3 $ astfel încît
+  $ V_1 \oplus W \simeq \RR^3 $.
+
+  \emph{Răspuns:} $ \dim W = 1 $ și se alege astfel încît $ W \cap V_1 = \{(0, 0, 0)\} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie aplicația liniară:
+\[
+  f : \RR_2[X] \to \RR^3, \quad f(a + bX + cX^2) = (a + c, 2b, c - b).
+\]
+\begin{enumerate}[(a)]
+\item Să se determine matricea lui $ f $ în baza canonică;
+\item Să se determine $ \dr{Ker} f $ și $ \dr{Im} f $, cu bază și dimensiune;
+
+  \emph{Răspuns:} $ \dim \dr{Ker}f = 0 \Rightarrow \dim \dr{Im} f = 3 $.
+\item Decideți dacă aplicația $ f $  este injectivă sau surjectivă.
+
+  \emph{Răspuns:} Aplicația este și injectivă, și surjectivă.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie aplicația liniară:
+\[
+  f : \RR^3 \to \RR^3, \quad f(a, b, c) = (a, 2b, c-b).
+\]
+
+Fie $ A $ matricea aplicației în baza canonică.
+
+\begin{enumerate}[(a)]
+\item Să se aducă matricea $ A $ la forma diagonală.
+\item Să se calculeze $ A^{21} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+(*) Fie $ A \in M_{5}(\RR) $ astfel încît:
+\[
+  A^2 - 3 \cdot A + 2 \dr{I}_5 = 0_5.
+\]
+
+Aflați vectorii și valorile proprii ale lui $ A $.
+
+\emph{Răspuns:} $ \sigma(A) = \{ 1, 2 \} $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Model 2}
+
+1. Fie spațiile vectoriale:
+\begin{align*}
+  V_1 &= \{ p \in \RR_2[X] \mid p(0) = 0 \} \\
+  V_2 &= \dr{Sp} \{1 + X, X + X^2 \}.
+\end{align*}
+\begin{enumerate}[(a)]
+\item Să se determine $ V_1 $ și $ V_2 $, cu bază și dimensiune.
+
+  \emph{Răspuns:} $ \dim V_1 = 2, \dim V_2 = 2 $.
+\item Să se determine $ V_1 + V_2 $, cu bază și dimensiune.
+
+  \emph{Răspuns:} $ \dim V_1 + V_2 = 3 $.
+\item Găsiți $ W \leq_\RR \RR_2[X] $ astfel încît $ W \oplus V_1 \simeq \RR_2[X] $.
+
+  \emph{Răspuns:} $ \dim W = 1 $, deci $ W = \dr{Sp} \{ f \in \RR_2[X] \} $,
+  astfel încît $ W \cap V_1 = \{ 0 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie aplicația liniară:
+\[
+  f : \RR_2[X] \to M_2(\RR), \quad %
+  f(a + bX + cX^2) = \begin{pmatrix} a & 2b \\ c - a & c - 2b \end{pmatrix}.
+\]
+\begin{enumerate}[(a)]
+\item Determinați matricea aplicației în baza canonică.
+\item Determinați $ \dr{Ker} f $ și $ \dr{Im}f $, cu baze și dimensiuni.
+
+  \emph{Răspuns:} $ \dr{Ker} f = \{ 0 \} \Rightarrow \dim \dr{Im} f = 3 $.
+\item Determinați un subspațiu $ V \leq_\RR \RR_2[X] $ astfel încît
+  $ V \oplus \dr{Ker} f \simeq \RR_2[X] $.
+\item Decideți dacă aplicația $ f $ este injectivă sau surjectivă.
+
+  \emph{Răspuns:} Aplicația este injectivă, dar nu este surjectivă.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se diagonalizeze matricea:
+\[
+  A = \begin{pmatrix}
+    7 & 2 & -2 \\
+    2 & 4 & -1 \\
+    -2 & -1 & 4
+  \end{pmatrix}.    
+\]
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Model 3}
+
+\textbf{Acesta este parțialul din 2017, Prof.\ A.\ Niță}
+
+\textbf{Numărul 1}
+
+1. Fie aplicația liniară $ f : M_2(\RR) \to \RR_2[X] $ definită prin:
+\[
+  f \begin{pmatrix} a & b \\ c & d \end{pmatrix} = %
+  (a - b - c) + (8a - d)X^2.
+\]
+\begin{enumerate}[(a)]
+\item Determinați matricea aplicației în bazele canonice.
+\item Determinați $ \dr{Ker} f $ și $ \dr{Im} f $, cu baze și dimensiuni.
+
+  \emph{Răspuns:} $ \dim \dr{Ker} f = 2 \Rightarrow \dim \dr{Im} f = 2 $.
+\item Găsiți un subspațiu $ V \leq_\RR M_2(\RR) $ astfel încît
+  $ V \oplus \dr{Ker} f \simeq M_2(\RR) $.
+
+  \emph{Răspuns:} $ \dim V = 2 $, deci $ V $ este generat de o matrice
+  care nu se găsește în nucleu.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie $ f : \RR^3 \to \RR^3 $ o aplicație liniară, cu proprietatea că
+$ f^2 - 3f = \dr{Id}_{\RR^3} $, unde $ f^2 = f \circ f $, iar
+$ \dr{Id}_{\RR^3} $ este aplicația identitate.
+
+Verificați dacă $ f $ este izomorfism.
+
+\emph{Răspuns:} Fie $ A = M_f^{BC} $. Atunci $ M_{f \circ f}^{BC} = A^2 $, deci
+relația se rescrie:
+\[
+  A^2 - 3A = \dr{I}_3 \Leftrightarrow A(A - 3\dr{I}_3) = \dr{I}_3.
+\]
+Cum $ A $ și $ A - 3\dr{I}_3$ comută, rezultă $ A^{-1} = A - 3 \dr{I_3} $.
+
+\vspace{1cm}
+
+3. Fie matricea $ A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 2 & 0 \\ -2 & -2 & -1 \end{pmatrix} $.
+
+Să se aducă matricea la forma canonică (diagonală).
+
+\vspace{1cm}
+
+4. Fie $ A \in M_5(\RR) $ o matrice nediagonală, cu proprietatea că:
+\[
+  A^2 + 3A + 2 I_5 = 0_5.
+\]
+Calculați $ \sigma(A) $.
+
+\emph{Răspuns:} $ \sigma(A) = \{ -1, -2 \} $.
+
+\vspace{1cm}
+
+5. Fie spațiile:
+\begin{align*}
+  V_1 &= \dr{Sp} \{(2, 1, 3), (1, 1, 1) \} \\
+  V_2 &= \{(x, y, z) \in \RR^3 \mid x - 3y + 2z = 0 \}.
+\end{align*}
+Determinați $ V_1, V_2, V_1 + V_2, V_1 \cap V_2 $, cu baze și dimensiuni.
+
+\emph{Răspuns:} $ \dim V_1 = 2, \dim V_2 = 2, \dim(V_1 + V_2) = 3, \dim V_1 \cap V_2 = 1 $.
+
+\vspace{1cm}
+
+(*) [Teorie] Arătați că două spații vectoriale sînt izomorfe dacă și numai dacă au
+aceeași dimensiune.
+
+\vspace{1cm}
+
+\textbf{Numărul 2}
+
+1. Fie aplicația liniară $ f : \RR_2[X] \to M_2(\RR) $ definită prin:
+\[
+  f(a + bX + cX^2) = %
+  \begin{pmatrix}
+    a - 8b & a - c \\
+    0 & c - b
+  \end{pmatrix}.
+\]
+\begin{enumerate}[(a)]
+\item Determinați $ \dr{Ker} f, \dr{Im}f $ cu baze și dimensiuni, precum și
+  matricea aplicației în bazele canonice.
+\item Găsiți un subspațiu $ V \leq_\RR M_2(\RR) $ astfel încît
+  $ V \oplus \dr{Im} f \simeq M_2(\RR) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie $ f : \RR^3 \to \RR^3 $ o aplicație liniară, cu proprietatea că
+$ f^2 - 4f = \dr{Id}_{\RR^3} $, unde $ f^2 = f \circ f $, iar $ \dr{Id}_{\RR^3} $
+este aplicația identică.
+
+Este $ f $ izomorfism?
+
+\vspace{1cm}
+
+3. Să se aducă la forma diagonală matricea:
+\[
+  A = \begin{pmatrix}
+    4 & 6 & 0 \\
+    -3 & -5 & 0 \\
+    -3 & -6 & 1
+  \end{pmatrix}.
+\]
+
+\vspace{1cm}
+
+4. Fie $ A \in M_5(\RR) $ o matrice nediagonală, cu proprietatea:
+\[
+  A^2 + 5A + 6I_5 = 0_5.
+\]
+Calculați $ \sigma(A) $.
+
+\vspace{1cm}
+
+5. Fie spațiile:
+\begin{align*}
+  V_1 &= \dr{Sp} \{ (1, 2, 1), (2, 1, 1) \} \\
+  V_2 &= \{(x, y, z) \in \RR^3 \mid 3x - 2y + z = 0 \}.
+\end{align*}
+
+Determinați $ V_1, V_2, V_1 + V_2, V_1 \cap V_2 $, cu baze și dimensiuni.
+
+\vspace{1cm}
+
+(*) [Teorie] Enunțați teorema de dimensiune a spațiului factor (cît).
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-18-19"
+%%% End:

@@ -1,0 +1,439 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 6 \\
+      Ecuații cu derivate parțiale \\
+      de ordinul al doilea}}
+\end{center}
+
+\vspace{2cm}
+
+\section{Clasificarea și aducerea la forma canonică}
+
+\begin{definition}\label{def:edp2}
+  Se numește \emph{ecuație cvasiliniară cu derivate parțiale de ordinul II},
+  cu două variabile independente, o ecuație de forma:
+  \begin{equation}
+    \label{eq:edp2}
+    A(x, y) \frac{\partial^2 z}{\partial x^2} + %
+    2B(x, y) \frac{\partial^2 z}{\partial x \partial y} + %
+    C(x, y) \frac{\partial^2 z}{\partial y^2} + %
+    D\Big(x, y, z, \frac{\partial z}{\partial x}, \frac{\partial z}{\partial y}\Big) = 0,
+  \end{equation}
+  unde $ A, B, C $ sînt funcții reale, continue pe un deschis din $ \RR^2 $, iar funcția
+  $ D $ este continuă.
+\end{definition}
+
+\begin{definition}\label{def:curbe-car}
+  Se numesc \emph{curbe caracteristice} pentru ecuația (\ref{eq:edp2}) curbele care
+  se află pe suprafețele integrale ale ecuației, ale căror proiecții pe planul $ XOY $
+  satisfac \emph{ecuația caracteristică}:
+  \begin{equation}
+    \label{eq:ec-car}
+    A(x, y) dy^2 - 2B(x, y) dxdy + C(x, y) dx^2 = 0.
+  \end{equation}
+\end{definition}
+
+Clasificarea ecuațiilor se face în funcție de curbele caracteristice. Astfel, avem:
+\begin{itemize}
+\item Dacă $ AC - B^2 < 0 $, ecuația este \emph{de tip hiperbolic};
+\item Dacă $ AC - B^2 = 0 $, ecuația este \emph{de tip parabolic};
+\item Dacă $ AC - B^2 > 0 $, ecuația este \emph{de tip eliptic}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exemple din fizica matematică}
+
+Unele dintre cele mai importante exemple de ecuații de ordinul al doilea cu
+derivate parțiale provin din fizica matematică.
+
+\textbf{Ecuația coardei vibrante}, care are aceeași formă cu \textbf{ecuația undelor plane}:
+\[
+  \frac{\partial^2 u}{\partial x^2} - \frac{1}{a^2} \frac{\partial^2 u}{\partial t^2} = 0, %
+  \quad a^2 = \frac{\rho}{T_0},
+\]
+unde $ \rho $ este densitatea liniară a coardei, iar $ T_0 $ este tensiunea la care este
+supusă coarda în poziția de repaus.
+
+Aceasta este o ecuație de tip hiperbolic.
+
+\vspace{1cm}
+
+\textbf{Ecuația căldurii}, care are forma:
+\[
+  \frac{\partial^2 u}{\partial x^2} = \frac{1}{a^2} \frac{\partial u}{\partial t}, %
+  a^2 = \frac{k}{c \rho},
+\]
+unde $ k $ este coeficientul de conductibilitate termică, $ c $ este căldura
+specifică, iar $ \rho $ este densitatea.
+
+Această ecuație este de tip parabolic.
+
+\vspace{1cm}
+
+\textbf{Ecuația lui Laplace}, cu forma generală:
+\[
+  \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0.
+\]
+
+Să remarcăm că aceasta este echivalentă cu $ \Delta u = 0 $, adică $ u $ să fie
+funcție armonică (lucru care justifică și numele ecuației).
+
+Ecuația lui Laplace este de tip eliptic.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Direcții caracteristice și forma canonică}
+
+\begin{definition}\label{def:dir-car}
+  Ecuațiile de forma:
+  \begin{equation}
+    \label{eq:dir-car}
+    \frac{dy}{dx} = \mu_1(x, y), \quad \frac{dy}{dx} = \mu_2(x, y)
+  \end{equation}
+  asociate ecuației curbelor caracteristice (\ref{eq:ec-car}) se numesc
+  \emph{curbe caracteristice} ale ecuației (\ref{eq:edp2}).
+\end{definition}
+
+Prin integrarea celor două ecuații (\ref{eq:dir-car}) se obțin două familii de
+curbe în planul $ XOY $, de forma $ \varphi_1(x, y) = c_1 $ și $ \varphi_2(x, y) = c_2 $,
+cu $ c_1, c_2 $ constante arbitrare, curbe care sînt proiecțiile pe planul $ XOY $ ale
+curbelor caracteristice.
+
+Pentru a aduce ecuațiile (\ref{eq:edp2}) în forma canonică, distingem
+următoarele cazuri:
+\begin{itemize}
+\item Dacă ecuația este de \emph{tip hiperbolic}, facem schimbarea de variabile
+  $ \tau = \varphi_1(x, y) $ și $ \eta = \varphi_2(x, y) $ și \emph{prima forma canonică} se
+  obține a fi:
+  \[
+    \frac{\partial^2 z}{\partial \tau \partial \eta} + %
+    \Psi_1\Big( \tau, \eta, z, \frac{\partial z}{\partial \tau}, \frac{\partial z}{\partial \eta} \Big) = 0.
+  \]
+
+  Cu transformarea $ \tau = x + y $ și $ \eta = x - y $ se obține, din ecuația anterioară,
+  \emph{a doua formă canonică}, anume:
+  \[
+    \frac{\partial^2 z}{\partial x^2} - \frac{\partial^2 z}{\partial y^2} + %
+    \Psi'_1 \Big( \tau, \eta, z, \frac{\partial z}{\partial x}, \frac{\partial z}{\partial y} \Big) = 0.
+  \]
+\item Dacă ecuația este de \emph{tip parabolic}, avem
+  $ \varphi_1(x, y) = \varphi_2(x, y) = \varphi(x, y) $ și putem face schimbarea de
+  variabile $ \tau = \varphi(x, y) $ și $ \eta = x $, ajungînd la forma canonică:
+  \[
+    \frac{\partial^2 z}{\partial \eta^2} + %
+    \Psi_2\Big( \tau, \eta, z, \frac{\partial z}{\partial \tau}, \frac{\partial z}{\partial \eta} \Big) = 0.
+  \]
+\item Pentru ecuații de \emph{tip eliptic}, funcțiile $ \varphi_1(x, y) $ și $ \varphi_2(x, y) $
+  sînt complex conjugate și putem nota $ \alpha(x, y) = \mathrm{Re} \varphi_1(x, y) $, iar
+  $ \beta(x, y) = \mathrm{Im} \varphi_1(x, y) $. Atunci, cu schimbarea de variabile de forma
+  $ \tau = \alpha(x, y) $ și $ \eta = \beta(x, y) $, ajungem la forma canonică:
+  \[
+    \frac{\partial^2 z}{\partial \tau^2} + \frac{\partial^2 z}{\partial \eta^2} + %
+    \Psi_3 \Big( \tau, \eta, z, \frac{\partial z}{\partial \tau}, \frac{\partial z}{\partial \eta} \Big) = 0.
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Cazul coeficienților constanți}
+
+Dacă avem o ecuație liniară și omogenă în raport cu derivatele parțiale de ordinul
+al doilea, cu coeficienți constanți:
+\[
+  A \frac{\partial^2 z}{\partial x^2} + 2B \frac{\partial^2 z}{\partial x \partial y} + %
+  C \frac{\partial^2 z}{\partial y^2} = 0,
+\]
+cu $ A, B, C $ constante, atunci ecuația diferențială a proiecțiilor curbelor
+caracteristice pe planul $ XOY $ are forma particulară:
+\[
+  A dy^2 - 2B dxdy + C dx^2 = 0.
+\]
+
+Direcțiile caracteristice sînt date, atunci, de:
+\[
+  \begin{cases}
+    dy - \mu_1 dx &= 0 \\
+    dy - \mu_2 dx &= 0
+  \end{cases}
+\]
+care dau simplu soluția:
+\[
+  \begin{cases}
+    y - \mu_1 x &= c_1 \\
+    y - \mu_2 x &= c_2
+  \end{cases}, c_1, c_2 \in \RR.
+\]
+
+Aducerea la forma canonică se face mai simplu:
+\begin{itemize}
+\item Dacă ecuația este \emph{de tip hiperbolic}, facem schimbarea de variabile:
+  \[
+    \begin{cases}
+      \tau &= y - \mu_1 x \\
+      \eta &= y - \mu_2 x
+    \end{cases},
+  \]
+  iar ecuația devine:
+  \[
+    \frac{\partial^2 z}{\partial \tau \partial \eta} = 0,
+  \]
+  care are soluția generală $ z = f(\tau) + g(\eta) $, unde $ f, g $ sînt funcții arbitrare.
+  Înlocuind pentru a reveni la vechile variabile, avem:
+  \[
+    z(x, y) = f(y - \mu_1 x) + g(y - \mu_2 x).
+  \]
+\item Pentru \emph{cazul parabolic}, avem $ \mu_1 = \mu_2 = \frac{B}{A} $, iar ecuația
+  curbelor devine atunci $ A dy - B dx = 0 $, cu integrala generală $ Ay - Bx = c \in \RR $.
+  Schimbarea de variabile $ \tau = Ax - By$ și $ \eta = x $ conduce la forma canonică:
+  \[
+    \frac{\partial^2 z}{\partial \eta^2} = 0.
+  \]
+  Soluția generală este $ z = \eta f(\tau) + g(\tau) $, unde $ f, g $ sînt funcții arbitrare.
+\item Pentru \emph{cazul eliptic}, forma canonică este chiar ecuația Laplace:
+  \[
+    \frac{\partial^2 z}{\partial \tau^2} + \frac{\partial^2 z}{\partial \eta^2} = 0.
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Aduceți la forma canonică următoarele ecuații:
+\begin{enumerate}[(a)]
+\item $ \frac{\partial^2 u}{\partial x^2} + 2 \frac{\partial^2 u}{\partial x \partial y} - %
+  3 \frac{\partial^2 u}{\partial y^2} + 2 \frac{\partial u}{\partial x} + %
+  6 \frac{\partial u}{\partial y} = 0 $;
+\item $ 3 \frac{\partial^2 u}{\partial x^2} + 7 \frac{\partial^2 u}{\partial x\partial y} + %
+  2 \frac{\partial^2 u}{\partial y^2} = 0 $;
+\item $ 4 \frac{\partial^2 u}{\partial x^2} + 4 \frac{\partial^2 u}{\partial x \partial y} + %
+  \frac{\partial^2 u}{\partial y^2} - 2 \frac{\partial u}{\partial y} = 0 $;
+\item $ \frac{\partial^2 u}{\partial x^2} - 6 \frac{\partial^2 u}{\partial x\partial y} + %
+  10 \frac{\partial^2 u}{\partial y^2} + \frac{\partial u}{\partial x} - %
+  3 \frac{\partial u}{\partial y} = 0 $;
+\item $ 2 \frac{\partial^2 u}{\partial x^2} - 7 \frac{\partial^2 u}{\partial x \partial y} + %
+  3 \frac{\partial^2 u}{\partial y^2} = 0 $;
+\item $ y \frac{\partial^2 u}{\partial x^2} + (x + y) \frac{\partial^2 u}{\partial x \partial y} + %
+  x \frac{\partial^2 u}{\partial y^2} = 0 $;
+\item $ (1 + x^2) \frac{\partial^2 u}{\partial x^2} + %
+  (1 + y^2) \frac{\partial^2 u}{\partial y^2} + %
+  x \frac{\partial u}{\partial x} + y \frac{\partial u}{\partial y} = 0 $;
+\item $ x^2 \frac{\partial^2 u}{\partial x^2} - %
+  2xy \cdot \frac{\partial^2 u}{\partial x \partial y} + %
+  y^2 \cdot \frac{\partial^2 u}{\partial y^2} + %
+  x \cdot \frac{\partial u}{\partial x} + y \cdot \frac{\partial u}{\partial y} = 0 $;
+\end{enumerate}
+
+\emph{Soluție: (a)} Deoarece avem $ A = 1, B = 1, C = -3 $, rezultă $ B^2 - AC = 4 > 0 $,
+deci ecuația este de tip hiperbolic.
+
+Scriem ecuația caracteristică:
+\[
+  \Big( \frac{dy}{dx} \Big)^2 - 2 \frac{dy}{dx} - 3 = 0,
+\]
+care poate fi rezolvată ca o ecuație de gradul al doilea, de unde:
+\[
+  \begin{cases}
+    \frac{dy}{dx} = 3 &\Rightarrow y - 3x = c_1 \\
+    \frac{dy}{dx} = -1 &\Rightarrow y + x = c_2
+  \end{cases}.
+\]
+
+Cu schimbarea de variabile:
+\[
+  \begin{cases}
+    \tau &= y - 3x \\
+    \eta &= y + x
+  \end{cases},
+\]
+funcția căutată $ u(x, y) $ devine $ u(\tau, \eta) $, astfel că toate derivatele parțiale
+se calculează acum folosind formula funcțiilor implicite și derivarea funcțiilor compuse. Obținem, succesiv:
+\begin{align*}
+  \frac{\partial u}{\partial x} &= \frac{\partial u}{\partial \tau} \cdot \frac{\partial \tau}{\partial x} + %
+                                  \frac{\partial u}{\partial \eta} \cdot \frac{\partial \eta}{\partial x} \\
+                                &=- 3\frac{\partial u}{\partial \tau} + \frac{\partial u}{\partial \eta} \\
+  \frac{\partial u}{\partial y} &= \frac{\partial u}{\partial \tau} \cdot \frac{\partial \tau}{\partial y} + %
+                                  \frac{\partial u}{\partial \eta} \cdot \frac{\partial \eta}{\partial y} \\
+                                &=\frac{\partial u}{\partial \tau} + \frac{\partial u}{\partial \eta} \\
+  \frac{\partial^2 u}{\partial x^2} &= \frac{\partial}{\partial x} \Big( \frac{\partial u}{\partial x} \Big)  \\
+                                &= \frac{\partial}{\partial x} \Big( \frac{\partial u}{\partial \tau} \cdot %
+                                  \frac{\partial \tau}{\partial x} + \frac{\partial u}{\partial \eta} \cdot \frac{\partial \eta}{\partial x} \Big) \\
+                                &= \frac{\partial}{\partial x} \Big( \frac{\partial u}{\partial \tau} \cdot \frac{\partial \tau}{\partial x}\Big) + %
+                                  \frac{\partial}{\partial x} \Big( \frac{\partial u}{\partial \eta} \cdot \frac{\partial \eta}{\partial x} \Big) \\
+                                &= \frac{\partial}{\partial x} \Big( \frac{\partial u}{\partial \tau} \Big) \cdot %
+                                  \frac{\partial \tau}{\partial x} + \frac{\partial u}{\partial \tau} \cdot %
+                                  \frac{\partial^2 \tau}{\partial x^2} + \frac{\partial}{\partial x} \Big( \frac{\partial u}{\partial \eta} \Big) \cdot %
+                                  \frac{\partial \eta}{\partial x} + \frac{\partial u}{\partial \eta} \cdot 5
+                                  \frac{\partial^2 \eta}{\partial x^2} \\
+                                &= \Big[ \frac{\partial}{\partial \tau} \Big(\frac{\partial u}{\partial \tau}\Big) \cdot %
+                                  \frac{\partial \tau}{\partial x} + \frac{\partial}{\partial \eta} \Big(\frac{\partial u}{\partial \tau}\Big) \cdot %
+                                  \frac{\partial \eta}{\partial x} \Big] \cdot \frac{\partial \tau}{\partial x} + \\
+                                &+ \Big[ \frac{\partial}{\partial \eta} \Big(\frac{\partial u}{\partial \eta}\Big) \cdot %
+                                  \frac{\partial \eta}{\partial x} + \frac{\partial}{\partial \tau} \Big(\frac{\partial u}{\partial \eta}\Big) \cdot %
+                                  \frac{\partial \eta}{\partial x} \Big] \cdot \frac{\partial \eta}{\partial x} + \\
+                                &+ \frac{\partial^2 \tau}{\partial x^2} \cdot \frac{\partial u}{\partial \tau} + %
+                                  \frac{\partial u}{\partial \eta} \cdot \frac{\partial^2 \eta}{\partial x^2} \\
+                                &= \frac{\partial^2 u}{\partial \tau^2} \cdot \Big( \frac{\partial \tau}{\partial x} \Big)^2 + %
+                                  \frac{\partial u}{\partial \eta \partial \tau} \cdot \frac{\partial \eta}{\partial x} \cdot \frac{\partial \tau}{\partial x} + %
+                                  \frac{\partial^2 u}{\partial^2 \eta} \cdot \Big( \frac{\partial \eta}{\partial x} \Big)^2 + \\
+                                &+ \frac{\partial^2 u}{\partial \tau\partial \eta} \cdot \frac{\partial \tau}{\partial x} \cdot \frac{\partial \eta}{\partial x} + %
+                                  \frac{\partial^2 \tau}{\partial x^2} \cdot \frac{\partial u}{\partial \tau} + \frac{\partial u}{\partial \eta} \cdot %
+                                  \frac{\partial^2 \eta}{\partial x^2} \\
+                                &= 9 \frac{\partial^2 u}{\partial \tau^2} - %
+                                      6 \frac{\partial^2 u}{\partial \tau \partial \eta} + %
+                                      \frac{\partial^2 u}{\partial \eta^2} \\
+  \frac{\partial^2 u}{\partial x \partial y} &= \frac{\partial}{\partial x}\Big( \frac{\partial u}{\partial y} \Big)\\
+                                &= -3\frac{\partial^2 u}{\partial \tau^2} - %
+                                               2 \frac{\partial ^2 u}{\partial \tau \partial \eta} + %
+                                               \frac{\partial^2 u}{\partial \eta^2} \\
+  \frac{\partial^2 u}{\partial y^2} &= \frac{\partial^2 u}{\partial \tau^2} + %
+                                      2 \frac{\partial^2 u}{\partial \tau \partial \eta} + %
+                                      \frac{\partial^2 u}{\partial \eta^2}.  
+\end{align*}
+
+Toate derivatele parțiale în raport cu $ x $ și $ y $ se calculează, deci, ținînd cont de legătura
+cu noile variabile $ \eta $ și $ \tau $. Practic, avem:
+\[
+  \frac{\partial}{\partial x} = \frac{\partial}{\partial \eta} \cdot \frac{\partial \eta}{\partial x} + %
+  \frac{\partial}{\partial \tau} \cdot \frac{\partial \tau}{\partial x}
+\]
+și similar pentru $ y $.
+
+Rezultă că, în final, forma canonică este:
+\[
+  -16 \frac{\partial^2 u}{\partial \tau \partial \eta} + 8 \frac{\partial u}{\partial \eta} = 0 %
+  \Leftrightarrow \frac{\partial^2 u}{\partial \tau \partial \eta} - %
+  \frac{1}{2} \frac{\partial u}{\partial \eta} = 0.
+\]
+
+\vspace{1cm}
+
+2. Determinați soluția ecuației:
+\[
+  \frac{\partial^2 u}{\partial x^2} + 2 \frac{\partial^2 u}{\partial x \partial y} - %
+  3 \frac{\partial^2 u}{\partial y^2} = 0,
+\]
+care satisface condițiile:
+\[
+  \begin{cases}
+    u(x, y) &= 3x^2 \\
+    \frac{\partial u}{\partial y}(x, 0) &= \cos x
+  \end{cases}.
+\]
+
+\vspace{1cm}
+
+3. Rezolvați ecuația:
+\[
+  3 \frac{\partial^2 u}{\partial x^2} + 7 \frac{\partial^2 u}{\partial x\partial y} + %
+  2 \frac{\partial^2 u}{\partial y^2} = 0,
+\]
+cu condițiile:
+\[
+  \begin{cases}
+    u(x, y) &= x^3 \\
+    \frac{\partial u}{\partial y}(x, 0) &= 2x^2
+  \end{cases}.
+\]
+
+\end{document}

@@ -1,0 +1,486 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AN1, 2017---2018, C. Ghiu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 2 \\ Serii de puteri și serii de funcții}}
+\end{center}
+
+\section{Serii de puteri}
+
+\subsection{Raza de convergență}
+
+\begin{definition}\label{def:serie-puteri}
+  Fie $(a_n)$ un șir de numere complexe și $a \in \mathbb{C}$.
+
+  Se numește \emph{serie de puteri centrată în $a$} cu coeficienți $\{a_n\}$
+  o serie de funcții de forma:
+  \[
+    \sum_{n \geq 0} a_n(z - a)^n = a_0 + a_1(z - a) + \dots + a_n(z - a)^n + \dots.
+  \]
+
+  O astfel de serie se mai numește \emph{serie întreagă} în $z$, în jurul $ z = a $.
+\end{definition}
+
+Seriile de puteri sînt convergente pe un interval (sau bilă, în general) de
+forma $(-R, R)$, unde $R$ se numește \emph{raza de convergență}.
+
+Fie $\ds\sum_{n \geq 1} a_n x^n$ o serie de puteri. Raza sa de convergență
+se poate calcula în mai multe moduri, de exemplu:
+\begin{itemize}
+  \item \textbf{Cauchy-Hadamard:}
+    \[
+      R = \frac{1}{\limsup \sqrt[n]{|a_n|}}
+    \]
+    Aceasta derivă din \textbf{criteriul rădăcinii}: seria converge dacă $C < 1$
+    și diverge dacă $C > 1$, unde:
+    \[
+      C = \limsup \sqrt[n]{|a_n(x - a)^n|}.
+    \]
+    Rezultă că seria este convergentă dacă distanța de la $x$ la centrul $a$
+    este mai mică decît $R$, calculat cu formula de mai sus.
+  \item Se mai poate folosi \textbf{criteriul raportului}. Cînd există limita
+    corespunzătoare, se poate arăta că ea este egală cu raza de convergență:
+    \[
+      R = \lim_{n \to \infty} \Big| \frac{a_n}{a_{n + 1}} \Big|.
+    \]
+    Aceasta se obține din faptul că testul raportului spune că seria este
+    convergentă dacă:
+    \[
+      \lim_{n \to \infty} \frac{|a_{n + 1}(x - a)^{n + 1}|}{|a_n(x - a)^n|} < 1.
+    \]
+\end{itemize}
+
+
+Presupunem acum că există și este unic $R \in [0, \infty]$.
+\begin{enumerate}
+  \item $R = 0 \Rightarrow$ singurul punct de convergență este $z = a$;
+  \item $0 < R < \infty \Rightarrow$ absolut convergentă în $|z - a| < R$ și
+    divergentă în rest. În plus, convergentă pe $K \seq B(a, R)$;
+  \item $R = \infty \Rightarrow$ absolut convergentă $\forall z \in \CC$ și
+    uniform convergentă pe orice compact $K \seq \CC$.
+\end{enumerate}
+
+
+\subsection{Seria Taylor}
+
+\begin{definition}\label{def:seria-taylor}
+  Fie $f : [a, b] \to \RR$ de clasă $C^\infty$ pe $[a, b]$ și $x_0 \in (a, b)$.
+  \[
+    \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+  \]
+  este \emph{seria Taylor a lui $f$ în jurul $x_0$}.
+\end{definition}
+
+\begin{definition}\label{def:conv-unif-punct}
+  Spunem că șirul de funcții $(f_n)$ \emph{converge uniform} la $f$ pe $E$ dacă
+  pentru orice $\varepsilon$, există $N_\varepsilon$, independent de $x$, astfel
+  încît $|f_n(x) - f(x)| < \varepsilon, \forall x \in E, n \geq N_\varepsilon$.
+
+  Spunem că șirul \emph{converge punctual} la $f$ dacă există $N_{x, \varepsilon}$,
+  care depinde și de $x$, și de $\varepsilon$, astfel încît
+  $|f_n(x) - f(x)| < \varepsilon$, pentru orice $n \geq N_{\varepsilon, x}$.
+\end{definition}
+
+Evident, convergența uniformă implică pe cea punctuală.
+
+
+\begin{theorem}\label{thm:conditie-taylor}
+  Dacă $\forall n \geq 0, \forall x \in [a, b], f^{(n)}(x) \leq M$, atunci seria
+  Taylor este uniform convergentă pe $[a, b]$ și are suma $f$. Adică:
+  \[
+    f(x) = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n, \forall x \in [a, b].
+  \]
+\end{theorem}
+
+\begin{definition}\label{def:f-analitica}
+  Funcția $f : A \to \RR$ s.n.\ \emph{$\RR$-analitică} în $a \in A$ dacă are o dezvoltare
+  în serie de puteri în jurul lui $a$.
+\end{definition}
+
+\begin{remark}\label{rk:analitica-derivabila}
+  $\RR$-analitică în vecinătatea lui $a$ $\Rightarrow$ indefinit derivabilă,
+  $c_n = \frac{f^{(n)}(a)}{n!}, \forall n \geq 0$.
+
+  Reciproc, fals: $f(x) = \exp \Big( - \frac{1}{x^2} \Big)$.
+\end{remark}
+
+
+\begin{enumerate}[(a)]
+  \item $e^x = 1 + \dfrac{x}{1!} + \dfrac{x^2}{2!} + \dots + \dfrac{x^n}{n!} + o(x^n)$;
+  \item $\sin x = \dfrac{x}{1!} - \dfrac{x^3}{3!} + \dots + (-1)^n \dfrac{x^{2n + 1}}{(2n + 1)!} + o(x^{2n + 1})$;
+  \item $\cos x = 1 - \dfrac{x^2}{2!} + \dots + (-1)^n \dfrac{x^{2n}}{(2n)!} + o(x^{2n})$;
+  \item $\ln (1 + x) = x - \dfrac{x^2}{2} + \dots + (-1)^{n - 1} \dfrac{x^n}{n} + o(x^n), \ \forall x \in (-1, 1)$;
+  \item $\dfrac{1}{1 - x} = 1 + x + x^2 + \dots + x^n + o(x^n), \ \forall x \in (-1, 1)$;
+  \item $(1 + x)^\alpha = 1 + \alpha x + \dots + \dfrac{\alpha(\alpha - 1) \cdots (\alpha - n + 1)}{n!} x^n + o(x^n), \ \forall x \in (-1, 1)$.
+\end{enumerate}
+
+\section{Serii de funcții}
+\label{ch:serii-functii}
+
+\begin{definition}\label{def:pc}
+  Fie $(f_n)_n$ un șir de funcții, cu $f_n : [a, b] \to \RR$ și $f: [a, b] \to \RR$.
+  Spunem că șirul este \emph{punctual convergent pe $[a, b]$ către $f$} pentru
+  $n \to \infty$ și scriem $f_n \xrar{PC} f$ dacă $f_n(x_0) \to f(x_0)$ în $\RR$,
+  pentru orice $x \in [a, b]$.
+\end{definition}
+
+\begin{definition}\label{def:uc}
+  Un șir de funcții $(f_n)_n$, cu $f_n : [a, b] \to \RR$ se numește \emph{uniform %
+    convergent pe $[a, b]$ către o funcție $f$}, scris $f_n \xrightarrow{UC} f$,
+  dacă:
+  \[
+    \forall \varepsilon > 0, \exists N_\varepsilon \in \NN \ai \forall n \geq N_\varepsilon,
+    |f_n(x) - f(x)| < \varepsilon, \forall x \in [a, b].
+  \]
+\end{definition}
+
+\begin{theorem}\label{thm:pc-uc}
+  \begin{enumerate}[(a)]
+  \item Un șir $(f_n)$ de funcții mărginite $f_n : [a, b] \to \RR$ este uniform
+    convergent către o funcție $f \in M$ dacă și numai dacă
+    $\ds\lim_{n \to \infty} ||f_n - f|| = 0$.
+  \item Orice șir de funcții $f_n : [a, b] \to \RR$ uniform convergent pe $[a,b]$
+    este punctual convergent pe $[a, b]$. Reciproca este falsă.
+  \end{enumerate}
+\end{theorem}
+
+De exemplu, să luăm $[a, b] = [0, 1]$ și $f_n(x) = x^n, n \geq 1$. Avem:
+\[
+  \lim_{n \to \infty} f_n(x) = \begin{cases}
+    0, & x \in [0, 1) \\
+    1, & x = 1.
+  \end{cases}
+\]
+Rezultă că $f_n \xrar{PC} f$, unde:
+\[
+  f(x) = \begin{cases}
+    0, & x \in [0, 1) \\
+    1, & x = 1.
+  \end{cases}
+\]
+Dar:
+\begin{align*}
+  ||f_n - f|| &= \max_{x \in [0, 1)} |f_n(x) - f(x)| \\
+              &= \max( \sup_{x \in [0, 1)} |f_n(x) - f(x)|, |f_n(1) - f(1)|) \\
+              &= \max( \sup_{x \in [0, 1)} x^n, 0) \\
+              &= 1 \Rightarrow \lim_{n \to \infty} ||f_n - f|| = 1 \neq 0.
+\end{align*}
+Așadar, șirul este PC, dar nu este UC pe $[0, 1]$.
+
+\begin{theorem}[Cauchy]\label{thm:cauchy-UC}
+  Șirul de funcții $(f_n)_{n \geq 1}$ converge uniform pe mulțimea $A$ dacă și
+  numai dacă, pentru orice $\varepsilon > 0$, există $N_\varepsilon \in \NN^\ast$,
+  astfel încît $\forall n \in \NN, n \geq N_\varepsilon, \forall p \in \NN$ avem
+  $|f_{n + p} (x) - f_n(x)| < \varepsilon, \forall x \in A$.
+\end{theorem}
+
+\begin{theorem}\label{thm:int-uc}
+  Fie $(f_n)_n$ un șir uniform convergent de funcții continue, cu $f_n : [a, b] \to \RR$.
+  Atunci limita $f = \lim_{n \to \infty} f_n$ este o funcție continuă pe $[a, b]$.
+  În plus, avem:
+  \[
+    \lim_{n \to \infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx.
+  \]
+\end{theorem}
+
+\begin{theorem}\label{thm:pc-uc-der}
+  Fie $(f_n)$ un șir de funcții din $C^1([a,b])$ și $f, g$ funcții mărginite,
+  cu $f,g : [a, b] \to \RR$. Dacă $f_n \xrar{PC} f$ și $f'_n \xrar{UC} g$ pe
+  $[a, b]$, atunci $f$ este derivabilă pe $[a, b]$ și $f' = g$.
+\end{theorem}
+
+\begin{theorem}[Dini]\label{thm:dini}
+  Fie $(f_n)$ un șir monoton de funcții continue, $f_n : [a, b] \to \RR$,
+  astfel încît $f_n \xrar{PC} f$. Atunci $f_n \xrar{UC} f$.
+\end{theorem}
+
+\begin{theorem}[Polya]\label{thm:polya}
+  Fie $(f_n)$ un șir de funcții monotone $f_n : [a, b] \to \RR$ și
+  $f : [a, b] \to \RR$ continuă astfel încît $f_n \xrar{PC} f$.
+
+  Atunci $f_n \xrar{UC} f$.
+\end{theorem}
+
+\begin{theorem}[Stone-Weierstrass]\label{thm:stone-w}
+  Pentru orice funcție continuă $f : [a, b] \to \RR$, există un șir $(f_n)$
+  de polinoame, $f_n : [a, b] \to \RR$, astfel încît $f_n \xrar{UC} f$.
+\end{theorem}
+
+\begin{definition}\label{def:multime-conv}
+  Mulțimea valorilor lui $x$ pentru care seria $\sum_n f_n(x)$ este convergentă
+  se numește \emph{mulțimea de convergență} a seriei.
+
+  Funcția $f : [a, b] \to \RR$, astfel încît $f(x) = \ds\lim_{n \to \infty} S_n(x)$,
+  cu $S_n(x) = \sum_i f_i(x)$ se numește \emph{suma seriei}.
+\end{definition}
+
+\begin{definition}\label{def:punctual-conv}
+  Seria $\sum_n f_n$ este \emph{simplu (punctual) convergentă} către funcția $f$
+  dacă șirul sumelor parțiale $(S_n(x))_n$ este simplu (punctual) convergent
+  către $f$.
+
+  Seria este \emph{uniform convergentă} către funcția $f$ dacă șirul sumelor
+  parțiale $(S_n(x))_n$ este uniform convergent către $f$.
+
+  Seria este \emph{absolut convergentă} dacă seria modulelor este simplu convergentă.
+\end{definition}
+
+\begin{theorem}\label{thm:uc-int}
+  Fie $\sum_n f_n$ o serie uniform convergentă de funcții continue, $f_n : [a, b] \to \RR$
+  și $s$ suma acestei serii. Atunci $s$ este o funcție continuă pe $[a, b]$.
+
+  În plus, $\int_a^b s(x) dx = \sum_n \int_a^b f_n dx$.
+\end{theorem}
+
+\begin{theorem}\label{thm:uc-der}
+  Fie $\sum_n f_n$ o serie PC de funcții din $C^1([a,b])$, cu suma $s$ pe $[a, b]$
+  și astfel încît seria derivatelor $\sum_n f'_n$ să fie UC.
+
+  Atunci funcția $s$ este derivabilă pe $[a, b]$ și $s' = \sum_n f'_n$.
+\end{theorem}
+
+\begin{theorem}[Weierstrass]\label{thm:weierstrass}
+  Fie $\sum_n f_n$, cu $f_n : [a, b] \to \RR$ o serie de funcții și $\sum_n a_n$
+  o serie convergentă de numere reale pozitive. Dacă $|f_n(x)| \leq a_n$, pentru
+  orice $x \in [a, b]$ și pentru $n \geq N$, cu $N$ fixat, atunci seria de funcții
+  $\sum_n f_n$ este UC pe $[a, b]$.
+\end{theorem}
+
+\begin{theorem}[UC, Cauchy]\label{thm:uc-cauchy}
+  Seria $\sum_n f_n$ este uniform convergentă pe $[a, b]$ dacă și numai dacă
+  $\forall \varepsilon > 0, \exists N_\varepsilon \in \NN$ astfel încît:
+  \[
+    |f_{n+1}(x) + f_{n+2}(x) + \dots + f_{n+p}(x)| < \varepsilon, %
+    \forall n > N_\varepsilon, \forall p \in \NN, \forall x \in [a, b].
+  \]
+\end{theorem}
+
+\begin{theorem}[Abel]\label{thm:abel}
+  Dacă seria $\sum_n f_n$ de funcții se poate scrie sub forma $\sum_n \alpha_n v_n$,
+  astfel încît seria de funcții $\sum_n v_n$ să fie UC, iar $(\alpha_n)$ să fie
+  un șir monoton de funcții egal mărginite, atunci ea este uniform convergentă.
+\end{theorem}
+
+\begin{theorem}[Dirichlet]\label{thm:dirichlet}
+  Dacă seria $\sum_n f_n$ de funcții se poate scrie sub forma $\sum_n \alpha_n v_n$
+  astfel încît șirul sumelor parțiale ale seriei $\sum_n v_n$ este un șir
+  de funcții egal mărginite, iar $(\alpha_n)$ este un șir monoton ce converge
+  uniform către 0, atunci ea este uniform convergentă.
+\end{theorem}
+
+Fie $I \seq \RR$ un interval deschis și fie $f : I \to \RR$ o funcție de clasă
+$C^m$ pe $I$. Pentru orice $a \in I$, definim \textbf{polinomul Taylor} de gradul
+$n \leq m$ asociat funcției $f$ în punctul $a$:
+\[
+  T_{n, f, a}(x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k.
+\]
+
+\emph{Restul de ordin $n$} este, prin definiție:
+\[
+  R_{n, f, a}(x) = f(x) - T_{n, f, a}(x).
+\]
+
+Polinoamele Taylor de gradul întîi (respectiv al doilea) se numesc
+\emph{aproximarea liniară} (respectiv pătratică) ale funcției în jurul
+punctului $a$.
+
+\begin{theorem}[Formula Taylor cu resturi Lagrange]\label{thm:taylor-lagr}
+  Fie $f : I \to \RR$ de clasă $C^{n + 1}$ și $a \in I$. Atunci, pentru orice
+  $x \in I$, există $\xi \in (a, x)$ (sau $(x, a)$), astfel încît:
+  \[
+    f(x) = T_{n, f, a}(x) + \frac{(x - a)^{n + 1}}{(n + 1)!} f^{(n + 1)}(\xi).
+  \]
+\end{theorem}
+
+De asemenea, avem următoarele observații:
+\begin{enumerate}[(1)]
+\item Restul de ordin $n$ poate fi scris sub \emph{forma Peano}:
+  \[
+    \exists \omega : I \to \RR \ai \lim_{x \to a} \omega(x) = \omega(a) = 0, \quad %
+    R_{n, f, a}(x) = \frac{(x - a)^n}{n!} \omega(x);
+  \]
+\item $\ds\lim_{x \to a} \frac{R_{n, f, a}(x)}{(x - a)^n} = 0$;
+\item Restul de ordin $n$ se poate scrie și integral:
+  \[
+    R_{n, f, a}(x) = \frac{1}{n!} \int_a^x f^{(n + 1)}(t) (x - t)^n dt.
+  \]
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+
+1. Să se determine mulțimea de convergență și suma seriilor:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} (-1)^n \frac{x^{2n + 1}}{2n + 1}$;
+\item $\ds\sum_{n \geq 1} \frac{(-1)^{n-1}}{n(2n-1)} \big( \frac{1-x}{1 - 2x} \big)^{2n - 1}$;
+\item $\ds\sum_{n \geq 0} (2 + (-1)^n) x^n$;
+\item $\ds\sum_{n \geq 1} \frac{n^2(3^n - 2^n)}{6^n}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Folosind dezvoltarea lui $e^x$ în serie de puteri, să se afle suma seriei $\ds\sum_{n \geq 1} \frac{(n + 1)^2}{n!}$.
+
+\vspace{1cm}
+
+3. Să se arate că funcțiile următoare sînt dezvoltabile în serii de puteri și să se găsească
+dezvoltările, specificînd intervalele în care sînt valabile:
+\begin{enumerate}[(a)]
+\item $f(x) = \ln \sqrt{\frac{1 + x}{1 - x}}, x \in (-1, 1)$;
+\item $f(x) = \frac{3x}{x^2 + 5x + 6}, x \in \RR - \{-2, -3 \}$;
+\item $f(x) = \ds\int_0^x \frac{\arctan t}{t} dt, x \in [-1, 1]$;
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Dezvoltați în serie de puteri funcția $f(x) = \arcsin x$.
+
+\vspace{1cm}
+
+5. Să se arate că funcția $f(x) = \ln \frac{1}{x^2 + 2x + 2}, x \in \RR$ este dezvoltabilă
+în serie Taylor într-un interval ce conține în interior punctul $x  = -1$ și
+să se determine această dezvoltare și intervalul în care ea este valabilă.
+
+\vspace{1cm}
+
+6. Să se determine mulțimea de convergență pentru următoarele serii de funcții:
+\begin{enumerate}[(a)]
+\item $\sum \Big( 1 + \frac{1}{n} \Big)^n \cdot \Big( \frac{1 - x}{1 - 2x} \Big)^n, x \neq \frac{1}{2}$;
+\item $\sum (-1)^n \frac{1}{\ln n} \Big( \frac{1 - x^2}{1 + x^2} \Big)^n, x \in \RR$;
+\item $\sum (2 - x)(2 - x^{\frac{1}{2}})(2 - x^{\frac{1}{3}}) \cdots (2 - x^{\frac{1}{n}}), x > 0$;
+\item $\sum 2^n \sin \frac{x}{3^n}$;
+\item $\sum \frac{\ln(1 + a^n)}{n^x}, a \geq 0$;
+\item $\sum \frac{\sin^n x}{n^a}, a \in \RR$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Să se arate că seria de funcții $\sum \frac{(-1)^{n + 1}}{n + x^2}$ converge uniform
+pe $\RR$, dar nu converge absolut pe $\RR$.
+
+\vspace{1cm}
+
+8. Folosind dezvoltarea în serie Taylor, să se calculeze $\sin 32^\circ$, cu precizia
+$10^{-3}$.
+
+\vspace{1cm}
+
+9. Folosind dezvoltări limitate, să se calculeze:
+\begin{enumerate}[(a)]
+\item $\lim_{x \to 0} \frac{e^{-\frac{x^2}{2}} - \cos x}{x^4}$;
+\item $\lim_{x \to 0} (1 + \sin x)^{\frac{1}{x}}$;
+\end{enumerate}
+
+\vspace{1cm}
+
+10. Să se calculeze cu o eroare mai mică decît $10^{-3}$ integralele (folosind
+dezvoltarea în serie a integrandului):
+\begin{enumerate}[(a)]
+\item $\ds\int_0^{\frac{1}{2}} \frac{\sin x}{x} dx$;
+\item $\ds\int_0^{\frac{1}{2}} \frac{\ln(1 + x)}{x} dx$;
+\item $\ds\int_0^{\frac{1}{3}} \frac{\arctan x}{x} dx$;
+\item $\ds\int_0^1 e^{-x^2} dx$
+\end{enumerate}
+
+
+
+\end{document}

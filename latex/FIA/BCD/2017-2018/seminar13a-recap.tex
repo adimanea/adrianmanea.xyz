@@ -1,0 +1,212 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 13 \\ Recapitulare}}
+\end{center}
+
+\textbf{MODEL 1}
+
+1. Verificați dacă funcția $f(x, y) = (x + y)^{-\frac{1}{2}}$ este armonică.
+
+\vspace{1cm}
+
+2. Fie funcția $f(x, y) = x^3y + e^{x^2 + y^2}$. Calculați, folosind definiția,
+derivatele parțiale în $(-1, 1)$.
+
+\vspace{1cm}
+
+3. Fie funcția $f(x, y) = e^{x + y}$. Să se scrie polinomul Taylor de gradul 5
+asociat funcției $f$ în punctele $(0, 0)$ și $(1, -1)$.
+
+\vspace{1cm}
+
+4. Să se determine valorile extreme pentru funcția $f$, definită pe domeniul $D$,
+unde:
+\[
+  f(x, y) = x^4 + y^3 - 4x^3 - 3y^2 + 3y, \quad
+  D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 4 \}.
+\]
+
+\vspace{1cm}
+
+5. Să se calculeze dreapta de regresie care mediază între punctele
+$A(-1, 0), B(2, 3), C(3, 5)$.
+
+\vspace{2cm}
+
+\textbf{MODEL 2}
+
+1. Fie funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{xy^3}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+
+Arătați că funcția este de clasă $\kal{C}^1$ pe $\RR^2$.
+
+\vspace{1cm}
+
+2. Fie $f : \RR^3 - \{(0, 0, 0) \}, f(x,y,z) = \ln(x^2 + y^2 + z^2)$. Să se
+calculeze $\Delta f$.
+
+\vspace{1cm}
+
+3. Să se calculeze aproximarea liniară în jurul originii a funcției:
+\[
+  f(x, y, z) = \sqrt{\frac{x + 1}{(y + 1)(z + 1)}}.
+\]
+
+\vspace{1cm}
+
+4. Să se determine punctele cele mai apropiate de origine care se găsesc pe
+suprafața de ecuație:
+\[
+  4x^2 + y^2 + z^2 - 8x - 4y + 4 = 0.
+\]
+
+\vspace{1cm}
+
+5. Să se găsească dreapta de regresie care mediază între punctele $A(3, 7), B(-1, 1)$ și
+$C(0, 3)$.
+
+\newpage
+
+\textbf{MODEL 3}
+
+1. Fie funcția:
+\[
+  f(x, y, z) = g(xy, xyz + \frac{x^2}{2} + \frac{x^4}{4}).
+\]
+Să se arate că ea satisface ecuația:
+\[
+  -xy \frac{\partial f}{\partial x} + y^2 \frac{\partial f}{\partial y} + %
+  x(1 + x^2) \frac{\partial f}{\partial z} = 0.
+\]
+
+\vspace{1cm}
+
+2. Să se calculeze diferențiala de ordinul întîi și de ordinul al doilea pentru
+funcția $f(x, y) = \arctan \frac{y}{x}$, definită pe domeniul maxim de definiție.
+
+\vspace{1cm}
+
+3. Fie funcția $f(x, y) = e^x \sqrt[4]{y}$.
+\begin{enumerate}[(a)]
+\item Să se determine aproximarea liniară și pătratică a funcției;
+\item Să se calculeze aproximativ $e^{-0,2}\sqrt[4]{1,02}$, folosind polinomul
+  Taylor de gradul al doilea.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se determine valoarea maximă a produsului $xy$, dacă $x$ și $y$ sînt coordonatele
+unui punct de pe elipsa de ecuație:
+\[
+  6x^2 + 8y^2 - 12 = 0.
+\]
+
+\vspace{1cm}
+
+5. Să se determine dreapta de regresie care mediază între punctele $A(3, 1), B(5, 2)$ și
+$C(-2, -1)$.
+
+\end{document}

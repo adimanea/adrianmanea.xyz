@@ -1,0 +1,507 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} Aero-BCD, 2017---2018, M. Olteanu \& L. Costache}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large \textbf{Seminar 1 \\ Recapitulare șiruri}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Topologia dreptei reale}
+
+\id\id Analiza matematică și studiul numerelor reale se face și cu ajutorul
+reprezentării geometrice a acesteia, anume \emph{axa numerelor reale}. Prin
+definiție, axa este o dreaptă pe care s-a fixat \emph{o origine, o unitate %
+și un sens pozitiv}. Numerele reale se reprezintă pe axă corespunzător cu
+valoarea lor, corespondența fiind dată de unitatea fixată. De aceea, putem
+observa că pe mulțimea numerelor reale (și pe axă, implicit), avem o
+\emph{relație de ordine}, care face ca mulțimea numerelor reale să devină
+chiar \emph{total ordonată}.
+
+Prin definiție, spunem că numărul real $a$ este mai mic decît numărul real
+$b$, notat $a < b$, dacă diferența $a - b$ este mai mică decît zero, punctul
+distins stabilit la fixarea originii.
+
+Mai mult, putem relaxa această definiție și să folosim inegalitatea nestrictă,
+$a \leq b$. Așadar, perechea $(\RR, \leq)$ devine o mulțime \emph{total ordonată}.
+Totalitatea ordonării provine din proprietatea de \emph{trihotomie}, adică,
+date oricare două numere reale $a$ și $b$, exact una dintre $a < b, a > b, a = b$
+este adevărată.
+
+Relația de ordine nestrictă are următoarele proprietăți, care sînt relevante
+din punctul de vedere al teoriei relațiilor binare:
+
+\begin{itemize}
+  \item \emph{reflexibitate}, adică $x \leq x, \forall x \in \RR$;
+  \item \emph{antisimetrie}, adică dacă $x \leq y$ și $y \leq x$, rezultă că
+    $x$ și $y$ coincid, pentru orice $x, y \in \RR$;
+  \item \emph{tranzitivitate}, adică din $x \leq y$ și $y \leq z$ rezultă că
+    $x \leq z$, pentru orice $x, y, z \in \RR$.
+\end{itemize}
+
+Două alte proprietăți ale mulțimii numerelor reale, care ne arată mai în detaliu
+structura sa sînt:
+
+\begin{proposition}[Arhimede]\label{prop:arhimede}
+  Fie $x$ un număr real. Există un număr întreg $n$ astfel încît $n \leq x < n+1$.
+
+  Uneori, această proprietate mai este formulată astfel:
+  Fie $x < y$ două numere reale. Atunci există $n \in \ZZ$ astfel încît $nx > y$.
+\end{proposition}
+
+Cea de-a doua proprietate ne arată legătura cu mulțimea numerelor raționale, pe care
+o extinde:
+
+\begin{proposition}[Densitatea lui $\QQ$ în $\RR$]\label{prop:dens-q}
+  Fie $x < y$ două numere reale. Atunci există $r \in \QQ$ astfel încît $x < r < y$.
+
+  Cu alte cuvinte, între orice două numere reale există un număr rațional.
+\end{proposition}
+
+Pe mulțimea numerelor reale, cel mai adesea vom lucra cu \emph{intervale},
+care sînt, din punct de vedere geometric, segmente sau semidrepte luate
+din axa numerelor reale.
+
+Un interval (semideschis) se definește astfel:
+
+\[
+  [a, b) = \{ x \in \RR \mid a \leq x < b \}.
+\]
+
+Majoritatea proprietăților pe care le vom formula pentru mulțimea numerelor
+reale vor fi adevărate și pentru orice interval de numere reale, în unele
+cazuri fiind necesar să considerăm așa-numita \emph{dreaptă încheiată},
+anume $\overline{\RR} = \RR \cup \{ \pm \infty \}$.
+
+Următoarele definiții sînt cunoscute:
+
+\begin{itemize}
+  \item $m \in \RR$ se numește \emph{minorant} pentru 
+    mulțimea $A \seq \RR$ dacă $m \leq a, \forall a \in A$;
+  \item $M \in \RR$ se numește \emph{majorant}  pentru 
+    mulțimea $A \seq \RR$ dacă $M \geq a, \forall a \in A$;
+  \item Mulțimea $A$ se numește \emph{mărginită} dacă este mărginită și superior,
+    și inferior.
+  \item $m \in \RR$ se numește \emph{margine inferioară} (infimum) dacă este
+    cel mai mare minorant al mulțimii $A$;
+  \item $M \in \RR$ se numește \emph{margine superioară} (supremum) dacă este cel
+    mai mic majorant al mulțimii $A$.
+\end{itemize}
+
+Termenul de \emph{topologie} a dreptei reale, anunțat în titlul secțiunii, ne arată
+că putem \qq{să ne mișcăm} pe dreapta reală, cunoscînd ce înseamnă \qq{împrejurimi}.
+Formal, ne referim la \emph{vecinătăți}:
+
+\begin{itemize}
+  \item Mulțimea $V \seq \RR$ se numește \emph{vecinătate a punctului $x_0 \in \RR$}
+    dacă există un interval deschis $I$, astfel încît $x_0 \in I \seq V$;
+  \item Mulțimea $V \seq \RR$ se numește \emph{vecinătate a lui $\infty$} dacă există
+    un interval deschis $I = (a, \infty) \seq V$;
+  \item Mulțimea $V \seq \RR$ se numește \emph{vecinătate a lui $-\infty$} dacă există
+    un interval deschis $I = (-\infty, a)$, astfel încît $I \seq V$.
+\end{itemize}
+
+Evident, un număr real are o infinitate de vecinătăți: orice interval care îl conține
+este o vecinătate a sa. De aceea, pentru un punct $x_0 \in \RR$, vom nota $\kal{V}(x_0)$
+mulțimea vecinătăților sale.
+
+Spunem că topologia dreptei reale are o proprietate, numită \emph{separabilitate}, care
+ne arată că orice două puncte pot fi separate cu ajutorul vecinătăților. Mai precis,
+dacă $x \neq y \in \RR$, atunci există cel puțin o vecinătate a lui $x$ și una a lui $y$
+a căror intersecție să fie vidă.
+
+Următoarea noțiune este esențială în studiul analizei matematice:
+
+\begin{definition}\label{def:acumulare}
+  Numărul $x_0 \in \overline{\RR}$ se numește \emph{punct de acumulare} al mulțimii $A$
+  dacă pentru orice vecinătate $V \in \kal{V}(x_0)$, rezultă $A \cap (V - \{x_0\}) \neq \vid$.
+
+  Un punct $y \in A$ se numește \emph{punct izolat} al mulțimii dacă nu este punct de
+  acumulare.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Limite de șiruri}
+\label{sec:limite-siruri}
+
+\indent\indent Mai întîi, să ne amintim că prin \emph{șir de numere reale} se înțelege
+o funcție $f : \NN \to \RR$. În loc de $f(n)$, vom nota $x_n$ și-l vom numi \emph{al %
+  n-lea termen al șirului}. Atunci cînd vrem să ne referim la întreg șirul (i.e.\ la
+imaginea funcției $f$), vom nota $(x_n)_{n \in \NN}$ sau, mai simplu, $(x_n)$.
+
+Pentru a studia limita unui șir, avem nevoie de următoarea:
+\begin{definition}\label{def:limita-sir}
+  Un număr $\ell \in \overline{\RR}$ se numește \emph{limita șirului $(x_n)$} dacă în
+  afara unei vecinătăți a lui $\ell$ găsim doar un număr finit de termeni ai șirului.
+
+  Limita unui șir se va nota $\ds\lim_{n \to \infty} x_n$.
+\end{definition}
+
+Pentru cazul infinit, mai avem următoarele definiții:
+\begin{itemize}
+\item $\ds\lim_{n \to \infty} x_n = \infty \Leftrightarrow \forall M \in \RR, \exists %
+  N \in \NN \text{ a.î. } x_N > M$. Cu alte cuvinte, oricum am încerca să stabilim
+  o margine superioară pentru mulțimea termenilor șirului, sigur găsim cel puțin un
+  termen care depășește marginea.
+\item $\ds\lim_{n \to \infty} x_n = -\infty \Leftrightarrow \forall m \in \RR, \exists %
+  N \in \NN \text{ a.î. } x_N < m$. Cu alte cuvinte, oricum am încerca să găsim o margine
+  inferioară pentru mulțimea termenilor șirului, sigur găsim cel puțin un termen care este
+  mai mic decît această margine.
+\end{itemize}
+
+Evident, dacă există, limita unui șir este unică.
+
+După limită, distingem următoarele tipuri de șiruri:
+\begin{itemize}
+  \item \emph{șiruri convergente}, care au limită finită;
+  \item \emph{șiruri divergente}, care nu au limită sau au limită infinită.
+\end{itemize}
+
+Dintr-un șir putem alege \qq{părți}, numite \emph{subșiruri}, iar anumite
+proprietăți se păstrează în unele cazuri.
+
+\begin{definition}\label{def:subsir}
+  Fie $(x_n)$ un șir de numere reale și $f : \NN^\ast \to \NN^\ast$ o funcție
+  strict crescătoare.
+
+  Șirul $\big( n_{f(n)} \big)$ se numește \emph{subșir} al șirului $(x_n)$.
+\end{definition}
+
+Cazurile convenabile privitoare la comportamentul subșirurilor sînt:
+
+\begin{itemize}
+  \item Orice subșir al unui șir care are limită are aceeași limită cu șirul dat;
+  \item Reciproc, dacă toate subșirurile șirului $(x_n)$ au limita $\ell \in \overline{\RR}$,
+    atunci șirul $(x_n)$ are aceeași limită;
+  \item Fie $(x_n)$ un șir de numere reale cu limita $\ell \in \overline{\RR}$.
+    Prin eliminarea sau adăugarea unui număr finit de termeni se obține un șir cu
+    aceeași limită.
+\end{itemize}
+
+Așa cum vom vedea, ultima proprietate este falsă în cazul seriilor, deoarece în
+acea situație, ne vor interesa sumele parțiale ale termenilor șirului, nu
+doar termenii.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Șiruri convergente}
+
+\id\id Ne vom concentra acum asupra șirurilor convergente, i.e.\ acele
+șiruri care au limită finită.
+
+Chiar din definiția convergenței, obținem imediat:
+
+\begin{theorem}\label{thm:conv-marg}
+  Orice șir convergent este mărginit.
+\end{theorem}
+
+De asemenea, într-un șir convergent, putem lua modulul termenilor, fără
+a schimba limita:
+
+\begin{theorem}[Limita modulului]\label{thm:lim-modul}
+  Fie $(x_n)$ un șir convergent de numere reale. Atunci șirul $(|x_n|)$ este
+  convergent și are loc $\ds\lim_{n \to \infty} |x_n| = | \ds\lim_{n \to \infty} x_n |$.
+\end{theorem}
+
+\textbf{Exercițiu:} Ce puteți spune despre reciprocele afirmațiilor de mai sus?
+
+Ne va fi de folos atunci cînd vom formula criterii de convergență următorul
+rezultat:
+
+\begin{theorem}[Trecerea la limită în inegalități]\label{thm:lim-ineg}
+  Fie $(x_n)$ și $(y_n)$ două șiruri care au limită și astfel încît
+  $a_n \leq b_n, \forall n \in \NN$. Atunci $\ds\lim_{n \to \infty} x_n \leq %
+  \ds\lim_{n \to \infty} y_n$.
+\end{theorem}
+
+Vom mai avea nevoie și de:
+\begin{definition}\label{def:sir-monoton}
+  Șirul $(x_n)$ se numește \emph{monoton crescător} dacă $x_n \leq x_{n + 1}$,
+  pentru orice $n \in \NN$. Echivalent, $\frac{x_n}{x_{n+1}} \leq 1$.
+
+  Șirul se numește \emph{monoton descrescător} dacă $x_n \geq x_{n + 1}$, pentru
+  orice $n \in \NN$. Echivalent, $\frac{x_n}{x_{n+1}} \geq 1$.
+
+  Dacă un șir este fie crescător, fie descrescător, el se numește \emph{monoton}.
+\end{definition}
+
+În particular, obținem:
+
+\begin{itemize}
+  \item Dacă $(x_n)$ este un șir crescător și convergent, iar $\ell$ este
+    limita sa, atunci $x_n \leq \ell, \forall n \in \NN$;
+  \item Similar, dacă $(x_n)$ este descrescător și convergent, iar $\ell$
+    este limita sa, atunci $x_n \geq \ell, \forall n \in \NN$.
+\end{itemize}
+
+Foarte util în exerciții este următorul rezultat:
+
+\begin{theorem}[K. Weierstrass]\label{thm:mon-marg-conv}
+  Dacă un șir este monoton și mărginit, atunci el este convergent.
+\end{theorem}
+
+Așadar, pentru a verifica convergența, vom verifica monotonia și mărginirea.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Criterii de existență a limitei și de convergență}
+
+\id\id Cel mai clar criteriu de convergență, dar și cel mai impractic
+de folosit în exerciții este următorul:
+
+\begin{theorem}[Criteriul cu $\varepsilon$]\label{thm:criteriu-epsilon}
+  Fie $(x_n)$ un șir de numere reale. Un număr $\ell \in \RR$ este limita șirului
+  $(x_n)$ dacă și numai dacă pentru orice $\varepsilon > 0$, există un rang $N_\varepsilon \in \NN^\ast$,
+  astfel încît $|x_n - \ell| < \varepsilon$, pentru orice $n \geq N_\varepsilon$.
+\end{theorem}
+
+Acest criteriu poate fi adaptat și pentru limite infinite:
+
+\begin{theorem}[Criteriul cu $\varepsilon$ pentru limite infinite]\label{thm:criteriu-eps-inf}
+  Fie $(x_n)$ un șir de numere reale.
+  \begin{itemize}
+    \item $\ds\lim_{n \to \infty} x_n = \infty$ dacă și numai dacă pentru orice $\varepsilon > 0$, există
+      un rang $N_\varepsilon \in \NN^\ast$, astfel încît $x_n > \varepsilon$, pentru orice $n \geq N_\varepsilon$;
+    \item $\ds\lim_{n \to \infty} x_n = -\infty$ dacă și numai dacă pentru orice $\varepsilon > 0$,
+      există un rang $N_\varepsilon \in \NN^\ast$, astfel încît $x_n < -\varepsilon$, pentru orice $n \geq N_\varepsilon$.
+  \end{itemize}
+\end{theorem}
+
+Există o noțiune ceva mai relaxată de convergență, numită \emph{convergență în sens Cauchy}:
+
+\begin{definition}\label{def:cauchy}
+  Fie $(x_n)$ un șir de numere reale. Spunem că el este \emph{convergent în sens Cauchy} (sau că are %
+  proprietatea Cauchy) dacă termenii săi pot fi făcuți oricît de apropiați, de la un rang încolo.
+
+  Formal, $\forall \varepsilon, \exists N_\varepsilon$ astfel încît pentru orice $m, n \geq N_\varepsilon$,
+  să avem $|x_m - x_n| < \varepsilon$.
+\end{definition}
+
+\textbf{Exercițiu:} Găsiți o legătură între convergența în sens Cauchy și convergența \qq{normală}.
+
+Operațiile permise cu \emph{șirurile convergente} sînt următoarele:
+\begin{itemize}
+  \item Limita sumei este egală cu suma limitelor;
+  \item Limita produsului este egală cu produsul limitelor;
+  \item Limita cîtului este egală cu cîtul limitelor (cînd cîtul are sens);
+  \item Limita unei exponențiale se distribuie:
+    \[
+      \lim_{n \to \infty} (x_n)^{y_n} = \Big( \lim_{n \to \infty} x_n \Big)^{\lim_{n \to \infty} y_n}
+    \]
+\end{itemize}
+
+Atunci cînd șirurile nu sînt convergente, trebuie ținut cont de următoarele
+\emph{cazuri de nedeterminare}: $\frac{0}{0}, \frac{\pm\infty}{\pm\infty} 1^\infty, \infty - \infty, \pm\infty \cdot 0, %
+0^0, \infty^0$.
+
+
+Ajungem, în fine, la criterii de convergență.
+
+\begin{itemize}
+  \item \textbf{Criteriul comparației:} Dacă un șir este mai mic (termen cu termen) decît un șir
+    convergent, atunci și acest șir este convergent. Similar, dacă este mai mare (termen cu termen)
+    decît un șir divergent spre $\infty$, este divergent (respectiv mai mic decît un șir divergent
+    spre $-\infty$).
+  \item Fie $(x_n), (y_n)$ două șiruri de numere reale, astfel încît $x_n \to 0$ și $y_n$ este mărginit.
+    Atunci $x_n \cdot y_n \to 0$.
+  \item \textbf{Criteriul cleștelui}: Fie $(x_n), (y_n), (z_n)$ șiruri de numere reale, astfel încît
+    $x_n \leq y_n \leq z_n$, pentru orice $n \in \NN^\ast$. Dacă $x_n, z_n \to \ell$, atunci $y_n \to \ell$.
+  \item \textbf{Limite remarcabile:}
+    \[
+      \lim_{n \to \infty} \frac{\sin x_n}{x_n} = \lim_{n \to \infty} \frac{\tan x_n}{x_n} = %
+      \lim_{n \to \infty} \frac{\arcsin x_n}{x_n} = \lim_{n \to \infty} \frac{\arctan x_n}{x_n} = 1.
+    \]
+  \item \textbf{Stolz-Cesaro:} Fie $(x_n)$ și $(y_n)$ două șiruri de numere reale, cu proprietățile:
+    \begin{itemize}
+      \item $(y_n)$ strict crescător și nemărginit, cu termeni nenuli;
+      \item Șirul $(z_n)$, definit prin $z_n = \frac{x_{n + 1} - x_n}{y_{n + 1} - y_n}$ are limita
+        $\ell \in \overline{\RR}$.
+    \end{itemize}
+     Atunci șirul $\Big( \frac{x_n}{y_n} \Big)$ are limita egală cu $\ell$.
+     
+     Rezultatul se păstrează și dacă $\lim x_n = \lim y_n = 0$.
+   \item \textbf{Criteriul raportului (D'Alembert)}: Fie $(x_n)$ un șir de numere reale nenule și
+     $L = \ds\lim_{n \to \infty} \Big| \frac{x_{n + 1}}{x_n} \Big|$. Atunci:
+     \begin{itemize}
+       \item Dacă $L < 1$, șirul este convergent;
+       \item Dacă $L > 1$, șirul este divergent;
+       \item Dacă $L = 1$, criteriul nu decide.
+     \end{itemize}
+   \item \textbf{Criteriul radical (Cauchy)}: Fie $(x_n)$ un șir de numere reale și
+     $L = \ds\lim_{n \to \infty} \sqrt[n]{|x_n|}$. Atunci:
+     \begin{itemize}
+       \item Dacă $L < 1$, șirul este convergent;
+       \item Dacă $L > 1$, șirul este divergent;
+       \item Dacă $L = 1$, criteriul nu decide.
+     \end{itemize}
+\end{itemize}
+
+\begin{definition}[Numărul $e$]\label{def:e}
+  Fie $(x_n)$ un șir de numere reale, cu $\ds\lim_{n \to \infty} x_n = \infty$. Atunci:
+  \[
+    \lim_{n \to \infty} \Big( 1 + \frac{1}{x_n} \Big)^{x_n} = e.
+  \]
+  
+  Similar, dacă $(y_n)$ este un șir de numere reale, cu $\ds\lim_{n \to \infty} y_n = 0$,
+  atunci:
+  \[
+    \lim_{n \to \infty} \Big( 1 + y_n \Big)^{\frac{1}{y_n}} = e.
+  \]
+\end{definition}
+
+Practic, numărul $e$ (constanta lui Euler) vine să rezolve nedeterminarea $1^\infty$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Precizați valoarea de adevăr a propozițiilor (în caz de falsitate, dați un contraexemplu):
+\begin{enumerate}[(a)]
+  \item Orice șir monoton este mărginit.
+  \item Orice șir mărginit este monoton.
+  \item Orice șir convergent este monoton.
+  \item Orice subșir al unui șir monoton este monoton.
+  \item Există șiruri monoton crescătoare care au cel puțin un subșir monoton descrescător.
+  \item Suma a două șiruri monotone este un șir monoton.
+  \item Diferența a două șiruri monoton crescătoare este un șir monoton crescătoare este un șir
+    monoton crescător.
+  \item Suma a două șiruri nemărginite este un șir nemărginit.
+  \item Orice șir divergent este nemărginit.
+  \item Orice șir nemărginit are limita $\pm \infty$.
+  \item Produsul a două șiruri care nu au limită este un șir care nu are limită.
+  \item Dacă două șiruri sînt convergente, atunci raportul lor este un șir convergent.
+  \item Dacă pătratul unui șir $(x_n)$ este convergent, atunci șirul $(x_n)$ este convergent.
+  \item Dacă un șir convergent are toți termenii nenuli, atunci limita sa este nenulă.
+\end{enumerate}
+
+2. Să se studieze convergența și să se calculeze limitele șirurilor:
+\begin{multicols}{2}
+\begin{enumerate}[(a)]
+  \item $x_n = n^2 - n$;
+  \item $x_n = -n^3 + 2n^2$;
+  \item $x_n = -4n^3 + 3n - 1$;
+  \item $x_n = 4n^4 - 5n^6 + 3$;
+  \item $x_n = \frac{n}{n^2 + 1}$;
+  \item $x_n = \frac{2n^2 - 3n}{4n^2 - n + 1}$;
+  \item $x_n = \frac{2n^3 + 5n - 1}{3n^2 + n + 1}$;
+  \item $x_n = \frac{7 - 2n - n^3}{2n^2 + 3n + 1}$;
+  \item $x_n = \Big(\cos \frac{1}{n} \Big)^n$;
+  \item $x_n = (n^2 + 1)^{\frac{n}{n^2 + 1}}$;
+  \item $x_n = \Big( \frac{n}{n^2 + 3} \Big)^{\frac{2}{n}}$;
+  \item $x_n = \frac{\ln n}{n}$;
+  \item $x_n = \frac{1}{n} \Big(1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n} \Big)$;
+  \item $x_n = \frac{1^4 + 2^4 + 3^4 + \dots + n^4}{n^5}$;
+  \item $x_n = \frac{1}{n} \Big( 1 + \frac{1}{3} + \frac{1}{5} + \dots + \frac{1}{2n - 1} \Big)$;
+  \item $x_n = \frac{(-1)^n \cdot n}{n + 2}$;
+  \item $x_n = \frac{1}{1 \cdot 4} + \frac{1}{2 \cdot 5} + \dots + \frac{1}{n(n + 3)}$;
+  \item $x_n = \Big(1 + \frac{2}{n} \Big)^n$;
+  \item $x_n = \Big(1 + \frac{1}{n^2 + 1} \Big)^{n^2}$;
+  \item $x_n = \Big(\frac{n + 5}{n + 2} \Big)^n$;
+  \item $x_n = \Big( \frac{n^4 + 2n^2 + 1}{n^4 + n^2 + 3n} \Big)^{\frac{n^2}{n + 1}}$;
+  \item $x_n = \frac{4n^2 + 1}{n^2 + 1}$;
+  \item $x_n = \frac{1}{n + 1} + \frac{1}{n + 2} + \frac{1}{n + 3}$;
+  \item $x_n = \frac{1}{n} \sin(n^2)$;
+  \item $x_n = \frac{n \cdot \sin n}{n^2 + 1}$;
+  \item $x_n = \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \dots + \frac{1}{n}$.
+\end{enumerate}
+\end{multicols}
+
+
+\end{document}

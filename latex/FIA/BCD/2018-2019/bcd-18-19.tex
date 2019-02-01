@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{book}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Bazele calculului diferențial} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: Luminița Costache}}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+
+\include{chapters/s1-siruri}
+\include{chapters/s2-serii}
+\include{chapters/s3-ac-aprox}
+\include{chapters/s4-sp-metrice}
+\include{chapters/s5-taylor}
+\include{chapters/s6-recap}
+\include{chapters/s7-functii-mm}
+\include{chapters/s8-extreme}
+\include{chapters/s9-extreme-leg}
+\include{chapters/s91-implicite}
+\include{chapters/s10-recap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+% BIBLIOGRAPHY
+\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliografie}
+\bibliography{bcd.bib}
+\bibliographystyle{apalike}
+\nocite{*}
+
+
+\end{document}

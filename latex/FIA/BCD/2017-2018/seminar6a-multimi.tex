@@ -1,0 +1,188 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 6 \\ Mulțimi numărabile și nenumărabile}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Aspecte teoretice}
+\label{sec:teorie-multimi}
+
+
+
+Din punct de vedere al cardinalului (numărului de elemente), mulțimile pot fi
+\emph{finite} sau \emph{infinite}. Mulțimile infinite, la rîndul lor, se împart în
+mulțimi \emph{numărabile} și mulțimi \emph{nenumărabile}.
+
+\begin{definition}\label{def:numarabil}
+  Intuitiv, o mulțime se numește \emph{numărabilă} dacă elementele sale pot fi
+  enumerate.
+
+  Formal, o mulțime $X$ se numește \emph{numărabilă} dacă există o bijecție
+  $f : X \to \NN$, unde $\NN$ este mulțimea numerelor naturale.
+
+  O mulțime se numește \emph{cel mult numărabilă} dacă este finită sau numărabilă.
+\end{definition}
+
+Pentru o mulțime infinită (numărabilă sau nu), se poate demonstra următorul rezultat:
+
+\begin{theorem}\label{thm:num-subm}
+  O mulțime este infinită dacă și numai dacă există o bijecție între ea și o submulțime
+  proprie a ei.
+\end{theorem}
+
+De exemplu, între $\NN$ și mulțimea numerelor naturale pare există bijecția $f(x) = 2x$,
+ceea ce ne arată că $\NN$ este infinită.
+
+Vom nota cardinalul mulțimii numerelor naturale cu $\aleph_0$ (\emph{alef} zero).
+
+Se poate arăta că: $| \NN | = | \ZZ | = | \QQ | = \aleph_0$, dar $| \RR | \neq \aleph_0$.
+
+Mai mult, folosind \emph{argumentul diagonal al lui Cantor} (v. cursul sau
+alte resurse), putem arăta că $\RR$ este \emph{nenumărabilă}. Și mai mult, chiar
+se poate arăta (ceva mai greu) că $| \RR | = 2^{\aleph_0}$.
+
+Următorul rezultat ne arată cum putem decide dacă o mulțime este numărabilă sau nu:
+
+\begin{theorem}\label{thm:num}
+  Fie $X$ și $Y$ două mulțimi nevide și fie funcția $f : X \to Y$.
+  \begin{enumerate}[(a)]
+  \item Dacă $X$ și $Y$ sînt numărabile, atunci $X \cup Y$ este numărabilă;
+  \item Mai general, o reuniune numărabilă de mulțimi numărabile este numărabilă;
+  \item Dacă $f$ este injectivă, iar $Y$ este numărabilă, atunci $X$ este numărabilă;
+  \item Mai general, dacă $f$ este injectivă, atunci $|X| \leq |Y|$;
+  \item Dacă $f$ este surjectivă, iar $X$ este numărabilă, atunci $Y$ este
+    numărabilă;
+  \item Mai general, dacă $f$ este surjectivă, atunci $|X| \geq |Y|$;
+  \item Dacă $f$ este bijectivă, atunci $| X | = | Y |$.
+  \item Produsul cartezian $\NN \times \NN$ este numărabil;
+  \item Mai general, un produs cartezian \emph{finit} de mulțimi numărabile este
+    numărabil;
+  \item Un produs cartezian infinit de mulțimi (cel mult) numărabile
+    este \emph{nenumărabil} (v. argumentul lui Cantor, varianta cu $\{ 0, 1 \}$).
+  \end{enumerate}
+\end{theorem}
+
+Așadar, pentru a verifica dacă o mulțime este numărabilă, trebuie să judecăm
+cu ajutorul funcțiilor.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+Decideți care din următoarele mulțimi sînt numărabile:
+\begin{enumerate}[(a)]
+\item $A = \{ \frac{m^2 + n^2}{2} \mid m, n \in \NN \}$;
+\item $B = \{ \frac{x^2 + i\sqrt{x}}{2} \mid x \in [0, \infty) \cap \QQ \}$;
+\item $C = \{ f : \NN \to \{ 0, 1 \} \}$;
+\item $D = \{ f : \{0, 1, \dots, 9 \} \to \QQ \}$;
+\item $E = \{ (b_0, b_1, \dots) \mid b_i \in \{ x, y, z \}, \forall i \}$;
+\item $F = \{ it \mid t \in \RR - \QQ \}$.
+\item $G = \{ \frac{n + \sqrt{n^2 + 1}}{2} \mid n \in \QQ \cap [0, \infty) \}$;
+\item $H = \{ \frac{1 - i\sqrt{n}}{2} \mid n \in \NN^\ast \}$;
+\item $I = \{ \frac{m^2 + \sqrt{n}}{2} \mid m, n \in \QQ_+ \}$;
+\item $J = \{ n \in \ZZ \mid 5 \nmid n, 7 \mid n \}$;
+\item $K = \{ \frac{m^2 + i\sqrt{3}}{n^2 + 1} \mid m, n \in \ZZ \}$;
+\end{enumerate}
+
+\end{document}

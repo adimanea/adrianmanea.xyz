@@ -1,0 +1,235 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 4 \\ Integrale multiple}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Măsură și integrală Lebesgue}
+
+\indent\indent Pentru integrarea în mai multe dimensiuni, trebuie să avem un concept
+de \emph{măsură}. Dacă integrala Riemann permite calculul de lungimi, arii și volume
+pentru o funcție de o variabilă reală, într-un spațiu multidimensional, este necesar
+să adaptăm noțiunile respective, pentru a putea vorbi în continuare de \qq{cantități %
+  măsurabile}. Acestea vor fi generalizări ale conceptelor de tip \emph{lungime, arie,
+  volum}, în sensul că, în cazul particular al două sau trei dimensiuni, vor coincide
+cu intuiția geometrică.
+
+Fără a intra în detalii suplimentare, menționăm că măsura care se utilizează în acest
+caz al problemelor din $\RR^n$ se numește \emph{măsura Lebesgue}. În particular,
+\emph{elementul de lungime} față de măsura Lebesgue va fi notat cu $dl$ sau $dx$,
+\emph{elementul de arie}, cu $dA = dxdy$, iar \emph{elementul de volum}, cu
+$dV = dxdydz$ sau corespunzător unor eventuale schimbări de coordonate (e.g.\ în
+coordonate polare, $dA = drd\theta$, în coordonate sferice, $dV = dr d\theta d\varphi$
+etc.).
+
+Față de această măsură Lebesgue, putem defini \emph{integrala Lebesgue} din $\RR^k$,
+a unei funcții reale $f : A \seq \RR^k \to \RR$, notată, în general, prin:
+\[
+  \int_A f(x_1, \dots, x_k) dx_1 \dots dx_k.
+\]
+
+În cazurile particulare $k = 1, 2, 3$, vom folosi notațiile uzuale:
+\[
+  \int_A f(x) dx, \quad \iint_A f(x, y) dxdy, \quad \iiint_A f(x, y, z) dxdydz.
+\]
+
+Următorul rezultat ne arată că putem inversa ordinea de integrare:
+\begin{theorem}[Fubini]\label{thm:fubini}
+  Fie $(x, y) \in \RR^{k + p}$ un punct oarecare, notăm măsura Lebesgue din $\RR^k$ cu
+  $dx$, unde $x \in \RR^k$, măsura Lebesgue din $\RR^p$ cu $dy, y \in \RR^p$, iar
+  măsura Lebesgue din $\RR^{k + p}$ cu $dxdy$.
+
+  Fie $f : \RR^{k + p} \to \RR$ o funcție integrabilă Lebesgue. Atunci are loc:
+  \[
+    \int_{\RR^k} \Bigg( \int_{\RR^p} f(x, y) dy \Bigg) dx = %
+    \iint_{\RR^{k + p}} f(x, y) dxdy = %
+    \int_{\RR^p} \Bigg( \int_{\RR^k} f(x, y) dx \Bigg) dy.
+  \]
+\end{theorem}
+
+Cazurile particulare pe care le vom folosi în exerciții sînt:
+\begin{enumerate}[(a)]
+\item \emph{Aria} unei mulțimi compacte $D \seq \RR^2$ se calculează prin:
+  \[
+    \kal{A}(D) = \iint_D dxdy;
+  \]
+\item \emph{Volumul} unei mulțimi compacte $\Omega \seq \RR^3$ se calculează prin:
+  \[
+    \kal{V}(\Omega) = \iiint_\Omega dxdydz.
+  \]
+\end{enumerate}
+
+De asemenea, pentru calculul integralelor multiple, putem adapta formula de
+schimbare de variabile:
+
+\begin{theorem}[Schimbare de variabile]\label{thm:sch-var}
+  Fie $A \seq \RR^n$ o mulțime deschisă și $\varphi$ un difeomorfism\footnote{%
+    aplicație continuă și bijectivă, cu inversa continuă} al lui $A$.
+
+  Pentru orice funcție continuă $f : \varphi(A) \to \RR$ are loc:
+  \[
+    \int_{\varphi(A)} f(x) dx = \int_A (f \circ \varphi)(y) \cdot |J_\varphi(y)| dy,
+  \]
+  unde $J_\varphi$ este jacobianul difeomorfismului (schimbării de variabile) $\varphi$.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Să se calculeze următoarele integrale duble:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D xy^2 dxdy$, unde $D = [0, 1] \times [2, 3]$;
+\item $\ds\iint_D xy dxdy$, unde $D = \{(x, y) \in \RR^2 \mid y \in [0,1], y^2 \leq x \leq y \}$;
+\item $\ds\iint_D ydxdy$, unde $D = \{(x, y) \in \RR^2 \mid (x - 2)^2 + y^2 \leq 1 \}$.
+\end{enumerate}
+
+\emph{Indicație:} Integralele pot fi gîndite ca integrale iterate. În particular, pentru
+domeniul de la punctul (c), avem $-\sqrt{(x - 2)^2 - 1} \leq y \leq \sqrt{(x - 2)^2 - 1}$,
+iar $x \in [1, 3]$ (altfel, inegalitatea nu are soluții).
+
+\vspace{1cm}
+
+2. Să se calculeze integralele duble:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D (x + 3y) dxdy$, unde $D$ este mulțimea plană mărginită de curbele de
+  ecuații:
+  \[
+    y = x^2 + 1, \quad y = -x^2, \quad x = -1, \quad x = 3;
+  \]
+\item $\ds\iint_D e^{|x + y|} dxdy$, unde $D$ este mulțimea plană mărginită de curbele
+  de ecuații:
+  \[
+    x + y = 3, \quad x + y = -3, \quad y = 0, \quad y = 3;
+  \]
+\item $\ds\iint_D xdxdy$, unde $D$ este mulțimea plană mărginită de $x^2 + y^2 = 9, x \geq 0$.
+\end{enumerate}
+
+\emph{Indicație:} În toate cazurile, este util să schițăm grafic mulțimea, pentru a
+vedea care sînt capetele domeniilor pentru $x$, respectiv $y$. În plus, în cazul (b),
+avem de explicitat modulul, deci studiem cazurile cînd $x + y \geq 0$ și $x + y < 0$
+pe domeniile de definiție.
+
+\vspace{1cm}
+
+3. Folosind trecerea la coordonate polare, să se calculeze integralele:
+\begin{enumerate}[(a)]
+\item $\ds\iint_D e^{x^2 + y^2} dxdy$, unde $D: x^2 + y^2 \leq 1$;
+\item $\ds\iint_D (1 + \sqrt{x^2 + y^2}) dxdy$, unde $D : x^2 + y^2 - y \leq 0, x \geq 0$;
+\item $\ds\iint_D \ln(1 + x^2 + y^2) dxdy$, unde $D$ este mărginit de curbele de ecuații:
+  \[
+    x^2 + y^2 = e^2, \quad y = x\sqrt{3}, \quad x = y \sqrt{3}, \quad x \geq 0.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Calculați integralele duble, găsind explicit domeniul de definiție (prin intersecția
+curbelor care îl definesc):
+\begin{enumerate}[(a)]
+\item $\ds\iint_D xydxdy$, cu $D: xy = 1, \quad x + y = \frac{5}{2}$;
+\item $\ds\iint_D \frac{1}{\sqrt{x}} dxdy$, cu $D: y^2 \leq 8x, y \leq 2x, y + 4x \leq 24$;
+\item $\ds\iint_D (1 - y) dxdy$, cu $D: x^2 + (y-1)^2 \leq 1, y \leq x^2, x \geq 0$.
+\end{enumerate}
+
+
+\end{document}

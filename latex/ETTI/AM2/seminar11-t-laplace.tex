@@ -1,0 +1,384 @@
+\documentclass[12pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+\newcommand\Lap{\mathcal{L}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}
+\newtheorem{proposition}{Propozi\c{t}ie}
+\newtheorem{lemma}{Lem\u{a}}
+\newtheorem{corollary}{Corolar}
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}
+\newtheorem{definition}{Defini\c{t}ie}
+\newtheorem{remark}{Observa\c{t}ie}
+
+\newenvironment{solution}
+{\begin{proof}[Soluție:\nopunct]}
+  {\end{proof}}
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 11 \\
+      Transformarea Laplace}}
+\end{center}
+
+\vspace{2cm}
+
+\section*{Noțiuni teoretice}
+
+\indent\indent Transformata Laplace este tot o transformare integrală, ca și transformata
+Fourier. Aplicațiile sale de interes vor fi în rezolvarea ecuațiilor și sistemelor
+diferențiale. Astfel, cu ajutorul transformatei Laplace, vom putea aduce o ecuație sau
+sistem diferențial la un caz algebric, iar apoi să recuperăm funcțiile inițiale aplicînd
+transformata Laplace inversă.
+
+Transformatele Laplace se aplică unor funcții speciale, care se numesc \emph{funcții original},
+definite mai jos.
+
+\begin{definition}\label{def:original}
+  O funcție $ f : \RR \to \CC $ se numește \emph{original} (Laplace) dacă îndeplinește
+  condițiile:
+  \begin{enumerate}[(a)]
+  \item $ f(t) = 0 $, pentru orice $ t < 0 $;
+  \item $ f $ este continuă (eventual pe porțiuni) în intervalul $ [0, \infty) $;
+  \item Există $ M > 0 $ și $ s_0 \geq 0 $ astfel încît
+    \[
+      |f(t)| \leq M e^{s_0t}, \forall t \geq 0.
+    \]
+  \end{enumerate}
+
+  Vom nota cu $ \kal{O} $ mulțimea funcțiilor original (Laplace).
+\end{definition}
+
+Prima condiție din definiție va fi utilă pentru interpretarea fizică, în teoria
+semnalelor. Într-adevăr, dacă privim $ f(t) $ ca un semnal dependent de timp, este
+normal să cerem ca $ f(t) = 0 $ pentru $ t < 0 $. A doua și a treia condiție vor fi
+utile pentru dezvoltarea teoriei matematice, cu ajutorul calculului integral. A treia
+condiție se mai numește condiția de \emph{creștere exponențială de indice $ s_0 $}.
+Ajungem acum la definiția principală.
+
+\begin{definition}\label{def:transf-lap}
+  Fie $ f \in \kal{O} $, de indice $ s_0 $ și mulțimea:
+  \[
+    S(s_0) = \{ s \in \CC \mid \mathrm{Re}(s) > s_0 \}.
+  \]
+
+  Funcția:
+  \[
+    F : S(s_0) \to \CC, \quad F(s) = \int_0^\infty f(t) e^{-st} dt
+  \]
+  se numește \emph{transformata Laplace} a lui $ f $ sau \emph{imaginea Laplace} a
+  originalului $ f $. Vom mai folosi notația $ F = \Lap f $ sau, echivalent,
+  $ \Lap f(t) = F(s) $.
+\end{definition}
+
+Conform definiției, să remarcăm că transformata Laplace are drept domeniu $ \kal{O} $,
+iar imaginea este o submulțime a lui $ \CC $.
+
+\vspace{1cm}
+
+Principalele proprietăți ale transformatei Laplace, care ne vor ajuta în rezolvarea
+de probleme, sînt redate mai jos.
+
+\textbf{Liniaritate:}
+\[
+  \Lap (\alpha f(t) + \beta g(t)) = \alpha \Lap f(t) + \beta \Lap g(t).
+\]
+
+\textbf{Teorema asemănării:}
+\[
+  \Lap f(\alpha t) = \frac{1}{\alpha} F \Big( \frac{s}{\alpha} \Big).
+\]
+
+\textbf{Teorema deplasării:}
+\[
+  \Lap \big( f(t) e^{s_0 t} \big) = F(s - s_0).
+\]
+
+\textbf{Teorema întîrzierii:} Dacă $ f \in \kal{O} $ și $ \Lap f(t) = F(s) $,
+atunci pentru orice $ \tau > 0 $, transformata Laplace a întîrziatei:
+\[
+  f_\tau(t) =
+  \begin{cases}
+    0, & t < \tau \\
+    f(t - \tau), & t \geq \tau
+  \end{cases}
+\]
+este $ e^{-st} F(s) $.
+
+\textbf{Teorema derivării imaginii:}
+\[
+  \Lap \big( t^n f(t) \big) = (-1)^n F^{(n)} (s).
+\]
+
+\textbf{Teorema integrării originalului:} Dacă $ f \in \kal{O}, \Lap f(t) = F(s) $ și
+$ g(t) = \ds\int_0^t f(\tau) d\tau $, atunci:
+\[
+  \Lap g(t) = \frac{1}{s} F(s).
+\]
+
+\textbf{Teorema integrării imaginii:} Fie $ \Lap f(t) = F(s) $ și $ G $ o primitivă
+a lui $ F $ în semiplanul $ S(s_0) $, cu $ G(\infty) = 0 $. Atunci:
+\[
+  \Lap \frac{f(t)}{t} = -G(s).
+\]
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Tabel de transformate Laplace}
+
+\indent\indent În tabelul de mai jos, vom considera funcțiile $ f(t) $ ca fiind funcții original,
+adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind, de fapt,
+înmulțite cu funcția lui Heaviside:
+\[
+  u(t) =
+  \begin{cases}
+    1, & t \geq 0 \\
+    0, & t < 0 
+  \end{cases}.
+\]
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{tabular}{c | c}
+    $ f(t) = \Lap^{-1} (F(s)) $ & $ F(s) = \Lap(f(t)) $ \\
+    \hline\hline
+    $ u(t) $ & $ \dfrac{1}{s} $ \\
+                                & \\
+    $ u(t - \tau) $ & $ \dfrac{1}{s} e^{-\tau s} $ \\
+                                & \\
+    $ t $ & $ \dfrac{1}{s^2} $ \\
+                                & \\
+    $ t^n $ & $ \dfrac{n!}{s^{n+1}} $ \\
+                                & \\
+    $ t^n e^{-\alpha t} $ & $ \dfrac{n!}{(s + \alpha)^{n+1}} $ \\
+                                & \\
+    $ e^{-\alpha t} $ & $ \dfrac{1}{s + \alpha} $ \\
+                                & \\
+    $ \sin (\omega t) $ & $ \dfrac{\omega}{s^2 + \omega^2} $ \\
+                                & \\
+    $ \cos (\omega t) $ & $ \dfrac{s}{s^2 + \omega^2} $ \\
+                                & \\
+    $ \sinh(\alpha t) $ & $ \dfrac{\alpha}{s^2 - \alpha^2} $ \\
+                                & \\
+    $ \cosh(\alpha t) $ & $ \dfrac{s}{s^2 - \alpha^2} $ \\
+                                & \\
+    $ e^{-\alpha t}\sin(\omega t) $ & $ \dfrac{\omega}{(s + \alpha)^2 + \omega^2} $ \\
+                                & \\
+    $ e^{-\alpha t}\cos(\omega t) $ & $ \dfrac{s + \alpha}{(s + \alpha^2) + \omega^2} $ \\
+                                & \\
+    $ \ln t $ & $ -\dfrac{1}{s} \big( \ln s + \gamma\footnotemark \big) $
+  \end{tabular}
+  \caption{\emph{Transformatele Laplace uzuale}}
+\end{figure}
+
+\footnotetext{Constanta Euler-Mascheroni, $ \gamma \simeq 0,577\dots \in \RR - \QQ $}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Exerciții}
+
+\indent\indent 1. Să se arate că funcția:
+\[
+  f : \RR \to \RR, \quad %
+  f(t) = \begin{cases}
+    t^2 + t - 3, & t \geq 0 \\
+    0, & t < 0
+  \end{cases}
+\]
+este o funcție original.
+
+\emph{Soluție:} Evident, $ f $ este nulă pentru argument negativ, deci prima condiție este
+verificată.
+
+De asemenea, deoarece $ f $ este o funcție elementară, avem și continuitatea (pe porțiuni).
+
+Mai trebuie verificată creșterea exponențială, adică faptul că există $ M > 0 $ și $ s_0 \geq 0 $,
+cu $ |f(t)| \leq M e^{s_0 t} $, pentru orice $ t \geq 0 $. Această inegalitate este
+evidentă, deoarece $ | f(t) | \leq e^t $ pentru $ t $ suficient de mare, deci putem lua
+$ s_0 = 1 $, iar $ M $ convenabil ales pentru a satisface condiția.
+
+\vspace{1cm}
+
+2. Calculați transformatele Laplace pentru funcțiile (presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = 1, t \geq 0 $;
+\item $ f(t) = t, t \geq 0 $;
+\item $ f(t) = t^n, n \in \NN $;
+\item $ f(t) = e^{at}, t \geq 0, a \in \RR $;
+\item $ f(t) = \sin(at), t \geq 0, a \in \RR $.
+\end{enumerate}
+
+\emph{Soluție:} (a) Avem direct din definiție:
+\[
+  F(s) = \int_0^\infty e^{-st} dt = \lim_{n \to \infty} \int_0^n e^{-st} dt = \frac{1}{s}, s > 0.
+\]
+
+(b) Integrăm prin părți și obținem $ F(s) = \dfrac{1}{s^2} $.
+
+(c) Facem substituția $ st = \tau $ și găsim:
+\[
+  F(s) = \int_0^\infty e^{-st} t^n dt = \frac{1}{s^{n+1}} \int_0^\infty e^{-\tau} \tau^n d\tau = %
+  \frac{n!}{s^{n+1}},
+\]
+pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
+\[
+  \Gamma(a) = \int_0^\infty x^{a-1}e^{-x} dx, a > 0, \quad \Gamma(n + 1) = n!, n \in \NN.
+\]
+
+(d) $ F(s) = \ds\int_0^\infty e^{at} e^{-st} dt = \ds\int_0^\infty e^{-(s - a)t} dt = %
+\dfrac{1}{s-a}, s > a $.
+
+(e) Integrăm prin părți și ajungem la:
+\[
+  F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
+\]
+
+\vspace{1cm}
+
+3. Folosind tabelul de valori și proprietățile, să se determine transformatele Laplace
+pentru funcțiile (presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = 5 $;
+\item $ f(t) = 3t + 6t^2 $;
+\item $ f(t) = e^{-3t} $;
+\item $ f(t) = 5e^{-3t} $;
+\item $ f(t) = \cos (5t) $;
+\item $ f(t) = \sin (3t) $;
+\item $ f(t) = 3(t-1) + e^{-t-1} $;
+\item $ f(t) = 3t^3(t - 1) + e^{-5t} $;
+\item $ f(t) = 5e^{-3t} \cos (5t) $;
+\item $ f(t) = e^{2t} \sin (3t) $;
+\item $ f(t) = te^{-t} \cos (4t) $;
+\item $ f(t) = t^2 \sin (3t) $;
+\item $ f(t) = t^3 \cos t $.
+\end{enumerate}
+
+\emph{Indicații:} În majoritatea cazurilor, se folosește tabelul și proprietatea de liniaritate.
+În plus:
+
+(i, j) Folosim $ \Lap (e^{at} f(t)) = F(s - a) $;
+
+(k) Folosim $ \Lap (t f(t)) = -\frac{d}{ds} \Lap(f(t)) $;
+
+(l) Folosim $ \Lap(t^n f(t)) = (-1)^n \dfrac{d^n F(s)}{ds^n} $;
+
+\vspace{1cm}
+
+4. Folosind teorema derivării imaginii, să se determine transformatele Laplace pentru funcțiile
+(presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = t $;
+\item $ f(t) = t^2 $;
+\item $ f(t) = t\sin t $;
+\item $ f(t) = te^t $.
+\end{enumerate}
+
+\emph{Indicație:} Conform proprietății de derivare a imaginii, avem:
+\[
+  \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
+\]
+
+\vspace{1cm}
+
+5. Folosind teorema integrării originalului, să se determine transformatele Laplace pentru
+funcțiile (presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = \ds\int_0^t \cos (2\tau) d\tau $;
+\item $ f(t) = \ds\int_0^t e^{3 \tau} \cos(2 \tau) d\tau $;
+\item $ f(t) = \ds\int_0^t \tau e^{-3\tau} d\tau $.
+\end{enumerate}
+
+\emph{Indicație:} Conform proprietății de integrare a originalului,
+avem:
+\[
+  \Lap \int_0^t f(\tau) d\tau = \frac{F(s)}{s}.
+\]
+
+\end{document}

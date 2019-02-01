@@ -1,0 +1,273 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță \& A. Oprina}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 7 \\
+    Spații euclidiene\\ Completări și exerciții suplimentare}}
+\end{center}
+
+\vspace{1cm}
+
+
+\section{Distanță}
+\label{sec:distanta}
+
+În geometria plană, distanța între vectorii $\vec{v}$ și $\vec{w}$ se calculează prin
+$|\vec{v} - \vec{w}|$. De fapt, făcînd un pas și mai în spate, ne putem aminti de distanța
+între două puncte de pe axă (vectori într-un spațiu 1-dimensional), calculată prin modulul
+diferenței acestora.
+
+Așadar, într-un spațiu euclidian arbitrar, putem generaliza această noțiune astfel:
+
+\begin{definition}\label{def:dist}
+  Fie $V$ un spațiu euclidian arbitrar și $x, y \in V$. Se definește \emph{distanța}
+  între vectorii $x, y$ prin formula:
+  \[
+    d(x, y) = || x - y ||,
+  \]
+  unde în membrul drept apare funcția \emph{normă}, indusă în mod unic de produsul scalar.
+\end{definition}
+
+\begin{remark}\label{rk:dist-met}
+  Se poate arăta că, dacă gîndim $V$ ca un spațiu topologic, atunci funcția distanță de mai sus
+  satisface proprietățile unei \emph{metrici}. Așadar, spațiul euclidian devine chiar spațiu metric.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Morfismul adjunct. Matricea lui Gram}
+\label{sec:adj-gram}
+
+Ne referim la următoarea definiție:
+
+\begin{definition}\label{def:adj}
+  Fie $V$ un spațiu euclidian și $f : V \to V$ o aplicație liniară.
+
+  Se numește \emph{adjuncta aplicației $f$} aplicația $f^\ast : V \to V$, cu proprietatea:
+  \[
+    \langle f(x), y \rangle = \langle x, f^\ast(y) \rangle, \forall x,y \in V.
+  \]
+\end{definition}
+
+Modul în care se calculează adjuncta aplicației folosește \emph{matricea lui Gram}:
+
+\begin{definition}\label{def:gram}
+  Fie $V$ un spațiu euclidian $n$-dimensional și $B = \{b_i\}$ o bază a sa.
+
+  Matricea $G \in M_n(\RR)$, definită prin $G = (g_{ij}) = \big( \langle b_i, b_j \rangle \big)$
+  se numește \emph{matricea lui Gram} (sau \emph{\qq{gramiană}}).
+\end{definition}
+
+De remarcat faptul că \emph{matricea Gram este inversabilă}, în orice bază și indiferent de
+produsul scalar, deoarece, din chiar definiția produsului scalar, diagonala principală
+a matricei Gram conține produsul pătratelor normelor elementelor din bază.
+
+De exemplu, pentru spațiul euclidian $V = \RR^2$, cu produsul scalar canonic
+\[
+  \langle x, y \rangle = x_1 y_1 + x_2 y_2, \forall x = (x_1, x_2), y = (y_1, y_2) \in \RR^2,
+\]
+matricea gramiană este $I_2$, deoarece $\langle e_i, e_j \rangle = \delta_{ij}$, simbolul
+lui Kronecker (nul pentru $i \neq j$ și 1 pentru $i = j$).
+
+Folosind matricea gramiană, putem calcula simplu morfismul adjunct. Deoarece orice vector
+dintr-un spațiu vectorial arbitrar se scrie în funcție de vectorii bazei și folosind
+proprietățile produsului scalar, se poate arăta că în orice spațiu euclidian $V$ avem:
+\begin{equation}
+  \label{eq:gram}
+  \langle v, w \rangle = v^t \cdot G \cdot w, \forall v, w \in V,
+\end{equation}
+unde $G$ este matricea lui Gram.
+
+Fie $f : V \to V$ o aplicație liniară, căreia vrem să-i determinăm adjuncta. Fie $A$ matricea
+aplicației $f$ într-o bază $B = \{b_i\}$ a lui $V$. Atunci, a căuta $f^\ast$ este echivalent
+cu a căuta $A^\ast$, iar definiția morfismului adjunct se poate rescrie cu matrice în forma:
+\[
+  \langle v, A^\ast w \rangle = \langle Av, w \rangle.
+\]
+
+Atunci, folosind relația ~\eqref{eq:gram}, avem că:
+\[
+  v^t GA^\ast w = (Av)^t Gw \Rightarrow (v^t GA^\ast - v^t A^t G) w = 0.
+\]
+Cum relația are loc pentru $w$ arbitrar, rezultă:
+\[
+  v^t GA^\ast - v^t A^t G = 0,
+\]
+iar această relație are loc pentru orice $v$, deci $GA^\ast = A^t G$, de unde, în fine:
+\[
+  A^\ast = G^{-1} A^t G.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+
+
+1. Fie subspațiul:
+\[
+  V = \{(x_1, x_2, x_3, x_4) \in \RR^4 \mid
+  \begin{cases}
+    x_1 - 2x_2 + 2x_3 + 2x_4 &= 0 \\
+    2x_1 - 4x_2 + x_3 - 2x_4 &= 0 \\
+    x_1 - 2x_2 + 3x_3 + 4x_4 &= 0
+  \end{cases} \}
+\]
+al spațiului euclidian $\RR^4$.
+
+Să se determine $V^\perp$ și să se verifice că $V \oplus V^\perp \simeq \RR^4$.
+
+\vspace{1cm}
+
+2. Fie spațiul vectorial $V = \CC^2$ și $B = \{e_1, e_2\}$ baza canonică.
+Definim produsul scalar:
+\[
+  \langle x, y \rangle = 2x_1 \overline{y}_1 - ix_1 \overline{x}_2 + ix_2 \overline{y}_1 + %
+  x_2 \overline{y}_2,
+\]
+unde $x = (x_1, x_2), y = (y_1, y_2)$, iar $\overline{x}$ notează conjugatul complex.
+
+Fie $f : V \to V$ dată de matricea $M_f^B = \begin{pmatrix} -1 & i \\ i & 2 \end{pmatrix}$.
+
+Să se determine endomorfismul adjunct $f^\ast$.
+
+\vspace{1cm}
+
+3. Fie spațiul vectorial $V = \{(x_1, x_2, x_3) \mid 3x_1 + x_2 - x_3 = 0 \}$.
+Să se determine $V^\perp$ și coordonatele vectorului $v = (1, -1, 4)$ în $V$ și $V^\perp$.
+
+\vspace{1cm}
+
+4. Fie spațiul vectorial $M_2(\RR)$ și produsul scalar dat de:
+\[
+  \langle A, B \rangle = \mathrm{tr}(A^t B).
+\]
+
+\begin{enumerate}[(a)]
+  \item Să se determine matricele de normă 1, ortogonale simultan pe:
+\[
+  C = \begin{pmatrix}
+    1 & 0 \\
+    2 & 1
+  \end{pmatrix}, \quad
+  D = \begin{pmatrix}
+    1 & -1 \\
+    1 & 0
+  \end{pmatrix}
+\]
+\item Să se completeze mulțimea $\{B, C\}$ la o bază a lui $M_2(\RR)$ și să se
+  ortonormeze baza, în raport cu produsul scalar definit mai sus.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. În fiecare din spațiile euclidiene $V$ de mai jos, determinați adjunctul morfismului $f$ definit,
+relativ la produsul scalar indicat:
+\begin{enumerate}[(a)]
+\item $V = \RR^2, \langle x, y \rangle = 2x_1 y_1 + 3x_2 y_2, f(x, y) = (2x + y, x - y)$;
+\item $V = \RR^2, \langle x, y \rangle = x_1y_1 + 2x_1y_2 + 2x_2 y_1 + 3x_2 y_2$, iar aplicația
+  $f(x, y) = (3x, -y)$;
+\item $V = \RR_2[X], \langle p, q \rangle = \ds\sum_{k = 0}^2 (k!)^2 a_k b_k$, unde
+  $p = a_0 + a_1 X + a_2 X^2$, iar $q = b_0 + b_1 X + b_2 X^2$. Definim aplicația:
+  $f(a + bX + cX^2) = (a + b) + (b + c)X + (a + c)X^2$.
+\end{enumerate}
+\end{document}

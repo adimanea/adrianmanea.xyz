@@ -1,0 +1,517 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}
+\newtheorem{proposition}{Propozi\c{t}ie}
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}
+\newtheorem{definition}{Defini\c{t}ie}
+\newtheorem{remark}{Observa\c{t}ie}
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 8 \\
+      Analiză complexă}}
+\end{center}
+
+\vspace{2cm}
+
+\section*{Funcții complexe}
+
+\indent\indent Următoarele noțiuni sînt elementare și introduc conceptele
+de bază din studiul analizei complexe, începînd cu funcțiile de variabile complexe.
+
+\begin{definition}\label{def:fc-comp}
+  Fie $ A \seq \CC $. Se numește \emph{funcție complexă} orice funcție de forma
+  $ f : A \to \CC $.
+\end{definition}
+
+Dată fiind scrierea algebrică a unui număr complex, putem separa părțile și pentru
+funcții. Astfel, dacă $ w = f(z) $, iar $ z = x + iy \in A, w = u + iv \in \CC $,
+putem scrie $ f = P + iQ $, cu $ P = \mathrm{Re}f$ și $ Q = \mathrm{Im}f $. Am pus
+în evidență două funcții $ P, Q : A \seq \RR^2 \to \RR $, iar egalitatea $ w = f(z) $
+devine echivalentă cu două egalități reale $ u = P(x, y), v = Q(x, y) $, funcția
+în sine fiind echivalentă cu o transformare punctuală:
+\[
+  A \to \RR^2, \quad (x, y) \mapsto (P(x, y), Q(x, y)).
+\]
+
+De aceea, unele proprietăți le putem analiza pe componente:
+
+\begin{definition}\label{def:fc-cont}
+  Fie $ A \seq \CC $ o mulțime deschisă și $ f : A \to \CC $ o funcție complexă.
+
+  Funcția este \emph{continuă} în punctul $ z_0 = x_0 + iy_0 $ dacă și numai
+  dacă $ P $ și $ Q $ sînt simultan continue în punctul $ (x_0, y_0) $.
+\end{definition}
+
+Următoarea noțiune este legată de derivabilitate.
+
+\begin{definition}\label{def:fc-der}
+  Fie $ A \seq \CC $ o mulțime deschisă și $ f : A \to \CC $ o funcție complexă.
+
+  Funcția $ f $ se numește \emph{olomorfă} în punctul $ z_0 \in A $ (echivalent,
+  \emph{$\CC$-derivabilă} sau \emph{monogenă}) dacă există și este finită limita:
+  \[
+    \ell = \lim_{\substack{z \to z_0 \\ z \neq z_0}} \frac{f(z) - f(z_0)}{z - z_0}.
+  \]
+
+  În caz afirmativ, $ \ell = f'(z_0) $ se numește \emph{derivata complexă} a lui
+  $ f $ în $ z_0 $.
+\end{definition}
+
+Similar cu cazul real, avem:
+
+\begin{remark}\label{rk:ol-cont}
+  Dacă funcția $ f : A \to \CC $ este olomorfă în $ z_0 \in A $, atunci ea este
+  continuă în $ z_0 $.
+\end{remark}
+
+Noțiunile se pot extinde pentru întreg deschisul în mod evident: funcția se numește
+\emph{continuă} (respectiv \emph{olomorfă}) pe $ A $ dacă are această proprietate în
+orice punct din $ A $.
+
+O condiție de derivabilitate care ține cont de descompunerea funcțiilor complexe
+este următoarea:
+
+\begin{theorem}\label{thm:ec-cauchy-riemann}
+  Fie $ A \seq \CC $ o mulțime deschisă.
+
+  Funcția $ f : A \to \CC, f = P + iQ $ este olomorfă în $ z_0 \in A $ dacă și numai
+  dacă $ P, Q : A \to \RR $ sînt diferențiabile în $ z_0 = (x_0, y_0) $, iar derivatele
+  lor parțiale în $ (x_0, y_0) $ verifică \emph{condițiile Cauchy-Riemann}, adică:
+  \[
+    \begin{cases}
+      \frac{\partial P}{\partial x} &= \frac{\partial Q}{\partial y} \\
+      \frac{\partial Q}{\partial x} &= -\frac{\partial P}{\partial y}
+    \end{cases}
+  \]
+\end{theorem}
+
+Următoarea noțiune ne ajută să găsim o condiție echivalentă cu ecuațiile
+Cauchy-Riemann:
+
+\begin{definition}\label{def:der-areolara}
+  Dacă $ f : A \to \CC $ este o funcție complexă, definim:
+  \[
+    \begin{cases}
+      \frac{\partial f}{\partial z} &= \frac{1}{2} \Big(\frac{\partial f}{\partial x} - %
+      \frac{\partial f}{\partial y} \Big) \\
+      \frac{\partial f}{\partial \overline{z}} &= \frac{1}{2}\Big( %
+      \frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y} \Big)
+    \end{cases}
+  \]
+
+  Dintre acestea, $ \frac{\partial f}{\partial \overline{z}} $ se numește
+  \emph{derivata areolară} a lui $ f $.
+\end{definition}
+
+Avem, atunci:
+
+\begin{corollary}\label{cor:are-c-r}
+  Relația $ \frac{\partial f}{\partial \overline{z}} = 0 $ este echivalentă cu
+  condițiile Cauchy-Riemann.
+\end{corollary}
+
+
+Amintim din cazul funcțiilor reale:
+\begin{definition}\label{def:fc-armonica}
+  Fie $ u : A \to \RR $ o funcție de clasă $ \kal{C}^2 $ pe deschisul $ A $.
+  Funcția $ u $ se numește \emph{armonică} dacă pentru orice punct $ a \in A $
+  are loc:
+  \[
+    \frac{\partial^2 u}{\partial x^2}(a) + \frac{\partial^2 u}{\partial y^2}(a) = 0,
+  \]
+  adică $ \Delta u = 0 $ în orice punct $ a \in A $.
+\end{definition}
+
+Putem folosi această noțiune în următorul context, de exemplu:
+
+\begin{corollary}\label{cor:olo-arm}
+  Fie $ A \seq \CC $ o mulțime deschisă și $ f : A \to \CC, f = P + iQ $, cu
+  $ P, Q \in \kal{C}^2(A) $.
+
+  Dacă $ f $ este olomorfă pe $ A $, atunci $ P $ și $ Q $ sînt armonice pe $ A $.
+\end{corollary}
+
+Pentru rezultatul reciproc, avem nevoie de:
+
+\begin{definition}\label{def:conex}
+  O mulțime deschisă $ D \seq \CC $ se numește \emph{conexă} dacă pentru orice
+  două puncte $ z_1, z_2 \in D $ există un drum $ \gamma: [a, b] \to D $
+  care să unească cele două puncte, i.e.\ $ \gamma(a) = z_1, \gamma(b) = z_2 $.
+
+  Domeniul se numește \emph{simplu conex} dacă frontiera lui este conexă.
+\end{definition}
+
+Cu aceasta, avem:
+
+\begin{theorem}\label{thm:sconex-arm-olo}
+  Fie $ D \seq \RR^2 $ un domeniu simplu conex.
+
+  Dacă funcția $ P : D \to \RR $ este armonică pe $ D $, atunci există funcția
+  $ Q : D \to \RR $ armonică pe $ D $ astfel încît funcția complexă
+  $ f : D \to \CC, f = P + iQ $ să fie olomorfă.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Funcții particulare}
+
+\indent\indent În continuare, vom vedea cum funcții reale elementare, precum
+funcția exponențială, radical, funcții trigonometrice etc.\ pot fi extinse pentru
+a fi definite ca funcții complexe.
+
+\begin{definition}\label{def:exp-c}
+  Se numește \emph{exponențiala complexă} funcția $ \exp : \CC \to \CC $
+  definită prin:
+  \[
+    \exp z = e^z = \sum_{n \geq 0} \frac{z^n}{n!}.
+  \]
+\end{definition}
+
+Ca în cazul real, se pot demonstra ușor proprietățile:
+\begin{enumerate}[(a)]
+\item $ \exp(0) = 1 $;
+\item $ \exp(z_1 + z_2) = \exp(z_1) \cdot \exp(z_2), \forall z_1, z_2 \in \CC $;
+\item $ \exp(iy) = \cos y + i \sin y, \forall y \in \RR $ (Euler);
+\item Funcția exponențială este olomorfă și periodică de perioadă $ T = 2\pi $.
+\end{enumerate}
+
+\vspace{1cm}
+
+Pentru funcția logaritmică, dacă vrem să rezolvăm ecuația $ \exp(w) = z $, unde
+$ w = u + iv \in \CC $, putem scrie în formă polară $ z = re^{i\theta} $ și
+atunci, ținînd cont și de periodicitatea funcției exponențiale, găsim că:
+\[
+  \begin{cases}
+    u &= \ln |z| \\
+    v &= \mathrm{Arg}z + 2k\pi, k \in \ZZ
+  \end{cases}
+\]
+
+Astfel, avem:
+
+\begin{definition}\label{def:log-c}
+  Se numește \emph{logaritmul numărului complex} $ z \in \CC^\ast $ mulțimea de
+  numere complexe:
+  \[
+    \mathrm{Ln}z = \{ \ln|z| + i (\mathrm{Arg}z + 2k\pi) \mid k \in \ZZ \}.
+  \]
+\end{definition}
+
+Această funcție este \emph{multiformă}, adică asociază unei valori $ z $ mai
+multe valori numerice (o infinitate de ramuri, de fapt). Iar pentru $ k = 0 $,
+obținem \emph{valoarea principală} a logaritmului:
+\[
+  \ln z = \ln |z| + i \mathrm{Arg}z.
+\]
+
+\vspace{1cm}
+
+Putem acum defini și funcția putere și în particular, funcția radical:
+
+\begin{definition}\label{def:putere-radical-c}
+  Funcția putere de exponent complex:
+  \[
+    z^m = \exp(m \mathrm{Ln}z) = \big\{ \exp(m(\ln|z| + i(\mathrm{Arg}z + 2k\pi))) %
+    \mid k \in \ZZ \big\}, m \in \CC.
+  \]
+
+  Funcția radical, de argument complex:
+  \begin{align*}
+    \sqrt[n]{z} &= z^{\frac{1}{n}} = \exp\big( \frac{1}{n}\mathrm{Ln}z \big) \\
+                &= \big\{ \exp\big( \frac{1}{n}(\ln|z| + i(\mathrm{Arg}z + 2k\pi)) \big) \mid %
+                  k \in \ZZ \big\} \\
+                &= \Big\{ \exp\Big(\frac{1}{n} \ln|z|\Big) \cdot %
+                  \exp\Big(i \frac{\theta + 2 k\pi}{n} \Big) \mid k \in \ZZ \} \\
+                &= \Big\{ \sqrt[n]{r} \cdot \exp\Big( i \frac{\theta + 2 k\pi}{n}\Big) %
+                  \mid k \in \NN \Big\}
+  \end{align*}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Din funcția exponențială putem extrage și funcțiile trigonometrice complexe:
+
+\begin{definition}\label{def:trig-c}
+  Pentru orice $ z \in \CC $, definim:
+  \begin{align*}
+    \cos z &= \frac{e^{iz} + e^{-iz}}{2} \\
+    \sin z &= \frac{e^{iz} - e^{-iz}}{2i} \\
+    \tan z &= -i \frac{e^{iz} - e^{-iz}}{e^{iz} + e^{-iz}} \\
+    \cot z &= i \frac{e^{iz} + e^{-iz}}{e^{iz} - e^{-iz}}
+  \end{align*}
+\end{definition}
+
+\begin{remark}\label{rk:trig-unif}
+  Funcțiile trigonometrice complexe sînt \emph{uniforme} (adică nu sînt multiforme),
+  iar toate formulele din cazul real rămîn adevărate.
+\end{remark}
+
+Avem, de asemenea, și funcții trigonometrice hiperbolice:
+
+\begin{definition}\label{def:trig-hip-c}
+  \begin{align*}
+    \sinh z &= \frac{e^z - e^{-z}}{2} \\
+    \cosh z &= \frac{e^z + e^{-z}}{2} \\
+    \tanh z &= \frac{\sinh z}{\cosh z}.
+  \end{align*}
+\end{definition}
+
+Remarcăm că au loc legăturile:
+\[
+  \sinh z = -i\sin(iz), \quad \cosh z = \cos(iz).
+\]
+
+Rezolvarea unor ecuații trigonometrice ne conduce la introducerea
+funcțiilor trigonometrice inverse:
+
+\[
+  z = \sin w \Rightarrow z = \frac{e^{iw} - e^{-iw}}{2i} \Leftrightarrow %
+  e^{2iw} - 2ize^{iw} - 1 = 0,
+\]
+pe care o rezolvăm ca pe o ecuația de gradul al doilea și obținem:
+\[
+  w = \mathrm{Arcsin}z = -i\mathrm{Ln}(iz \pm \sqrt{1 - z^2}).
+\]
+
+Similar, obținem și:
+\begin{align*}
+  \mathrm{Arccos}z &= i\mathrm{Ln}(z \pm \sqrt{z^2 - 1}) \\
+  \mathrm{Arctan}z &= -\frac{i}{2}\mathrm{Ln}\frac{i - z}{i + z}.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Exerciții}
+
+1. Arătați că funcția $ f : \CC \to \CC, f(z) = |z| $ nu e olomorfă în
+niciun punct din $ \CC $.
+
+\emph{Indicație:} Pentru satisfacerea condițiilor Cauchy-Riemann, avem nevoie de
+$ z = 0 $, dar în $ z = 0 $, partea reală a lui $ f $ nu are derivate parțiale.
+
+\vspace{1cm}
+
+2. Arătați că funcția:
+\[
+  f : \CC \to \CC, \quad f(z) = \sqrt{|z - \overline{z}^2}
+\]
+este continuă în $ z = 0 $, satisface condițiile Cauchy-Riemann în acest
+punct, dar nu este olomorfă.
+
+\emph{Indicație:} Partea reală a lui $ f $ nu este diferențiabilă în $ z = 0 $.
+Într-adevăr, ar trebui să avem:
+\[
+  P(x, y) - P(0, 0) = 0 \cdot (x - 0) + 0 \cdot (y - 0) + P_1(z)|z - 0|,
+\]
+de unde $ \ds\lim_{z \to 0} P_1(z) = 0 $. Dar $ P_1(z) = \frac{P(z)}{|z|} $
+și luînd două șiruri $ z = \frac{1}{n}, z' = \frac{1}{n} + i\frac{1}{n} $,
+ambele tinzînd la $ 0 $, avem $ P_1(z_n) = 0 $, dar $ P_1(z'_n) = \sqrt{2} $,
+deci $ P_1 $ nu are limită în origine.
+
+\vspace{1cm}
+
+3. Să se determine funcția olomorfă $ f = P + iQ $ pe $ \CC $, dacă
+$ Q(x, y) = \varphi(x^2 - y^2), \varphi \in \kal{C}^2 $.
+
+\emph{Soluție:} Fie $ \alpha = x^2 - y^2 $. Atunci:
+\begin{align*}
+  \frac{\partial Q}{\partial x} &= 2x\varphi'(\alpha) \\
+  \frac{\partial Q}{\partial y} &= -2y\varphi'(\alpha) \\
+  \Rightarrow \frac{\partial^2 Q}{\partial x^2} &= 2\varphi'(\alpha) + %
+                                                  4x^2 \varphi^{\prime\prime}(\alpha) \\
+  \frac{\partial^2 Q}{\partial y^2} &= -2\varphi'(\alpha) + 4y^2\varphi^{\prime\prime}(\alpha).
+\end{align*}
+
+Deoarece $ Q $ trebuie să fie armonică, avem $ \Delta Q = 0, \forall x, y $, de unde:
+\[
+  \varphi^{\prime\prime}(\alpha) = 0 \Rightarrow \varphi(\alpha) = c\alpha + c_1.
+\]
+
+Din condițiile Cauchy-Riemann pentru $ P $ și $ Q $, obținem acum:
+\[
+  \begin{cases}
+    \frac{\partial P}{\partial x} = \frac{\partial Q}{\partial y} &= -2cy \\
+    \frac{\partial P}{\partial y} = -\frac{\partial Q}{\partial x} &= -2cx
+  \end{cases}
+\]
+
+Integrăm a doua ecuație și înlocuim în prima, pentru a obține:
+\[
+  P(x, y) = -2cxy + k.
+\]
+
+În fine:
+\[
+  f(z) = -2cxy + k + i(c(x^2 - y^2) + c_1) \Rightarrow f(z) = ciz^2 + d, c, d \in \RR.
+\]
+
+\vspace{1cm}
+
+4. Fie $ P(x, y) = e^{2x} \cos 2y + y^2 - x^2 $. Să se determine funcția
+olomorfă $ f = P + iQ $ pe $ \CC $ astfel încît $ f(0) = 1 $.
+
+\emph{Soluție:} Verificăm că $ P $ este armonică. Verificăm condițiile
+Cauchy-Riemann:
+\begin{align*}
+  \frac{\partial P}{\partial x} = \frac{\partial Q}{\partial y} &= 2e^{2x} \cos 2y - 2x \\
+  -\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} &= 2e^{2x} \sin 2y - 2y.
+\end{align*}
+
+Integrăm a doua ecuație în raport cu $ x $, înlocuim în prima și obținem:
+\begin{align*}
+  f(z) &= e^{2x} \cos 2y + y^2 - x^2 + i(e^{2x}\sin 2y - 2xy + k) \\
+       &= e^{2x}(\cos 2y + i\sin 2y) - (x + iy)^2 + ki \\
+  \Rightarrow f(z) &= e^{2z} - z^2 + ki.
+\end{align*}
+
+Folosind condiția din enunț, găsim $ k = 0 $.
+
+\vspace{1cm}
+
+5. Determinați soluțiile $ w \in \CC $ ale ecuației $ e^w = -2i $.
+
+\vspace{1cm}
+
+6. Rezolvați ecuația $ z^3 + 2 - 2i = 0 $.
+
+\vspace{1cm}
+
+7. Calculați:
+\begin{enumerate}[(a)]
+\item $ \sin(1 + i) $;
+\item $ \sinh(1 - i) $;
+\item $ \tan\big( \frac{\pi}{4} - i\ln 3 \big) $;
+\item $ \tanh \big(\ln 2 + \frac{\pi i}{4}\big) $;
+\item $ \mathrm{Arccos}(i \sqrt{3}) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+8. Rezolvați ecuația $ \sin z = 2 $.
+
+\newpage
+
+9. Fie funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(z) = z \mathrm{Re}z $;
+\item $ f(z) = z^2 + z \cdot \overline{z} + 3z - 2\overline{z} $.
+\end{enumerate}
+
+Determinați punctele în care $ f $ este derivabilă și să se calculeze $ f'(z) $
+în aceste puncte.
+
+\vspace{1cm}
+
+10. Să se studieze olomorfia funcțiilor:
+\begin{enumerate}[(a)]
+\item $ f(z) = z $;
+\item $ f(z) = \overline{z} $;
+\item $ f(z) = \exp(z) $;
+\item $ f(z) = \exp(\overline{z}) $;
+\item $ f(z) = |z| $;
+\item $ f(z) = 2z + z^2 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+11. Să se determine funcția olomorfă $ f(z) = u(x, y) + iv(x, y) $ dacă:
+\begin{enumerate}[(a)]
+\item $ u(x, y) = x^2 - y^2 - 2y $;
+\item $ u(x, y) = x^4 - 6x^2 y^2 + y^4 $;
+\item $ u(x, y) = (x \cos y - y\sin y)e^x $.
+\end{enumerate}
+
+
+\end{document}

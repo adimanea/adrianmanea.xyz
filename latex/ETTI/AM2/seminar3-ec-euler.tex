@@ -1,0 +1,210 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 3 \\
+      Ecuații și sisteme diferențiale \\
+      Ecuații Euler}}
+\end{center}
+
+\vspace{2cm}
+
+1. Rezolvați următoarele ecuații și sisteme:
+\begin{enumerate}[(a)]
+\item $y^{\prime\prime} - 3y' + 2y = 0$;
+\item $y^{\prime\prime\prime} - 4y^{\prime\prime} + 4y' = 0$;
+\item $y^{\prime\prime\prime} - 3y^{\prime\prime} - 12y' - 8y = 0$;
+\item $y^{\prime\prime} - y' - 2y = 3e^{2x}$;
+\item 
+  $\begin{cases}
+    x'(t) &= 2x + y \\
+    y'(t) &= 3x + 3y
+  \end{cases}$ (2 metode);
+\item $\begin{cases}
+    x' &= y \\
+    y' &= -x + 2y
+  \end{cases}$ (2 metode);
+\item $\begin{cases}
+    x' &= x-2y \\
+    y' &= 2x - 3y
+  \end{cases}$ (2 metode);
+\item $\begin{cases}
+    x' &= -2x - 4y \\
+    y' &= x + 3y
+  \end{cases}$, cu $x(0) = 1, y(0) = 2$ (2 metode);
+\item $\begin{cases}
+    x' &= 3x - y \\
+    y' &= 10x - 4y
+  \end{cases}$, cu $x(0) = 1, y(0) = 5$ (2 metode);
+\item $\begin{cases}
+    x' &= 3x - 2y \\
+    y' &= 2x - 2y
+  \end{cases}$, cu $x(0) = 3, y(0) = 3$ (2 metode).
+\end{enumerate}
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Ecuații Euler}
+
+O ecuație diferențială liniară de ordinul $n$ de forma:
+\[
+  L[y] = a_n x^n y^{(n)} + a_{n-1} x^{n-1} y^{(n-1)} + \dots + a_0 y = f(x)
+\]
+cu $a_i$ constante și $f \in \kal{C}^1(I)$ se numește \emph{ecuație Euler}.
+
+
+Ecuațiile Euler se pot transforma în ecuații cu coeficienți constanți prin schimbarea
+de variabilă $|x| = e^t$. De remarcat că, deoarece funcția necunoscută este $y = y(x)$,
+pentru a obține $y' = \frac{dy}{dx}$ trebuie să aplicăm regula de derivare a funcțiilor compuse.
+
+Notăm $\dot{y} = \frac{dy}{dt}$ și atunci avem:
+\[
+  \frac{dy}{dx} = \frac{dy}{dt} \cdot \frac{dt}{dx} = \dot{y} \cdot e^{-y}.
+\]
+
+Mai departe, de exemplu:
+\begin{align*}
+  \frac{d^2 y}{dx^2} &= \frac{d}{dt} \Big( \dot{y} \cdot e^{-y} \Big) \cdot \frac{dt}{dx} \\
+                     &= e^{-2y}(\ddot{y} - \dot{y}).
+\end{align*}
+
+
+Exemplu: $x^2 y^{(2)} + xy' + y = x$.
+
+Facem substituția $|x| = e^t$ și obținem:
+\[
+  e^{2t} \cdot e^{-2t}(\ddot{y} - \dot{y}) - e^t \cdot \dot{y} \cdot e^{-t} + y(t) = e^t.
+\]
+Echivalent:
+\[
+  \ddot{y} - 2\dot{y} + y = e^t.
+\]
+Aceasta este o ecuație liniară de ordinul al doilea, neomogenă. Asociem ecuația
+algebrică $f(r) = r^2 - 2r + 1 = (r - 1)^2 = 0$, deci soluția generală a ecuației
+omogene este:
+\[
+  y(t) = c_1 e^t + c_2 te^t.
+\]
+Folosind apoi metoda variației constantelor, obținem succesiv:
+\begin{align*}
+  y(t) &= c_1 e^t + c_2te^t + \frac{t^2 e^t}{2} \Rightarrow \\
+  \Rightarrow y(x) &= c_1 x + c_2 x \ln x + \frac{x\ln^2 x}{2}.
+\end{align*}
+
+\vspace{1cm}
+
+2. Să se rezolve ecuațiile Euler:
+\begin{enumerate}[(a)]
+\item $x^2 y^{(2)} - 3xy' + 4y = 5x, \quad x > 0$;
+\item $x^2 y^{(2)} - xy' + y = x + \ln x, \quad x > 0$;
+\item $4(x + 1)^2 y^{(2)} + y = 0, \quad x > -1$;
+\item $xy^{\prime\prime} + 3y' = e^x$;
+\item $x^3 y^{\prime\prime\prime} + x^2y^{\prime\prime} - 2xy' + 2y = \frac{1}{x^2}$.
+\end{enumerate}
+
+
+
+
+
+\end{document}
+

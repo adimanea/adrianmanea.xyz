@@ -1,0 +1,150 @@
+\documentclass[11pt,a4paper]{article}
+
+% USE LINUX LIBERTINE FONTS
+\usepackage{libertine}
+\usepackage{libertinust1math}
+% AND INCONSOLATA FOR MONOSPACED
+\usepackage{inconsolata}
+%% PACHETE MATEMATICE
+%\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+% \usepackage{mathpazo}
+% \usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță \& A. Oprina}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+\newcommand\Bbbk{\mathbb{k}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Probleme propuse de Prof. Oprina }}
+\end{center}
+
+\vspace{1cm}
+
+
+1. Definim mulțimea:
+\[
+  \CC_n[X] = \{ P \in \CC[X] \mid \mathrm{grad} P \leq n \}.
+\]
+
+Arătați că:
+\begin{enumerate}[(a)]
+\item $(\CC_n[X], +)$ este un $\CC$-spațiu vectorial de dimensiune $n + 1$;
+\item $\forall a \in \CC$ fixat, mulțimea:
+  \[
+    B = \{1, X - a, (X - a)^2, \dots, (X - a)^n \}
+  \]
+  este o bază în $\CC_n[X]$;
+\item Dacă $f \in \CC_n[X]$, atunci:
+  \[
+    f(x) = \sum_{k = 0}^n \frac{f^{(k)}(x)}{k!} (X - a)^k \quad (\text{Taylor}).
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie $\Bbbk$ un corp comutativ și considerăm sistemul liniar $AX = 0$,
+cu $A \in M_n(\Bbbk)$.
+
+Arătați că:
+\begin{enumerate}[(a)]
+\item $S \leq \Bbbk^n$, unde $S$ este mulțimea soluțiilor sistemului;
+\item Există $\varphi : \Bbbk^n \to \Bbbk^n$ liniară astfel încît $\mathrm{Ker} \varphi = S$ (Indicație: $\varphi(x) = Ax$);
+\item $\dim_\Bbbk S = n - r$, unde $R = \mathrm{rang}(A)$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie $A \in M_n(\RR)$, cu $A \neq 0$ și $\det A = 0$.
+
+Să se arate că există $B \in M_n(\RR)$, cu $B \neq 0$, astfel încît $AB = 0$.
+
+\end{document}

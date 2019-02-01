@@ -1,0 +1,288 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 13 \\ Recapitulare}}
+\end{center}
+
+\textbf{MODEL 1}
+
+1. Să se calculeze cu o eroare mai mică decît $\varepsilon = 10^{-3}$:
+\[
+  \int_0^{\frac{1}{2}} \frac{1 - \cos x^2}{x^2} dx.
+\]
+
+\vspace{1cm}
+
+2. Să se arate, folosind definiția, că funcția:
+\[
+  f(x, y) = \frac{2xy}{x^2 + y^2}, \quad (x, y) \neq (0, 0)
+\]
+nu are limită în origine.
+
+\vspace{1cm}
+
+3. Să se verifice dacă funcția $f(x, y) = (x^2 + y^2)^{-\frac{1}{2}}$ este
+armonică.
+
+\vspace{1cm}
+
+4. Să se calculeze, folosind definiția, derivatele parțiale ale funcției $f$
+în punctul $(-1, 1)$, unde:
+\[
+  f : \RR^2 \to \RR, \quad f(x, y) = 2x^3y - e^{x^2 + y^2}.
+\]
+
+\vspace{1cm}
+
+5. Determinați valorile extreme pentru funcția $f$, definită pe domeniul
+$D$, unde:
+\[
+  f(x, y) = x^4 + y^3 - 4x^3 - 3y^2 + 3y, \quad D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 4 \}.
+\]
+
+\vspace{2cm}
+
+\textbf{MODEL 2}
+
+1. Fie funcția $f(x) = \sqrt[4]{x + 1}$.
+\begin{enumerate}[(a)]
+\item Să se scrie polinoamele $T_1(x)$ și $T_2(x)$ în jurul punctului $a = 0$;
+\item Să se calculeze $\sqrt[4]{10004}$ cu 4 zecimale exacte.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se arate că funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{2xy}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+este continuă în raport cu fiecare variabilă în parte, dar nu este continuă în raport
+cu ansamblul variabilelor.
+
+\vspace{1cm}
+
+3. Fie $f(x, y) = \sqrt{\sin^2 x + \sin^2 y}$. Să se calculeze, folosind definiția,
+$\frac{\partial f}{\partial x} (\frac{\pi}{4}, 0)$ și
+$\frac{\partial f}{\partial y} (\frac{\pi}{4}, \frac{\pi}{4})$.
+
+\vspace{1cm}
+
+4. Fie seria de puteri:
+\[
+  \sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1}.
+\]
+
+\begin{enumerate}[(a)]
+\item Să se determine domeniul de convergență;
+\item Să se determine suma seriei.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Să se determine punctele de extrem și valorile extreme pentru
+funcția
+\[
+  f : \RR^2 \to \RR, \quad f(x, y) = \sin x \sin y \sin(x + y).
+\]
+
+\vspace{2cm}
+
+\textbf{MODEL 3}
+
+1. Să se determine aproximările liniare, pătratice și cubice ale funcției
+\[
+  f(x) = x \ln x,
+\]
+în jurul punctului $a = 1$.
+
+\vspace{1cm}
+
+2. Fie funcția:
+\[
+  f(x, y) = \begin{cases}
+    xy \sin \frac{x^2 - y^2}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0).
+  \end{cases}
+\]
+
+Să se arate că $f \in \kal{C}^1(\RR^2)$.
+
+\vspace{1cm}
+
+3. Fie funcția:
+\[
+  f(x, y, z) = g(xy, xyz + \frac{x^2}{2} + \frac{x^4}{4}).
+\]
+
+Să se arate că ea satisface ecuația:
+\[
+  -xy \frac{\partial f}{\partial x} + y^2 \frac{\partial f}{\partial y} +
+  x(1 + x^2) \frac{\partial f}{\partial x} = 0.
+\]
+
+\vspace{1cm}
+
+4. Să se determine punctele cele mai apropiate de origine care se găsesc pe suprafața
+de ecuație $4x^2 + y^2 + z^2 - 8x - 4y + 4 = 0$.
+
+\vspace{1cm}
+
+5. Fie seria de puteri $\ds\sum_{n \geq 1} \frac{(x - 1)^{2n}}{n \cdot 9^n}$.
+
+Să se determine domeniul de convergență.
+
+\vspace{1cm}
+
+6. Să se determine suma seriei $\ds\sum_{n \geq 1} nx^{-n}$.
+
+\newpage
+
+\textbf{PARȚIAL SERIA A}
+
+1. Fie seria de puteri $\ds\sum_{n \geq 1} \frac{1}{n} x^{2n}$.
+Să se determine domeniul de convergență și suma seriei.
+
+\vspace{1cm}
+
+2. Să se calculeze cu o eroare de cel mult $\varepsilon = 10^{-2}$:
+\[
+  \int_0^{\frac{1}{4}} \frac{1 - e^{-x}}{x} dx.
+\]
+
+\vspace{1cm}
+
+3. Fie funcția $f(x) = 1 + x \ln x$.
+\begin{enumerate}[(a)]
+\item Să se determine polinoamele Taylor $T_1, T_2$ în jurul lui $1$;
+\item Aproximați $\ln \frac{11}{10}$, folosind $T_2$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Considerăm seria de puteri:
+\[
+  \sum_{n \geq 1} \frac{(-1)^{n-1}}{n} x^{2n}.
+\]
+
+\begin{enumerate}[(a)]
+\item Găsiți domeniul de convergență.
+\item Calculați suma seriei.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Calculați valoarea integralei, cu o eroare mai mică decît $10^{-2}$:
+\[
+  \int_0^{\frac{1}{2}} \frac{1 - \cos x}{x^2} dx.
+\]
+
+\vspace{1cm}
+
+6. Fie funcția $f(x) = (x + 1)e^x$.
+\begin{enumerate}[(a)]
+\item Scrieți $T_1$ și $T_2$ în jurul lui $0$;
+\item Calculați cu aproximație $e^{-0,1}$, folosind expresia lui $T_2(x)$
+  și găsiți un majorant pentru eroare.
+\end{enumerate}
+
+\end{document}

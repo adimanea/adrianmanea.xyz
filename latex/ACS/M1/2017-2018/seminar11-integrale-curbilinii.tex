@@ -1,0 +1,368 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} M1-ACS, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 11 \\ Integrale curbilinii}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Drumuri parametrizate}
+\label{sec:dr-par}
+
+\begin{definition}\label{def:dr-par}
+  Fie $J \seq \RR$. Se numește \emph{drum parametrizat} pe $J$ cu valori în $\RR^n$
+  orice aplicație continuă $\gamma : J \to \RR^n$.
+
+  Pe componente, $\gamma(t) = (\gamma_1(t), \gamma_2(t), \dots, \gamma_n(t))$,
+  relațiile $x_i = \gamma_i(t)$ se numesc \emph{ecuațiile parametrice} ale drumului.
+\end{definition}
+
+Dacă $J$ este un interval $[a,b]$, atunci $\gamma(a)$ și $\gamma(b)$ se numesc
+\emph{capetele} drumului, iar drumul se numește \emph{închis} dacă $\gamma(a) = \gamma(b)$.
+
+Dacă $\gamma : [a, b] \to \RR^n$ este un drum, \emph{opusul său} se definește prin:
+\[
+  \gamma^- : [a, b] \to \RR^n, \quad \gamma^-(t) = \gamma(a + b - t).
+\]
+
+Date două drumuri parametrizate, ele se pot \emph{concatena}, rezultatul
+fiind un drum care parcurge, pe rînd, intervalele de definiție ale celor
+două componente.
+
+\begin{remark}\label{rk:dr-concat}
+  Concatenarea a două drumuri parametrizate are sens numai atunci cînd capătul
+  de final al unui drum coincide cu capătul de început al celuilalt. Mai precis,
+  dacă avem: $\gamma_1 : [a, b] \to \RR^n$ și $\gamma_2: [b, c] \to \RR^n$, atunci
+  \[
+    \gamma_1 \cup \gamma_2 =
+    \begin{cases}
+      \gamma_1(t), & t \in [a, b] \\
+      \gamma_2(t), & t \in [b, c].
+    \end{cases}
+  \]
+\end{remark}
+
+Aspectele analitice de interes sînt:
+
+\begin{definition}\label{def:neted}
+  Un drum $\gamma : J \to \RR^n$ se numește \emph{neted} dacă aplicația $\gamma$
+  este de clasă $\kal{C}^1(J)$, iar $\gamma'(t) \neq 0, \forall t \in J$.
+
+  Un drum se numește \emph{neted pe porțiuni} dacă se obține prin concatenarea
+  unui număr finit de drumuri netede.
+\end{definition}
+
+În cazurile particulare de interes, adică în $\RR^2$ și $\RR^3$, vom
+nota drumurile parametrizate prin $\gamma(t) = (x(t), y(t))$, respectiv
+$\gamma(t) = (x(t), y(t), z(t))$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Integrala curbilinie}
+\label{sec:int-curb}
+
+\textbf{Integrala curbilinie de prima speță}
+
+Dat un drum neted $\gamma : [a, b] \to \RR^3$, iar $f : D \to \RR$, o funcție
+continuă cu $D \supseteq \gamma([a, b])$, se definește integrala curbilinie
+de prima speță a funcției $f$ pe drumul $\gamma$ prin:
+\[
+  \int_\gamma f(x, y, z) ds = \int_a^b f(x(t), y(t), z(t)) \cdot %
+  \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2} dt.
+\]
+
+În particular, pentru $f = 1$, obținem $L(\gamma)$, care este
+\emph{lungimea drumului $\gamma$}, definit prin:
+\[
+  L(\gamma) = \int_a^b \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2} dt.
+\]
+
+Un alt caz particular este dat de o interpretare fizică. Presupunem că imaginea
+lui $\gamma$ reprezintă un fir material, iar $f$ este funcția de densitate a firului.
+Atunci putem calcula masa $M$ și coordonatele centrului de greutate
+($x_i^G$) ale firului prin:
+\begin{align*}
+  M &= \int_\gamma f ds \\
+  x_i^G &= \frac{1}{M} \int_\gamma x_i f ds.
+\end{align*}
+
+\vspace{1cm}
+
+\textbf{Integrala curbilinie de speța a doua}
+
+Fie $\alpha = P dx + Q dy + R dz$ o 1-formă diferențială, unde $P, Q, R$ sînt
+funcții continue definite pe $D \seq \RR^3$, mulțime deschisă.
+
+Fie $\gamma : [a, b] \to \RR^3, \gamma(t) = (x(t), y(t), z(t))$ un drum
+parametrizat neted, cu $\gamma([a, b]) \seq D$.
+
+Integrala curbilinie a formei diferențiale $\alpha$ de-a lungul drumului $\gamma$
+se definește prin:
+\[
+  \int_\gamma \alpha = \int_a^b (P(\gamma(t))x'(t) + Q(\gamma(t))y'(t) + %
+  R(\gamma(t))z'(t) dt.
+\]
+
+Putem da și în acest caz o interpretare fizică, folosind \emph{notații vectoriale}.
+Asociem 1-formei diferențiale $\alpha = P dx + Q dy + R dz$ un cîmp de vectori
+$\vec{V} : D \to \RR^3$, de componente $\vec{V} = (P, Q, R)$. Integrala 1-formei
+$\alpha$ pe drumul $\gamma$ devine, în acest caz, \emph{circulația cîmpului} $\vec{V}$
+de-a lungul drumului $\gamma$, notată $\int_\gamma \vec{V} \cdot d\vec{r}$.
+
+În particular, dacă interpretăm $\vec{V} = \vec{F}$ ca un cîmp de forțe, atunci
+circulația $\int_\gamma \vec{F} \cdot d \vec{r}$ este \emph{lucrul mecanic} efectuat
+de forța $\vec{F}$, acționînd pe drumul $\gamma$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Forme diferențiale exacte}
+\label{sec:exact}
+
+\begin{definition}\label{def:exact}
+  O 1-formă diferențială $\alpha = P dx + Q dy + R dz$ se numește \emph{exactă} pe o
+  mulțime $D$ dacă există o funcție $f$, numită \emph{potențial scalar} sau
+  \emph{primitivă}, de clasă $\kal{C}^1(D)$, astfel încît $Df = \alpha$ sau,
+  pe componente:
+  \[
+    \frac{\partial f}{\partial x} = P, \frac{\partial f}{\partial y} = Q, %
+    \frac{\partial f}{\partial z} = R.
+  \]
+\end{definition}
+
+În interpretarea vectorială, cîmpul de vectori $\vec{V} = (P, Q, R)$ asociat formei
+diferențiale $\alpha$ se numește \emph{cîmp de gradienți}, deoarece $V = \nabla f$.
+
+\begin{definition}\label{def:inchis}
+  O 1-formă diferențială $\alpha = P dx + Q dy + R dz$ se numește \emph{închisă} pe $D$
+  dacă sînt verificate, în orice punct din $D$, egalitățile:
+  \[
+    \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}, %
+    \frac{\partial Q}{\partial z} = \frac{\partial R}{\partial y}, %
+    \frac{\partial R}{\partial x} = \frac{\partial P}{\partial z}.
+  \]
+\end{definition}
+
+Exactitatea formelor diferențiale ne permite să calculăm mai simplu unele
+integrale curbilinii, după cum arată următoarea teoremă:
+
+\begin{theorem}\label{thm:indep-drum}
+  Fie $\alpha = Df$ o 1-formă diferențială exactă pe $D$ și fie $\gamma$ un drum
+  parametrizat neted, cu imaginea inclusă în $D$, de capete $p, q \in D$. Atunci:
+  \begin{enumerate}[(a)]
+  \item $\ds\int_\gamma Df = f(q) - f(p)$;
+  \item Dacă $\gamma$ este închis, atunci $\int_\gamma Df = 0$.
+  \end{enumerate}
+\end{theorem}
+
+Să remarcăm faptul că, folosind teorema de simetrie a lui Schwartz, rezultă
+că \emph{orice formă diferențială exactă este și închisă}. Reciproca este,
+în general falsă. De exemplu, forma diferențială:
+\[
+  \alpha = \frac{-y}{x^2 + y^2} dx + \frac{x}{x^2 + y^2} dy
+\]
+este închisă pe $\RR^2 - \{(0, 0)\}$, dar nu este exactă.
+
+Un rezultat fundamental este următorul:
+
+\begin{theorem}[Poincar\'{e}]\label{thm:poinc}
+  Fie $\alpha$ o 1-formă diferențială de clasă $\kal{C}^1$, închisă pe domeniul
+  $D \seq \RR^n$. Atunci, pentru orice $x \in D$, există o vecinătate deschisă a
+  sa $U \seq D$ și o funcție $f$ de clasă $\kal{C}^1$, astfel încît $Df = \alpha$,
+  \emph{pe $U$}.
+\end{theorem}
+
+Cu alte cuvinte, orice 1-formă diferențială închisă este \emph{local exactă}.
+
+Mai avem nevoie și de următoarea:
+
+\begin{definition}\label{def:stelat}
+  O mulțime $D \seq \RR^n$ se numește \emph{stelată} (\emph{domeniu stelat}) dacă
+  există un punct $x_0 \in D$, astfel încît segmentul $[x_0, x] \seq D$, pentru orice
+  $x \in D$.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Să se calculeze următoarele integrale curbilinii de speța întîi:
+\begin{enumerate}[(a)]
+\item $\int_C x ds$, unde $C: y = x^2, x \in [0, 2]$;
+\item $\int_C y^5 ds$, unde $C: x = \frac{y^4}{4}, y \in [0, 2]$;
+\item $\int_C x^2 ds$, unde $C: x^2 + y^2 = 2, x, y \geq 0$;
+\item $\int_C yds$, unde $C: x(t) = \ln(\sin t) - \sin^2 t$,
+  $y(t) = \frac{1}{2} \sin 2t$;
+\item $\int_C xyds$, unde $C: x(t) = |t|, y(t) = \sqrt{1 - t^2}$, $t \in [-1, 1]$;
+\item $\int_C |x - y| ds$, unde $C: x(t) = |\cos t|, y(t) = \sin t$, $t \in [0, \pi]$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se calculeze următoarele integrale curbilinii de speța a doua:
+\begin{enumerate}[(a)]
+\item $\int_C \frac{dx}{2a + y} - \frac{dy}{a + x}$, unde $C$ este o curbă
+  simplă formată din porțiunea din cercul $x^2 + y^2 + 2ay = 0$ ($a > 0$),
+  pentru care $x + y \geq 0$, iar capătul de pornire este $A(a, -a)$;
+\item $\int_C xdy - ydx$, unde $C: x^2 + y^2 = 4, y = x \sqrt{3}, x \geq 0, %
+  y = \frac{x}{\sqrt{3}}$;
+\item $\int_\gamma (x + y) dx + (x - y) dy$, unde domeniul este:
+  \[
+    \gamma = \{(x, y) \mid x^2 + y^2 = 4, y \geq 0\}.
+  \]
+\item $\int_\gamma \frac{y}{x + 1} dx + dy$, unde $\gamma$ este triunghiul cu
+  vîrfurile $A(2, 0), B(0, 0), C(0, 2)$;
+\item $\int_\gamma xdy - ydx$, unde:
+  \[
+    \gamma = \{(x, y) \mid \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \}.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze $\int_\gamma ydx + xdy$, pe un drum de la $A(2, 1)$
+la $B(1, 3)$.
+
+\vspace{1cm}
+
+4. Fie $a \in \RR$ și $P, Q : \RR^2 \to \RR$, definite prin:
+\[
+  P(x, y) = x^2 + 6y, \quad Q(x, y) = 3ax - 4y.
+\]
+
+Să se afle $a$ astfel încît $\omega = Pdx + Qdy$ să fie o 1-formă diferențială
+exactă pe $\RR^2$ și să se determine primitive sa ($f \in \kal{C}^1(\RR^2)$, cu
+$Df = \omega$).
+
+\vspace{1cm}
+
+5. Să se calculeze circulația cîmpului de vectori $\vec{V}$ de-a lungul curbei
+$\gamma$, pentru:
+\begin{enumerate}[(a)]
+\item $\vec{V} = -(x^2 + y^2) \vec{i} - (x^2 - y^2) \vec{j}$, cu
+  \[
+    \gamma = \{(x, y) \mid x^2 + y^2 = 4, y < 0 \} \cup %
+    \{(x, y) \mid x^2 + y^2 - 2x = 0, y \geq 0 \}.
+  \]
+\item $\vec{V} = x\vec{i} + xy \vec{j} + xyz \vec{k}$, unde:
+  \[
+    \gamma = \{(x, y, z) \mid x^2 + y^2 = 1 \} \cap
+    \{(x, y, z) \mid x + z = 3 \}.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se calculeze coordonatele centrului de greutate al unui fir cu forma unui
+arc de cerc, de rază $R$ și de măsură $\alpha \in (0, \pi)$, presupus omogen.
+
+\vspace{1cm}
+
+7. Să se calculeze masa firului material $\gamma$, cu ecuațiile parametrice:
+\[
+  \begin{cases}
+    x(t) &= t \\
+    y(t) &= \frac{1}{2} t^2 \\
+    z(t) &= \frac{1}{3} t^3
+  \end{cases}, t \in [0, 1]
+\]
+și cu densitatea $F(x, y, z) = \sqrt{2y}$.
+
+\end{document}

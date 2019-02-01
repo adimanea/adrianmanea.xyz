@@ -1,0 +1,153 @@
+\chapter{Funcții implicite}
+
+
+Funcțiile implicite sînt definite de ecuații care, în general, nu se pot
+rezolva sau se rezolvă foarte dificil. De exemplu, dacă avem o ecuație
+de forma:
+\[
+  xy + 2x\sin y = 0
+\]
+și vrem să exprimăm de aici funcția $ y = y(x) $, constatăm că acest
+lucru nu este posibil, deoarece ecuația nu poate fi rezolvată pentru $ y $.
+Astfel, vom spune în acest caz că $ y $ a fost definită \emph{implicit}
+de ecuația de mai sus.
+\index{funcții!implicite}
+
+Trecem direct la exemplificarea noțiunilor teoretice pe exerciții rezolvate.
+
+\vspace{1cm}
+
+1. Funcția $ z = z(x, y) $ este definită implicit de ecuația:
+\[
+  (y + z) \sin z - y (x + z) = 0.
+\]
+Calculați expresia:
+\[
+  E = z \sin z \frac{\partial z}{\partial x} - y^2 \frac{\partial z}{\partial y}.
+\]
+
+\emph{Soluție:} Notăm expresia implicită dată cu $ F(x, y, z) $. Pentru a putea
+exprima $ z = z(x, y) $, deci ca funcție, este necesar ca expresia $ F $ să depindă
+\emph{funcțional} de $ z $, adică să nu aibă pe $ z $ doar ca parametru ori drept
+constantă. Așadar, avem o \emph{condiție de existență} a funcției implicite
+$ z = z(x, y) $, anume $ \dfrac{\partial F}{\partial z} \neq 0 $.
+
+Presupunem acum că ne aflăm în ipoteza de mai sus, i.e.\ condiția de existență
+este satisfăcută. Atunci, pentru a exprima $ \dfrac{\partial z}{\partial x} $
+și $ \dfrac{\partial z}{\partial y} $, vom deriva expresia $ F $, deoarece
+doar acolo apare funcția $ z $. Obținem:
+\[
+  \frac{\partial F}{\partial x} = \frac{\partial z}{\partial x} \sin z + %
+  (y + z) \cos z \dfrac{\partial z}{\partial x} - %
+  y\Big(1 + \dfrac{\partial z}{\partial x} \Big) = 0
+\]
+Rezultă:
+\[
+  \frac{\partial z}{\partial x} = \frac{z}{\sin z + (y + z) \cos z - y}.
+\]
+
+Similar:
+\[
+  \frac{\partial F}{\partial y} = \Big(1 + \frac{\partial z}{\partial y} \Big) \sin z + %
+  (y + z) \cos z \frac{\partial z}{\partial y} - (x + z) - y \frac{\partial z}{\partial y} = 0.
+\]
+Rezultă:
+\[
+  \frac{\partial z}{\partial y} = \dfrac{x + z - \sin z}{\sin z + (y + z)\cos z - y}.
+\]
+Înlocuind în expresia cerută, obținem $ E = 0 $.
+
+\vspace{1cm}
+
+Un alt tip de exercițiu de care sîntem interesați este acela al extremelor pentru
+funcții definite implicit.
+
+2. Să se determine extremele funcției $ y = y(x) $, definită implicit de ecuația:
+\[
+  x^3 + y^3 - 2xy = 0.
+\]
+
+\emph{Soluție:} Fie $ F(x, y) = x^3 + y^3 - 2xy $, astfel încît condiția dată
+este $ F(x, y) = 0 $.
+
+Pentru a extrage funcția $ y = y(x) $, este necesar să punem condiția
+de existență:
+\[
+  \dfrac{\partial F}{\partial y} \neq 0 \Rightarrow 3y^2 - 2x \neq 0.
+\]
+
+Acum, știind că avem funcția $ y = y(x) $, extremele acesteia se determină
+folosind derivata $ y'(x) $, pe care nu o putem obține altfel decît prin
+intermediul funcției $ F $. Avem, așadar:
+\[
+  \frac{\partial F}{\partial x} = 3x^2 - 3y^2 y' - 2y - 2x y' = 0.
+\]
+Obținem de aici:
+\[
+  y'(x) = \frac{2y - 3x^2}{3y^2 - 2x}.
+\]
+Pentru extreme, avem condițiile:
+\[
+  \begin{cases}
+    y'(x) &= 0 \\
+    F(x, y) &= 0 \\
+    \dfrac{\partial F}{\partial y} &\neq 0
+  \end{cases}
+\]
+
+Rezultă $ y = \dfrac{3x^2}{2} $ și înlocuim, obținînd perechea de soluții:
+\[
+  (x, y) = \Big( \dfrac{2\sqrt[3]{3}}{3}, \dfrac{2\sqrt[3]{4}}{3} \Big).
+\]
+
+Pentru a decide natura punctului de mai sus, este necesar să calculăm
+$ y^{\prime\prime} $, care se obține derivînd din nou expresia pentru $ y'(x) $.
+Avem:
+\[
+  y^{\prime\prime}(x) = \frac{(2y' - 6x)(3y^2 - 2x) - (6yy' - 2)(2y - 3x^2)}{(3y^2 - 2x)^2}.
+\]
+Evaluînd pentru $ x = \dfrac{2 \sqrt[3]{2}}{3} $, unde $ y' = 0 $, găsim:
+\[
+  y^{\prime\prime}\Big( \dfrac{2 \sqrt[3]{2}}{4} \Big) = -3 < 0,
+\]
+deci punctul este de maxim local.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții propuse}
+
+\indent\indent 1. Fie funcția $ z = z(x, y) $, definită implicit prin:
+\[
+  g(y^2 - x^2, z - xy) = 0,
+\]
+
+unde $ g \in \kal{C}^1(\RR^2) $. Calculați expresia:
+\[
+  E = y \dfrac{\partial z}{\partial x} + x \dfrac{\partial z}{\partial y}.
+\]
+
+\vspace{1cm}
+
+2. Să se determine extremele funcției $ y = y(x) $, definită implicit
+de ecuațiile:
+\begin{enumerate}[(a)]
+\item $ x^3 + y^3 - 3x^2y - 3 = 0 $;
+\item $ 2x^2y + y^2 - 4x - 3 = 0 $;
+\item $ (x^2 + y^2)^2 = x^2 - y^2 $;
+\item $ x^2 - 2xy + 5y^2 - 2x + 4y = - 1 $;
+\item $ x^2 + y^2 - e^{2 \arctan \frac{x}{y}} = 0 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie funcția $ z = z(x, y) $, definită implicit de ecuația:
+\[
+  F(x, y, z) = x^2 + 2y^2 + z^2 - 4z = 12.
+\]
+Să se calculeze derivatele parțiale de ordinul întîi și al doilea
+pentru funcția $ z $.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-18-19"
+%%% End:

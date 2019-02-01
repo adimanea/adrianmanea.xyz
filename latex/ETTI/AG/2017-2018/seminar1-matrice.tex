@@ -1,0 +1,728 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 1 \\ Calcul matriceal}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Structuri algebrice}
+
+\indent\indent Amintim mai întîi definițiile principale în ce privește structurile algebrice.
+
+Începem chiar cu noțiuni preliminare, anume relațiile binare și operațiile.
+
+\begin{definition}\label{def:rel-bin}
+  Fie $A$ o mulțime nevidă. O submulțime a produsului cartezian $A \times A$ se
+  numește \emph{relație binară definită pe $A$}.
+
+  Dacă $R \seq A \times A$ este o asemenea relație, în locul notației $a, b \in R$,
+  pentru două elemente din $A$, aflate în relația $R$, vom folosi notația $a R b$ și
+  vom citi \qq{$a$ este în relația $R$ cu $b$}.
+\end{definition}
+
+De exemplu, relația de rudenie este o relație binară, definită pe mulțimea oamenilor,
+relația de ordine este o relație binară definită pe mulțimea numerelor naturale, de
+pildă, relația de paralelism este o relație binară definită pe mulțimea curbelor din
+plan și altele.
+
+Relațiile binare pot avea una sau mai multe din următoarele proprietăți:
+
+Vom păstra notațiile și contextul de mai sus. Relația $R$ se numește:
+\begin{itemize}
+  \item \emph{reflexivă}, dacă orice element este în relația $R$ cu sine, i.e.\
+    $a R a, \forall a \in A$;
+  \item \emph{simetrică}, dacă oricînd $a R b$ implică $b R a$, pentru niște $a, b \in A$;
+  \item \emph{antisimetrică}, dacă din $a R b$ și $b R a$, pentru niște $a, b \in A$,  
+    rezultă că $a$ și $b$ coincid.
+  \item \emph{tranzitivă}, dacă din $a R b$ și $b R c$ putem deduce $a R c$, pentru orice
+    $a, b, c \in A$ care satisfac ipoteza.
+\end{itemize}
+
+În funcție de proprietățile respectate, relațiile se pot clasifica. De exemplu, cel mai des
+se întîlnește relația de \emph{ordine}, care este reflexivă, antisimetrică și tranzitivă,
+precum și relația de \emph{echivalență}, care este reflexivă, simetrică și tranzitivă.
+
+Exemple clasice: relația \qq{$\leq$} este o relație de ordine pe mulțimea $\RR$. Egalitatea
+este o relație de echivalență, definită pe aproape orice mulțime de obiecte matematice de
+același tip (mulțimi de numere, de matrice, de funcții ș.a.m.d.).
+
+\vspace{1cm}
+
+Dacă relațiile binare nu returnează un al treilea element, deci nu dau o dependență funcțională,
+ele avînd doar o valoare de adevăr (i.e.\ putem spune doar dacă $aRb$ este adevărat, nu și
+\qq{cît face} $a R b$), \emph{operațiile} sau \emph{legile de compoziție} au această proprietate.
+
+Mai precis:
+
+\begin{definition}\label{def:lege-comp}
+  Fie $A$ o mulțime nevidă. Se numește \emph{lege de compoziție} sau \emph{operație (binară)} orice
+  funcție de tipul $f : A \times A \to A$.
+\end{definition}
+
+Exemplele tipice sînt operațiile algebrice, pe mulțimi de numere. Însă înainte de a le folosi,
+mai avem nevoie de terminologie.
+
+Păstrînd notațiile și contextul de mai sus, o lege de compoziție $f$ se numește:
+\begin{itemize}
+  \item \emph{internă}, dacă $\forall a, b \in A, f(a, b) \in A$ (automat verificată, dacă
+    în definiție impunem condiția ca $f$ să fie \emph{funcție} și nu doar o asociere abstractă);
+  \item \emph{asociativă}, dacă $\forall a, b, c \in A, f(a, f(b, c)) = f(f(a, b), c)$;
+  \item \emph{comutativă}, dacă $\forall a, b \in A$, are loc $f(a, b) = f(b, a)$;
+  \item \emph{cu element neutru}, dacă există un element distins (unic) $e \in A$, astfel încît
+    $f(a, e) = f(e, a) = a, \forall a \in A$;
+  \item \emph{cu elemente inversabile (simetrizabile)} dacă pentru un $a \in A$ există $a^{-1} \in A$
+    astfel încît $f(a, a^{-1}) = f(a^{-1}, a) = e$, elementul neutru.
+\end{itemize}
+
+Cum spuneam, exemplele tipice sînt operațiile algebrice elementare. Cum ar fi adunarea, definită
+pe mulțimea numerelor reale, care are toate proprietățile de mai sus. Înmulțirea, definită pe
+mulțimea numerelor naturale, nu admite decît un singur element inversabil, anume 1.
+
+Compunerea funcțiilor reale, pe de altă parte, nu este comutativă, dar are elemente inversabile
+(chiar dacă nu toate), anume funcțiile bijective. 
+
+Există suficiente exemple de operații care nu au una sau mai multe din proprietățile de mai sus,
+după cum vă puteți convinge.
+
+\vspace{1cm}
+
+Deoarece, ca în cazul relațiilor binare, există o legătură strînsă între operație și mulțimea
+pe care a fost definită, se definesc \emph{structurile algebrice} ca fiind exact perechi
+alcătuite din mulțimi și operații definite pe ele, satisfăcînd anumite proprietăți,
+conform definițiilor de mai jos.
+
+\begin{definition}\label{def:str-alg}
+  Fie $A$ o mulțime nevidă și $\circ$ o operație definită pe $A$.
+
+  Perechea $(A, \circ)$ se numește:
+  \begin{itemize}
+    \item \emph{monoid}, dacă operația este internă, asociativă și admite element neutru;
+    \item \emph{grup}, dacă este monoid și orice element este inversabil.
+  \end{itemize}
+
+  Dacă, în plus, operația este și comutativă, se adaugă adjectivul \qq{comutativ} pentru
+  structura corespunzătoare (i.e.\ monoid comutativ, grup comutativ). În onoarea
+  matematicianului norvegian N. H. Abel, grupurile comutative se mai numesc \emph{abeliene}.
+\end{definition}
+
+Există situații în care ar fi de folos să putem lucra cu mai multe operații pe o mulțime.
+Gîndiți-vă, de exemplu, la cazul numerelor reale, pe care le putem și aduna, și înmulți, ba
+chiar putem opera în expresii care să conțină ambele legi, simultan.
+Pentru aceasta, se pot defini structuri algebrice mai bogate, adăugînd condiții suplimentare
+de compatibilitate pentru operațiile folosite.
+
+\begin{definition}\label{def:inel-corp}
+  Fie $A$ o mulțime nevidă și $\circ, \ast$ două operații, ambele definite pe $A$.
+
+  Tripletul $(A, \circ, \ast)$ se numește:
+  \begin{itemize}
+    \item \emph{inel}, dacă perechea $(A, \circ)$ este grup comutativ, perechea $(A, \ast)$
+      este monoid, iar operația $\ast$ este \emph{distributivă} față de $\circ$, adică au loc:
+      \[
+        a \ast (b \circ c) = (a \ast b) \circ (a \ast c) \text{ și } %
+        (b \circ c) \ast a = (b \ast a) \circ (c \ast a), \forall a, b, c \in A.
+      \]
+    \item \emph{corp}, dacă este inel și, în plus, perechea $(A, \ast)$ este chiar grup.
+  \end{itemize}
+
+  Ca mai sus, dacă și operația $\ast$ este comutativă, se adaugă atributul \qq{comutativ}
+  numelui structurii (i.e.\ inel comutativ, corp comutativ).
+\end{definition}
+
+Exemplele tipice sînt la îndemînă: $(\RR, +, \cdot)$ este corp comutativ,
+$(M_n(\RR), +, \cdot)$ este inel necomutativ, $(\RR[X], +, \cdot)$ este inel
+comutativ și altele.
+
+Făcînd verificările, veți recunoaște în proprietatea de distributivitate
+procedura obișnuită de \emph{desfacere a parantezelor} într-o expresie algebrică.
+
+Date două structuri algebrice, eventual cu mulțimi subiacente și operații diferite,
+există o modalitate de a le relaționa, prin intermediul \emph{morfismelor}:
+
+\begin{definition}\label{def:morfism}
+  Fie $(G, \circ)$ și $(H, \ast)$ două structuri algebrice (monoizi, grupuri).
+
+  O funcție $f: G \to H$ se numește \emph{morfism} dacă respectă operațiile, i.e.:
+  \[
+    f(g_1 \circ g_2) = f(g_1) \ast f(g_2), \forall g_1, g_2 \in G.
+  \]
+
+  În plus, cerem ca morfismul să fie și \emph{unitar}, adică $f(e_G) = e_H$
+  (elementele neutre corespund).
+\end{definition}
+
+Dacă vrem să definim morfismele pentru inele, cerem în plus ca funcțiile să
+respecte și cea de-a doua operație, iar ambele elemente neutre să corespundă.
+
+Dacă morfismul este chiar o funcție bijectivă, atunci el se numește \emph{izomorfism},
+iar structurile, \emph{izomorfe}.
+
+O ultimă noțiune utilă:
+
+\begin{definition}\label{def:substruct}
+  Dată o structură algebrică $(G, \circ)$ și o submulțime a sa, $H$, spunem
+  că $H$ este \emph{substructură} pentru $G$ (în particular, submonoid,
+  subgrup) dacă $(H, \circ)$ are aceeași structură ca $G$, i.e.\ de monoid
+  sau grup.
+\end{definition}
+
+În cazul structurilor cu două operații, definiția se păstrează, cerînd ca
+$H$ să aibă aceeași structură cu $G$, împreună cu \emph{ambele} operații.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Calcul matriceal -- Recapitulare liceu}
+
+\begin{itemize}
+  \item Operații cu matrice;
+  \item Urma, determinantul și proprietăți;
+  \item Transpusa, adjuncta și inversa unei matrice;
+  \item Rangul unei matrice;
+  \item Structura de inel a $M_n(\RR)$;
+  \item $(\ast)$ Matrice din $M_n(\ZZ_q)$.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sisteme de ecuații liniare -- Recapitulare liceu}
+
+\begin{itemize}
+  \item Forma matriceală a unui sistem de ecuații liniare;
+  \item Criteriile de compatibilitate;
+  \item Rezolvarea sistemelor Cramer;
+  \item Rezolvarea sistemelor nedeterminate.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Metoda Gauss-Jordan}
+
+\indent\indent Această metodă ne permite să aducem orice matrice la o formă foarte simplă,
+anume forma matricei identitate, operînd numai cu transformări elementare
+asupra liniilor sau coloanelor acesteia.
+
+Într-o formă mai relaxată, numită de obicei \emph{eliminarea gaussiană}, este suficient
+să aducem matricea în formă \emph{superior triunghiulară}, adică astfel încît
+elementele de sub diagonala principală să fie toate nule.
+
+Metoda Gauss-Jordan are 2 principale aplicații (pe lîngă simplificarea matricei,
+care ar putea să fie utilă în numeroase contexte). Prima aplicație este în aflarea
+inversei unei matrice, iar cea de-a doua, în rezolvarea sistemelor liniare.
+
+\textbf{Inversarea matricelor cu metoda Gauss-Jordan} se bazează pe următorul
+algoritm:
+\begin{itemize}
+  \item Dată matricea $A$, pătrată și nesingulară (inversabilă), se alcătuiește
+    matricea $B = (A \mid I_n)$, unde $n$ este dimensiunea matricei. Matricea $B$
+    va fi o matrice cu $n$ linii și $2n$ coloane, în care trasăm, pentru conveniență,
+    linia verticală care separă cele două componente;
+  \item În partea stîngă a matricei $B$ (corespunzătoare matricei $A$), operăm cu
+    \emph{transformări elementare} ale liniilor și coloanelor, pînă cînd această parte
+    devine $I_n$, transformările reflectîndu-se și în partea dreaptă
+    a matricei $B$;
+  \item Atunci cînd în partea stîngă $A$ a devenit $I_n$, partea dreaptă a devenit $A^{-1}$.
+\end{itemize}
+
+Iată un exemplu, notînd și transformările:
+\begin{align*}
+  \begin{pmatrix}
+    2 & 1 & 3 & \mid & 1 & 0 & 0 \\
+    -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+    5 & 1 & 1 & \mid & 0 & 0 & 1
+  \end{pmatrix} &\xrightarrow{L_1 \to (1/2)L_1}
+  \begin{pmatrix}
+    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+    -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+    5 & 1 & 1 & \mid & 0 & 0 & 1 
+  \end{pmatrix} \\
+  &\stackrel{L_2 \to 2L_1 + L_2}{\xrightarrow{L_3 \to -5L_1 + L_3}}
+  \begin{pmatrix}
+    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+    0 & 4 & 7 & \mid & 1 & 1 & 0 \\
+    0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1
+  \end{pmatrix} \\
+  &\xrightarrow{L_2 \to (1/4)L_2}
+  \begin{pmatrix}
+    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+    0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+    0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1 
+  \end{pmatrix} \\
+  &\stackrel{L_1 \to (-1/2)L_2 + L_1}{\xrightarrow{L_3 \to (3/2)L_2 + L_3}}
+  \begin{pmatrix}
+    1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+    0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+    0 & 0 & -31/8 & \mid & -17/8 & 3/8 & 1
+  \end{pmatrix} \\
+  &\xrightarrow{L_3 \to (-31/8)L_3}
+  \begin{pmatrix}
+    1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+    0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+    0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+  \end{pmatrix} \\
+  &\stackrel{L_1 \to (-5/8)L_3 + L_1}{\xrightarrow{L_2 \to (-7/4)L_3 + L_2}}
+  \begin{pmatrix}
+    1 & 0 & 0 & \mid & 1/31 & -2/31 & 5/31 \\
+    0 & 1 & 0 & \mid & -22/31 & 13/31 & 14/31 \\
+    0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+  \end{pmatrix}
+\end{align*}
+
+Rezultă că $A^{-1} = \begin{pmatrix} 1/31 & -2/31 & 5/31 \\
+  -22/31 & 13/31 & 14/31 \\
+  17/31 & -3/31 & -8/31
+\end{pmatrix}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Rezolvarea sistemelor liniare cu ajutorul metodei Gauss-Jordan}
+
+Vom proceda similar, însă vom opera pe matricea $M = (A | B)$, unde
+$A$ este matricea asociată sistemului liniar, iar $B$ este matricea
+termenilor liberi (rezultatelor). Cînd, după procedeul Gauss-Jordan,
+am obținut $M = (I_n | C)$, atunci $C$ va fi matricea-coloană a soluțiilor.
+
+Iată un exemplu: Considerăm sistemul de mai jos.
+\[
+  \begin{cases}
+    mx_1 + x_2 + x_3  &= 1 \\
+    x_1 + mx_2 + x_3 &= m \\
+    x_1 + x_2 + mx_3 &= m^2,
+  \end{cases}
+\]
+cu $m \in \RR$. Îi vom discuta compatibilitatea în funcție de $m$ și, în caz
+favorabil, îl vom rezolva. Totul va rezulta din metoda Gauss-Jordan.
+
+Considerăm matricea $M$ de mai sus:
+\begin{align*}
+  (A | B) &= \begin{pmatrix}
+    m & 1 & 1 & \mid & 1 \\
+    1 & m & 1 & \mid & m \\
+    1 & 1 & m & \mid & m^2
+  \end{pmatrix} \\
+  &\xrightarrow{L_1 \leftrightarrow L_2}
+  \begin{pmatrix}
+    1 & m & 1 & \mid & m \\
+    m & 1 & 1 & \mid & 1 \\
+    1 & 1 & m & \mid & m^2
+  \end{pmatrix} \\
+  &\stackrel{L_2 \to L_2 - mL_1}{\xrightarrow{L_3 \to L_3 - L_1}}
+  \begin{pmatrix}
+    1 & m & 1 & \mid & m \\
+    0 & 1 - m^2 & 1 - m & \mid & 1 - m^2 \\
+    0 & 1 - m & m - 1 & \mid & m^2 - m.
+  \end{pmatrix}
+\end{align*}
+
+În acest punct, avem o discuție:
+
+(a) Dacă $m = 1$, atunci sistemul se reduce la prima ecuație, deci este compatibil
+dublu nedeterminat. Rezultă soluția $\{ (1 - \alpha - \beta, \alpha, \beta) \mid \alpha, \beta \in \RR \}$.
+
+(b) Dacă $m \neq 1$, atunci putem continua transformările și ajungem, în fine, la:
+\[
+  M = \begin{pmatrix}
+    1 & 0 & 1 + m & \mid & m + m^2 \\
+    0 & 1 & -1 & \mid & -m \\
+    0 & 0 & 2 & \mid & (m + 1)^2
+  \end{pmatrix}
+\]
+
+Aici discutăm din nou:
+
+(b1) Dacă $m = -2$, sistemul este incompatibil, deoarece ultima ecuație devine $0 = 1$.
+
+(b2) Dacă $m \neq -2$, putem continua transformările și ajungem, în cele din urmă, la:
+\[
+  M = \begin{pmatrix}
+    1 & 0 & 0 & \mid & - \frac{m+1}{m_2}  \\
+    0 & 1 & 0 & \mid & \frac{1}{m+2} \\
+    0 & 0 & 1 & \mid & \frac{(m + 1)^2}{m + 2}.
+  \end{pmatrix}
+\]
+
+În acest ultim caz, sistemul este compatibil determinat, soluția fiind dată de ultima coloană:
+\[
+  \begin{cases}
+    x_1  &= -\frac{m + 1}{2} \\
+    x_2  &= \frac{1}{m + 2} \\
+    x_3  &= \frac{(m + 1)^2}{m + 2}.
+  \end{cases}
+\]
+
+Concluzia generală este:
+\begin{enumerate}[(a)]
+  \item Dacă $m \in \RR - \{-2, 1\}$, sistemul are soluție unică;
+  \item Dacă $m = -2$, sistemul este incompatibil;
+  \item Dacă $m = -1$, sistemul este compatibil nedeterminat.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Descompunerea LU}
+
+\indent\indent Descompunerea LU este în strînsă legătură cu metoda Gauss-Jordan.
+Practic, ea \qq{înregistrează} pașii pe care algoritmul Gauss-Jordan îi face,
+permițînd ca atunci cînd se lucrează cu o matrice cu proprietăți similare, să nu
+se repete pașii care ar fi comuni.
+
+Fie, de exemplu, matricea:
+$A = \begin{pmatrix}
+  1 & -2 & 3 \\
+  2 & -5 & 12 \\
+  0 & 2 & -10
+\end{pmatrix}$.
+
+Dacă vrem să aplicăm măcar eliminarea gaussiană, scopul este să obținem o
+matrice superior triunghiulară. Astfel că ne vom ocupa mai întîi de elementul
+2 de pe prima coloană și linia a doua, apoi de elementul nul de dedesubt,
+iar în final, de elementul 2 de pe linia a treia și coloana a doua.
+
+Vom folosi notațiile standard, i.e.\ scriem $A = (a_{ij})$ pentru a ne putea
+referi mai ușor la elementele matricei.
+
+Pentru descompunerea LU, ținem cont de transformările făcute astfel:
+\begin{itemize}
+  \item facem transformarea $L_2 \to L_2 - 2L_1$ și avem $a_{21} = 0$.
+    Înregistrăm, în acest scop, numărul 2 pe poziția $2, 1$;
+  \item elementul $a_{31} = 0$ deja, așa că înregistrăm numărul 0 pe
+    poziția $3, 1$, deoarece nu facem nicio transformare;
+  \item facem transformarea $L_3 \to L_3 - (-2)L_2$ și avem $a_{32} = 0$.
+    Înregistrăm numărul -2 pe poziția $3, 2$.
+\end{itemize}
+
+Așadar, matricea se obține:
+\[
+  A = \begin{pmatrix}
+    1 & -2 & 3 \\
+    (2) & -1 & 6 \\
+    (0) & (-2) & 2
+  \end{pmatrix}
+\]
+unde elementele din paranteze sînt, de fapt, zerouri, dar corespund valorilor
+înregistrate mai sus.
+
+Cu aceasta, alcătuim două matrice: matricea $L$ care va fi inferior triunghiulară
+(``lower'') și va conține elementele din paranteze, iar matricea U, superior
+triunghiulară (``upper''), va conține restul elementelor din forma Gauss a
+matricei de mai sus:
+\[
+  L = \begin{pmatrix}
+    1 & 0 & 0 \\
+    2 & 1 & 0 \\
+    0 & -2 & 1
+  \end{pmatrix} \quad \text{și} \quad
+  U = \begin{pmatrix}
+    1 & -2 & 3 \\
+    0 & -1 & 6 \\
+    0 & 0 & 2
+  \end{pmatrix}
+\]
+
+Cu aceasta, avem proprietatea remarcabilă că $LU = A$. Numim acest rezultat
+\emph{descompunerea LU} a matricei $A$.
+
+\subsection{Aplicație: Sisteme liniare}
+
+Putem folosi descompunerea LU pentru a rezolva sisteme liniare. Să presupunem
+că pornim cu sistemul scris în forma matriceală $AX = B$. Atunci:
+\begin{itemize}
+  \item Dată $A$, calculăm $L$ și $U$, astfel încît $A = LU$. Sistemul devine $LUX = B$;
+  \item Fie $Y = UX$ și atunci $LY = B$. Rezolvăm sistemul triunghiular pentru $Y$;
+  \item Rezolvăm sistemul triunghiular $UX = Y$ pentru $X$.
+\end{itemize}
+
+Exemplu: rezolvăm sistemul scris în formă matriceală:
+\[
+  \begin{pmatrix}
+    1 & 2 & 4 \\
+    3 & 8 & 13 \\
+    2 & 6 & 13
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3
+  \end{pmatrix} =
+  \begin{pmatrix}
+    3 \\
+    13 \\
+    4
+  \end{pmatrix}.
+\]
+
+Mai întîi, găsim descompunerea LU a matricei $A$ și obținem:
+\[
+  L = \begin{pmatrix}
+    1 & 0 & 0 \\
+    3 & 1 & 0 \\
+    2 & 1 & 1
+  \end{pmatrix}, \quad \text{și} \quad
+  U = \begin{pmatrix}
+    1 & 2 & 4 \\
+    0 & 2 & 2 \\
+    0 & 0 & 3
+  \end{pmatrix}
+\]
+
+Acum rezolvăm sistemul $LY = B$, pentru vectorul-coloană $Y$. Așadar,
+considerăm:
+\[
+  LY = \begin{pmatrix}
+    1 & 0 & 0 \\
+    3 & 1 & 0 \\
+    2 & 1 & 1
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    y_3
+  \end{pmatrix} =
+  \begin{pmatrix}
+    3 \\ 13 \\ 4
+  \end{pmatrix} = B.
+\]
+
+Se obține $y_1 = 3, y_2 = 4, y_3 = -6$ și trecem la a rezolva $UX = Y$ 
+pentru $X$. Se obține $x_1 = 3, x_2 = 4, x_3 = -2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Pivotare}
+
+Trebuie adăugat faptul că nu întotdeauna o matrice are o descompunere LU\@. De fapt, condiția este următoarea:
+
+\begin{proposition}\label{prop:cond-lu}
+  O matrice $A$ are o descompunere LU dacă și numai dacă toate sub-matricele
+  pătrate care se formează din $A$ sînt nesingulare.
+
+  Astfel, dacă $A$ este o matrice $3 \times 3$, de exemplu, ea are o 
+  descompunere LU dacă și numai dacă $a_{11} \neq 0$, precum și 
+  $\begin{vmatrix} 
+    a_{11} & a_{12} \\ 
+    a_{21} & a_{22} 
+  \end{vmatrix} \neq 0$
+  și $\det A \neq 0$.
+\end{proposition}
+
+Dar dacă avem o matrice care nu admite o descompunere LU, putem să aplicăm 
+transformări elementare și să obținem una care admite. În particular,
+putem inversa liniile sau coloanele matricei și obținem una care are descompunere LU.
+
+Atunci cînd facem aceasta, transformările se înregistrează într-o așa-numită
+\emph{matrice pivot}, care este obținută pornind de la matricea identitate și i se
+aplică transformările corespunzătoare. Astfel, dacă pentru a obține o matrice
+cu descompunere LU interschimbăm coloanele 2 și 3, matricea pivot este
+$P = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}$.
+
+  În acest caz, se obține o descompunere de forma $PA = LU$.
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \section{Descompunerea Cholesky și LDU}
+
+  \indent\indent Vom lucra acum cu matrice speciale, care au următoarea proprietate:
+
+  \begin{definition}\label{def:mat-sim}
+    O matrice $A$ se numește \emph{simetrică} dacă $A = A^t$.
+  \end{definition}
+
+  În cazul acestor matrice, descompunerea LU poate fi continuată și se poate
+  extrage din matricea $U$ o matrice diagonală. De exemplu:
+
+  Fie $A = \begin{pmatrix}
+    2 & 4 & -3 \\
+    4 & 2 & -3 \\
+    3 & -3 & 9
+  \end{pmatrix}$. Facem descompunerea LU și apoi continuăm, extrăgînd diagonala:
+
+  \begin{align*}
+    A &= \begin{pmatrix}
+      1 & 0 & 0 \\
+      2 & 1 & 0 \\
+      -3/2 & -1/2 & 1
+    \end{pmatrix} \cdot 
+    \begin{pmatrix}
+      2 & 4 & -3 \\
+      0 & -6 & 3 \\
+      0 & 0 & -6
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+    1 & 0 & 0 \\
+    2 & 1 & 0 \\
+    3/2 & -1/2 & 1
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & -6 & 0 \\
+    0 & 0 & 6
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    1 & 2 & -3/2 \\
+    0 & 1 & -1/2 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\end{align*}
+
+Pentru a obține matricea diagonală, trebuie doar să punem laolaltă elementele
+de pe diagonala matricei $U$. Apoi, în matricea rămasă, elementele de pe diagonală
+se împart la cele date deoparte.
+
+Să remarcăm că, datorită simetriei, noua matrice $U$ este, de fapt, $L^t$.
+De aceea, în cazul matricelor simetrice, descompunerea are forma $A = LDL^t$.
+
+Există un caz și mai simplu, însă, aplicabil într-un sub-caz al matricelor
+simetrice.
+
+\begin{definition}\label{def:m-poz-def}
+  O matrice $A$ se numește \emph{pozitiv definită} dacă are o descompunere
+  de forma $A = L \cdot L^t$.
+\end{definition}
+
+Vom mai vedea pe parcurs alte moduri de a verifica dacă o matrice este pozitiv
+definită.
+
+Deocamdată, să presupunem că matricea $A$ are o asemenea descompunere.
+Vom descoperi modul în care se poate face această descompunere printr-o
+substituție inversă, adică pornind de la rezultat. Să presupunem, pentru
+simplitate, că lucrăm cu matrice $3 \times 3$:
+
+\begin{align*}
+  A &= L \cdot L^t \\
+    &= \begin{pmatrix}
+  a & 0 & 0 \\
+  b & c & 0 \\
+  d & e & f
+\end{pmatrix} \cdot
+\begin{pmatrix}
+  a & b & d \\
+  0 & c & e \\
+  0 & 0 & f
+\end{pmatrix} \\
+&= \begin{pmatrix}
+a^2 & ab & ad \\
+ab & b^2 + c^2 & bd + ce \\
+ad & bd + fe & d^2 + e^2 + f^2
+\end{pmatrix}
+\end{align*}
+
+Acum, din aproape în aproape, egalînd această matrice de necunoscute cu
+o matrice $A$ de la care pornim, găsim numerele $a, b, c, d, e, f$.
+
+Această descompunere se numește \emph{descompunerea Cholesky} și, asemenea
+celorlalte, este deja implementată în librăria standard a limbajelor și
+uneltelor de programare matematică comune: Mathematica, MATLAB, Maple,
+NumPy și altele.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\begin{itemize}
+  \item Exemple de relații;
+  \item Exemple de structuri algebrice;
+  \item Sisteme de ecuații liniare --- toate cazurile;
+  \item Metoda Gauss-Jordan pentru sisteme;
+  \item Metoda Gauss-Jordan pentru inversarea unei matrice;
+  \item Descompunere LU + sisteme și pivotare;
+  \item Descompunere LDU și Cholesky.
+\end{itemize}
+
+\end{document}

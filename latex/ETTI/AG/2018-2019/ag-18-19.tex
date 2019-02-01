@@ -1,0 +1,50 @@
+\documentclass[12pt, a4paper]{book}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Algebră și geometrie} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: A. Niță, R. Rădulescu, V. Slesar }}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+
+\include{chapters/s1-matrice}
+\include{chapters/s2-spatii}
+\include{chapters/s3-ex-grass}
+\include{chapters/s4-vvp-diag}
+\include{chapters/s5-partial}
+\include{chapters/s6-euclidiene}
+\include{chapters/s7-jordan-conice}
+\include{chapters/s8-dif}
+\include{chapters/s9-recap}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+% BIBLIOGRAPHY
+% \addcontentsline{toc}{chapter}{\protect\numberline{}Bibliografie}
+\bibliography{ag.bib}
+\bibliographystyle{apalike}
+\nocite{*}
+
+
+\end{document}

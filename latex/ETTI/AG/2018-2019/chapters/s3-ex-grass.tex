@@ -1,0 +1,141 @@
+\section{Exerciții suplimentare. Teorema lui Grassmann}
+
+1. Determinați o bază și dimensiunea următoarelor spații vectoriale:
+\begin{enumerate}[(a)]
+\item $ V_1 = \{ (x, y, z) \in \RR^3 \mid 3x + y = 0 \} $;
+\item $ V_2 = \{ (x, y, z) \in \RR^3 \mid x = 0 \} $;
+\item $ V_3 = \{ (x, y, z) \in \RR^3 \mid 3x + y = z, \quad x + 2z = y \} $;
+\item $ V_4 = \{ p \in \RR_2[X] \mid p(0) = 0 \} $;
+\item $ V_5 = \{ p \in \RR_2 [X] \mid p'(0) = 0 \} $;
+\item $ V_6 = \{ A \in M_2(\RR) \mid \dr{tr}(A) = 0 \} $;
+\item $ V_7 = \{ A \in M_2(\RR) \mid A = A^t \} $;
+\item $ V_8 = \dr{Sp}\{ v_1 = (-1, 1, 2), v_2 = (3, 0, 0) \} $;
+\item $ V_9 = \dr{Sp}\{ v = (-1, 1, 1) \} $;
+\item $ V_{10} = \dr{Sp} \{ v_1 = (1, 1, 1), v_2 = (2, 2, 2) \} $;
+\item $ V_{11} = \dr{Sp} \{ X + 1, X^2 + 1 \}$;
+\item $ V_{12} = \dr{Sp} \{ X^2 + x, X + 1, 3X - 2 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Pentru aplicațiile liniare următoare, determinați:
+\begin{enumerate}[(i)]
+\item matricea în baza canonică;
+\item nucleul și imaginea, cu baze și dimensiuni;
+\item precizați dacă aplicațiile sînt injective sau surjective.
+\end{enumerate}
+\begin{enumerate}[(a)]
+\item $ f : \RR^3 \to \RR^3, f(x, y, z) = (x + y + z, x - y - z, 3z) $;
+\item $ f : \RR^3 \to \RR^3, f(x, y, z) = (x + y, x + y, x + y) $;
+\item $ f : \RR^3 \to \RR^3, f(x, y, z) = (x + y, 2x + 2y, z) $;
+\item $ f : \RR^3 \to \RR^3, f(x, y, z) = (x - y, y - x, 3z - x) $;
+\item $ f : \RR^3 \to \RR^2, f(x, y, z) = (x - y - z, x + y + z) $;
+\item $ f : \RR^3 \to \RR^2, f(x, y, z) = (x + y + z, 3z) $:
+\item $ f : \RR^3 \to \RR^2, f(x, y, z) = (x, y) $;
+\item $ f : \RR^2 \to \RR^3, f(x, y, z) = (x, y, x + y) $;
+\item $ f : \RR^2 \to \RR^3, f(x, y) = (3x, y, x + y) $;
+\item $ f : \RR^2 \to \RR_2[X], f(x, y) = 3x + 4yX + xX^2 $;
+\item $ f : \RR_2[X] \to \RR^2, f(a + bX + cX^2) = (a + c, b) $;
+\item $ f : \RR_2[X] \to M_2(\RR), f(a + bX + cX^2) = %
+  \begin{pmatrix}
+    a & b + c \\
+    b & a - c
+  \end{pmatrix}$;
+\item $ f : M_2(\RR) \to \RR_2[X], f \begin{pmatrix} a & b \\ c & d \end{pmatrix} = %
+  (a + c) + (b + d)X + (c - d)X^2 $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\section{Teorema lui Grassmann}
+
+Fie $ V_1, V_2 $ două subspații ale unui $ K $-spațiu vectorial $ V $.
+\begin{definition}\label{def:suma-subsp}
+  \index{subspațiu!sumă}
+  Se definește \emph{suma subspațiilor} $ V_1 $ și $ V_2 $ prin:
+  \[
+    V_1 + V_2 = \{ v \in V \mid \exists v_1 \in V_1, v_2 \in V_2, v = v_1 + v_2 \}.
+  \]
+
+  Dacă $ V_1 \cap V_2 = \{ 0_V \} $, suma se numește \emph{directă}
+  și se notează $ V_1 \oplus V_2 $. \index{subspațiu!sumă!directă}
+
+  Dacă $ V_1 \oplus V_2 \simeq V $, atunci $ V_1 $ se numește \emph{complementul}
+  lui $ V_2 $ în $ V $, iar $ V_2 $ se numește \emph{complementul} lui $ V_1 $
+  în $ V $.
+\end{definition}
+
+O proprietate importantă a sumei directe este:
+\begin{theorem}\label{thm:dir-proj}
+  Dacă $ V = V_1 \oplus V_2 $, atunci pentru orice vector $ v \in V $,
+  există componentele \emph{unice} $ v_1 \in V_1, v_2 \in V_2 $
+  astfel încît $ v = v_1 + v_2 $.
+
+  Cu alte cuvinte, în cazul unei sume directe, orice vector din sumă
+  se proiectează \emph{unic} pe cele două componente.
+\end{theorem}
+
+\begin{theorem}[H.\ Grassmann]\label{thm:grass}
+  Fie $ V_1, V_2 \leq_K V $ ca mai sus. Atunci are loc:
+  \[
+    \dim(V_1 + V_2) = \dim V_1 + \dim V_2 - \dim (V_1 \cap V_2).
+  \]
+  În particular:
+  \[
+    \dim (V_1 \oplus V_2) = \dim V_1 + \dim V_2.
+  \]
+\end{theorem}
+
+Rezultă că, dacă $ B_1 $ este o bază în $ V_1 $, iar $ B_2 $ este o bază
+în $ V_2 $, atunci:
+\begin{itemize}
+\item $ B_1 \cup B_2 $ este o bază în $ V_1 + V_2 $;
+\item $ B_1 \cap B_2 $ este o bază în $ V_1 \cap V_2 $.
+\end{itemize}
+
+\begin{remark}\label{rk:dim-suma}
+  Deoarece $ V_1 + V_2 \leq_K V $ (demonstrați!), rezultă că:
+  \[
+    \dim(V_1 + V_2) \leq \dim V.
+  \]
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții Grassmann}
+
+3. În continuarea exercițiului 1 de mai sus:
+\begin{enumerate}[(a)]
+\item Determinați, cu bază și dimensiune subspațiile:
+  \begin{itemize}
+  \item $ V_1 + V_2, V_1 \cap V_2 $;
+  \item $ V_2 + V_3, V_2 \cap V_3 $;
+  \item $ V_4 + V_5, V_4 \cap V_5 $;
+  \item $ V_8 + V_2, V_8 \cap V_2 $;
+  \item $ V_9 + V_{10}, V_9 \cap V_{10} $;
+  \item $ V_{11} + V_5, V_{11} \cap V_5 $;
+  \item $ V_{12} + \RR_2[X], V_{12} + \RR_2[X] $.
+  \end{itemize}
+\item Decideți care dintre sumele de mai sus sînt directe.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. În continuarea exercițiului 2 de mai sus, dacă notăm, în general,
+aplicația liniară $ f : V \to W $:
+\begin{enumerate}[(a)]
+\item Găsiți un subspațiu $ V' $ al lui $ V $ astfel încît $ \dr{Ker}f \oplus V' $
+  să fie izomorf cu $ V $;
+\item Găsiți un subspațiu $ W' $ al lui $ W $ astfel încît $ \dr{Im} f \oplus W' $
+  să fie izomorf cu $ W $.
+\end{enumerate}
+Cu alte cuvinte, găsiți complementul lui $ \dr{Ker} f $ în $ V $ și complementul
+lui $ \dr{Im} f $ în $ W $.
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-18-19"
+%%% End:

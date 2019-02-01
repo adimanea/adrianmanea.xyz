@@ -1,0 +1,214 @@
+
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} M1-ACS, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 13b \\ Exerciții recapitulative}}
+\end{center}
+
+\vspace{1cm}
+
+\textbf{MODEL 1}
+
+1. Să se determine maximul și minimul funcției $f(x, y) = x^2 + y^2 - 3x - 2y + 1$
+pe mulțimea $K = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \}$.
+
+\vspace{1cm}
+
+2. Să se calculeze $\ds\int_0^\infty \frac{x^{\frac{1}{4}}}{(x + 1)^2} dx$.
+
+\vspace{1cm}
+
+3. Să se calculeze integrala:
+\[
+  \iint_D 1 + \sqrt{x^2 + y^2} dx dy,
+\]
+unde $D = \{(x, y) \in \RR^2 \mid x^2 + y^2 - 3 \leq 0, x \geq 0 \}$.
+
+\vspace{1cm}
+
+4. Să se calculeze aria paraboloidului $z = x^2 + y^2, z \in [0, h]$.
+
+\vspace{1cm}
+
+5. Să se calculeze integrala de suprafață:
+\[
+  \int_\Sigma x^2 dy \wedge dz - 2xy dz \wedge dx + z^3 dx \wedge dy,
+\]
+unde $\Sigma : x^2 + y^2 + z^2 = 9$.
+
+\vspace{2cm}
+
+\textbf{MODEL 2}
+
+1. Să se determine punctele de extrem local ale funcției:
+\[
+  f(x, y) = 3xy^2 - x^3 - 15x - 36y + 9.
+\]
+
+\vspace{1cm}
+
+2. Să se studieze convergența integralei
+$\ds\int_1^\infty \frac{\ln x}{\sqrt{x^3 - 1}} dx$.
+
+\vspace{1cm}
+
+3. Să se calculeze fluxul cîmpului de vectori $\vec{r} = x\vec{i} + y\vec{j} + z \vec{k}$
+prin suprafața de ecuație $z = x^2 + y^2, z \in [0, 5]$.
+
+\vspace{1cm}
+
+4. Fie $P, Q, R : \Omega = \{(x, y, z) \in \RR^3 \mid y > 0, z \geq 0 \} \to \RR$,
+cu:
+\begin{align*}
+  P &= x^2 - yz + \frac{y}{x^2 + y^2} \\
+  Q &= y^2 - zx - \frac{x}{x^2 + y^2} \\
+  R &= z^2 - xy.
+\end{align*}
+Notăm $\omega = Pdx + Qdy + Rdz$. Să se calculeze $\ds\int_\Gamma \omega$, unde
+$\Gamma$ este un drum parametrizat ce unește punctele $A(1, 1, 0)$ și $B(-1, 1, 0)$.
+
+\vspace{1cm}
+
+5. Să se calculeze, folosind formula Green-Riemann, integrala
+$\ds\int_\Gamma xydx + \frac{x^2}{2} dy$, pe mulțimea $\Gamma = \Gamma_1 \cup \Gamma_2$,
+unde:
+\begin{align*}
+  \Gamma_1 &= \{(x, y) \mid x^2 + y^2 = 1, x \leq 0 \leq y \} \\
+  \Gamma_2 &= \{(x, y) \mid x + y = -1, x \leq 0, y \leq 0 \}.
+\end{align*}
+
+\vspace{2cm}
+
+\textbf{MODEL 3}
+
+1. Să se calculeze punctele de extrem și valorile extreme pentru funcția:
+\[
+  f(x, y) = xy(x + y - 2),
+\]
+pe mulțimea $K = \{(x, y) \in \RR^2 \mid x + y \leq 3, y \geq 0\}$.
+
+\vspace{1cm}
+
+2. Să se calculeze integrala:
+\[
+  I = \int_0^1 \ln^p \frac{1}{x} dx, p > -1.
+\]
+
+\vspace{1cm}
+
+5. Să se calculeze, folosind formula lui Stokes, integrala curbilinie
+$\int_\Gamma \alpha$, pentru $\alpha = (y - z) dx + (z - x)dy + (x - y) dz$,
+iar mulțimea $\Gamma: z = x^2 + y^2, z = 1$.
+
+\vspace{1cm}
+
+4. Fie $\vec{V} = (x^2 + y - 4) \vec{i} + 3xy\vec{j} + (2xz + z^2) \vec{k}$ și
+emisfera $\Sigma: x^2 + y^2 + z^2 = 16, z \geq 0$.
+
+Să se calculeze fluxul cîmpului $\nabla \times \vec{V} = \mathrm{rot} \vec{V}$ prin
+$\Sigma$, orientată cu normala exterioară la sferă.
+
+\vspace{1cm}
+
+5. Fie $\alpha = \frac{x - y}{x^2 + y^2} dx + \frac{x + y}{x^2 + y^2} dy$.
+Să se calculeze integrala curbilinie $\int_\Gamma \alpha$, unde $\Gamma$ este triunghiul
+cu vîrfurile $A(0, 3), B(0, 0), C(4, 0)$.
+
+\end{document}

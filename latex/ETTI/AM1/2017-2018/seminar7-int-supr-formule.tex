@@ -1,0 +1,499 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} AM-ETTI, Prof. C. Ghiu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 7 \\
+      Integrale de suprafață. Formule integrale}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Integrale de suprafață}
+\label{sec:teorie}
+
+Integralele de suprafață sînt analogul celor curbilinii, dar, în locul unei curbe
+în lungul căreia se face integrarea, ne vom baza pe o suprafață din $\RR^3$.
+
+Tot ca în cazul integralelor curbilinii, integralele de suprafață sînt de două tipuri.
+
+\textbf{Integrala de suprafață de speța întîi} are forma și se calculează după formula:
+\[
+  \iint_\Sigma \mathcal{F}(x, y, z) d\sigma =
+  \iint_D \mathcal{F}(x(u,v), y(u,v), z(u,v)) \sqrt{EG - F^2} dudv,
+\]
+unde $\Sigma$ este suprafața pe care integrăm, care devine domeniul $D$ după aplicarea
+formulei, cu elementul de arie $d \sigma$, care devine $dudv$, fiecare dintre cele trei
+coordonate $x, y, z$ fiind parametrizate după $u$ și $v$, iar coeficienții $E, F, G$
+se calculează astfel:
+
+\begin{align*}
+  E &= \Big( \frac{\partial x}{\partial u} \Big)^2 + \Big(\frac{\partial y}{\partial u}\Big)^2 +
+      \Big(\frac{\partial z}{\partial u}\Big)^2 \\
+  F &= \frac{\partial x}{\partial u} \cdot \frac{\partial x}{\partial v} +
+      \frac{\partial y}{\partial u} \cdot \frac{\partial y}{\partial v} +
+      \frac{\partial z}{\partial u} \cdot \frac{\partial z}{\partial v} \\
+  G &= \Big(\frac{\partial x}{\partial v} \Big)^2 + \Big(\frac{\partial y}{\partial v}\Big)^2 +
+      \Big(\frac{\partial z}{\partial v} \Big)^2.
+\end{align*}
+
+O definiție alternativă este următoarea. Fie $\Phi : D \to \RR^3$ o pînză parametrizată
+și fie $\Sigma = \Phi(D)$ imaginea ei, iar $F : U \to \RR$ o funcție continuă pe
+imaginea pînzei. Integrala de suprafață a lui $F$ pe $\Sigma$ este, prin definiție:
+\[
+  \int_\Sigma F(x, y, z) d \sigma =
+  \iint_D F(\Phi(u, v)) \cdot \Big|\Big| \frac{\partial \Phi}{\partial u} \times %
+  \frac{\partial \Phi}{\partial v} \Big|\Big| dudv.
+\]
+
+Într-un caz particular, în care suprafața regulată $\Sigma$ este dată sub o formă
+explicită $z = f(x, y)$, cu $f : D \seq \RR^2 \to \RR$, atunci formula se simplifică
+și devine:
+\[
+  \iint_\Sigma \mathcal{F}(x, y, z) d \sigma =
+  \iint_D \mathcal{F}(x, y, f(x, y)) \sqrt{1 + p^2 + q^2} dx dy,
+\]
+unde coeficienții au forma simplificată:
+\[
+  p = \frac{\partial z}{\partial x}, \quad q = \frac{\partial z}{\partial y}.
+\]
+
+Alte cazuri particulare sînt:
+\begin{enumerate}[(a)]
+\item Pentru $F = 1$, obținem \emph{aria suprafeței $\Sigma$};
+\item Dacă $F \geq 0$ este densitatea unei plăci $\Sigma$, atunci \emph{masa ei}
+  se calculează prin $M = \int_\Sigma F d \sigma$, iar \emph{coordonatele centrului %
+  de greutate}: $x_i^G = \frac{1}{M} \int_\Sigma x_i F d \sigma$.
+\end{enumerate}
+
+Într-o \textbf{interpretare vectorială}, putem considera $\vec{F}$ un cîmp vectorial,
+atunci \emph{fluxul} său prin suprafața $\Sigma$ este dat de o integrală de suprafață
+de prima speță, cu forma:
+\[
+  \iint_\Sigma \vec{F} \cdot \vec{n} d \sigma,
+\]
+unde $\vec{n}$ este vectorul normal la suprafață, calculat prin
+$\vec{n} = \frac{\nabla F}{||\nabla F||}$, iar $d \sigma$ este elementul de suprafață.
+
+Dacă avem cîmpul vectorial dat parametric, atunci formula pentru flux devine:
+\[
+  \Phi_\Sigma (\vec{F}) = \iint_D F(x(u, v), y(u, v), z(u, v)) \cdot
+  (\vec{T}_u \times \vec{T}_v) dS,
+\]
+unde $\vec{T}_u, \vec{T}_v$ sînt vectorii tangenți după cele două direcții, calculați
+ca derivatele parțiale $F_u$ și $F_v$, iar $dS$ este elementul de arie, adică $dudv$.
+
+\vspace{1cm}
+
+Pentru \textbf{integralele de suprafață de speța a doua}, considerăm o 2-formă
+diferențială:
+\[
+  \omega = P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy
+\]
+și luăm o pînză parametrizată:
+\[
+  \Phi : D \to \RR^3, \quad \Phi(u, v) = (X(u, v), Y(u, v), Z(u, v)).
+\]
+
+Integrala pe suprafața orientată $\Sigma$ a formei diferențiale $\omega$ este
+definită prin:
+\[
+  \int_\Sigma \omega = \iint_D \Big( (P \circ \Phi) \frac{D(Y,Z)}{D(u, v)} +
+  (Q \circ \Phi) \frac{D(Z, X)}{D(u,v)} + (R \circ \Phi) \frac{D(X, Y)}{D(u,v)}\Big)dudv,
+\]
+unde $\frac{D(Y,Z)}{D(u,v)}$ etc. sînt jacobienii funcțiilor $X, Y, Z$ în raport cu
+variabilele $u, v$.
+
+Într-o formă simplificată, dacă privim $\vec{n} = \frac{\nabla \Phi}{||\nabla \Phi||}$,
+iar $\Phi = (X, Y, Z)$, atunci putem scrie:
+\[
+  \iint_\Sigma \omega = \iint_D
+  \begin{vmatrix}
+    P \circ \Phi & Q \circ \Phi & R \circ \Phi \\
+    X_u & Y_u & Z_u \\
+    X_v & Y_v & Z_v
+  \end{vmatrix} dudv,
+\]
+unde am folosit notația simplificată pentru derivate parțiale, i.e.\
+$X_u = \frac{\partial X}{\partial u}$ etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. În fiecare din exemplele următoare, considerăm:
+\[
+  D \ni (u,v) \mapsto \Phi(u,v) = (X(u,v), Y(u,v), Z(u,v)) \in \RR^3
+\]
+o pînză parametrizată. Să se calculeze vectorii tangenți la suprafață și
+versorul normalei la suprafață.
+
+\begin{enumerate}[(a)]
+\item \emph{Sfera}: Fie $R > 0$ și $\Phi : [0, \pi] \times [0, 2\pi) \to \RR^3$:
+  \[
+    \Phi(\theta, \varphi) = (R\sin \theta \cos \varphi, R \sin \theta \sin \varphi, R \cos \theta);
+  \]
+\item \emph{Paraboloidul}: Fie $a > 0, h > 0$ și $\Phi : [0, h] \times [0, 2\pi) \to \RR^3$:
+  \[
+    \Phi(u, v) = (au\cos v, au\sin v u^2);
+  \]
+\item \emph{Elipsoidul}: Fie $a, b, c > 0$ și $\Phi : [0, \pi] \times [0, 2\pi) \to \RR^3$:
+  \[
+    \Phi(\theta, \varphi) = (a \sin\theta \cos \varphi, b \sin \theta \sin \varphi, c \cos \theta);
+  \]
+\item \emph{Conul}: Fie $h > 0, \Phi : [0, 2\pi) \times [0, h] \to \RR^3$:
+  \[
+    \Phi(u, v) = (v \cos u, v \sin u, v);
+  \]
+\item \emph{Cilindrul}: Fie $a > 0, 0 \leq h_1 \leq h_2, \Phi : [0, 2\pi) \times [h_1, h_2] \to \RR^3$:
+  \[
+    \Phi(\varphi, z) = (a \cos \varphi, a \sin \varphi, z);
+  \]
+\item \emph{Torul}: Fie $0 < a < b, \Phi [0, 2\pi) \times [0, 2\pi) \to \RR^3$:
+  \[
+    \Phi(u, v) = ((a + b\cos u) \cos v, (a + b \cos u) \sin v, b \sin u).
+  \]
+\end{enumerate}
+
+\emph{Indicație:} Vectorii tangenți la suprafață sînt $\frac{\partial \Phi}{\partial u}$ și
+$\frac{\partial \Phi}{\partial v}$, iar versorul normalei este:
+\[
+  \frac{1}{\Big|\Big| \frac{\partial \Phi}{\partial u} \times \frac{\partial \Phi}{\partial v}\Big|\Big|}
+    \cdot \frac{\partial \Phi}{\partial u} \times \frac{\partial \Phi}{\partial v}.
+\]
+
+\vspace{1cm}
+
+2. Fie $\omega = Pdy \wedge dz + Qdz \wedge dx + Rdx \wedge dy$ o 2-formă diferențială,
+iar $\Sigma$, imaginea unei pînze parametrizate. Să se calculeze integrala de
+suprafață $\int_\Sigma \omega$ în cazurile:
+\begin{enumerate}[(a)]
+\item $\omega = ydy \wedge dz + zdz \wedge dx + xdx \wedge dy$, unde:
+  \[
+    \Sigma : \begin{cases}
+      X(u, v) &= u \cos v \\
+      Y(u, v) &= u \sin v \\
+      Z(u, v) &= cv
+    \end{cases}
+  \]
+  cu domeniul $(u, v) \in [a, b] \times [0, 2\pi)$;
+\item $\omega = xdy \wedge dz + ydz \wedge dx + zdx \wedge dy$, unde:
+  \[
+    \Sigma : x^2 + y^2 + z^2 = R^2;
+  \]
+\item $\omega = yzdy \wedge dz + zxdz \wedge dx + xydx \wedge dy$, unde:
+  \[
+    \Sigma : \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1;
+  \]
+\item $\omega = xdy \wedge dz + ydz \wedge dx$, unde:
+  \[
+    \Sigma: x^2 + y^2 = z^2, \quad z \in [1,2];
+  \]
+\item $\omega = (y + z) dy \wedge dz + (x + y) dx \wedge dy$, unde:
+  \[
+    \Sigma: x^2 + y^2 = a^2, \quad a \in [0, 1]
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze integrala de suprafață de prima speță:
+\[
+  \iint_\Sigma F(x, y, z) d\sigma
+\]
+în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $F(x, y, z) = |xyz|$, iar $\Sigma: x^2 + y^2 = z^2, z \in [0, 1]$;
+\item $F(x, y, z) = y\sqrt{z}$, iar $\Sigma: x^2 + y^2 = 6z, z \in [0, 2]$;
+\item $F(x, y, z) = z^2$, iar $\Sigma = \{(x, y, z) \mid z = \sqrt{x^2 + y^2}, %
+  x^2 + y^2 - 6y \leq 0 \}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Folosind integralele de suprafață, să se calculeze ariile suprafețelor:
+\begin{enumerate}[(a)]
+\item sfera de rază $R$;
+\item conul $z^2 = x^2 + y^2, z \in [0, h]$;
+\item paraboloidul $z = x^2 + y^2, z \in [0, h]$.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Să se calculeze aria suprafeței $\Sigma$ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $\Sigma : 2z = 4 - x^2 - y^2, z \in [0, 1]$;
+\item $\Sigma$ este submulțimea de pe sfera $x^2 + y^2 + z^2 = 1$, situată în interiorul
+  conului $x^2 + y^2 = z^2$;
+\item $\Sigma$ este submulțimea de pe sfera $x^2 + y^2 + z^2 = R^2$, situată în interiorul
+  cilindrului $x^2 + y^2 - Ry = 0$;
+\item $\Sigma$ este submulțimea de pe paraboloidul $z = x^2 + y^2$, situată în interiorul
+  cilindrului $x^2 + y^2 = 2y$.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se calculeze fluxul cîmpului vectorial $\vec{V}$ prin suprafața $\Sigma$
+în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $\vec{V} = x\vec{i} + y\vec{j} + z \vec{k}$, iar $\Sigma: z^2 = x^2 + y^2$,
+  cu $z \in [0, 1]$;
+\item $\vec{V} = y\vec{i} + x \vec{j} + z^2 \vec{k}$, iar $\Sigma: z = x^2 + y^2$, cu
+  $z \in [0, 1]$;
+\item $\vec{V} = \frac{1}{\sqrt{x^2 + y^2}} (y\vec{i} - x \vec{j} + \vec{k})$, iar
+  $\Sigma: z = 4 - x^2 - y^2, z \in [0, 1]$.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula Green-Riemann}
+\label{sec:g-r}
+
+Fie $(K, \partial K)$ un compact cu bord orientat inclus în $\RR^2$ și considerăm
+o 1-formă diferențială de clasă $\kal{C}^1$ pe o vecinătate a lui $K$. Atunci
+are loc \emph{formula Green-Riemann}:
+\[
+  \int_{\partial K} Pdx + Qdy = \iint_K \Big(\frac{\partial Q}{\partial x} - %
+  \frac{\partial P}{\partial y} \Big) dx dy.
+\]
+
+O consecință imediată este o formulă pentru arie:
+\[
+  \mathcal{A}(K) = \frac{1}{2} \int_{\partial K} xdy - ydx.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula Gauss-Ostrogradski}
+\label{sec:g-o}
+
+Considerăm $K$ o mulțime compactă, cu bord orientat după normala exterioară. Atunci,
+pentru orice 2-formă diferențială:
+\[
+  \omega = Pdy \wedge dz + Q dz \wedge dx + R dx \wedge dy
+\]
+de clasă $\kal{C}^1$ pe o vecinătate a lui $K$ are loc egalitatea:
+\[
+  \int_{\partial K} P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy = %
+  \iiint_K \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + %
+  \frac{\partial R}{\partial z} dxdydz.
+\]
+
+În notație vectorială, dacă $\vec{V} = P \vec{i} + Q \vec{j} + R \vec{k}$ este
+cîmpul vectorial asociat 2-formei diferențiale $\omega$, atunci formula de mai sus
+poate fi scrisă:
+\[
+  \int_{\partial K} \vec{V} \cdot \vec{n} d \sigma = \iiint_K \mathrm{div}\vec{V} dxdydz,
+\]
+unde $\vec{n}$ este normala exterioară la $\partial K$. În membrul stîng avem
+fluxul cîmpului $\vec{V}$ prin suprafața $\partial K$, motiv pentru care formula
+Gauss-Ostrogradski se mai numește \emph{formula flux-divergență}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula lui Stokes}
+\label{sec:stokes}
+
+Fie $\Sigma$ o suprafață cu bord, orientată și fie:
+\[
+  \alpha = Pdx + Qdy + Rdz
+\]
+o 1-formă diferențială de clasă $\kal{C}^1$ pe o vecinătate a lui $\Sigma$.
+Atunci are loc formula:
+\begin{align*}
+  \int_{\partial \Sigma} Pdx + Qdy + Rdz &= \int_\sigma \Big( \frac{\partial R}{\partial y} -
+                                           \frac{\partial Q}{\partial z} \Big) dy \wedge dz +
+                                           \Big( \frac{\partial P}{\partial z} -
+                                           \frac{\partial R}{\partial x} \Big) dz \wedge dx +
+                                           \Big( \frac{\partial Q}{\partial x} -
+                                           \frac{\partial P}{\partial y}\Big) dx \wedge dy.
+\end{align*}
+
+În notație vectorială, dacă $\vec{V} = P \vec{i} + Q \vec{j} + R \vec{k}$ este cîmpul
+vectorial asociat formei diferențiale $\alpha$, atunci formula lui Stokes se scrie:
+\[
+  \int_{\partial \Sigma} \vec{V} \cdot d\vec{r} = \int_\Sigma (\nabla \times \vec{V}) %
+  \cdot \vec{n} d \sigma,
+\]
+unde $\nabla \times \vec{V} = \mathrm{rot}\vec{V}$ se numește \emph{rotorul} cîmpului
+vectorial $\vec{V}$, calculat cu ajutorul produsului vectorial.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc-f}
+
+1. Să se calculeze direct și folosind formula Green-Riemann integrala curbilinie
+$\int_\Gamma \alpha$ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $\alpha = y^2 dx + xdy$, unde $\Gamma$ este pătratul cu vîrfurile
+  $A(0, 0), B(2, 0), C(2,2), D(0, 2)$;
+\item $\alpha = ydx + x^2 dy$, unde $\Gamma$ este cercul cu centrul în origine și
+  rază 2;
+\item $\alpha = ydx - xdy$, unde $\Gamma$ este elipsa de semiaxe $a$ și $b$ și de
+  centru $O$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se calculeze integralele, direct, apoi aplicînd formula Green-Riemann:
+\begin{enumerate}[(a)]
+\item $\ds\int_\Gamma e^{\frac{x^2}{a^2} + \frac{y^2}{b^2}} (-ydx + xdy)$, unde
+  $\Gamma = \{(x, y) \mid \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \}$;
+\item $\ds\int_\Gamma xy dx + \frac{x^2}{2} dy$, unde $\Gamma$ este obținută prin:
+  \[
+    \Gamma = \{x^2 + y^2 = 1, x \leq 0 \leq y\} \cup \{x + y = -1, x,y \leq 0 \}.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze circulația cîmpului vectorial $\vec{V}$ pe curba $\Gamma$ în
+cazurile:
+\begin{enumerate}[(a)]
+\item $\vec{V} = y^2 \vec{i} + xy\vec{j}$, unde:
+  \[
+    \Gamma = \{x^2 + y^2 = 1, y > 0 \} \cup \{ y = x^2 - 1, y \leq 0 \};
+  \]
+\item $\vec{V} = e^x \cos y \vec{i} - e^x \sin y \vec{j}$, unde $\Gamma$ este
+  o curbă arbitrară din semiplanul superior, ce unește punctele $A(1, 0), B(-1, 0)$,
+  cu sensul de la $A$ către $B$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se calculeze integrala de suprafață $\int_\Sigma \omega$ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $\omega = x^2 dy \wedge dz - 2xy dz \wedge dx + z^3 dx \wedge dy$, iar mulțimea
+  $\Sigma = \{x^2 + y^2 + z^2 = 9 \}$;
+\item $\omega = yz dy \wedge dz - (x + z) dz \wedge dx + (x^2 + y^2 + 3z) dx \wedge dy$,
+  iar mulțimea:
+  \[
+    \Sigma = \{ x^2 + y^2 = 4 - 2z, z \geq 1 \} \cup \{x^2 + y^2 \leq 4 - 2z, z = 1 \};
+  \]
+\item $\omega = x(z + 3) dy \wedge dz + yz dz \wedge dx - (z + z^2) dx \wedge dy$,
+  iar mulțimea:
+  \[
+    \Sigma = \{ x^2 + y^2 + z^2 = 1, z \geq 0\}.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Să se calculeze, folosind formula lui Stokes, integrala curbilinie
+$\int_\Gamma \alpha$, în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $\alpha = (y - z) dx + (z - x)dy + (x - y) dz$, iar mulțimea $\Gamma: z = x^2 + y^2, z = 1$;
+\item $\alpha = ydx + zdy + xdz$, iar mulțimea:
+  \[
+    \Gamma: x^2 + y^2 + z^2 = 1, \quad x + y + z = 0.
+  \]
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se calculeze circulația cîmpului vectorial:
+\[
+  \vec{V} = (y^2 + z^2)\vec{i} + (x^2 + z^2)\vec{j} + (x^2 + y^2)\vec{k},
+\]
+pe curba $\Gamma: x^2 + y^2 + z^2 = R^2, ax + by + cz = 0$.
+
+
+\end{document}

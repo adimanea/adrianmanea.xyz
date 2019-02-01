@@ -1,0 +1,323 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AG, 2017---2018, A. Niță \& A. Oprina}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 5 \\ Vectori și valori proprii}}
+\end{center}
+
+\vspace{1cm}
+
+\section{Vectori și valori proprii}
+\label{sec:vvp}
+
+Fie $V$ un spațiu vectorial peste un corp $\Bbbk$ și $f : V \to V$ o aplicație
+liniară.
+
+\begin{definition}\label{def:vvp}
+  Un vector $v \in V$ se numește \emph{vector propriu} (eng. \emph{eigenvector})
+  pentru aplicația $f$ dacă există un scalar $\lambda \in \Bbbk$ astfel încît
+  $f(v) = \lambda \cdot v$.
+
+  În acest caz, $\lambda$ se numește \emph{valoarea proprie} (eng. \emph{eigenvalue})
+  asociată vectorului  propriu $v$.
+\end{definition}
+
+Așadar, vectorii proprii sînt aceia pentru care aplicația are o acțiune simplă,
+de \enquote{rescalare}, adică doar înmulțire cu un scalar, care se numește
+valoarea proprie asociată.
+
+În exerciții, pentru a găsi valorile proprii asociate unei aplicații liniare
+ca mai sus (endomorfism), se procedează astfel:
+\begin{itemize}
+\item Presupunem că $\dim_\Bbbk V = n$. Scriem matricea aplicației $f$ în
+  baza canonică a lui $V$, $M^B(f) \in M_n(\Bbbk)$;
+\item Scriem \emph{polinomul caracteristic} al matricei, anume:
+  \[
+    P(x) = \det(A - x \cdot I_n).
+  \]
+\item Rădăcinile polinomului caracteristic se vor nota cu $\lambda_i$ și
+  sînt valorile proprii ale endomorfismului.
+\end{itemize}
+
+Mulțimea valorilor proprii se mai numește \emph{spectrul} endomorfismului
+$f$, notat uneori cu $\sigma(f)$.
+
+Apoi, pentru a găsi vectorii proprii asociați valorilor proprii de mai sus
+se rezolvă, pentru fiecare $\lambda_i$, ecuația $f(v) = \lambda_i v$ și
+se găsește $v$.
+
+Cu ajutorul acestor vectorii proprii, obținem următoarele:
+
+\begin{definition}\label{def:sp-invar}
+  Fie $\lambda$ o valoare proprie a unui endomorfism $f$.
+
+  Dacă $v$ este un vector propriu asociat valorii proprii $\lambda$,
+  $V(\lambda) = V_\lambda = \mathrm{Sp}(v)$ este un subspațiu al lui
+  $V$, numit \emph{subspațiul invariant} (propriu) generat de $v$.
+\end{definition}
+
+Pentru o valoare proprie $\lambda$, se definesc:
+
+\begin{definition}\label{def:ma-mg}
+  Fie $\lambda$ o valoare proprie a endomorfismului $f$. Se numește
+  \emph{multiplicitatea algebrică} a lui $\lambda$, notată $m_a(\lambda)$
+  sau $a_\lambda$ puterea la care apare factorul $(X - \lambda)$ în descompunerea
+  polinomului caracteristic al lui $f$.
+
+  Se numește \emph{multiplicitatea geometrică} a lui $\lambda$, notată $m_g(\lambda)$
+  sau $g_\lambda$ dimensiunea subspațiului $V_\lambda$.
+\end{definition}
+
+Au loc următoarele proprietăți utile:
+\begin{proposition}\label{pr:vvp}
+  Fie $A$ matricea endomorfismului $f$ și fie $\lambda_i$ valorile sale proprii.
+
+  \begin{itemize}
+  \item Suma valorilor proprii (cu tot cu multiplicități) este egală cu urma
+    matricei, iar produsul lor este egal cu determinantul matricei.
+
+    În particular, dacă $0$ este valoare proprie, atunci $A$ este neinversabilă;
+  \item $\lambda_i^k$ este valoare proprie pentru $A^k$, pentru orice $k \geq 1$;
+  \item \textbf{(Teorema Cayley-Hamilton)} $P_A(A) = 0$, unde $P_A$ este polinomul
+    caracteristic al matricei $A$.
+  \end{itemize}
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Diagonalizare}
+\label{sec:diag}
+
+\begin{definition}\label{def:diag}
+  O matrice $A \in M_n(\Bbbk)$ se numește \emph{diagonalizabilă} dacă ea este
+  asemenea cu o matrice diagonală $D$, i.e.\ care are elemente nenule doar pe
+  diagonala principală.
+
+  Altfel spus, există $T \in M_n(\Bbbk)$ inversabilă, astfel încît $T^{-1}AT = D$.
+\end{definition}
+
+\begin{remark}\label{rk:diag-vvp}
+  Dacă $A$ este diagonalizabilă, atunci $D$ (din definiția de mai sus) conține pe
+  diagonală doar valorile proprii ale lui $A$.
+\end{remark}
+
+Pașii pentru verificarea și obținerea diagonalizării unei matrice sînt:
+\begin{enumerate}[(1)]
+\item Fixăm o bază $B$ oarecare a lui $V$ și scriem matricea lui $f$ în
+  baza $B$;
+\item Determinăm valorile proprii $\lambda_1, \dots, \lambda_p$, cu ordinele
+  de multiplicitate $n_1, \dots, n_p$;
+\item Pentru fiecare valoare proprie $\lambda_i$, se determină subspațiul propriu
+  (invariant) $V_{\lambda_i}$ și o bază a sa, $B_i$;
+\item Dacă există o valoare proprie $\lambda_i$, astfel încît
+  $\dim V_{\lambda_i} \neq n_i$, algoritmul se oprește, deoarece matricea nu
+  se poate diagonaliza;
+\item În caz contrar, dacă avem $a_{\lambda_i} = g_{\lambda_i}$, atunci
+  matricea se poate diagonaliza, iar $B' = B_1 \cup \dots \cup B_p$ este
+  o bază a spațiului $V$, formată din vectori proprii;
+\item Se determină matricea $T$, de trecere de la baza $B$ la baza $B'$, care
+  este inversabilă. În plus, obținem:
+  \[
+    M^{B'}(f) = T^{-1} M^B(f) T = \mathrm{diag}(\lambda_1, \dots, \lambda_p),
+  \]
+  adică o matrice diagonală cu valorile proprii $\lambda_i$ pe diagonală.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Să se determine vectorii și valorile proprii pentru matricele:
+\[
+  A = \begin{pmatrix}
+    1 & 0 \\
+    8 & 2
+  \end{pmatrix}, \quad
+  B = \begin{pmatrix}
+    0 & 2 & 2 \\
+    2 & 0 & -2 \\
+    2 & -2 & 0
+  \end{pmatrix}, \quad
+  C = \begin{pmatrix}
+    0 & 1 & -2 \\
+    1 & 1 & 1 \\
+    1 & -1 & -1
+  \end{pmatrix}.
+\]
+
+\vspace{1cm}
+
+2. Fie aplicația liniară $f : \RR^3 \to \RR^3, f(x, y, z) = (-y, x, z)$.
+
+Să se calculeze vectorii și valorile proprii ale lui $f$.
+
+\vspace{1cm}
+
+3. Fie aplicația liniară:
+\[
+  f : \RR^3 \to \RR^3, \quad f(x, y, z) = (x - z, 8x + y - 2z, z).
+\]
+Să se calculeze vectorii și valorile proprii ale lui $f$.
+
+\vspace{1cm}
+
+4. Fie aplicația liniară $f : M_2(\RR) \to M_2(\RR)$, definită prin:
+\[
+  f \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix} = \begin{pmatrix}
+    2a + b + d & 2b + 4c + 5d \\
+    2c + d & 8d
+  \end{pmatrix}
+\]
+
+Să se arate că $f$ nu este diagonalizabilă.
+
+\vspace{1cm}
+
+5. Să se diagonalizeze endomorfismul $f : \RR^3 \to \RR^3$, definit prin:
+\[
+  f(x, y, z) = (y + z, x + z, x + y).
+\]
+
+\vspace{1cm}
+
+6. Să se diagonalizeze matricea:
+\[
+  A = \begin{pmatrix}
+    7 & 2 & -2 \\
+    2 & 4 & -1 \\
+    -2 & -1 & 4
+  \end{pmatrix}
+\]
+și apoi, folosind forma diagonală, să se calculeze $A^n$, cu $n \in \NN$.
+
+\vspace{1cm}
+
+7. Aceeași cerință pentru matricele:
+\[
+  B = \begin{pmatrix}
+    1 & 1 \\
+    4 & 1 
+  \end{pmatrix}, \quad
+  C = \begin{pmatrix}
+    11 & -5 & 5 \\
+    -5 & 3 & -3 \\
+    5 & -3 & 3
+  \end{pmatrix}.
+\]
+
+\vspace{1cm}
+
+8. Determinați vectorii și valorile proprii pentru aplicațiile:
+\begin{enumerate}[(a)]
+\item $f : \RR[X]_3 \to \RR[X]_3, f(P) = 2P'$;
+\item $f : \RR^3 \to \RR^3, f(a, b, c) = (a - b + c, b, b - c)$.
+\end{enumerate}
+
+\vspace{1cm}
+
+9. Să se diagonalizeze endomorfismul $f : \RR^4 \to \RR^4$, definit prin:
+\[
+  f(x, y, z, t) = (x + y + z + t, x + y - z - t, x - y + z - t, x - y - z + t).
+\]
+\end{document}

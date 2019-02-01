@@ -1,0 +1,242 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{
+      Seminar 10 \\
+      Extreme cu legături (condiționate)
+    }}
+\end{center}
+
+\vspace{1cm}
+
+\section{Extreme condiționate}
+\label{sec:extreme-cond}
+
+Atunci cînd domeniul de definiție al unei funcții de mai multe variabile conține,
+la rîndul său anumite ecuații (numite, generic, \emph{legături}, problemele de
+extrem se studiază folosind \textbf{metoda multiplicatorilor Lagrange}. Ea se
+bazează pe următoarele concepte:
+
+\begin{definition}\label{def:fc-scop}
+  Fie $f(\pmb{x}, \pmb{y})$, cu $\pmb{x} \in \RR^n, \pmb{y} \in \RR^m$,
+  iar $f : U \to \RR$ o funcție de $n + m$ variabile reale, cu valori reale, de
+  clasă $\kal{C}^1$ pe un deschis $U \seq \RR^{n+m}$.
+
+  Ea se numește \emph{funcție-scop (obiectiv)}. Presupunem că există $m$
+  legături între variabilele $\pmb{x}, \pmb{y}$, adică $m$ relații de forma:
+  \[
+    g_1(\pmb{x}, \pmb{y}) = 0, \dots, g_m(\pmb{x}, \pmb{y}) = 0, \quad %
+    g_i : U \to \RR,
+  \]
+  fiecare legătură fiind o funcție de clasă $\kal{C}^1(U)$.
+
+  Fie $M = \{(x, y) \in U \mid g_i(\pmb{x}, \pmb{y}) = 0, 1 \leq i \leq m\}$
+  mulțimea punctelor din $U$ care verifică legăturile.
+
+  Se numește \emph{punct de extrem local al funcției $f$ cu legăturile $g_i$}
+  orice punct $(\pmb{x}_0, \pmb{y}_0) \in M$, pentru care există o vecinătate
+  $W \seq U$, astfel încît diferența $f(\pmb{x}, \pmb{y}) - f(\pmb{x}_0, \pmb{y}_0)$
+  să aibă semn constant pentru orice $(\pmb{x}, \pmb{y}) \in M \cap W$.
+\end{definition}
+
+Teorema pe care se bazează metoda multiplicatorilor lui Lagrange este:
+
+\begin{theorem}[J. L. Lagrange]\label{thm:lagr-mult}
+  Cu notațiile și contextul de mai sus, presupunem că $(\pmb{x}_0, \pmb{y}_0)$
+  este un punct de extrem local al lui $f$, cu legăturile de mai sus și că
+  \[
+    \det J_g(\pmb{x}_0, \pmb{y}_0) \stackrel{\text{not.}}{=\joinrel=\joinrel=} %
+    \frac{D(g_1, \dots, g_m)}{D(y_1, \dots, y_m)} (\pmb{x}_0, \pmb{y}_0) \neq 0.
+  \]
+
+  Atunci există $m$ numere reale $\lambda_1, \dots, \lambda_m$, numite
+  \emph{multiplicatori Lagrange} astfel încît, dacă definim funcția:
+  \[
+    F = f + \lambda_1 g_1 + \dots + \lambda_m g_m,
+  \]
+  punctul $(\pmb{x}_0, \pmb{y}_0)$ să verifice în mod necesar sistemul de
+  $n + 2m$ ecuații:
+  \[
+    \frac{\partial F}{\partial x_j} = \frac{\partial F}{\partial y_k} = 0, %
+    g_l = 0, \quad \forall 1 \leq j \leq n, 1 \leq k \leq m, 1 \leq l \leq m,
+  \]
+  cu $n + 2m$ necunoscute, $\pmb{\lambda}, \pmb{x}, \pmb{y}$.
+\end{theorem}
+
+\textbf{Exemplu:} Să se determine extremele locale ale funcției $f(x,y,z) = xyz$,
+cu legătura $x + y + z = 1$.
+
+\emph{Soluție:} Folosim metoda multiplicatorilor Lagrange. Definim funcțiile:
+\begin{align*}
+  g(x, y, z) &= x + y + z - 1 \\
+  F(x, y, z) &= f + \lambda g = xyz + \lambda(x + y + z - 1).
+\end{align*}
+
+Extremele cerute verifică sistemul:
+\[
+  \begin{cases}
+    \frac{\partial F}{\partial x} &= 0 \\
+    \frac{\partial F}{\partial y} &= 0 \\
+    \frac{\partial F}{\partial z} &= 0 \\
+    g &= 0
+  \end{cases} \Rightarrow
+  \begin{cases}
+    yz + \lambda &= 0 \\
+    xz + \lambda &= 0 \\
+    xy + \lambda &= 0 \\
+    x + y + z - 1 &= 0
+  \end{cases}
+\]
+
+Soluția sistemului este dată de:
+\begin{align*}
+  \lambda_1 &= -\frac{1}{9} \Rightarrow %
+              (x_1, y_1, z_1) = \big(\frac{1}{3}, \frac{1}{3}, \frac{1}{3}\big) \\
+  \lambda_2 &= 0 \Rightarrow
+              \begin{cases}
+                (x_2, y_2, z_2) &= (1, 0, 0) \\
+                (x_3, y_3, z_3) &= (0, 1, 0) \\
+                (x_4, y_4, z_4) &= (0, 0, 1)
+              \end{cases}
+\end{align*}
+
+În continuare, studiem natura punctelor de extrem pentru funcția $F$, fie cu
+matricea hessiană, fie cu diferențiala totală de ordin 2.
+
+Găsim că $(x_1, y_1, z_1)$ este maxim local, iar celelalte puncte nu sînt
+de extrem.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Exerciții}
+\label{sec:exc}
+
+
+1. Să se determine extremele funcțiilor $f$, cu legătura $g$ în cazurile:
+\begin{enumerate}[(a)]
+\item $f(x, y) = x^2 + y^2 - 6x - 2y + 1, g(x, y) = x + y - 2$;
+\item $f(x, y) = x^2 + y^2 - 6x - 2y + 1, g(x, y) = x^2 + y^2 - 2x - 2y + 1$;
+\item $f(x, y) = 3x + 4y, g(x, y) = x^2 + y^2 + 25$.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se găsească punctul din planul $2x + y - z = 5$, situat la distanță minimă
+față de origine.
+
+\vspace{1cm}
+
+3. Să se determine punctele cele mai depărtate de origine care se află pe
+suprafața de ecuație $4x^2 + y^2 + z^2 - 8x - 4y + 4 = 0$.
+
+\vspace{1cm}
+
+4. Să se determine valorile extreme ale funcției:
+\[
+  f: \RR^3 \to \RR, \quad f(x, y, z) = 2x^2 + y^2 + 3z^2,
+\]
+pe mulțimea $\{(x, y, z) \in \RR^3 \mid x^2 + y^2 + z^2 = 1 \}$.
+
+\vspace{1cm}
+
+5. Să se determine valorile extreme ale produsului $xy$, cînd $x$ și $y$ sînt
+coordonatele unui punct de pe elipsa de ecuație $x^2 + 2y^2 = 1$.
+\end{document}

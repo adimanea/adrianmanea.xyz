@@ -1,0 +1,275 @@
+
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 6 \\ Șiruri și serii de funcții}}
+\end{center}
+
+1. Să se arate că șirul de funcții $(f_n)$, unde:
+\[
+  f_n : \RR \to \RR, \quad f_n(x) = \frac{1}{n} \arctan x^n
+\]
+converge uniform pe $\RR$, dar:
+\[
+  \big(\lim_{n \to \infty} f_n(x)\big)^\prime_{x = 1} \neq \lim_{n \to \infty} f'_n(1).
+\]
+
+Rezultatele diferă deoarece șirul derivatelor nu converge uniform pe $\RR$.
+
+\vspace{1cm}
+
+2. Să se studieze convergența punctuală și uniformă a șirului de funcții $(f_n)$, cu
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = nxe^{-nx^2}.
+\]
+
+Să se arate că:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) dx \neq \int_0^1 \lim_{n \to \infty} f_n(x) dx.
+\]
+Rezultatul se explică prin faptul că șirul nu este uniform convergent.
+
+De exemplu, pentru $x_n = \frac{1}{n} \in [0, 1]$, avem $f_n(x_n) \to 1$, dar
+în general $f_n(x) \to 0$ (simplu).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Convergența seriilor de funcții}
+\label{sec:serii-f}
+
+\begin{definition}\label{def:pc-sf}
+  Seria $\sum f_n$ este \emph{simplu (punctual) convergentă către funcția $f$} dacă șirul
+  sumelor parțiale $(S_n(x))_n$ este simplu (punctual) convergent către $f$.
+
+  Seria este \emph{uniform convergentă către funcția $f$} dacă șirul sumelor parțiale
+  $(S_n(x))_n$ este uniform convergent către $f$.
+
+  Seria $\sum f_n$ este \emph{absolut convergentă} dacă seria $\sum |f_n|$ este
+  simplu convergentă.
+\end{definition}
+
+Avem următoarele teoreme de derivare și integrare termen cu termen:
+
+\begin{theorem}\label{thm:int-t}
+  Fie $\sum f_n$ o serie uniform convergentă de funcții continue $f_n : [a, b] \to \RR$
+  și fie $s$ suma acestei serii. Atunci $s$ este o funcție continuă pe $[a, b]$.
+
+  În plus, avem:
+  \[
+    \int_a^b s(x) dx = \sum_{n \geq 1} \int_a^b f_n(x) dx.
+  \]
+\end{theorem}
+
+\begin{theorem}\label{thm:der-t}
+  Fie $\sum f_n$ o serie punctual convergentă de funcții de clasă $C^1([a, b])$, cu suma
+  $s$ pe $[a, b]$ și astfel încît seria derivatelor $\sum f'_n$ să fie uniform convergentă.
+
+  Atunci funcția $s$ este derivabilă pe $[a, b]$ și:
+  \[
+    s'(x) = \sum_{n \geq 1} f'_n(x), \forall x \in [a, b].
+  \]
+\end{theorem}
+
+Criteriile de convergență pentru serii de funcții:
+
+\begin{theorem}[Weierstrass]\label{thm:wei-s-f}
+  Fie $\sum f_n$, cu $f_n : [a, b] \to \RR$ o serie de funcții și fie $\sum a_n$ o serie
+  convergentă de numere reale pozitive.
+
+  Dacă $|f_n(x)| \leq a_n, \forall x \in [a, b]$ și pentru orice $n \geq N$, cu $N$ fixat,
+  atunci seria de funcții este uniform convergentă pe $[a, b]$.
+\end{theorem}
+
+\begin{definition}\label{def:egal-m}
+  Funcțiile $f_n$ se numesc \emph{egal mărginite} dacă există $M \in \RR$, astfel
+  încît $f_n \leq M, \forall n \in \NN$.
+\end{definition}
+
+Evident, dacă fiecare funcție $f_i$ este mărginită de $m_i$, putem lua
+$M = \max_i (m_i)$ și avem egal mărginirea.
+
+\begin{theorem}[Abel]\label{thm:abel-s-f}
+  Dacă seria de funcții $\sum f_n$ se poate scrie sub forma $\sum a_n v_n$, astfel
+  încît seria de funcții $\sum v_n$ este uniform convergentă, iar $(a_n)$ este
+  un șir monoton de funcții egal mărginite, atunci ea este uniform convergentă.
+\end{theorem}
+
+\begin{theorem}[Dirichlet]\label{thm:diri-s-f}
+  Dacă seria de funcții $\sum f_n$ se poate scrie sub forma $\sum a_n v_n$
+  astfel încît șirul sumelor parțiale al seriei $\sum v_n$ să fie un șir de funcții
+  egal mărginite, iar $(a_n)_n$ să fie un șir monoton ce converge uniform către 0,
+  atunci ea este uniform convergentă.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Exerciții}
+\label{subsec:exc-s-f}
+
+3. Să se precizeze convergența seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $\sum \frac{n^2}{\sqrt{n!}} (x^n + x^{-n}), x \in \Big[\frac{1}{2}, 2\Big]$;
+\item $\sum \frac{nx}{1 + n^5 x^2}, x \in \RR$;
+\item $\sum \arctan \frac{2x}{x^2 + n^4}, x \in \RR$;
+\item $\sum \Big[ e - \Big( 1 + \frac{1}{n} \Big)^n \Big] \cdot \frac{\cos nx}{n + 1}$;
+\item $\sum \frac{1}{2^n} \cos (3^n x), x \in \RR$;
+\item $\sum x^n(1 - x), x \in [0, 1]$;
+\item $\sum \frac{(x + n)^2}{n^4}, x \in [a, b], 0 < a < b$;
+\item $\sum \frac{\ln(1 + nx)}{nx^n}, x > 0$;
+\end{enumerate}
+
+Indicații:
+\begin{enumerate}[(a)]
+\item $\frac{1}{2^n} \leq x^n \leq 2^n$, deci seria este $\leq \frac{n^2}{\sqrt{n!}} (2^n + 2^n)$.
+  Arătăm acum (cu criteriul raportului) că seria numerică rezultată este convergentă;
+\item Găsim maximul funcției (care este în $\sqrt{\frac{1}{n^5}}$), deci seria va fi uniform
+  și absolut convergentă, fiind mai mică decît seria convergentă $\sum \frac{1}{2n \sqrt{n}}$;
+\item Similar cu raționamentul anterior;
+\item
+  \[
+    \Big| \big[ e - \big(1 + \frac{1}{n}\big)^n \big] \frac{\cos nx}{n+1} \Big| \leq
+    \Big[ \big( 1 + \frac{1}{n} \big)^{n + 1} - \big(1 + \frac{1}{n}\big)^n \Big] \cdot \frac{1}{n+1} < \frac{3}{n(n+1)}.
+  \]
+  Seria numerică rezultată este acum convergentă, putînd fi comparată cu o serie armonică.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se studieze convergența seriilor de funcții și să se decidă dacă
+se pot deriva termen cu termen (indicație: Weierstrass, comparație cu
+seria armonică):
+\begin{enumerate}[(a)]
+\item $\sum n^{-x}, x \in \RR$;
+\item $\sum \frac{\sin nx}{2^n}, x \in \RR$;
+\item $\sum \frac{\sin nx}{n(n+1)}, x \in \RR$;
+\item $\sum (-1)^n \frac{x^2 + n}{n^2}, x \in \RR$;
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Fie seria $\sum \frac{nx^n + x}{n^2 + 1}$.
+\begin{enumerate}[(a)]
+\item Pentru ce valori ale lui $x \in \RR$ seria converge?
+\item Să se studieze convergența uniformă.
+\item Se poate deriva seria termen cu termen?
+\end{enumerate}
+
+6. Să se stabilească natura seriei $\sum (f_n - f_{n-1})$, dacă:
+\begin{enumerate}[(a)]
+\item $f_n : [0, 1] \to \RR, f_n(x) = nx(1 - x)^n, \forall n \in \NN$;
+\item $f_n : (0, 1] \to \RR, f_n(x) = \frac{e^{nx}}{1 + e^{nx}}, \forall n \in \NN$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Să se determine mulțimea de convergență pentru următoarele serii de funcții:
+\begin{enumerate}[(a)]
+\item $\sum \Big( 1 + \frac{1}{n} \Big)^n \Big( \frac{1 - x}{1 - 2x} \Big)^n, x \neq \frac{1}{2}$;
+  (rădăcină pentru seria valorilor absolute)
+\item $\sum (-1)^n \frac{1}{\ln n} \Big( \frac{1 - x^2}{1 + x^2} \Big)^n, x \in \RR$; (raport)
+\item $\sum 2^n \sin \frac{x}{3^n}, x \in \RR$; (comparație cu $\Big( \frac{2}{3} \Big)^n$)
+\item $\sum \frac{\ln(1 + a^n)}{n^x}, a \geq 0$; ($0 < a < 1$ raport, $a = 1$ C, $a > 1$ descompunem în două serii, $a = 0$ C)
+\item $\sum \frac{\sin^n x}{n^a}, a \in \RR$. (radical)
+\end{enumerate}
+
+
+\end{document}
+
+

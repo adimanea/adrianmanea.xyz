@@ -1,0 +1,119 @@
+\chapter{Derivate parțiale}
+
+\section{Funcții de mai multe variabile}
+
+În general, putem lucra cu funcții de forma $ f : \RR^n \to \RR $,
+funcții care acceptă $ n $ variabile, deci $ f(x_1, \dots, x_n) = y \in \RR $.
+
+Cazurile pe care le vom folosi cel mai des sînt $ n = 2 $ și $ n = 3 $.
+
+Dacă $ f : \RR^2 \to \RR $ este o funcție de două variabile, în loc
+de $ f(x, y) $, putem gîndi că avem o funcție de forma $ f_x(y) $, pentru
+orice $ x \in \RR $.
+
+Evident, putem avea inclusiv $ f : \RR^n \to \RR^m $, adică funcții de
+mai multe variabile, care returnează mai multe variabile.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Operatori diferențiali}
+
+În cele ce urmează, presupunem că lucrăm cu $ f : \RR^3 \to \RR, f = f(x, y, z) $.
+
+Putem defini \emph{derivata parțială} a lui $ f $ după variabila $ x $
+ca fiind derivata obținută prin tratarea lui $ y $ și $ z $ drept parametri.
+Notația este $ \dfrac{\partial f}{\partial x} $ sau $ f_x $ sau $ \partial_x f $.
+\index{derivate parțiale}
+
+Similar se pot defini și celelalte derivate parțiale. De exemplu:
+\[
+  f(x, y, z) = 3x^2 y + 5xe^y + \sin(yz).
+\]
+Avem:
+\[
+  f_x = 6xy + 5e^y, \quad f_y = 3x^2 + 5xe^y + z\cos(yz), \quad %
+  f_z = y\cos yz.
+\]
+\index{derivate parțiale!gradient}
+\index{derivate parțiale!divergență}
+\index{derivate parțiale!nabla}
+\index{derivate parțiale!laplacian}
+\index{derivate parțiale!laplacian!funcție armonică}
+Pentru asemenea funcții, se definesc următorii \emph{operatori diferențiali}:
+\begin{itemize}
+\item \emph{gradient}, notat $ \dr{grad}f = \nabla f = (f_x, f_y, f_z) $.
+  \emph{Observație:} Gradientul transformă o funcție într-un vector de funcții.
+\item \emph{divergență}, notată $ \dr{div} f = \nabla \cdot f = f_x + f_y + f_z $;
+\item \emph{laplacianul}, notat $ \Delta f = \dfrac{\partial^2 f}{\partial x^2} + %
+  \dfrac{\partial^2 f}{\partial y^2} + \dfrac{\partial^2 f}{\partial z^2} $.
+
+  O funcție se numește \emph{armonică}, dacă $ \Delta f = 0 $.
+\end{itemize}
+
+Fiecare dintre acești operatori poate fi înțeles privind \emph{operatorul nabla},
+$ \nabla $ ca fiind:
+\[
+  \nabla = \Big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, %
+  \frac{\partial}{\partial z} \Big).
+\]
+Atunci, \emph{gradientul} reprezintă \emph{aplicarea} lui $ \nabla $ pe $ f $,
+iar \emph{divergența} reprezintă \emph{produsul scalar} dintre $ \nabla $
+și vectorul $ (f, f, f) $. De asemenea, laplacianul poate fi înțeles ca
+produsul scalar $ \nabla \cdot \nabla $, aplicat apoi lui $ f $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Diferențiala totală}
+\index{derivate parțiale!diferențiala totală}
+Dată o funcție de mai multe variabile, pe lîngă derivatele parțiale, se
+poate defini și o \emph{diferențială totală}, care conține toate informațiile
+din derivatele parțiale.
+
+Pentru o funcție $ f = f(x, y, z) $, aceasta se definește prin:
+\[
+  df = f_x dx + f_y dy + f_z dz
+\]
+
+De asemenea, avem și diferențiala totală de ordinul 2:
+\[
+  d^2 f = \frac{\partial^2 f}{\partial x^2} dx^2 + \frac{\partial^2 f}{\partial y^2} + %
+  2 \frac{\partial^2 f}{\partial x \partial y} dxdy.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Pentru următoarele funcții $ f : \RR^3 \to \RR $, calculați
+gradientul, divergența și diferențiala totală în punctele
+$ (1, 1, 1) $ și $ (1, 2, 3) $:
+\begin{enumerate}[(a)]
+\item $ f(x, y, z) = 3x^2 y + x\sin z + z\cos y $;
+\item $ f(x, y, z) = \sqrt{x^2 + y^2 + z^2} $;
+\item $ f(x, y, z) = \ln(xy) + \ln(xz) + \ln(yz) $;
+\item $ f(x, y, z) = e^{x + y + z} $;
+\item $ f(x, y, z) = \dfrac{x + y}{z} + \dfrac{y + z}{x} + \dfrac{x + z}{y} $;
+\item $ f(x, y, z) = \arctan \dfrac{x}{y} + \arctan \dfrac{y}{z} + \arctan \dfrac{z}{x} $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{1cm}
+
+2. Verificați dacă următoarele funcții sînt armonice:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \ln(x^2 + y^2) $;
+\item $ f(x, y, z) = \ln(x^2 + y^2 + z^2) $;
+\item $ f(x, y) = \sqrt{x^2 + y^2} $;
+\item $ f(x, y, z) = \sqrt{x^2 + y^2 + z^2} $;
+\item $ f(x, y) = (x^2 + y^2)^{-1} $;
+\item $ f(x, y, z) = (x^2 + y^2 + z^2)^{-1} $.
+\end{enumerate}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-18-19"
+%%% End:

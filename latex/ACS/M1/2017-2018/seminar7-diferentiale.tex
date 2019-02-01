@@ -1,0 +1,232 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} M1-ACS, 2017---2018, M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 7 \\ Funcții de mai multe variabile. \\ Derivate parțiale }}
+\end{center}
+
+\section{Derivate parțiale. Diferențială}
+\label{sec:der-dif}
+
+Amintim următoarele noțiuni: Fie $f : \RR^n \to \RR$ o funcție de $n$ variabile.
+\begin{itemize}
+\item \emph{Diferențiala (totală)} a lui $f$ se definește prin:
+  \[
+    Df(a)(x_1, \dots, x_n) = \sum_{i = 1}^n \frac{\partial f}{\partial x_i}(a) dx_i, \forall a \in \RR^n.
+  \]
+\item \emph{Diferențiala a doua} a lui $f$ se definește prin:
+  \[
+    D^2f(a)(x_1, \dots, x_n) = \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} (a)
+    \cdot dx_i dx_j, \forall a \in \RR^n.
+  \]
+\item \emph{Laplacianul} funcției $f$ se definește prin:
+  \[
+    \Delta f = \sum_{i = 1}^n \frac{\partial^2 f}{\partial x_i^2}.
+  \]
+\end{itemize}
+
+\begin{definition}\label{def:armonica}
+  O funcție se numește \emph{armonică} dacă laplacianul său este nul.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+\label{sec:exc}
+
+1. Verificați dacă următoarele funcții sînt armonice:
+\begin{enumerate}[(a)]
+\item $f : \RR^2 - \{(0, 0)\} \to \RR, f(x, y) = \ln(x^2 + y^2)$;
+\item $f : \RR^3 - \{ (0, 0, 0) \} \to \RR, f(x, y, z) = \ln(x^2 + y^2 + z^2)$;
+\item $f : \RR^2 - \{ (0, 0) \} \to \RR, f(x, y) = \frac{1}{\sqrt{x^2 + y^2}}$;
+\item $f : \RR^3 - \{ (0, 0, 0) \} \to \RR, f(x, y, z) = \frac{1}{\sqrt{x^2 + y^2 + z^2}}$;
+\item $f : \RR^2 - \{ (0, 0) \} \to \RR, f(x, y) = \frac{1}{x^2 + y^2}$;
+\item $f : \RR^3 - \{ (0, 0, 0) \} \to \RR, f(x, y) = \frac{1}{x^2 + y^2 + z^2}$;
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie funcția:
+\[
+  f(x, y) = \begin{cases}
+    \frac{xy^3}{x^2 + y^2}, & (x, y) \neq (0, 0) \\
+    0, & (x, y) = (0, 0)
+  \end{cases}
+\]
+
+\begin{enumerate}[(a)]
+\item Să se arate că $f$ este de clasă $\kal{C}^1$ pe $\RR^2$;
+\item Să se arate că $f$ are derivate parțiale mixte de ordinul al doilea în orice punct
+  și să se calculeze $\frac{\partial^2 f}{\partial x \partial y}$ și $\frac{\partial^2 f}{\partial y \partial x}$
+  în origine. Este $f$ de clasă $\kal{C}^2$ pe $\RR$?
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze jacobienii transformărilor în coordonate polare,
+cilindrice și sferice:
+\[
+  \begin{cases}
+    (x, y) &= (\rho \cos \varphi, \rho \sin \varphi), (\rho, \varphi) \in (0, \infty) \times (0, 2\pi) \\
+    (x, y, z) &= (\rho \cos \varphi, \rho \sin \varphi, z), (\rho, \varphi, z) \in (0, \infty) \times (0, 2\pi) \times \RR \\
+    (x, y, z) &= (\rho \sin \theta \cos \varphi, \rho \sin \theta \sin \varphi, \rho \cos \varphi), %
+    (\rho, \theta, \varphi) \in (0, \infty) \times (0, \pi) \times (0, 2\pi)
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+4. Să se calculeze diferențialele funcțiilor:
+\begin{enumerate}[(a)]
+\item $f : \RR^2 - \{ (x, y) \mid x = 0 \}, f(x, y) = \arctan \frac{y}{x}$;
+\item $g : \RR^2 - \{ (x, y) \mid y = 0 \}, g(x, y) = -\arctan \frac{x}{y}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Fie $f \in \kal{C}^2(\RR^2)$ și $g : \RR^2 \to \RR$, dată de $g(x, y) = f(x^2 + y^2, x^2 - y^2)$.
+Să se calculeze derivatele parțiale de ordinul întîi și al doilea ale funcției $g$, precum și
+diferențiala acestei funcții.
+
+\vspace{1cm}
+
+6. Fie $r = \sqrt{x^2 + y^2 + r^2}$ și fie $f \in \kal{C}^1(\RR)$. Să se calculeze laplacianul
+funcțiilor $g(x, y, z) = f \big( \frac{1}{r} \big)$ și $h(x, y, z) = f(r)$.
+
+\vspace{1cm}
+
+7. Dacă $f \in \kal{C}^2(\RR^3)$ și $u(x, y) = f(x^2 + y^2, x^2 - y^2, 2xy)$, să se calculeze
+derivatele parțiale de ordinul al doilea ale funcției $u$.
+
+\vspace{1cm}
+
+8. Fie $a \in \RR$ și $g, h$ două funcții de clasă $\kal{C}^2$ pe $\RR$. Să se arate că
+$f(x, y) = g(x - ay) + h(x + ay)$ verifică ecuația coardei vibrante:
+\[
+  \frac{\partial^2 f}{\partial x^2} - a^2 \frac{\partial^2 f}{\partial y^2} = 0.
+\]
+
+\vspace{1cm}
+
+9. Să se afle $f \in \kal{C}^2(\RR)$, știind că funcția $v(x, y) = f\big(\frac{y}{x}\big)$
+este armonică.
+
+\vspace{1cm}
+
+10. Să se arate că laplacianul în coordonate cilindrice este:
+\[
+  \Delta f = \frac{1}{\rho} \frac{\partial}{\partial \rho} %
+  \Big(\rho \frac{\partial f}{\partial \rho} \Big) + %
+  \frac{1}{\rho^2} \frac{\partial^2 f}{\partial \varphi^2} + %
+  \frac{\partial^2 f}{\partial z^2}.
+\]
+
+Indicație: porniți cu definiția laplacianului în coordonate carteziene, apoi
+folosiți formula pentru derivarea funcțiilor compuse, ținînd cont de formulele
+de trecere în coordonate cilindrice. De exemplu, pentru a calcula
+$\frac{\partial f}{\partial \rho}$, folosiți
+$\frac{\partial f}{\partial x} \cdot \frac{\partial x}{\partial \rho}$ etc.
+
+\vspace{1cm}
+
+11. Să se arate că funcția $z(x, y) = xy + xe^{\frac{y}{x}}$ verifică ecuația:
+\[
+  x \frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} = xy + z.
+\]
+\end{document}

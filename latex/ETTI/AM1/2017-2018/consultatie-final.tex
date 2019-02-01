@@ -1,0 +1,327 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hfill\large\textsc}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM1, 2017---2018, Consultație}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Consultație \\
+      Extreme și integrale }}
+\end{center}
+
+\vspace{2cm}
+
+1. Să se determine maximul și minimul funcției:
+\[
+  f(x, y) = x^2 + y^2 - 3x - 2y + 1
+\]
+pe mulțimea $K = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \}$.
+
+\emph{Indicații:}
+\begin{itemize}
+\item mulțimea $K$ este compactă (un disc), funcția este continuă, deci
+  este mărginită și își atinge marginile;
+\item studiind pe interiorul discului ($x^2 + y^2 < 1$), nu avem soluții;
+\item pe frontieră, avem legătura $g(x, y) = x^2 + y^2 - 1 = 0$. Folosind metoda
+  multiplicatorilor lui Lagrange, găsim punctele:
+  \[
+    (x, y) \in \Big\{ \Big( -\frac{3\sqrt{13}}{13}, -\frac{2\sqrt{13}}{13} \Big),
+    \Big(\frac{3\sqrt{13}}{13}, \frac{2\sqrt{13}}{13}\Big) \Big\}
+  \]
+\item pentru a găsi punctele de extrem, putem calcula $f$ în fiecare din aceste valori.
+\end{itemize}
+
+\vspace{1cm}
+
+2. Calculați:
+\begin{enumerate}[(a)]
+\item $\ds\int_0^\infty \frac{dx}{1 + x^3}$;
+\item $\ds\int_0^1 \ln^p \Big( \frac{1}{x} \Big), p > -1$.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Vom face schimbarea de variabilă $x^3 = y$ și folosim formula pentru funcția beta:
+  \[
+    B(p, q) = \int_0^\infty \frac{y^{p-1}}{(1 + y)^{p+q}} dy.
+  \]
+  Rezultatul este: $\frac{1}{3} B\big( \frac{1}{3}, \frac{2}{3} \big)$.
+\item Vom face schimbare de variabilă $\ln x = y$ și folosim formula pentru funcția gamma:
+  \[
+    \Gamma(\alpha) = \int_0^\infty x^{\alpha - 1} e^{-x} dx, \alpha > 0.
+  \]
+  Rezultatul este $\Gamma(p + 1)$.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se calculeze volumul mulțimii $\Omega$ mărginită de suprafețele de ecuații:
+\[
+  \begin{cases}
+    2x^2 + y^2 + z^2 &= 1 \\
+    2x^2 + y^2 - z^2 &= 0 \\
+    z \geq 0
+  \end{cases}
+\]
+
+\emph{Indicații:} Eliminînd $z$ din ecuații, găsim elipsa $4x^2 + 2y^2 = 1$, care
+este curba de intersecție a suprafețelor. De asemenea, avem și $z = \frac{1}{\sqrt{2}}$.
+Așadar, putem proiecta mulțimea pe planul $XOY$ și găsim:
+\[
+  D = \{ (x, y) \in \RR^2 \mid 4x^2 + 2y^2 \leq 1 \}.
+\]
+Cu definiția, rezultă:
+\[
+  V(\Omega) = \iiint_\Omega dx dy dz = \iint_D dxdy \int_{\sqrt{2x^2 + y^2}}^{\sqrt{1 - 2x^2 - y^2}} dz.
+\]
+
+Trecînd la coordonate polare, găsim rezultatul $\frac{\pi}{3} (\sqrt{2} - 1)$.
+
+\vspace{1cm}
+
+4. Să se calculeze circulația cîmpului de vectori $\vec{V}$ de-a lungul curbei $\Gamma$, unde:
+\[
+  \vec{V} = -(x^2 + y^2) \vec{i} - (x^2 - y^2)\vec{j},
+\]
+iar curba $\Gamma = \Gamma_1 \cup \Gamma_2$ este:
+\begin{align*}
+  \Gamma_1 &= \{(x, y) \in \RR^2 \mid x^2 + y^2, y < 0 \} \\
+  \Gamma_2 &= \{(x, y) \in \RR^2 \mid x^2 + y^2 - 2x = 0, y \geq 0 \}.
+\end{align*}
+
+\emph{Indicații:} Oricărui cîmp vectorial $\vec{V} = P\vec{i} + Q\vec{j} + R\vec{k}$ i se asociază
+o 1-formă diferențial $\alpha = Pdx + Qdy + Rdz$. Atunci circulația cîmpului $\vec{V}$ de-a lungul
+curbei $\Gamma$ devine integrala curbilinie de speța a doua $\int_\Gamma \alpha = \int_\Gamma \vec{V} \cdot d\vec{r}$.
+
+Avem nevoie să parametrizăm curbele. Vom folosi coordonate polare și găsim:
+\begin{align*}
+  \Gamma_1 &: \begin{cases}
+    x(t) &= 2\cos t \\
+    y(t) &= 2\sin t
+  \end{cases}, t \in [\pi, 2\pi) \\
+  \Gamma_2 &: \begin{cases}
+    x(t) &= 1 + \cos t \\
+    y(t) &= \sin t
+  \end{cases}, t \in [0, \pi].
+\end{align*}
+
+Acum putem aplica formula de calcul pentru integrala curbilinie de speța a doua:
+\[
+  \int_\Gamma Pdx + Qdy + Rdz = \int_a^b (P \circ \Gamma)(t) \cdot x'(t) + (Q\circ \Gamma)(t) \cdot y'(t) +%
+  (R \circ \Gamma)(t) z'(t) dt, \quad t \in [a, b].
+\]
+
+\vspace{1cm}
+
+5. Să se calculeze aria paraboloidului $z = x^2 + y^2, z \in [0, h], h \in \RR$.
+
+\emph{Indicații:} Deoarece paraboloidul este dat în forma unei \emph{parametrizări carteziene}, folosim
+formula corespunzătoare de la integrale de suprafață de speța întîi. Așadar, avem $z = f(x,y) = x^2 + y^2$ și
+aria se calculează folosind formula:
+\[
+  \int_\Sigma F(x, y, z) d\sigma = \int_D F(x, y, f(x, y)) \cdot \sqrt{1 + p^2 + q^2} dxdy,
+\]
+unde $p = \frac{\partial z}{\partial x}$, iar $q = \frac{\partial z}{\partial y}$, iar $F = 1$ pentru
+calculul ariei.
+
+\vspace{1cm}
+
+6. Să se calculeze fluxul cîmpului de vectori $\vec{V}$ prin suprafața $\Sigma$ pentru:
+\[
+  \vec{V} = y\vec{i} - x\vec{j} + z^2 \vec{k}, \quad
+  \Sigma: z^2 = x^2 + y^2, z \in [0,1].
+\]
+
+\emph{Indicații:} Folosind formula de definiție pentru flux, avem:
+\[
+  F_\Sigma(\vec{V}) = \int_\Sigma \vec{V} \cdot \vec{n} d\sigma = %
+  \iint_D (\vec{V} \circ \Sigma) \cdot %
+  \Big( \frac{\partial \Phi}{\partial u} \times \frac{\partial \Phi}{\partial v} \Big) dudv,
+\]
+unde $\Phi = \Phi(u, v) : D \to \RR^3$ este o parametrizare a suprafeței $\Sigma$.
+
+Putem folosi parametrizarea carteziană $z = \sqrt{x^2 + y^2}$ sau, echivalent:
+\[
+  \begin{cases}
+    x(u, v) &= u \\
+    y(u, v) &= v \\
+    z(u, v) &= \sqrt{u^2 + v^2}
+  \end{cases}
+\]
+
+Putem calcula acum componentele \emph{versorului} normal, apoi produsul scalar și, în fine,
+integrala.
+
+\vspace{1cm}
+
+7. Să se calculeze integrala curbilinie $\ds\int_\Gamma \alpha$, unde:
+\[
+  \alpha = ydx + x^2dy,
+\]
+iar $\Gamma$ este pătratul cu vîrfurile $A(0, 0), B(2, 0), C(2,2), D(0, 2)$.
+
+\emph{Indicație:} Se folosește formula Green-Riemann, unde compactul $K$ este interiorul pătratului.
+Integrala devine:
+\[
+  \iint_K (1-2y)dxdy = \int_0^2 \int_0^2 (1 - 2y) dy = -4.
+\]
+
+\vspace{1cm}
+
+8. Fie forma diferențială $\alpha = -\frac{y}{x^2 + y^2} dx + \frac{x}{x^2 + y^2} dy$.
+
+Să se calculeze $\ds\int_\Gamma \alpha$, unde $\Gamma$ este cercul de centru 0 și rază $R > 0$.
+
+\emph{Indicație:} În acest caz \textbf{NU} se poate aplica formula Green-Riemann, deoarece
+$\alpha$ nu este definită în $(0, 0)$, care se găsește în interiorul compactului delimitat de $\Gamma$
+(mai general, conform teoriei, $\alpha$ trebuie să fie de clasă $\kal{C}^1$ în interior).
+
+Așadar, folosim definiția și parametrizăm cercul, cu coordonate polare, apoi folosim
+definiția integralei curbilinii de speța a doua.
+
+\vspace{1cm}
+
+9. Să se calculeze circulația cîmpului de vectori $\vec{V}$ pe curba $\Gamma$ pentru:
+\[
+  \vec{V} = y^2\vec{i} + xy\vec{j}, \quad \Gamma = \{(x, y) \in \RR^2 \mid x^2 + y^2 = 1, y > 0 \}.
+\]
+
+\emph{Indicații:} Pe lîngă metoda de la exercițiul 4, putem aplica și formula Green-Riemann.
+Obținem (cu $K$, compactul mărginit de $\Gamma$):
+\[
+  \int_\Gamma \vec{V} \cdot d\vec{r} = \iint_K -ydxdy = -\int_{-1}^1 \int_{x^2 - 1}^{\sqrt{1-x^2}} ydxdy.
+\]
+
+\vspace{1cm}
+
+10. Să se calculeze fluxul cîmpului $\vec{V} = (x + z^2, y + z^2, -2z)$
+prin suprafața
+\[
+  \Sigma: x^2 + y^2 + z^2 = 1, z \geq 0.
+\]
+
+\emph{Indicații:} \emph{Suprafața nu este închisă!} Așadar, nu se poate aplica formula Gauss-Ostrogradski.
+Trebuie să o închidem cu cercul $C: x^2 + y^2 = 1, z = 0$, formînd suprafața $S$. Rezultă
+$\Sigma \cup C = S$, deci $\kal{F}_\Sigma(\vec{V}) + \kal{F}_C(\vec{V}) = \kal{F}_S(\vec{V})$.
+
+Pe $S$ avem flux nul, deoarece $\nabla \cdot \vec{V} = 0$, iar pe $C$ se poate calcula cu definiția
+(vezi și exercițiul 6).
+
+\vspace{1cm}
+
+11. Să se calculeze, folosind formula lui Stokes, integrala curbilinie $\int_\Gamma \alpha$,
+pentru:
+\[
+  \alpha = (y - z)dx + (z - x)dy + (x - y)dz, \quad \Gamma: z = x^2 + y^2, z = 1.
+\]
+
+\emph{Indicații:} Definind $\Sigma = \{(x, y, z) \mid z = x^2 + y^2, z \leq 1\}$ avem că
+$\Gamma$ este bordul lui $\Sigma$. Putem aplica formula lui Stokes și găsim succesiv:
+\begin{align*}
+  \int_\Gamma \alpha &= \int_\Sigma -2(dy \wedge dz + dz \wedge dx + dx \wedge dy) \\
+                     &= -2 \iint_D (-2x - 2y + 1) dxdy,
+\end{align*}
+unde $D$ este discul unitate. La primul pas am folosit formula lui Stokes, iar la
+al doilea, formula de calcul pentru integrala de suprafață de speța a doua.
+
+Problema se finalizează trecînd la coordonate polare.
+
+
+
+\end{document}

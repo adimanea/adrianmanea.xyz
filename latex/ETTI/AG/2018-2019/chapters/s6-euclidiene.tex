@@ -1,0 +1,178 @@
+\chapter{Spații euclidiene. Ortonormare}
+
+Ne îndreptăm spre aplicațiile în geometria \emph{clasică}, adică
+euclidiană, în care este esențial să putem calcula \emph{lungimi (distanțe)}
+și \emph{unghiuri}.
+
+În liceu, puteam face aceasta folosind produsul scalar al doi vectori
+descompuși în reperul cartezian. Astfel, fie vectorii:
+\[
+  \vec{v} = a \vec{i} + b \vec{j}, \quad \vec{w} = c \vec{i} + d \vec{j}, %
+  a, b, c, d \in \RR.
+\]
+Avem:
+\begin{itemize}
+\item \emph{produsul scalar:} $ \vec{v} \cdot \vec{w} = ac + bd \in \RR $;
+\item \emph{lungimea vectorului} $ v = \sqrt{\vec{v} \cdot \vec{v}} $;
+\item \emph{cosinusul unghiului între doi vectori:} %
+  $ \cos(\widehat{\vec{v}, \vec{w}}) = \dfrac{\vec{v} \cdot \vec{w}}{v w} $;
+\item vectorii sînt \emph{perpendiculari} dacă $ \vec{v} \cdot \vec{w} = 0 $.
+\end{itemize}
+
+Acestea sînt noțiunile pe care le extindem acum în cazul spațiilor vectoriale
+arbitrare. Vom prezenta pentru cazul spațiului real $ V = \RR^n $, celelalte
+rezolvîndu-se similar, prin intermediul izomorfismelor canonice.
+
+Fie, deci, $ v = (v_1, \dots, v_n), w = (w_1, \dots, w_n) $ doi vectori
+din $ \RR^n $. Se definesc:
+\begin{itemize}\index{produs!scalar} \index{vector!norma} \index{vector!cosinus}
+\item \textbf{produsul scalar:}
+  \[
+    \langle v, w \rangle = \sum_{i = 1}^n v_i w_i \in \RR;
+  \]
+\item \textbf{norma vectorului:}
+  \[
+    || v || = \sqrt{\langle v, v \rangle} \in \RR;
+  \]
+\item \textbf{cosinusul unghiului între doi vectori:}
+  \[
+    \cos(v, w) = \frac{\langle v, w}{||v|| \cdot ||w||} \in [-1, 1].
+  \]
+\end{itemize}
+
+Avem și cazul particular de interes:
+\begin{definition}\label{def:perp}
+  Doi vectori $ v $ și $ w $ din $ \RR^n $ se numesc \emph{perpendiculari}
+  (\emph{ortogonali}), notat $ v \perp w $, dacă $ \langle v, w \rangle = 0 $.
+\end{definition}
+
+Cu acestea, avem:
+\begin{definition}\label{def:sp-eucl}
+  \index{spațiu vectorial!euclidian}
+  Spațiul vectorial $ \RR^n $ se numește \emph{euclidian}, deoarece este
+  înzestrat cu produsul scalar de mai sus.
+\end{definition}
+
+Aplicațiile care ne vor interesa sînt: calculul complementului
+ortogonal al unui subspațiu și ortonormarea unei baze.
+
+Începem cu primul subiect.
+
+\begin{definition}\label{def:compl-ort}
+  \index{subspațiu!complement ortogonal}
+  Fie $ V $ un subspațiu al unui spațiu euclidian ($ \RR^n $, în majoritatea
+  aplicațiilor). Se definește:
+  \[
+    V^\perp = \{ x \in \RR^n \mid x \perp v, \forall v \in V \}
+  \]
+  subspațiu care se numește \emph{complementul ortogonal} al lui $ V $.
+\end{definition}
+
+O proprietate esențială, care ne va permite să găsim complementul ortogonal, este
+următoarea:
+\begin{theorem}\label{thm:compl-ort}
+  Fie $ V $ un subspațiu al lui $ \RR^n $. Dacă $ V^\perp $ este complementul
+  său ortogonal, atunci:
+  \[
+    V \oplus V^\perp \simeq \RR^n.
+  \]
+\end{theorem}
+
+Rezultă, folosind teorema lui Grassmann și definiția sumei directe, că:
+\begin{itemize}
+\item $ \dim V^\perp = \dim \RR^n - \dim V $;
+\item $ V^\perp \cap V = \{ 0 \} $.
+\end{itemize}
+
+De asemenea, amintim că în $ \RR^2 $, de exemplu, baza canonică formată
+din $ \{(1, 0), (0, 1)\} $, pe care o putem înțelege și $ \{ \vec{i}, \vec{j} \} $,
+are o proprietate specială. Mai precis, vectorii $ \vec{i} $ și $ \vec{j} $
+sînt \emph{versori}, adică $ \vec{i} \perp \vec{j} $ și $ i = j = 1 $.
+
+În orice spațiu euclidian, putem obține o bază similară, numită \emph{bază %
+  ortonormată}, în două etape, folosind \textbf{procedeul Gram-Schmidt}.
+\index{algoritm!Gram-Schmidt}
+
+Fie, așadar, $ B = \{ b_1, \dots, b_n \} $ o bază arbitrară în $ \RR^n $.
+Vrem să obținem din ea o bază \emph{ortonormată} $ C = \{ c_1, \dots, c_n \} $,
+adică să fie formată din versori:
+\begin{itemize}
+\item $ c_i \perp c_j, \forall i \neq j $;
+\item $ || c_i || = 1, \forall i $.
+\end{itemize}
+
+Procedeul construiește pas cu pas $ c_i $, pornind de la $ b_i $.
+\begin{enumerate}[(1)]
+\item Alegem $ c_1 = b_1 $;
+\item Definim $ c_2 = b_2 + \alpha c_1 $, cu $ \alpha $ un scalar pe care vrem
+  să-l determinăm. Punem condiția $ c_2 \perp c_1 $ și rezultă:
+  \[
+    0 = \langle c_2, c_1 \rangle = \langle b_2 + \alpha c_1, c_1 \rangle = %
+    \langle b_2, c_1 \rangle + \alpha \langle c_1, c_1 \rangle.
+  \]
+  Așadar:
+  \[
+    \alpha = - \frac{\langle b_2, c_1 \rangle}{\langle c_1, c_1 \rangle}.
+  \]
+\item Continuăm mai departe să definim $ c_3 = b_3 + \alpha c_2 + \beta c_1 $
+  și determinăm $ \alpha, \beta $ din condițiile $ c_3 \perp c_2 $ și $ c_3 \perp c_1 $.
+\item Procedeul continuă după regula generală:
+  \[
+    c_i = b_i + \sum_{j = i - 1}^1 \alpha_j c_j,
+  \]
+  iar condițiile pe care le vom putea folosi la fiecare pas, pentru determinarea
+  constantelor $ \alpha_j $ sînt $ c_i \perp c_j, \forall j < i $, deoarece $ c_j $
+  au fost determinate la pașii anteriori.
+\end{enumerate}
+
+Rezultă, cu aceasta, o bază \emph{ortogonală} $ C = \{ c_1, \dots, c_n \} $.
+Această bază se \emph{normează}, obținînd vectori de normă $ 1 $ foarte simplu.
+Definim:
+\[
+  c'_i = \frac{1}{||c_i||} \cdot c_i
+\]
+și observăm că acum avem $ ||c'_i|| = 1 $.
+
+Așadar, baza $ C' = \{ c'_1, \dots, c'_n \} $ este o \emph{bază ortonormată},
+adică formată doar din versori, iar procedeul se încheie.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Să se ortonormeze bazele:
+\begin{enumerate}[(a)]
+\item $ B_1 = \{ (1, 0, 1), (-1, 2, 0), (0, 1, -1) \} $ a lui $ \RR^3 $;
+\item $ B_2 = \{ X + 1, X^2 + 1, 3 \} $ a lui $ \RR_2[X] $;
+\item $ B_3 = \{ (1, -1, 0, 0), (0, 1, 1, -1), (1, 0, -1, 1), (2, 1, 0, 1) \} $
+  a lui $ \RR^4 $.
+\end{enumerate}
+
+2. Să se completeze mulțimea $ \{ (1, -1, 2), (1, 2, 3) \} $ pînă la o bază
+a lui $ \RR^3 $ și să se ortonormeze baza rezultată.
+
+\vspace{1cm}
+
+3. Să se completeze mulțimea $ \{ 3, 2X + 1 \} $ pînă la o bază a lui $ \RR_2[X] $
+și să se ortonormeze baza rezultată.
+
+\vspace{1cm}
+
+4. Găsiți complementele ortogonale pentru:
+\begin{enumerate}[(a)]
+\item $ V_1 = \dr{Sp} \{ (-1, 1, 2), (0, 1, 1) \} $ în $ \RR^3 $;
+\item $ V_2 = \dr{Sp} \{ (1, 1, 1) \} $ în $ \RR^3 $;
+\item $ V_3 = \{ (x, y, z) \in \RR^3 \mid 3x + y = 0 \} $ în $ \RR^3 $;
+\item $ V_4 = \{ (x, y, z) \in \RR^3 \mid x = y \} $ în $ \RR^3 $;
+\item $ V_5 = \{ p \in \RR_2[X] \mid p'(0) = 0 \} $ în $\RR_2[X] $;
+\item $ V_6 = \{ p \in \RR_2[X] \mid p(0) = 0 \} $ în $ \RR_2[X] $;
+\item $ V_7 = \dr{Sp}\{ X \} $ în $ \RR_2[X] $;
+\item $ V_8 = \dr{Sp} \{ 2, 5X^2 \} $ în $ \RR_2[X] $;
+\item $ V_9 = \{ (x, y, z, t) \in \RR^4 \mid 3x + y = 0, y + z - t = 0 \} $
+  în $ \RR^4 $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-18-19"
+%%% End:

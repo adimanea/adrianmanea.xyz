@@ -1,0 +1,649 @@
+\documentclass[12pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}
+\newtheorem{proposition}{Propozi\c{t}ie}
+\newtheorem{lemma}{Lem\u{a}}
+\newtheorem{corollary}{Corolar}
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}
+\newtheorem{definition}{Defini\c{t}ie}
+\newtheorem{remark}{Observa\c{t}ie}
+
+\newenvironment{solution}
+{\begin{proof}[Soluție:\nopunct]}
+  {\end{proof}}
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 10 \\
+      Transformarea Fourier}}
+\end{center}
+
+\vspace{2cm}
+
+\section*{Definiții}
+
+\indent\indent Începem studiul \emph{transformărilor integrale}, folosind analiza
+complexă, cu transformările Fourier, utile, ca și seriile Fourier, pentru studiul
+funcțiilor periodice, de tipul semnalelor electrice.
+
+Facem următoarea notație a unei mulțimi de funcții pe care o vom folosi în continuare:
+\[
+  L^1( \RR ) = \Big\{ f : \RR \to \CC \Big\mid \int_{-\infty}^\infty |f(t)| dt < \infty \Big\}.
+\]
+
+Cu aceasta, avem:
+
+\begin{definition}\label{def:tr-four}
+  Se numește \emph{transformarea Fourier} a funcției $ f \in L^1(\RR) $ o funcție
+  complexă, notată cu $ \kal{F}[f] : \RR \to \CC $, definită prin:
+  \begin{equation}
+    \label{eq:transf-f}
+    \kal{F}[f](\omega) = \int_{-\infty}^\infty f(t) e^{i\omega t} dt.
+  \end{equation}
+
+  Funcția $ \kal{F}[f](\omega) $ se mai numește \emph{funcția spectrală} sau
+  \emph{spectrul (în frecvență)} asociat(ă) funcției $ f $. Dacă privim $ f $ ca
+  un semnal, dependent de timp, transformarea Fourier îi asociază spectrul acestuia.
+
+  O notație alternativă pentru $ \kal{F}[f](\omega) $ este $ \widehat{f}(\omega) $.
+\end{definition}
+
+Ideea de bază a unei transformări Fourier este următoarea. Dacă se dă o funcție periodică
+(sau convertită la una periodică printr-un artificiu de repetiție, practic), ei i se
+asociază \emph{seria Fourier}. Aceasta o aproximează cu o serie de sinusuri și cosinusuri,
+funcțiile periodice cel mai des întîlnite. Practic, are loc o superpoziție de termeni cu
+sinusuri și cosinusuri, un fel de interferență a undelor electromagnetice. La pasul
+următor, \emph{transformata Fourier} preia minimele și maximele acestor \qq{interferențe},
+iar rezultatul este un semnal (aproape) discret (\qq{digitalizat}), care reprezintă
+valorile cele mai importante din semnal.\footnote{O explicație animată este dată \href{https://en.wikipedia.org/wiki/Fourier_transform\#/media/File:Fourier_transform_time_and_frequency_domains_(small).gif}{aici}.}
+
+Conform teoriei seriilor Fourier, dacă funcția dată este pară, definiția se reduce
+la cazul mai simplu al cosinusurilor:
+\begin{equation}
+  \label{eq:transf-f-cos}
+  \widehat{f}(\omega) = 2 \int_0^\infty f(t) \cos \omega t dt, \quad \omega \in \RR.
+\end{equation}
+
+Similar, dacă funcția este impară, dezvoltarea conține doar funcții sinus:
+\begin{equation}
+  \label{eq:transf-f-sin}
+  \widehat{f}(\omega) = -2i \int_0^\infty f(t) \sin \omega t dt, \quad \omega \in \RR.
+\end{equation}
+
+Putem recupera funcția dată din transformata Fourier printr-o \emph{formulă de inversare}:
+
+\begin{theorem}[Formula Fourier de inversare]\label{thm:fourier-inv}
+  Fie $ f : \RR \to \RR $ o funcție din $ L^1(\RR) $. Dacă $ \widehat{f}(\omega) $ este
+  transformata ei Fourier și presupunînd că $ \widehat{f}(\omega) \in L^1(\CC) $,
+  atunci funcția inițială se obține din:
+  \begin{equation}
+    \label{eq:transf-f-inv}
+    f(t) = \frac{1}{2\pi} \int_{-\infty}^\infty \widehat{f}(\omega) e^{it\omega} d\omega, %
+    \quad \forall t \in \RR
+  \end{equation}
+\end{theorem}
+
+În particular, rezultă că putem calcula și transformata Fourier prin inversarea
+inversei:
+\begin{equation}
+  \label{eq:transf-f-iinv}
+  \widehat{f}(\omega) = \frac{1}{\sqrt{2\pi}}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Proprietăți}
+
+\indent\indent Următoarele proprietăți sînt esențiale pentru transformarea Fourier.
+Dacă nu se precizează altfel, vom nota prin $ \widehat{f}(\omega) $ transformata
+Fourier a funcției $ f $ (și similar pentru orice altă funcție), iar relația dintre
+cele două se va nota cu $ f(t) \leftrightarrow \widehat{f}(\omega) $ (și similar
+pentru orice altă funcție):
+
+\begin{itemize}
+\item \textbf{Liniaritatea}: Dacă $ \alpha, \beta \in \CC $, iar $ f, g \in L^1(\RR) $,
+  atunci:
+  \[
+    \alpha f(t) + \beta g(t) \leftrightarrow \alpha \widehat{f}(\omega) + %
+    \beta \widehat{g}(\omega);
+  \]
+\item \textbf{Simetria:} $ \widehat{f}(t) \leftrightarrow 2 \pi f(-\omega) $;
+\item \textbf{Schimbarea de scală}: Dacă $ \alpha \in \CC $, atunci
+  \[
+    f(\alpha t) \leftrightarrow \frac{1}{|\alpha|} \widehat{f} \Big(\frac{\omega}{\alpha}\Big);
+  \]
+\item \textbf{Translația timpului}: Dacă $ t_0 \in \RR $, atunci avem:
+  \[
+    f(t - t_0) \leftrightarrow \widehat{f}(\omega) e^{-it_0\omega};
+  \]
+\item \textbf{Translația frecvenței}: Dacă $ \omega_0 \in \RR $, atunci:
+  \[
+    e^{i\omega_0 t} f(t) \leftrightarrow \widehat{f}(\omega - \omega_0);
+  \]
+\item \textbf{Derivarea în raport cu timpul}: Dacă $ f $ este de $ n $ ori derivabilă,
+  atunci:
+  \[
+    \frac{d^n f}{dt^n} \leftrightarrow (i\omega)^m \widehat{f}(\omega);
+  \]
+\item \textbf{Derivarea în raport cu frecvența}: Dacă funcțiile $ f(t), tf(t), \dots, %
+  t^n f(t) $ sînt integrabile pe $ \RR $, atunci:
+  \[
+    (-it)^n f(t) \leftrightarrow \frac{d^n \widehat{f}(\omega)}{d\omega^n};
+  \]
+\item \textbf{Transformarea conjugatei complexe}: Fie $ f^\ast(t) $ conjugata
+  complexă a funcției $ f $. Atunci are loc:
+  \[
+    f^\ast(t) \leftrightarrow \widehat{f}^\ast(-\omega);
+  \]
+\item \textbf{Teorema de convoluție în timp}: Definim \emph{produsul de convoluție}
+  al funcțiilor $ f $ și $ g $ prin:
+  \[
+    h(t) = (f \ast g)(t) = \int_{-\infty}^\infty f(\tau)g(t - \tau) d\tau.
+  \]
+  Atunci are loc:
+  \[
+    (f \ast g)(t) \leftrightarrow \widehat{f}(\omega) \cdot \widehat{g}(\omega).
+  \]
+\item \textbf{Teorema de convoluție în frecvență}: În condițiile proprietății precedente,
+  are loc:
+  \[
+    f(t) g(t) \leftrightarrow %
+    \frac{1}{2\pi} \int_{-\infty}^\infty \widehat{f}(y) \widehat{g}(\omega - y) dy;
+  \]
+\item $ \widehat{f} $ este uniform continuă pe $ \RR $ și în plus, are loc:
+  \[
+    \lim_{|\omega| \to \infty} |\widehat{f}(\omega)| = 0;
+  \]
+\item Dacă $ f_n : \RR \to \RR, n \in \NN^\ast $ este un șir de funcții convergent
+  către funcția $ f : \RR \to \RR $ în spațiul $ L^1(\RR) $, adică:
+  \[
+    \lim_{n \to \infty} \int_{-\infty}^\infty |f_n(t) - f(t)| dt = 0,
+  \]
+  atunci șirul $ \widehat{f}_n $ converge uniform către $ \widehat{f} $, adică:
+  \[
+    \lim_{n \to \infty} \sup_{\omega \in \RR} |\widehat{f}_n(\omega) - \widehat{f}(\omega)| = 0.
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Exemple rezolvate}
+
+1. Să se calculeze transformata Fourier a funcției $ f(t) = e^{-a|t|}, a > 0 $.
+
+\begin{solution} Conform definiției, avem succesiv:
+  \begin{align*}
+    \widehat{f}(\omega) &= \int_{-\infty}^\infty e^{-|t|} e^{-i\omega t} dt \\
+                        &= \int_{-\infty}^\infty e^{-|t|} (\cos \omega t - i \sin \omega t) dt \\
+                        &= 2 \int_0^{\infty} e^{-t} \cos \omega t dt \\
+                        &= \int_0^\infty e^{-t} (e^{i\omega t} + e^{-i\omega t} dt \\
+                        &= -\frac{1}{i\omega - 1} + \frac{1}{i \omega + 1} \\
+                        &= \frac{2}{\omega^2 + 1}.
+  \end{align*}
+
+  Folosind formula de schimbare de scală, obținem:
+  \[
+    \widehat{f}(\omega) = \frac{1}{a} \widehat{f} \Big( \frac{\omega}{a} \Big) = %
+    \frac{2}{a \cdot \big( \frac{\omega^2}{a^2} + 1 \big)} = %
+    \frac{2a}{\omega^2 + a^2}.
+  \]
+\end{solution}
+
+\vspace{1cm}
+
+2. Să se calculeze transformata Fourier a funcției $ f(t) = e^{-7|t + 4|} $.
+
+\begin{solution}
+  Observăm că putem folosi exemplul anterior, cu $ a = 7 $. De asemenea, conform teoremei
+  de translație a timpului, cu $ t_0 = 4 $ și teoremei de schimbare de scală obținem în final:
+  \[
+    \widehat{f} = \frac{14 e^{4i\omega}}{\omega^2 + 49}.
+  \]
+\end{solution}
+
+\vspace{1cm}
+
+3. Să se calculeze transformata Fourier a funcției $ f(t) = te^{-\alpha t^2}, \alpha > 0 $.
+
+\begin{solution}
+  Pornim cu funcția mai simplă $ f_1(t) = e^{-t^2} $ și calculăm:
+  \begin{align*}
+    \widehat{f}_1(\omega) &= \int_{-\infty}^\infty e^{-t^2} e^{-i\omega t} dt \\
+                          &= \int_{-\infty}^\infty e^{-t^2} \cos \omega t dt -
+                            i \int_{-\infty}^\infty e^{-t^2} \sin \omega t dt \\
+                          &= 2 \int_0^\infty e^{-t^2} \cos \omega t dt.
+  \end{align*}
+  Atunci, prin derivare în interiorul integralei (după $ \omega $), găsim:
+  \[
+    \widehat{f}'_1(\omega) = -2\int_0^\infty e^{-t^2} t \sin \omega t dt = %
+    -\frac{1}{2} \omega \widehat{f}_1(\omega),
+  \]
+  ultima egalitate rezultînd după integrare prin părți.
+
+  Așadar, am ajuns la o ecuație diferențială cu variabile separabile:
+  \[
+    \frac{d\widehat{f}_1}{d \omega} = -\frac{1}{2} \omega \widehat{f}_1,
+  \]
+  pe care o rezolvăm și obținem $ \widehat{f}_1(\omega) = ce^{\frac{-\omega^2}{4}} $.
+
+  Constanta se poate calcula ținînd cont de egalitatea:
+  \[
+    c = \widehat{f}_1(0) = \int_{-\infty}^\infty e^{-t^2} dt = \sqrt{\pi} \Rightarrow %
+    \widehat{f}_1(\omega) = \sqrt{\pi} e^{-\omega^2}{4}.
+  \]
+
+  Deoarece $ e^{-\alpha t^2} = e^{-( t \sqrt{\alpha})^2} $, putem folosi formula de
+  schimbare de scală și obținem:
+  \[
+    \kal{F}[e^{-\alpha t^2}](\omega) = \frac{1}{\sqrt{\alpha}} %
+    \widehat{f}_1\Big( \frac{\omega}{\sqrt{\alpha}} \Big) = %
+    \frac{1}{\sqrt{\alpha}} \sqrt{\pi} e^{-\frac{\omega^2}{4 \alpha}}.
+  \]
+
+  Acum, cu teorema de derivare în raport cu frecvența, avem:
+  \[
+    \widehat{f}(\omega) = %
+    i \sqrt{\frac{\pi}{\alpha}} \Big(-\frac{\omega}{2 \alpha}\Big) e^{-\omega^2}{4 \alpha} = %
+    -\frac{i}{2} \sqrt{\pi}{\alpha^3} \omega e^{-\omega^2}{4 \alpha}.
+  \]
+\end{solution}
+
+\vspace{1cm}
+
+4. Să se calculeze transformata Fourier a \emph{impulsului triunghiular de lungime $ 2T $}:
+\[
+  q_T(t) =
+  \begin{cases}
+    1 - \frac{|t|}{T}, & |t| \leq T \\
+    0, & |t| > T
+  \end{cases}.
+\]
+
+\begin{solution}
+  Deoarece $ q_T $ este funcție pară, putem calcula direct folosind formula cu cosinusuri
+  (\eqref{eq:transf-f-cos}) și obținem:
+  \begin{align*}
+    \widehat{f}(\omega) &= 2 \int_0^T \Big( 1 - \frac{t}{T} \Big) \cos \omega t dt \\
+                        &= 2 \int_0^T \frac{\sin \omega t}{T \omega} dt \\
+                        &= 2 \frac{1}{T \omega} \int_0^T \sin \omega t dt \\
+                        &= \frac{2(1 - \cos \omega T)}{T \omega^2} \\
+                        &= \frac{4 \sin^2 \frac{T\omega}{2}}{T \omega^2}.
+  \end{align*}
+\end{solution}
+
+\vspace{1cm}
+
+5. Să se calculeze transformata Fourier a funcției \emph{sinus cardinal}:
+\[
+  \sin c(t) = \frac{\sin t}{t}.
+\]
+
+\begin{solution}
+  Funcția este pară, deci putem folosi din nou formula cu seria de cosinusuri
+  (\eqref{eq:transf-f-cos}):
+  \begin{align*}
+    \widehat{f}(\omega) &= 2 \int_0^\infty \frac{\sin t}{t} \cos \omega t dt \\
+                        &= \int_0^\infty \frac{\sin t(1 + \omega) + \sin t(1 - \omega)}{t} dt \\
+                        &= \frac{\pi}{2} \big[ \mathrm{sgn}(1 + \omega) + \mathrm{sgn}(1 - \omega) \big],
+  \end{align*}
+  folosind relația:
+  \[
+    \int_0^\infty \frac{\sin at}{t} dt = \frac{\pi}{2} \mathrm{sgn} a.
+  \]
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Tabel de transformate Fourier}
+
+\indent\indent Definim următoarele funcții ce vor fi de folos:
+\begin{enumerate}[(a)]
+\item \textbf{Funcția lui Heaviside}: $ h : \RR \to \RR $:
+  \[
+    h(t) = \begin{cases}
+      0, & t < 0 \\
+      1, & t \geq 0
+    \end{cases};
+  \]
+\item \textbf{Funcția sinus atenuat}: $ S_a : \RR \to \RR $:
+  \[
+    S_a(t) = \begin{cases}
+      \frac{\sin t}{t}, & t \neq 0 \\
+      1, & t = 0
+    \end{cases};
+  \]
+\item \textbf{Funcția semn}: $ \mathrm{sgn} : \RR \to \RR $:
+  \[
+    \mathrm{sgn} t = \begin{cases}
+      -1, & t < 0 \\
+      0, & t = 0 \\
+      1, & t > 0
+    \end{cases}.
+  \]
+\end{enumerate}
+
+Cu acestea, transformatele Fourier ale funcțiilor des întîlnite sînt redate în
+tabelul din figura \ref{fig:tabel-f}.
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{tabular}{| c | c |}
+    $ f(t) $ & $ \widehat{f}(\omega) $ \\
+    \hline \hline
+    $ h(t + t_0) - h(t - t_0), t_0 > 0 $ & $ 2t_0 S_a(\omega t_0) $ \\ & \\
+    $ \frac{\omega_0}{\pi} S_a(\omega_0 t), \omega_0 > 0 $ & $ h(\omega + \omega_0) - h(\omega - \omega_0) $ \\ & \\
+    $ h(t) - h(t_0), t_0 > 0 $ & $ t_0 S_a(\omega t_0) + \frac{1}{2i} \omega t_0^2 S_a^2 \Big( \frac{\omega t_0}{2} \Big) $\\ & \\
+    $ e^{-\omega_0 t}, \omega_0 > 0 $ & $ \frac{2 \omega_0}{\omega_0^2 + \omega^2} $ \\ & \\
+    $ -h(t + t_0) + 2h(t) - h(t - t_0), t_0 > 0 $ & $ \frac{1}{i} \omega t_0^2 S_a^2\Big( \frac{\omega t_0}{2} \Big) $ \\ & \\
+    $ e^{-\omega_0 t} h(t), \omega_0 > 0 $ & $ \frac{\omega_0}{\omega_0^2 + \omega^2} + \frac{1}{i} \frac{\omega}{\omega_0^2 + \omega^2} $ \\ & \\
+    $ e^{-\omega_0 |t|} \mathrm{sgn} t, \omega_0 > 0 $ & $ \frac{2}{i} \frac{\omega}{\omega_0^2 + \omega^2} $ \\ & \\
+    $ \Big( 1 - \frac{|t|}{t_0} (h(t + t_0) - h(t - t_0)\Big), t_0 > 0 $ & $ t_0 S_a^2 \Big( \frac{\omega t_0}{2} \Big) $ \\ & \\
+    $ e^{-\omega_0^2 t^2}, \omega_0 > 0 $ & $ \frac{\sqrt{\pi}{\omega_0}} e^{\frac{-\omega^2}{4 \omega_0^2}} $
+  \end{tabular}
+  \caption{\emph{Transformatele Fourier ale unor funcții uzuale}}
+  \label{fig:tabel-f}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Distribuții}
+
+\indent\indent Similar cu funcțiile de distribuție din studiul probabilităților,
+introducem cîteva dintre cele mai importante funcții de distribuție, pe care le vom
+trata apoi cu ajutorul transformatelor Fourier.
+
+\begin{definition}\label{def:f-test}
+  Se numește \emph{funcție test} o funcție $ \varphi : \RR \to \RR $, care este indefinit
+  derivabilă și nulă în afara unui interval compact.
+\end{definition}
+
+Fie $ \kal{D} $ mulțimea tuturor funcțiilor test.
+
+De exemplu:
+\[
+  \varphi_\varepsilon (x) =
+  \begin{cases}
+    \exp \Big( - \frac{\varepsilon^2}{\varepsilon^2 - x^2} \Big), & |x| < \varepsilon \\
+    0, & |x| \geq \varepsilon
+  \end{cases},
+\]
+care se poate defini pentru orice $ \varepsilon > 0 $ este o funcție test.
+
+În pregătirea introducerii noțiunii de \emph{distribuție}, mai avem nevoie și de:
+\begin{definition}\label{def:f-test-conv}
+  Spunem că șirul de funcții test $ (\varphi_n)_n $ \emph{converge către 0} dacă acest
+  șir se anulează în afara unui compact (același pentru toate) și dacă el converge
+  uniform către 0 împreună cu șirul derivatelor de orice ordin.
+\end{definition}
+
+Acum, definiția principală:
+
+\begin{definition}\label{def:distributie}
+  Se numește \emph{distribuție} o aplicație liniară $ f : \kal{D} \to \RR $ cu proprietatea
+  că dacă un șir de funcții test $ (\varphi_n)_n $ converge către zero, atunci
+  $ \ds\lim_{n \to \infty} f(\varphi_n) = 0 $.
+
+  Mulțimea distribuțiilor definite pe $ \kal{D} $ se va nota cu $ \kal{D}' $.
+\end{definition}
+
+\begin{remark}\label{rk:distr-sp-vec}
+  Un spațiu de distribuții cu valori reale devine spațiu vectorial real, cu operațiile:
+  \begin{itemize}
+  \item \emph{adunarea distribuțiilor}: $ (f + g)(\varphi) = f(\varphi) + g(\varphi) $,
+    pentru orice $ f, g \in \kal{D}', \varphi \in \kal{D} $;
+  \item \emph{înmulțirea distribuțiilor cu scalari}: Dată distribuția $ f $ și scalarul
+    $ \alpha \in \RR $, se definește distribuția $ \alpha f $ prin relația:
+    \[
+      (\alpha f)(\varphi) = f(\alpha \varphi) = \alpha f(\varphi), %
+      \quad \forall \varphi \in \kal{D}.
+    \]
+  \end{itemize}
+\end{remark}
+
+Principalele distribuții pe care le vom folosi sînt \emph{distribuția Dirac} și
+\emph{distribuția Heaviside}, definite mai jos.
+
+\begin{definition}\label{def:distr-dirac}
+  \emph{Distribuția Dirac} în punctul $ a $ este funcția
+  \[
+    \delta_a : \kal{D} \to \RR, \quad \delta_a(\varphi) = \varphi(a).
+  \]
+
+  Cazul particular $ a = 0 $ este des întîlnit, motiv pentru care vom scrie $ \delta $ în
+  loc de $ \delta_0 $.
+\end{definition}
+
+\begin{definition}\label{def:distr-heaviside}
+  \emph{Distribuția Heaviside} se definește prin:
+  \[
+    H : \kal{D} \to \RR, \quad H(\varphi) = \int_0^\infty \varphi(x) dx.
+  \]
+\end{definition}
+
+O altă distribuție care se va mai întîlni este:
+
+\begin{definition}\label{def:distr-vp}
+  Distribuția $ f = VP \frac{1}{t} $ se numește \emph{valoarea principală} a lui $ \frac{1}{t} $,
+  definită prin:
+  \[
+    f(\varphi) = v.p. \int_{-\infty}^\infty \frac{1}{t} \varphi(t) dt = %
+    \lim_{\varepsilon \searrow 0} \Big( \int_{-\infty}^{-\varepsilon} \frac{\varphi(t)}{t} dt + %
+    \int_\varepsilon^\infty \frac{\varphi(t)}{t} dt \Big), \quad \forall \varphi \in \kal{D}.
+  \]
+\end{definition}
+
+O legătură importantă între distribuția lui Dirac și cea a lui Heaviside este următoarea:
+
+\begin{proposition}\label{pr:dirac-h}
+  Derivata distribuției lui Heaviside este distribuția lui Dirac.
+\end{proposition}
+
+\begin{proof}
+  Trebuie demonstrat că $ H'(\varphi) = \delta(\varphi) $. Conform proprietății de derivare
+  a distribuțiilor, $ f^{(n)}(\varphi) = (-1)^n f(\varphi^{(n)}) $, aceasta este echivalent
+  cu a demonstra că $ -H(\varphi') = \delta(\varphi) $. Calculăm succesiv:
+  \begin{align*}
+    -H(\varphi') &= -\int_{-\infty}^\infty \varphi'(x) dx \\
+                 &= - \int_0^\infty \varphi'(x) dx \\
+                 &= -\varphi(x) \Big|_0^\infty \\
+                 &= \varphi(0) = \delta(\varphi).
+  \end{align*}
+\end{proof}
+
+Oricărei funcții \emph{local integrabile}\footnote{mărginită și integrabilă pe orice compact}
+i se poate asocia o distribuție:
+
+\begin{definition}\label{def:functie-distr}
+  Fie $ u : \RR \to \RR $ o funcție local integrabilă. Pentru orice funcție test
+  $ \varphi \in \kal{D} $, definim:
+  \[
+    \underline{u}(\varphi) = \int_{-\infty}^\infty u(x) \varphi(x) dx.
+  \]
+\end{definition}
+
+Se arată simplu că $ \underline{u}(\varphi) $ este o distribuție și se numește
+\emph{distribuție regulată} sau \emph{de tip funcție}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Transformarea Fourier a distribuțiilor}
+
+\begin{definition}\label{def:f-rapid-c}
+  Se numește \emph{funcție rapid crescătoare} o funcție $ f : \RR \to \CC $ de clasă
+  $ \kal{C}^\infty $ pentru care toate produsele $ x^i f^{(k)} (x) $ de puteri naturale
+  ale lui $ x $ și derivate ale lui $ f $ sînt funcții mărginite.
+
+  Fie $ \kal{S} $ mulțimea acestor funcții.
+\end{definition}
+
+\begin{definition}\label{def:s-sir-c}
+  Un șir $ (\psi_n)_n $ de funcții din $ \kal{S} $ se numește \emph{convergent către 0},
+  notat $ \psi_n \to 0 $ în $ \kal{S} $ dacă pentru orice întregi $ j, k \geq 0 $,
+  șirul de funcții $ ( x^j \psi_n^{(k)} ) $ converge uniform către 0 pe $ \RR $.
+\end{definition}
+
+Distribuțiile cărora le vom aplica transformata Fourier sînt de un tip special:
+
+\begin{definition}\label{def:distr-temp}
+  Se numește \emph{distribuție temperată} orice aplicație $ \CC $-liniară
+  $ f : \kal{S} \to \CC $ astfel încît dacă $ \psi_n \to 0 $ în $ \kal{S} $,
+  are loc $ \ds\lim_{n \to \infty} f(\psi_n) = 0 $.
+
+  Se notează cu $ \kal{S}' $ spațiul tuturor distribuțiilor temperate.
+\end{definition}
+
+În fine, transformata Fourier a unei distribuții temperate este definită mai jos:
+
+\begin{definition}\label{def:transf-f-distr}
+  Fie $ f \in \kal{S}' $. Se numește \emph{transformata Fourier a distribuției $ f $}
+  distribuția $ \kal{F}_f : \kal{S} \to \CC $, definită prin:
+  \[
+    \kal{F}_f(\psi) = f(\kal{F}(\psi)), \quad \forall \psi \in \kal{S}.
+  \]
+\end{definition}
+
+De exemplu, să determinăm transformata Fourier a distribuției Dirac $ \delta $.
+
+Calculăm succesiv:
+\begin{align*}
+  \kal{F}_\delta(\psi) &= \delta(\kal{F}(\psi)) \\
+                       &= \kal{F}(\omega)\mid_{\omega = 0} \\
+                       &= \int_{-\infty}^\infty \psi(t) e^{-i\omega t} dt \mid_{\omega = 0} \\
+                       &= \int_{-\infty}^\infty \psi(t) dt \\
+                       &= \underline{1}(\psi).
+\end{align*}
+
+Cum relația are loc pentru orice $ \psi \in \kal{S} $, rezultă că
+$ \kal{F}_\delta = \underline{1} $.
+
+\vspace{1cm}
+
+Transformatele Fourier ale unor distribuții des întîlnite sînt redate în tabelul
+din figura \ref{fig:transf-f-distr}.
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{tabular}{|c|c|}
+    $ f(t) $ & $ \kal{F}_f $ \\
+    \hline\hline
+    $ e^{i \omega_0 t}, \omega_0 > 0 $ & $ 2 \pi \delta(\omega - \omega_0) $ \\ & \\
+    $ 1 $ & $ 2 \pi \delta(\omega) $ \\ & \\
+    $ \cos \omega_0 t, \omega_0 > 0 $ & $ \pi[\delta(\omega - \omega_0) + \delta(\omega + \omega_0)] $ \\ & \\
+    $ \sin \omega_0 t, \omega_0 > 0 $ & $ i\pi[\delta(\omega + \omega_0) - (\omega - \omega_0)] $ \\ & \\
+    $ \mathrm{sgn} t$ & $ \frac{2}{i \omega} $ \\ & \\
+    $ h(t) $ & $ \pi \delta(\omega) + \frac{1}{i \omega} $ \\ & \\
+    $ e^{-i \omega_0 t} h(t), \omega_0 > 0 $ & $ \pi \delta(\omega - \omega_0) + \frac{1}{i(\omega - \omega_0)} $ \\ & \\
+    $ h(t) \cos \omega_0 t, \omega_0 > 0 $ & $ \frac{\pi}{2} [ \delta(\omega - \omega_0) + \delta(\omega + \omega_0)] + \frac{i \omega}{\omega_0^2 - \omega^2} $ \\ & \\
+    $ h(t) \sin \omega_0 t, \omega_0 > 0 $ & $ \frac{\pi}{2i} [ \delta(\omega - \omega_0) + \delta(\omega + \omega_0)] + \frac{\omega_0}{\omega_0^2 - \omega^2} $ \\ & \\
+    $ t^n $ & $ 2 \pi i^n \frac{d^n \delta(\omega)}{d \omega^n} $ \\
+    \hline
+  \end{tabular}
+  \caption{\emph{Transformatele Fourier ale unor distribuții uzuale}}
+  \label{fig:transf-f-distr}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Exerciții}
+
+\indent\indent 1. Găsiți transformata Fourier a funcției:
+\[
+  f(x) =
+  \begin{cases}
+    1, & |x| < 1 \\
+    0, & \text{în rest}
+  \end{cases}.
+\]
+
+\emph{Soluție:} Folosim definiția
+
+
+  
+\end{document}

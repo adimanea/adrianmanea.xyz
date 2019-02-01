@@ -1,0 +1,132 @@
+\chapter{Serii oarecare. Aproximații}
+
+
+\section{Convergență absolută și semiconvergență}
+
+Dacă lucrăm cu serii care pot avea și termeni negativi, studiul convergenței
+trebuie făcut mai atent. Astfel, avem nevoie de următoarele:
+
+\begin{definition}\label{def:serie-alt} \index{serii!alternate}
+  O serie $ \sum_n x_n $ se numește \emph{alternată} dacă produsul $ x_n \cdot x_{n+1} < 0 $,
+  pentru orice indice $ n \in \NN $.
+\end{definition}
+
+Pentru asemenea serii, avem la dispoziție un singur criteriu, anume:
+
+\begin{theorem}[Criteriul lui Leibniz]\label{thm:leibniz} \index{serii!criteriu!Leibniz}
+  Fie $ \sum_n (-1)^n x_n $ o serie alternată.
+
+  Dacă șirul $ (x_n) $ este descrescător și converge către zero, atunci seria
+  este convergentă.
+\end{theorem}
+
+Pentru serii alternate, avem următoarele noțiuni suplimentare:
+
+\begin{definition}\label{def:ac-sc}\index{serii!absolut convergente} \index{serii!semiconvergente}
+  O serie $ \sum_n x_n $ se numește \emph{absolut convergentă} dacă seria modulelor
+  $ \sum_n |x_n| $ este convergentă și \emph{semiconvergentă} dacă are seria
+  modulelor divergentă.
+\end{definition}
+
+Se poate constata imediat că \emph{orice serie absolut convergentă este convergentă},
+deoarece pentru orice număr natural $ x $, avem $ x \leq |x| $. În plus, dacă
+seria inițială este divergentă, atunci și seria modulelor va fi divergentă, din
+același motiv.
+
+Pentru studiul convergenței seriilor generale, adică avînd și termeni pozitivi,
+și negativi, avem un criteriu important.
+
+\begin{theorem}[Criteriul Abel-Dirichlet]\label{thm:crit-abel} \index{serii!criteriu!Abel-Dirichlet}
+  Presupunem că seria $ \sum_n x_n $ se poate scrie sub forma $ \sum_n \alpha_n y_n $, cu
+  $ (\alpha_n) $ un șir monoton și mărginit. Dacă seria $ \sum_n y_n $ este convergentă,
+  atunci și seria inițială este convergentă.
+
+  \textbf{Alternativ}, uneori criteriul este formulat astfel:
+  Dacă $ (\alpha_n) $ este un șir monoton care tinde către zero, iar
+  șirul cu termenul general $ Y_n = y_1 + \dots + y_n $ este mărginit, atunci seria
+  inițială este convergentă.
+\end{theorem}
+
+De exemplu, să studiem seria $ \ds\sum_n \dfrac{(-1)^n}{n} $. Fiind o serie
+alternată, constatăm:
+\begin{itemize}
+\item Seria modulelor este $ \ds\sum_n \dfrac{(-1)^n}{n} $, care este seria
+  armonică, deci divergentă;
+\item Pentru seria inițială, putem aplica criteriul lui Leibniz. Șirul $ x_n = \dfrac{1}{n} $
+  este evident descrescător către zero, deci seria este convergentă.
+\end{itemize}
+
+Concluzia este că seria este \emph{semiconvergentă}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Aproximarea sumelor seriilor convergente}
+
+Putem calcula numeric sumele unor serii convergente, cu aproximații oricît de bune.
+Următoarele două rezultate sînt fundamentale:
+
+\begin{theorem}[Aproximarea sumelor seriilor cu termeni pozitivi]\label{thm:aprox-poz}
+  Fie $ x_n \geq 0 $ și $ k \geq 0 $, astfel încît să avem:
+  \[
+    \dfrac{x_{n+1}}{x_n} < k < 1, \quad \forall n \in \NN.
+  \]
+
+  Dacă $ S $ este suma seriei convergente $ \sum_n x_n $, iar $ s_n $ este suma
+  primilor $ n $ termeni, atunci avem aproximația:
+  \[
+    |S - s_n| < \dfrac{k}{1 - k} x_n.
+  \]
+\end{theorem}
+
+\begin{theorem}[Aproximarea sumelor seriilor alternate]\label{thm:aprox-alt}
+  Fie $ \sum_n (-1)^n x_n $ o serie alternată, convergentă și fie $ S $ suma sa.
+
+  Dacă $ S_n $ este suma primilor $ n $ termeni, atunci avem:
+  \[
+    | S - s_n | \leq x_{n + 1}.
+  \]
+  Cu alte cuvinte, eroarea aproximației are ordinul de mărime al primului
+  termen neglijat.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Studiați natura (AC/SC/D) următoarelor serii, definite de șirul $ x_n $:
+\begin{enumerate}[(a)]
+\item $ x_n = (-1)^n $;
+\item $ x_n = \dfrac{(-1)^n}{n} $;
+\item $ x_n = \dfrac{1}{n + i} $;
+\item $ x_n = \dfrac{1}{(n + i)\sqrt{n}} $;
+\item $ x_n = (-1)^n \dfrac{\log_a n}{n}, a > 1 $;
+\item $ x_n = (-1)^{n+1} \dfrac{2n + 1}{3^n} $;
+\item $ x_n = (-1)^{n+1} \dfrac{1}{\sqrt{n(n+1)}} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se aproximeze cu o eroare mai mică decît $ \varepsilon $ sumele seriilor
+definite de șirul $ x_n $:
+\begin{enumerate}[(a)]
+\item $ x_n = \dfrac{(-1)^n}{n!}, \varepsilon = 10^{-3} $ ($ n = 7 $);
+\item $ x_n = \dfrac{(-1)^n}{n^3 \sqrt{n}}, \varepsilon  = 10^{-2} $ ($ n = 4 $);
+\item $ x_n = \dfrac{1}{n! 2^n}, \varepsilon = 10^{-4} $;
+\item $ x_n = \dfrac{(-1)^n}{n^3 \sqrt{n}}, \varepsilon = 10^{-2} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Să se demonstreze convergența și să se determine sumele seriilor cu
+termenul general dat de:
+\begin{enumerate}[(a)]
+\item $ x_n = \dfrac{1}{(\alpha + n)(\alpha + n + 1)} $;
+\item $ x_n = \dfrac{1}{16n^2 - 8n - 3} $;
+\item $ x_n = \ln \dfrac{n+1}{n} $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-18-19"
+%%% End:

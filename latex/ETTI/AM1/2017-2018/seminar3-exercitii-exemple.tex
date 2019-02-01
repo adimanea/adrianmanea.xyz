@@ -1,0 +1,420 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AN1, 2017---2018, C. Ghiu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 3 \\ Serii de funcții. Serii de puteri \\ Exerciții și exemple}}
+\end{center}
+
+\section{Serii de numere}
+\label{sec:s-num}
+
+1. Studiați convergența seriilor cu termenul general:
+\begin{enumerate}[(a)]
+\item $x_n = \sqrt{n^4 + 2n + 1} - n^2$; \hfill (comparație la limită)
+\item $x_n = \frac{1}{1 + \sqrt{2} + \sqrt[3]{3} + \dots + \sqrt[n]{n}}$; \hfill (comparație)
+\item $x_n = (-1)^n \frac{\log_a n}{n}, a > 1$; \hfill (Leibniz)
+\item $x_n = \frac{\sin n \cdot \sin n^2}{n^2}$. \hfill (Abel)
+\end{enumerate}
+
+2. Arătați că seria $\sum (-1)^n \cdot \frac{1}{n}$ este convergentă, dar
+nu este absolut convergentă. (Leibniz)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Șiruri de funcții}
+\label{sec:s-func}
+
+3. Studiați (cu definiția) convergența punctuală și uniformă pentru șirurile de funcții:
+\begin{enumerate}[(a)]
+\item $f_n : (0, 1) \to \RR, f_n(x) = \frac{1}{nx + 1}, n \geq 0$;
+\item $f_n : [0, 1] \to \RR, f_n(x) = x^n - x^{2n}, n \geq 0$;
+\item $f_n : \RR \to \RR, f_n(x) = \sqrt{x^2 + \frac{1}{n^2}}, n > 0$;
+\item $f_n : [-1, 1] \to \RR, f_n(x) = \frac{x}{1 + nx^2}$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de funcții}
+\label{sec:serii-f}
+
+4. Studiați convergența seriilor de funcții și decideți dacă se pot deriva
+termen cu termen:
+\begin{enumerate}[(a)]
+\item $\sum n^{-x}, x \in \RR$; (Weierstrass, comparație cu armonică)
+\item $\sum \frac{\sin nx}{2^n}, x \in \RR$;
+\item $\frac{\sin nx}{n(n+1)}$.
+\end{enumerate}
+
+\emph{Soluții:}
+(a) Seria converge punctual dacă și numai dacă $x > 1$, pentru că poate fi
+comparată cu seria armonică generalizată.
+
+Fie, deci $r > 1$. Pentru orice $x \geq r$, avem $\frac{1}{n^x} \leq \frac{1}{n^r}$.
+Seria $\sum \frac{1}{n^r}$ este convergentă și rezultă din criteriul lui
+Weierstrass că seria converge uniform pe intervalul $[r, \infty)$.
+
+Pentru seria derivatelor: $\sum (n^{-x})' = -\sum n^{-x} \ln n$, găsim că ea
+converge uniform pe orice interval $[r, \infty)$. Într-adevăr, putem aplica
+criteriul lui Weierstrass:
+\[
+  \sum_{n \geq 1} n^{-x} \ln n \leq \sum_{n \geq 1} n^{-r} \ln n, \forall x \geq r.
+\]
+A doua serie, privită ca o serie numerică, este convergentă.
+
+(b) Deoarece avem $|f_n(x)| \leq \frac{1}{2^n}, \forall x \in \RR$, iar seria
+obținută este seria geometrică, cu rație subunitară, deci convergentă, deducem
+din criteriul lui Weierstrass că seria este uniform convergentă pe $\RR$.
+
+Seria derivatelor:
+\[
+  \sum_{n \geq 1} \Big( \frac{\sin nx}{2^n} \Big) = %
+  \sum_{n \geq 1} \frac{n \cos nx}{2^n},
+\]
+care converge uniform pe $\RR$, din criteriul lui Weierstrass. Așadar, seria se
+poate deriva termen cu termen.
+
+(c) Putem folosi din nou criteriul lui Weierstrass:
+\[
+  \sum_{n \geq 1} \frac{\sin nx}{n(n + 1)} \leq %
+  \sum_{n \geq 1} \frac{1}{n(n+1)},
+\]
+iar a doua serie este convergentă. Așadar, seria inițială este uniform convergentă.
+
+Seria derivatelor $\sum \frac{\cos nx}{n + 1}$ nu converge punctual (comparație
+cu seria armonică, de exemplu), deci nu se poate deriva termen cu termen.
+
+\vspace{1cm}
+
+5. Să se arate că șirul de funcții $(f_n)_n$, cu:
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = nxe^{-nx^2}
+\]
+converge, dar avem:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) dx \neq \int_0^1 \lim_{n \to \infty} f_n(x) dx.
+\]
+
+\emph{Soluție:} Avem $\ds\lim_{n \to \infty}f_n(x) = 0$, deci $f(x) = 0$, pentru
+$x \in [0, 1]$. Calculăm integrala:
+\[
+  \int_0^1 f_n(x) dx = \int_0^1 nxe^{-nx^2} dx = -\frac{1}{2} e^{-nx^2}\Big|_0^1 = %
+  \frac{1}{2} - \frac{1}{2} e^{-n}.
+\]
+
+Obținem, atunci:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) dx = \frac{1}{2},
+\]
+dar $\ds\int_0^1 \lim_{n \to \infty} f_n(x) dx = 0$.
+
+Rezultatul se explică prin faptul că șirul nu este uniform convergent. Într-adevăr,
+dacă $x_n = \frac{1}{n} \in [0, 1]$, rezultă că $f_n(x_n) = e^{-\frac{1}{n}} \to 1$,
+deci definiția convergenței uniforme nu este verificată.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de puteri. Serii Taylor}
+\label{sec:taylor}
+
+6. Să se dezvolte în seria Maclaurin următoarele funcții, precizînd și
+domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $f(x) = e^x$;
+\item $f(x) = \sin x$.
+\end{enumerate}
+
+\emph{Soluție:} (a) Calculăm derivatele funcției și obținem că $(e^x)^{(n)} = e^x$,
+pentru orice $n$. Atunci, din formula lui Maclaurin, găsim:
+\[
+  e^x = \sum_{n \geq 0} \frac{1}{n!} \cdot x^n.
+\]
+Pentru a determina domeniul de convergență, folosim criteriul raportului:
+\[
+  \lim_{n \to \infty} \Big| \frac{x^{n+1}}{(n+1)!} \cdot \frac{n!}{x^n} \Big| = %
+  \lim_{n \to \infty} \Big| \frac{x}{n+1} \Big| = 0 < 1,
+\]
+deci seria este convergentă pe $\RR$.
+
+Restul de ordin $n$ se obține:
+\[
+  R_n(x) = \frac{x^{n + 1}}{(n + 1)!} \cdot e^{\xi}, \quad \xi \in (0, x) \text{ sau } %
+  \xi \in (x, 0).
+\]
+
+(b) Calculăm derivata de ordin $n$ a funcției sinus și observăm:
+\[
+  (\sin x)^{(n)} = \sin \Big( x + n \frac{\pi}{2} \Big), \forall n \in \NN.
+\]
+Deducem că derivatele de ordin par sînt nule, iar cele de ordin impar sînt $(-1)^n$.
+Rezultă:
+\[
+  \sin x = \sum_{n \geq 0} \frac{(-1)^n}{(2n + 1)!} \cdot x^{2n + 1}.
+\]
+Pentru determinarea domeniului de convergență, putem folosi din nou criteriul
+raportului și obținem:
+\[
+  \lim_{n \to \infty} \Big| \frac{x^{2n + 3}}{(2n + 3)!} \cdot \frac{(2n + 1)!}{x^{2n + 1}} \Big| = %
+  \lim_{n \to \infty} \frac{x^2}{(2n + 2)(2n + 3)} = 0 < 1,
+\]
+deci seria este convergentă pe $\RR$.
+
+\vspace{1cm}
+
+7. Să se dezvolte în serie de puteri ale lui $x - 1$ funcția:
+\[
+  f : \RR - \{ 0 \} \to \RR, \quad f(x) = \frac{1}{x}.
+\]
+
+\emph{Soluție:} Derivata de ordin $n$ este:
+\[
+  f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}} \Rightarrow f^{(n)}(1) = (-1)^n n!, \forall n \in \NN.
+\]
+Rezultă:
+\[
+  \frac{1}{x} = \sum_{n \geq 0} (-1)^n (x - 1)^n, \forall x \in (0, 2).
+\]
+
+\vspace{1cm}
+
+8. Să se afle raza de convergență și mulțimea de convergență pentru seriile de puteri:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} x^n$;
+\item $\ds\sum_{n \geq 1} \frac{n^n x^n}{n!}$;
+\end{enumerate}
+
+\emph{Soluție:} (a) Fie $R$ raza de convergență. Din definiție, avem:
+\[
+  R = \lim_{n \to \infty} \frac{|a_n|}{|a_{n + 1}|} = 1.
+\]
+Deducem că seria este absolut convergentă pe $(-1, 1)$ și divergentă în rest.
+
+Evident, seria este uniform convergentă pe orice interval închis $|x| \leq r < 1$, iar
+pentru $x = \pm 1$, obținem o serie divergentă.
+
+(b) Din nou, calculăm raza de convergență:
+\[
+  R = \lim_{n \to \infty} \frac{|a_n|}{|a_{n + 1}|} = %
+  \lim_{n \to \infty} \Big( \frac{n}{n + 1} \Big)^n = \frac{1}{e}.
+\]
+Rezultă că seria este absolut convergentă pe $\Big( -\frac{1}{e}, \frac{1}{e} \Big)$
+și divergentă în rest. Seria este uniform convergentă pe $|x| \leq r < e$, iar
+pentru $x = \pm \frac{1}{e}$, se obține o serie divergentă, rezultat care
+se poate demonstra cu criteriul raportului.
+
+\vspace{1cm}
+
+9. Studiați convergența seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} \ln^n x, x > 0$;
+\item $\ds\sum_{n \geq 1} \Big( 1 + \frac{1}{n} \Big)^{-n^2} e^{-nx}$;
+\item $\ds\sum_{n \geq 1} \frac{1}{n! x^n}$.
+\end{enumerate}
+
+\emph{Soluție:} Exercițiile se rezolvă cu o schimbare de variabilă, care
+transformă seriile de funcții în serii de puteri:
+\begin{enumerate}[(a)]
+\item $t = \ln x$;
+\item $t = e^{-x}$;
+\item $t = x^{-1}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+10. Să se calculeze sumele seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} x^{2n}$;
+\item $\ds\sum_{n \geq 0} (-1)^n \frac{x^{2n + 1}}{2n + 1}$;
+\item $\ds\sum_{n \geq 0} (n + 1)x^n$.
+\end{enumerate}
+
+\emph{Soluție:} (a) Putem folosi direct formula pentru seria geometrică:
+\[
+  \sum_{n \geq 0} x^{2n} = \sum_{n \geq 0} (x^2)^n = \frac{1}{1 - x^2}, %
+  \forall x \in (-1, 1).
+\]
+
+(b) Raza de convergență se poate calcula și obținem $R = 1$. Fie $S(x)$ suma seriei
+date. Seria derivatelor are aceeași rază de convergență cu seria inițială, iar
+suma ei este egală cu derivata sumei (seriile de puteri se pot deriva mereu termen
+cu termen):
+\[
+  S'(x) = \sum_{n \geq 0} (-1)^n (x^2)^n = \frac{1}{1 + x^2}, \forall x \in (-1, 1).
+\]
+Rezultă $S(x) = \arctan x + C$ și, deoarece $S(0) = 0$, avem $C = 0$.
+
+(c) Procedăm similar, acum cu integrare termen cu termen. Raza de convergență
+este egală cu 1. Avem:
+\[
+  \int_0^x S(x) dx = \sum_{n \geq 0} x^{n + 1} = \frac{x}{1 - x}, \forall x \in (-1, 1).
+\]
+Rezultă $S(x) = \frac{1}{(1 - x)^2}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții propuse}
+\label{sec:ex}
+
+1. Să se studieze convergența punctuală și uniformă a șirurilor de funcții:
+\begin{enumerate}[(a)]
+\item $f_n : \RR \to \RR, f_n(x) = \frac{nx^2}{1 + nx^2}$;
+\item $f_n : [0, 1] \to \RR, f_n(x) = \frac{x^n}{1 + x^{2n}}$;
+\item $f_n : \RR_+ \to \RR, f_n(x) = e^{-nx} \sin nx$;
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se afle mulțimea de convergență a seriei de funcții:
+\[
+  \sum_{n \geq 1} (-1)^n \frac{1}{n^x}.
+\]
+
+\vspace{1cm}
+
+3. Să se studieze convergența seriilor:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 1} \frac{1}{x^2 + n^2}$;
+\item $\ds\sum_{n \geq 1} \frac{\sin nx}{\sqrt[3]{n^4 + x^4}}$;
+\item $\ds\sum_{n \geq 1} \frac{1}{x^2 + 2^n}, x \in \RR$.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se determine mulțimea de convergență și suma seriilor:
+\begin{enumerate}[(a)]
+\item $\ds \sum_{n \geq 1} (-1)^{n + 1} \frac{x^n}{n}$;
+\item $\ds \sum_{n \geq 0} (n + 1)(n + 2)(n + 3) x^n$;
+\item $\ds \sum_{n \geq 1} n^3 x^n$;
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Găsiți mulțimea de convergență pentru seriile de puteri:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 1} \frac{1}{n! x^n}$;
+\item $\ds\sum_{n \geq 1} \frac{x^n}{2^n + 3^n}$;
+\item $\ds\sum_{n \geq 1} \sqrt[n]{n!} x^n$;
+\item $\ds\sum_{n \geq 1} \frac{1 \cdot 5 \cdot 9 \cdots (4n - 3)}{ %
+    3 \cdot 7 \cdot 11 \cdots (4n - 1)} x^n$;
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Să se dezvolte în serie Maclaurin următoarele funcții, precizînd domeniul
+de convergență:
+\begin{enumerate}[(a)]
+\item $f(x) = \cos x$;
+\item $f(x) = (1 + x)^a, a \in \RR$;
+\item $f(x) = \frac{1}{1 + x}$;
+\item $f(x) = \sqrt{1 + x}$;
+\item $f(x) = \ln ( 1 + x)$;
+\item $f(x) = \arctan x$.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Să se dezvolte în serie de puteri ale lui $x + 4$ funcția:
+\[
+  f: \RR - \{ -2, -1 \} \to \RR, \quad %
+  f(x) = \frac{1}{x^2 + 3x + 2}.
+\]
+
+
+
+\end{document}

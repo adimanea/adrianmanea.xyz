@@ -1,0 +1,568 @@
+\documentclass[12pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} ETTI-AM2, 2017---2018, M. Joița \& A. Niță}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}
+\newtheorem{proposition}{Propozi\c{t}ie}
+\newtheorem{lemma}{Lem\u{a}}
+\newtheorem{corollary}{Corolar}
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}
+\newtheorem{definition}{Defini\c{t}ie}
+\newtheorem{remark}{Observa\c{t}ie}
+
+
+
+
+\begin{document}
+% \definecolor{labelkey}{RGB}{222,0,0}
+
+\begin{center}
+  {\large\textbf{Seminar 9 \\
+      Integrale complexe}}
+\end{center}
+
+\vspace{2cm}
+
+\section*{Teorema lui Cauchy}
+
+\indent\indent Definiția și proprietățile esențiale ale integralelor din cazul real
+rămîn valabile și în cazul complex, motiv pentru care le vom omite, începînd cu elementele
+de noutate. De fapt, dat fiind că numerele complexe impun o structură bidimensională
+prin reprezentarea în plan, majoritatea calculelor de integrale complexe vor fi
+similare cu integralele curbilinii.
+
+De exemplu, două calcule simple:
+
+\[
+  I_1 = \ds\int_{|z| = 1} z |dz|.
+\]
+
+Scriind polar $ z = e^{it}, t \in [0, 2\pi] $, avem $ dz = ie^{it} dt $, deci
+$ |dz| = dt $. Atunci:
+\[
+  I_1 = \int_0^{2\pi} e^{it} dt = \frac{1}{i} e^{it} \Big|_0^{2\pi} = 0.
+\]
+
+\[
+  I_2 = \int_S z |dz|,
+\]
+unde $ S $ este segmentul care unește pe $ 0 $ și $ i $.
+
+Putem scrie segmentul parametric $ z = ti, t \in [0, 1] $, deci $ dz = idt $ și
+$ |dz| = dt $. Atunci:
+\[
+  I_2 = \int_0^1 tidt = \frac{i}{2}.
+\]
+
+O teoremă foarte utilă pentru calculul integralelor complexe în lungul unor
+curbe speciale este următoarea.
+
+\begin{theorem}[Cauchy]\label{thm:cauchy}
+  Fie $ D \seq \CC $ un domeniu simplu conex și fie $ f : D \to \CC $ o funcție
+  olomorfă pe $ D $, astfel încît $ P = \mathrm{Re} f, Q = \mathrm{Im} f $ să fie
+  de clasă $ \kal{C}^1(D) $.
+
+  Fie $ \gamma : [a, b] \to D $ o curbă închisă jordaniană\footnote{fără autointersecții}
+  de clasă $ \kal{C}^1 $ pe porțiuni astfel încît compactul $ \mathrm{Int}\gamma $ să
+  verifice condițiile formulei Green-Riemann, atunci $ \ds\int_\gamma f(z) dz = 0 $.
+\end{theorem}
+
+Teorema are loc, de fapt, pentru orice curbă $ \gamma $ închisă, jordaniană și
+\emph{omotopă cu zero}, adică poate fi deformată continuu, fără rupere, la un punct.
+
+În particular, avem:
+
+\begin{corollary}\label{cor:cauchy}
+  Fie $ f : D \to \CC $ o funcție olomorfă pe un domeniu simplu conex $ D \seq \CC $
+  și fie $ \gamma_1, \gamma_2 $ două drumuri de clasă $ \kal{C}^1 $ avînd aceleași
+  capete și situate în $ D $. Atunci:
+  \[
+    \int_{\gamma_1} f(z) dz = \int_{\gamma_2} f(z) dz.
+  \]
+\end{corollary}
+
+De exemplu:
+\[
+  \int_{|z| = r} \frac{e^z \sin z}{1 - z^3} dz = 0,
+\]
+deoarece putem considera cercul $ C = \{z \in \CC \mid |z - a| = r > 0 \} $ ca pe
+un drum închis jordanian, de clasă $ \kal{C}^1 $, orientat pozitiv, parcurs o
+singură dată în sens trigonometric direct.
+
+\vspace{1cm}
+
+Următorul rezultat este esențial în calculele ce vor urma.
+
+\begin{theorem}[Formula integrală Cauchy]\label{thm:cauchy-int}
+  Fie $ D \seq \CC $ un domeniu și $ f : D \to \CC $ o funcție olomorfă pe $ D $.
+  Fie $ \overline{\Delta} \seq D $, unde $ \Delta $ este un domeniu simplu conex,
+  mărginit cu frontiera $ \gamma $, o curbă închisă jordaniană, de clasă $ \kal{C}^1 $
+  pe porțiuni, orientată pozitiv.
+
+  Atunci pentru orice punct $ a \in \Delta $ fixat are loc formula:
+  \[
+    f(a) = \frac{1}{2\pi i} \int_\gamma \frac{f(z)}{z - a} dz.
+  \]
+\end{theorem}
+
+De exemplu, să calculăm $ \ds\int_{|z - 2i| = 1} \frac{1}{z^2 + 4} dz $.
+
+Putem scrie integrala astfel:
+\[
+  \int_{|z - 2i| = 1} \frac{1}{z^2 + 4} dz = %
+  \int_{|z - 2i| = 1} \frac{\frac{1}{z + 2i}}{z - 2i} dz = %
+  \int_{|z - 2i| = 1} \frac{f(z)}{z - 2i} dz,
+\]
+unde am introdus $ f(z) = \frac{1}{z + 2i} $.
+
+Aplicînd formula integrală a lui Cauchy, obținem:
+\[
+  f(2i) = \frac{1}{2 \pi i} \int_{|z - 2i| = 1} \frac{f(z)}{z - 2i} dz \Rightarrow %
+  \int_{|z - 2i| = 1} \frac{f(z)}{z - 2i} dz = 2 \pi i f(2i) = \frac{\pi}{2}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Funcții analitice. Serii Laurent}
+
+Noțiunile care urmează sînt adaptate din cazul seriilor reale de puteri.
+
+\begin{theorem}\label{thm:serie-p}
+  Fie $ z_0 \in \CC $ fixat și $ S(z) = \ds\sum_{n \geq 0} a_n(z - z_0)^n, \forall z $,
+  cu $ |z - z_0| < R $ suma seriei centrate în $ z_0 $, iar $ R $ este raza de
+  convergență.
+
+  Atunci funcția $ S $ este olomorfă în orice punct $ z \in B(z_0, R) $ și are loc:
+  \[
+    S'(z) = \sum_{n \geq 0} na_n(z - z_0)^{n - 1}, \forall z \in B(z_0, R).
+  \]
+\end{theorem}
+
+În particular, rezultă:
+
+\begin{corollary}\label{cor:serie-p}
+  Fie $ z_0 \in \CC $ fixat și $ S(z) $ ca în teoremă.
+
+  Atunci funcția $ S(z) $ are derivate complexe de orice ordin în orice punct
+  $ z \in B(z_0, R) $ și $ a_k = \dfrac{S^{(k)}(z_0)}{k!}, \forall k \in \NN $.
+\end{corollary}
+
+Funcțiile complexe cu proprietăți \qq{bune} pentru analiză sînt cele \emph{analitice}.
+
+\begin{definition}\label{def:f-analitica}
+  Fie $ A \seq \CC $ o mulțime deschisă. Funcția $ f : A \to \CC $ se numește
+  \emph{analitică} pe $ A $ dacă $ \forall z_0 \in A $, există o serie formală
+  $\sum_{n \geq 0} a_n X^n $ convergentă într-un disc de rază $ R > 0 $,
+  astfel încît există discul $ B(z_0, r) \seq A $, cu $ 0 < r \leq R $
+  cu proprietatea:
+  \[
+    f(z) = \sum_{n \geq 0} a_n(z - z_0)^n, \forall z \in B(z_0, r).
+  \]
+
+  Cu alte cuvinte, funcțiile analitice pot fi dezvoltate în serie Laurent
+  convergentă într-un disc de orice rază din domeniul de definiție.
+\end{definition}
+
+Utilitatea acestei noțiuni rezultă și din:
+
+\begin{proposition}\label{pr:analitica-der}
+  Fie $ A \seq \CC $ o mulțime deschisă și $ f : A \to \CC $ o funcție analitică
+  pe $ A $. Atunci există derivatele complexe de orice ordin ale lui $ f $ în $ A $
+  și într-o vecinătate a oricărui punct $ z_0 \in A $ avem:
+  \[
+    f(z) = \sum_{n \geq 0} \frac{f^{(n)}(z_0)}{n!} (z - z_0)^n.
+  \]
+\end{proposition}
+
+Legătura dintre analiticitate și olomorfie este dată în următoarea teoremă.
+
+\begin{theorem}[Weierstrass-Riemann-Cauchy]\label{thm:wrc}
+  Fie $ A \seq \CC $ o mulțime deschisă și $ f : A \to \CC $ o funcție complexă.
+
+  Atunci $ f $ este analitică pe $ A $ dacă și numai dacă $ f $ este olomorfă pe $ A $.
+\end{theorem}
+
+Seriile de puteri complexe se definesc mai jos.
+
+\begin{definition}\label{def:laurent}
+  Se numește \emph{serie Laurent centrată în $ z_0 \in \CC $} orice serie de funcții
+  de forma
+  \[
+    \sum_{n \in \ZZ} a_n(z - z_0)^n, \quad a_n \in \CC.
+  \]
+
+  Seria se numește convergentă dacă \emph{partea principală} a ei, anume
+  $ \sum_{n \geq 1} a_{-n}(z - z_0)^{-n} $ și \emph{partea Taylor}, anume
+  $ \sum_{n \geq 0} a_n(z - z_0)^n $ sînt simultan convergente.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Puncte singulare. Reziduuri}
+
+\indent\indent În continuare, vom studia punctele \qq{cu probleme} ale unei
+funcții complexe și vom vedea cum putem face calcule analitice coerente care să le evite.
+
+\begin{definition}\label{def:pc-izolat}
+  Fie $ A \seq \CC $ o mulțime deschisă nevidă și $ f : A \to \CC $ o funcție
+  olomorfă pe $ A $. Un punct $ z_0 \in \CC $ se numește \emph{punct singular izolat}
+  al lui $ f $ dacă există un disc $ D = B(z_0, r > 0) $ astfel încît funcția să
+  fie olomorfă pe discul punctat $ D - \{z_0\} $.
+\end{definition}
+
+De exemplu, punctul $ z = 2 $ este un punct singular izolat pentru funcția
+$ f(z) = \frac{1}{z - 2} $.
+
+\begin{definition}\label{def:pc-sing-ap}
+  Fie $ f : A \to \CC $ o funcție olomorfă, cu $ A \seq \CC $ o mulțime deschisă
+  nevidă și fie $ z_0 \in \CC $ un punct singular izolat al lui $ f $.
+
+  Punctul $ z_0 $ se numește \emph{punct singular aparent} dacă seria Laurent
+  $ f(z) = \sum_{n \in \ZZ } a_n(z - z_0)^n $ are partea principală nulă, adică
+  $ a_n = 0, \forall n < 0 $.
+\end{definition}
+
+În fine:
+
+\begin{definition}\label{def:pol}
+  Punctul singular izolat $ z_0 $ se numește \emph{pol} dacă în seria Laurent asociată
+  funcției $ f $, partea principală are un număr finit de termeni nenuli, număr care
+  se numește \emph{ordinul polului}.
+
+  Punctul singular izolat $ z_0 $ se numește \emph{punct singular esențial} dacă
+  partea principală a seriei Laurent asociată funcției are o infinitate de termeni
+  nenuli.
+\end{definition}
+
+În continuare, cîteva rezultate care ne ajută să identificăm natura punctelor
+singulare pentru funcții complexe.
+
+\begin{lemma}\label{le:sing-ap}
+  Fie $ f : B(z_0; 0, r) \to \CC $ o funcție olomorfă pe coroana $ B(z_0; 0, r) $.
+
+  Dacă $ |f(z)| \leq M $ pentru orice $ z \in B(z_0; 0, r) $, adică modulul funcției este
+  mărginit, atunci $ z_0 $ este punct singular aparent al lui $ f $.
+\end{lemma}
+
+Mai mult, avem:
+
+\begin{proposition}\label{pr:sing-ap}
+  În condițiile și cu notațiile din lema de mai sus, $ z_0 $ este punct singular
+  aparent pentru $ f $ dacă și numai dacă există și este finită limita:
+  \[
+    \ell = \lim_{z \to z_0} f(z).
+  \]
+\end{proposition}
+
+De exemplu, $ z = 0 $ este singularitate aparentă pentru funcția $ f(z) = \frac{\sin z}{z} $,
+deoarece, ca în cazul real, $ \lim_{z \to 0} f(z) = 1 $.
+
+Mai departe, identificarea polilor se poate face cu următorul rezultat:
+
+\begin{proposition}\label{pr:pol}
+  Fie $ f : B(z_0; 0, r) \to \CC $ o funcție olomorfă pe coroana de definiție.
+
+  Atunci punctul $ z_0 $ este pol pentru $ f $ dacă și numai dacă:
+  \[
+    \lim_{z \to z_0} f(z) = \infty.
+  \]
+\end{proposition}
+
+De exemplu, considerînd funcția $ f(z) = \frac{z}{z - 1} $, observăm că $ z = 1 $
+este pol simplu, deoarece $ \lim_{z \to 1} f(z) = \infty $, iar dezvoltarea în
+serie Laurent a funcției $ f $ se scrie:
+\[
+  f(z) = \frac{1 + z - 1}{z - 1} = \frac{1}{z - 1} + 1,
+\]
+care are partea principală $ \frac{1}{z - 1} $. Așadar, avem un pol simplu (de ordinul 1).
+
+Singularitățile esențiale se identifică astfel:
+
+\begin{proposition}\label{pr:sing-es}
+  Fie $ f : B(z_0; 0, r) \to \CC $ o funcție olomorfă pe coroana $ B(z_0; 0, r) $.
+
+  Atunci punctul $ z_0 $ este singularitate esențială pentru $ f $ dacă și numai
+  dacă nu există limita $ \lim_{z \to z_0} f(z) $.
+\end{proposition}
+
+De exemplu, pentru funcția $ f(z) = \exp\Big(\frac{1}{z}\Big) $, punctul $ z = 0 $
+este singularitate esențială. Pe de o parte, putem vedea că limita din propoziție
+nu există (depinde de direcția $ z \to 0 $), iar pe de alta, seria Laurent este:
+\begin{align*}
+  \exp\Big(\frac{1}{z}\Big) &= 1 + \frac{1}{1! z} + \frac{1}{2! z^2} + \dots \\
+                            &= 1 + \frac{1}{1!} z^{-1} + \frac{1}{2!} z^{-2} + \dots,
+\end{align*}
+care are partea principală cu o infinitate de termeni nenuli.
+
+\vspace{1cm}
+
+Vom fi interesați de următorul obiect:
+
+\begin{definition}\label{def:rez}
+  Fie $ A \seq \CC $ o mulțime deschisă nevidă și fie $ f : A \to \CC $ o funcție
+  olomorfă. Considerăm discul punctat (coroana) $ B(z_0; 0, r) \seq A $, astfel
+  încît punctul $ z_0 $ să fie singularitate izolată a lui $ f $.
+
+  Considerînd dezvoltarea în serie Laurent a funcției $ f $ în coroana $ B(z_0; 0,r) $
+  sub forma:
+  \[
+    f(z) = \sum_{n \in \ZZ} a_n (z - z_0)^n,
+  \]
+  coeficientul $ a_{-1} $ se numește \emph{reziduul funcției} $ f $ în punctul
+  singular $ z_0 $, notat $ \mathrm{Rez}(f, z_0) $.
+\end{definition}
+
+Reziduurile pot fi calculate în mai multe moduri, aparent indirecte.
+
+\begin{proposition}\label{pr:rez}
+  Păstrînd condițiile și notațiile din definiția de mai sus, fie un cerc
+  de rază $ \rho $, anume $ C = \{ z \in \CC \mid |z - z_0| = \rho < r \} $, parcurs
+  în sens trigonometric direct. Atunci:
+  \[
+    a_{-1} = \frac{1}{2 \pi i} \int_C f(z) dz.
+  \]
+\end{proposition}
+
+De asemenea, avem și:
+
+\begin{proposition}\label{pr:rez-mult}
+  Fie $ z_0 \in \CC $ un pol de ordinul $ k > 0 $ pentru $ f $. Atunci:
+  \[
+    \mathrm{Rez}(f, z_0) = \frac{1}{(k - 1)!}\lim_{z \to z_0} %
+    \big[ (z - z_0)^k f(z) \big]^{(k - 1)}.
+  \]
+\end{proposition}
+
+În particular, obținem:
+
+\begin{corollary}\label{cor:rez-mult}
+  Fie $ f : B(z_0; 0, r) \to \CC $ o funcție olomorfă pe coroana de definiție, astfel
+  încît se poate scrie $ f(z) = \frac{P(z)}{Q(z)}, \forall z \in B(z_0; 0, r) $, cu
+  $ P, Q $ funcții olomorfe în discul $ B(z_0, r) $ și $ P(z_0) \neq 0, Q(z_0) = 0 $,
+  iar $ Q'(z_0) \neq 0 $.
+
+  Atunci $ z_0 \in \CC $ este un pol de ordinul întîi pentru $ f $ și:
+  \[
+    \mathrm{Rez}(f, z_0) = \frac{P(z_0)}{Q'(z_0)}.
+  \]
+\end{corollary}
+
+Un caz particular este următorul:
+
+\begin{definition}\label{def:rez-inf}
+  Fie $ f : B(0; r, \infty) \to \CC $ o funcție olomorfă în exteriorul discului
+  $ B(0, r) $, adică $ z = \infty $ este un punct singular izolat pentru $ f $.
+
+  Se numește \emph{reziduul funcției $ f $ în punctul $ \infty $} reziduul funcției
+  $ \big( -\frac{1}{t^2} \big) f\big(\frac{1}{t}\big) $ în punctul $ t = 0 $.
+\end{definition}
+
+Cel mai important rezultat al secțiunii este:
+
+\begin{theorem}[Teorema reziduurilor]\label{thm:thm-rez}
+  Fie $ D \seq \CC $ un domeniu și $ f : D - \{ \alpha_1, \dots, \alpha_k \} \to \CC $
+  o funcție olomorfă pentru care $ \alpha_i $ sînt singularități izolate.
+
+  Fie $ K \seq D $ un compact cu frontiera $ \Gamma = \partial K $, o curbă de clasă
+  $ \kal{C}^1 $ pe porțiuni, jordaniană, orientată pozitiv și care conține toate $ \alpha_i $
+  în interior. Atunci:
+
+  \[
+    \int_\Gamma f(z) dz = 2\pi i \sum_{j = 1}^k \mathrm{Rez}(f, \alpha_j).
+  \]
+\end{theorem}
+
+În particular:
+
+\begin{corollary}\label{cor:thrm-rez}
+  În contextul și notațiile teoremei de mai sus, avem:
+  \[
+    \sum_{j = 1}^k \mathrm{Rez}(f, \alpha_j) + \mathrm{Rez}(f, \infty) = 0.
+  \]
+\end{corollary}
+
+\vspace{1cm}
+
+De exemplu, să calculăm integrala:
+\[
+  I = \int_{|z| = r} \frac{e^z}{(z - i)(z - 2)} dz, r > 0, r \neq 1, 2.
+\]
+
+\emph{Soluție:} Dacă $ 0 < r < 1 $, putem aplica teorema lui Cauchy (~\ref{thm:cauchy})
+și găsim $ I = 0 $.
+
+Dacă $ 1 < r < 2 $, aplicăm formula integrală a lui Cauchy (~\ref{thm:cauchy-int}) și găsim:
+\[
+  \int_{|z| = r} \frac{e^z}{(z - i)(z - 2)} dz = %
+  \int_{|z| = r} \frac{\frac{e^z}{z - 2}}{z - i} dz = %
+  \int_{|z| = r} \frac{f(z)}{z - i} dz,
+\]
+unde $ f(z) = \frac{e^z}{z - 2} $. Rezultă:
+\[
+  \int_{|z| = r} \frac{f(z)}{z - i} dz = 2 \pi i f(i) = 2 \pi i \frac{e^i}{i - 2}.
+\]
+
+Dacă $ r > 2 $, aplicăm teorema reziduurilor, cu $ i $ și $ 2 $ poli simpli. Avem:
+\begin{align*}
+  \mathrm{Rez}(f, i) &= \lim_{z \to i} (z - i) \frac{e^z}{(z - i)(z - 2)} = \frac{e^i}{i - 2} \\
+  \mathrm{Rez}(f, 2) &= \lim_{z \to 2} \frac{e^z}{(z - i)(z - 2)} = \frac{e^2}{2 - i}.
+\end{align*}
+
+Rezultă, din teorema reziduurilor:
+\[
+  \int_{|z| = r} \frac{e^z}{(z - i)(z - 2)} dz = 2 \pi i \Big( \frac{e^i}{i - 2} + %
+  \frac{e^2}{2 - i} \Big).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Exerciții}
+
+1. Să se calculeze integrala $ \ds\int_\Gamma z^2 dz $, unde:
+\begin{enumerate}[(a)]
+\item $ \Gamma = [-1, i] \cup [i, 1] $;
+\item $ \Gamma = \{ z(t) = 2 + it^2, 0 \leq t \leq 1 \} $;
+\item $ \Gamma = \Big\{ z(t) = t + i \cos \frac{\pi t}{2}, -1 \leq t \leq 1 \Big\} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se calculeze integrala $ \ds\int_\Gamma (z - a)^n dz $, unde $ \Gamma $ este
+un cerc cu centrul în $ a $ și rază $ r > 0 $, iar $ n \in \ZZ $.
+
+\vspace{1cm}
+
+3. Folosind funcția $ f(z) = z, z \in \CC $ să se calculeze o integrală curbilinie
+în două variante:
+\begin{enumerate}[(a)]
+\item $ I_1 = \ds\int_{AB} zdz $, unde drumul de integrare este sfertul de
+  elipsă $ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 $ din primul cadran,
+  iar $ A(a, 0) $ și $ B(0, b) $;
+\item $ I_2 = \ds\int_{AOB} zdz $, unde drumul de integrare se obține mergînd
+  pe axele de coordonate.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Să se calculeze integrala $ I = \ds\int_C z^2 dz $, unde $ C $ este segmentul
+care unește originea $ O(0, 0) $ cu punctul $ A(2, 1) $.
+
+\vspace{1cm}
+
+5. Arătați că punctul $ z = a $ este singularitate aparentă pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f : \CC - \{ z \mid z^3 + 1 = 0 \} \to \CC, f(z) = \frac{z^2 - 1}{z^3 + 1} $,
+  cu $ a = -1 $;
+\item $ g : \CC^\ast \to \CC, g(z) = \frac{\sin z}{z}, a = 0 $;
+\item $ h : \CC^\ast \to \CC, h(z) = \frac{z}{\tan z}, a = 0 $;
+\item $ k : \CC^\ast \to \CC, k(z) = \frac{\cos z - 1}{z}, a = 0 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Arătați că punctul $ z = a $ este pol pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(z) = \frac{1}{z - 2}, a = 2 $;
+\item $ f(z) = \frac{1}{(z^2 + 1)^2}, a = - i $;
+\item $ f(z) = \frac{\cos z}{z}, a = 0 $;
+\item $ f(z) = \frac{z^2 + 1}{z(z - 1)}, a = 0$;
+\item $ f(z) = \frac{1}{1 - \cos z}, a = 0 $;
+\item $ f(z) = \frac{\sin z}{z^3}, a = 0 $;
+\item $ f(z) = \frac{1}{(z + 1)(z - 1)^3}, a = \pm 1 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Calculați reziduurile funcțiilor în punctele $ a $ indicate:
+\begin{enumerate}[(a)]
+\item $ f(z) = \frac{\exp\big(z^2\big)}{z - 1}, a = 1 $;
+\item $ f(z) = \frac{\exp\big(z^2\big)}{(z - 1)^2}, a = 1 $;
+\item $ f(z) = \frac{z + 2}{z^2 - 2z}, a = 0 $;
+\item $ f(z) = \frac{1 + e^z}{z^4}, a = 0 $;
+\item $ f(z) = \frac{\sin z}{4z^2}, a = 0 $;
+\item $ f(z) = \frac{z}{1 - \cos z}, a = 0 $.
+\end{enumerate}
+
+\end{document}

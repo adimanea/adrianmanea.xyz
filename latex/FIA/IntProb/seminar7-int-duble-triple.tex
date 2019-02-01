@@ -1,0 +1,235 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 7 \\ Integrale duble și triple}}
+\end{center}
+
+\vspace{1cm}
+
+1. Calculați integralele duble:
+\begin{enumerate}[(a)]
+\item $ \ds\iint_D ydxdy $, unde $ D $ este mărginit de parabola $ y^2 = 2x $,
+  cercul $ x^2 + y^2 - 2x = 0 $ și dreapta $ x = 2 $;
+\item $ \ds\iint_D e^{x^2 + y^2} dxdy $, unde $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \} $;
+\item $ \ds\iint_D ydxdy $, unde $ D = \{(x, y) \in \RR^2 \mid (x - 2)^2 + y^2 \leq 1 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Fie $ D \seq \RR^2 $ și $ f : D \to [0, \infty) $ o funcție continuă. Definim
+mulțimea:
+\[
+  \Omega = \{ (x, y, z) \in \RR^3 \mid (x, y) \in D, 0 \leq z \leq f(x, y) \}.
+\]
+Să se calculeze volumul mulțimii $ \Omega $, folosind formula:
+\[
+  \kal{V}(\Omega) = \iint_D f(x, y) dxdy,
+\]
+în cazurile:
+\begin{enumerate}[(a)]
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 2y \}, f(x, y) = x^2 + y^2 $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y > 0 \}, f(x, y) = xy $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 2x + 2y - 1 \}, f(x, y) = y $.
+\end{enumerate}
+
+\vspace{1cm}
+
+\emph{Indicații:} (a) Mulțimea este $ x^2 + (y - 1)^2 \leq 1 $, care este discul
+centrat în $ (0, 1) $ și de rază 1. Putem folosi coordonate polare pentru a face
+calculul, remarcînd că, deoarece discul se află deasupra axei $ OX $, avem
+$ \theta \in [0, \pi] $.
+
+În plus, din inegalitatea $ x^2 + y^2 \leq 2y $, obținem $ \rho \leq 2 \sin \theta $.
+
+Atunci integrala este:
+\[
+  \int_0^\pi d\theta \int_0^{2 \sin \theta} \rho^3 d\rho = \frac{3}{2}\pi.
+\]
+
+\vspace{1cm}
+
+3. Să se calculeze integrala triplă:
+\[
+  I = \iiint_V \sqrt{x^2 + y^2} dxdydz,
+\]
+unde $ V $ este delimitat de suprafața conică $ z = \sqrt{x^2 + y^2} $ și planul
+$ z = a > 0 $.
+
+\vspace{1cm}
+
+4. Să se calculeze integrala triplă:
+\[
+  I = \iiint_V xydxdydz,
+\]
+unde $ V $ este mărginit de cilindrul $ x^2 + y^2 = R^2 $ și planele
+$ z = 0, z = 1, y = x, y = x\sqrt{3} $.
+
+\vspace{1cm}
+
+5. Să se calculeze volumul corpului delimitat de suprafețele:
+\[
+  \begin{cases}
+    z &= x^2 + y^2 \\
+    z &= 2x^2 + 2y^2 \\
+    y &= x \\
+    y &= x^2
+  \end{cases}.
+\]
+
+\vspace{1cm}
+
+6. Să se calculeze volumul cuprins între paraboloizii:
+\[
+  \begin{cases}
+    x^2 + y^2 &= 2 + z \\
+    x^2 + y^2 &= 10 - z
+  \end{cases}.
+\]
+
+\vspace{1cm}
+
+7. Calculați volumele mulțimilor $ \Omega $, mărginite de suprafețele de ecuații:
+\begin{enumerate}[(a)]
+\item $ 2x^2 + y^2 + z^2 = 1, \quad 2x^2 + y^2 - z^2 = 0, z \geq 0 $;
+\item $ z = x^2 + y^2 - 1, \quad z = 2 - x^2 - y^2 $;
+\item $ z = 4 - x^2 - y^2, \quad 2z = 5 + x^2 + y^2 $;
+\item $ x^2 + y^2 = 1, \quad z^2 = x^2 + y^2, \quad z \geq 0 $.
+\end{enumerate}
+
+\emph{Indicații:} (a) Intersectăm cele două suprafețe, egalînd primele două ecuații și
+obținem:
+\[
+  4x^2 + 2y^2 = 1, \quad z = \frac{1}{\sqrt{2}}.
+\]
+Atunci, proiecția acestui domeniu pe planul $ XOY $ este:
+\[
+  D = \{(x, y) \mid 4x^2 + 2y^2 \leq 1 \}.
+\]
+Iar coordonata $ z $ o putem lua între cele două suprafețe, adică:
+\[
+  \sqrt{2x^2 + y^2} \leq z \leq \sqrt{1 - 2x^2 - y^2}.
+\]
+Rezultă că putem calcula volumul mulțimii astfel:
+\[
+  V(\Omega) = \iiint_\Omega dxdydz = \iint_D dxdy \int_{\sqrt{2x^2 + y^2}}^{\sqrt{1 - 2x^2 - y^2}} dz,
+\]
+iar apoi pe domeniul $ D $ putem folosi coordonate polare generalizate (pentru parametrizarea
+elipsei).
+
+\vspace{1cm}
+
+(b) Similar, intersectăm cele două suprafețe rezolvînd sistemul de ecuații
+și găsim:
+\[
+  x^2 + y^2 = \frac{3}{2}, \quad z = \frac{1}{2}.
+\]
+Proiecția pe planul $ XOY $ este:
+\[
+  D = \big\{ (x, y) \mid x^2 + y^2 \leq \frac{3}{2} \big\}.
+\]
+Atunci:
+\[
+  V(\Omega) = \iiint_\Omega dxdydz = \iint_D dxdy \int_{x^2 + y^2 - 1}^{2 - x^2 - y^2} dz.
+\]
+
+
+
+
+\end{document}

@@ -1,0 +1,314 @@
+\documentclass[11pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+% \usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} BCD-Aero, 2017---2018, L. Costache \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}[section]
+\newtheorem{proposition}{Propozi\c{t}ie}[section]
+\newtheorem{lemma}{Lem\u{a}}[section]
+\newtheorem{corollary}{Corolar}[section]
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}[section]
+\newtheorem{definition}{Defini\c{t}ie}[section]
+\newtheorem{remark}{Observa\c{t}ie}[section]
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 7 \\ Recapitulare}}
+\end{center}
+
+\textbf{Serii numerice}
+
+1. Decideți convergența seriilor cu termenul general dat de:
+\begin{enumerate}[(a)]
+\item $x_n = \frac{\sqrt{7n}}{n^2 + 3n + 5}$ \hfill (C, comparație);
+\item $x_n = \frac{2^{\frac{1}{n}}}{n^2}$; \hfill (C, comparație sau integral);
+\item $x_n = \frac{1}{\sqrt{n}} \ln \Big( 1 + \frac{1}{\sqrt{n^3 + 1}} \Big)$; \hfill (C, comparație);
+\item $x_n = \frac{1}{n^a} \ln \Big( 1 + \frac{1}{n^b} \Big), a, b \in \RR$; \hfill (comparație, $a + b ? 1$);
+\item $x_n = \frac{\arctan n}{n^2 + 1}$; \hfill (C, comparație sau integral)
+\item $x_n = \frac{1}{n - \ln n}$; \hfill (D, comparație)
+\item $x_n = \Big( \sqrt{n^2 + 1 + an} - n \Big)^n, a \geq 0$; \hfill (radical, $a ? 2$);
+\item $x_n = \frac{(-1)^n \ln n}{\sqrt{n}}$; \hfill (C, Leibniz)
+\item $x_n = \Big(\frac{an + 1}{bn + 1}\Big)^n, a, b > 0$. \hfill (radical, $a ? b$).
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Studiați convergența absolută și semiconvergența pentru seriile cu termenul general
+dat de:
+\begin{enumerate}[(a)]
+\item $x_n = \frac{(-1)^n}{\sqrt{n} + (-1)^n}$; \hfill (D, amplifică cu conjugata)
+\item $x_n = \frac{1}{n^2} \sin n$; \hfill (AC, comparație)
+\item $x_n = \frac{a + (-1)^n \sqrt{n}}{n}, a \in \RR$. \hfill ($a = 0$, SC [Leibniz], $a \neq 0$ desparte în două)
+\end{enumerate}
+
+\vspace{1cm}
+
+\textbf{Șiruri de funcții}
+
+3. Studiați convergența simplă și convergența uniformă pentru șirurile
+de funcții:
+\begin{enumerate}[(a)]
+\item $f_n : (-\infty, 0) \to \RR, f_n(x) = \frac{e^{nx} - 1}{e^{nx} + 1}$;
+\item $f_n : \RR \to \RR, f_n(x) = \arctan \frac{x}{1 + n(n + 1)x^2}$;
+\item $f_n : [0, \infty) \to \RR, f_n(x) = x^n e^{-nx}$;
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Calculați $\ds\lim_{n \to \infty} \int_0^1 \frac{1}{n + x^5} dx$.
+
+\vspace{1cm}
+
+5. Calculați $\ds\lim_{n \to \infty} \int_0^1 \sin \frac{x}{n + 1} - \sin x dx$.
+
+\vspace{1cm}
+
+6. Verificați dacă șirul de funcții
+\[
+  f_n : \RR \to \RR, f_n(x) = \frac{\sin nx}{n^2}
+\]
+poate fi derivat termen cu termen.
+
+\vspace{1cm}
+
+\textbf{Serii de funcții (Seria B)}
+
+7. Studiați convergența seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $\sum \frac{nx}{1 + n^5 x^2}, x \in \RR$; \hfill (Weierstrass);
+\item $\sum \arctan \frac{2x}{x^2 + n^4}, x \in \RR$; \hfill (Weierstrass);
+\item $\sum \frac{\sin nx}{2^n}, x \in \RR$; \hfill (Weierstrass);
+\item $\sum \Big( \sin \frac{x}{n + 1} - \sin \frac{x}{n} \Big)$; \hfill (șirul sumelor
+  parțiale);
+\item $x + \sum \Big( \frac{x}{1 + nx} - \frac{x}{1 + (n-1) x} \Big), 0 \leq x \leq 1$;
+  \hfill (șirul sumelor parțiale).
+\end{enumerate}
+
+\vspace{1cm}
+
+\textbf{Spații metrice (Seria B)}
+
+8. Aproximați cu o eroare de maxim $\varepsilon = 10^{-2}$ soluția reală a
+ecuațiilor:
+\begin{enumerate}[(a)]
+\item $x^3 + 3x + 2 = 0$;
+\item $x^3 + 4x - 1 = 0$;
+\item $x^3 + 12 x - 1 = 0$;
+\item $x^3 + x^2 - 6x + 1 = 0$. 
+\end{enumerate}
+
+\vspace{1cm}
+
+\textbf{Serii Taylor, serii de puteri (Seria A)}
+
+9. Găsiți dezvoltarea în serie Maclaurin și domeniul de convergență pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $f(x) = \sin x$;
+\item $f(x) = \cos x$;
+\item $f(x) = \arctan x$;
+\item $f(x) = \ln(x + 1)$;
+\item $f(x) = (x + 1)^a, a \in \RR$;
+\item $f(x) = \frac{1}{x + 1}$;
+\item $f(x) = \frac{1}{x^2 - 3x + 2}$;
+\item $f(x) = \ds\int_0^x \frac{\arctan t}{t} dt$;
+\item $f(x) = \ds\int_0^x \frac{\sin t}{t} dt$.
+\end{enumerate}
+
+\vspace{1cm}
+
+10. Calculați, cu o eroare de maxim $\varepsilon = 10^{-2}$ integralele:
+\begin{enumerate}[(a)]
+\item $\ds\int_0^{\frac{1}{2}} \frac{\ln (x + 1)}{x}$;
+\item $\ds\int_0^{\frac{1}{3}} \frac{\sin x}{x}$;
+\item $\ds\int_0^1 \cos t^2 dt$.
+\end{enumerate}
+
+\vspace{1cm}
+
+11. Găsiți raza și domeniul de convergență pentru seriile:
+\begin{enumerate}[(a)]
+\item $\sum x^n$;
+\item $\sum n^n x^n$;
+\item $\sum (-1)^{n + 1} \frac{x^n}{n}$;
+\item $\sum \frac{n^n x^n}{n!}$;
+\item $\sum \Big( \cos \frac{1}{n} \Big)^{\frac{n^2 + 2}{n + 2}} x^n$;
+\item $\sum \frac{(x - 1)^{2n}}{n \cdot 9^n}$;
+\item $\sum \frac{(x + 3)^n}{n^2}$;
+\item $\sum \frac{(-1)^{n - 1}}{n} (x - 2)^{2n}$.
+\end{enumerate}
+
+\vspace{1cm}
+
+12. Găsiți mulțimea de convergență și suma seriei:
+\[
+  \sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1}.
+\]
+
+Indicație: $R = 1$ (raport), iar suma se află derivînd termen cu termen.
+Rezultă (prin derivare) seria geometrică de rază $-x^2$, cu suma
+$\frac{1}{1 + x^2}$, pentru $|x| < 1$. Atunci $f(x) = \arctan x + c$ etc.
+
+\vspace{1cm}
+
+13. Să se arate că seria numerică $\ds\sum_{n \geq 0} \frac{(-1)^n}{3n + 1}$ este
+convergentă și să se afle suma ei, folosind serii de puteri.
+
+\emph{Soluție:} Seria satisface criteriul lui Leibniz pentru serii numerice
+alternate, deci este convergentă.
+
+Pentru a găsi suma, considerăm seria de puteri $\sum (-1)^n \frac{x^{3n + 1}}{3n + 1}$.
+
+Raza de convergență este $R = 1$, deci intervalul de convergență este $(-1, 1)$.
+
+Pentru $x = 1$, avem seria dată. Fie $f$ suma acestei serii de puteri în
+intervalul $(-1, 1)$.
+
+Derivăm termen cu termen și obținem:
+\[
+  f'(x) = \sum (-1)^n x^{3n} = \frac{1}{1 + x^3},
+\]
+pentru $|x| < 1$, ca suma unei serii geometrice alternate.
+
+Rezultă:
+\[
+  f(x) = \int \frac{dx}{1 + x^3} = \frac{1}{6} \ln \frac{(x + 1)^2}{x^2 - x + 1} + %
+  \frac{1}{\sqrt{3}} \arctan \frac{2x - 1}{\sqrt{3}} + c,
+\]
+pentru $|x| < 1$. Pentru $x = 0$, găsim $c = \frac{\pi}{6 \sqrt{3}}$.
+Rezultă:
+\[
+  f(x) = \frac{1}{6} \ln \frac{(x + 1)^2}{x^2 - x + 1} + %
+  \frac{1}{\sqrt{3}} \arctan \frac{2x - 1}{\sqrt{3}},
+\]
+pentru $|x| < 1$.
+
+Așadar, seria inițială este $f(1) = \frac{1}{3} \ln 2 + \frac{\pi}{3 \sqrt{3}}$.
+
+\vspace{1cm}
+
+14. Să se afle suma seriilor:
+\begin{enumerate}[(a)]
+\item $\ds\sum_{n \geq 0} \frac{(n + 1)^2}{n!}$;
+\item $\ds\sum_{n \geq 1} \frac{n^2(3^n - 2^n)}{6^n}$
+\end{enumerate}
+
+\emph{Indicații:} (a) Folosiți seria pentru $e^x$, din care obțineți seria
+pentru $(x + x^2)e^x$, pe care apoi o derivați termen cu termen.
+
+Pentru $x = 1$ se obține seria cerută, cu suma $5e$.
+
+(b) Descompunem seria în două, apoi folosim seria de puteri $\sum n^2 x^n$,
+pe care o derivăm termen cu termen, pentru a obține seria pentru $nx^{n - 1}$,
+apoi seria pentru $nx^n$.
+
+\vspace{1cm}
+
+15. Folosind seriile Taylor, calculați, cu o eroare de maxim $\varepsilon = 10^{-3}$,
+numerele:
+\begin{enumerate}[(a)]
+\item $\sin 2$;
+\item $\sqrt[5]{7}$;
+\item $\arctan 4$;
+\item $\ln 3$;
+\end{enumerate}
+
+\vspace{1cm}
+
+\textbf{Mulțimi numărabile (seria A)}
+
+16. Care din următoarele mulțimi sînt numărabile?
+\begin{enumerate}[(a)]
+\item $A = \{ x \in \RR \mid \exists t \in Q, x^2 = t \}$;
+\item $B = \{ z \in \CC \mid z^{10} = 1 \}$;
+\item $C = \{ z \in \CC \mid |z| = 1\}$;
+\item $D = \{ x \in \RR \mid \exists t \in \QQ, x = \ln t\}$;
+\item $E = \{ x \in [0, 2\pi] \mid \sin x = \frac{\sqrt{3}}{3} \}$;
+\item $F = \{ x \in \RR \mid \sin x = \frac{\sqrt{3}}{3} \}$.
+\end{enumerate}
+
+\end{document}

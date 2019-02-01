@@ -1,0 +1,855 @@
+\documentclass[12pt,a4paper]{article}
+
+%% PACHETE MATEMATICE
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[unicode]{hyperref}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{multicol}
+%\usepackage[romanian]{babel}
+
+
+%% ASPECT
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[margin=2cm]{geometry}
+% \usepackage[color]{showkeys}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small \color{gray} Notițe de Adrian Manea}
+\lhead{\small \color{gray} IntProb-FIA, 2017---2018, L. Lemnete \& M. Olteanu}
+
+
+\usepackage[autostyle = false, style = german]{csquotes}
+\usepackage[romanian]{babel}
+\newcommand\qq{\enquote}
+
+%% COMENZILE MELE
+\renewcommand*{\proofname}{Dem.:}
+\newcommand\bb{\mathbb}
+\newcommand\dr{\mathrm}
+\newcommand\kal{\mathcal}
+\newcommand\fk{\mathfrak}
+\newcommand\op{\oplus}
+\newcommand\ot{\otimes}
+\newcommand\ds{\displaystyle}
+\newcommand\id{\indent}
+\newcommand\nid{\noindent}
+\newcommand\seq{\subseteq}
+\newcommand\sneq{\subsetneq}
+\newcommand\speq{\supseteq}
+\newcommand\spneq{\supsetneq}
+\newcommand\rar{\rightarrow}
+\newcommand\Rar{\Rightarrow}
+\newcommand\xrar{\xrightarrow}
+\newcommand\lar{\leftarrow}
+\newcommand\Lar{\Leftarrow}
+\newcommand\xlar{\xleftarrow}
+\newcommand\lrar{\leftrightarrow}
+\newcommand\Lrar{\Leftrightarrow}
+\newcommand\ideal{\trianglelefteq}
+\newcommand\ai{\text{ a.\^{i}. }}
+\newcommand\sk{(\textit{Schi\c{t}\u{a}}) }
+\newcommand\rhup{\rightharpoonup}
+\newcommand\rhdn{\rightharpoondown}
+\newcommand\lhup{\leftharpoonup}
+\newcommand\lhdn{\leftharpoondown}
+\newcommand\vid{\emptyset}
+\newcommand\wh{\widehat}
+\newcommand\ol{\overline}
+\newcommand\NN{\mathbb{N}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CC{\mathbb{C}}
+
+%% STILURILE MELE
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{:}{ }{}
+
+\theoremstyle{dotless}
+\newtheorem{theorem}{Teorem\u{a}}
+\newtheorem{proposition}{Propozi\c{t}ie}
+\newtheorem{lemma}{Lem\u{a}}
+\newtheorem{corollary}{Corolar}
+\newtheorem{exercise}{Exerci\c{t}iu}
+
+\newtheoremstyle{dotlessdr}{}{}{}{}{\bfseries}{:}{ }{}
+\theoremstyle{dotlessdr}
+\newtheorem{example}{Exemplu}
+\newtheorem{definition}{Defini\c{t}ie}
+\newtheorem{remark}{Observa\c{t}ie}
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Seminar 13 \\
+      Variabile aleatoare}}
+\end{center}
+
+\vspace{2cm}
+
+
+\section*{Cazul discret}
+
+\indent\indent Variabilele aleatoare sînt moduri de reprezentare a informației
+în calculul probabilităților, precum matricele ne pot ajuta să \qq{codificăm}
+informații geometrice sau algebrice. De obicei, ele se reprezintă asemenea
+permutărilor, anume ca tablouri bidimensionale.
+
+Începem cu definițiile fundamentale.
+
+\begin{definition}\label{def:v-al}
+  O variabile a cărei valoare se determină de un eveniment rezultat în urma
+  unei experiențe se numește \emph{variabilă aleatoare}.
+\end{definition}
+
+\begin{definition}\label{def:repartitie}
+  Fie $ X $ o variabilă aleatoare care poate lua valorile $ x_1, \dots, x_n $,
+  cu probabilitățile $ f(x_1), \dots, f(x_n) $. Mulțimea de perechi ordonate
+  $ \{ (x_i, f(x_i)) \}_i $ definește \emph{repartiția} variabilei aleatoare.
+
+  Mai general, dacă $ X $ este o variabilă aleatoare reală (adică
+  $ \mathrm{Im} f \seq \RR $), atunci funcția $ F : \RR \to \RR $ definită prin:
+  \[
+    F_X(x) = P(X < x), \forall x \in \RR
+  \]
+  se numește \emph{funcția de repartiție} a variabilei aleatoare $ X $.
+\end{definition}
+
+Putem interpreta funcția de repartiție în sensul următor: calculată în $ x $, ea
+ne dă probabilitatea ca valorile variabilei aleatoare să fie pînă în $ x $.
+
+Se poate vedea din definiție că au loc următoarele \emph{proprietăți}:
+\begin{enumerate}[(1)]
+\item $ \ds\lim_{x \to -\infty} F_X(x) = 0 $, iar $ \ds\lim_{x \to \infty} F_X(x) = 1 $;
+\item $ F_X $ este crescătoare (deoarece acumulează) și este continuă la dreapta în
+  orice punct $ x \in \RR $;
+\item $ P(X = x) = F(x) - F(x - 0) $, unde $ F(x - 0) $ notează limita la stînga
+  \[
+    \lim_{x_0 \nearrow x} F(x_0).
+  \]
+\item $ P(a < X \leq b) = F(b) - F(a) $.
+\end{enumerate}
+
+Ne vor interesa două cazuri, anume acelea ale variabilelor aleatoare continue și discrete,
+pe care le definim mai jos.
+
+\begin{definition}\label{def:v-disc}
+  Variabila aleatoare $ X $ se numește \emph{discretă} dacă mulțimea valorilor
+  ei este o mulțime cel mult numărabile de numere reale sau complexe (în bijecție
+  cu o submulțime [nestrictă] a lui $ \NN $), $ \{a_n\}_n $.
+\end{definition}
+
+În acest caz, dacă $ P(X = a_n) = p_n $, atunci condiția de normare este $ \sum p_n = 1 $,
+iar funcția de repartiție $ F_X $ este o funcție în scară, cu:
+\[
+  F_X(x) = \sum_{a_n < x} p_n.
+\]
+În acest caz, putem reprezenta variabila aleatoare într-o formă matriceală:
+\[
+  X \sim %
+  \begin{pmatrix}
+    a_0 & a_1 & \dots & a_n & \dots \\
+    p_0 & p_1 & \dots & p_n & \dots
+  \end{pmatrix},
+\]
+matrice care se numește \emph{matricea de repartiție} a lui $ X $ sau \emph{distribuția} sa.
+
+Cazul continuu este definit mai jos.
+
+\begin{definition}\label{def:v-cont}
+  Dacă $ P(X = x) = 0 $, pentru orice $ x \in \RR $, atunci variabila aleatoare $ X $ se numește
+  \emph{continuă}. Echivalent, funcția ei de repartiție este o funcție reală continuă
+  (v. proprietatea (3)).
+\end{definition}
+
+În multe situații, vom lucra cu variabile aleatoare discrete, reprezentate matriceal. Va fi
+util să definim cîteva operații elementare între aceste obiecte.
+
+Fie, așadar, două variabile aleatoare discrete:
+\[
+  X : \begin{pmatrix} x_i \\ p_i \end{pmatrix}, \quad %
+  Y : \begin{pmatrix} y_j \\ q_j \end{pmatrix}
+\]
+
+Definim $ p_{ij} = P(X = x_i, Y = y_j), \forall i,j $. Atunci au loc formulele de calcul:
+\begin{align*}
+  p_i &= \sum_j p_{ij} \\
+  q_j &= \sum_i p_{ij} \\
+  1 &= \sum_{i,j} p_{ij}.
+\end{align*}
+
+Variabilele $ X $ și $ Y $ se numesc \textbf{independente} dacă $ p_{ij} = p_i \cdot q_j $.
+
+\textbf{Suma variabilelor} are repartiția:
+\[
+  X + Y : \begin{pmatrix} x_i + y_j \\ p_{ij} \end{pmatrix}.
+\]
+
+Dacă $ \alpha \in \RR $ este o constantă reală, atunci variabila $ X + \alpha $ are repartiția:
+\[
+  X + \alpha : \begin{pmatrix} x_i + \alpha \\ p_i \end{pmatrix}.
+\]
+
+\textbf{Produsul variabilelor} $ X $ și $ Y $ are repartiția:
+\[
+  XY : \begin{pmatrix} x_iy_j \\ p_{ij} \end{pmatrix}
+\]
+
+\textbf{Produsul} $ \alpha X $, pentru $ \alpha \in \RR $ are repartiția:
+\[
+  \alpha X : \begin{pmatrix} \alpha x_i \\ p_i \end{pmatrix}.
+\]
+
+\vspace{1cm}
+
+Să vedem un exemplu de calcul:
+
+\textbf{Exemplu:} Se dau variabilele independente:
+\[
+  X : %
+  \begin{pmatrix}
+    0 & 1 & 2 \\
+    0,2 & 0,4 & 0,4
+  \end{pmatrix}, \quad %
+  Y : %
+  \begin{pmatrix}
+    1 & 2 \\
+    0,6 & 0,4
+  \end{pmatrix}.
+\]
+
+Determinați repartițiile variabilelor $ X + Y, XY, 2 + X, X^2, 3Y $.
+
+\emph{Soluție:} Vom prezenta repartițiile punînd valorile pentru evenimente
+în ordine crescătoare. De exemplu, $ X + Y $ poate lua valorile 1, 2, 3, 4,
+iar $ X^2 $ poate lua valorile 0, 1, 4.
+
+Folosim independența și formulele de calcul pentru probabilități și obținem,
+de exemplu:
+\begin{align*}
+  P(X + Y = 1) &= P(X = 0 \land Y = 1) \\
+               &= P(X = 0) \cdot P(Y = 1) \\
+               &= 0,12 \\
+  P(X + Y = 2) &= P\Big((X = 0 \land Y = 2) \lor (X = 1 \land Y = 1)\Big) \\
+               &= P(X = 0 \land Y = 2) + P(X = 1 \land Y = 1) \\
+               &= 0,32
+\end{align*}
+
+Similar se calculează și celelalte valori și, folosind definițiile operațiilor,
+obținem:
+\begin{align*}
+  X + Y &: \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0,12 & 0,32 & 0,4 & 0,16 \end{pmatrix} \\
+  XY &: \begin{pmatrix} 0 & 1 & 2 & 3 & 4 \\ 0,2 & 0,24 & 0,4 & 0,6 \end{pmatrix} \\
+  2 + X &: \begin{pmatrix} 2 & 3 & 4 \\ 0,2 & 0,4 & 0,4 \end{pmatrix} \\
+  X^2 &: \begin{pmatrix} 0 & 1 & 4 \\ 0,2 & 0,4 & 0,4 \end{pmatrix} \\
+  3Y &: \begin{pmatrix} 3 & 6 \\ 0,6 & 0,4 \end{pmatrix}
+\end{align*}
+
+\vspace{1cm}
+
+
+Pentru studiul variabilelor aleatoare se folosesc mai multe mărimi, pe care le introducem,
+pe rînd.
+
+\begin{definition}\label{def:medie-mom-var}
+  Fie $ X $ o variabilă aleatoare discretă.
+  \begin{enumerate}[(1)]
+  \item Dacă seria $ \ds\sum_{n \geq 0} x_n p_n $ este absolut convergentă, atunci spunem că $ X $
+    admite medie, iar numărul:
+    \[
+      E(X) = \sum_{n \geq 0} x_n p_n
+    \]
+    se numește \emph{media} lui $ X $;
+  \item Pentru $ n \neq 0 $, media $ E(X^n) $ a variabilei $ X^n $ se numește \emph{momentul %
+      de ordinul $ n $} al lui $ X $;
+  \item Media variabilei $ (X - E(X))^2 $ se numește \emph{varianța} sau \emph{dispersia}
+    lui $ X $, notată $ \mathrm{Var}(X) $ sau $ D^2(X) $.
+  \end{enumerate}
+\end{definition}
+
+Funcția de medie are următoarele proprietăți esențiale:
+\begin{enumerate}[(a)]
+\item \textbf{Liniaritatea:} $ E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y) $, pentru
+  orice $ \alpha, \beta \in \CC $;
+\item \textbf{Monotonia:} Dacă $ X \leq Y $, atunci $ E(X) \leq E(Y) $;
+\item Dacă $ X $ este o constantă $ c $, atunci $ E(X) = c $;
+\item Dacă $ X $ și $ Y $ sînt variabile aleatoare independente, adică descriu evenimente
+  independente, atunci $ E(XY) = E(X) \cdot E(Y) $.
+\end{enumerate}
+
+Funcția de dispersie are proprietățile:
+\begin{enumerate}[(a)]
+\item $ D^2(X) = E(X^2) - (E(X))^2 $;
+\item $ D^2(X) \geq 0 $;
+\item $ D^2(X) = 0 \Leftrightarrow P(X = E(X)) = 1 $, adică $ X $ este o constantă cu
+  probabilitatea 1 ($ X $ descrie doar evenimentul sigur);
+\item \textbf{Cebîșev:} Pentru orice $ \varepsilon > 0 $, are loc:
+  \[
+    P(|X - E(X)| \geq \varepsilon) < \frac{D^2(X)}{\varepsilon^2}. 
+  \]
+  Echivalent, se mai poate scrie:
+  \[
+    P(|X - E(X)| < \varepsilon) \geq 1 - \frac{D^2(X)}{\varepsilon^2}.
+  \]
+\item $ D^2(\alpha X) = \alpha^2 D^2(X) $, pentru orice $ \alpha \in \CC $;
+\item Dacă $ X $ și $ Y $ sînt independente, atunci:
+  \[
+    D^2(X + Y) = D^2(X) + D^2(Y).
+  \]
+\end{enumerate}
+
+Mai definim două mărimi care se asociază variabilelor aleatorii.
+
+\begin{definition}\label{def:cov}
+  Fie $ X $ și $ Y $ două variabile aleatoare. Numim \emph{covarianță} a
+  variabilelor $ X $ și $ Y $, notată $ \mathrm{cov}(X, Y) $ numărul:
+  \[
+    \mathrm{cov}(X, Y) = E((X - E(X))(Y - E(Y))) = E(XY) - E(X)E(Y).
+  \]
+\end{definition}
+
+Proprietățile esențiale ale covarianței sînt date de:
+\begin{enumerate}[(a)]
+\item Dacă $ X $ și $ Y $ sînt variabile aleatoare independente, atunci
+  $ \mathrm{cov}(X, Y) = 0 $;
+\item Dacă $ X_1, \dots, X_n $ sînt variabile aleatoare cu dispersiile
+  $ D_i^2 $ și covarianțele $ \mathrm{cov}(X_i, X_j), i \neq j $, atunci are loc:
+  \[
+    D^2\Big( \sum_{i = 1}^n X_i \Big) = \sum_{i = 1}^n D_i^2 + %
+    2 \sum_{i < j} \mathrm{cov}(X_i, X_j).
+  \]
+\end{enumerate}
+
+\begin{definition}\label{def:cor}
+  Dacă $ X $ și $ Y $ sînt variabile aleatoare, se numește \emph{coeficient de corelație}
+  al lor, notat $ \rho(X, Y) $, numărul calculat prin:
+  \[
+    \rho(X, Y) = \frac{\mathrm{cov}(X, Y)}{\sqrt{D^2(X) \cdot D^2(Y)}}
+  \]
+\end{definition}
+
+Se poate vedea din definiție că, atît covarianța, cît și corelația arată \qq{gradul de %
+  independență} a variabilelor aleatoare $ X $ și $ Y $. Într-adevăr, dacă $ X $ și $ Y $
+sînt independente, atunci avem $ \rho(X, Y) = 0 $. Afirmația reciprocă este, însă, falsă!
+
+Să luăm un exemplu: Fie $ A = \{ a_1, a_2, a_3, a_4 \}$, cu $ P(a_i) = \dfrac{1}{4} $.
+
+Presupunem că variabila aleatoare $ X $ realizează corespondența:
+\[
+  X(a_1) = 1, X(a_2) = -1, X(a_3) = 2, X(a_4) = -2.
+\]
+Atunci, ea are matricea de repartiție:
+\[
+  X \sim
+  \begin{pmatrix}
+    -2 & -1 & 1 & 2 \\
+    \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4}
+  \end{pmatrix}.
+\]
+
+Presupunem că o altă variabilă aleatoare $ Y $ realizează corespondența:
+\[
+  Y(a_1) = 1, Y(a_2) = 1, Y(a_3) = -1, Y(a_4) = -1.
+\]
+Atunci matricea ei se poate reduce la:
+\[
+  Y \sim
+  \begin{pmatrix}
+    -1 & 1 \\
+    \frac{1}{2} & \frac{1}{2}
+  \end{pmatrix}.
+\]
+
+Produsul celor două variabile aleatoare are matricea de repartiție:
+\[
+  XY :
+  \begin{pmatrix}
+    -2 & -1 & 1 & 2 \\
+    \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4}
+  \end{pmatrix}.
+\]
+
+Rezultă că $ E(X) = E(Y) = E(XY) $, deci $ \mathrm{cov}(X, Y) = 0 $. Însă putem
+observa că $ X $ și $ Y $ nu sînt independente. Într-adevăr, avem:
+\[
+  P(X = 1 \land Y = 1) = P(a_1) = \frac{1}{4} \neq %
+  P(X = 1) \cdot P(Y = 1) = \frac{1}{4} \cdot \frac{1}{2}.
+\]
+
+În fine, o altă noțiune de care avem nevoie este \emph{funcția generatoare}.
+
+\begin{definition}\label{def:generatoare}
+  Fie $ X $ o variabilă aleatoare discretă care ia valori naturale.
+
+  Funcția $ G_X(t) $, definită prin:
+  \[
+    G_X(t) = E(t^X) = \sum_{n \geq 0} p_n t^n, 
+  \]
+  cu $ t \leq 1 $ și $ p_n = P(X = n) $ se numește \emph{funcția generatoare}
+  a variabilei aleatoare $ X $.
+\end{definition}
+
+Funcția generatoare codifică, de fapt, în coeficienții unei serii formale,
+repartiția unei variabile aleatoare. Ea are următoarele proprietăți:
+\begin{enumerate}[(a)]
+\item Dacă avem variabilele aleatoare independente $ X_1, \dots, X_n $,
+  iar $ X = X_1 + \dots + X_n $, atunci:
+  \[
+    G_X(t) = G_{X_1}(t) \cdots G_{X_n}(t);
+  \]
+\item $ E(X) = G'_X(1) $;
+\item $ D^2(X) = G_X^{\prime\prime}(1) + G'_X(1) - [G'_X(1)]^2 $;
+\item Două variabile aleatoare cu aceeași funcție generatoare au aceeași repartiție.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Exemple de repartiții discrete}
+
+\indent\indent Vom regăsi acum, în contextul teoriei variabilelor aleatoare,
+scheme clasice de probabilitate.
+
+
+
+\subsection*{Repartiția binomială (Bernoulli)}
+\indent\indent Presupunem că se fac $ n $ experiențe independente, în fiecare din
+experiențe, probabilitatea de realizare a unui eveniment $ A $ fiind constantă
+și egală cu $ p $ (rezultă că probabilitatea ca $ A $ să nu se realizeze este
+$ q = 1 - p $).
+
+Numărul de realizări ale evenimentului $ A $ în cele $ n $ experiențe se constituie
+ca o variabilă aleatoare $ X $, ale cărei valori posibile sînt $ k = 0, 1, \dots, n $,
+în funcție de cîte din experiențe realizează $ A $. Așadar, avem $ P(X = k) = p_k $.
+
+Cînd considerăm fiecare $ k $, cu probabilitatea sa de realizare, mulțimea perechilor
+$ (k, p_k), k \in \{0, 1, \dots, n \} $ se numește \emph{repartiție binomială} sau
+\emph{repartiție Bernoulli}.
+
+Pentru acestea, valorile principalilor parametri sînt:
+\begin{itemize}
+\item $ P(X = k) = C_n^k p^k q^{n-k}, k \in \{0, 1, \dots, n\} $;
+\item $ E(X) = np $;
+\item $ D^2(X) = npq $;
+\item $ G_X(t) = (pt + q)^n $.
+\end{itemize}
+
+\textbf{Observație:} Pentru $ n \to \infty, p \to 0 $, astfel încît $ np = \lambda $,
+probabilitățile $ P(X = k) $ pot fi aproximate prin valorile repartiției Poisson
+(vezi mai jos).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția geometrică}
+
+\indent\indent Fie $ X $ numărul de experimente de tip Bernoulli, cu probabilitatea $ p $
+de succes, care trebuie repetate pînă la apariția primului succes. Atunci:
+\begin{itemize}
+\item $ P(X = k) = p(1 - p)^{k - 1}, k \in \NN^\ast $;
+\item $ E(X) = \dfrac{1}{p} $;
+\item $ D^2(X) = \dfrac{1 - p}{p^2} $;
+\item $ G_X(t) = \dfrac{pt}{1 - qt} $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția binomial negativă}
+
+\indent\indent Fie $ X $ numărul de experimente de tip Bernoulli cu probabilitatea
+de succes $ p $ care trebuie efectuate pentru a obține $ m $ succese. Atunci:
+\begin{itemize}
+\item $ P(X = n) = C_{n-1}^{m - 1} p^m q^{n-m} $ (pentru $ m = 1 $, găsim repartiția
+  geometrică);
+\item $ E(X) = \dfrac{m}{p} $;
+\item $ D^2(X) = \dfrac{mq}{p^2} $;
+\item $ G_X(t) = \dfrac{p^m t^m}{(1 - qt)^m} $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția hipergeometrică}
+
+\indent\indent Fie $ X $ o variabilă aleatoare care reprezintă numărul de bile albe
+obținute după $ n $ extrageri fără repunere dintr-o urnă ce conține $ a $ bile albe
+și $ b $ bile negre. Atunci avem:
+\begin{itemize}
+\item $ P(X = x) = \dfrac{C_a^x C_b^{n-x}}{C_{a + b}^n}, 0 \leq x \leq n $;
+\item $ E(X) = np $;
+\item $ D^2(X) = xpq \cdot \dfrac{a + b - x}{a + b - 1} $, unde $ p = \dfrac{a}{a+b}$,
+  iar $ q = 1 - p = \dfrac{b}{a + b} $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția Poisson}
+
+\indent\indent Repartiția Poisson se caracterizează printr-un parametru $ \lambda > 0 $
+(v. repartiția binomială [Bernoulli] mai sus). Avem:
+\begin{itemize}
+\item $ P(X = n) = \dfrac{\lambda^n}{n!} \cdot e^{-\lambda}, n \in \NN $;
+\item $ E(X) = \lambda $;
+\item $ D^2(X) = \lambda $;
+\item $ G_X(t) = e^{\lambda(t - 1)} $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Cazul continuu}
+
+
+\begin{definition}\label{def:va-cont}
+  Variabila aleatoare $ X $ se numește \emph{absolut continuă} dacă
+  există o funcție integrabilă $ f : \RR \to \RR_+ $ astfel încît funcția
+  de repartiție $ F(x) $ a lui $ X $ să fie dată de:
+  \[
+    F(x) = \int_{-\infty}^x f(t) dt.
+  \]
+
+  În acest caz, $ f $ se numește \emph{densitatea de probabilitate} a lui $ X $.
+\end{definition}
+
+Ca în cazul discret, avem următoarele proprietăți esențiale:
+\begin{enumerate}[(a)]
+\item Funcția $ f $ este pozitivă și are loc condiția de normare
+  \[
+    \ds\int_{-\infty}^\infty f(x) dx = 1.
+  \]
+\item În orice punct de continuitate a lui $ f $, avem $ F'(x) = f(x) $;
+\item $ P(a \leq X \leq b) = \ds\int_a^b f(x) dx $;
+\item $ E(X) = \ds\int_{-\infty}^\infty xf(x) dx $;
+\item Dacă $ X $ are densitatea $ X $, iar $ Y = aX + b $ este o altă variabilă
+  aleatoare, cu $ a, b \in \RR, a \neq 0 $, atunci $ Y $ are densitatea:
+  \[
+    f_Y(x) = \frac{1}{|a|} f \Big( \frac{x - b}{a} \Big).
+  \]
+\end{enumerate}
+
+\begin{definition}\label{def:fc-car}
+  Pentru orice variabilă aleatoare $ X $, funcția:
+  \[
+    \varphi_X(t) = E(e^{itX})
+  \]
+  se numește \emph{funcția caracteristică} a lui $ X $.
+\end{definition}
+
+Funcția caracteristică joacă un rol similar funcției generatoare din cazul discret.
+Astfel, ea are următoarele proprietăți:
+\begin{enumerate}[(a)]
+\item Dacă $ X_1, \dots, X_n $ sînt variabile aleatoare independente, iar
+  $ X = X_1 + \dots + X_n  $, atunci:
+  \[
+    \varphi_X(t) = \prod_{k = 1}^n \varphi_{X_k}(t);
+  \]
+\item Dacă $ X $ admite moment de ordinul $ n $, atunci:
+  \[
+    E(X^k) = \frac{\varphi_X^{(k)}(0)}{i^k}, \quad 1 \leq k \leq n;
+  \]
+\item Două variabile aleatoare cu aceeași funcție caracteristică au aceeași repartiție;
+\item Dacă $ X $ este discretă, atunci obținem:
+  \[
+    \varphi_X(t) = \sum_n e^{ita_n} p_n;
+  \]
+\item Dacă $ X $ are densitatea de repartiție $ f(x) $, atunci:
+  \[
+    \varphi_X(t) = \int_{-\infty}^\infty e^{itx} f(x) dx,
+  \]
+  iar în punctele de continuitate ale lui $ f $, are loc relația:
+  \[
+    f(x) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{-itx} \varphi_X(t) dt.
+  \]
+\end{enumerate}
+
+În continuare, prezentăm cele mai cunoscute repartiții absolut continue.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Repartiții absolut continue}
+
+\subsection*{Repartiția normală (gaussiană)}
+
+\indent\indent Dată media $ m $ și abaterea pătratică $ \sigma $, repartiția
+variabilei aleatoare $ X $ are densitatea:
+\[
+  f(x) = \frac{1}{\sigma \sqrt{2\pi}} \cdot e^{-\frac{(x - m)^2}{2\sigma^2}}.
+\]
+
+În acest caz, se mai notează $ X \sim N(m, \sigma) $.
+
+Pentru cazul particular $ m = 0 $ și $ \sigma = 1 $, $ X $ se numește
+\emph{variabilă aleatoare standard}.
+
+Funcția caracteristică este dată de $ \varphi_X(t) = e^{imt - \frac{\sigma^2 t^2}{2}}. $
+
+Pentru cazul variabilelor normale standard, funcția de repartiție are o formă
+particulară și se numește \emph{funcția lui Laplace}:
+\[
+  \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{t^2}{2}} dt.
+\]
+
+\textbf{Observație:} Valorile funcției Laplace sînt tabelate și, de obicei,
+se dau în probleme. \\
+
+În general, dacă avem o variabilă aleatoare normală de tip $ N(m, \sigma) $, atunci
+funcția ei de repartiție $ F $ se poate obține din funcția lui Laplace în forma:
+\[
+  F(x) = \Phi \Big( \frac{x - m}{\sigma} \Big).
+\]
+
+Așadar, avem:
+\begin{equation}
+  \label{eq:p-phi-lap}
+  P(a \leq X \leq b) = \Phi \Big( \frac{b - m}{\sigma} \Big) - \Phi \Big( \frac{a - m}{\sigma} \Big),
+\end{equation}
+de unde putem obține mai departe:
+\[
+  P(|X - m| < \varepsilon \sigma) = \Phi(\varepsilon) - \Phi(-\varepsilon) = %
+  2 \Phi(\varepsilon) - 1.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția uniformă}
+
+\indent\indent Pentru un interval $ [a, b] $, densitatea de repartiție este:
+\[
+  f(x) = \begin{cases}
+    \dfrac{1}{b - a}, & a \leq x \leq b \\
+    0, & \text{ în rest}
+  \end{cases}.
+\]
+
+În acest caz, avem media $ E(X) = \dfrac{a + b}{2} $ și
+$ D^2(X) = \dfrac{(b - a)^2}{12} $.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția exponențială}
+
+Dat un parametru $ \lambda > 0 $, repartiția exponențială are densitatea:
+\[
+  f(x) = \begin{cases}
+    \lambda e^{-\lambda x}, & x > 0 \\
+    0, & x \leq 0
+  \end{cases}
+  .
+\]
+
+Pentru aceasta, avem:
+\begin{itemize}
+\item $ E(X) = \dfrac{1}{\lambda} $;
+\item $ D^2(X) = \dfrac{1}{\lambda^2} $;
+\item $ \varphi_X(t) = \Big( 1 - \dfrac{it}{\lambda} \Big)^{-1} $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția Gamma}
+
+\indent\indent Dați parametrii $ \lambda, p > 0 $, densitatea variabilei
+aleatoare de repartiție Gamma este:
+\[
+  f(x) = \begin{cases}
+    \dfrac{\lambda^p}{\Gamma(p)} x^{p-1} e^{-\lambda x}, & x > 0 \\
+    0, & x \leq 0
+  \end{cases},
+\]
+unde $ \Gamma $ este funcția lui Euler. În acest caz, avem:
+\begin{itemize}
+\item $ E(X) = \dfrac{p}{\lambda} $;
+\item $ D^2(X) = \dfrac{p}{\lambda^2} $;
+\item $ \varphi_X(t) = \Big( 1 - \dfrac{it}{\lambda} \Big)^{-p} $.
+\end{itemize}
+
+Din repartiția Gamma, putem obține alte cîteva cazuri particulare:
+\begin{itemize}
+\item pentru $ p = 1 $, se obține repartiția exponențială;
+\item pentru $ \lambda = \dfrac{1}{2}, p = \dfrac{n}{2} $, se obține
+  repartiția numită \emph{hi pătrat}, cu $ n $ grade de libertate,
+  notată $ \chi^2(n) $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Repartiția Cauchy}
+
+\indent\indent Aceasta are densitatea $ f(x) = \dfrac{1}{\pi(1 + x^2)} $.
+
+În acest caz, $ X $ nu admite valoare medie.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Exerciții}
+
+\indent\indent 1. Doi parteneri egal cotați boxează 12 runde. Probabilitatea
+ca oricare dintre ei să cîștige o rundă este 50\%. Să se calculeze valoarea
+medie, dispersia și abaterea medie pătratică a variabilei aleatoare care
+reprezintă numărul de runde cîștigate de unul din parteneri.
+
+\emph{Soluție:} Variabila aleatoare are o distribuție binomială.
+Astfel, avem:
+\begin{itemize}
+\item $ P(X = k) = C_{12}^k \dfrac{1}{2^k} \cdot \dfrac{1}{2^{12-k}} $;
+\item $ E(X) = np = 12 \cdot \dfrac{1}{2} $;
+\item $ D^2(X) = npq = 12 \cdot \dfrac{1}{2} \cdot \frac{1}{2} = 3 $;
+\item $ D(X) = \sqrt{D^2(X)} = \sqrt{3} $.
+\end{itemize}
+
+\vspace{1cm}
+
+2. La o agenție de turism s-a constatat că 5\% dintre persoanele care au făcut
+rezervări renunță. Se presupune că s-au făcut 100 de rezervări pentru un hotel cu
+95 locuri. Care este probabilitatea ca toate persoanele ce se prezintă la hotel
+să aibă loc?
+
+\emph{Soluție:} Fie $ X $ variabila aleatoare corespunzătoare numărului de persoane
+care se prezintă la hotel. $ X $ urmează o repartiție binomială, cu $ n = 100 $ și
+$ p = 0,95 $. Atunci avem:
+\[
+  P(X \leq 95) = 1 - P(X > 95) = %
+  1 - \sum_{k = 96}^{100} C_{100}^k (0,05)^{100-k} \cdot (0,95)^k.
+\]
+
+\vspace{1cm}
+
+3. La examenul de matematică, probabilitatea ca o teză să fie notată cu notă de
+trecere este 75\%. Se aleg la întîmplare 10 lucrări. Fie $ X $ variabila aleatoare
+ce reprezintă numărul tezelor ce vor fi notate cu notă de trecere. Calculați:
+\begin{enumerate}[(a)]
+\item repartiția lui $ X $ ;
+\item $ E(X), D^2(X) $;
+\item $ P(X \geq 5), P(7 \leq X \leq 10 / X \geq 8), P(X = 10) $;
+\item funcția caracteristică a lui $ X $.
+\end{enumerate}
+
+\emph{Soluție:} (a) Avem o variabilă aleatoare cu repartiție binomială și $ n = 10 $,
+$ p = 0,75 $. Atunci $ X $ ia valorile $ x \in \{0, 1, \dots, 10 \}$ cu probabilitățile
+corespunzătoare distribuției binomiale, deci:
+\[
+  p(x) = C_{10}^x (0,75)^x \cdot (0,25)^{10-x}.
+\]
+
+(b) Conform formulelor de calcul, avem:
+\begin{align*}
+  E(X) &= np = 10 \cdot 0,75 = 7,5 \\
+  D^2(X) &= npq = 10 \cdot 0,75 \cdot 0,25 = 1,875.
+\end{align*}
+
+(c)
+\[
+  P(X \geq 5) = \ds\sum_{x = 5}^{10} C_{10}^x (0,75)^x \cdot (0,25)^{10-x}
+\]
+
+Pentru $ P(7 \leq X \leq 10 / X \geq 8) $ avem un \emph{eveniment condiționat}.
+Dacă $ A $ și $ B $ sînt două evenimente, amintim că probabilitatea $ P(A/B) $,
+adică probabilitatea evenimentului $ A $ condiționat de evenimentul prealabil $ B $
+este:
+\[
+  P(A / B) = \frac{P(A \cap B)}{P(B)}.
+\]
+
+Atunci, obținem:
+
+\begin{align*}
+  P(7 \leq X \leq 10 / X \geq 8) &= \dfrac{P(8 \leq X \leq 10)}{P(X \geq 8)} \\
+              &= \frac{\sum_{x = 8}^{10} C_{10}^x (0,75)^x (0,25)^{10-x}}{%
+                \sum_{x = 8}^{10} C_{10}^x (0,75)^x (0,25)^{10-x}} \\
+              &= 1
+\end{align*}
+
+În fine:
+\[
+  P(X = 10) = C_{10}^{10} (0,75)^x (0,25)^0.
+\]
+
+(d) Calculăm succesiv:
+\begin{align*}
+  \varphi_X(t) &= E(e^{itX}) \\
+               &= \sum_{x = 0}^{10} e^{itx} C_{10}^x (0,75)^x (0,25)^{10-x} \\
+               &= (0,75 \cdot e^{it} + 0,25)^{10}.
+\end{align*}
+
+\vspace{1cm}
+
+4. Presupunem că la 100 de convorbiri telefonice au loc 1000 de bruiaje.
+Care este probabilitatea de a avea o convorbire fără bruiaje? Dar una
+cu cel puțin 2 bruiaje?
+
+Variabila aleatoare ce reprezintă numărul de bruiaje se consideră a fi
+repartizată Poisson, cu $ \lambda = E(X) $.
+
+\emph{Soluție:} Avem $ E(X) = \dfrac{1000}{100} = 10 = \lambda $, care este
+și parametrul distribuției Poisson. Atunci:
+\begin{align*}
+  P(X = 0) &= e^{-10} \cdot \frac{10^0}{0!} = e^{-10} \\
+  P(X \geq 2) &= 1 - P(X = 0) - P(X = 1) \\
+           &= 1 - e^{-10} - 10 \cdot e^{-10}.
+\end{align*}
+
+\vspace{1cm}
+
+5. Într-o mină au loc în medie 2 accidente pe săptămînă, distribuite după legea
+Poisson. Să se calculeze probabilitatea de a avea cel mult 2 accidente:
+\begin{enumerate}[(a)]
+\item într-o săptămînă;
+\item în 2 săptămîni;
+\item în fiecare săptămînă dintr-un interval de 2 săptămîni.
+\end{enumerate}
+
+\emph{Soluție:} (a) Fie $ X $ variabila aleatoare ce desemnează numărul de accidente
+dintr-o săptămînă. Distribuția este de tip Poisson, cu $ \lambda = E(X) = 2 $.
+Atunci:
+\[
+  P(X \leq 2) = e^{-2} \Big( 1 + \frac{2}{1!} + \dfrac{4}{2!} \Big) = 5e^{-2}.
+\]
+
+(b) Fie $ Y $ variabila aleatoare ce desemnează numărul de accidente în 2 săptămîni.
+Distribuția este de asemenea de tip Poisson, cu $ \lambda = 2 + 2 = 4 $. Atunci:
+\[
+  P(Y \leq 2) = e^{-5} \Big( 1 + \frac{4}{1!} + \frac{16}{2!} \Big) = 13e^{-4}.
+\]
+
+(c) Probabilitatea cerută este:
+\[
+  P(X \leq 2) \cdot P(X \leq 2) = 25e^{-4}.
+\]
+
+\newpage
+
+6. La un anumit cîntar erorile de măsurare sînt normal distribuite cu $ m = 0 $ și
+$ \sigma = 0,1 g $. Dacă se cîntărește un obiect la acest aparat, care este
+probabilitatea ca eroarea de măsurare să fie mai mică decît 15g?
+
+\emph{Soluție:} Fie $ X $ variabila aleatoare care reprezintă eroarea de măsurare
+dată cînd un obiect este cîntărit. Această variabilă este continuă și distribuită
+normal cu parametrii dați. Notăm acest lucru cu $ X \sim N(0; 0,1) $.
+Vrem să calculăm probabilitatea $ P(-0,15 \leq X \leq 0,15) $.
+
+Avem succesiv (cf.~\eqref{eq:p-phi-lap}):
+\begin{align*}
+  P(-0,15 \leq X \leq 0,15) &= P\Big( \frac{-0,15 - 0}{0,1} \leq X \leq \frac{-0,15 + 0}{0,1} \Big) \\
+                            &= P(-1,5 \leq X \leq 1,5) \\
+                            &= \Phi(1,5) - \Phi(-1,5) \\
+                            &= \Phi(1,5) - 1 + \Phi(1,5) \\
+                            &= 0,8664.
+\end{align*}
+
+
+\end{document}
