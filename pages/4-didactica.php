@@ -18,6 +18,23 @@
     <h1 class="title">Didactică</h1>
     <div class="articol">
 
+    <button class="accordion"><span class="accordion1">Semestrul II, 2018 &mdash; 2018</span></button>
+        <div class="panel">
+            <button class="accordion">ETTI, Analiză 2</button>
+                <div class="panel">
+                    <ul class="big-list">
+                        <li>Notițele sînt disponibile într-un singur fișier: <a href="../docs/18-19-etti-am2/am2-18-19.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
+                    </ul>
+                </div>
+
+            <button class="accordion">FIA, Ecuații diferențiale și teorie de cîmp</button>
+                <div class="panel">
+                    <ul class="big-list">
+                        <li>Notițele sînt disponibile într-un singur fișier: <a href="../docs/18-19-fia-edtc/edtc-18-19.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
+                    </ul>
+                </div> 
+
+
         <button class="accordion"><span class="accordion1">Semestrul I, 2018 &mdash; 2019</span></button>
 
         
