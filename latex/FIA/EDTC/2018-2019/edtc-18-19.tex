@@ -1,0 +1,35 @@
+\documentclass[12pt, a4paper]{book}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Ecuații diferențiale și teorie de cîmp} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: R.\ Rădulescu}}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+
+\end{document}
