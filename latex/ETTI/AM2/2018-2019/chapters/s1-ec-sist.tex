@@ -2,268 +2,6 @@
 
 \chapter{Ecuații și sisteme diferențiale}
 
-\section{Ecuații rezolvabile prin cuadraturi}
-
-Dacă ecuația are forma generală $y^{(n)} = f(x)$, atunci ea se rezolvă
-prin $n$ integrări succesive și soluția generală depinde de $n$ constante
-arbitrare.
-
-Exemplu 1:
-\[
-  y^{\prime\prime} = \arcsin x + \frac{x}{\sqrt{1 - x^2}} - \frac{\pi}{6}.
-\]
-
-\emph{Soluție:} Integrăm succesiv și obținem:
-\begin{align*}
-  y' &= x\arcsin x - \frac{\pi}{6} x + c_1 \\
-  y &= \frac{x^2}{2} \arcsin x + \frac{1}{4} x \sqrt{1 - x^2} - \frac{1}{4}\arcsin x - %
-      \frac{\pi}{12}x^2 + c_1 x + c_2.
-\end{align*}
-
-\vspace{1cm}
-
-Exemplu 2:
-\[
-  y^{\prime\prime\prime} = \sin x + \cos x.
-\]
-\emph{Indicație:} Ecuația se rezolvă prin integrări succesive.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Ecuații de forma $f(x, y^{(n)}) = 0$}
-
-În această situație, distingem două cazuri:
-\begin{enumerate}[(a)]
-\item Dacă ecuația poate fi rezolvată în raport cu $y^{(n)}$, adică dacă
-  $\frac{\partial f}{\partial y^{(n)}} \neq 0$, atunci obținem una sau mai multe
-  ecuații ca în secțiunea anterioară;
-\item Dacă ecuația $f(x, y^{(n)}) = 0$ nu este rezolvabilă cu ajutorul funcțiilor
-  elementare în raport cu $y^{(n)}$, dar cunoaștem o reprezentare parametrică a
-  curbei $f(u, v) = 0$, anume $u = g(t), v = h(t)$, cu $t \in [\alpha, \beta]$,
-  atunci soluția generală poate fi obținută sub formă parametrică:
-  \[
-    x = g(t), \quad dy^{(n-1)} = y^{(n)} dx = h(t) g'(t) dt,
-  \]
-  de unde putem obține succesiv:
-  \[
-    \begin{cases}
-      y^{(n-1)} &= h_1(t, c_1) \\
-      \dotfill \\
-      y(t) &= h_n(t, c_1, \dots, c_n).
-    \end{cases}
-  \]
-\end{enumerate}
-
-De exemplu:
-\[
-  x - e^{y^{\prime \prime}} + y^{\prime \prime} = 0.
-\]
-
-\emph{Soluție:} Putem nota $y^{\prime \prime} = t$ și obținem $x(t) = e^t - t$.
-Deoarece $dy' = y^{\prime\prime} dx$, rezultă:
-\[
-  dy' = t(e^t - 1) dt \Rightarrow y' = -\frac{t^2}{2} + te^t - e^t + c_1.
-\]
-Dar, mai departe, $dy = y' dx$, deci:
-\[
-  dy = \big( - \frac{t^2}{2} + te^t - e^t + c_1)(e^t - 1) dt.
-\]
-
-În fine, soluția este:
-\[
-  y(t) = e^{2t}\big( \frac{t}{2} - \frac{3}{4} \big) + %
-  e^t \big( -\frac{t^2}{2} + 1 + c_1 \big) + \frac{t^3}{6} - c_1 t + c_2.
-\]
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Ecuații de forma $f(y^{(n-1)}, y^{(n)}) = 0$}
-
-Distingem două cazuri:
-
-\begin{enumerate}[(a)]
-\item Dacă ecuația este rezolvabilă prin funcții elementare în raport cu $y^{(n)}$,
-  atunci notînd $z = y^{(n-1)}$, obținem $z' = f(z)$. Ecuația este cu variabile separabile
-  și se rezolvă corespunzător, conducînd la $z = y^{(n-1)} = f_1(x, c_1)$, care este
-  de tipul anterior;
-\item Dacă ecuația nu este rezolvabilă prin funcții elementare în raport cu $y^{(n)}$,
-  dar cunoaștem o reprezentare parametrică de forma:
-  \[
-    y^{(n-1)} = h(t), \quad y^{(n)} = g(t), \quad t \in [\alpha, \beta],
-  \]
-  atunci putem folosi relația $dy^{(n-1)} = y^{(n)}dx$, pentru a obține
-  soluția sub formă parametrică:
-  \begin{align*}
-    x &= \int \frac{h'}{g} dt + c_1 \\
-    y^{(n-1)} &= h(t) \\
-    dy^{(n-2)} &= h(t) = \frac{hh'}{g} dt \\
-    y^{(n-2)} &= \int \frac{hh'}{g} dt + c_2 \\
-    &\vdots \\
-    y &= \int y' dx + c_n.
-  \end{align*}
-\end{enumerate}
-
-Exemplu: $y^{\prime \prime} = -\sqrt{1 - {y'}^2}$.
-
-\emph{Soluție:} Facem schimbarea de funcție $z(x) = y'$ și ecuația diferențială
-devine:
-\[
-  - \frac{dz}{\sqrt{1 - z^2}} = dx, \quad |z| < 1.
-\]
-Soluția generală este $\arccos z = x + c_1$, de unde $z = \cos(x + c_1)$.
-
-Obținem mai departe $y(x) = \sin (x + c_1) + c_2$.
-
-De asemenea, remarcăm și soluțiile particulare $y = \pm x + c$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Ecuații diferențiale de forma $f(x, y^{(k)}, \dots, y^{(n)}) = 0$}
-
-Ecuația se rezolvă făcînd schimbarea de funcție $y^{(k)} = z(x)$ și obținem
-o ecuație de ordin $n - k$:
-\[
-  f(x, z, z', \dots, z^{(n-k)}) = 0,
-\]
-pe care o integrăm.
-
-Exemplu: $(1 + x^2)y^{\prime \prime} = 2xy'$.
-
-\emph{Soluție:} Cu schimbarea de funcție $y' = z(x)$, obținem ecuația:
-\[
-  \frac{z'}{z} = \frac{2x}{1 + x^2},
-\]
-iar apoi, prin integrare, avem $z = y' = c_1(1 + x^2)$. Rezultă, în fine:
-\[
-  y(x) = c_1 x + c_1 \frac{x^3}{3} + c_2.
-\]
-
-\vspace{1cm}
-
-Exemplu: $y \cdot y^{\prime \prime} - 2{y^\prime}^2 = 0$.
-
-\emph{Soluție:} Notăm $y' = z$ și obținem:
-\[
-  y(y' z + yz') - 2y^2 z^2 = y^2(z^2 + z') - 2y^2z^2 = 0,
-\]
-de unde avem $y = 0$ sau $z' - z^2 = 0$.
-
-Din a doua variantă, deducem succesiv:
-\[
-  \frac{dz}{z^2} = dx \Rightarrow -\frac{1}{z} = x + c_1.
-\]
-Revenind la $y(x)$, avem:
-\[
-  -\frac{y}{y'} = x + c_1 \Rightarrow \frac{dy}{y} = -\frac{dx}{x + c_1} \Rightarrow %
-  y(x) = \frac{c_2}{x + c_1}.
-\]
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Ecuații de forma $f(y', y^{\prime\prime}, \dots, y^{(n)}) = 0$}
-
-Să remarcăm că aceste tipuri de ecuații nu conțin pe $y$. Așadar, putem lua $y'$
-ca variabilă independentă și pe $y^{\prime\prime}$ ca funcție de $y'$.
-
-De exemplu: $x^2 y^{\prime\prime} = {y^\prime}^2 - 2xy^\prime + 2x^2$.
-
-\emph{Soluție:} Facem schimbarea de funcție $y' = z(x)$ și obținem o ecuație
-Riccati:
-\[
-  z' = \frac{z^2}{x^2} - 2\frac{z}{x} + 2.
-\]
-Observăm soluția particulară $z_p = x$ și integrăm punînd $z = x + \frac{1}{u(x)}$.
-
-Obținem succesiv:
-\[
-  z(x) = x + \frac{c_1 x}{x + c_1} \Rightarrow y'(x) = x + \frac{c_1 x}{x + c_1}.
-\]
-În fine, soluția este:
-\[
-  y(x) = \frac{x^2}{2} + c_1 x - c_1^2 \ln|x + c_1| + c_2.
-\]
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Ecuații autonome (ce nu conțin pe $x$)}
-
-În cazul acestor ecuații, putem micșora ordinul cu o unitate dacă notăm $y' = p$
-și luăm pe $y$ variabilă independentă.
-
-\begin{remark}\label{rk:autonom-pierd}
-  Există posibilitatea să pierdem soluții de forma $y = c$ prin această metodă,
-  deci trebuie verificat ulterior dacă a fost cazul.
-\end{remark}
-
-Exemplu 1: $1 + {y'}^2 = 2yy'$.
-
-\emph{Soluție:} Luăm $y' = p$ drept funcție și pe $y$ drept variabilă independentă.
-Obținem:
-\[
-  y^{\prime\prime} = \frac{d}{dx} \big( \frac{dy}{dx} \big) = p \frac{dp}{dy}.
-\]
-
-Atunci ecuația devine $\frac{2pdp}{1 + p^2} = \frac{dy}{y}$, ce are drept soluție
-$y = c_1(1 + p^2)$.
-
-Acum trebuie să obținem pe $x$ ca funcție de $p$ și $c_1$. Deoarece $dx = \frac{1}{p}dy$,
-iar $dy = 2c_1 pdp$, rezultă $dx = 2c_1 dp$. Așadar, $x = 2c_1 p + c_2$, iar soluția
-generală este $x(p) = 2c_1 p + c_2$. Cum $y(p) = c_1(1 + p^2)$, rezultă:
-\[
-  y = c_1 + \frac{(x - c_2)^2}{4c_1}.
-\]
-
-\vspace{1cm}
-
-Exemplu 2: $y^{\prime\prime} + {y'}^2 = 2e^{-y}$.
-
-\emph{Soluție:} Notăm $y' = p$ și luăm ca necunoscută $p = p(y)$,
-de unde obținem:
-\[
-  y^{\prime\prime} = \frac{dy'}{dx} = p'p \Rightarrow p'p + p^2 = 2e^{-y}.
-\]
-Dacă notăm $p^2 = z$, obținem o ecuație liniară neomogenă:
-\[
-  z' + 2z = 4e^{-y},
-\]
-ce are ca soluție generală $z(y) = c_1 e^{-2y} + 4e^{-y}$. Revenind la $y$,
-avem:
-\[
-  z = p^2 = {y'}^2 \Rightarrow y' = \pm \sqrt{c_1 e^{-2y} + 4e^{-y}},
-\]
-adică ecuația:
-\[
-  \frac{dy}{\pm\sqrt{c_1 e^{2y} + 4e^{-y}}} = dx,
-\]
-ce are ca soluție: $x + c_2 = \pm \frac{1}{2} \sqrt{c_1 + 4e^y}$. Echivalent, în forma
-implicită:
-\[
-  e^y + \frac{c_1}{4} = (x + c_2)^2.
-\]
-
-\vspace{1cm}
-
-Similar putem proceda și în cazul:
-\[
-  y^{\prime\prime\prime} + y^{\prime\prime} = \sin x.
-\]
-
-\emph{Indicație:} Putem nota $y^{\prime\prime} = z$ și atunci ecuația devine:
-\[
-  z' + z = \sin x,
-\]
-care este o ecuație liniară neomogenă, cu soluția:
-\[
-  z(x) = e^{-x}(c_1 + \frac{e^x}{2}(\sin x - \cos x)).
-\]
-Mai departe, integrăm succesiv:
-\begin{align*}
-  y'(x) &= \int z(x) dx + c_2 = -c_1 e^{-x} - \frac{1}{2} \cos x - \frac{1}{2}\sin x + c_2 \\
-  y(x) &= \int y'(x) dx + c_3 = c_1 e^{-x} - \frac{1}{2} \sin x + \frac{1}{2} \cos x + c_2 x + c_3.
-\end{align*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Ecuații liniare de ordinul $n$ cu coeficienți constanți}
 
 Forma generală este:
@@ -480,55 +218,41 @@ iar mai departe:
 
 \vspace{1cm}
 
-Alt exemplu:
-\[
-  \begin{cases}
-    y'_1 &= -y_2 + 1 \\
-    x^2 y'_2 &= -2y_1 + x^2 \ln x
-  \end{cases}
-\]
 
-\emph{Soluție:} Derivăm prima ecuație și obținem $y'_2 = -y_1^{\prime\prime}$.
-Înlocuim în a doua ecuație și obținem:
-\[
-  x^2 y_1^{\prime\prime} - 2y_1 = -x^2 \ln x,
-\]
-care este o ecuație Euler. Îi asociem o ecuație omogenă $x^2y_1^{\prime\prime} - 2y_1 = 0$.
-Facem schimbarea $x = e^t$ și obținem $y_1^{\prime\prime} - y'_1 - 2y_1 = 0$.
-Ecuația caracteristică asociată este $r^2 - r - 2 = 0$, cu rădăcinile $r_1 = 2$
-și $r_2 = -1$. Atunci soluția generală este:
-\[
-  \begin{cases}
-    \overline{y}_1(t) &= c_1 e^{2t} + c_2 e^{-t} \\
-    \overline{y}_1(x) &= c_1 x^2 + c_2 \frac{1}{x}.
-  \end{cases}
-\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Căutăm o soluție particulară a ecuației neomogene cu metoda variației constantelor,
-deci:
-\[
-  y_{1p}(x) = c_1(x) x^2 + c_2(x) \frac{1}{x}.
-\]
-Determinăm funcțiile $c_1(x), c_2(x)$ din sistemul:
-\[
-  \begin{cases}
-    c'_1(x) x^2 + c'_2(x) \frac{1}{x} &= 0 \\
-    2xc'_1(x) - c'_2(x) \frac{1}{x^2} &= \frac{-x^2 \ln x}{x^2}
-  \end{cases}
-\]
+\section{Exerciții}
 
-Atunci $c'_1(x) = -\frac{\ln x}{3x^3}$, iar $c'_2(x) = \frac{\ln x}{3}$.
-Așadar:
-\begin{align*}
-  c_1(x) &= \frac{1}{6x^2} \ln x + \frac{1}{6x} \ln x + \frac{1}{6x} \\
-  c_2(x) &= \frac{1}{3} (x \ln x - x).
-\end{align*}
+1. Rezolvați următoarele ecuații diferențiale liniare de ordin superior:
+\begin{enumerate}[(a)]
+  \item $ y^{(3)} + 4y^{(2)} + 3y^{(1)} = 0 $;
+  \item $ y^{(2)} + 4y^{(1)} + 4y = 0 $;
+  \item $ y^{(3)} + y = 0 $;
+  \item $ y^{(4)} + 4y^{(2)} = 0 $;
+  \item $ y^{(2)} - 2y^{(1)} + y = \dfrac{1}{x} e^x $;
+  \item $ y^{(2)} + y = \dfrac{1}{\cos x} $;
+  \item $ y^{(3)} + y^{(1)} = \tan x $;
+  \item $ y^{(3)} + 2y^{(2)} = x + 2 $.
+\end{enumerate}
 
-Rezultă:
-\begin{align*}
-  y_{1p}(x) &= \frac{1}{6} x \ln x + \frac{1}{2} \ln x + \frac{x}{6} - \frac{1}{3} \\
-  y_1(x) &= c_1 x^2 + c_2 \frac{1}{x} + \frac{1}{6} x \ln x + \frac{1}{2} \ln x + %
-           \frac{x}{6} - \frac{1}{3} \\
-  y_2(x) &= 1 - y'_1 = \frac{1}{6} \ln x - 2c_1 x - c_2 \frac{1}{x^2} + \frac{1}{2x} - \frac{2}{3}.
-\end{align*}
+\vspace{1cm}
+
+2. Rezolvați următoarele sisteme diferențiale, folosind metoda eliminării:
+\begin{enumerate}[(a)]
+  \item $ \begin{cases}
+      y' &= 2y + z \\
+      z' &= y + 2z
+    \end{cases}, \quad y = y(x), z = z(x)
+    $;
+  \item $ \begin{cases}
+      y' &= -3y - 4z \\
+      z' &= y + 2z
+    \end{cases}, \quad y = y(x), z = z(x)
+    $;
+  \item $ \begin{cases}
+      x' &= x + 3y \\
+      y' &= -x + 5y - 2e^t
+    \end{cases}, \quad x = x(t), y = y(t) $,
+    cu condițiile inițiale $ x(0) = 3, y(0) = 1 $.
+\end{enumerate}
 
