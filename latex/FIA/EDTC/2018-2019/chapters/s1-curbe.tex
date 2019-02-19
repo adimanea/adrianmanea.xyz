@@ -1,0 +1,319 @@
+%! TEX root = ../edtc-18-19.tex
+
+\chapter{Curbe în plan și în spațiu}
+
+
+\section{Ecuații pentru curbe plane}
+
+\index{curbe plane!ecuații parametrice}
+\index{curbe plane!ecuații carteziene implicite}
+\index{curbe plane!ecuații carteziene explicite}
+\textbf{Curbele plane} pot fi reprezentate prin:
+\begin{enumerate}[(a)]
+  \item Ecuații parametrice, de forma:
+    \[
+      \alpha : \begin{cases}
+        x &= x(t) \\
+        y &= y(t)
+      \end{cases}, t \in (a, b)
+    \]
+  \item Ecuații carteziene implicite, de forma $ y = f(x) $;
+  \item Ecuație carteziană explicită, de forma $ F(x, y) = 0 $.
+\end{enumerate}
+
+De exemplu, jumătatea superioară a cercului unitate poate fi dată:
+\begin{itemize}
+  \item parametric, în forma:
+    \[
+      \begin{cases}
+        x &= \cos t \\
+        y &= \sin t
+      \end{cases}, t \in (0, \pi);
+    \]
+  \item cartezian implicit, sub forma: $ y = \sqrt{1 - x^2} $;
+  \item cartezian explicit, sub forma $ x^2 + y^2 = 1, y > 0 $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tangenta și normala la curbă}
+
+Dată o curbă plană, în funcție de forma în care a fost prezentată,
+putem scrie ecuațiile pentru tangenta și normala la curbă.
+
+\index{curbe plane!tangenta}
+\index{curbe plane!normala}
+Pentru reprezentarea parametrică:
+\begin{itemize}
+  \item tangenta în punctul $ P(x(t), y(t)) $ are ecuația:
+    \[
+      \dfrac{x - x(t)}{x'(t)} = \dfrac{y - y(t)}{y'(t)};
+    \]
+  \item normala în punctul $ P(x(t), y(t)) $ are ecuația:
+    \[
+      x'(t)(x - x(t)) + y'(t)(y - y(t)) = 0.
+    \]
+\end{itemize}
+
+Dacă avem curba dată cu reprezentarea carteziană implicită, presupunînd că
+funcția $ F $ este regulată:
+\begin{itemize}
+  \item tangenta în punctul $ A(x_0, y_0) \in \RR^2 $ are ecuația:
+    \[
+      (x - x_0) \dfrac{\partial F}{\partial x} \Big|_{(x_0, y_0)} + %
+      (y - y_0) \dfrac{\partial F}{\partial y} \Big|_{(x_0, y_0)} = 0.
+    \]
+  \item normala în punctul $ A(x_0, y_0) \in \RR^2 $ are ecuația:
+    \[
+      \dfrac{x - x_0}{F_x(x_0, y_0)} = \dfrac{y - y_0}{F_y(x_0, y_0)},
+    \]
+    unde am notat cu $ F_x = \dfrac{\partial F}{\partial x} $ și
+    $ F_y = \dfrac{\partial F}{\partial y} $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Curbura unei curbe plane}
+
+\index{curbe plane!curbura}
+\index{curbe plane!raza de curbură}
+Fie $ \alpha $ o curbă regulată, dată de ecuații parametrice cu $ t \in (a, b) $.
+
+Se definește funcția:
+\[
+  k : (a, b) \to \RR, \quad k(t) = \dfrac{x'y^{\prime\prime} - x^{\prime\prime} y'}{%
+  (x^{\prime 2} + y^{\prime 2})^{3/2}},
+\]
+care se numește \emph{curbura} curbei $ \alpha $, iar $ \dfrac{1}{|k|} $ se
+numește \emph{raza de curbură}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Reperul Frenet în plan}
+\index{curbe plane!reperul Frenet}
+
+Dată orice curbă plană, există un sistem de referință (reper sau sistem de
+coordonate) care este mobil și se deplasează odată cu curba. Acesta este
+dat de \emph{versorul tangent} $\vec{T} $ și \emph{versorul normal} $ \vec{N} $
+la curbă, împreună formînd \emph{reperul Frenet.}
+
+Pornind cu o curbă reprezentată parametric $ \alpha = \alpha(x(t), y(t)) $,
+versorii de mai sus se definesc astfel:
+\begin{align*}
+  \vec{T}(t) &= \dfrac{\alpha'(t)}{||\alpha'(t)||} = %
+  \dfrac{(x'(t), y'(t))}{\sqrt{x(t)^{\prime 2} + y(t)^{\prime 2}}} \\
+  \vec{N}(t) &= R_{\frac{\pi}{2}} \vec{T}(t) = %
+    \dfrac{(-y'(t), x'(t)}{||\alpha'(t)||}.
+\end{align*}
+
+Astfel, reperul $(\vec{N}, \vec{T}) $ este unul ortonormat și mobil.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Cercul osculator}
+\index{curbe plane!cercul osculator}
+
+Se definește cercul osculator ca fiind cercul de rază egală cu raza de
+curbură a curbei date, iar centrul cercului este în punctul de coordonate
+$ (x_0, y_0) $, definite prin ecuațiile:
+\begin{align*}
+  x_0 &= x - y' \cdot \dfrac{x^{\prime 2} + y^{\prime 2}}{%
+  x'y^{\prime\prime} - x^{\prime\prime}y'} \\
+    y_0 &= y + x' \cdot \dfrac{x^{\prime 2} + y^{\prime 2}}{%
+    x'y^{\prime\prime} - x^{\prime\prime}y'}.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Curbe în spațiu --- Reprezentare}
+
+\index{curbe în spațiu!ecuații parametrice}
+\index{curbe în spațiu!ecuații carteziene implicite}
+
+Similar cu cazul plan, curbele spațiale pot fi reprezentate prin:
+\begin{enumerate}[(1)]
+  \item ecuații parametrice, sub forma:
+    \[
+      \alpha : \begin{cases}
+        x &= x(t) \\
+        y &= y(t) \\
+        z &= z(t)
+      \end{cases}, t \in (a, b);
+    \]
+  \item ecuații carteziene implicite, sub forma unei intersecții de
+    două suprafețe, sub forma generală:
+    \[
+      \begin{cases}
+        f(x, y, z) &= 0 \\
+        g(x, y, z) &= 0
+      \end{cases}.
+    \]
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Tangenta și planul normal}
+\index{curbe în spațiu!tangenta}
+\index{curbe în spatiu!planul normal}
+
+În cazul în care curba a fost dată cu reprezentarea parametrică,
+$ \alpha = \alpha(x(t), y(t), z(t)), t \in (a, b) $, fie un punct
+$ P(x(t), y(t), z(t)) $ pe curbă.
+
+\begin{itemize}
+  \item tangenta în punctul $ P $ are ecuația:
+    \[
+      \dfrac{x - x(t)}{x'(t)} = \dfrac{y - y(t)}{y'(t)} = \dfrac{z - z(t)}{z'(t)};
+    \]
+  \item planul normal în punctul $ P $ are ecuația:
+    \[
+      x'(t)(x - x(t)) + y'(t)(y - y(t)) + z'(t)(z - z(t)) = 0.
+    \]
+\end{itemize}
+
+Dacă avem curba dată cartezian implicit, fie $ P(x_0, y_0, z_0) $ un punct
+pe curbă.
+\begin{itemize}
+  \item tangenta în punctul $ P $ are ecuația:
+    \[
+      \dfrac{x - x_0}{\frac{D(f, g)}{D(y_0, z_0)}} = %
+      \dfrac{y - y_0}{\frac{D(f, g)}{D(z_0, x_0)}} = %
+      \dfrac{z - z_0}{\frac{D(f, g)}{D(x_0, y_0)}};
+    \]
+  \item planul normal în $ P $ are ecuația:
+    \[
+      (x - x_0) \dfrac{D(f, g)}{D(y_0, z_0)} + (y - y_0) \dfrac{D(f, g)}{D_(z_0, x_0)} + %
+      (z - z_0) \dfrac{D(f, g)}{D(x_0, y_0)},
+    \]
+\end{itemize}
+
+unde am notat în ambele ecuații jacobienii:
+\[
+  \dfrac{D(f, g)}{D(y_0, z_0)} = \begin{vmatrix}
+  \dfrac{\partial f}{\partial y} & \dfrac{\partial f}{\partial z} \\
+                                 & \\
+  \dfrac{\partial g}{\partial y} & \dfrac{\partial g}{\partial z}
+\end{vmatrix}_{(y_0, z_0)}
+\]
+și similar pentru celelalte coordonate.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Elementele Frenet în spațiu}
+\index{curbe în spațiu!elemente Frenet}
+
+Dată o curbă reprezentată parametric $ \alpha = \alpha(t) $, se definesc
+elementele Frenet:
+\begin{enumerate}[(1)]
+  \item cîmpul tangent: $ \vec{T} = \dfrac{\alpha'}{||\alpha'||} $;
+  \item cîmpul binormal: $ \vec{B} = \dfrac{\alpha' \times \alpha^{\prime\prime}}{%
+    \alpha' \times \alpha^{\prime\prime}} $;
+  \item cîmpul normal principal: $ \vec{N} = \vec{B} \times \vec{T} $;
+  \item curbura: $ k = \dfrac{||\alpha' \times \alpha^{\prime\prime}}{%
+    ||\alpha'||^3} $;
+  \item torsiunea: $ \tau = \dfrac{\langle \alpha' \times \alpha^{\prime\prime}, %
+    \alpha^{\prime\prime\prime} \rangle}{||\alpha' \times \alpha^{\prime\prime}||^2} $.
+\end{enumerate}
+
+În funcție de aceste elemente, distingem următoarele situații:
+\begin{itemize}
+  \item dacă $ k = 0 $, curba $ \alpha $ este o (porțiune dintr-o) dreaptă;
+  \item dacă $ \tau = 0 $, curba $ \alpha $ este o curbă plană;
+  \item dacă $ k $ este constantă pozitivă și $ \tau = 0 $, curba $ \alpha $
+    este un arc de cerc;
+  \item dacă raportul $ \dfrac{\tau}{k} $ este constant, curba $ \alpha $ este
+    o (porțiune dintr-o) elice cilindrică;
+  \item dacă $ k $ este o constantă pozitivă și $ \tau $ este o constantă nenulă,
+    atunci $ \alpha $ este (un arc dintr-o) elice circulară.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Reperul Frenet în spațiu}
+\index{curbe în spațiu!reperul Frenet}
+
+Muchiile reperului Frenet în spațiu într-un punct $ t = t_0 $ sînt date de:
+\begin{itemize}
+  \item dreapta determinată de punctul $ \alpha(t_0) $ și vectorul tangent $ \vec{T}(t_0) $;
+  \item dreapta determinată de punctul $ \alpha(t_0) $ și vectorul normal $ \vec{N}(t_0) $;
+  \item dreapta determinată de punctul $ \alpha(t_0) $ și vectorul binormal $ \vec{B}(t_0) $.
+\end{itemize}
+
+Fețele reperului Frenet sînt:
+\begin{itemize}
+  \item planul osculator, care este planul determinat de vectorii $ \vec{T}(t) $ și $ \vec{N}(t) $;
+  \item planul normal, detemrinat de vectorii $ \vec{N}(t)$ și $\vec{B}(t) $;
+  \item planul rectificant, determinat de $ \vec{T}(t) $ și $ \vec{B}(t) $.
+\end{itemize}
+
+\begin{remark}\label{rk:plan-vectori-punct}
+  Amintim, în general, ecuația planului determinat de vectorii $ \vec{v} = (a, b, c) $ și
+  $ \vec{w} = (m, n, p) $, care trece prin punctul $ P(x_0, y_0, z_0) $ are ecuația
+  generală:
+  \[
+    \begin{vmatrix}
+      x - x_0 & y - y_0 & z - z_0 \\
+      a & b & c \\
+      m & n & p
+    \end{vmatrix} = 0.
+  \]
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Fie curba plană $ \alpha(t) = (t^2, 3t), t \in \RR $. 
+Aflați normala și tangenta la curbă în punctul $ A(1, -3) $.
+
+\vspace{1cm}
+
+2. Fie curba $ \alpha : x^2 - y^3 - 3 = 0 $.
+\begin{enumerate}[(a)]
+  \item aflați tangenta și normala la curbă în punctul $ A(-2, 1) $;
+  \item parametrizați curba $ \alpha $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie parabola $ \alpha(t) = (t, t^2), t \in \RR $.
+
+Aflați ecuația cercului osculator în punctul $ A(-2, 4) $ al curbei și ecuația
+carteziană a curbei.
+
+\vspace{1cm}
+
+4. Fie curba $ \alpha(t) = (2 \cos t, 2 \sin t, t), t \in \RR $.
+\begin{enumerate}[(a)]
+  \item Aflați elementele Frenet în punctul $ A(-2, 0, \pi) $;
+  \item Aflați ecuațiile carteziene ale curbei;
+  \item Arătați că $ \alpha $ este o elice;
+  \item Aflați muchiile și fețele reperului Frenet.
+\end{enumerate}
+
+\vspace{1cm}
+
+5. Se dă curba $ \alpha(t) = (t + t^2, t^2 - t, t^2 - t), t \in \RR $.
+Arătați că:
+\begin{enumerate}[(a)]
+  \item $ \alpha $ are planul osculator independent de $ t $ ;
+  \item are torsiunea nulă;
+  \item are vectorul binormal independent de $ t $.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Fie curba:
+\[
+  \alpha : \begin{cases}
+    x^2 + y^2 + z^2 &= 2  \\
+    z &= 1
+  \end{cases}.
+\]
+
+\begin{enumerate}[(a)]
+  \item Aflați dreapta tangentă și planul normal la curbă în $ A(-1, 0, 1) $;
+  \item Determinați o parametrizare a curbei.
+\end{enumerate}
+
