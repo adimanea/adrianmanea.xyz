@@ -21,9 +21,12 @@ Inspired by [Kai Hendry's solution](https://www.youtube.com/watch?v=Sspm9K6g2BE)
 
 
 ## TODOs
+### Știri
 - prettify **Știri**:
     + move navigation summary from bottom to top (`sed`?);
     + disable horizontal scroll & enable wrap (another `style.css`?);
     + make sections into `button/accordion` as in **Didactica** (another `style.css` + `sed`?)
 - get short descriptions of article content ("Abstract/Excerpt"):
     + switch parser (with [mozilla/readablility](https://github.com/mozilla/readability) ?) or edit source (see `curl` part + parse).
+- archive when it gets messy (see `sfeed` README, the `sfeed_archive.c` example);
+- does it mark as read?
