@@ -1,0 +1,310 @@
+%! TEX root = ../am2-18-19.tex
+
+\chapter{Ecuații diferențiale de ordin superior}
+
+\section{Ecuații rezolvabile prin cuadraturi}
+
+\indent\indent Acestea sînt ecuații care se pot rezolva prin integrări
+succesive. Astfel, forma lor generală este $ y^{(n)} = f(x) $, în varianta
+neomogenă. Soluția generală va depinde de $ n $ constante arbitrare,
+rezultate în urma integrărilor succesive.
+
+\textbf{Exemplu:}
+\[
+  y^{''} = \arcsin x + \frac{x}{\sqrt{1 - x^2}} - \frac{\pi}{6}.
+\]
+\emph{Soluție:} Integrăm succesiv și obținem:
+\begin{align*}
+  y' &= x \arcsin x - \dfrac{\pi}{6} x + c_1 \\
+  y &= \dfrac{x^2}{2} \arcsin x + \dfrac{1}{4}x \sqrt{1 - x^2} - %
+  \dfrac{1}{4} \arcsin x - \dfrac{\pi}{12} x^2 + c_1 x + c_2.
+\end{align*}
+
+Dacă nu se dau condiții inițiale, soluția rămîne exprimată ca mai sus,
+adică în funcție de constantele $ c_1 $ și $ c_2 $.
+
+\vspace{1cm}
+
+Cazul omogen se rezolvă și mai simplu: dacă $ y^{(n)} = 0 $, atunci
+$ y $ este un polinom de $ x $ de gradul $ n - 1 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații de forma $ f(x, y^{(n)}) = 0 $}
+
+Avem două cazuri care trebuie tratate distinct:
+\begin{enumerate}[(a)]
+  \item Dacă ecuația poate fi rezolvată în raport cu $ y^{(n)} $, adică dacă
+    $ \dfrac{\partial f}{\partial y^{(n)}} \neq 0 $, atunci obținem una
+      sau mai multe ecuații ca în secțiunea anterioară;
+    \item Dacă ecuația nu este rezolvabilă cu ajutorul funcțiilor elementare
+      în raport cu $ y^{(n)} $, dar cunoaștem o reprezentare parametrică
+      a curbei $ f(u, v) = 0 $, adică $ u = g(t), v = h(t) $, cu
+      $ t \in [\alpha, \beta] $, atunci soluția generală se poate da sub formă
+      parametrică:
+      \[
+        \begin{cases}
+          x &= g(t) \\
+          dy^{(n-1)} &= y^{(n)} dx = h(t) g'(t) dt
+        \end{cases},
+      \]
+      de unde putem obține succesiv:
+      \[
+        \begin{cases}
+          y^{(n-1)}  &= h_1(t, c_1) \\
+             \dotfill \\
+          y(t) &= h_n(t, c_1, \dots, c_n).
+        \end{cases}
+      \]
+\end{enumerate}
+
+\textbf{Exemplu:}
+\[
+  x - e^{y^{''}} + y^{''} = 0.
+\]
+\emph{Soluție:} Putem nota $ y^{''} = t $ și atunci $ x(t) = e^t - t $.
+Deoarece avem $ dy' = y^{''} dx $, rezultă:
+\[
+  dy' = t(e^t - 1) dt \Rightarrow y' = -\dfrac{t^2}{2} + te^t - e^t + c_1.
+\]
+Mai departe, $ dy = y' dx $, deci:
+\[
+  dy = \Big( - \dfrac{t^2}{2} + te^t - e^t + c_1 \Big)(e^t - 1) dt.
+\]
+În fine, soluția este:
+\[
+  y(t) = e^{2t} \Big( \dfrac{t}{2} - \dfrac{3}{4} \Big) + e^t \Big( - \dfrac{t^2}{2} + %
+  1 + c_1 \Big) + \dfrac{t^3}{6} - c_1 t + c_2.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații de forma $ f(y^{(n-1)}, y^{(n)}) = 0 $}
+
+Din nou, distingem două cazuri:
+\begin{enumerate}[(a)]
+  \item Dacă ecuația este rezolvabilă prin funcții elementare în raport cu $ y^{(n)} $,
+    atunci putem nota $ z = y^{(n-1)} $ și avem $ z' = f(z) $. Ecuația devine cu
+    variabile separabile pentru $ z $ și se rezolvă corespunzător, conducînd la
+  $ z = y^{(n-1)} = f_1(x, c_1) $, care este de tipul anterior;
+  \item Dacă ecuația nu este rezolvabilă prin funcții elementare în raport cu
+    $ y^{(n)} $, dar cunoaștem o reprezentare parametrică de forma:
+    \[
+      y^{(n-1)} = h(t), \quad y^{(n)} = g(t), \quad t \in [\alpha, \beta],
+    \]
+    atunci putem folosi $ dy^{(n-1)} = y^{(n)} dx $, pentru a obține soluția
+    pas cu pas, sub formă parametrică:
+    \begin{align*}
+      x &= \ds\int\frac{h'}{g} dt + c_1 \\
+      y^{(n-1)} &= h(t) \\
+      dy^{(n-2)} &= h(t) = \dfrac{hh'}{g} dt \\
+      y^{(n-2)} &= \ds\int \frac{hh'}{g} dt + c_2 \\
+                &\vdots \\
+      y &= \int y' dx + c_n.
+    \end{align*}
+
+\end{enumerate}
+
+\textbf{Exemplu:} $ y^{''} = - \sqrt{1 - y^{'2}} $.
+\emph{Soluție:} Facem schimbarea de funcție $ z(x) = y' $ și ecuația devine:
+\[
+  - \dfrac{dz}{\sqrt{1 - z^2}} = dx, \quad |z| < 1.
+\]
+Soluția generală este: $ \arccos z = x + c_1 $, deci $ z = \cos(x + c_1) $.
+
+Mai departe, obținem $ y(x) = \sin(x + c_1) + c_2 $.
+
+De asemenea, trebuie să mai remarcăm și soluțiile particulare $ y = \pm x + c $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații de forma $ f(x, y^{(k)}, \dots, y^{(n)}) = 0 $}
+
+Ecuația se rezolvă cu schimbarea de funcție $ y^{(k)} = z(x) $ și rezultă
+o ecuație de ordin $ n - k $:
+\[
+  f(x, z, z', \dots, z^{(n-k)}) = 0,
+\]
+pe care o integrăm.
+
+\textbf{Exemplu:} $ (1 + x^2)y^{''} = 2xy' $.
+
+\emph{Soluție:} Cu schimbarea de funcție $ y' = z(x) $, obținem ecuația:
+\[
+  \dfrac{z}{z'} = \dfrac{2x}{1 + x^2},
+\]
+iar apoi, prin integrare, rezultă $ z = y' = c_1(1 + x^2) $. În fine:
+\[
+  y(x) = c_1 x + c_1 \dfrac{x^3}{3} + c_2.
+\]
+\vspace{1cm}
+
+\textbf{Exemplu 2:} $ y \cdot y^{''} - 2y^{'2} = 0 $.
+
+\emph{Soluție:} Notăm $ y' = z $ și obținem:
+\[
+  y(y'z + yz') - 2y^2 z^2 = y^2(z^2 + z') - 2y^2 z^2 = 0,
+\]
+de unde rezultă $ y = 0 $ sau $ z' - z^2 = 0 $.
+
+Din a doua variantă, deducem succesiv:
+\[
+  \dfrac{dz}{z^2} = dx \Rightarrow -\dfrac{1}{z} = x + c_1.
+\]
+Revenim la $ y(x) $ și avem:
+\[
+  - \dfrac{y}{y'} = x + c_1 \Rightarrow \dfrac{dy}{y} = -\dfrac{dx}{x + c_1} %
+  \Rightarrow y(x) = \dfrac{c_2}{x + c_1}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații de forma $ f(y', y^{''}, \dots, y^{(n)}) = 0 $}
+
+Să remarcăm că astfel de ecuații nu conțin pe $ y $. Deci putem lua pe $ y' $
+ca variabilă independentă și pe $ y^{''} $ ca fiind funcție de $ y' $.
+Astfel, reducem discuția la un caz anterior.
+
+\textbf{Exemplu:} $ x^2 y^{''} = y^{'2} - 2xy' + 2x^2 $.
+
+\emph{Soluție:} Facem schimbarea de funcție $ y' = z(x) $ și obținem o
+ecuație Riccati:
+\[
+  z' = \dfrac{z^2}{x^2} - 2 \cdot \dfrac{z}{x} + 2.
+\]
+Observăm soluția particulară $ z_p = x $ și integrăm, cu $ z = x + \dfrac{1}{u(x)} $.
+
+Obținem succesiv:
+\begin{align*}
+  z(x) &= x + \dfrac{c_1x}{x + c_1} \Rightarrow \\
+  y'(x) &= x + \dfrac{c_1x}{x + c_1} \Rightarrow \\
+  y(x) &= \dfrac{x^2}{2} + c_1 x - c_1^2 \ln | x + c_1 | + c_2,
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații autonome (ce nu conțin pe $ x $)}
+
+În cazul acestor ecuații, putem micșora ordinul cu o unitate, notînd
+$ y' = p $ și luăm pe $ y $ variabilă independentă.
+
+\begin{remark}\label{rk:aut-const}
+  Există posibilitatea de a pierde soluții de forma $ y = c $ prin această
+  metodă, deci trebuie verificat dacă este cazul separat.
+\end{remark}
+
+\textbf{Exemplu:} $ 1 + y^{'2} = 2yy' $.
+\emph{Soluție:} Putem lua $ y' = p $ drept funcție, iar pe $ y $ drept
+variabilă independentă. Rezultă:
+\[
+  y^{''} = \dfrac{d}{dx} \Big( \dfrac{dy}{dx} \Big) = p \dfrac{dp}{dy}.
+\]
+Atunci ecuația devine:
+\[
+  \dfrac{2p dp}{1 + p^2} = \dfrac{dy}{y} \Rightarrow %
+  y = c_1(1 + p^2).
+\]
+Acum trebuie să obținem pe $ x $ ca funcție de $ p $ și $ c_1 $.
+Deoarece $ dx = \dfrac{1}{p} dy $, iar $ dy = 2c_1 pdp $, rezultă
+$ dx = 2c_1 dp $. Deci $ x = 2c_1p + c_2 $, iar soluția generală devine
+$ x(p) = 2c_1 p + c_2 $. Din expresia lui $ y $ de mai sus, rezultă:
+\[
+  y = c_1 + \dfrac{(x - c_2)^2}{4c_1}.
+\]
+
+\vspace{1cm}
+
+\textbf{Exemplu 2:} $ y^{''} = y^{'2} = 2e^{-y} $.
+
+\emph{Soluție:} Notăm $ y' = p $ și luăm ca necunoscută $ p = p(y) $.
+Rezultă:
+\[
+  y^{''} = \dfrac{dy'}{dx} = p'p \Rightarrow p'p + p^2 = 2e^{-y}.
+\]
+Dacă notăm $ p^2 = z $, obținem o ecuație liniară neomogenă:
+\[
+  z' + 2z = 4e^{-y},
+\]
+ce are ca soluție generală $ z(y) = c_1 e^{-2y} + 4e^{-y} $.
+
+Revenim la $ y $ și avem:
+\[
+  z = p^2 = y^{'2} \Rightarrow y' = \pm \sqrt{c_1 e^{-2y} + 4e^{-y}},
+\]
+adică:
+\[
+  \dfrac{dy}{\pm \sqrt{c_1 e^{-2y} + 4e^{-y}}} = dx \Rightarrow %
+  x + c_2 = \pm \dfrac{1}{2} \sqrt{c_1 + 4e^y}.
+\]
+Echivalent, putem scrie soluția și în forma implicită:
+\[
+  e^y + \dfrac{c_1}{4} = (x + c_2)^2.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuații Euler}
+
+O ecuație Euler are forma generală:
+\[
+  \sum_{k = 0}^n a_k x^k y^{(k)} = f(x),
+\]
+pentru varianta omogenă și $ f(x) = 0 $ pentru varianta neomogenă, cu $ a_i $
+constante reale.
+
+Ecuațiile Euler se pot transforma în ecuații cu coeficienți constanți prin notația
+(schimbarea de variabilă) $ |x| = e^t $.
+
+De remarcat faptul că, deoarece funcția necunoscută este $ y = y(x) $, pentru
+a obține $ y' = \dfrac{dy}{dx} $ trebuie să aplicăm regula de derivare
+a funcțiilor compuse. Folosind notația de la fizică $ \dot{y} = \dfrac{dy}{dt} $,
+putem scrie:
+\[
+  \dfrac{dy}{dx} = \dfrac{dy}{dt} \cdot \dfrac{dt}{dx} = \dot{y} \cdot e^{-y}.
+\]
+Mai departe, de exemplu, pentru derivatele superioare:
+\begin{align*}
+  \dfrac{d^2 y}{dx^2} &= \dfrac{d}{dt} \Big( \dot{y} \cdot e^{-y} \Big) %
+  \cdot \dfrac{dt}{dx} \\
+                      &= e^{-2y} (\ddot{y} - \dot{y}).
+\end{align*}
+
+\vspace{1cm}
+
+\textbf{Exemplu:} $ x^2 y^{''} + xy' + x = x $.
+
+\emph{Soluție:} Facem substituția $ |x| = e^t $ și, folosind calculele
+de mai sus, obținem:
+\[
+  e^{2t} \cdot e^{-2t} (\ddot{y} - \dot{y}) - e^t \cdot e^{-t} + y(t) = e^t.
+\]
+Echivalent: $ \ddot{y} - 2\dot{y} + y = e^t $.
+
+Aceasta este o ecuație liniară de ordinul al doilea, neomogenă. Asociem ecuația
+algebrică $ r^2 - 2r + 1 = (r - 1)^2 = 0 $, deci soluția generală a variantei
+omogene este:
+\[
+  y(t) = c_1 e^t + c_2 te^t.
+\]
+
+Folosind metoda variației constantelor, obținem succesiv:
+\begin{align*}
+  y(t) &= c_1 e^t + c_2 t e^t + \dfrac{t^2 e^t}{2} \Rightarrow \\
+  y(x) &= c_1 x + c_2 x \ln x + \dfrac{x \ln^2 x}{2}.
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Rezolvați următoarele ecuații Euler:
+\begin{enumerate}[(a)]
+  \item $ x^2 y^{(2)} - 3xy' + 4y = 5x, \quad x > 0 $;
+  \item $ x^2 y^{(2)} - xy' + y = x + \ln x, \quad x > 0 $;
+  \item $ 4(x + 1)^2 y^{(2)} + y = 0, x > -1 $;
+  \item $ xy^{''} + 3y' = e^x $;
+  \item $ x^3 y^{'''} + x^2y^{''} - 2xy' + 2y = \dfrac{1}{x^2} $.
+\end{enumerate}
+
+
