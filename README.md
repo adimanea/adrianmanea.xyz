@@ -27,6 +27,7 @@ Inspired by [Kai Hendry's solution](https://www.youtube.com/watch?v=Sspm9K6g2BE)
     + ☑ disable horizontal scroll & enable wrap (another `style.css`?);
     + ☑ make sections into `button/accordion` as in **Didactica** (another `style.css` + `sed`?)
     + delete the pesky `</ul></div>` in the first button only dammit...
+    + prettify **Cuprins**!
 - get short descriptions of article content ("Abstract/Excerpt"):
     + switch parser (with [mozilla/readablility](https://github.com/mozilla/readability) ?) or edit source (see `curl` part + parse).
 - archive when it gets messy (see `sfeed` README, the `sfeed_archive.c` example);
