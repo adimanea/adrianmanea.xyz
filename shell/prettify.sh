@@ -5,6 +5,15 @@
 
 SITEDIR='var/www/adrianmanea.xyz/html/pages'
 
+#######################################
+# WRITE WHEN LAST UPDATED
+#####################################
+# get server date
+AZI=`date "+%H:%M %d %b %Y"`
+# write to 6-stiri.php
+sed -i s_"Actualizat la.*(UTC)"_"Actualizat la ${AZI} (UTC)"_ ${SITEDIR}/6-stiri.php
+
+
 ####################################
 # FOLDABLE FEEDS
 ###################################
