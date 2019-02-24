@@ -20,6 +20,9 @@
     <p> 
         Mai jos sînt știrile pe care le urmăresc, colectate automat din feed-uri RSS cu <a href="https://git.codemadness.org/sfeed/file/README.html"><b>sfeed</b></a> și actualizate o dată la 3 ore.
     </p>
+    <p>
+        Actualizat la DATA (UTC).
+    </p>
     <?php
         include('feeds.html');
     ?>
