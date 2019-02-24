@@ -4,7 +4,7 @@ Here are the files for my [personal website](adrianmanea.xyz).
 
 Shortcuts:
 - [All PDFs](https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/docs);
-- [All LaTeX sources](https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/latex);
+- [All LaTeX sources](https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/_latex_);
 - [My landscape photos (full res)](https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/images/gallery/hi-res/la) (easier to browse them [here](https://adrianmanea.xyz/pages/6-photo.php));
 - [My portrait photos (full res)](https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/images/gallery/hi-res/po) (easier to browse them [here](https://adrianmanea.xyz/pages/6-foto.php)).
 
@@ -19,6 +19,11 @@ I added a news section ([Știri](https://adrianmanea.xyz/pages/6-stiri.php)) whi
 
 Inspired by [Kai Hendry's solution](https://www.youtube.com/watch?v=Sspm9K6g2BE) with [picofeed](https://github.com/seenaburns/picofeed).
 
+## "External" Stuff
+The following are not available on the website, but I use them on the server, so I uploaded them for backup and sharing purposes.
+- `_latex_`: the LaTeX sources of the teaching notes I post on my website;
+- `_tools_`: various programs and scripts that I wrote or use to manage stuff. Currently: tools for managing the news.
+
 
 ## TODOs
 ### Știri
@@ -27,9 +32,9 @@ Inspired by [Kai Hendry's solution](https://www.youtube.com/watch?v=Sspm9K6g2BE)
     + ☑ disable horizontal scroll & enable wrap (another `style.css`?);
     + ☑ make sections into `button/accordion` as in **Didactica** (another `style.css` + `sed`?)
     + delete the pesky `</ul></div>` in the first button only dammit...
-    + prettify **Cuprins**!
+    + prettify **Cuprins** (in the source)!
 - get short descriptions of article content ("Abstract/Excerpt"):
     + switch parser (with [mozilla/readablility](https://github.com/mozilla/readability) ?) or edit source (see `curl` part + parse).
 - archive when it gets messy (see `sfeed` README, the `sfeed_archive.c` example);
-- does it mark as read?
-- check the feeds and add some more. Finnicky update tho' (some fail at times);
+- ☑ does it mark as read? NO: bold = today's news;
+- ☑ check the feeds and add some more. Finnicky update tho' (some fail at times); DONE: check page source and look more carefully for *correct* RSS feeds on websites.
