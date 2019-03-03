@@ -305,8 +305,74 @@ Folosind metoda variației constantelor, obținem succesiv:
   \item $ x^2 y^{(2)} - 3xy^{\prime} + 4y = 5x, \quad x > 0 $;
   \item $ x^2 y^{(2)} - xy^{\prime} + y = x + \ln x, \quad x > 0 $;
   \item $ 4(x + 1)^2 y^{(2)} + y = 0, x > -1 $;
-  \item $ xy^{\prime\prime} + 3y^{\prime} = e^x $;
-  \item $ x^3 y^{\prime\prime^{\prime}} + x^2y^{\prime\prime} - 2xy^{\prime} + 2y = \dfrac{1}{x^2} $.
+  \item $ xy^{\prime\prime} + 3y^{\prime} = 1 $;
+  \item $ x^3 y^{\prime\prime\prime} + x^2y^{\prime\prime} - 2xy^{\prime} + 2y = \dfrac{1}{x^2} $.
 \end{enumerate}
 
 
+\vspace{1cm}
+
+2. Rezolvați următoarele ecuații:
+\begin{enumerate}[(a)]
+  \item $ y^{(3)} = \sin x + \cos x $;
+  \item $ y^{(3)} + y^{(2)} = \sin x $;
+  \item $ xy^{(2)} + (x - 2)y^{(1)} - 2y = 0 $;
+  \item $ x^2 y^{(2)} = y^{\prime 2} $;
+  \item $ y^{(4)} - 3y^{(3)} + 3y^{(2)} - y^{(1)} = 0 $;
+  \item $ 4(x + 1)^2 y^{(2)} + y = 0 $;
+  \item $ \begin{cases}
+      x^\prime &= x + ye^{2t} \\
+      y^\prime &= y - xe^{2t} + 1
+    \end{cases} $,
+    cu condițiile inițiale $ x(0) = 1 $ și $ y(0) = 0 $.
+\end{enumerate}
+
+Amintim, pentru ecuații liniare și neomogene de ordinul întîi, cu forma generală:
+\[
+  y' = P(x) y + Q(x),
+\]
+avem soluțiile:
+\begin{align*}
+  y_p &= c \cdot \exp\Big( - \int_{x_0}^x P(t) dt \Big) \\
+  y_g &= \Big( c + \int Q(t) \cdot \exp \Big( \int_{x_0}^t P(s) ds \Big) dt \Big) \cdot \exp \Big(- \int_{x_0}^x P(t) dt \Big).
+\end{align*}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+  \item Integrări succesive;
+  \item Notăm $ y^{(2)} = z $, deci ecuația devine $ z^\prime + z = \sin x $, care este
+    o ecuație liniară și neomogenă, de ordinul întîi. Soluția generală este:
+    \[
+      z(x) = e^{-x}\Big( c + \dfrac{e^x}{2} (\sin x + \cos x) \Big),
+    \]
+    iar apoi $ y^\prime(x) = \ds\int z(x) dx $ și $ y(x) = \ds\int y^\prime (x) dx $ etc.
+  \item Notăm $ z = y^\prime + y $, deci ecuația devine $ xz^\prime - 2z = 0 $, care
+    are soluția evidentă $ z = c_1 x^2 $, din care obtinem $ y^\prime + y = c_1 x^2 $, care
+    este o ecuație liniară și neomogenă, cu soluția generală:
+    \[
+      y = c_2 e^{-x} + c_1 x^2 - 2c_1 x + 2c_1.
+    \]
+  \item Notăm $ y^\prime = z $ și obținem $ x^2 z^\prime = z^2 $. Observăm soluția particulară
+    $ z = 0 $, deci $ y = c $, iar în celelalte cazuri, avem:
+    \[
+      x^2 \dfrac{dz}{dx} = z^2 \Rightarrow \dfrac{dx}{x^2} = \dfrac{dz}{z^2}.
+    \]
+    Aceasta conduce la $ \dfrac{1}{z} = \dfrac{1}{x} + c $ și ne întoarcem
+    la $ y $:
+    \[
+      dx = dy \Big( \dfrac{1}{x} + c \Big) \Rightarrow \dfrac{xdx}{cx + 1} = dy,
+    \]
+    care, prin integrare, conduce la:
+    \[
+      y = \dfrac{x}{c} - \dfrac{1}{c^2} \ln(cx + 1) + c_1,
+    \]
+    pentru $ c \neq 0 $ și $ y^\prime = x $ dacă $ c = 0 $, adică $ y = \dfrac{x^2}{2} + c_1 $.
+  \item Ecuația caracteristică este:
+    \[
+      r^4 - 3r^3 + 3r^2 - r = 0 \Rightarrow r(r^3 - 3r^2 + 3r - 1) = 0,
+    \]
+    de unde observăm soluțiile $ r = 0, r = 1 $ etc.
+  \item Ecuația caracteristică este $ r^2 - r - 2 = (r + 1)(r - 2) = 0 $.
+  \item Este o ecuație Euler în raport cu $ t = x + 1 $.
+  \item Aplicăm metoda substituției (eliminării).
+\end{enumerate}
