@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-    <?php
-    include ("../includes/head.php");
-    ?>
+<?php
+include ("../includes/head.php");
+?>
 </head>
 <header>
-    <?php
-    include ("../includes/header.php");
-    ?>
+<?php
+include ("../includes/header.php");
+?>
 </header>
 <body>
-    <?php
-    include ("../includes/navigation.php");
-    ?>
-    
+<?php
+include ("../includes/navigation.php");
+?>
+
     <h1 class="title">Didactică</h1>
     <div class="articol">
 
@@ -37,7 +37,7 @@
 
         <button class="accordion"><span class="accordion1">Semestrul I, 2018 &mdash; 2019</span></button>
 
-        
+
         <div class="panel">
 
             <button class="accordion">ACS, Matematică 1</button>
@@ -46,7 +46,7 @@
                     <li>Notițele sînt disponibile într-un singur fișier: <a href="../docs/18-19-acs-m1/m1-18-19.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
                 </ul>
             </div>
-            
+
             <button class="accordion">ETTI, Algebră și geometrie</button>
             <div class="panel">
                 <ul class="big-list">
@@ -140,8 +140,8 @@
                     <li>Seminar 1 &mdash; Șiruri și serii de numere reale: &nbsp; <a href="../docs/17-18-etti-am1/seminar1-serii.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
                 </ul>
             </div>
-            
-            
+
+
             <!-- <h3>ETTI, Algebră și Geometrie</h3> -->
             <button class="accordion">ETTI, Algebră și Geometrie</button>
             <div class="panel">
@@ -159,7 +159,7 @@
                 </ul>
             </div>
 
-            
+
             <!-- <h3>FIA, Bazele calculului diferențial</h3> -->
             <button class="accordion">FIA, Bazele calculului diferențial</button>
             <div class="panel">
@@ -206,7 +206,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <button class="accordion"><span class="accordion1"> Alte materiale</span></button>
         <div class="panel">
             <ul>
@@ -217,6 +217,7 @@
                 <li>Culegere analiză (Costache): &nbsp; <a href="../docs/altele/costache.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
                 <li>Culegere algebră (Bălan): &nbsp; <a href="../docs/altele/balan-ag.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
                 <li>Culegere algebră (Purcaru): &nbsp; <a href="../docs/altele/purcaru-ag" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
+                <li>Diverse resurse: &nbsp; <a href="../docs/altele/resurse.md">descarcă</a> fișierul Markdown sau <a href="https://gitlab.com/adimanea/adrianmanea.xyz/blob/master/docs/altele/resurse.md">citește</a> online.</li>
             </ul>
         </div>
 
