@@ -1,4 +1,4 @@
-%! TEX root = ../am2-18-19.tex
+% ! TEX root = ../am2-18-19.tex
 
 \chapter{Ecuații cu derivate parțiale și suprafețe de cîmp}
 
@@ -74,7 +74,7 @@ lor par\-ți\-a\-le are rangul maxim pe domeniul de definiție. Avem, așadar:
     I_{1x} & I_{2x} \\
     I_{1y} & I_{2y} \\
     I_{1z} & I_{2z}
-    \end{pmatrix} = \begin{pmatrix}
+  \end{pmatrix} = \begin{pmatrix}
     3 & 2x \\
     4 & 2y \\
     5 & 2z
@@ -88,7 +88,7 @@ ecuației este:
 \]
 unde $ \varphi $ este o funcție arbitrară de clasă $ \kal{C}^1 $.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Suprafețe de cîmp}
 \index{suprafețe!de cîmp}
@@ -100,7 +100,7 @@ generale, scrisă în forma implicită.
 
 \textbf{Exemplu:} Fie cîmpul vectorial:
 \[
-  \vec{V} = xy^2 \vec{i} + x^2y \vec{y} + z(x^2 + y^2) \vec{k}.
+  \vec{V} = xy^2 \vec{i} + x^2y \vec{j} + z(x^2 + y^2) \vec{k}.
 \]
 Determinăm suprafețele de cîmp.
 
@@ -147,7 +147,7 @@ cîmp ale cîmpului $ \vec{V} $ au forma:
 \[
   \vec{V} = yz\vec{i} + xz \vec{j} + xy\vec{k},
 \]
-care trece prin curba dată de intersecția cilindrului $ x^2 + y^2 = 4 $ cu
+care trece prin curba dată de intersecția cilindrului $ x^2 + z^2 = 4 $ cu
 planul $ y = 0 $.
 
 \emph{Soluție:} Mai întîi, determinăm toate suprafețele de cîmp, ca mai sus.
@@ -165,20 +165,23 @@ sistemul de ecuații:
   \begin{cases}
     x^2 - y^2 &= c_1  \\
     x^2 - z^2 &= c_2 \\
-    x^2 + y^2 &= 4 \\
+    x^2 + z^2 &= 4 \\
     y &= 0
   \end{cases}
 \]
 pentru constantele $ c_1 $ și $ c_2 $, care ne vor identifica exact suprafața.
 
-Se obține $ 2c_1 - c_2 = 4 $, deci $ 2(x^2 - y^2) - (x^2 - z^2) = 4 $, care
+Este suficient să găsim condiția de compatibilitate a sistemului, care se poate
+obține din primele două ecuații. Înmulțim prima ecuație cu 2 și o scădem din ea
+pe a doua și comparăm cu a treia ecuație. Se obține $ 2c_1 - c_2 = 4 $.
+Apoi, înlocuim în integralele prime și avem $ 2(x^2 - y^2) - (x^2 - z^2) = 4 $, care
 se prelucrează și se aduce la forma canonică:
 \[
   \dfrac{x^2}{4} - \dfrac{y^2}{2} + \dfrac{z^2}{4} = 1,
 \]
 care este un \emph{hiperboloid cu o pînză}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Ecuații cu derivate parțiale cvasiliniare}
 \index{EDP!cvasiliniare}
@@ -246,22 +249,25 @@ cu $ \varphi $ o funcție de clasă $ \kal{C}^1 $ pe domeniul de definiție.
 Atunci soluția pentru $ z $ se obține din forma implicită $ u(x, y, z) = 0 $.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Exerciții}
 
-\indent\indent Rezolvați ecuațiile cvasiliniare:
+\indent\indent 1. Rezolvați ecuațiile cvasiliniare:
 \begin{enumerate}[(a)]
-  \item $x(y^3 - 2x^3)z_x + y(2y^3 - x^3)z_y = 9z(x^3 - y^3) $;
-  \item $ 2xzz_x + 2yzz_y = z^2 - x^2 - y^2 $.
+\item $x(y^3 - 2x^3)z_x + y(2y^3 - x^3)z_y = 9z(x^3 - y^3) $;
+\item $ 2xzz_x + 2yzz_y = z^2 - x^2 - y^2 $;
+\item $ 2y z_x + 3x^2 z_y + 6x^2 y = 0 $;
+\item $ x \Big( y^2 - z^2 \Big) z_x - y \Big( x^2 + y^2 \Big) z_y = z \Big( x^2 + y^2 \Big) $;
+\item $ xz z_x + yz z_y = x + y $.
 \end{enumerate}
 
 \vspace{1cm}
 
 2. Determinați suprafețele de cîmp pentru cîmpurile vectoriale:
 \begin{enumerate}[(a)]
-  \item $ \vec{V} = (x + y + z)\vec{i} + (x - y)\vec{j} + (y - x)\vec{k} $;
-  \item $ \vec{V} = (x - y)\vec{i} + (x + y) \vec{j} + \vec{k} $.
+\item $ \vec{V} = (x + y + z)\vec{i} + (x - y)\vec{j} + (y - x)\vec{k} $;
+\item $ \vec{V} = (x - y)\vec{i} + (x + y) \vec{j} + \vec{k} $.
 \end{enumerate}
 
 \vspace{1cm}
@@ -272,6 +278,35 @@ Atunci soluția pentru $ z $ se obține din forma implicită $ u(x, y, z) = 0 $.
 \]
 care conține cercul dat de $ z = 0 $ și $ x^2 + y^2 - 2x = 0 $.
 
+\emph{Indicație:} Integralele prime independente ale sistemului se
+determină din:
+\[
+  \dfrac{dx}{2xz} = \dfrac{dy}{2yz} = \dfrac{dz}{z^2 - x^2 - y^2}.
+\]
+Din primele două rapoarte, obținem $ y = c_1 x $, iar apoi, putem înmulți
+toate egalitățile cu $ 2z $ și prelucrăm mai departe:
+\[
+  \dfrac{dx}{x} = \dfrac{dy}{y} = \dfrac{2z}{z^2 - x^2 - y^2} \Rightarrow %
+  \dfrac{2xdx}{2x^2} = \dfrac{2ydy}{2y^2} = \dfrac{2zdz}{z^2 - x^2 - y^2} = %
+  \dfrac{2(xdx + ydy + zdz)}{x^2 + y^2 + z^2},
+\]
+deci $ x^2 + y^2 + z^2 = c_2 x $.
+
+Pentru a obține intersecția cu cercul dat, avem condiția ca sistemul de mai jos să fie
+compatibil:
+\[
+  \begin{cases}
+    y &= c_1 x \\
+    x^2 + y^2 + z^2 &= c_2 x \\
+    z &= 0 \\
+    x^2 + y^2 - 2x &= 0
+  \end{cases}.
+\]
+
+Din ultimele trei ecuații se obține că sistemul este compatibil dacă și numai dacă $ c_2 = 2 $.
+
+Rezultă $ x^2 + y^2 + z^2 - 2x = 0 $, care este o sferă.
+
 \vspace{1cm}
 
 4. Fie cîmpul vectorial:
@@ -280,10 +315,10 @@ care conține cercul dat de $ z = 0 $ și $ x^2 + y^2 - 2x = 0 $.
 \]
 Să se determine:
 \begin{enumerate}[(a)]
-  \item liniile de cîmp;
-  \item linia de cîmp ce conține punctul $ M(1, 0, 1) $;
-  \item suprafețele de cîmp;
-  \item suprafața de cîmp care conține dreapta $ z = 1, y - x\sqrt{3} = 0 $.
+\item liniile de cîmp;
+\item linia de cîmp ce conține punctul $ M(1, 0, 1) $;
+\item suprafețele de cîmp;
+\item suprafața de cîmp care conține dreapta $ z = 1, y - x\sqrt{3} = 0 $.
 \end{enumerate}
 
 \emph{Indicație:} Pentru liniile de cîmp, ecuația dată de primele două rapoarte:
@@ -292,3 +327,17 @@ Să se determine:
 \]
 este o ecuație diferențială de ordinul întîi, omogenă, care se poate rezolva cu
 substituția $ y = tx $.
+
+\vspace{1cm}
+
+5. Să se determine soluția ecuațiilor cu derivate parțiale de ordinul întîi:
+\begin{enumerate}[(a)]
+\item $ y u_x - x u_y = 0 $;
+\item $ xz u_x - yz u_y + (x^2 + y^2) u_z = 0 $;
+\item $ x u_x - y u_y = 0 $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-18-19"
+%%% End:
