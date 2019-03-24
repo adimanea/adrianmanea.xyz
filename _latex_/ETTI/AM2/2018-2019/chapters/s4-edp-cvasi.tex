@@ -262,6 +262,41 @@ Atunci soluția pentru $ z $ se obține din forma implicită $ u(x, y, z) = 0 $.
 \item $ xz z_x + yz z_y = x + y $.
 \end{enumerate}
 
+\emph{Indicații:} (a) Sistemul diferențial autonom la care se ajunge este:
+\[
+  \dfrac{dx}{x(y^3 - 2x^3)} = \dfrac{dy}{y(2y^3 - x^3)} = \dfrac{dz}{9z(x^3 - y^3)}.
+\]
+
+Rezultă:
+\[
+  \dfrac{ydx + xdy}{3xy(y^3 - x^3)} = \dfrac{dz}{9z(x^3 - y^3)} \Rightarrow %
+  \dfrac{d(xy)}{xy} = -\dfrac{dz}{3z} \Rightarrow x^3 y^3 z = c_1.
+\]
+
+Din primele două rapoarte obținem:
+\[
+  \dfrac{y(2y^3 - x^3)}{x(y^3 - 2x^3)} = \dfrac{dy}{dx}.
+\]
+
+Simplificăm forțat cu $ \dfrac{y}{x} = u $ și ajungem la ecuația:
+\[
+  \dfrac{u^3 - 2}{u(u+1)(u^2 - u + 1)} du = \dfrac{dx}{x}.
+\]
+
+Rezultă $ \ln(c_2 x) = -2\ln u + \ln(u + 1) + \ln(u^2 - u + 1) $, adică, în final,
+$ c_2 = \dfrac{x^3 + y^3}{x^2 y^2} $.
+
+(b) Se ajunge la sistemul autonom:
+\[
+  \dfrac{dx}{2xz} = \dfrac{dy}{2yz} = \dfrac{dz}{z^2 - x^2 - y^2}.
+\]
+
+Din primele două rapoarte avem $ \dfrac{y}{x} = c_1 $ și apoi:
+\[
+  \dfrac{2xdx}{2x^2} = \dfrac{2ydy}{2y^2} = \dfrac{2zdz}{z^2 - x^2 - y^2},
+\]
+adică $ c_2x = x^2 + y^2 + z^2 $.
+
 \vspace{1cm}
 
 2. Determinați suprafețele de cîmp pentru cîmpurile vectoriale:
@@ -269,6 +304,31 @@ Atunci soluția pentru $ z $ se obține din forma implicită $ u(x, y, z) = 0 $.
 \item $ \vec{V} = (x + y + z)\vec{i} + (x - y)\vec{j} + (y - x)\vec{k} $;
 \item $ \vec{V} = (x - y)\vec{i} + (x + y) \vec{j} + \vec{k} $.
 \end{enumerate}
+
+\emph{Indicații:} (a) Ajungem la sistemul:
+\[
+  \dfrac{dx}{x + y + z} = \dfrac{dy}{x - y} = \dfrac{dz}{y - x}.
+\]
+
+Din prima egalitate, rezultă $ dy + dz = 0 \Rightarrow y + z = c_1 $. Înlocuind
+în cea de-a doua egalitate $ z = c_1 - y $, rezultă $ (x - y)dx = (x + c_1)dy $,
+deci $ xdx - d(xy) - c_1 dy = 0 $, adică $ \dfrac{x^2}{2} - xy - c_1y = c_2 $. Înlocuim
+$ c_1 = y + z $ și obtinem $ \dfrac{x^2}{2} - xy - y^2 - yz = c_2 $.
+
+Domeniul de definiție va fi $ D = \{ (x, y, z) \in \RR^3 \mid x + y + z \neq 0 \} $.
+
+(b) Se ajunge la sistemul:
+\[
+  \dfrac{dx}{x - y} = \dfrac{dy}{x + y} = \dfrac{dz}{1}.
+\]
+
+Rezultă:
+\[
+  \dfrac{xdx}{x^2 - xy} = \dfrac{ydy}{xy + y^2} = \dfrac{xdx + ydy}{x^2 + y^2} = %
+  \dfrac{\frac{1}{2} d(x^2 + y^2)}{x^2 + y^2} = \dfrac{dz}{1},
+\]
+deci $ x^2 + y^2 = c_1 e^{2z} $, iar apoi, din $ \dfrac{dy}{dx} = \dfrac{x + y}{x - y} $,
+putem nota $ \dfrac{y}{x} = u $ și rezultă $ x^2 + y^2 = c_2 e^{2 \arctan \frac{y}{x}} $.
 
 \vspace{1cm}
 
