@@ -1,4 +1,4 @@
-%! TEX root = ../am2-18-19.tex
+% ! TEX root = ../am2-18-19.tex
 
 \chapter{Stabilitate și linii de cîmp}
 
@@ -38,7 +38,7 @@ Tipurile de stabilitate sînt definite mai jos.
   $ ||\tilde{x_0} - x_0 || < \delta(\varepsilon) $, soluțiile corespunzătoare,
   $ \tilde{\varphi}(t) $ și $ \varphi(t) $ satisfac inegalitatea:
   \[
-  | \tilde{\varphi}(t) - \varphi(t) | < \varepsilon, \quad \forall t \geq t_0.
+    | \tilde{\varphi}(t) - \varphi(t) | < \varepsilon, \quad \forall t \geq t_0.
   \]
 \end{definition}
 
@@ -83,26 +83,26 @@ Atunci avem:
   $ x = 0 $ este instabilă.
 \end{theorem}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Exerciții}
 
 1. Studiați stabilitatea poziției de echilibru $ x = 0 $ pentru sistemele
 diferențiale:
 \begin{enumerate}[(a)]
-  \item $ \begin{cases}
-      x^\prime &= -4x + y \\
-      y^\prime &= -x - 2y
-    \end{cases} $;
-  \item $ \begin{cases}
-      x^\prime &= -x + z \\
-      y^\prime &= -2y - z \\
-      z^\prime &= y - z
-    \end{cases} $;
-  \item $ \begin{cases}
-      x^\prime &= 2y \\
-      y^\prime &= x + ay
-    \end{cases}, a \in \RR $.
+\item $ \begin{cases}
+    x^\prime &= -4x + y \\
+    y^\prime &= -x - 2y
+  \end{cases} $;
+\item $ \begin{cases}
+    x^\prime &= -x + z \\
+    y^\prime &= -2y - z \\
+    z^\prime &= y - z
+  \end{cases} $;
+\item $ \begin{cases}
+    x^\prime &= 2y \\
+    y^\prime &= x + ay
+  \end{cases}, a \in \RR $.
 \end{enumerate}
 
 \vspace{1cm}
@@ -117,7 +117,7 @@ sistemului de mai jos este asimptotic stabilă:
   \end{cases}
 \]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Integrale prime și linii de cîmp}
 
@@ -137,7 +137,7 @@ O altă formă de scriere a sistemului de mai sus este \emph{forma simetrică}:
 \]
 Dacă $ f : U \to \RR $ este o funcție oarecare, de clasă $ \kal{C}^1(U) $, atunci
 pentru orice $ x \in U $ se poate scrie \emph{derivata lui $ f $ în $ x $ %
-în direcția vectorului $ v $}, notată $ \dfrac{df}{dv}(x) $, și definită
+  în direcția vectorului $ v $}, notată $ \dfrac{df}{dv}(x) $, și definită
 prin formula cunoscută:
 \[
   \dfrac{df}{dv}(x) = \sum_{i = 1}^n \dfrac{\partial f}{\partial x_i} v_i(x).
@@ -193,7 +193,7 @@ Rezultă:
 \]
 de unde obținem două integrale prime:
 \[
-    x + y + z = c_1, \quad x^2 + y^2 + z^2 = c_2.
+  x + y + z = c_1, \quad x^2 + y^2 + z^2 = c_2.
 \]
 
 \begin{remark}\label{rk:sist-cimp}
@@ -208,7 +208,7 @@ de unde obținem două integrale prime:
   sau \emph{curbe integrale}.
 \end{remark}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Exerciții}
 
@@ -299,12 +299,12 @@ Liniile de cîmp se obțin:
 \[
   \begin{cases}
     \dfrac{1}{x + y} + \dfrac{1}{z} &= c_1 \\
-                                    & \\
+    & \\
     \dfrac{1}{x - y} + \dfrac{1}{z} &= c_2
   \end{cases}
 \]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Resurse suplimentare}
 
@@ -313,7 +313,7 @@ explicații, împreună cu exemple cunoscute din cazul cîmpurilor fizice, se po
 găsi pe \href{https://en.wikipedia.org/wiki/Field\_line}{Wikipedia}.
 
 Metoda rezolvării ecuațiilor diferențiale în mod grafic, folosind \emph{cîmpul %
-tangent} (eng.\ \texttt{slope field}), cu semnificația fizică a cîmpului de
+  tangent} (eng.\ \texttt{slope field}), cu semnificația fizică a cîmpului de
 viteze, poate fi foarte utilă. Ea este prezentată succint pe
 \href{https://en.wikipedia.org/wiki/Slope\_field}{Wikipedia} și mai detaliat,
 inclusiv cu exerciții rezolvate, la \href{https://www.khanacademy.org/math/ap-calculus-ab/ab-differential-equations-new/ab-7-3/v/creating-a-slope-field}{Khan Academy}.
@@ -327,3 +327,8 @@ autonome este explicată pe scurt \href{http://www.math.tamu.edu/~zelenko/308\_w
 Alte materiale se mai pot găsi în cursul de la \href{http://www.mec.tuiasi.ro/diverse/matematici\_speciale.pdf}{Iași} (v.\ \S2.1.2),
 în cursul \href{http://www.edumanager.ro/community/documente/ecuatii\_cu\_derivate\_partiale\_de\_ordinul\_al\_doilea.pdf}{prof.\ Crăciun și Barbu} (cap.\ 2)
 și în \href{https://www.yumpu.com/ro/document/read/17874390/ecuatii-diferentiale-n-forma-simetrica-integrale-prime}{aceste notițe} de la UBB Cluj.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-18-19"
+%%% End:
