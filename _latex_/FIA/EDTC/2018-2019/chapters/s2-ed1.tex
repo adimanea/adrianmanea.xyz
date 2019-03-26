@@ -320,6 +320,8 @@ Forma generală este:
   P(x, y) + Q(x, y) y' = 0.
 \]
 
+\subsection{Rezolvare cu formulă}
+
 Dacă are loc $\dfrac{\partial P}{\partial y} = \dfrac{\partial Q}{\partial x}$, atunci
 ecuația se numește \emph{exactă}, iar soluția ei generală se prezintă prin:
 \[
@@ -337,7 +339,7 @@ pentru orice $(x, y)$ din domeniul de definiție, iar $(x_0, y_0)$ un punct arbi
 
 \textbf{Exemplu:} $(3x^2 - y) + (3y^2 - x) y' = 0$.
 
-\emph{Soluție:} Remarcăm că avem $P(x, y) = 3x^2 - x$ și $Q(x, y) = 3y^2 - x$, deci
+\emph{Soluție:} Remarcăm că avem $P(x, y) = 3x^2 - y$ și $Q(x, y) = 3y^2 - x$, deci
 $P_y = Q_x = -1$, ecuația fiind exactă. Obținem direct, din formula pentru soluția generală:
 \[
   F(x, y) = x^3 + y^3 - xy + x_0y_0 - x_0^3 - y_0^3.
@@ -346,7 +348,46 @@ $P_y = Q_x = -1$, ecuația fiind exactă. Obținem direct, din formula pentru so
 Cum $(x_0, y_0)$ sînt fixate, putem prezenta soluția în \emph{forma implicită} $y = \varphi$,
 unde $\varphi = x^3 + y^3 - xy = c$, constanta fiind expresia de $(x_0, y_0)$ de mai sus.
 
-\vspace{1cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Rezolvare directă}
+
+Din teorie, știm că dacă o ecuație diferențială este exactă, ea se mai numește
+\emph{cu diferențiale totale}, deoarece se poate arăta că, în cazul ecuației
+scrisă în forma generală $ P(x, y) dx + Q(x, y) dy = 0 $, există o funcție
+$ F(x, y) $ de clasă (cel puțin $\kal{C}^1$) astfel încît $ F_x = P(x, y) $ și
+$ F_y = Q(x, y) $.
+
+Să vedem acest lucru pe exemplul de mai sus.
+
+Avem ecuația:
+\[
+  (3x^2 - y)dx + (3y^2 - x) dy = 0.
+\]
+
+Avem $P(x,y) = 3x^2 - y $ și $ Q(x,y) = 3y^2 - x$. Am văzut că ecuația este
+exactă, deci există o funcție $ F : \RR^2 \to \RR $ de clasă (cel puțin)
+$ \kal{C}^1 $ astfel încît $ F_x = P $ și $ F_y = Q $. Deci:
+\begin{align*}
+  \dfrac{\partial F}{\partial x} &= 3x^2 - y \Rightarrow F(x, y) = \int 3x^2 - y dx = %
+                                   x^3 + xy + c(y) \\
+  \dfrac{\partial F}{\partial y} &= 3y^2 - x \Rightarrow F(x, y) = \int 3y^2 - x dy = %
+                                   y^3 + xy + c(x),
+\end{align*}
+unde constantele de integrare pot să depindă, eventual, de variabilele în funcție
+de care \emph{nu} se face integrarea.
+
+Deoarece avem aceeași funcție $ F(x, y) $ pe care o căutăm, cele două expresii de mai
+sus trebuie să coincidă, deci $ c(x) = x^3 $, iar $ c(y) = y^3 $. În final:
+\[
+  F(x, y) = x^3 + y^3 - xy + k, \quad k \in \RR
+\]
+este funcția căutată, care dă \emph{soluția implicită} a ecuației.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Cazul inexact}
 
 Dacă ecuația nu este exactă, se caută \emph{un factor integrant}, adică o funcție $\mu(x, y)$
 cu care se înmulțește ecuația pentru a deveni exactă.
@@ -501,3 +542,8 @@ Rezolvați următoarele ecuații diferențiale, precizînd și tipul lor:
   \item $ y^\prime = -\dfrac{1}{x}y + \dfrac{\ln x}{x} y^2 $. \hfill(Bernoulli)
 \end{enumerate}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../edtc-18-19"
+%%% End:
