@@ -1,0 +1,568 @@
+\chapter{Ecuații diferențiale de ordin superior}
+
+\index{ecuații!de ordin superior}
+
+\section{Ecuații liniare de ordinul $n$ cu coeficienți constanți}
+
+Forma generală este:
+\[
+  L[y] = a_0 y^{(n)} + a_1 y^{(n-1)} + \dots + a_n y = f(x),
+\]
+cu $a_i \in \RR$ constante.
+
+Dacă avem $f(x) = 0$, atunci ecuația se numește \emph{omogenă}.
+
+Avem o metodă algebrică de a rezolva această ecuație, folosind:
+
+\begin{definition}\label{def:pol-car-ec}
+  Se numește \emph{polinomul caracteristic} atașat ecuației omogene $L[y] = 0$
+  polinomul:
+  \[
+    F(r) = a_0 r^n + a_1 r^{n-1} + \dots + a_n,
+  \]
+  iar $F(r) = 0$ se numește \emph{ecuația caracteristică} atașată ecuației diferențiale.
+\end{definition}
+
+Folosind această noțiune, putem rezolva direct ecuația, ținînd seama de următoarele
+cazuri posibile:
+
+\begin{theorem}\label{thm:ec-car-dif}
+  \begin{enumerate}[(1)]
+  \item Dacă ecuația caracteristică $F(r) = 0$ are rădăcini reale și distincte $r_i$,
+    atunci un sistem fundamental de soluții este dat de:
+    \[
+      \big\{ y_i(x) = e^{r_i x} \big\}_{i=1,\dots,n}.
+    \]
+  \item Dacă printre rădăcinile lui $F(r)$ există și rădăcini multiple, de exemplu
+    $r_1$, cu ordinul de multiplicitate $p$, atunci pentru această rădăcină avem
+    $p$ soluții liniar independente (pe lîngă celelalte):
+    \[
+      y_1(x) = e^{r_1 x}, y_2(x) = xe^{r_1 x}, \dots, y_p(x) = x^{p-1} e^{r_1 x}.
+    \]
+  \item Dacă printre rădăcinile ecuației caracteristice avem și rădăcini complexe,
+    de exemplu $r = a + ib$ și $\overline{r} = a - ib$, atunci fiecărei perechi
+    de rădăcini complexe conjugate îi corespund două soluții liniar independente
+    (pe lîngă celelalte):
+    \[
+      y_1(x) = e^{ax} \cos bx, \quad y_2(x) = e^{ax} \sin bx.
+    \]
+  \item Dacă ecuația caracteristică are rădăcini complexe ca mai sus, cu ordinul
+    de multiplicitate $p$, atunci lor le corespund $2p$ soluții liniar independente:
+    \[
+      \big\{ y_j(x) = x^{j-1} e^{ax} \cos bx \big\}_{j=1, \dots p}, \quad
+      \big\{ y_k(x) = x^{k-p-1} e^{ax} \sin bx\big\}_{k=p+1, \dots, 2p}.
+    \]
+  \end{enumerate}
+\end{theorem}
+
+De exemplu: $y^{\prime\prime} - y = 0$, cu condițiile $y(0) = 2$ și $y'(0) = 0$.
+
+\emph{Soluție:} Ecuația caracteristică este $r^2 - 1 = 0$, deci $r_{1,2} = \pm 1$.
+Sîntem în primul caz al teoremei, deci un sistem fundamental de soluții este:
+\[
+  y_1(x) = e^{-x}, \quad y_2(x) = e^x.
+\]
+Soluția generală este $y(x) = c_1 e^{-x} + c_2 e^x$.
+
+Folosind condițiile Cauchy, obținem $c_1 = c_2 = 1$, deci soluția particulară este:
+\[
+  y(x) = e^{-x} + e^x.
+\]
+
+\vspace{1cm}
+
+\begin{remark}\label{rk:neomogen}
+  Dacă ecuația inițială $L[y] = f(x)$ \emph{nu} este omogenă, putem rezolva folosind
+  \emph{metoda variației constantelor (Lagrange)}.
+\end{remark}
+
+În acest caz, metoda variației constantelor presupune următoarele etape.
+Fie ecuația neomogenă scrisă în forma:
+\[
+  \sum_{k = 0}^n a_k y^{(k)} = f(x).
+\]
+
+Pentru simplitate, vom presupune $n = 2$ și fie o soluție particulară de forma:
+\[
+  y_p(x) = c_1(x) y_1 + c_2(x) y_2.
+\]
+
+Atunci, prin metoda variației constantelor, vom determina funcțiile $c_1(x), c_2(x)$
+ca soluții ale sistemului algebric:
+\[
+  \begin{cases}
+    c'_1(x) y_1 + c'_2(x) y_2 &= 0 \\
+    c'_1(x) y'_1 + c'_2(x) y'_2 &= \dfrac{f(x)}{a_n(x)}
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+De exemplu: $y^{\prime \prime} + 3y' + 2y = \frac{1}{e^x + 1}$.
+
+\emph{Soluție:} Asociem ecuația omogenă, care are ecuația caracteristică
+$r^2 + 3r + 2 = 0$, cu rădăcinile $r_1 = -1, r_2 = -2$. Așadar, soluția generală
+a ecuației omogene este:
+\[
+  \overline{y}(x) = c_1 e^{-x} + c_2 e^{-2x}.
+\]
+
+Determinăm o soluție particulară $y_p(x)$ cu ajutorul metodei variației constantelor.
+Mai precis, căutăm:
+\[
+  y_p(x) = c_1(x) e^{-x} + c_2(x) e^{-2x}.
+\]
+
+Înlocuind în ecuația neomogenă, rezultă sistemul:
+\[
+  \begin{cases}
+    c_1'(x) e^{-x} + c_2'(x) e^{-2x} &= 0 \\
+    -c_1'(x) e^{-x} - 2c_2'(x) e^{-2x} &= \frac{1}{1 + e^x}
+  \end{cases}
+\]
+
+Rezolvînd ca pe un sistem algebric, obținem:
+\[
+  c_1'(x) = \frac{e^x}{1 + e^x}, \quad c_2'(x) = -\frac{e^{2x}}{1 + e^x},
+\]
+de unde obținem:
+\[
+  c_1(x) = \ln(1 + e^x), \quad c_2(x) = -e^x + \ln(1 + e^x).
+\]
+
+În fine, înlocuim în soluția particulară $y_p$ și apoi în cea generală,
+$y(x) = \overline{y}(x) + y_p(x)$.
+
+\vspace{1cm}
+
+Un alt exemplu: $y^{\prime\prime} - y = 4e^x$.
+
+\emph{Soluție:} Ecuația caracteristică $r^2 - 1$ are rădăcinile $r_{1,2} = \pm 1$,
+deci soluția generală a ecuației liniare omogene este $y_0(x) = c_1 e^x + c_2e^{-x}$.
+
+Căutăm acum o soluție particulară a ecuației neomogene, folosind metoda variației
+constantelor. Așadar, căutăm $y_p(x) = c_1(x) e^x + c_2(x) e^{-x}$. Din condiția
+ca $y_p$ să verifice ecuația liniară neomogenă, obținem sistemul:
+\[
+  \begin{cases}
+    c_1'(x) e^x + c_2'(x) e^{-x} = 0 \\
+    c_1'(x) e^x - c_2'(x) e^{-x} = 4e^x
+  \end{cases}
+\]
+Rezultă $c'_1(x)e^x = 2e^x$, deci $c'_1(x) = 2 \Rightarrow c_1(x) = 2x$, iar
+$c'_2(x) e^{-x} = -2e^x$, deci $c_2(x) = -e^{2x}$.
+
+În fine, soluția particulară este $y_p(x) = 2xe^x - e^x$, iar soluția generală:
+\[
+  y(x) = y_0(x) + y_p(x) = c_1e^x + c_2 e^{-x} + e^x(2x - 1).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+1. Rezolvați următoarele ecuații diferențiale liniare de ordin superior:
+\begin{enumerate}[(a)]
+\item $ y^{(3)} + 4y^{(2)} + 3y^{(1)} = 0 $;
+\item $ y^{(2)} + 4y^{(1)} + 4y = 0 $;
+\item $ y^{(3)} + y = 0 $;
+\item $ y^{(4)} + 4y^{(2)} = 0 $;
+\item $ y^{(2)} - 2y^{(1)} + y = \dfrac{1}{x} e^x $;
+\item $ y^{(2)} + y = \dfrac{1}{\cos x} $;
+\item $ y^{(3)} + y^{(1)} = \tan x $;
+\item $ y^{(3)} + 2y^{(2)} = x + 2 $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+{\color{red}
+  \begin{remark}\label{rk:tipuri}
+    Tipurile de ecuații pe care le regăsiți mai jos sînt clasificate pentru
+    că au forme generale comune. Dar nu este necesar să învățați numele
+    acestor tipuri. Concentrați-vă pe metodele de rezolvare și veți constata
+    că, indiferent de tipul căreia aparține ecuația, metoda de rezolvare
+    este intuitivă. Așadar, nu mai este neapărat cazul obligatoriu, ca pentru
+    ecuațiile de ordinul întîi, ca la tipul X de ecuație să se aplice exact
+    metoda corespunzătoare.
+  \end{remark}
+}
+
+
+\section{Ecuații rezolvabile prin cuadraturi}
+
+\indent\indent Acestea sînt ecuații care se pot rezolva prin integrări
+succesive. Astfel, forma lor generală este $ y^{(n)} = f(x) $, în varianta
+neomogenă. Soluția generală va depinde de $ n $ constante arbitrare,
+rezultate în urma integrărilor succesive.
+
+\textbf{Exemplu:}
+\[
+  y^{\prime\prime} = \arcsin x + \frac{x}{\sqrt{1 - x^2}} - \frac{\pi}{6}.
+\]
+\emph{Soluție:} Integrăm succesiv și obținem:
+\begin{align*}
+  y^{\prime} &= x \arcsin x - \dfrac{\pi}{6} x + c_1 \\
+  y &= \dfrac{x^2}{2} \arcsin x + \dfrac{1}{4}x \sqrt{1 - x^2} - %
+      \dfrac{1}{4} \arcsin x - \dfrac{\pi}{12} x^2 + c_1 x + c_2.
+\end{align*}
+
+Dacă nu se dau condiții inițiale, soluția rămîne exprimată ca mai sus,
+adică în funcție de constantele $ c_1 $ și $ c_2 $.
+
+\vspace{1cm}
+
+Cazul omogen se rezolvă și mai simplu: dacă $ y^{(n)} = 0 $, atunci
+$ y $ este un polinom de $ x $ de gradul $ n - 1 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații de forma $ f(x, y^{(n)}) = 0 $}
+
+Avem două cazuri care trebuie tratate distinct:
+\begin{enumerate}[(a)]
+\item Dacă ecuația poate fi rezolvată în raport cu $ y^{(n)} $, adică dacă
+  $ \dfrac{\partial f}{\partial y^{(n)}} \neq 0 $, atunci obținem una
+  sau mai multe ecuații ca în secțiunea anterioară;
+\item Dacă ecuația nu este rezolvabilă cu ajutorul funcțiilor elementare
+  în raport cu $ y^{(n)} $, dar cunoaștem o reprezentare parametrică
+  a curbei $ f(u, v) = 0 $, adică $ u = g(t), v = h(t) $, cu
+  $ t \in [\alpha, \beta] $, atunci soluția generală se poate da sub formă
+  parametrică:
+  \[
+    \begin{cases}
+      x &= g(t) \\
+      dy^{(n-1)} &= y^{(n)} dx = h(t) g^{\prime}(t) dt
+    \end{cases},
+  \]
+  de unde putem obține succesiv:
+  \[
+    \begin{cases}
+      y^{(n-1)}  &= h_1(t, c_1) \\
+      \dotfill \\
+      y(t) &= h_n(t, c_1, \dots, c_n).
+    \end{cases}
+  \]
+\end{enumerate}
+
+\textbf{Exemplu:}
+\[
+  x - e^{y^{\prime\prime}} + y^{\prime\prime} = 0.
+\]
+\emph{Soluție:} Putem nota $ y^{\prime\prime} = t $ și atunci $ x(t) = e^t - t $.
+Deoarece avem $ dy^{\prime} = y^{\prime\prime} dx $, rezultă:
+\[
+  dy^{\prime} = t(e^t - 1) dt \Rightarrow y^{\prime} = -\dfrac{t^2}{2} + te^t - e^t + c_1.
+\]
+Mai departe, $ dy = y^{\prime} dx $, deci:
+\[
+  dy = \Big( - \dfrac{t^2}{2} + te^t - e^t + c_1 \Big)(e^t - 1) dt.
+\]
+În fine, soluția este:
+\[
+  y(t) = e^{2t} \Big( \dfrac{t}{2} - \dfrac{3}{4} \Big) + e^t \Big( - \dfrac{t^2}{2} + %
+  1 + c_1 \Big) + \dfrac{t^3}{6} - c_1 t + c_2.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații de forma $ f(y^{(n-1)}, y^{(n)}) = 0 $}
+
+Din nou, distingem două cazuri:
+\begin{enumerate}[(a)]
+\item Dacă ecuația este rezolvabilă prin funcții elementare în raport cu $ y^{(n)} $,
+  atunci putem nota $ z = y^{(n-1)} $ și avem $ z^{\prime} = f(z) $. Ecuația devine cu
+  variabile separabile pentru $ z $ și se rezolvă corespunzător, conducînd la
+  $ z = y^{(n-1)} = f_1(x, c_1) $, care este de tipul anterior;
+\item Dacă ecuația nu este rezolvabilă prin funcții elementare în raport cu
+  $ y^{(n)} $, dar cunoaștem o reprezentare parametrică de forma:
+  \[
+    y^{(n-1)} = h(t), \quad y^{(n)} = g(t), \quad t \in [\alpha, \beta],
+  \]
+  atunci putem folosi $ dy^{(n-1)} = y^{(n)} dx $, pentru a obține soluția
+  pas cu pas, sub formă parametrică:
+  \begin{align*}
+    x &= \ds\int\frac{h^{\prime}}{g} dt + c_1 \\
+    y^{(n-1)} &= h(t) \\
+    dy^{(n-2)} &= h(t) = \dfrac{hh^{\prime}}{g} dt \\
+    y^{(n-2)} &= \ds\int \frac{hh^{\prime}}{g} dt + c_2 \\
+      &\vdots \\
+    y &= \int y^{\prime} dx + c_n.
+  \end{align*}
+
+\end{enumerate}
+
+\textbf{Exemplu:} $ y^{\prime\prime} = - \sqrt{1 - y^{^{\prime}2}} $.
+\emph{Soluție:} Facem schimbarea de funcție $ z(x) = y^{\prime} $ și ecuația devine:
+\[
+  - \dfrac{dz}{\sqrt{1 - z^2}} = dx, \quad |z| < 1.
+\]
+Soluția generală este: $ \arccos z = x + c_1 $, deci $ z = \cos(x + c_1) $.
+
+Mai departe, obținem $ y(x) = \sin(x + c_1) + c_2 $.
+
+De asemenea, trebuie să mai remarcăm și soluțiile particulare $ y = \pm x + c $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații de forma $ f(x, y^{(k)}, \dots, y^{(n)}) = 0 $}
+
+Ecuația se rezolvă cu schimbarea de funcție $ y^{(k)} = z(x) $ și rezultă
+o ecuație de ordin $ n - k $:
+\[
+  f(x, z, z^{\prime}, \dots, z^{(n-k)}) = 0,
+\]
+pe care o integrăm.
+
+\textbf{Exemplu:} $ (1 + x^2)y^{\prime\prime} = 2xy^{\prime} $.
+
+\emph{Soluție:} Cu schimbarea de funcție $ y^{\prime} = z(x) $, obținem ecuația:
+\[
+  \dfrac{z}{z^{\prime}} = \dfrac{2x}{1 + x^2},
+\]
+iar apoi, prin integrare, rezultă $ z = y^{\prime} = c_1(1 + x^2) $. În fine:
+\[
+  y(x) = c_1 x + c_1 \dfrac{x^3}{3} + c_2.
+\]
+\vspace{1cm}
+
+\textbf{Exemplu 2:} $ y \cdot y^{\prime\prime} - yy^{^{\prime}2} = 0 $.
+
+\emph{Soluție:} Notăm $ y^{\prime} = z $ și obținem:
+\[
+  y\cdot z^{\prime} - yz^2 = 0 \Rightarrow y(z^{\prime} - z^2) = 0,
+\]
+de unde rezultă $ y = 0 $ sau $ z^{\prime} - z^2 = 0 $.
+
+Din a doua variantă, deducem succesiv:
+\[
+  \dfrac{dz}{dx} = z^2 \Rightarrow \dfrac{dz}{z^2} = dx \Rightarrow %
+  -\dfrac{1}{z} = x + c_1.
+\]
+Mai departe:
+\[
+  -\dfrac{1}{y^{\prime}} = x + c_1 \Rightarrow y^{\prime} = \dfrac{-1}{x + c_1} %
+  \Rightarrow y = -\ln(x + c_1) + c_2.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații de forma $ f(y^{\prime}, y^{\prime\prime}, \dots, y^{(n)}) = 0 $}
+
+Să remarcăm că astfel de ecuații nu conțin pe $ y $. Deci putem lua pe $ y^{\prime} $
+ca variabilă independentă și pe $ y^{\prime\prime} $ ca fiind funcție de $ y^{\prime} $.
+Astfel, reducem discuția la un caz anterior.
+
+\textbf{Exemplu:} $ x^2 y^{\prime\prime} = y^{^{\prime}2} - 2xy^{\prime} + 2x^2 $.
+
+\emph{Soluție:} Facem schimbarea de funcție $ y^{\prime} = z(x) $ și obținem o
+ecuație Riccati:
+\[
+  z^{\prime} = \dfrac{z^2}{x^2} - 2 \cdot \dfrac{z}{x} + 2.
+\]
+Observăm soluția particulară $ z_p = x $ și integrăm, cu $ z = x + \dfrac{1}{u(x)} $.
+
+Obținem succesiv:
+\begin{align*}
+  z(x) &= x + \dfrac{c_1x}{x + c_1} \Rightarrow \\
+  y^{\prime}(x) &= x + \dfrac{c_1x}{x + c_1} \Rightarrow \\
+  y(x) &= \dfrac{x^2}{2} + c_1 x - c_1^2 \ln | x + c_1 | + c_2,
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații autonome (ce nu conțin pe $ x $)}
+
+În cazul acestor ecuații, putem micșora ordinul cu o unitate, notînd
+$ y^{\prime} = p $ și luăm pe $ y $ variabilă independentă.
+
+\begin{remark}\label{rk:aut-const}
+  Există posibilitatea de a pierde soluții de forma $ y = c $ prin această
+  metodă, deci trebuie verificat dacă este cazul separat.
+\end{remark}
+
+\textbf{Exemplu:} $ 1 + y^{^{\prime}2} = 2yy^{\prime} $.
+\emph{Soluție:} Putem lua $ y^{\prime} = p $ drept funcție, iar pe $ y $ drept
+variabilă independentă. Rezultă:
+\[
+  y^{\prime\prime} = \dfrac{d}{dx} \Big( \dfrac{dy}{dx} \Big) = p \dfrac{dp}{dy}.
+\]
+Atunci ecuația devine:
+\[
+  \dfrac{2p dp}{1 + p^2} = \dfrac{dy}{y} \Rightarrow %
+  y = c_1(1 + p^2).
+\]
+Acum trebuie să obținem pe $ x $ ca funcție de $ p $ și $ c_1 $.
+Deoarece $ dx = \dfrac{1}{p} dy $, iar $ dy = 2c_1 pdp $, rezultă
+$ dx = 2c_1 dp $. Deci $ x = 2c_1p + c_2 $, iar soluția generală devine
+$ x(p) = 2c_1 p + c_2 $. Din expresia lui $ y $ de mai sus, rezultă:
+\[
+  y = c_1 + \dfrac{(x - c_2)^2}{4c_1}.
+\]
+
+\vspace{1cm}
+
+\textbf{Exemplu 2:} $ y^{\prime\prime} = y^{^{\prime}2} = 2e^{-y} $.
+
+\emph{Soluție:} Notăm $ y^{\prime} = p $ și luăm ca necunoscută $ p = p(y) $.
+Rezultă:
+\[
+  y^{\prime\prime} = \dfrac{dy^{\prime}}{dx} = p^{\prime}p \Rightarrow p^{\prime}p + p^2 = 2e^{-y}.
+\]
+Dacă notăm $ p^2 = z $, obținem o ecuație liniară neomogenă:
+\[
+  z^{\prime} + 2z = 4e^{-y},
+\]
+ce are ca soluție generală $ z(y) = c_1 e^{-2y} + 4e^{-y} $.
+
+Revenim la $ y $ și avem:
+\[
+  z = p^2 = y^{^{\prime}2} \Rightarrow y^{\prime} = \pm \sqrt{c_1 e^{-2y} + 4e^{-y}},
+\]
+adică:
+\[
+  \dfrac{dy}{\pm \sqrt{c_1 e^{-2y} + 4e^{-y}}} = dx \Rightarrow %
+  x + c_2 = \pm \dfrac{1}{2} \sqrt{c_1 + 4e^y}.
+\]
+Echivalent, putem scrie soluția și în forma implicită:
+\[
+  e^y + \dfrac{c_1}{4} = (x + c_2)^2.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații Euler}
+\index{ecuații!Euler}
+O ecuație Euler are forma generală:
+\[
+  \sum_{k = 0}^n a_k x^k y^{(k)} = f(x),
+\]
+pentru varianta omogenă și $ f(x) = 0 $ pentru varianta neomogenă, cu $ a_i $
+constante reale.
+
+Ecuațiile Euler se pot transforma în ecuații cu coeficienți constanți prin notația
+(schimbarea de variabilă) $ |x| = e^t $.
+
+De remarcat faptul că, deoarece funcția necunoscută este $ y = y(x) $, pentru
+a obține $ y^{\prime} = \dfrac{dy}{dx} $ trebuie să aplicăm regula de derivare
+a funcțiilor compuse. Folosind notația de la fizică $ \dot{y} = \dfrac{dy}{dt} $,
+putem scrie:
+\[
+  \dfrac{dy}{dx} = \dfrac{dy}{dt} \cdot \dfrac{dt}{dx} = \dot{y} \cdot e^{-t}.
+\]
+Mai departe, de exemplu, pentru derivatele superioare:
+\begin{align*}
+  \dfrac{d^2 y}{dx^2} &= \dfrac{d}{dt} \Big( \dot{y} \cdot e^{-t} \Big) %
+                        \cdot \dfrac{dt}{dx} \\
+                      &= e^{-2t} (\ddot{y} - \dot{y}).
+\end{align*}
+
+\vspace{1cm}
+
+\textbf{Exemplu:} $ x^2 y^{\prime\prime} + xy^{\prime} + x = x $.
+
+\emph{Soluție:} Facem substituția $ |x| = e^t $ și, folosind calculele
+de mai sus, obținem:
+\[
+  e^{2t} \cdot e^{-2t} (\ddot{y} - \dot{y}) - e^t \cdot e^{-t} + y(t) = e^t.
+\]
+Echivalent: $ \ddot{y} - 2\dot{y} + y = e^t $.
+
+Aceasta este o ecuație liniară de ordinul al doilea, neomogenă. Asociem ecuația
+algebrică $ r^2 - 2r + 1 = (r - 1)^2 = 0 $, deci soluția generală a variantei
+omogene este:
+\[
+  y(t) = c_1 e^t + c_2 te^t.
+\]
+
+Folosind metoda variației constantelor, obținem succesiv:
+\begin{align*}
+  y(t) &= c_1 e^t + c_2 t e^t + \dfrac{t^2 e^t}{2} \Rightarrow \\
+  y(x) &= c_1 x + c_2 x \ln x + \dfrac{x \ln^2 x}{2}.
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+1. Rezolvați următoarele ecuații Euler:
+\begin{enumerate}[(a)]
+\item $ x^2 y^{(2)} - 3xy^{\prime} + 4y = 5x, \quad x > 0 $;
+\item $ x^2 y^{(2)} - xy^{\prime} + y = x + \ln x, \quad x > 0 $;
+\item $ 4(x + 1)^2 y^{(2)} + y = 0, x > -1 $;
+\item $ xy^{\prime\prime} + 3y^{\prime} = 1 $;
+\item $ x^3 y^{\prime\prime\prime} + x^2y^{\prime\prime} - 2xy^{\prime} + 2y = \dfrac{1}{x^2} $.
+\end{enumerate}
+
+
+\vspace{1cm}
+
+2. Rezolvați următoarele ecuații:
+\begin{enumerate}[(a)]
+\item $ y^{(3)} = \sin x + \cos x $;
+\item $ y^{(3)} + y^{(2)} = \sin x $;
+\item $ xy^{(2)} + (x - 2)y^{(1)} - 2y = 0 $;
+\item $ x^2 y^{(2)} = y^{\prime 2} $;
+\item $ y^{(4)} - 3y^{(3)} + 3y^{(2)} - y^{(1)} = 0 $;
+\item $ y^{(2)} - y^{(1)} - 2y = 3e^{2x} $;
+\item $ 4(x + 1)^2 y^{(2)} + y = 0 $;
+\end{enumerate}
+
+Amintim, pentru ecuații liniare și neomogene de ordinul întîi, cu forma generală:
+\[
+  y' = P(x) y + Q(x),
+\]
+avem soluțiile:
+\begin{align*}
+  y_p &= c \cdot \exp\Big( - \int_{x_0}^x P(t) dt \Big) \\
+  y_g &= \Big( c + \int Q(t) \cdot \exp \Big( \int_{x_0}^t P(s) ds \Big) dt \Big) \cdot \exp \Big(- \int_{x_0}^x P(t) dt \Big).
+\end{align*}
+
+Puteți folosi formulele de mai sus, sau, \emph{preferabil}, puteți rezolva direct,
+ca în seminarul anterior.
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Integrări succesive;
+\item Notăm $ y^{(2)} = z $, deci ecuația devine $ z^\prime + z = \sin x $, care este
+  o ecuație liniară și neomogenă, de ordinul întîi. Soluția generală este:
+  \[
+    z(x) = e^{-x}\Big( c + \dfrac{e^x}{2} (\sin x + \cos x) \Big),
+  \]
+  iar apoi $ y^\prime(x) = \ds\int z(x) dx $ și $ y(x) = \ds\int y^\prime (x) dx $ etc.
+\item Notăm $ z = y^\prime + y $, deci ecuația devine $ xz^\prime - 2z = 0 $, care
+  are soluția evidentă $ z = c_1 x^2 $, din care obtinem $ y^\prime + y = c_1 x^2 $, care
+  este o ecuație liniară și neomogenă, cu soluția generală:
+  \[
+    y = c_2 e^{-x} + c_1 x^2 - 2c_1 x + 2c_1.
+  \]
+\item Notăm $ y^\prime = z $ și obținem $ x^2 z^\prime = z^2 $. Observăm soluția particulară
+  $ z = 0 $, deci $ y = c $, iar în celelalte cazuri, avem:
+  \[
+    x^2 \dfrac{dz}{dx} = z^2 \Rightarrow \dfrac{dx}{x^2} = \dfrac{dz}{z^2}.
+  \]
+  Aceasta conduce la $ \dfrac{1}{z} = \dfrac{1}{x} + c $ și ne întoarcem
+  la $ y $:
+  \[
+    dx = dy \Big( \dfrac{1}{x} + c \Big) \Rightarrow \dfrac{xdx}{cx + 1} = dy,
+  \]
+  care, prin integrare, conduce la:
+  \[
+    y = \dfrac{x}{c} - \dfrac{1}{c^2} \ln(cx + 1) + c_1,
+  \]
+  pentru $ c \neq 0 $ și $ y^\prime = x $ dacă $ c = 0 $, adică $ y = \dfrac{x^2}{2} + c_1 $.
+\item Ecuația caracteristică este:
+  \[
+    r^4 - 3r^3 + 3r^2 - r = 0 \Rightarrow r(r^3 - 3r^2 + 3r - 1) = 0,
+  \]
+  de unde observăm soluțiile $ r = 0, r = 1 $ etc.
+\item Ecuația caracteristică este $ r^2 - r - 2 = (r + 1)(r - 2) = 0 $.
+\item Este o ecuație Euler în raport cu $ t = x + 1 $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../edtc-18-19"
+%%% End:
