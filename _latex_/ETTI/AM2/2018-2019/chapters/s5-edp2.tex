@@ -33,7 +33,7 @@ Exemple foarte des întîlnite provin din fizica matematică:
 \item \textbf{Ecuația coardei vibrante}, care are aceeași formă generală
   cu \textbf{ecuația undelor plane}: \index{EDP!ecuația coardei vibrante} \index{EDP!ecuația undelor plane}
   \[
-    u_{xx} - \dfrac{1}{1^2} u_{tt} = 0, \quad a^2 = \dfrac{\rho}{T_0},
+    u_{xx} - \dfrac{1}{a^2} u_{tt} = 0, \quad a^2 = \dfrac{\rho}{T_0},
   \]
   unde $ \rho $ este densitatea liniară a coardei, iar $ T_0 $ este tensiunea
   la care este supusă coarda în poziția de repaus.
@@ -108,9 +108,9 @@ Aducerea ecuației de pornire la forma canonică se face pe următoarele cazuri:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Cazul coeficienților constanți}
+\section{Cazul coeficienților constanți și $D = 0$}
 
-Ne ocupăm deocamdată de cazul coeficienților constanți, ecuația prezentîndu-se
+Ne ocupăm deocamdată de cazul coeficienților constanți și $ D = 0 $, ecuația prezentîndu-se
 în forma generală:
 \[
   A z_{xx} + 2B z_{xy} + C z_{yy} = 0, \quad A, B, C \in \RR.
@@ -171,6 +171,8 @@ Aducerea la forma canonică se simplifică:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
 
 1. Aduceți la forma canonică următoarele ecuații:
 \begin{enumerate}[(a)]
@@ -236,7 +238,7 @@ se calculează acum folosind formula funcțiilor implicite și derivarea funcți
                                 &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \Big) \cdot %
                                   \dfrac{\partial \tau}{\partial x} + \dfrac{\partial u}{\partial \tau} \cdot %
                                   \dfrac{\partial^2 \tau}{\partial x^2} + \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \eta} \Big) \cdot %
-                                  \dfrac{\partial \eta}{\partial x} + \dfrac{\partial u}{\partial \eta} \cdot 5
+                                  \dfrac{\partial \eta}{\partial x} + \dfrac{\partial u}{\partial \eta} \cdot
                                   \dfrac{\partial^2 \eta}{\partial x^2} \\
                                 &= \Big[ \dfrac{\partial}{\partial \tau} \Big(\dfrac{\partial u}{\partial \tau}\Big) \cdot %
                                   \dfrac{\partial \tau}{\partial x} + \dfrac{\partial}{\partial \eta} \Big(\dfrac{\partial u}{\partial \tau}\Big) \cdot %
@@ -289,7 +291,7 @@ Rezultă că, în final, forma canonică este:
 care satisface condițiile:
 \[
   \begin{cases}
-    u(x, y) &= 3x^2 \\
+    u(x, 0) &= 3x^2 \\
     \dfrac{\partial u}{\partial y}(x, 0) &= \cos x
   \end{cases}.
 \]
@@ -304,7 +306,7 @@ care satisface condițiile:
 cu condițiile:
 \[
   \begin{cases}
-    u(x, y) &= x^3 \\
+    u(x, 0) &= x^3 \\
     \dfrac{\partial u}{\partial y}(x, 0) &= 2x^2
   \end{cases}.
 \]
