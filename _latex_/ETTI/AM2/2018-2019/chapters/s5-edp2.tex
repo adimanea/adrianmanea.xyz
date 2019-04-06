@@ -54,7 +54,7 @@ Exemple foarte des întîlnite provin din fizica matematică:
   care este o ecuație de tip eliptic.
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Forma canonică}
 
@@ -106,7 +106,7 @@ Aducerea ecuației de pornire la forma canonică se face pe următoarele cazuri:
   \]
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Cazul coeficienților constanți și $D = 0$}
 
@@ -170,7 +170,7 @@ Aducerea la forma canonică se simplifică:
   care nu se poate rezolva ușor pe cazul general.
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Exerciții}
 
@@ -225,45 +225,45 @@ funcția căutată $ u(x, y) $ devine $ u(\tau, \eta) $, astfel că toate deriva
 se calculează acum folosind formula funcțiilor implicite și derivarea funcțiilor compuse. Obținem, succesiv:
 \begin{align*}
   \dfrac{\partial u}{\partial x} &= \dfrac{\partial u}{\partial \tau} \cdot \dfrac{\partial \tau}{\partial x} + %
-                                  \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial x} \\
-                                &=- 3\dfrac{\partial u}{\partial \tau} + \dfrac{\partial u}{\partial \eta} \\
+                                   \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial x} \\
+                                 &=- 3\dfrac{\partial u}{\partial \tau} + \dfrac{\partial u}{\partial \eta} \\
   \dfrac{\partial u}{\partial y} &= \dfrac{\partial u}{\partial \tau} \cdot \dfrac{\partial \tau}{\partial y} + %
-                                  \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial y} \\
-                                &=\dfrac{\partial u}{\partial \tau} + \dfrac{\partial u}{\partial \eta} \\
+                                   \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial y} \\
+                                 &=\dfrac{\partial u}{\partial \tau} + \dfrac{\partial u}{\partial \eta} \\
   \dfrac{\partial^2 u}{\partial x^2} &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial x} \Big)  \\
-                                &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \cdot %
-                                  \dfrac{\partial \tau}{\partial x} + \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial x} \Big) \\
-                                &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \cdot \dfrac{\partial \tau}{\partial x}\Big) + %
-                                  \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial x} \Big) \\
-                                &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \Big) \cdot %
-                                  \dfrac{\partial \tau}{\partial x} + \dfrac{\partial u}{\partial \tau} \cdot %
-                                  \dfrac{\partial^2 \tau}{\partial x^2} + \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \eta} \Big) \cdot %
-                                  \dfrac{\partial \eta}{\partial x} + \dfrac{\partial u}{\partial \eta} \cdot
-                                  \dfrac{\partial^2 \eta}{\partial x^2} \\
-                                &= \Big[ \dfrac{\partial}{\partial \tau} \Big(\dfrac{\partial u}{\partial \tau}\Big) \cdot %
-                                  \dfrac{\partial \tau}{\partial x} + \dfrac{\partial}{\partial \eta} \Big(\dfrac{\partial u}{\partial \tau}\Big) \cdot %
-                                  \dfrac{\partial \eta}{\partial x} \Big] \cdot \dfrac{\partial \tau}{\partial x} + \\
-                                &+ \Big[ \dfrac{\partial}{\partial \eta} \Big(\dfrac{\partial u}{\partial \eta}\Big) \cdot %
-                                  \dfrac{\partial \eta}{\partial x} + \dfrac{\partial}{\partial \tau} \Big(\dfrac{\partial u}{\partial \eta}\Big) \cdot %
-                                  \dfrac{\partial \eta}{\partial x} \Big] \cdot \dfrac{\partial \eta}{\partial x} + \\
-                                &+ \dfrac{\partial^2 \tau}{\partial x^2} \cdot \dfrac{\partial u}{\partial \tau} + %
-                                  \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial^2 \eta}{\partial x^2} \\
-                                &= \dfrac{\partial^2 u}{\partial \tau^2} \cdot \Big( \dfrac{\partial \tau}{\partial x} \Big)^2 + %
-                                  \dfrac{\partial u}{\partial \eta \partial \tau} \cdot \dfrac{\partial \eta}{\partial x} \cdot \dfrac{\partial \tau}{\partial x} + %
-                                  \dfrac{\partial^2 u}{\partial^2 \eta} \cdot \Big( \dfrac{\partial \eta}{\partial x} \Big)^2 + \\
-                                &+ \dfrac{\partial^2 u}{\partial \tau\partial \eta} \cdot \dfrac{\partial \tau}{\partial x} \cdot \dfrac{\partial \eta}{\partial x} + %
-                                  \dfrac{\partial^2 \tau}{\partial x^2} \cdot \dfrac{\partial u}{\partial \tau} + \dfrac{\partial u}{\partial \eta} \cdot %
-                                  \dfrac{\partial^2 \eta}{\partial x^2} \\
-                                &= 9 \dfrac{\partial^2 u}{\partial \tau^2} - %
-                                      6 \dfrac{\partial^2 u}{\partial \tau \partial \eta} + %
-                                      \dfrac{\partial^2 u}{\partial \eta^2} \\
+                                 &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \cdot %
+                                   \dfrac{\partial \tau}{\partial x} + \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial x} \Big) \\
+                                 &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \cdot \dfrac{\partial \tau}{\partial x}\Big) + %
+                                   \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial \eta}{\partial x} \Big) \\
+                                 &= \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \tau} \Big) \cdot %
+                                   \dfrac{\partial \tau}{\partial x} + \dfrac{\partial u}{\partial \tau} \cdot %
+                                   \dfrac{\partial^2 \tau}{\partial x^2} + \dfrac{\partial}{\partial x} \Big( \dfrac{\partial u}{\partial \eta} \Big) \cdot %
+                                   \dfrac{\partial \eta}{\partial x} + \dfrac{\partial u}{\partial \eta} \cdot
+                                   \dfrac{\partial^2 \eta}{\partial x^2} \\
+                                 &= \Big[ \dfrac{\partial}{\partial \tau} \Big(\dfrac{\partial u}{\partial \tau}\Big) \cdot %
+                                   \dfrac{\partial \tau}{\partial x} + \dfrac{\partial}{\partial \eta} \Big(\dfrac{\partial u}{\partial \tau}\Big) \cdot %
+                                   \dfrac{\partial \eta}{\partial x} \Big] \cdot \dfrac{\partial \tau}{\partial x} + \\
+                                 &+ \Big[ \dfrac{\partial}{\partial \eta} \Big(\dfrac{\partial u}{\partial \eta}\Big) \cdot %
+                                   \dfrac{\partial \eta}{\partial x} + \dfrac{\partial}{\partial \tau} \Big(\dfrac{\partial u}{\partial \eta}\Big) \cdot %
+                                   \dfrac{\partial \eta}{\partial x} \Big] \cdot \dfrac{\partial \eta}{\partial x} + \\
+                                 &+ \dfrac{\partial^2 \tau}{\partial x^2} \cdot \dfrac{\partial u}{\partial \tau} + %
+                                   \dfrac{\partial u}{\partial \eta} \cdot \dfrac{\partial^2 \eta}{\partial x^2} \\
+                                 &= \dfrac{\partial^2 u}{\partial \tau^2} \cdot \Big( \dfrac{\partial \tau}{\partial x} \Big)^2 + %
+                                   \dfrac{\partial u}{\partial \eta \partial \tau} \cdot \dfrac{\partial \eta}{\partial x} \cdot \dfrac{\partial \tau}{\partial x} + %
+                                   \dfrac{\partial^2 u}{\partial^2 \eta} \cdot \Big( \dfrac{\partial \eta}{\partial x} \Big)^2 + \\
+                                 &+ \dfrac{\partial^2 u}{\partial \tau\partial \eta} \cdot \dfrac{\partial \tau}{\partial x} \cdot \dfrac{\partial \eta}{\partial x} + %
+                                   \dfrac{\partial^2 \tau}{\partial x^2} \cdot \dfrac{\partial u}{\partial \tau} + \dfrac{\partial u}{\partial \eta} \cdot %
+                                   \dfrac{\partial^2 \eta}{\partial x^2} \\
+                                 &= 9 \dfrac{\partial^2 u}{\partial \tau^2} - %
+                                   6 \dfrac{\partial^2 u}{\partial \tau \partial \eta} + %
+                                   \dfrac{\partial^2 u}{\partial \eta^2} \\
   \dfrac{\partial^2 u}{\partial x \partial y} &= \dfrac{\partial}{\partial x}\Big( \dfrac{\partial u}{\partial y} \Big)\\
-                                &= -3\dfrac{\partial^2 u}{\partial \tau^2} - %
-                                               2 \dfrac{\partial ^2 u}{\partial \tau \partial \eta} + %
-                                               \dfrac{\partial^2 u}{\partial \eta^2} \\
+                                 &= -3\dfrac{\partial^2 u}{\partial \tau^2} - %
+                                   2 \dfrac{\partial ^2 u}{\partial \tau \partial \eta} + %
+                                   \dfrac{\partial^2 u}{\partial \eta^2} \\
   \dfrac{\partial^2 u}{\partial y^2} &= \dfrac{\partial^2 u}{\partial \tau^2} + %
-                                      2 \dfrac{\partial^2 u}{\partial \tau \partial \eta} + %
-                                      \dfrac{\partial^2 u}{\partial \eta^2}.  
+                                       2 \dfrac{\partial^2 u}{\partial \tau \partial \eta} + %
+                                       \dfrac{\partial^2 u}{\partial \eta^2}.  
 \end{align*}
 
 Toate derivatele parțiale în raport cu $ x $ și $ y $ se calculează, deci, ținînd cont de legătura
@@ -311,22 +311,31 @@ cu condițiile:
   \end{cases}.
 \]
 
+\vspace{1cm}
 
+\textbf{Exerciții suplimentare (A.\ Negrescu)}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Să se afle soluția fiecăreia dintre următoarele ecuații diferențiale cu
+derivate parțiale de ordinul al doilea:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    u_{tt} &= 25 u_{xx} \\
+    u(0, t) &= u(1, t) = 0 \\
+    u(x, 0) &= x(1 - x) \\
+    u_t(x, 0) &= 0 
+  \end{cases}, \quad 0 < x < 1, t > 0 $
+\item $ \begin{cases}
+    u_{tt} &= 16 u_{xx} \\
+    u(0, t) &= u(1, t) = 0 \\
+    u(x, 0) &= \sin(5 \pi x) + 2 \sin(7 \pi x) \\
+    u_t(x, 0) &= 0 
+  \end{cases}, \quad 0 < x < 1, t > 0 $
+\item $ \begin{cases}
+    u_t &= 4 u_{xx} \\
+    u(0, t) &= u(\pi, t) = 0 \\
+    u(x, 0) &= \sin x
+  \end{cases}, \quad 0 < x < \pi, t > 0 $.
+\end{enumerate}
 
 
 
