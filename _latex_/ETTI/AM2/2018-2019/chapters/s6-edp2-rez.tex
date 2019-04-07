@@ -153,7 +153,7 @@ Presupunem că avem condiții inițiale, astfel că problema devine o problemă 
 \[
   u(x, 0) = \varphi(x), \quad \dfrac{\partial u}{\partial t}(x, 0) = \psi(x), \forall x \in \RR,
 \]
-cu $ \varphi $ și $ \psi $ funcții date.
+cu $ \varphi $ și $ \psi $ funcții date.
 
 Cum ecuația este deja în forma canonică, asociem ecuația caracteristică:
 \[
@@ -653,6 +653,49 @@ Rezultă:
     \end{cases}.
   \]
 \end{enumerate}
+
+\vspace{1cm}
+
+7. Să se determine soluția problemei Cauchy:
+\[
+  u_{xx} - \dfrac{1}{4} u_{tt} = 0, \quad x \in \RR, t \geq 0,
+\]
+cu condițiile inițiale:
+\[
+  u(x, 0) = e^x, \quad u_t(x, 0) = 4x.
+\]
+
+\emph{Indicație:} Metoda 1: Putem folosi direct formula lui D'Alembert. Avem
+$ a = 2, f(x) = e^x, g(x) = 4x $, deci soluția se obține direct:
+\[
+  u(x, t) = \dfrac{1}{2} \Big( e^{x - 2t} + e^{x + 2t} \Big) + %
+  \dfrac{1}{4} \int_{x - 2t}^{x + 2t} 4 \alpha d\alpha.
+\]
+
+Metoda 2: Alternativ, putem folosi rezolvarea directă. Scriem ecuația
+atașată pentru $ t = t(x) $, care ne conduce la substituțiile:
+\[
+  \tau = x - 2t, \quad \eta = x + 2t.
+\]
+Forma canonică este $ u_{\tau\eta} = 0 $, a cărei soluție generală
+este:
+\[
+  u(\tau, \eta) = f(\tau) + g(\eta).
+\]
+
+Folosim acum condițiile inițiale și determinăm $ f $ și $ g $, ca funcții
+de $ x $ și $ t $.
+
+\vspace{1cm}
+
+8. Rezolvați problema Cauchy:
+\[
+  u_{xx} - \dfrac{1}{a^2} u_{tt} = 0, \quad x \in \RR, t \geq 0,
+\]
+cu condițiile inițiale:
+\[
+  u(x, 0) = \cos x, \quad u_t(x, 0) = 1.
+\]
 
 
 %%% Local Variables:
