@@ -1,5 +1,0 @@
-PWD /home/t3rtius/Documents/teaching/0ETTI/AM2/2018-2019/chapters
-INPUT /usr/share/texmf-dist/web2c/texmf.cnf
-INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT s3-int-prime.tex
-OUTPUT s3-int-prime.log
