@@ -1,0 +1,98 @@
+\chapter{Sisteme diferențiale}
+
+\section{Metoda eliminării pentru sisteme diferențiale liniare}
+
+Putem reduce sistemele diferențiale de ordinul I la ecuații de ordin superior.
+
+De exemplu, să pornim cu sistemul:
+\[
+  \begin{cases}
+    x' + 5x + y &= 7e^t - 27 \\
+    y' - 2x + 3y &= -3e^t + 12
+  \end{cases}
+\]
+
+\emph{Soluție:} Din prima ecuație, scoatem $y$ și derivăm:
+\[
+  y = 7e^t - 27 - 5x - x' \Rightarrow y' = 7e^t - 5 - x^{\prime\prime}.
+\]
+Înlocuim în a doua ecuație și obținem o ecuație liniară de ordin superior:
+\[
+  x^{\prime\prime} + 8x' + 17x = 31e^t - 93.
+\]
+Ecuația caracteristică este $r^2 + 8r + 17 = 0$, cu rădăcinile $r_{1,2} = -4 \pm i$.
+Atunci soluția generală a ecuației omogene este:
+\[
+  \overline{x}(t) = e^{-4t}(c_1 \cos t + c_2 \sin t).
+\]
+Mai departe, căutăm o soluție particulară a ecuației neomogene folosind metoda
+variației constantelor, a lui Lagrange:
+\[
+  x_p(t) = e^{-4t}(c_1(t) \cos t + c_2(t) \sin t).
+\]
+Determinăm funcțiile $c_1(t), c_2(t)$ din sistemul:
+\[
+  \begin{cases}
+    c'_1(t) \cos t e^{-4t} + c_2'(t) \sin t e^{-4t} &= 0 \\
+    c'_1(t) (-\sin t e^{-4t} - 4\cos t e^{-4t}) + %
+    c'_2(t) (\cos t e^{-4t} - 4\sin t e^{-4t}) &= 31e^t - 93.
+  \end{cases}
+\]
+Rezultă:
+\begin{align*}
+  c'_1(t) &= -31 \sin t e^{5t} + 93 \sin t e^{4t} \\
+  \Rightarrow c_1(t) &= -\frac{31}{26} e^{5t}(5 \sin t - \cos t) + %
+                       \frac{93}{17} e^{4t}(4 \sin t - \cos t) \\
+  c'_2(t) &= 31 \cos t e^{5t} - 93\cos t e^{4t} \\
+  \Rightarrow c_2(t) &= \frac{31}{26} e^{5t}(5 \sin t + \cos t) - %
+                       \frac{93}{17} e^{4t}(4 \sin t + \cos t).
+\end{align*}
+În fine, obținem:
+\[
+  x(t) = e^{-4t}(c_1 \cos t + c_2 \sin t) + \frac{31}{26}e^t - \frac{93}{17},
+\]
+iar mai departe:
+\[
+  y(t) = e^{-4t}[(c_1 - c_2) \sin t - (c_1(t) - c_2) \cos t) - \frac{2}{13} e^t + \frac{6}{17}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+Rezolvați următoarele sisteme diferențiale, folosind metoda eliminării:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    y' &= 2y + z \\
+    z' &= y + 2z
+  \end{cases}, \quad y = y(x), z = z(x)
+  $;
+\item $ \begin{cases}
+    y' &= -3y - 4z \\
+    z' &= y + 2z
+  \end{cases}, \quad y = y(x), z = z(x)
+  $;
+\item $ \begin{cases}
+    x' &= x + 3y \\
+    y' &= -x + 5y - 2e^t
+  \end{cases}, \quad x = x(t), y = y(t) $,
+  cu condițiile inițiale $ x(0) = 3, y(0) = 1 $;
+\item \item $ \begin{cases}
+    y^\prime &= -2z + 1 \\
+    x^2 z^\prime &= -2y + x^2 \ln x
+  \end{cases} $, cu $ y = y(x), z = z(x) $.
+\end{enumerate}
+
+\emph{Indicație:} (d) Derivăm prima ecuație din nou și obținem $ z^\prime = - y^{\prime\prime} $. Înlocuim în
+a doua ecuație și rezultă o ecuație Euler pentru $ y $, pe care o rezolvăm și revenim și calculăm
+$ z(x) $.
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../edtc-18-19"
+%%% End:
