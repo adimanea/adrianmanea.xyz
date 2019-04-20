@@ -1,0 +1,277 @@
+\chapter{Funcții complexe}
+
+\indent\indent Începem acum studiul analizei complexe, cu cîteva noțiuni elementare despre
+funcții definite pe mulțimea numerelor complexe.
+
+O funcție complexă este o funcție de forma $ f : A \to \CC $, cu $ A \seq \CC $.
+Așa cum putem separa părțile unui număr complex, în partea reală și partea imaginară,
+putem separa și părțile unei funcții complexe.
+
+În general, fie $ z = a + bi $ un număr complex. Atunci, dacă $ f $ este o funcție
+complexă, calculînd $ f(z) $ obținem o parte reală și o parte imaginară, deci
+putem scrie $ f = P + iQ $, cu $ P = \mathrm{Re}f $ și $ Q = \mathrm{Im} f $.
+Astfel, punem în evidență două funcții \emph{reale} $ P, Q : \RR^2 \to \RR $,
+iar egalitatea $ w = f(z) $ devine echivalentă cu două egalități de forma
+$ \mathrm{Re}w = P $ și $ \dr{Im}w = Q $.
+
+Similar cu cazul real, se definesc noțiunile de \emph{limită, continuitate
+  și derivabilitate}. O funcție complexă derivabilă pe tot domeniul de definiție
+se mai numește \emph{olomorfă}. Avem, de asemenea, și noțiunea de olomorfie
+punctuală, care este echivalentă cu derivabilitatea punctuală.
+\index{funcție complexă!olomorfă}
+
+Următorul rezultat este esențial:
+\begin{theorem}\label{thm:cr}
+  \index{teorema!Cauchy-Riemann}
+  Fie $ A \seq \CC $ o mulțime deschisă.
+
+  Funcția $ f : A \to \CC, f = P + iQ $ este olomorfă în $ z_0 \in A $ dacă și
+  numai dacă funcțiile $ P, Q \RR^2 \to \RR $ sînt diferențiabile în
+  $ z_0 = (x_0, y_0) $, iar derivatele lor parțiale în acest punct verifică
+  \textbf{condițiile Cauchy-Riemann}, adică:
+  \[
+    P_x = Q_y, \quad Q_x = -P_y.
+  \]
+\end{theorem}
+
+Acest rezultat ne va fi util pentru a demonstra olomorfia unei funcții sau,
+invers, a găsi funcția știind că ea este olomorfă. De asemenea, mai avem
+nevoie și de:
+\begin{corollary}\label{cor:olo-arm}
+  Dacă funcția complexă $ f = P + iQ $ este olomorfă, atunci $ P $ și $ Q $
+  sînt armonice, adică $ P_{xx} + P_{yy} = Q_{xx} + Q_{yy} = 0 $.
+\end{corollary}
+
+Atenție, însă, la formularea corolarului. Rezultatul reciproc nu este,
+în general, adevărat. O variantă pe care o putem folosi, însă, este negația
+acestui rezultat:
+
+\begin{corollary}\label{cor:olo-arm-neg}
+  Dacă funcțiile $ P $ și $ Q $ nu sînt armonice, atunci funcția $ f = P + iQ $ nu
+  poate fi olomorfă.
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Funcții particulare}
+
+\indent\indent În continuare, studiem cîteva funcții particulare pe care le
+cunoaștem din cazul real, să vedem cum se modifică dacă domeniul de definiție
+devine o mulțime complexă.
+
+\begin{definition}\label{def:exp}
+  \index{funcție complexă!exponențială}
+  Se numește \emph{exponențiala complexă} funcția:
+  \[
+    \exp : \CC \to \CC, \quad \exp z = e^z = \sum_{n \geq 0} \dfrac{z^n}{n!}.
+  \]
+\end{definition}
+
+Se pot demonstra imediat proprietățile:
+\begin{itemize}
+\item $ \exp(0) = 1 $;
+\item $ \exp(z_1 + z_2) = \exp(z_1) \cdot \exp(z_2), \forall z_1, z_2 \in \CC $;
+\item $ \exp(iy) = \cos y + i \sin y, \forall y \in \RR $ (Euler);
+\item Funcția exponențială este olomorfă și periodică, de perioadă $ T = 2\pi $.
+\end{itemize}
+
+Pentru funcția logaritmică, pornim de la ecuația $ \exp w = z $, cu $ w = u + iv \in \CC $.
+Putem scrie $ z = re^{i\theta} $, în forma polară și, folosind periodicitatea exponențialei,
+ecuația de mai sus se rezolvă cu soluția:
+\[
+  u = \ln |z|, \quad v = \dr{Arg}z + 2 k \pi, k \in \ZZ.
+\]
+
+Obținem:
+
+\begin{definition}\label{def:log}
+  \index{funcție complexă!logaritm}
+  Se numește \emph{logaritmul complex} al numărului $ z \in \CC^\ast $ mulțimea:
+  \[
+    \dr{Ln}z = \{ \ln|z| + i(\dr{Arg}z + 2 k \pi) \mid k \in \ZZ \}.
+  \]
+
+  Această funcție este \emph{multiformă}, adică are o infinitate de valori pentru
+  orice argument, iar pentru $ k = 0 $, se obține \emph{valoarea principală} a
+  logaritmului, care este cea pe care o vom folosi, anume:
+  \[
+    \ln z = \ln |z| + i \dr{Arg} z.
+  \]
+\end{definition}
+
+Funcția putere și funcția radical se pot defini acum:
+\begin{definition}\label{def:putere-radical-c}
+  \index{funcție complexă!putere}
+  \index{funcție complexă!radical}
+  Funcția putere de exponent complex:
+  \[
+    z^m = \exp(m \mathrm{Ln}z) = \big\{ \exp(m(\ln|z| + i(\mathrm{Arg}z + 2k\pi))) %
+    \mid k \in \ZZ \big\}, m \in \CC.
+  \]
+
+  Funcția radical, de argument complex:
+  \begin{align*}
+    \sqrt[n]{z} &= z^{\frac{1}{n}} = \exp\big( \frac{1}{n}\mathrm{Ln}z \big) \\
+                &= \big\{ \exp\big( \frac{1}{n}(\ln|z| + i(\mathrm{Arg}z + 2k\pi)) \big) \mid %
+                  k \in \ZZ \big\} \\
+                &= \Big\{ \exp\Big(\frac{1}{n} \ln|z|\Big) \cdot %
+                  \exp\Big(i \frac{\theta + 2 k\pi}{n} \Big) \mid k \in \ZZ \} \\
+                &= \Big\{ \sqrt[n]{r} \cdot \exp\Big( i \frac{\theta + 2 k\pi}{n}\Big) %
+                  \mid k \in \NN \Big\}
+  \end{align*}
+\end{definition}
+
+Din definiția funcției exponențiale, putem obține și funcțiile trigonometrice
+complexe:
+\begin{definition}\label{def:trig-c}
+  \index{funcție complexă!trigonometrică}
+  Pentru orice $ z \in \CC $, definim:
+  \begin{align*}
+    \cos z &= \frac{e^{iz} + e^{-iz}}{2} \\
+    \sin z &= \frac{e^{iz} - e^{-iz}}{2i} \\
+    \tan z &= -i \frac{e^{iz} - e^{-iz}}{e^{iz} + e^{-iz}} \\
+    \cot z &= i \frac{e^{iz} + e^{-iz}}{e^{iz} - e^{-iz}}
+  \end{align*}
+\end{definition}
+
+\begin{remark}\label{rk:trig-unif}
+  Funcțiile trigonometrice complexe sînt \emph{uniforme} (adică nu sînt multiforme),
+  iar toate formulele din cazul real rămîn adevărate.
+\end{remark}
+
+Avem, de asemenea, și funcții trigonometrice hiperbolice:
+
+\begin{definition}\label{def:trig-hip-c}
+  \index{funcție complexă!trigonometrică hiperbolică}
+  \begin{align*}
+    \sinh z &= \frac{e^z - e^{-z}}{2} \\
+    \cosh z &= \frac{e^z + e^{-z}}{2} \\
+    \tanh z &= \frac{\sinh z}{\cosh z}.
+  \end{align*}
+\end{definition}
+
+Remarcăm că au loc legăturile:
+\[
+  \sinh z = -i\sin(iz), \quad \cosh z = \cos(iz).
+\]
+
+Rezolvarea unor ecuații trigonometrice ne conduce la introducerea
+funcțiilor trigonometrice inverse:
+\index{funcție complexă!trigonometrică inversă}
+\[
+  z = \sin w \Rightarrow z = \frac{e^{iw} - e^{-iw}}{2i} \Leftrightarrow %
+  e^{2iw} - 2ize^{iw} - 1 = 0,
+\]
+pe care o rezolvăm ca pe o ecuația de gradul al doilea și obținem:
+\[
+  w = \mathrm{Arcsin}z = -i\mathrm{Ln}(iz \pm \sqrt{1 - z^2}).
+\]
+
+Similar, obținem și:
+\begin{align*}
+  \mathrm{Arccos}z &= i\mathrm{Ln}(z \pm \sqrt{z^2 - 1}) \\
+  \mathrm{Arctan}z &= -\frac{i}{2}\mathrm{Ln}\frac{i - z}{i + z}.
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Să se determine funcția olomorfă $ f = P + iQ $ pe $ \CC $, dacă
+$ Q(x, y) = \varphi(x^2 - y^2), \varphi \in \kal{C}^2 $.
+
+\emph{Soluție:} Fie $ \alpha = x^2 - y^2 $. Atunci:
+\begin{align*}
+  \frac{\partial Q}{\partial x} &= 2x\varphi'(\alpha) \\
+  \frac{\partial Q}{\partial y} &= -2y\varphi'(\alpha) \\
+  \Rightarrow \frac{\partial^2 Q}{\partial x^2} &= 2\varphi'(\alpha) + %
+                                                  4x^2 \varphi^{\prime\prime}(\alpha) \\
+  \frac{\partial^2 Q}{\partial y^2} &= -2\varphi'(\alpha) + 4y^2\varphi^{\prime\prime}(\alpha).
+\end{align*}
+
+Deoarece $ Q $ trebuie să fie armonică, avem $ \Delta Q = 0, \forall x, y $, de unde:
+\[
+  \varphi^{\prime\prime}(\alpha) = 0 \Rightarrow \varphi(\alpha) = c\alpha + c_1.
+\]
+
+Din condițiile Cauchy-Riemann pentru $ P $ și $ Q $, obținem acum:
+\[
+  \begin{cases}
+    P_x &= Q_y = -2cy \\
+    P_y &= -Q_x = -2cx.
+  \end{cases}
+\]
+
+Integrăm a doua ecuație și înlocuim în prima, pentru a obține:
+\[
+  P(x, y) = -2cxy + k.
+\]
+
+În fine:
+\[
+  f(z) = -2cxy + k + i(c(x^2 - y^2) + c_1) \Rightarrow f(z) = ciz^2 + d, c, d \in \RR.
+\]
+
+\vspace{1cm}
+
+2. Fie $ P(x, y) = e^{2x} \cos 2y + y^2 - x^2 $. Să se determine funcția
+olomorfă $ f = P + iQ $ pe $ \CC $ astfel încît $ f(0) = 1 $.
+
+\emph{Soluție:} Verificăm că $ P $ este armonică. Verificăm condițiile
+Cauchy-Riemann:
+\begin{align*}
+  \frac{\partial P}{\partial x} = \frac{\partial Q}{\partial y} &= 2e^{2x} \cos 2y - 2x \\
+  -\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} &= 2e^{2x} \sin 2y - 2y.
+\end{align*}
+
+Integrăm a doua ecuație în raport cu $ x $, înlocuim în prima și obținem:
+\begin{align*}
+  f(z) &= e^{2x} \cos 2y + y^2 - x^2 + i(e^{2x}\sin 2y - 2xy + k) \\
+       &= e^{2x}(\cos 2y + i\sin 2y) - (x + iy)^2 + ki \\
+  \Rightarrow f(z) &= e^{2z} - z^2 + ki.
+\end{align*}
+
+Folosind condiția din enunț, găsim $ k = 0 $.
+
+\vspace{1cm}
+
+3. Determinați soluțiile $ w \in \CC $ ale ecuației $ e^w = -2i $.
+
+\vspace{1cm}
+
+4. Rezolvați ecuația $ z^3 + 2 - 2i = 0 $.
+
+\vspace{1cm}
+
+5. Calculați:
+\begin{enumerate}[(a)]
+\item $ \sin(1 + i) $;
+\item $ \sinh(1 - i) $;
+\item $ \tan\big( \frac{\pi}{4} - i\ln 3 \big) $;
+\item $ \tanh \big(\ln 2 + \frac{\pi i}{4}\big) $;
+\item $ \mathrm{Arccos}(i \sqrt{3}) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Rezolvați ecuația $ \sin z = 2, z \in \CC $.
+
+\emph{Observație:} Ecuația nu are soluții pentru numere reale, desigur,
+dar pentru numere complexe, funcția sinus nu mai are imaginea $ [-1, 1] $.
+O discuție ceva mai tehnică, privitoare și la implicațiile geometrice ale unui
+sinus supraunitar se poate găsi \href{https://math.stackexchange.com/questions/1091160/sine-of-a-complex-number}{aici}.
+
+\vspace{1cm}
+
+7. Să se determine funcția olomorfă $ f(z) = u(x, y) + iv(x, y) $ dacă:
+\begin{enumerate}[(a)]
+\item $ u(x, y) = x^2 - y^2 - 2y $;
+\item $ u(x, y) = x^4 - 6x^2 y^2 + y^4 $;
+\item $ u(x, y) = (x \cos y - y\sin y)e^x $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-18-19"
+%%% End:
