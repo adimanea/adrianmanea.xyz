@@ -28,7 +28,7 @@ if( is_dir( $sDirectory ) )
         $aFiles[] = $sDirectory . '/' . $sFile;
     }
 }
-srand(date('z') + 1);
+srand((date('z') + 1) * (date('z') % 10));
 // srand(mktime(0, 0, 0));
 $sRandom = array_rand( $aFiles );
 require_once( $aFiles[ $sRandom ] );
