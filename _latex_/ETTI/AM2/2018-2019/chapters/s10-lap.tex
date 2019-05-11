@@ -1,0 +1,362 @@
+\chapter{Transformata Laplace}
+
+
+\section{Definiții și proprietăți}
+
+Transformata Laplace este o transformare integrală, care se poate aplica unor
+funcții speciale, numite \emph{funcții original}.
+
+\begin{definition}\label{def:orig}\index{funcție!original}
+  O funcție $ f : \RR \to \CC $ se numește \emph{original} dacă:
+  \begin{enumerate}[(a)]
+  \item $ f(t) = 0 $ pentru orice $ t < 0 $;
+  \item $ f $ este continuă (eventual pe porțiuni) pe intervalul $ [0, \infty) $;
+  \item Este mărginită de o exponențială, adică există $ M > 0 $ și $ s_0 \geq 0 $
+    astfel încît:
+    \[
+      |f(t)| \leq Me^{s_0 t}, \quad \forall t \geq 0.
+    \]
+
+    Vom nota cu $ \kal{O} $ mulțimea funcțiilor original.
+  \end{enumerate}
+\end{definition}
+
+Pornind cu o funcție original, definiția transformatei Laplace este:
+\begin{definition}\label{def:lapl}\index{transformata!Laplace}
+  Păstrînd contextul și notațiile de mai sus, fie $ f \in \kal{O} $ și
+  mulțimea:
+  \[
+    S(s_0) = \{ s \in \CC \mid \dr{Re}(s) > s_0 \}.
+  \]
+
+  Funcția:
+  \[
+    F : S(s_0) \to \CC, \quad F(s) = \int_0^\infty f(t) e^{-st} dt
+  \]
+  se numește \emph{transformata Laplace} a lui $ f $ sau \emph{imaginea Laplace}
+  a originalului $ f $.
+
+  Vom mai folosi notația $ F = \kal{L} f $ sau, explicit, $ \kal{L} f(t) = F(s). $
+\end{definition}
+
+Proprietățile esențiale ale transformatei Laplace sînt date mai jos. Fiecare dintre ele
+va fi folosită pentru a calcula o transformată Laplace pentru o funcție care nu se
+regăsește direct într-un tabel de valori.
+
+\begin{itemize}
+\item \textbf{Liniaritate:} $ \kal{L}(\alpha f + \beta g) = \alpha \kal{L} f + \beta \kal{L} g $,
+  pentru orice $ \alpha, \beta \in \CC $, iar $ f, g $ funcții original;
+\item \textbf{Teorema asemănării:}
+  \[
+    \kal{L} f(\alpha t) = \dfrac{1}{\alpha} F \Big( \dfrac{s}{\alpha} \Big);
+  \]
+\item \textbf{Teorema deplasării:}
+  \[
+    \kal{L} \big( f(t) e^{s_0t} \big) = F(s - s_0);
+  \]
+\item \textbf{Teorema întîrzierii:} Definim \emph{întîrziata cu $ \tau $ } a funcției
+  $ f \in \kal{O} $ prin:
+  \[
+    f_\tau(t) =
+    \begin{cases}
+      0, & t < \tau \\
+      f(t - \tau), & t \geq \tau
+    \end{cases}.
+  \]
+  Atunci, dacă $ \Lap f(t) = F(s) $, $ \Lap f_\tau (t) = e^{-st} F(s) $;
+\item \textbf{Teorema derivării imaginii:}
+  \[
+    \Lap \big( t^n f(t) \big) = (-1)^n F^{(n)} (s);
+  \]
+\item \textbf{Teorema integrării originalului:} Fie $ f \in \kal{O}, \Lap f(t) = F(s) $ și
+  $ g(t) = \ds\int_0^t f(\tau) d\tau $. Atunci:
+  \[
+    \Lap g(t) = \dfrac{1}{s} F(s);
+  \]
+\item \textbf{Teorema integrării imaginii:} Fie $ \Lap f(t) = F(s) $ și $ G $ o primitivă a
+  lui $ F $ în $ S(s_0) $, cu $ G(\infty) = 0 $. Atunci:
+  \[
+    \Lap \dfrac{f(t)}{t} = -G(s).
+  \]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newpage
+\section{Tabel de transformate Laplace}
+
+\indent\indent În tabelul de mai jos, vom considera funcțiile $ f(t) $ ca fiind funcții original,
+adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind, de fapt,
+înmulțite cu \emph{funcția lui Heaviside}:
+\[
+  u(t) =
+  \begin{cases}
+    1, & t \geq 0 \\
+    0, & t < 0 
+  \end{cases}.
+\]
+
+\begin{center}
+\begin{tabular}{c | c}
+  $ f(t) = \Lap^{-1} (F(s)) $ & $ F(s) = \Lap(f(t)) $ \\
+  \hline\hline
+  $ u(t) $ & $ \dfrac{1}{s} $ \\
+  $ u(t - \tau) $ & $ \dfrac{1}{s} e^{-\tau s} $ \\
+  $ t $ & $ \dfrac{1}{s^2} $ \\
+  $ t^n $ & $ \dfrac{n!}{s^{n+1}} $ \\
+  $ t^n e^{-\alpha t} $ & $ \dfrac{n!}{(s + \alpha)^{n+1}} $ \\
+  $ e^{-\alpha t} $ & $ \dfrac{1}{s + \alpha} $ \\
+  $ \sin (\omega t) $ & $ \dfrac{\omega}{s^2 + \omega^2} $ \\
+  $ \cos (\omega t) $ & $ \dfrac{s}{s^2 + \omega^2} $ \\
+  $ \sinh(\alpha t) $ & $ \dfrac{\alpha}{s^2 - \alpha^2} $ \\
+  $ \cosh(\alpha t) $ & $ \dfrac{s}{s^2 - \alpha^2} $ \\
+  $ e^{-\alpha t}\sin(\omega t) $ & $ \dfrac{\omega}{(s + \alpha)^2 + \omega^2} $ \\
+  $ e^{-\alpha t}\cos(\omega t) $ & $ \dfrac{s + \alpha}{(s + \alpha^2) + \omega^2} $ \\
+  $ \ln t $ & $ -\dfrac{1}{s} \big( \ln s + \gamma\footnotemark \big) $
+\end{tabular}
+\end{center}
+
+\footnotetext{Constanta Euler-Mascheroni, $ \gamma \simeq 0,577\dots \in \RR - \QQ $}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newpage
+\section{Exerciții}
+
+1. Calculați transformatele Laplace pentru funcțiile (presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = 1, t \geq 0 $;
+\item $ f(t) = t, t \geq 0 $;
+\item $ f(t) = t^n, n \in \NN $;
+\item $ f(t) = e^{at}, t \geq 0, a \in \RR $;
+\item $ f(t) = \sin(at), t \geq 0, a \in \RR $.
+\end{enumerate}
+
+\emph{Soluție:} (a) Avem direct din definiție:
+\[
+  F(s) = \int_0^\infty e^{-st} dt = \lim_{n \to \infty} \int_0^n e^{-st} dt = \frac{1}{s}, s > 0.
+\]
+
+(b) Integrăm prin părți și obținem $ F(s) = \dfrac{1}{s^2} $.
+
+(c) Facem substituția $ st = \tau $ și găsim:
+\[
+  F(s) = \int_0^\infty e^{-st} t^n dt = \frac{1}{s^{n+1}} \int_0^\infty e^{-\tau} \tau^n d\tau = %
+  \frac{n!}{s^{n+1}},
+\]
+pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
+\[
+  \Gamma(a) = \int_0^\infty x^{a-1}e^{-x} dx, a > 0, \quad \Gamma(n + 1) = n!, n \in \NN.
+\]
+
+(d) $ F(s) = \ds\int_0^\infty e^{at} e^{-st} dt = \ds\int_0^\infty e^{-(s - a)t} dt = %
+\dfrac{1}{s-a}, s > a $.
+
+(e) Integrăm prin părți și ajungem la:
+\[
+  F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
+\]
+
+\vspace{1cm}
+
+2. Folosind tabelul de valori și proprietățile, să se determine transformatele Laplace
+pentru funcțiile (presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = 5 $;
+\item $ f(t) = 3t + 6t^2 $;
+\item $ f(t) = e^{-3t} $;
+\item $ f(t) = 5e^{-3t} $;
+\item $ f(t) = \cos (5t) $;
+\item $ f(t) = \sin (3t) $;
+\item $ f(t) = 3(t-1) + e^{-t-1} $;
+\item $ f(t) = 3t^3(t - 1) + e^{-5t} $;
+\item $ f(t) = 5e^{-3t} \cos (5t) $;
+\item $ f(t) = e^{2t} \sin (3t) $;
+\item $ f(t) = te^{-t} \cos (4t) $;
+\item $ f(t) = t^2 \sin (3t) $;
+\item $ f(t) = t^3 \cos t $.
+\end{enumerate}
+
+\emph{Indicații:} În majoritatea cazurilor, se folosește tabelul și proprietatea de liniaritate.
+În plus:
+
+(i, j) Folosim $ \Lap (e^{at} f(t)) = F(s - a) $;
+
+(k) Folosim $ \Lap (t f(t)) = -\frac{d}{ds} \Lap(f(t)) $;
+
+(l) Folosim $ \Lap(t^n f(t)) = (-1)^n \dfrac{d^n F(s)}{ds^n} $;
+
+\vspace{1cm}
+
+3. Folosind teorema derivării imaginii, să se determine transformatele Laplace pentru funcțiile
+(presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = t $;
+\item $ f(t) = t^2 $;
+\item $ f(t) = t\sin t $;
+\item $ f(t) = te^t $.
+\end{enumerate}
+
+\emph{Indicație:} Conform proprietății de derivare a imaginii, avem:
+\[
+  \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
+\]
+
+\vspace{1cm}
+
+4. Folosind teorema integrării originalului, să se determine transformatele Laplace pentru
+funcțiile (presupuse original):
+\begin{enumerate}[(a)]
+\item $ f(t) = \ds\int_0^t \cos (2\tau) d\tau $;
+\item $ f(t) = \ds\int_0^t e^{3 \tau} \cos(2 \tau) d\tau $;
+\item $ f(t) = \ds\int_0^t \tau e^{-3\tau} d\tau $.
+\end{enumerate}
+
+\emph{Indicație:} Conform proprietății de integrare a originalului,
+avem:
+\[
+  \Lap \int_0^t f(\tau) d\tau = \frac{F(s)}{s}.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Aplicații ale transformatei Laplace}
+
+Principala aplicație a transformatei Laplace este pentru rezolvarea ecuațiilor și
+sistemelor diferențiale de ordinul întîi sau superior.
+
+Aceste aplicații se bazează pe calculele care se pot obține imediat din definiția
+transformatei Laplace și a proprietăților sale:
+\begin{align*}
+  \Lap f' &= s \Lap f - f(0) \\
+  \Lap f^{''} &= s^2 \Lap f - sf(0) - f'(0).
+\end{align*}
+
+De fapt, în general, avem:
+\[
+  \Lap f^{(n)} = s^n \Lap f - s^{n-1} f(0) - s^{n-2} f'(0) - \dots - f^{(n-1)}(0).
+\]
+
+De asemenea, pentru integrale, știm deja teorema integrării originalului:
+\[
+  \Lap \int_0^t f(\tau) d\tau = \dfrac{1}{s} F(s), \quad F(s) = \Lap f(t).
+\]
+
+Rezultă, folosind transformarea inversă:
+\[
+  \int_0^t f(\tau) d\tau = \Lap^{-1} \Big( \dfrac{1}{s} F(s) \Big).
+\]
+
+De exemplu, pentru a rezolva ecuația diferențială:
+\[
+  y^{\prime \prime} + ay^\prime + by = r(t), \quad y(0) = K_0, y'(0) = K_1,
+\]
+aplicăm transformata Laplace și folosim proprietățile de mai sus. Fie $ Y = \Lap y(t) $
+
+Se obține ecuația algebrică:
+\[
+  (s^2 Y - sy(0) - y'(0)) + a(sY - y(0)) + bY = R(s),
+\]
+unde $ R(s) = \Lap r $. Forma echivalentă este:
+\[
+  (s^2 + as + b) Y = (s + a)y(0) + y'(0) + R(s).
+\]
+
+Împărțim prin $ s^2 + as + b $ și folosim formula:
+\[
+  Q(s) = \frac{1}{s^2 + as + b} =
+  \frac{1}{(s + \frac{1}{2}a)^2 + b - \frac{1}{4}a^2},
+\]
+de unde rezultă:
+\[
+  Y(s) = \big( (s + a) y(0) + y'(0)\big) Q(s) + R(s) Q(s).
+\]
+
+În forma aceasta, descompunem $ Y(s) $ în fracții simple, dacă este nevoie și
+folosim tabelul de transformate Laplace, pentru a afla $ y = \Lap^{-1}(Y) $.
+
+\vspace{1cm}
+
+De exemplu:
+\[
+  y^{\prime\prime} - y = t, \quad y(0) = 1, y'(0) = 1.
+\]
+
+\emph{Soluție:} Aplicăm transformata Laplace și ajungem la ecuația:
+\begin{align*}
+  s^2 Y - sy(0) - y'(0) - Y &= \frac{1}{s^2} \\
+  (s^2 - 1)Y &= s + 1 + \frac{1}{s^2}.
+\end{align*}
+
+Rezultă $ Q = \dfrac{1}{s^2 - 1} $ și ecuația devine:
+\begin{align*}
+  Y &= (s + 1)Q + \frac{1}{s^2} Q \\
+    &= \frac{s + 1}{s^2 - 1} + \frac{1}{s^2(s^2 - 1)} \\
+    &= \frac{1}{s - 1} + \Big( \frac{1}{s^2 - 1} - \frac{1}{s^2} \Big)
+\end{align*}
+
+Folosind tabelul și proprietățile transformatei Laplace, obținem soluția:
+\begin{align*}
+  y(t) &= \Lap^{-1} Y \\
+       &= \Lap^{-1} \Big( \frac{1}{s^{-1}} \Big) + \Lap^{-1} \Big( \frac{1}{s^2 - 1} \Big) - %
+         \Lap^{-1} \Big( \frac{1}{s^2} \Big) \\
+       &= e^t + \sinh t - t.
+\end{align*}
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section*{Exerciții}
+
+\indent\indent 1. Să se rezolve următoarele probleme Cauchy, folosind transformata
+Laplace:
+\begin{enumerate}[(a)]
+\item $ y'(t) + 2y(t) = 4t, y(0) = 1 $ ;
+\item $ y'(t) + y(t) = \sin 4t, y(0) = 0 $;
+\item $ y^{\prime\prime}(t) + 2y'(t) + 5y(t) = 0, y(0) = 0, y'(0) = 0 $;
+\item $ 2y^{\prime\prime}(t) - 6y'(t) + 4y(t) = 3e^{3t}, y(0) = 1, y'(0) = -1 $;
+\item $ y^{\prime\prime}(t) - 2y(t) + y(t) = e^t, y(0) = -2, y'(0) = -3 $;
+\item $ y^{\prime\prime}(t) + 4y(t) = 3\cos^2(t), y(0) = 1, y'(0) = 2 $.  
+\end{enumerate}
+
+
+\vspace{1cm}
+
+2. Să se rezolve următoarele sisteme diferențiale:
+\begin{enumerate}[(a)]
+\item $
+  \begin{cases}
+    x' + x + 4y &= 10 \\
+    x - y' - y &= 0 \\
+    x(0) = 4, & y(0) = 3
+  \end{cases}
+  $
+\item $
+  \begin{cases}
+    x' + x - y &= e^t \\
+    y' + y - x &= e^t \\
+    x(0) = 1, & y(0) = 1
+  \end{cases}
+  $
+\item $
+  \begin{cases}
+    x' + 2y' + x - y &= 5 \sin t \\
+    2x' + 3y' + x - y &= e^t \\
+    x(0) = 2, & y(0) = 1
+  \end{cases}
+  $
+\end{enumerate}
+
+\emph{Indicație:} Aplicăm transformata Laplace fiecărei ecuații
+și notăm $ \Lap x(t) = X(s) $ și $ \Lap y(t) = Y(s) $. Apoi rezolvăm sistemul
+\emph{algebric} obținut cu necunoscutele $ X $ și $ Y $, cărora la final le
+aplicăm transformata Laplace inversă.
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-18-19"
+%%% End:
