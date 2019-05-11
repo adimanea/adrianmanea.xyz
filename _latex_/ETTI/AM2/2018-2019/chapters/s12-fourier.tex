@@ -1,0 +1,382 @@
+\chapter{Transformata Fourier (*)}
+
+
+\section{Integrala Fourier}
+\indent\indent
+Seriile Fourier sînt utile pentru dezvoltarea unor funcții periodice (sau convertibile
+în unele periodice). Însă dacă funcțiile sînt arbitrare, se folosește o metodă care
+extinde pe cea a seriilor Fourier, anume integralele Fourier.
+
+Amintim că o funcție periodică $ f_L(x) $, de perioadă $ 2L $, poate fi dezvoltată în
+serie Fourier cu formula:
+\[
+  f_L(x) = a_0 + \sum_{n \geq 1} (a_n \cos w_n x + b_n \sin w_n x), \quad %
+  w_n = \frac{n\pi}{L}.
+\]
+
+În această serie punem $ L \to \infty $ și, după impunerea unor condiții
+de convergență, ajungem la \emph{integrala Fourier} a funcției $ f $, anume:
+\[
+  f(x) = \int_0^\infty A(w) \cos wx + B(w) \sin wx dw,
+\]
+unde funcțiile $ A $ și $ B $ sînt date de:
+\[
+  A(w) = \frac{1}{\pi} \int_{-\infty}^\infty f(v) \cos wv dv, \quad %
+  B(w) = \frac{1}{\pi} \int_{-\infty}^\infty f(v) \sin wv dv.
+\]
+
+Ca în cazul seriilor Fourier, dacă $ f $ este o funcție pară, atunci $ B(w) = 0 $,
+iar integrala Fourier devine o integrală de cosinusuri:
+\[
+  f(x) = \int_0^\infty A(w) \cos wx dw, \text{ unde } %
+  A(w) = \frac{2}{\pi} \int_0^\infty f(v) \cos wv dv.
+\]
+
+Similar, pentru $ f $ funcție impară, avem $ A(w) = 0 $, iar integrala Fourier devine
+o integrală de sinusuri:
+\[
+  f(x) = \int_0^\infty B(w) \sin wx dw, \text{ unde } %
+  B(w) = \frac{2}{\pi} \int_0^\infty f(v) \sin wv dv.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Transformata Fourier}
+\index{transformata!Fourier}
+\indent\indent
+Ideea de bază a unei transformări Fourier este următoarea. Dacă se dă o funcție periodică
+(sau convertită la una periodică printr-un artificiu de repetiție, practic), ei i se
+asociază \emph{seria Fourier}. Aceasta o aproximează cu o serie de sinusuri și cosinusuri,
+funcțiile periodice cel mai des întîlnite. Practic, are loc o superpoziție de termeni cu
+sinusuri și cosinusuri, un fel de interferență a undelor electromagnetice. La pasul
+următor, \emph{transformata Fourier} preia minimele și maximele acestor \qq{interferențe},
+iar rezultatul este un semnal (aproape) discret (\qq{digitalizat}), care reprezintă
+valorile cele mai importante din semnal.\footnote{O explicație animată este dată \href{https://en.wikipedia.org/wiki/Fourier_transform\#/media/File:Fourier_transform_time_and_frequency_domains_(small).gif}{aici}.}
+
+Rescriem formula integralei Fourier, înlocuind funcțiile $ A $ și $ B $:
+\[
+  f(x) = \frac{1}{\pi} \int_0^\infty \int_{-\infty}^\infty f(v) \cdot %
+  \big( \cos wv \cos wx + \sin wv \sin wx \big) dvdw.
+\]
+
+Acum putem folosi formule trigonometrice uzuale și observăm că putem rescrie:
+\[
+  f(x) = \frac{1}{\pi} \int_0^\infty \Big( \int_{-\infty}^\infty %
+  f(v) \cos (wx - wv) dv \Big) dw.
+\]
+
+Cum funcția $ \cos $ este pară, integrala de la $ 0 $ la $ \infty $ este jumătate
+din integrala pe tot $ \RR $, deci putem rescrie în forma:
+\[
+  f(x) = \frac{1}{2\pi} \int_{-\infty}^\infty \Big( \int_{-\infty}^\infty f(v) \cdot %
+  \cos (wx - wv) dv \Big) dw.
+\]
+
+\begin{remark}\label{rk:fourier-sin}
+  Să remarcăm că, dacă în integrala de mai sus aveam funcția $ \sin $ în loc de $ \cos $,
+  integrala ar fi fost nulă, din imparitatea funcției $ \sin $.
+\end{remark}
+
+Conform observației de mai sus, putem adăuga un termen similar cu $ \sin $, fără a
+schimba valoarea integralei. Acest lucru este util pentru a trece pe domeniu
+complex, unde putem porni de la formula lui Euler de scriere polară a unui număr
+complex. Așadar, avem:
+\[
+  f(v) \cos (wx - wv) + if(v) \sin (wx - wv) = f(v) e^{i(wx - wv)}.
+\]
+
+Trecînd la integrală, obținem \emph{integrala Fourier complexă:}
+\begin{equation}
+  \label{eq:int-four-compx}
+  f(x) = \frac{1}{2\pi} \int_{-\infty}^\infty \int_{-\infty}^\infty %
+  f(v) e^{iw(x - v)} dvdw.
+\end{equation}
+
+Dacă descompunem funcția exponențială într-un produs și scriem ca produs de integrale,
+obținem:
+\[
+  f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \Big[ \frac{1}{\sqrt{2\pi}} %
+  \int_{-\infty}^\infty f(v) e^{-iwv} dv \Big] e^{iwx} dw.
+\]
+
+Integrala din interior este exact \textbf{transformata Fourier} a lui $ f $:
+\begin{equation}
+  \label{eq:transf-f}
+  \widehat{f}(w) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(x) e^{-iwx} dx.
+\end{equation}
+
+Atunci, dacă înlocuim în formula de mai sus, obținem:
+\begin{equation}
+  \label{eq:transf-f-inv}
+  f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \widehat{f}(w) e^{iwx} dw,
+\end{equation}
+care este formula \emph{transformării Fourier inverse}.
+
+O altă notație pentru transformata Fourier este $ \widehat{f} = \kal{F}(f) $ și
+pentru transformata inversă, $ f = \kal{F}^{-1}(\widehat{f}) $.
+
+Pentru orice funcție care satisface anumite proprietăți, transformata Fourier există:
+
+\begin{theorem}\label{thm:ex-four}
+  Dacă $ f $ este absolut integrabilă (adică integrala funcției $ |f(x)| $ este convergentă)
+  și continuă pe orice interval finit, atunci transformata Fourier dată de
+  formula~\eqref{eq:transf-f} există.
+\end{theorem}
+
+Să vedem cîteva exemple.
+
+\begin{example}
+  Găsiți transformata Fourier a funcției:
+  \[
+    f(x) =
+    \begin{cases}
+      1, & |x| < 1 \\
+      0, & \text{în rest}
+    \end{cases}.
+  \]
+\end{example}
+
+\emph{Soluție:} Folosind definiția, integrăm:
+\[
+  \widehat{f}(w) = \frac{1}{\sqrt{2\pi}} \int_{-1}^1 e^{-iwx} dx = %
+  \frac{1}{\sqrt{2\pi}} \cdot \frac{e^{-iwx}}{-iw} \Big|_{-1}^1 = %
+  \frac{1}{-iw\sqrt{2\pi}}(e^{-iw} - e^{iw}).
+\]
+
+Folosind formula lui Euler pentru $ e^{\pm iw} $, avem, în fine:
+\[
+  \widehat{f}(w) = \sqrt{\frac{\pi}{2}} \frac{\sin w}{w}.
+\]
+
+Un alt exemplu:
+
+\begin{example}
+  Găsiți transformata Fourier a funcției:
+  \[
+    f(x) =
+    \begin{cases}
+      e^{-ax}, & x > 0 \\
+      0, & x < 0
+    \end{cases}, a > 0.
+  \]
+\end{example}
+
+\emph{Soluție:} Din definiție, avem:
+\begin{align*}
+  \widehat{f}(w) &= \frac{1}{\sqrt{2\pi}} \int_0^\infty e^{-ax} e^{-iwx} dx \\
+                 &= \frac{1}{\sqrt{2\pi}} \frac{e^{-(a + iw)x}}{-(a + iw)} \Big|_{x = 0}^\infty \\
+                 &= \frac{1}{\sqrt{2\pi}(a + iw)}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Proprietăți ale transformatei Fourier}
+
+
+\indent\indent \textbf{Liniaritate:} Transformata Fourier este o operație liniară:
+\[
+  \kal{F}(af + bg) = a \kal{F}(f) + b \kal{F}(g),
+\]
+pentru orice funcții $ f, g $ care admit transformată Fourier și $ a, b \in \RR $.
+
+\vspace{1cm}
+
+\textbf{Transformata derivatei:} Dacă $ f $ este o funcție continuă și $ f(x) \to 0 $
+pentru $ |x| \to \infty $, iar $ f'(x) $ este absolut integrabilă, atunci:
+\[
+  \kal{F}(f'(x)) = iw \kal{F}(f).
+\]
+
+Mai departe, pentru derivate superioare, obținem, de exemplu:
+\[
+  \kal{F}(f^{\prime\prime}(x)) = -w^2 \kal{F}(f(x)).
+\]
+
+\vspace{1cm}
+
+\textbf{Convoluție:} Fie $ f, g $ două funcții. Se definește \emph{produsul lor de %
+  convoluție} $ f \ast g $ ca fiind funcția:
+\[
+  h(x) = (f \ast g)(x) = \int_{-\infty}^\infty f(p) g(x-p) dp = %
+  \int_{-\infty}^\infty f(x - p) g(p) dp.
+\]
+
+Comportarea transformatei Fourier față de produsul de convoluție este dată de:
+\[
+  \kal{F}(f \ast g) = \sqrt{2\pi} \kal{F}(f) \cdot \kal{F}(g).
+\]
+
+Echivalent, acest rezultat se mai poate scrie prin inversare:
+\[
+  (f \ast g)(x) = \int_{-\infty}^\infty \widehat{f}(w) \cdot \widehat{g}(w) e^{iwx} dw.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+Calculați transformatele Fourier ale următoarelor funcții:
+\begin{enumerate}[(a)]
+\item $ f(x)
+  = \begin{cases}
+    e^{2ix}, & -1 < x < 1 \\
+    0, & \text{ în rest }
+  \end{cases}
+  $
+\item $ f(x) =
+  \begin{cases}
+    1, & a < x < b \\
+    0, & \text{ în rest }
+  \end{cases}
+  $
+\item $ f(x) =
+  \begin{cases}
+    e^{kx}, & x < 0 \\
+    0, & x > 0
+  \end{cases}, k > 0
+  $
+\item $ f(x) =
+  \begin{cases}
+    e^x, & -a < x < a \\
+    0, & \text{ în rest}
+  \end{cases}
+  $
+\item $ f(x) = e^{-|x|}, x \in \RR $;
+\item $ f(x) =
+  \begin{cases}
+    x, & 0 < x < a \\
+    0, & \text{ în rest}
+  \end{cases}
+  $
+\item $ f(x) =
+  \begin{cases}
+    xe^{-x}, & -1 < x < 0 \\
+    0, \text{ în rest}
+  \end{cases}
+  $
+\item $ f(x) =
+  \begin{cases}
+    |x|, & -1 < x < 1 \\
+    0, & \text{ în rest}
+  \end{cases}
+  $
+\item $ f(x) =
+  \begin{cases}
+    x, & -1 < x < 1 \\
+    0, \text{ în rest}
+  \end{cases}
+  $
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newpage
+
+\section{Tabele de transformate Fourier}
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{tabular}{c | c}
+    $ f(x) $ & $ \widehat{f}_c(w) = \kal{F}_c(f) $ \\
+    \hline\hline
+    $ \begin{cases} 1, & 0 < x < a \\ 0, &\text{ în rest} \end{cases} $ & $ \sqrt{\frac{2}{\pi}} \frac{\sin aw}{w} $ \\
+             & \\
+    $ x^{a-1}, 0 < a < 1 $ & $ \sqrt{\frac{2}{\pi}} \frac{\Gamma(a)}{w^a} \cos \frac{a\pi}{2} $ \\
+             & \\
+    $ e^{-ax}, a > 0 $ & $ \sqrt{\frac{2}{\pi}} \cdot \frac{a}{a^2 + w^2} $ \\
+             & \\
+    $ e^{-x^2/2} $ & $ e^{-w^2/2} $ \\
+             & \\
+    $ e^{-ax^2}, a > 0 $ & $ \frac{1}{\sqrt{2a}} e^{-w^2/(4a)} $ \\
+             & \\
+    $ x^n e^{-ax}, a > 0 $ & $ \sqrt{\frac{2}{\pi}} \frac{n!}{(a^2 + w^2)^{n+1}} \mathrm{Re}(a + iw)^{n+1} $ \\
+             & \\
+    $ \begin{cases} \cos x, & 0 < x < a \\ 0, & \text{ în rest} \end{cases} $ & $ \frac{1}{\sqrt{2\pi}} \Big[ \frac{\sin a(1 - w)}{1 - w} + \frac{\sin a(1 + w)}{1 + w} \Big] $ \\
+             & \\
+    $ \cos (ax^2), a > 0 $ & $ \frac{1}{\sqrt{2a}} \cos \Big( \frac{w^2}{4a} - \frac{\pi}{4} \Big) $ \\
+             & \\
+    $ \sin (ax^2), a > 0 $ & $ \frac{1}{\sqrt{2a}} \cos \Big( \frac{w^2}{4a} + \frac{\pi}{4} \Big) $ \\
+             & \\
+    $ \frac{\sin ax}{x}, a > 0 $ & $ \sqrt{\frac{\pi}{2}} (1 - u(w - a)) $\footnotemark \\
+             & \\
+    $ \frac{e^{-x} \sin x}{x} $ & $ \frac{1}{\sqrt{2\pi}} \arctan \frac{2}{w^2} $ \\
+  \end{tabular}
+  \caption{\emph{Transformate Fourier cu cosinusuri (pentru funcții pare)}}
+\end{figure}
+
+
+\footnotetext{
+  $ u(t - a) $ este funcția Heaviside (eng. \emph{unit step function}), definită prin:
+  \[
+    u(t - a) = \begin{cases}
+      0, & t < a \\
+      1, & t > a
+    \end{cases}
+  \]}
+
+\newpage
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{tabular}{c|c}
+    $ f(x) $ & $ \widehat{f}_s(x) = \kal{F}_s(f) $ \\
+    \hline\hline
+    $ \begin{cases} 1, & 0 < x < a \\ 0, & \text{ în rest} \end{cases} $ & $ \frac{\sqrt{2}}{\pi} \Big[ \frac{1 - \cos aw}{w} \Big] $ \\
+             & \\
+    $ \frac{1}{\sqrt{x}} $ & $ \frac{1}{\sqrt{w}} $ \\
+             & \\
+    $ x^{-3/2} $ & $ 2 \sqrt{w} $ \\
+             & \\
+    $  x^{a-1}, 0 < a < 1 $ & $ \sqrt{\frac{2}{\pi}} \frac{\Gamma(a)}{w^a} \sin\frac{a\pi}{2} $ \\
+             & \\
+    $ e^{-ax}, a > 0 $ & $ \sqrt{\frac{2}{\pi}} \cdot \frac{w}{a^2 + w^2} $ \\
+             & \\
+    $ \frac{e^{-ax}}{x}, a > 0 $ & $ \sqrt{\frac{2}{\pi}} \arctan \frac{w}{a} $ \\
+             & \\
+    $ x^n e^{-ax}, a > 0 $ & $ \sqrt{\frac{2}{\pi}} \frac{n!}{(a^2 + w^2)^{n+1}} \mathrm{Im}(a + iw)^{n + 1} $ \\
+             & \\
+    $ xe^{-x^2/2} $ & $ we^{-w^2/2} $ \\
+             & \\
+    $ xe^{-ax^2}, a > 0 $ & $ \frac{w}{(2a)^{3/2}} e^{-w^2/(4a)} $ \\
+             & \\
+    $ \begin{cases} \sin x, & 0 < x < a \\ 0, &\text{ în rest} \end{cases} $ & $ \frac{1}{\sqrt{2\pi}} \Big[ \frac{\sin a(1 - w)}{1 - w} - \frac{\sin a(1 + w)}{1 + w} \Big] $ \\
+             & \\
+    $ \frac{\cos ax}{x}, a > 0 $ & $ \sqrt{\frac{\pi}{2}} u(w - a) $ \\
+             & \\
+    $ \arctan{2a}{x}, a > 0 $ & $ \sqrt{2\pi} \frac{\sin aw}{w} e^{-aw} $ 
+  \end{tabular}
+  \caption{\emph{Transformate Fourier cu sinusuri (pentru funcții impare)}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{tabular}{c|c}
+    $ f(x) $ & $ \widehat{f}(w) = \kal{F}(f) $ \\
+    \hline\hline
+    $ \begin{cases} 1, & -b < x < b \\ 0, &\text{ în rest} \end{cases} $ & $ \sqrt{\frac{2}{\pi}} \frac{\sin bw}{w} $ \\
+             & \\
+    $ \begin{cases} 1, & b < x < c \\ 0, &\text{ în rest} \end{cases} $ & $ \frac{e^{-ibw} - e^{-icw}}{iw \sqrt{2\pi}} $ \\
+             & \\
+    $ \frac{1}{x^2 + a^2}, a > 0 $ & $ \sqrt{\frac{\pi}{2}} \frac{e^{-a|w|}}{a} $ \\
+             & \\
+    $ \begin{cases} e^{-ax}, & x > 0 \\ 0, &\text{ în rest} \end{cases}, a > 0 $ & $ \frac{1}{\sqrt{2\pi}}{a + iw} $ \\
+    $ \begin{cases} e^{ax}, & b < x < c \\ 0, &\text{ în rest} \end{cases} $ & $ \frac{e^{(a-iw)c} - e^{(a - iw)b}}{\sqrt{2\pi}(a - iw)} $ \\
+             & \\
+    $ \begin{cases} e^{iax}, & -b < x < b \\ 0, &\text{ în rest} \end{cases} $ & $ \sqrt{\frac{2}{\pi}} \frac{\sin b(w - a)}{w - a} $ \\
+             & \\
+    $ \begin{cases} e^{iax}, & b < x < c \\ 0, &\text{ în rest} \end{cases} $ & $ \frac{i}{\sqrt{2\pi}} \frac{e^{ib(a - w)} - e^{ic(a - w)}}{a - w} $ \\
+             & \\
+    $ e^{-ax^2}, a > 0 $ & $ \frac{1}{\sqrt{2a}} e^{-w^2/(4a)} $ \\
+             & \\
+    $ \frac{\sin ax}{x}, a > 0 $ & $ \begin{cases} \sqrt{\frac{\pi}{2}}, & |w| < a \\ 0, & |w| > a \end{cases} $
+  \end{tabular}
+  \caption{\emph{Transformate Fourier generale (pentru funcții arbitrare)}}
+\end{figure}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-18-19"
+%%% End:
