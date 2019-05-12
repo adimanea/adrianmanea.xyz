@@ -161,9 +161,6 @@ include ("../includes/navigation.php");
                 <a target="_blank" href="../images/gallery/hi-res/la/la11h.jpg">
                     <img src="../images/gallery/lo-res/la/la11.jpg" alt="Budapest sunset" style="width:100%">
                 </a>
-                // <a target="_blank" href="../images/gallery/hi-res/la/la29h.jpg">
-                //     <img src="../images/gallery/lo-res/la/la29.jpg" alt="Enthusiastic in Gdańsk" style="width:100%">
-                // </a>
                 <a target="_blank" href="../images/gallery/hi-res/la/la30h.jpg">
                     <img src="../images/gallery/lo-res/la/la30.jpg" alt="Gdańsk happy" style="width:100%">
                 </a>
