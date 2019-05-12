@@ -144,9 +144,6 @@ include ("../includes/navigation.php");
                 <a target="_blank" href="../images/gallery/hi-res/la/la25h.jpg">
                     <img src="../images/gallery/lo-res/la/la25.jpg" alt="Statue" style="width:100%">
                 </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la11h.jpg">
-                    <img src="../images/gallery/lo-res/la/la11.jpg" alt="Budapest sunset" style="width:100%">
-                </a>
                 <a target="_blank" href="../images/gallery/hi-res/po/po05h.jpg">
                     <img class="imgvert" src="../images/gallery/lo-res/po/po05.jpg" alt="Crooked House" style="width:100%">
                 </a>
@@ -161,9 +158,12 @@ include ("../includes/navigation.php");
                 <a target="_blank" href="../images/gallery/hi-res/la/la28h.jpg">
                     <img src="../images/gallery/lo-res/la/la28.jpg" alt="Gdansk sepia" style="width:100%">
                 </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la29h.jpg">
-                    <img src="../images/gallery/lo-res/la/la29.jpg" alt="Enthusiastic in Gdańsk" style="width:100%">
+                <a target="_blank" href="../images/gallery/hi-res/la/la11h.jpg">
+                    <img src="../images/gallery/lo-res/la/la11.jpg" alt="Budapest sunset" style="width:100%">
                 </a>
+                // <a target="_blank" href="../images/gallery/hi-res/la/la29h.jpg">
+                //     <img src="../images/gallery/lo-res/la/la29.jpg" alt="Enthusiastic in Gdańsk" style="width:100%">
+                // </a>
                 <a target="_blank" href="../images/gallery/hi-res/la/la30h.jpg">
                     <img src="../images/gallery/lo-res/la/la30.jpg" alt="Gdańsk happy" style="width:100%">
                 </a>
