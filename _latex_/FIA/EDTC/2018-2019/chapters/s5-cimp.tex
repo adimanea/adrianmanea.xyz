@@ -392,6 +392,33 @@ derivatele acestor componente după direcția $ \vec{u} $, adică $ \vec{u} \cdo
 
 Să se calculeze $ \nabla(\nabla \cdot \vec{v}) $ și $ \nabla \times (\nabla \times \vec{w}) $.
 
+\vspace{1cm}
+
+5. Fie cîmpul scalar:
+\[
+  f(x, y, z) = \dfrac{\langle \vec{a}, \vec{r} \rangle}{||\vec{r}||^2}, \quad \text{unde } %
+  \vec{a} = 2 \vec{i} + \vec{j} - \vec{k}, \ \vec{r} = x\vec{i} + y\vec{j} + z \vec{k}.
+\]
+
+Să se calculeze unghiul dintre $ (\nabla f)(A) $ și $ (\nabla f)(B) $, unde
+$ A(2, 1, 1) $ și $ B(0, 1, -1) $.
+
+\emph{Indicații:} Fie $ M(x, y, z) $ oarecare. Se calculează $ (\nabla f)(M) $ folosind
+regula de calcul a gradientului unei fracții și se obține:
+\[
+  (\nabla f)(M) = \dfrac{\vec{a}}{||\vec{r}||} - 2 \cdot \dfrac{\langle \vec{a}, \vec{r} \rangle}{||\vec{r}||^4} %
+  \cdot \vec{r}.
+\]
+
+Atunci putem calcula în punctele $ A $ și $ B $ date, iar unghiul va fi obținut din:
+\[
+  \cos \theta = \dfrac{\langle (\nabla f)(A), (\nabla f)(B) \rangle}{%
+    ||(\nabla f)(A)|| \cdot || (\nabla f)(B) ||}.
+\]
+
+Se obtine $ \cos \theta < 0 $, deci unghiul este obtuz, cu o valoare de $ \arccos -\dfrac{5}{9} $.
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../edtc-18-19"
