@@ -214,6 +214,15 @@ Observăm, de asemenea, că:
   \nabla \cdot \ : \text{ scalar sau vector } \mapsto \text{ scalar }.
 \]
 
+Vom mai folosi următorul concept:
+\begin{definition}\label{def:solenoidal}\index{cîmp!solenoidal}
+  Un cîmp vectorial $\vec{v} $ se numește \emph{solenoidal} în $ D $ dacă
+  $ \nabla \cdot \vec{v} = 0 $ în $ D $.
+\end{definition}
+
+Intuitiv, un cîmp vectorial solenoidal este un cîmp fără surse, atît pozitive
+(i.e.\ \qq{emisie}), cît și negative (i.e.\ \qq{absorbție}).
+
 \vspace{1cm}
 \index{cîmp!rotor}
 Un al treilea operator care se poate aplica unui cîmp este \emph{rotorul}
@@ -274,11 +283,21 @@ Cel mai adesea, avem, deci:
   \nabla \times \ : \text{ vector } \mapsto \text{ vector }.
 \]
 
+De asemenea, avem definiția distinctă:
+\begin{definition}\label{def:irot}\index{cîmp!irotațional}
+  Cîmpul vectorial $ \vec{v} $ se numește \emph{irotațional} dacă $ \nabla \times \vec{v} = 0 $.
+\end{definition}
+
 Mai amintim că s-a studiat la calcul diferențial operatorul \emph{laplacian}. Dacă
 $ f : D \seq \RR^3 \to \RR $ este un cîmp scalar, atunci se definește:
 \[
   \Delta f = f_{xx} + f_{yy} + f_{zz}.
 \]
+
+\begin{remark}\label{rk:lapl-vec}
+  Operatorul lui Laplace are sens și pentru un cîmp vectorial $ \vec{v} $, cu aceeași
+  definiție.
+\end{remark}
 
 \textbf{Exercițiu*:} Arătați că $ \Delta f = \nabla \cdot (\nabla f) $, adică
 laplacianul este divergența gradientului.
@@ -292,6 +311,39 @@ Rezultă, de asemenea:
 
 Cîteva identități care leagă operatorii definiți mai sus, precum și reguli de
 calcul pot fi găsite de exemplu, \href{https://en.wikipedia.org/wiki/Vector\_calculus\_identities#Properties}{aici}.
+
+\vspace{1cm}
+
+Alte noțiuni utile sînt:
+\begin{definition}\label{def:pot}\index{cîmp!potențial}
+  Un cîmp vectorial $\vec{v} $ definit pe $ D \seq \RR^3 $ se numește \emph{potențial} dacă
+  există un cîmp scalar $ f \in \kal{C}^1(D)$ cu proprietatea că:
+  \[
+    \vec{v}(M) = (\nabla f)(M), \quad \forall M \in D.
+  \]
+  Cîmpul scalar $ f $ se numește \emph{potențialul scalar} al cîmpului vectorial $ \vec{v} $.
+\end{definition}
+
+\begin{definition}\label{def:cons-forte}\index{cîmp!conservativ de forțe}
+  Cîmpul vectorial $ \vec{F} $ se numește \emph{cîmp conservativ de forțe} dacă
+  există un cîmp scalar $ U \in \kal{C}^1(D) $ astfel încît $ \vec{F} = \nabla U $.
+
+  Altfel spus, un cîmp potențial provine dintr-un gradient, de aceea se mai numește
+  \emph{cîmp de gradienți}.
+
+  Cîmpul scalar $ U $ se numește \emph{cîmpul funcțiilor de forță}.
+\end{definition}
+
+De exemplu, cîmpul gravitațional este un cîmp conservativ de forțe. Ați întîlnit deja
+în liceu noțiunea de \emph{forță conservativă} (al cărui lucru mecanic nu depinde de
+forma traiectoriei, ci doar de capete) și, evident, cîmpul gravitațional este un cîmp
+de forțe.
+
+
+\begin{remark}\label{rk:cons-irot}
+  Din definiția și proprietățile operatorilor vectoriali, un cîmp conservativ
+  este în mod necesar irotațional.
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
