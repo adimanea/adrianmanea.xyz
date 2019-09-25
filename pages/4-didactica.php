@@ -23,25 +23,25 @@ include ("../includes/navigation.php");
             <button class="accordion">ACS, Matematică 1 (Analiză)</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe dispnibile în curînd.</li>
+                        <li>Notițe disponibile în curînd.</li>
                     </ul>
                 </div>
             <button class="accordion">ETTI, Algebră și Geometrie</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe dispnibile în curînd.</li>
+                        <li>Notițe disponibile în curînd.</li>
                     </ul>
                 </div>
             <button class="accordion">ETTI, Analiză 1</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe dispnibile în curînd.</li>
+                        <li>Notițe disponibile în curînd.</li>
                     </ul>
                 </div>
             <button class="accordion">FIA, Bazele calculului diferențial</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe dispnibile în curînd.</li>
+                        <li>Notițe disponibile în curînd.</li>
                     </ul>
                 </div>
         </div>
