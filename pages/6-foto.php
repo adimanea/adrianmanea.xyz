@@ -62,6 +62,44 @@ include ("../includes/navigation.php");
     <div class="gallery">
         <div class="row">
             <div class="column">
+                <a target="_blank" href="../images/gallery/hi-res/la/la35h.jpg">
+                    <img src="../images/gallery/lo-res/la/la35.jpg" alt="Bruges" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la36h.jpg">
+                    <img src="../images/gallery/lo-res/la/la36.jpg" alt="Bruges black and white" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la37h.jpg">
+                    <img src="../images/gallery/lo-res/la/la37.jpg" alt="Which way" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la38h.jpg">
+                    <img src="../images/gallery/lo-res/la/la38.jpg" alt="DEATH" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la39h.jpg">
+                    <img src="../images/gallery/lo-res/la/la39.jpg" alt="Old man" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la40h.jpg">
+                    <img src="../images/gallery/lo-res/la/la40.jpg" alt="Window still" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la41h.jpg">
+                    <img src="../images/gallery/lo-res/la/la41.jpg" alt="Bruges" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la42h.jpg">
+                    <img src="../images/gallery/lo-res/la/la42.jpg" alt="Planning" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la43h.jpg">
+                    <img src="../images/gallery/lo-res/la/la43.jpg" alt="Fairies" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/po/po06h.jpg">
+                    <img src="../images/gallery/lo-res/po/po06.jpg" alt="Atomium" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la28h.jpg">
+                    <img src="../images/gallery/lo-res/la/la28.jpg" alt="Gdansk sepia" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la31h.jpg">
+                    <img src="../images/gallery/lo-res/la/la31.jpg" alt="Gdynia" style="width:100%">
+                </a>
+            </div>
+            <div class="column">
                 <a target="_blank" href="../images/gallery/hi-res/la/la14h.jpg">
                     <img src="../images/gallery/lo-res/la/la14.jpg" alt="Rays" style="width:100%">
                 </a>
@@ -74,7 +112,7 @@ include ("../includes/navigation.php");
                 <a target="_blank" href="../images/gallery/hi-res/la/la05h.jpg">
                     <img src="../images/gallery/lo-res/la/la03.jpg" alt="Ruins" style="width:100%">
                 </a>
-                <a target="_blank" href="../images/gallery/hi-res/la08h.jpg"
+                <a target="_blank" href="../images/gallery/hi-res/la08h.jpg">
                     <img src="../images/gallery/lo-res/la/la08.jpg" alt="Birds" style="width:100%">
                 </a>
                 <a target="_blank" href="../images/gallery/hi-res/la/la12h.jpg">
@@ -91,6 +129,15 @@ include ("../includes/navigation.php");
                 </a>
                 <a target="_blank" href="../images/gallery/hi-res/po/po03h.jpg">
                     <img class="imgvert" src="../images/gallery/lo-res/po/po03.jpg" alt="Chariot" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/po/po07h.jpg">
+                    <img class="imgvert" src="../images/gallery/lo-res/po/po07.jpg" alt="Crack" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la11h.jpg">
+                    <img src="../images/gallery/lo-res/la/la11.jpg" alt="Budapest sunset" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la32h.jpg">
+                    <img src="../images/gallery/lo-res/la/la32.jpg" alt="Ship" style="width:100%">
                 </a>
             </div>
             <div class="column">
@@ -121,6 +168,12 @@ include ("../includes/navigation.php");
                 <a target="_blank" href="../images/gallery/hi-res/po/po04h.jpg">
                     <img class="imgvert" src="../images/gallery/lo-res/po/po04.jpg" alt="Krakow street" style="width:100%">
                 </a>
+                <a target="_blank" href="../images/gallery/hi-res/la/la30h.jpg">
+                    <img src="../images/gallery/lo-res/la/la30.jpg" alt="Gdańsk happy" style="width:100%">
+                </a>
+                <a target="_blank" href="../images/gallery/hi-res/po/po01h.jpg">
+                    <img class="imgvert" src="../images/gallery/lo-res/po/po01.jpg" alt="Oradea sepia" style="width:100%">
+                </a>
             </div>
             <div class="column">
                 <a target="_blank" href="../images/gallery/hi-res/la/la34h.jpg">
@@ -150,31 +203,14 @@ include ("../includes/navigation.php");
                 <a target="_blank" href="../images/gallery/hi-res/po/po02h.jpg">
                     <img class="imgvert" src="../images/gallery/lo-res/po/po02.jpg" alt="Old church" style="width:100%">
                 </a>
-            </div>
-            <div class="column">
+                <a target="_blank" href="../images/gallery/hi-res/po/po08h.jpg">
+                    <img class="imgvert" src="../images/gallery/lo-res/po/po08.jpg" alt="Stairs" style="width:100%">
+                </a>
                 <a target="_blank" href="../images/gallery/hi-res/la/la27h.jpg">
                     <img src="../images/gallery/lo-res/la/la27.jpg" alt="Gdansk" style="width:100%">
                 </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la28h.jpg">
-                    <img src="../images/gallery/lo-res/la/la28.jpg" alt="Gdansk sepia" style="width:100%">
-                </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la11h.jpg">
-                    <img src="../images/gallery/lo-res/la/la11.jpg" alt="Budapest sunset" style="width:100%">
-                </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la30h.jpg">
-                    <img src="../images/gallery/lo-res/la/la30.jpg" alt="Gdańsk happy" style="width:100%">
-                </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la31h.jpg">
-                    <img src="../images/gallery/lo-res/la/la31.jpg" alt="Gdynia" style="width:100%">
-                </a>
-                <a target="_blank" href="../images/gallery/hi-res/la/la32h.jpg">
-                    <img src="../images/gallery/lo-res/la/la32.jpg" alt="Ship" style="width:100%">
-                </a>
                 <a target="_blank" href="../images/gallery/hi-res/la/la33h.jpg">
                     <img src="../images/gallery/lo-res/la/la33.jpg" alt="Pier" style="width:100%">
-                </a>
-                <a target="_blank" href="../images/gallery/hi-res/po/po01h.jpg">
-                    <img class="imgvert" src="../images/gallery/lo-res/po/po01.jpg" alt="Oradea sepia" style="width:100%">
                 </a>
             </div>
         </div>
