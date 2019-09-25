@@ -1,0 +1,45 @@
+\documentclass[12pt, a4paper]{report}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Analiză 1} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: R.\ Purnichescu-Purtan}}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\footnotesize{\color{gray}Analiză 1, 2019--2020}}
+\lhead{\footnotesize{\color{gray}Adrian Manea}}
+
+\include{ch/s1-serii}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+% BIBLIOGRAPHY
+%\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliografie}
+%\bibliography{../2018-2019/m1.bib}
+%\bibliographystyle{apalike}
+%\nocite{*}
+
+\end{document}
