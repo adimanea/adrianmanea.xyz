@@ -41,7 +41,7 @@ include ("../includes/navigation.php");
             <button class="accordion">FIA, Bazele calculului diferențial</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe disponibile în curînd.</li>
+                        <li>Notițe disponibile aici: <a href="../docs/19-20-fia-bcd/bcd-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
                     </ul>
                 </div>
         </div>
