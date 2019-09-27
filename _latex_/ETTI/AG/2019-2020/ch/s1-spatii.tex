@@ -1,2 +1,544 @@
 %! TEX root = ../ag-19-20.tex
+
 \chapter{Spații vectoriale}
+
+\section{Eliminare gaussiană}
+\index{eliminare gaussiană}
+
+Metoda eliminării gaussiene (numită și metoda Gauss(-Jordan)) este folosită
+pentru a aduce matrice la o formă mai simplă, anume triunghiulară sau chiar
+forma matricei unitate.
+
+Principalele aplicații ale eliminării gaussiene sînt în rezolvarea sistemelor
+de ecuații liniare și în inversarea matricelor.
+
+În ambele situații, se trece de la o stare la alta făcînd \emph{transformări %
+elementare}, adică acele operații permise în determinanți, care nu schimbă
+valoarea determinantului. În general, operațiile pe care le putem face intră
+sub denumirea de \emph{combinații liniare cu linii sau coloane}.
+
+Un exemplu este următorul. Fie sistemul de ecuații:
+\[
+    \begin{cases}
+        mx_1 + x_2 + x_3 &= 1 \\
+        x_1 + mx_2 + x_3 &= m \\
+        x_1 + x_2 + mx_3 &= m^2,
+    \end{cases}
+\]
+unde $ m \in \RR $. Evident, soluția sistemului va implica o discuție după $ m $.
+
+Fie $ A $ matricea sistemului, iar $ B $ matricea-coloană a termenilor liberi.
+Prelucrăm matricea extinsă $ (A \mid B) $ pînă cînd aducem pe $ A $ în formă
+(superior) triunghiulară.
+
+Considerăm matricea $M = (A \mid B) $ de mai sus:
+\begin{align*}
+    (A | B) &= \begin{pmatrix}
+        m & 1 & 1 & \mid & 1 \\
+        1 & m & 1 & \mid & m \\
+        1 & 1 & m & \mid & m^2
+    \end{pmatrix} \\
+            &\xrightarrow{L_1 \leftrightarrow L_2}
+            \begin{pmatrix}
+                1 & m & 1 & \mid & m \\
+                m & 1 & 1 & \mid & 1 \\
+                1 & 1 & m & \mid & m^2
+            \end{pmatrix} \\
+  &\stackrel{L_2 \to L_2 - mL_1}{\xrightarrow{L_3 \to L_3 - L_1}}
+  \begin{pmatrix}
+      1 & m & 1 & \mid & m \\
+      0 & 1 - m^2 & 1 - m & \mid & 1 - m^2 \\
+      0 & 1 - m & m - 1 & \mid & m^2 - m.
+  \end{pmatrix}
+\end{align*}
+
+În acest punct, avem o discuție:
+
+(a) Dacă $m = 1$, atunci sistemul se reduce la prima ecuație, deci este compatibil
+dublu nedeterminat. Rezultă soluția
+\[
+    \{ (1 - \alpha - \beta, \alpha, \beta) \mid \alpha, \beta \in \RR \}.
+\]
+
+(b) Dacă $m \neq 1$, atunci putem continua transformările și ajungem, în fine, la:
+\[
+    M = \begin{pmatrix}
+        1 & 0 & 1 + m & \mid & m + m^2 \\
+        0 & 1 & -1 & \mid & -m \\
+        0 & 0 & 2 & \mid & (m + 1)^2
+    \end{pmatrix}
+\]
+
+Aici discutăm din nou:
+
+(b1) Dacă $m = -2$, sistemul este incompatibil, deoarece ultima ecuație devine $0 = 1$.
+
+(b2) Dacă $m \neq -2$, putem continua transformările și ajungem, în cele din urmă, la:
+\[
+    M = %
+    \begin{pmatrix}
+        1 & 0 & 0 & \mid & -(m+1)/2 \\
+        0 & 1 & 0 & \mid & 1/(m+2) \\
+        0 & 0 & 1 & \mid & (m+1)^2/(m+2)
+    \end{pmatrix}
+\]
+
+
+În acest ultim caz, sistemul este compatibil determinat, soluția fiind dată de ultima coloană:
+\[
+    \begin{cases}
+        x_1  &= -\dfrac{m + 1}{2} \\
+    & \\
+        x_2  &= \dfrac{1}{m + 2} \\
+    & \\
+        x_3  &= \dfrac{(m + 1)^2}{m + 2}.
+    \end{cases}
+\]
+
+Concluzia generală este:
+\begin{enumerate}[(a)]
+    \item Dacă $m \in \RR - \{-2, 1\}$, sistemul are soluție unică;
+    \item Dacă $m = -2$, sistemul este incompatibil;
+    \item Dacă $m = -1$, sistemul este compatibil nedeterminat.
+\end{enumerate}
+
+\vspace{1cm}
+
+Similar, pentru a calcula inversa unei matrice, bordăm matricea dată cu matricea
+unitate și efectuăm transformări elementare pînă ce matricea inițială devine
+matricea unitate.
+
+Iată un exemplu, notînd și transformările:
+\begin{align*}
+    \begin{pmatrix}
+        2 & 1 & 3 & \mid & 1 & 0 & 0 \\
+        -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+        5 & 1 & 1 & \mid & 0 & 0 & 1
+    \end{pmatrix} &\xrightarrow{L_1 \to (1/2)L_1}
+    \begin{pmatrix}
+        1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+        -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+        5 & 1 & 1 & \mid & 0 & 0 & 1 
+    \end{pmatrix} \\
+                  &\stackrel{L_2 \to 2L_1 + L_2}{\xrightarrow{L_3 \to -5L_1 + L_3}}
+                  \begin{pmatrix}
+                      1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+                      0 & 4 & 7 & \mid & 1 & 1 & 0 \\
+                      0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1
+                  \end{pmatrix} \\
+  &\xrightarrow{L_2 \to (1/4)L_2}
+  \begin{pmatrix}
+      1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+      0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+      0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1 
+  \end{pmatrix} \\
+  &\stackrel{L_1 \to (-1/2)L_2 + L_1}{\xrightarrow{L_3 \to (3/2)L_2 + L_3}}
+  \begin{pmatrix}
+      1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+      0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+      0 & 0 & -31/8 & \mid & -17/8 & 3/8 & 1
+  \end{pmatrix} \\
+  &\xrightarrow{L_3 \to (-31/8)L_3}
+  \begin{pmatrix}
+      1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+      0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+      0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+  \end{pmatrix} \\
+  &\stackrel{L_1 \to (-5/8)L_3 + L_1}{\xrightarrow{L_2 \to (-7/4)L_3 + L_2}}
+  \begin{pmatrix}
+      1 & 0 & 0 & \mid & 1/31 & -2/31 & 5/31 \\
+      0 & 1 & 0 & \mid & -22/31 & 13/31 & 14/31 \\
+      0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+  \end{pmatrix}
+\end{align*}
+
+Rezultă că 
+\[
+    A^{-1} = %
+    \begin{pmatrix} 
+        1/31 & -2/31 & 5/31 \\
+      -22/31 & 13/31 & 14/31 \\
+      17/31 & -3/31 & -8/31
+  \end{pmatrix}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Exerciții}
+
+1. Rezolvați următoarele sisteme, atît cu metoda matriceală clasică, cît și cu
+metoda lui Gauss:
+\begin{enumerate}[(a)]
+    \item $ \begin{cases}
+            x + 3y - z &= 1 \\
+            3x + y + 2z &= 4 \\
+            5x - 2y + z &= 2
+        \end{cases} $
+    \item $ \begin{cases}
+            3x - y + 2z + 3t &= 4 \\
+            x + 3y - z + t &= -1
+        \end{cases} $
+    \item $ \begin{cases}
+            2x - y + 3z &= 1 \\
+            3x + 2y - z &= 4 \\
+            x + 3y - 4z &= 3
+        \end{cases} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați inversele matricelor, atît cu metoda folosind matricea adjunctă,
+cît și folosind metoda lui Gauss:
+\begin{enumerate}[(a)]
+    \item $ A =
+        \begin{pmatrix}
+            1 & 0 & -1 \\
+            3 & 2 & 1 \\
+            0 & 1 & 1
+        \end{pmatrix} $;
+    \item $ B =
+        \begin{pmatrix}
+            -1 & 2 & 4 & 1 \\
+            3 & 0 & 1 & 4 \\
+            0 & 1 & 1 & 0 \\
+            2 & 1 & 0 & 1
+        \end{pmatrix} $;
+    \item $ C =
+        \begin{pmatrix}
+            1 & 1 & 2 \\
+            0 & 1 & 0 \\
+            0 & 0 & -1
+        \end{pmatrix} $.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spații vectoriale}
+\index{spații!vectoriale}
+
+Noțiunea de spațiu vectorial face legătura între geometrie și algebră. De fapt,
+a permis utilizarea metodelor de structuri algebrice în geometria analitică.
+Exemplul de bază este acela al planului real $ V = \RR^2 $, în care considerăm
+adunarea vectorilor și înmulțirea lor cu scalari. Astfel, fie vectorii:
+\[
+    \vec{v} = a\vec{i} + b \vec{j}, \quad \vec{w} = c \vec{i} + d \vec{j},
+\]
+unde $ a, b, c, d \in \RR $.
+
+Definim operația de adunare a vectorilor, pe componente:
+\[
+    \vec{v} + \vec{w} = (a + c)\vec{i} + (b + d) \vec{j}.
+\]
+
+Cu această definiție, observăm că $ (V, +) $ are o structură de grup comutativ
+(justificați!).
+
+În plus, mai avem la dispoziție și operația de înmulțire cu scalari. Fie $ \alpha \in \RR $
+un scalar (număr real, în cazul de față). Se definește operația:
+\[
+    \alpha \cdot \vec{v} = \alpha a \vec{i} + \alpha b \vec{j}.
+\]
+
+Cu această definiție, se verifică imediat proprietățile (pentru orice $ \alpha, \beta \in \RR $
+și $ \vec{v}, \vec{w} \in \RR^2 $):
+\begin{itemize}
+    \item $ (\alpha \beta)\vec{v} = \alpha (\beta \vec{v}) $;
+    \item $ \alpha \cdot (\vec{v} + \vec{w}) = \alpha \vec{v} + \alpha \vec{w}) $;
+    \item $ 1_\RR \cdot \vec{v} = \vec{v} $;
+    \item $ 0_\RR \cdot \vec{v} = \vec{0} $.
+\end{itemize}
+
+Mai amintim, de asemenea, că mulțimea numerelor reale are o structură de corp comutativ,
+$ (\RR, +, \cdot) $.
+
+Sîntem, astfel, conduși la următoarea:
+\begin{definition}\label{def:sp-vect}
+    Spunem că $ V $ are structură de \emph{spațiu vectorial peste $ K $} (echivalent,
+    $ V $ este $ K $-spațiu vectorial) dacă:
+    \begin{enumerate}
+        \item $ (V, +) $ are structură de grup comutativ;
+        \item $ (K, +, \cdot) $ are structură de corp comutativ;
+        \item există o \emph{operație externă} $ \cdot : V \times K \to K $ care satisface
+            \begin{itemize}
+                \item $ \alpha \cdot (x + y) = \alpha \cdot x + \alpha \cdot y $;
+                \item $ (\alpa + \beta) \cdot x = \alpha \cdot x + \beta \cdot x $;
+                \item $ \alpha \cdot (\beta \cdot x) = (\alpha \beta) \cdot x $;
+                \item $ \alpha \cdot (x + y) = \alpha \cdot x + \alpha \cdot y $;
+                \item $ 1_K \cdot x = x $;
+                \item $ 0_K \cdot x = 0_V $;
+            \end{itemize}
+            pentru orice $ x, y \in V $ și $ \alpha, \beta \in K $.
+    \end{enumerate}
+    În general, elementele grupului $ V $ se vor nota cu litere din alfabetul latin
+    și se vor numi \emph{vectori}, iar elementele corpului $ K $ se vor nota cu litere
+    grecești și se vor numi \emph{scalari}.
+\end{definition}
+
+\begin{remark}\label{rk:spatiu-necom}
+    Are sens, în general, să lucrăm și pe cazul necomutativ, adică, de exemplu,
+    înmulțirea cu scalari să fie posibilă doar într-o parte sau să nu fie egală expresia
+    $ \alpha v $ cu $ v \alpha $. Dar aceste cazuri depășesc scopul acestui seminar și vor
+    fi omise. De aceea, comutativitatea va fi presupusă implicit în tot ceea ce urmează.
+\end{remark}
+
+Spațiile vectoriale se mai numesc și \emph{spații liniare}, deoarece toate expresiile
+și ecuațiile ce vor apărea vor fi liniare, i.e.\ de gradul întîi.
+
+Dacă corpul $ K $ este $ \RR $ sau $ \CC $, vom mai numi spațiile reale, respectiv complexe.
+În acest seminar, majoritatea cazurilor vor fi de spații vectoriale reale.
+
+Cîteva exemple de bază urmează. Cititorul este încurajat să verifice afirmațiile cu o scurtă
+demonstrație.
+\begin{enumerate}
+    \item $ K $ este un $ K $-spațiu vectorial, deci putem avea, de exemplu, $ V = K = \RR $;
+    \item $ \RR^n $ este un $ \RR $-spațiu vectorial, unde vectorii sînt $ n $-tupluri
+        de numere reale, $ v = (x_1, x_2, \dots, x_n) $.
+    \item $ M_{m, n}(K) $ este un $ K $-spațiu vectorial, indiferent de $ m, n, K $. În particular,
+        $ M_4(\RR) $ este un spațiu vectorial real, iar $ M_{2, 7}(\ZZ_{13}) $ este un
+        $ \ZZ_{13} $-spațiu vectorial.
+    \item $ \RR $ este un $ \QQ $-spațiu vectorial, dar nu este un $ \CC $-spațiu vectorial;
+    \item $ \RR[X] $ (mulțimea polinoamelor cu coeficienți reali) este un spațiu vectorial real;
+    \item $ \RR_n[X] = \{ f \in \RR[X] \mid \dr{grad}f \leq n \} $ este un spațiu vectorial
+        real.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Subspații vectoriale}
+
+Ca de obicei, atunci cînd se introduc structuri algebrice noi, se caută
+și conceptul de \emph{substructură} corespunzător. În cazul de față, este vorba
+despre \emph{subspații vectoriale}. Ca în cazul grupurilor, acestea
+se definesc simplu:
+
+\begin{definition}\label{def:subspatii}\index{spații vectoriale!subspații}
+    Fie $ V $ un $ K $-spațiu vectorial. Submulțimea $ W \seq V $ se numește
+    \emph{subspațiu vectorial} al lui $ V $, notat $ W \leq_K V $ dacă $ W $
+    la rîndul său are structură de $ K $-spațiu vectorial.
+\end{definition}
+
+Tot ca în cazul grupurilor, avem o teoremă de caracterizare care ne este
+de ajutor în calcule.
+
+%\begin{theorem}\label{thm:subspatiu}
+    %Fie $ V $ un $ K $-spațiu vectorial și $ W \seq V $.
+
+    %Atunci $ W \leq_K V $ dacă și numai dacă, pentru orice $ w_1, w_2 \in W $
+    %și $ \alpha, \beta \in K $, are loc $ \alpha w_1 \pm \beta w_2 \in W $.
+%\end{theorem}
+
+Cîteva exemple simple (justificați!):
+\begin{enumerate}
+    \item Mulțimea $ \{ 0_V \} $ formează un subspațiu vectorial al lui $ V $,
+        numit subspațiul nul sau trivial. De asemenea, $ V $ este la rîndul
+        său subspațiu al lui $ V $. Aceste exemple se numesc \emph{subspații improprii},
+        iar noi vom fi interesați de celelalte cazuri, numite \emph{subspații proprii}.
+    \item $ \RR_n[X] \leq_\RR \RR[X] $, pentru orice număr natural $ n $.
+    \item Submulțimea $ W = \{ (x_1, x_2) \in \RR^2 \mid 2x_1 - 3x_2 = 0 \} $ este
+        un subspațiu al spațiului $ \RR^2 $.
+    \item Mulțimea matricelor pătratice de mărime $ n $, superior triunghiulare,
+        este un subspațiu al spațiului de matrice pătratice de mărime $ n $.
+    \item În spațiul $ \RR^3 $, dreptele și planele care conțin originea sînt subspații.
+    \item În spațiul $ \RR^2 $, mulțimea $ W = \{ (x, y) \in \RR^2 \mid y = 2x - 1 \} $
+        \emph{nu} formează un subspațiu.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Operații cu subspații}
+
+Fie $ V $ un $ K $-spațiu vectorial și $ V_1, V_2 $ două subspații ale sale.
+
+\begin{definition}\label{def:suma-sp}\index{spații!vectoriale!sumă de subspații}
+    Mulțimea $ V_1 + V_2 = \{ x \in V \mid \exists x_1 \in V_1, x_2 \in V_2, x = x_1 + x_2 \} $
+    se numește \emph{suma subspațiilor} $ V_1 $ și $ V_2 $.
+
+    Dacă, în plus, $ V_1 \cap V_2 = \{ 0_V \} $, atunci suma se numește \emph{directă}
+    și se notează $ V_1 \oplus V_2 $.
+\end{definition}
+
+\begin{remark}\label{rk:inters-subsp}
+    Dacă $ V_1, V_2 \leq_K V $, este imposibil ca $ V_1 \cap V_2 = \emptyset $. (Justificați!)
+\end{remark}
+
+Cazul în care suma a două subspații este directă este foarte util prin următorul rezultat.
+
+\begin{proposition}\label{prop:suma-dir}
+    Suma dintre subspațiile $ V_1 $ și $ V_2 $ ale spațiului $ V $ este directă dacă și 
+    numai dacă orice vector din $ v $ se descompune în mod unic în $ v = v_1 + v_2 $,
+    cu $ v_1 \in V_1 $ și $ v_2 \in V_2 $.
+
+    Dacă acesta este cazul, spunem că $ v_1 $ este proiecția lui $ V $ pe $ V_1 $ și
+    similar pentru $ V_2 $.
+\end{proposition}
+
+O altă operație permisă cu subspații este intersecția: Dacă $ V_1, V_2 $ sînt subspații
+ale lui $ V $, atunci și $ V_1 \cap V_2 $ este subspațiu.
+
+Reuniunea de subspații, însă, nu este subspațiu, în general!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bază și dimensiune}
+
+Fie $ V $ un $ K $-spațiu vectorial și $ S = \{ x_1, \dots, x_n \} \leq V $ o submulțime
+nevidă de vectori din $ V $.
+
+O expresie de forma $ v = \ds\sum_{i = 1}^n \alpha_i x_i $ se numește \emph{combinația %
+liniară} a vectorilor $ x_i $ cu scalarii $ \alpha_i \in K $.
+
+\begin{definition}\label{def:indep-sg-baza}\index{spații!bază}
+    Mulțimea $ S $ de mai sus se numește:
+    \begin{itemize}
+        \item \emph{sistem liniar independent} dacă orice combinație liniară a vectorilor
+            din $ S $ cu scalari din $ K $ care este nulă are toți scalarii nuli.
+            Cu alte cuvinte, dacă $ \ds\sum_{i=1}^n \alpha_i x_i = 0 $, atunci toți
+            $ \alpha_i = 0, \forall i $, adică singura combinație liniară nulă care
+            folosește toți vectorii din $ S $ este cea trivială.
+        \item \emph{sistem de generatori} dacă orice vectori $ v \in V $ se poate
+            scrie în funcție de vectorii din $ S $. Cu alte cuvinte, pentru orice
+            $ v \in V $, există scalarii $ \alpha_1, \dots, \alpha_n $
+            astfel încît $ v = \sum \alpha_i x_i $. Dacă un spațiu vectorial admite
+            un sistem de generatori cu un număr finit de vectori, atunci spațiul
+            se numește \emph{finit generat}. Dacă mulțimea $ \{x_1, \dots, x_n \} $
+            este un sistem de generatori pentru $ V $, notăm aceasta cu
+            $ V = \dr{Sp}\{x_1, \dots, x_n\} $, de la englezescul \emph{span} (acoperire, întindere).
+        \item \emph{bază} dacă este simultan sistem liniar independent și sistem
+            de generatori. Cu alte cuvinte, orice vector din $ V $ se poate scrie
+            în funcție de vectorii din $ S $, iar această scriere este unică.
+    \end{itemize}
+    Dacă $ S $ este bază, numărul de elemente din $ S $ se numește \emph{dimensiunea}
+    spațiului vectorial $ V $, notat $ \dim_K V $ sau mai simplu $ \dim V $, cînd
+    corpul de scalari este clar din context.
+\end{definition}
+
+Un rezultat esențial este:
+\begin{theorem}\label{thm:exist-baza}
+    Orice spațiu vectorial admite (cel puțin) o bază și orice două baze ale unui
+    spațiu vectorial au același număr de elemente.
+\end{theorem}
+
+Așadar, fie că este vorba despre spații finit dimensionale sau infinit dimensionale,
+știm sigur că o bază există, iar conceptul de dimensiune este corect definit.
+
+În plus, în toate cazurile pe care le vom discuta în continuare, vom lucra
+doar cu spații finit dimensionale.
+
+Exemple fundamentale:
+\begin{enumerate}
+    \item Pentru spațiul real $ \RR^n $, o bază este:
+        \[
+            \left\{ e_1 = (1, 0, 0, \dots, 0), e_2 = (0, 1, 0, \dots, 0), \dots, %
+            e_n = (0, 0, \dots, 0, 1) \right\},
+        \]
+        care se numește \emph{baza canonică}.
+    \item Pentru spațiul real $ \RR[X] $, o bază este $ \{ 1, X, X^2, X^3, \dots, X^n, \dots, \} $.
+    \item Pentru spațiul de matrice $ M_n(\RR) $, o bază este formată din matricele
+        care au toate elementele nule, mai puțin unul, care este egal cu 1. De exemplu,
+        pentru $ M_2(\RR) $, o bază este:
+        \[
+            \left\{ \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+            \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \right\}.
+        \]
+    \item Pentru spațiul real $ \CC $, o bază este formată din $ \{ 1, i \} $.
+    \item Pentru spațiul real $ \RR $, o bază este $ \{ 1 \} $.
+    \end{enumerate}
+
+Să mai dăm cîteva detalii pentru cazul binecunoscut al spațiului real $ \RR^2 $.
+Dimensiunea lui este 2 și o bază (baza canonică) este $ B = \{ (1, 0), (0, 1) \} $.
+Elementele bazei pot fi asimilate cu versorii $ \vec{i} = (1, 0) $ și $ \vec{j} = (0, 1) $.
+Mai mult, dat un vector oarecare, $ v = (a, b) $, el poate fi scris în funcție de elementele
+bazei în mod unic:
+\[
+    (a, b) = a \cdot (1, 0) + b \cdot (0, 1).
+\]
+Scalarii $ a $ și $ b $ de mai sus se numesc \emph{coordonatele} vectorului $ v $ în
+baza canonică $ B $.
+
+Similar, de exemplu, în spațiul $ V = \RR_3[X] $, baza canonică este
+$ B = \{ 1, X, X^2, X^3 \} $, iar dacă luăm polinomul
+\[
+    f = 3 - 5X + 2X^2 + 7X^3,
+\]
+atunci coordonatele sale în baza canonică sînt $ 3, -5, 2, 7 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Teorema lui Grassmann}
+
+Fie $ V $ un $ K $-spațiu vectorial finit dimensional și $ V_1, V_2 $ două subspații
+ale sale. Teorema următoare leagă conceptul de dimensiune de operațiile cu subspații.
+
+\begin{theorem}[\textsc{Hermann Grassmann}]\label{thm:grass}\index{teoremă!Grassmann}
+    În contextul și cu notațiile de mai sus, are loc egalitatea:
+    \[
+        \dim(V_1 + V_2) = \dim V_1 + \dim V_2 - \dim(V_1 \cap V_2).
+    \]
+\end{theorem}
+
+Comparați rezultatul de mai sus cu unul cunoscut, despre cardinale:
+\[
+    |A \cup B| = |A| + |B| - |A \cap B|.
+\]
+
+De aici rezultă că o bază în $ V_1 + V_2 $ este reuniunea bazelor din $ V_1 $,
+respectiv $ V_2 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Arătați că următoarele mulțimi sînt subspații vectoriale în spațiile indicate.
+Determinați o bază și dimensiunea fiecărui subspațiu.
+\begin{enumerate}[(a)]
+    \item $ V_1 = \{ (x, y) \in \RR^2 \mid 3x - y = 0 \} \leq_\RR \RR^2 $;
+    \item $ V_2 = \{ (x, y, z) \in \RR^3 \mid 3x - y = 0 \} \leq_\RR \RR^3 $;
+    \item $ V_3 = \{ (x, y, z) \in \RR^3 \mid x = 0 \} \leq_\RR \RR^3 $;
+    \item $ V_4 = \{ p \in \RR_2[X] \mid p(1) = 0 \} \leq_\RR \RR_2[X] $;
+    \item $ V_5 = \{ p \in \RR_2[X] \mid p'(1) = 0 \} \leq_\RR \RR_2[X] $;
+    \item $ V_6 = \{ (x, y, z) \in \RR^3 \mid 3x - y + z = 0, 2x + y = 0 \} \leq_\RR \RR^3 $;
+    \item $ V_7 = \{ A \in M_2(\RR) \mid A = A^t \} $;
+    \item $ V_8 = \{ A \in M_2(\RR) \mid \dr{tr}A = 0 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Se consideră mulțimea:
+\[
+    W = \left\{ A \in M_{2, 3}(\RR) \mid A = \begin{pmatrix} x & 0 & y \\ 0 & u & z \end{pmatrix},
+    x, y, z, u \in \RR, x = y + z \right\}.
+\]
+\begin{enumerate}[(a)]
+    \item Să se arate că $ W \leq_\RR M_{2, 3}(\RR) $;
+    \item Găsiți o bază a lui $ W $ și $ \dim_\RR W $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Arătați că sistemul de vectori $ \{v_1, v_2, v_3 \} $ este liniar independent,
+unde:
+\[
+    v_1 = (1, -1, 2), \quad v_2 = (3, -1, 1), \quad v_3 = (0, 1, 5).
+\]
+
+Este acesta și sistem de generatori?
+
+\vspace{1cm}
+
+4. Fie mulțimea $ B = \{ p_1, p_2, p_3 \} \seq \RR_2[X] $, unde:
+\[
+    p_1 = X^2 - 1, \quad p_2 = 2X + 1, \quad p_3 = X^2 + 3.
+\]
+Arătați că $ B $ este o bază a lui $ \RR_2[X] $ și găsiți coordonatele
+vectorului $ q = 3X^2 - X + 4 $ în baza $ B $.
+
+\vspace{1cm}
+
+5. Fie subspațiile:
+\begin{align*}
+    V_1 &= \{ (x, y, z) \in \RR^3 \mid 2x - y + z = 0 \} \\
+    V_2 &= \dr{Sp} \{ (1, -1, 2), (3, 1, 0) \}.
+\end{align*}
+
+Găsiți cîte o bază și dimensiunea subspațiilor: $ V_1, V_2, V_1 + V_2, V_1 \cap V_2 $.
+
+Este suma $ V_1 + V_2 $ directă?
