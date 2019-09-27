@@ -1,2 +1,167 @@
 %! TEX root = ../m1-19-20.tex
-\chapter{Serii de numere reale}
+\chapter{Serii de numere reale pozitive}
+
+\section{Exerciții recapitulative --- șiruri}
+
+În toate cele de mai jos, presupunem că lucrăm cu șiruri de numere reale.
+
+\vspace{1cm}
+
+1. Găsiți valoarea de adevăr a afirmațiilor de mai jos. Dacă sînt adevărate,
+justificați. Dacă sînt false, găsiți un contraexemplu.
+\begin{enumerate}[(a)]
+    \item Orice șir monoton este mărginit.
+    \item Orice șir mărginit este monoton.
+    \item Orice șir convergent este monoton.
+    \item Orice subșir al unui șir monoton este monoton.
+    \item Suma a două șiruri monotone este un șir monoton.
+    \item Orice șir divergent este nemărginit.
+    \item Dacă șirul format din pătratele termenilor unui șir este convergent,
+        atunci șirul inițial este convergent.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați limitele șirurilor cu termenul general $ a_n $ în cazurile de mai jos:
+\begin{enumerate}[(a)]
+    \item $ a_n = \dfrac{n^3 + 5n^2 + 1}{6n^3 + n + 4} $;
+    \item $ a_n = \dfrac{n^2 + 2n + 5}{5n^3 - 1} $;
+    \item $ a_n = \asin \dfrac{n + 1}{2n + 3} $;
+    \item $ a_n = \dfrac{\sqrt{n^2 + 1} + 4\sqrt{n^2 + n + 1}}{n} $;
+    \item $ a_n = \dfrac{1^2 + 2^2 + 3^2 + 4^2 + \dots + n^2}{n^3} $;
+    \item $ a_n = \dfrac{1}{1 \cdot 3} + \dfrac{1}{3 \cdot 5} + \dots + \dfrac{1}{(2n - 1)(2n + 1)} $;
+    \item $ a_n = \sqrt[3]{n^2 + 1} - \sqrt[3]{n^2 + n} $;
+    \item $ a_n = 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dots + \dfrac{1}{n} $;
+    \item $ a_n = \left( \dfrac{n+5}{3n + 2} \right)^n $;
+    \item $ a_n = 1 + \dfrac{1}{4} + \dfrac{1}{16} + \dfrac{1}{64} + \dots + \dfrac{1}{4^n} $;
+    \item $ a_n = \dfrac{2 + \sin n}{n^2} $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Seria geometrică și seria armonică}
+
+Intuitiv, seriile sînt \emph{sume infinite}. Înainte de a le studia mai amănunțit,
+începem cu două exemple foarte utilizate.
+
+Dacă $ (b_n) $ este o progresie geometrică de rație $ q $, atunci suma primilor
+$ n $ termeni se poate scrie sub forma:
+\[
+    S_n = b_0 \cdot \dfrac{q^n - 1}{q - 1}.
+\]
+În cazul seriilor, ne punem problema să calculăm suma \emph{tuturor} termenilor
+progresiei, adică:
+\[
+    \ds\lim_{n \to \infty} S_n = \sum_{n \geq 0} b_n.
+\]
+
+Folosind formula de mai sus, se poate vedea ușor că seria geometrică
+este convergentă, adică limita de mai sus este finită, dacă și numai
+dacă $ |q| < 1 $. Mai mult, în acest caz, suma seriei este:
+\[
+    \sum_{n \geq 0} b_n = b_0 \cdot \dfrac{1}{1 - q}.
+\]
+
+\vspace{1cm}
+\index{serie!geometrică}
+\index{serie!armonică}
+
+Un alt exemplu foarte important de serie este \emph{seria armonică}, numită
+și \emph{funcția zeta a lui Riemann}. Aceasta se definește astfel:
+\[
+    \zeta(s) = \sum_{n \geq 0} \dfrac{1}{n^s}, \quad s \in \QQ.
+\]
+
+Cîteva exemple imediate:
+\begin{align*}
+    \zeta(0) &= \sum 1 = \infty \\
+    \zeta(1) &= \sum \dfrac{1}{n} = \infty \\
+    \zeta(2) &= \sum \dfrac{1}{n^2} = \dfrac{\pi^2}{6} \\
+    \zeta(-1) &= \sum n = \infty \\
+    \zeta(-2) &= \sum n^2 = \infty.
+\end{align*}
+
+Un rezultat general este următorul:
+\begin{theorem}\label{thm:zeta-conv}
+    Seria armonică este convergentă dacă și numai dacă exponentul $ s $
+    este strict supraunitar, adică $ s > 1 $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Criterii de convergență}
+
+Putem afla dacă o serie este convergentă aplicînd unul dintre criteriile care urmează.
+Fixăm mai întîi notația: presupunem că vorbim despre o serie cu termenul general
+$ x_n $, adică $ \ds\sum_{n \geq 1} x_n = \sum x_n $.
+
+\textbf{Criteriul necesar:} Dacă $ \ds\lim_{n \to \infty} x_n \neq 0 $, atunci
+seria $ \sum x_n $ este divergentă.
+
+\begin{remark}\label{rk:nec}
+    Să remarcăm că acest criteriu dă o condiție necesară, care nu este suficientă!
+    Într-adevăr, seria $ \zeta(1) $ are termenul general tinzînd spre 0, dar seria
+    este divergentă!
+\end{remark}
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație termen cu termen:} Fie $ \sum y_n $ o altă serie
+de numere reale și pozitive.
+\begin{itemize}
+    \item Dacă $ x_n \leq y_n, \forall n $ și $ \sum y_n $ este convergentă,
+        atunci și seria $ \sum x_n $ este convergentă;
+    \item Dacă $ x_n \geq y_n, \forall n $ și $ \sum y_n $ este divergentă,
+        atunci și seria $ \sum x_n $ este divergentă.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Criteriul de comparație la limită:} Fie $ \sum y_n $ o altă serie
+de numere reale și pozitive. Dacă $ \ds\lim_{n \to \infty} \dfrac{x_n}{y_n} = l \geq 1 $,
+atunci cele două serii au aceeași natură (seria $ \sum x_n $ este convergentă
+dacă și numai dacă seria $ \sum y_n $ este convergentă).
+
+\begin{remark}\label{rk:comparatie}
+    În ambele criterii de comparație, un candidat foarte bun pentru seria $ y_n $
+    este fie seria armonică, cu un anume exponent $ s $, fie seria geometrică,
+    cu o anume rație, alese convenabil.
+\end{remark}
+
+\vspace{1cm}
+
+\textbf{Criteriul raportului:} Fie $ \ell = \ds\lim_{n \to \infty} \dfrac{x_{n+1}}{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+\vspace{1cm}
+
+\textbf{Criteriul radical:} Fie $ \ell = \ds\lim{n \to \infty} \sqrt[n]{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Studiați convergența seriilor $ \sum x_n $ în cazurile de mai jos:
+\begin{enumerate}[(a)]
+    \item $ x_n = \left( \dfrac{3n}{3n + 1} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{1}{n!} $; \hfill(C, raport)
+    \item $ x_n = \dfrac{1}{n\sqrt{n + 1}} $; \hfill(C, comparație la limită cu $\zeta(3/2)$)
+    \item $ x_n = \asin \dfrac{n+1}{2n + 3} $; \hfill(D, necesar)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{n!}{n^{2n}} $; \hfill(C, raport)
+    \item $ x_n = \left( \dfrac{n + 1}{3n + 1}\right)^n $; \hfill(C, radical)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^{n^2} $; \hfill(C, radical)
+    \item $ x_n = \dfrac{1}{7^n + 3^n} $; \hfill(C, comparație cu geometrică)
+    \item $ x_n = \dfrac{2 + \sin n}{n^2} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \dfrac{\sin^2 n}{n^2 + 1} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \sqrt{n^4 + 2n + 1} - n^2 $; \hfill(D, comparație cu armonică)
+\end{enumerate}
+
+
