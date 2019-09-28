@@ -23,7 +23,7 @@ include ("../includes/navigation.php");
             <button class="accordion">ACS, Matematică 1 (Analiză)</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe disponibile în curînd.</li>
+                        <li>Notițe disponibile aici: <a href="../docs/19-20-acs-m1/m1-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
                     </ul>
                 </div>
             <button class="accordion">ETTI, Algebră și Geometrie</button>
@@ -35,7 +35,7 @@ include ("../includes/navigation.php");
             <button class="accordion">ETTI, Analiză 1</button>
                 <div class="panel">
                     <ul class="big-list">
-                        <li>Notițe disponibile în curînd.</li>
+                        <li>Notițe disponibile aici: <a href="../docs/19-20-etti-am1/am1-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
                     </ul>
                 </div>
             <button class="accordion">FIA, Bazele calculului diferențial</button>
