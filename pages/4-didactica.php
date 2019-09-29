@@ -250,7 +250,7 @@ include ("../includes/navigation.php");
         </div>
 
         <br /><br /><br />
-        <p style="text-align:center">Sursele LaTeX pentru documentele incluse sînt disponibile <a href="https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/latex" target="_blank"><b>pe GitLab</b></a>, unde încurajez orice comentarii sau contribuții.</p>
+        <p style="text-align:center">Sursele LaTeX pentru documentele incluse sînt disponibile <a href="https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/_latex_" target="_blank"><b>pe GitLab</b></a>, unde încurajez orice comentarii sau contribuții.</p>
         </div>
         <script src="../scripts/bookmarks-script.js"></script>
 </body>
