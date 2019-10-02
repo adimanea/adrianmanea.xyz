@@ -94,6 +94,7 @@ Putem afla dacă o serie este convergentă aplicînd unul dintre criteriile care
 Fixăm mai întîi notația: presupunem că vorbim despre o serie cu termenul general
 $ x_n $, adică $ \ds\sum_{n \geq 1} x_n = \sum x_n $.
 
+\index{criteriul!necesar}
 \textbf{Criteriul necesar:} Dacă $ \ds\lim_{n \to \infty} x_n \neq 0 $, atunci
 seria $ \sum x_n $ este divergentă.
 
@@ -105,6 +106,7 @@ seria $ \sum x_n $ este divergentă.
 
 \vspace{1cm}
 
+\index{criteriul!comparație!termen cu termen}
 \textbf{Criteriul de comparație termen cu termen:} Fie $ \sum y_n $ o altă serie
 de numere reale și pozitive.
 \begin{itemize}
@@ -116,8 +118,9 @@ de numere reale și pozitive.
 
 \vspace{1cm}
 
+\index{criteriul!comparație!la limită}
 \textbf{Criteriul de comparație la limită:} Fie $ \sum y_n $ o altă serie
-de numere reale și pozitive. Dacă $ \ds\lim_{n \to \infty} \dfrac{x_n}{y_n} = l \geq 1 $,
+de numere reale și pozitive. Dacă $ \ds\lim_{n \to \infty} \dfrac{x_n}{y_n} = l > 0 $,
 atunci cele două serii au aceeași natură (seria $ \sum x_n $ este convergentă
 dacă și numai dacă seria $ \sum y_n $ este convergentă).
 
@@ -129,7 +132,8 @@ dacă și numai dacă seria $ \sum y_n $ este convergentă).
 
 \vspace{1cm}
 
-\textbf{Criteriul raportului:} Fie $ \ell = \ds\lim_{n \to \infty} \dfrac{x_{n+1}}{x_n} $.
+\index{criteriul!raportului}
+\textbf{Criteriul raportului (D'Alembert):} Fie $ \ell = \ds\lim_{n \to \infty} \dfrac{x_{n+1}}{x_n} $.
 \begin{itemize}
     \item Dacă $ \ell > 1 $, atunci seria este divergentă;
     \item Dacă $ \ell < 1 $, atunci seria este convergentă;
@@ -138,10 +142,20 @@ dacă și numai dacă seria $ \sum y_n $ este convergentă).
 
 \vspace{1cm}
 
-\textbf{Criteriul radical:} Fie $ \ell = \ds\lim{n \to \infty} \sqrt[n]{x_n} $.
+\index{criteriul!radical}
+\textbf{Criteriul radical (rădăcinii, Cauchy):} Fie $ \ell = \ds\lim{n \to \infty} \sqrt[n]{x_n} $.
 \begin{itemize}
     \item Dacă $ \ell > 1 $, atunci seria este divergentă;
     \item Dacă $ \ell < 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+\index{criteriul!Raabe-Duhamel}
+\textbf{Criteriul Raabe-Duhamel:} Fie 
+$ \ell = \ds\lim_{n \to infty} n \left( \dfrac{x_n}{x_{n + 1}} - 1 \right) $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell < 1 $, atunci seria este divergentă;
     \item Dacă $ \ell = 1 $, criteriul nu decide.
 \end{itemize}
 
@@ -162,6 +176,12 @@ dacă și numai dacă seria $ \sum y_n $ este convergentă).
     \item $ x_n = \dfrac{2 + \sin n}{n^2} $; \hfill(C, comparație cu armonică)
     \item $ x_n = \dfrac{\sin^2 n}{n^2 + 1} $; \hfill(C, comparație cu armonică)
     \item $ x_n = \sqrt{n^4 + 2n + 1} - n^2 $; \hfill(D, comparație cu armonică)
+    \item $ x_n = \dfrac{2}{n} - \dfrac{1}{2^n} $; \hfill(D, descompunere în 2 serii)
+    \item $ x_n = \dfrac{1 \cdot 3 \cdot 5 \cdots (2n - 1)}{2 \cdot 4 \cdot 6 \cdots 2n} $; \hfill(D, Raabe)
+    \item $ x_n = \dfrac{(n!)^2}{(2n)!} $; \hfill(D, raport)
+    \item $ x_n = \dfrac{n! \cdot 3^n}{1 \cdot 3 \cdot 5 \cdots (2n - 1) } $; \hfill(D, raport)
+    \item $ x_n = \dfrac{3n - 1}{5n^2 + 2} $; \hfill(D, comparație la limită)
+    \item $ x_n = (\arctan 1)^n $; \hfill(D, necesar)
 \end{enumerate}
 
 
