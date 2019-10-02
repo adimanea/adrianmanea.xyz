@@ -130,6 +130,20 @@ dacă și numai dacă seria $ \sum y_n $ este convergentă).
     cu o anume rație, alese convenabil.
 \end{remark}
 
+\begin{remark}\label{rk:comp-alte-cazuri}
+    Criteriul de comparație la limită poate fi folosit și în cazuri care nu sînt
+    cuprinse în enunțul de mai sus. De exemplu, dacă $ \dfrac{x_n}{y_n} \to 0 $,
+    înseamnă că $ x_n \leq y_n, \forall n $, deci putem folosi un argument de tip
+    comparație termen cu termen: 
+    \begin{itemize}
+        \item dacă seria $ \sum y_n $ este convergentă, atunci seria $ \sum x_n $ 
+            este convergentă; 
+        \item dacă seria $ \sum x_n $ este divergentă, atunci seria $ \sum y_n $ 
+            este divergentă.
+    \end{itemize}
+    În celelalte cazuri nu putem decide.
+\end{remark}
+
 \vspace{1cm}
 
 \index{criteriul!raportului}
@@ -143,16 +157,18 @@ dacă și numai dacă seria $ \sum y_n $ este convergentă).
 \vspace{1cm}
 
 \index{criteriul!radical}
-\textbf{Criteriul radical (rădăcinii, Cauchy):} Fie $ \ell = \ds\lim{n \to \infty} \sqrt[n]{x_n} $.
+\textbf{Criteriul radical (rădăcinii, Cauchy):} Fie $ \ell = \ds\lim_{n \to \infty} \sqrt[n]{x_n} $.
 \begin{itemize}
     \item Dacă $ \ell > 1 $, atunci seria este divergentă;
     \item Dacă $ \ell < 1 $, atunci seria este convergentă;
     \item Dacă $ \ell = 1 $, criteriul nu decide.
 \end{itemize}
 
+\vspace{1cm}
+
 \index{criteriul!Raabe-Duhamel}
 \textbf{Criteriul Raabe-Duhamel:} Fie 
-$ \ell = \ds\lim_{n \to infty} n \left( \dfrac{x_n}{x_{n + 1}} - 1 \right) $.
+$ \ell = \ds\lim_{n \to \infty} n \left( \dfrac{x_n}{x_{n + 1}} - 1 \right) $.
 \begin{itemize}
     \item Dacă $ \ell > 1 $, atunci seria este convergentă;
     \item Dacă $ \ell < 1 $, atunci seria este divergentă;
@@ -183,5 +199,10 @@ $ \ell = \ds\lim_{n \to infty} n \left( \dfrac{x_n}{x_{n + 1}} - 1 \right) $.
     \item $ x_n = \dfrac{3n - 1}{5n^2 + 2} $; \hfill(D, comparație la limită)
     \item $ x_n = (\arctan 1)^n $; \hfill(D, necesar)
 \end{enumerate}
+
+\vspace{1cm}
+
+2*. Studiați convergența \emph{seriilor} cu termenul general dat de șirurile de
+la exercițiul 2 al secțiunii anterioare.
 
 
