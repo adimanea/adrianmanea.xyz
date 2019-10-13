@@ -313,7 +313,7 @@ se definesc simplu:
 
 \begin{definition}\label{def:subspatii}\index{spații vectoriale!subspații}
     Fie $ V $ un $ K $-spațiu vectorial. Submulțimea $ W \seq V $ se numește
-    \emph{subspațiu vectorial} al lui $ V $, notat $ W \leq_K V $ dacă $ W $
+    \emph{subspațiu vectorial} al lui $ V $, notat $ W \hookrightarrow V $ dacă $ W $
     la rîndul său are structură de $ K $-spațiu vectorial.
 \end{definition}
 
@@ -323,7 +323,7 @@ de ajutor în calcule.
 %\begin{theorem}\label{thm:subspatiu}
     %Fie $ V $ un $ K $-spațiu vectorial și $ W \seq V $.
 
-    %Atunci $ W \leq_K V $ dacă și numai dacă, pentru orice $ w_1, w_2 \in W $
+    %Atunci $ W \hookrightarrow V $ dacă și numai dacă, pentru orice $ w_1, w_2 \in W $
     %și $ \alpha, \beta \in K $, are loc $ \alpha w_1 \pm \beta w_2 \in W $.
 %\end{theorem}
 
@@ -333,7 +333,7 @@ Cîteva exemple simple (justificați!):
         numit subspațiul nul sau trivial. De asemenea, $ V $ este la rîndul
         său subspațiu al lui $ V $. Aceste exemple se numesc \emph{subspații improprii},
         iar noi vom fi interesați de celelalte cazuri, numite \emph{subspații proprii}.
-    \item $ \RR_n[X] \leq_\RR \RR[X] $, pentru orice număr natural $ n $.
+    \item $ \RR_n[X] \hookrightarrow \RR[X] $, pentru orice număr natural $ n $.
     \item Submulțimea $ W = \{ (x_1, x_2) \in \RR^2 \mid 2x_1 - 3x_2 = 0 \} $ este
         un subspațiu al spațiului $ \RR^2 $.
     \item Mulțimea matricelor pătratice de mărime $ n $, superior triunghiulare,
@@ -358,7 +358,7 @@ Fie $ V $ un $ K $-spațiu vectorial și $ V_1, V_2 $ două subspații ale sale.
 \end{definition}
 
 \begin{remark}\label{rk:inters-subsp}
-    Dacă $ V_1, V_2 \leq_K V $, este imposibil ca $ V_1 \cap V_2 = \emptyset $. (Justificați!)
+    Dacă $ V_1, V_2 \hookrightarrow V $, este imposibil ca $ V_1 \cap V_2 = \emptyset $. (Justificați!)
 \end{remark}
 
 Cazul în care suma a două subspații este directă este foarte util prin următorul rezultat.
@@ -490,14 +490,14 @@ respectiv $ V_2 $.
 1. Arătați că următoarele mulțimi sînt subspații vectoriale în spațiile indicate.
 Determinați o bază și dimensiunea fiecărui subspațiu.
 \begin{enumerate}[(a)]
-    \item $ V_1 = \{ (x, y) \in \RR^2 \mid 3x - y = 0 \} \leq_\RR \RR^2 $;
-    \item $ V_2 = \{ (x, y, z) \in \RR^3 \mid 3x - y = 0 \} \leq_\RR \RR^3 $;
-    \item $ V_3 = \{ (x, y, z) \in \RR^3 \mid x = 0 \} \leq_\RR \RR^3 $;
-    \item $ V_4 = \{ p \in \RR_2[X] \mid p(1) = 0 \} \leq_\RR \RR_2[X] $;
-    \item $ V_5 = \{ p \in \RR_2[X] \mid p'(1) = 0 \} \leq_\RR \RR_2[X] $;
-    \item $ V_6 = \{ (x, y, z) \in \RR^3 \mid 3x - y + z = 0, 2x + y = 0 \} \leq_\RR \RR^3 $;
-    \item $ V_7 = \{ A \in M_2(\RR) \mid A = A^t \} $;
-    \item $ V_8 = \{ A \in M_2(\RR) \mid \dr{tr}A = 0 \} $.
+    \item $ V_1 = \{ (x, y) \in \RR^2 \mid 3x - y = 0 \} \hookrightarrow \RR^2 $;
+    \item $ V_2 = \{ (x, y, z) \in \RR^3 \mid 3x - y = 0 \} \hookrightarrow \RR^3 $;
+    \item $ V_3 = \{ (x, y, z) \in \RR^3 \mid x = 0 \} \hookrightarrow \RR^3 $;
+    \item $ V_4 = \{ p \in \RR_2[X] \mid p(1) = 0 \} \hookrightarrow \RR_2[X] $;
+    \item $ V_5 = \{ p \in \RR_2[X] \mid p'(1) = 0 \} \hookrightarrow \RR_2[X] $;
+    \item $ V_6 = \{ (x, y, z) \in \RR^3 \mid 3x - y + z = 0, 2x + y = 0 \} \hookrightarrow \RR^3 $;
+    \item $ V_7 = \{ A \in M_2(\RR) \mid A = A^t \} \hookrightarrow M_2(\RR) $;
+    \item $ V_8 = \{ A \in M_2(\RR) \mid \dr{tr}A = 0 \} \hookrightarrow M_2(\RR) $.
 \end{enumerate}
 
 \vspace{1cm}
@@ -508,7 +508,7 @@ Determinați o bază și dimensiunea fiecărui subspațiu.
     x, y, z, u \in \RR, x = y + z \right\}.
 \]
 \begin{enumerate}[(a)]
-    \item Să se arate că $ W \leq_\RR M_{2, 3}(\RR) $;
+    \item Să se arate că $ W \hookrightarrow M_{2, 3}(\RR) $;
     \item Găsiți o bază a lui $ W $ și $ \dim_\RR W $.
 \end{enumerate}
 
@@ -542,3 +542,74 @@ vectorului $ q = 3X^2 - X + 4 $ în baza $ B $.
 Găsiți cîte o bază și dimensiunea subspațiilor: $ V_1, V_2, V_1 + V_2, V_1 \cap V_2 $.
 
 Este suma $ V_1 + V_2 $ directă?
+
+\vspace{1cm}
+
+6. Aceeași cerință ca la exercițiul 5 pentru spațiile:
+\begin{enumerate}[(a)]
+    \item %
+        \begin{align*}
+            V_1 &= \{ (x, y, z) \in \RR^3 \mid 3x - y + z = 0 \} \\
+            V_2 &= \dr{Sp}\{(1, -1, 0), (2, 1, 1), (1, 1, 0) \}
+        \end{align*}
+    \item %
+        \begin{align*}
+            V_1 &= \{ p \in \RR_2[X] \mid p(2) = 0 \} \\
+            V_2 &= \dr{Sp}\{ X, 2X^2 + 1, 3 \}
+        \end{align*}
+    \item %
+        \begin{align*}
+            V_1 &= \{ A \in M_2(\RR) \mid A = -A^t \} \\
+            V_2 &= \{ A \in M_2(\RR) \mid A = A^t \}
+        \end{align*}
+    \item %
+        \begin{align*}
+            V_1 &= \{ (x, y, z, t) \in \RR^4 \mid 3x - y + z = 0 \text{ și } %
+            5y - 2t = 0 \} \\
+            V_2 &= \dr{Sp}\{ (1, -1, 1, 0), (1, 0, 1, 0), (2, 0, 0, 2) \}.
+        \end{align*}
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Verificați dacă mulțimile $ S $ de vectori din spațiul vectorial $ V $
+sînt liniar independente, iar în caz afirmativ, completați-le pînă la o bază
+a lui $ V $:
+\begin{enumerate}[(a)]
+    \item $ V = \RR^3, S = \{(1, -1, 0), (2, 0, 0) \} $;
+    \item $ V = \RR^3, S = \{(1, 1, 1), (2, 1, 2) \} $;
+    \item $ V = \RR^3, S = \{(1, -1, 2), (0, 2, 0), (1, 1, 1) \} $;
+    \item $ V = \RR^3, S = \{(1, 1, 1), (2, 2, 0), (-1, 1, 1), (0, 0, 2) \} $;
+    \item $ V = \RR_2[X], S = \{ X, 1 + 2X \} $;
+    \item $ V = \RR_2[X], S = \{ X^2, -X \} $;
+    \item $ V = M_2(\RR), S = \left\{ \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}, %
+        \begin{pmatrix} -1 & -1 \\ 0 & 0 \end{pmatrix} \right\} $;
+    \item $ V = \RR_3[X], S = \{ 2 + X, 5 - X, 3 - 2X + X^2 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+8. Verificați dacă mulțimile $ S $ de vectori din spațiul vectorial $ V $ sînt
+sisteme de generatori, iar în caz afirmativ, extrageți din ele o bază a lui $ V $:
+\begin{enumerate}[(a)]
+    \item $ V = \RR^3, S = \{ (-1, 2, 0), (3, 1, 1), (0, 1, 1), (-1, 2, 5), (0, 2, 2) \} $;
+    \item $ V = \RR^3, S = \{ (0, 0, 0), (2, 0, 0), (1, 0, 1), (-1, 1, 1), (2, 1, 2) \} $;
+    \item $ V = \RR_2[X], S = \{ X, X^2, 1 - 3X, 2 + 2X - X^2, 1 + X^2, 1 - X, 1 + X \} $;
+    \item $ V = \RR_2[X], S = \{ 1 - X, 1 + X, 1 - X^2, 1 + X^2 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+9. Pentru spațiile vectoriale $ V $ de mai jos, arătați că mulțimea $ B $
+este o bază, apoi găsiți coordonatele vectorului $ v $ în baza $ B $:
+\begin{enumerate}[(a)]
+    \item $ V = \RR^3, B = \{ (1, -1, 0), (2, 0, 1), (0, -1, 2) \}, %
+        v = (1, 2, 3) $;
+    \item $ V = \RR^3, B = \{ (0, -1, 2), (3, 1, 1), (2, -1, 3) \}, %
+        v = (3, 2, 1) $;
+    \item $ V = \RR^3, B = \{ (1, 1, 1), (-2, 3, 1), (3, 1, 1) \}, %
+        v = (2, 2, 2) $;
+    \item $ V = \RR_2[X], B = \{ 1 + X, 1 - X^2, 5 \}, v = X $;
+    \item $ V = \RR_2[X], B = \{ 3 + X - 2X^2, 1 + 3X, 2 \}, v = 2 + 3X^2 $;
+    \item $ V = \RR_3[X], B = \{ 5 - X, 2, 4 + 3X^2, 1 + 2X \}, v = 1 + X + X^2 + X^3 $.
+\end{enumerate}
