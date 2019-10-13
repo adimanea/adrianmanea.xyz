@@ -1,0 +1,236 @@
+%! TEX root = ../ag-19-20.tex
+
+\chapter{Aplicații liniare}
+
+\indent\indent În continuare, studiem morfismele de spații vectoriale și legătura
+strînsă care există între acestea și matrice.
+
+Definiția de bază urmează.
+
+\begin{definition}\label{def:apl-lin}\index{aplicație!liniară}
+    Fie $ V, W $ două $ K $-spații vectoriale și $ f : V \to W $ o funcție.
+
+    $ f $ se numește \emph{aplicație liniară} (morfism de spații vectoriale)
+    dacă satisface proprietatea:
+    \[
+        f(\alpha x + \beta y) = \alpha f(x) + \beta f(y), \quad %
+        \forall \alpha, \beta \in K, x, y \in V.
+    \]
+    
+    Proprietatea se mai poate scrie pe bucăți, sub forma:
+    \[
+        f(\alpha x) = \alpha f(x), \quad f(x + y) = f(x) + f(y).
+    \]
+\end{definition}
+
+Cu alte cuvinte, $ f $ \qq{respectă} atît adunarea vectorilor cît și înmulțirea
+cu scalari sau, pe scurt, respectă \emph{combinațiile liniare}.
+
+Dată o astfel de aplicație liniară, vom fi interesați de:
+\begin{itemize}\index{aplicație!liniară!imagine} \index{aplicație!liniară!nucleu}
+    \item \emph{Imaginea aplicației}, $ \dr{Im}f = \{ w \in W \mid \exists v \in V, f(v) = w \} $;
+    \item \emph{Nucleul aplicației}, $ \dr{Ker}f = \{ x \in V \mid f(x) = 0_W \} $.
+\end{itemize}
+
+\textbf{Exercițiu:} În contextul și cu notațiile de mai sus, arătați că
+$ \dr{Im}f \hookrightarrow W $ și $ \dr{Ker}f \hookrightarrow V $.
+
+Ca în cazul oricăror morfisme de structuri algebrice, avem noțiunile cunoscute:
+\begin{itemize}
+    \item $ f $ se numește \emph{injectivă} dacă oricînd $ f(v_1) = f(v_2) $, ca vectori
+        ai lui $ W $, rezultă că $ v_1 = v_2 $, ca vectori ai lui $ V $;
+    \item $ f $ se numește \emph{surjectivă} dacă pentru orice vector $ w \in W $
+        există un vector $ v \in V $ astfel încît $ f(v) = w $;
+    \item $ f $ se numește \emph{bijectivă} dacă este simultan injectivă și
+        surjectivă.
+\end{itemize}
+
+În cazul în care $ f : V \to W $ este un morfism bijectiv, $ f $ se numește
+\emph{izomorfism} de spații vectoriale, iar cele două spații se numesc \emph{izomorfe},
+notat $ V \simeq W $.
+
+De asemenea, au loc rezultatele:
+\begin{itemize}
+    \item $ V \simeq W $ dacă și numai dacă $ \dim V = \dim W $;
+    \item $ \dr{Ker}f = \{ 0_V \} $ dacă și numai dacă $ f $ este injectivă;
+    \item $ \dr{Im}f \simeq W $ dacă și numai dacă $ f $ este surjectivă.
+\end{itemize}
+
+\textbf{Exercițiu*:} Demonstrați afirmațiile de mai sus.
+
+\vspace{1cm}
+
+\textbf{Exercițiu*:} Fie $ f : V \to W $ o aplicație liniară.
+\begin{enumerate}[(a)]
+    \item Fie $ S $ un sistem liniar independent de vectori din $ V $.
+        Arătați că $ f(S) $ este un sistem liniar independent de vectori din $ W $
+        dacă și numai dacă $ f $ este injectivă.
+    \item Fie $ S $ un sistem de generatori ai lui $ V $. Arătați că $ f(S) $ este
+        un sistem de generatori ai lui $ W $ dacă și numai dacă $ f $ este surjectivă.
+    \item Fie $ B $ o bază a lui $ V $. Deduceți că $ f(B) $ este o bază a lui $ W $ 
+        dacă și numai dacă $ f $ este bijectivă.
+\end{enumerate}
+
+\vspace{1cm}
+
+Toate calculele cu aplicații liniare sînt ușurate de următorul concept.
+
+\begin{definition}\label{def:mat-apl}\index{aplicație!liniară!matricea aplicației}
+    Fie $ f : V \to W $ o aplicație liniară și $ B = \{ v_1, \dots, v_n \} $ o bază a lui $ V $.
+
+    Matricea care are drept coloane $ f(v_i) $ se numește \emph{matricea aplicației $ f $}
+    în baza $ B $, notată pe scurt $ M_f^B $.
+
+    Uneori, se specifică și o bază $ B' $ a lui $ W $ și se spune că $ f $ este matricea
+    lui $ f $ în bazele $ B $ și $ B' $.
+\end{definition}
+
+În majoritatea exercițiilor, bazele considerate vor fi cele canonice, astfel că se poate face
+calculul foarte simplu.
+
+De asemenea, un rezultat fundamental este următorul:
+
+\begin{theorem}[Teorema rang-defect]\label{thm:rang-def}\index{teorema!rang-defect}
+    Fie $ f : V \to W $ o aplicație liniară, $ \dr{Ker}f $, nucleul său și $ \dr{Im}f $,
+    imaginea sa. Atunci are loc:
+    \[
+        \dim \dr{Ker}f + \dim \dr{Im} f = \dim V.
+    \]
+\end{theorem}
+
+Teorema se mai numește astfel deoarece:
+\begin{itemize}
+    \item $ \dim \dr{Ker} f $ se mai numește \emph{defectul} aplicației $ f $, notat
+        cu $ \dr{def} f $;
+    \item $ \dim \dr{Im} f $ se mai numește \emph{rangul} aplicației $ f $, notat
+        cu $ \dr{rang} f $.
+\end{itemize}
+
+În plus, după cum sugerează numele, avem:
+\begin{theorem}\label{thm:rang-f}
+    În contextul și cu notațiile de mai sus, fie $ A $ matricea aplicației $ f $ într-o
+    bază $ B $ a spațiului vectorial $ V $.
+
+    Atunci $ \dr{rang} f = \dr{rang} A $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Pentru aplicațiile liniare de mai jos, determinați:
+\begin{enumerate}[(a)]
+    \item matricea aplicației în baza $ B $ specificată;
+    \item nucleul aplicației, o bază și dimensiunea lui. Verificați dacă aplicația este injectivă.
+    \item imaginea aplicației, o bază și dimensiunea ei. Verificați dacă aplicația este surjectivă.
+\end{enumerate}
+
+\begin{enumerate}[(1)]
+    \item $ f : \RR^3 \to \RR^3, f(x, y, z) = (3x - y, y + 2z, 2x + y - z) $,
+        $ B $ este baza canonică;
+    \item $ f : \RR^3 \to \RR^3, f(x, y, z) = (x, -y, x + 3z) $, $ B $ este
+        baza canonică;
+    \item $ f : \RR^3 \to \RR^3, f(x, y, z) = (y + 2z, 3x - z, x - y) $,
+        $ B = \{ b_1 = (1, -1, 0), b_2 = (0, 1, 1), b_3 = (0, 0, 3) \} $;
+    \item $ f : \RR_3[X] \to \RR_3[X], f(a + bX + cX^2 + dX^3) = c + aX - 2dX^2 $,
+        $ B $ este baza canonică;
+    \item $ f : \RR_2[X] \to \RR_2[X], f(a + bX + cX^2) = b - aX + 2cX^2 $,
+        $ B $ este baza canonică;
+    \item $ f : M_2(\RR) \to M_2(\RR), f \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix} \right) = %
+        \begin{pmatrix} a - c & 2d \\ b + a & c + a \end{pmatrix} $, $ B $ este baza canonică;
+    \item $ f : M_2(\RR) \to M_2(\RR) f \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix} \right) = %
+        \begin{pmatrix} d & 2c \\ b & 0 \end{pmatrix} $, $ B $ este baza canonică;
+    \item $ f : \RR^3 \to \RR_2[X], f(a, b, c) = b + 2aX - cX^2 $, iar $ B $ este baza canonică;
+    \item $ f : \RR^3 \to M_2(\RR), f(a, b, c) = \begin{pmatrix} a & b + c \\ c - a & a + b \end{pmatrix} $,
+        $ B $ este baza canonică;
+    \item $ f : \RR_2[X] \to \RR^4, f(a + bX + cX^2) = (a - c, a - b, b - c, 2c) $, $ B $ este baza
+        canonică;
+    \item $ f : M_2(\RR) \to \RR_3[X], f\left( \begin{pmatrix} a & b \\ c & d \end{pmatrix} \right) = %
+        3c - 2dX^2 + aX^3 $, $ B $ este baza canonică;
+    \item $ f : \RR_2[X] \to \RR_3[X], f(a + bX + cX^2) = (a + c)X - bX^2 $, $ B $ este baza canonică.
+\end{enumerate}
+
+\emph{Indicații:} (1) $ B = \{ (1, 0, 0), (0, 1, 0), (0, 0, 1) \} $. Atunci obținem:
+\begin{align*}
+    f(1, 0, 0) &= (3, 1, -1) \\
+    f(0, 1, 0) &= (-1, 1, 1) \\
+    f(0, 0, 1) &= (0, 2, -1),
+\end{align*}
+
+care devin coloanele matricei aplicației. Deci:
+\[
+    A = M_f^B = %
+    \begin{pmatrix}
+        3 & -1 & 0 \\
+        1 & 1 & 2 \\
+        -1 & 1 & -1
+    \end{pmatrix}.
+\]
+
+Nucleul aplicației se determină cu definiția:
+\[
+    \dr{Ker}f = \{(x, y, z) \in \RR^3 \mid f(x, y, z) = (0, 0, 0) \},
+\]
+care conduce la sistemul de ecuații:
+\[
+    \begin{cases}
+        3x - y &= 0 \\
+        y + 2z &= 0 \\
+        2x + y - z &= 0
+    \end{cases},
+\]
+a cărui matrice este chiar $ A $. Soluția sistemului alcătuiește nucleul aplicației.
+Calculînd efectiv, putem apoi extrage o bază. Se obține $ \dr{Ker}f = \{ (0, 0, 0) \} $,
+deci $ \dim \dr{Ker}f = 0 $, iar baza este vectorul nul.
+
+Imaginea aplicației se poate determina astfel: $ \dim \dr{Im} f = \dr{rang} A = 3 $,
+în acest caz. Rezultă, în particular, că aplicația este bijectivă, deci automorfism
+(izomorfism între un spațiu și el însuși). Alternativ, puteam observa aceasta din
+teorema rang-defect: cum $ \dim\dr{Ker}f = 0 $, rezultă că $ \dim \dr{Im}f = 3 $.
+
+O bază în $ \dr{Im}f $ se poate obține direct din matricea aplicației, luînd efectiv
+vectorii-coloană, deci $ \{f(1, 0, 0), f(0, 1, 0), f(0, 0, 1) \} $.
+
+\vspace{1cm}
+
+(11) Baza canonică este:
+\[
+    B = \left\{ %
+        E_1 = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, %
+        E_2 = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+        E_3 = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+        E_4 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+    \right\}
+\]
+
+Calculăm:
+\begin{align*}
+    f(E_1) &= X^3 = 0 + 0X + 0X^2 + 1X^3 \\
+    f(E_2) &= 0 = 0 + 0X + 0X^2 + 0X^3 \\
+    f(E_3) &= 3 = 3 + 0X + 0X^2 + 0X^3 \\
+    f(E_4) &= -2X^2 = 0 + 0X - 2X^2 + 0X^3.
+\end{align*}
+
+Rezultă că matricea aplicației este:
+\[
+      A = M_f^B = %
+      \begin{pmatrix}
+          0 & 0 & 3 & 0 \\
+          0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & -2 \\
+          1 & 0 & 0 & 0
+      \end{pmatrix}.
+\]
+
+Restul calculelor se fac asemănător cu exercițiul de mai sus. Atenție, însă! Domeniul de definiție
+conține matrice, iar codomeniul, polinoame. Deci, în particular, $ \dr{Ker}f $ va conține
+matrice, iar $ \dr{Im}f $ va conține polinoame.
+
+
+\vspace{1cm}
+
+2*. Pentru fiecare dintre cazurile de mai sus, extindeți baza $ \dr{Ker}f $ pînă la o bază
+a domeniului de definiție și baza $ \dr{Im}f $ pînă la o bază a codomeniului.
+
+Altfel spus, dacă în general, scriem $ f : V \to W $, căutăm $ X \hookrightarrow V $ și
+$ Y \hookrightarrow W $ astfel încît $ \dr{Ker}f \oplus X \simeq V $ și $ \dr{Im}f \oplus Y \simeq W $.
