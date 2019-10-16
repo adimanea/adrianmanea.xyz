@@ -2,49 +2,9 @@
 
 \chapter{Criterii de convergență (cont.). Serii oarecare}
 
-Pe lîngă criteriile prezentate în seminarul anterior, vor mai fi de folos
-și altele, pe care le enumerăm mai jos. În continuare, menționăm că
-vom lucra cu o serie de forma $ \sum x_n $ și sîntem în ipoteza
-$ x_n \in \RR_+, \forall n \in \NN $.
-
-\index{criteriul!Raabe-Duhamel}
-\textbf{Criteriul Raabe-Duhamel:} Fie limita următoare:
-\[
-    \ell = \lim_{n \to \infty} n \left( \dfrac{x_n}{x_{n+1}} - 1 \right).
-\]
-Atunci:
-\begin{itemize}
-    \item Dacă $ \ell > 1 $, seria este convergentă;
-    \item Dacă $ \ell < 1 $, seria este divergentă;
-    \item Dacă $ \ell = 1 $ criteriul nu decide.
-\end{itemize}
-
-În multe situații, criteriul Raabe-Duhamel este folositor cînd criteriul
-raportului nu decide. Remarcați că, în acest caz, limita de mai sus
-este o nedeterminare de forma $ \infty \cdot 0 $, care de multe ori
-se poate calcula și este diferită de 1.
-
-\vspace{1cm}
-
-\index{criteriul!logaritmic}
-\textbf{Criteriul logaritmic:} Fie limita:
-\[
-    \ds\lim_{n \to \infty} \dfrac{- \ln x_n}{\ln n}.
-\]
-\begin{itemize}
-    \item Dacă $ \ell > 1 $, seria este convergentă;
-    \item Dacă $ \ell < 1 $, seria este divergentă;
-    \item Dacă $ \ell = 1 $, criteriul nu decide.
-\end{itemize}
-
-\vspace{1cm}
-
-\index{criteriul!condensării}
-\textbf{Criteriul condensării:} Dacă $ (x_n) $ este un șir
-descrescător și cu termeni pozitivi, atunci seriile $ \sum x_n $ și
-$ \sum 2^n x_{2^n} $ au aceeași natură.
-
-\vspace{1cm}
+Pe lîngă criteriile prezentate în seminarul anterior, va mai fi de folos și un altul. 
+În continuare, menționăm câ vom lucra cu o serie de forma $ \sum x_n $ și 
+sîntem în ipoteza $ x_n \in \RR_+, \forall n \in \NN $.
 
 \index{criteriul!integral}
 \textbf{Criteriul integral:} Fie $ f : (0, \infty) \to [0, \infty) $ o funcție
@@ -62,13 +22,7 @@ convergent.
 general $ x_n $ dat de:
 \begin{enumerate}[(a)]
     \item $ x_n = \dfrac{1}{\ln n} $; \hfill(D, integral/comparație)
-    \item $ x_n = \dfrac{1}{n \ln n} $; \hfill(D, integral/condensare)
-    \item $ x_n = \dfrac{1 \cdot 3 \cdot 5 \cdots (2n - 1)}{2 \cdot 4 \cdot 6 \cdots 2n} $ \hfill(D, Raabe)
-    \item $ x_n = \left( 1 - \dfrac{3 \ln n}{2n} \right)^n $ \hfill(C, logaritmic)
-    \item $ x_n = \dfrac{1}{n \sqrt[n]{n}} $ \hfill(D, comparație/logaritmic)
-    \item $ x_n = \left( \dfrac{1}{\ln n} \right)^{\ln(\ln n)} $; \hfill(D, logaritmic)
-    \item $ x_n = n^2 e^{-\sqrt{n}} $ \hfill(C, logaritmic)
-    \item $ x_n = \dfrac{a^n (n!)^2}{(2n)!}, a > 0. $ \hfill(raport, discuție $ a ? 4 $)
+    \item $ x_n = \dfrac{1}{n \ln n} $; \hfill(D, integral)
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,18 +52,6 @@ De asemenea, vom mai fi interesați și de:
 
 Evident, cum $ x \leq |x| $, rezultă că orice serie absolut convergentă este
 convergentă, dar reciproca nu este adevărată.
-
-Pentru acest caz, avem:
-
-\index{criteriul!Abel-Dirichlet}
-\textbf{Criteriul Abel-Dirichlet:} Presupunem că seria $ \sum x_n $ se mai poate
-scrie sub forma $ \sum \alpha_n y_n $, unde $ (\alpha_n) $ este un șir monoton
-și mărginit (deci convergent). Dacă și seria $ \sum y_n $ este convergentă,
-atunci seria inițială $ \sum \alpha y_n $ este convergentă.
-
-Formulare alternativă: Dacă $ (\alpha_n) $ este un șir monoton, care tinde
-către 0, iar șirul cu termenul general $ Y_n = y_1 + \dots + y_n $ este
-mărginit, atunci seria $ \sum \alpha_n y_n $ este convergentă.
 
 De exemplu, studiem seria $ \sum_n \dfrac{(-1)^n}{n} $. Este o serie
 alternantă, deci:
