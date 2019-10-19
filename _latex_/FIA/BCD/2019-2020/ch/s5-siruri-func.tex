@@ -1,0 +1,149 @@
+%! TEX root = ../bcd-19-20.tex
+
+\chapter{Șiruri de funcții}
+
+\section{Convergență punctuală și convergentă uniformă}
+
+Fie $ (f_n) $ un șir de funcții, adică fiecare $ f_n : D \seq \RR \to \RR $
+este o funcție reală. Dacă în cazul șirurilor de numere reale, limita este un
+număr real, în cazul șirurilor de funcții, limita este o funcție.
+
+Însă noțiunea de convergență este mai fină în cazul șirurilor de funcții.
+
+Astfel, avem două tipuri de convergență:
+\begin{definition}\label{def:conv-punct}\index{șiruri!funcții}\index{convergență!punctuală}
+    Fie $ (f_n) $ un șir de funcții reale ca mai sus.
+
+    Spunem că șirul $ (f_n) $ \emph{converge punctual (simplu)} la funcția $ f $
+    dacă are loc:
+    \[
+        \lim_{n \to \infty} f_n(x) = f(x), \quad \forall x \in D.
+    \]
+    Vom nota aceasta pe scurt prin $ f_n \xrar{pc} f $ sau $ f_n \xrar{s} f $,
+    iar funcția $ f $ se va numi \emph{limita punctuală} a șirului $ (f_n) $.
+\end{definition}
+
+De asemenea, un alt tip de convergență de interes este \emph{convergența uniformă}.
+Formal, ea se definește folosind criterii de caracterizare cu $ \varepsilon $, dar în
+exerciții vom folosi cel mai des teorema de mai jos.
+\begin{theorem}\label{thm:conv-unif}\index{convergență!uniformă}
+    În condițiile și cu notațiile de mai sus, spunem că șirul $ (f_n) $ converge
+    uniform la funcția $ f $, notat $ f_n \xrar{uc} f $ sau $ f_n \xrar{u} f $
+    dacă:
+    \[
+        \lim_{n \to \infty} \sup_{x \in D} |f_n(x) - f(x)| = 0.
+    \]
+\end{theorem}
+
+Evident, funcția $ f $ folosită în convergența uniformă va fi limita punctuală
+a șirului, deci este clar că proprietatea de convergență uniformă o implică
+pe cea de convergență punctuală.
+
+Proprietatea reciprocă este falsă, după cum se vede din exemplul simplu
+de mai jos.
+
+Fie $ f_n : [0, 1] \to \RR, f_n(x) = x^n, \forall n \geq 1 $.
+
+Atunci se poate vedea imediat că:
+\[
+    \lim_{n \to \infty} f_n(x) =%
+    \begin{cases}
+        0, & 0 \leq x < 1 \\
+        1, & x = 1
+    \end{cases}.
+\]
+Rezultă că $ f_n \xrar{s} f $, unde $ f $ este funcția definită pe ramuri
+mai sus.
+
+Un calcul simplu arată însă că:
+\[
+    \lim_{n \to \infty} \sup_{x \in [0, 1]} |f_n(x) - f(x)| = 1 \neq 0,
+\]
+deci șirul nu este uniform convergent.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transferul proprietăților analitice}
+
+În continuare, ne punem problema următoare: presupunem că fiecare termen
+al șirului de funcții $ (f_n) $ are o proprietate analitică de un anumit
+tip (privitoare la continuitate, derivabilitate, integrabilitate etc.). 
+Întrebarea este care dintre aceste proprietăți se transferă și funcției
+limită (punctuală sau uniformă) și în ce condiții.
+
+În tot ceea ce urmează, vom păstra notațiile și ipoteza de mai sus,
+adică vom lucra cu șirul de funcții $ (f_n) $, cu fiecare
+$ f_n : D \seq \RR \to \RR $.
+
+\begin{theorem}[Transfer de continuitate]\label{thm:transf-cont}
+    Dacă fiecare $ f_n $ este funcție continuă, pentru orice $ n $,
+    iar șirul $ (f_n) $ converge uniform la funcția $ f $, atunci
+    funcția $ f $ este continuă.
+\end{theorem}
+
+Proprietatea de mai sus poate fi folosită ca o condiție suficientă
+în felul următor: dacă limita simplă a unui șir de funcții nu este
+continuă, atunci șirul nu poate fi uniform convergent. Aceasta deoarece
+funcția care este limita simplă a șirului este singurul candidat pentru
+convergența uniformă.
+
+\begin{theorem}[Integrare termen cu termen]\label{thm:transf-int}
+    Dacă $ f_n \xrar{u} f $, atunci are loc proprietatea de integrare
+    termen cu termen, adică:
+    \[
+        \lim_{n \to \infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx, \quad%
+        \forall [a, b] \seq D.
+    \]
+\end{theorem}
+
+Cu alte cuvinte, în ipoteza convergenței uniforme, limita și integrala pot comuta.
+
+\begin{theorem}[Derivare termen cu termen]\label{thm:transf-der}
+    Presupunem că funcțiile $ f_n $ sînt derivabile, pentru orice $ n \in \NN $.
+    Dacă $ f_n \xrar{s} f $ și dacă există o funcție $ g : D \seq \RR \to \RR $
+    astfel încît $ f'_n \xrar{u} g $, atunci $ f $ este derivabilă și $ f' = g $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Să se studieze convergența punctuală și uniformă a șirurilor de funcții:
+\begin{enumerate}[(a)]
+\item $ f_n : (0, 1) \to \RR, f_n(x) = \dfrac{1}{nx + 1}, n \geq 0 $;
+\item $ f_n : [0, 1] \to \RR, f_n(x) = x^n - x^{2n}, n \geq 0 $;
+\item $ f_n : \RR \to \RR, f_n(x) = \sqrt{x^2 + \dfrac{1}{n^2}}, n > 0 $;
+\item $ f_n : [-1,1] \to \RR, f_n(x) = \dfrac{x}{1 + nx^2} $;
+\item $ f_n : (-1, 1) \to \RR, f_n(x) = \dfrac{1 - x^n}{1 - x} $;
+\item $ f_n : [0, 1] \to \RR, f_n(x) = \dfrac{2nx}{1 + n^2 x^2} $;
+\item $ f_n : \RR_+ \to \RR, f_n(x) = \dfrac{x + n}{x + n + 1} $;
+\item $ f_n : \RR_+ \to \RR, f_n(x) = \dfrac{x}{1 + nx^2} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se arate că șirul de funcții dat de:
+\[
+  f_n : \RR \to \RR, \quad f_n(x) = \frac{1}{n} \arctan x^n
+\]
+converge uniform pe $ \RR $, dar:
+\[
+  \Big( \lim_{n \to \infty} f_n(x) \Big)'_{x = 1} \neq \lim_{n \to \infty} f'_n(1).
+\]
+
+Rezultatele diferă deoarece șirul derivatelor nu converge uniform pe $ \RR $.
+
+\vspace{1cm}
+
+3. Să se arate că șirul de funcții dat de:
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = nxe^{-nx^2}
+\]
+este convergent, dar:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) dx \neq \int_0^1 \lim_{n \to \infty} f_n(x) dx.
+\]
+Rezultatul se explică prin faptul că șirul nu este uniform convergent.
+De exemplu, pentru $ x_n = \dfrac{1}{n} $, avem $ f_n(x_n) \to 1 $, dar,
+în general, $ f_n(x) \to 0 $.
+
+\vspace{1cm}
+
