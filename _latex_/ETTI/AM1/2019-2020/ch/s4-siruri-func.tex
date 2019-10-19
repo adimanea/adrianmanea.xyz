@@ -1,0 +1,246 @@
+%! TEX root = ../am1-19-20.tex
+
+\chapter{Șiruri și serii de funcții}
+
+\section{Convergență punctuală și uniformă}
+\index{șiruri!de funcții}
+\index{convergență!punctuală}
+\index{convergență!uniformă}
+
+Fie $ (f_n)_n : \RR \to \RR $ un șir de funcții reale, adică pentru
+fiecare $ n \in \NN $, avem cîte o funcție $ f_n : \RR \to \RR $.
+
+Dacă șirurile de numere reale au drept limită un număr real, șirurile
+de funcții au drept limită o funcție. Însă există două noțiuni de
+convergență de care vom fi interesați, anume \emph{convergență punctuală}
+și \emph{convergență uniformă}, descrise mai jos.
+
+\begin{definition}\label{def:conv-punc}
+    Fie $ (f_n)_n : D \seq \RR \to \RR $ un șir de funcții.
+
+    Spunem că șirul \emph{converge punctual (simplu)} la funcția
+    $ f : D \seq \RR \to \RR $ dacă are loc:
+    \[
+        \lim_{n \to \infty} f_n(x) = f(x), \quad \forall x \in D.
+    \]
+    Notăm aceasta pe scurt prin $ f_n \xrar{PC} f $ sau $ f_n \xrar{s} f $,
+    iar funcția $ f $ se va numi \emph{limita punctuală} a șirului $ (f_n) $.
+\end{definition}
+
+Un alt tip de convergență de care vom fi interesați este \emph{convergența %
+uniformă}. Aceasta se definește folosind un criteriu de caracterizare cu $ \varepsilon $,
+dar în exerciții, vom folosi următoarea:
+
+\begin{theorem}\label{thm:conv-unif}
+    Șirul de funcții $ (f_n) $ ca mai sus este \emph{uniform convergent} la funcția
+    $ f $, notat $ f_n \xrar{u} f $ dacă are loc:
+    \[
+        \lim_{n \to \infty} \sup_{x \in D} |f_n(x) - f(x)| = 0,
+    \]
+    unde $ f $ este limita punctuală a șirului.
+\end{theorem}
+
+Se vede că proprietatea de convergență uniformă o implică pe cea de convergență
+simplă, dar reciproc este fals.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transferul proprietăților}
+
+Dacă $ (f_n) $ este un șir de funcții reale, ne întrebăm care dintre proprietățile
+analitice ale termenilor șirului se transferă și funcției-limită.
+
+\begin{theorem}[Transfer de continuitate]\label{thm:transfer-cont}
+    Fie $ f_n : D \seq \RR \to \RR $ un șir de funcții.
+
+    Dacă fiecare $ f_n $ este funcție continuă, iar șirul $ (f_n) $ converge
+    uniform la funcția $ f $, atunci funcția $ f $ este continuă.
+\end{theorem}
+
+\begin{theorem}[Integrare termen cu termen]\label{thm:transfer-int}
+    Fie $ f_n : D \seq \RR \to \RR $ un șir de funcții și $ f : D \seq \RR \to \RR $
+    o funcție.
+
+    Dacă $ f_n \xrar{u} f $, atunci are loc proprietatea de integrare termen cu
+    termen, adică:
+    \[
+        \lim_{n \to \infty} \int_a^n f_n(x) dx = \int_a^b f(x) dx, \quad \forall [a, b] \seq D.
+    \]
+\end{theorem}
+
+\begin{theorem}[Derivare termen cu termen]\label{thm:transfer-der}
+    Fie $ f_n : D \seq \RR \to \RR $ un șir de funcții și $ f : D \seq \RR \to \RR $
+    o funcție.
+
+    Presupunem că funcțiile $ f_n $ sînt derivabile pentru orice $ n \in \NN $.
+
+    Dacă $ f_n \xrar{s} f $ și dacă există o funcție $ g : D \seq \RR \to \RR $
+    astfel încît $ f'_n \xrar{u} g $, atunci $ f $ este derivabilă și $ f' = g $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Serii de puteri}
+\index{serii!de puteri}
+
+Considerăm o serie de funcții $ \sum f_n $, dar în care fiecare funcție $ f_n $
+este de tip polinomial. Acestea poartă numele de \emph{serii de puteri}.
+
+În general, o serie de puteri poate fi scrisă sub forma $ \sum a_n (x - a)^n $,
+unde $ a_n \in \RR $ sînt coeficienții seriei, iar seria se numește \emph{centrată%
+în $ a $} (sau serie de puteri ale lui $ (x - a) $). În majoritatea situațiilor
+vom lucra cu serii de puteri centrate în origine, deci cu $ a = 0 $.
+
+Pentru seriile de puteri se calculează \emph{raza de convergență}, care este
+un număr real $ R $ astfel încît:
+\begin{itemize}
+    \item seria este absolut convergentă pentru $ x \in (a - R, a + R) $;
+    \item seria este divergentă pentru $ |x| > R $;
+    \item seria este uniform convergentă pentru $ x \in [-r, r] $, pentru
+        orice $ 0 < r < R $.
+\end{itemize}
+
+Această rază de convergență poate fi calculată cu una din două formule:
+\begin{itemize}
+    \item $ R = \left( \lim \sup \sqrt[n]{|a_n|} \right)^{-1} $;
+    \item $ R = \ds\lim_{n \to \infty} \left| \dfrac{a_n}{a_{n+1}} \right| $.
+\end{itemize}
+
+De asemenea, două proprietăți importante pentru seriile de puteri, care rezultă
+din faptul că sînt serii de funcții polinomiale, sînt următoarele. Presupunem
+că seria de puteri $ \sum a_n (x - a)^n $ este o serie de puteri convergentă
+la $ S(x) $. Atunci:
+\begin{itemize}
+    \item Seria derivatelor, $ \sum na_n(x - a)^{n-1} $ are aceeași rază de convergență
+        cu seria inițială și are suma $ S'(x) $;
+    \item Seria primitivelor, $ \sum \dfrac{a_n}{n + 1} (x - a)^{n+1} $, are
+        aceeași rază de convergență cu seria inițială, iar suma sa este o
+        primitivă a funcției $ S $.
+\end{itemize}
+
+Cu alte cuvinte, seriile de puteri se pot deriva și integra termen cu termen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Serii Taylor}
+
+Un caz particular de serii de funcții este acela al \emph{seriilor Taylor}.
+\index{serii!Taylor}
+
+În general, o funcție care satisface anumite proprietăți analitice simple se
+poate dezvolta într-o serie de puteri după formula generală:
+\[
+    f(x) = \sum_{n \geq 0} \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n,
+\]
+dezvoltare care se numește \emph{seria Taylor a funcției $ f $ în jurul%
+punctului $ x = x_0 $}. Pentru cazul cînd $ x_0 = 0 $, seria se numește
+\emph{serie Maclaurin}.
+
+Dacă oprim seria Taylor la un anumit grad, obținem \emph{polinomul Taylor}
+asociat funcției, care doar \emph{aproximează} funcția inițială.
+În general, polinomul Taylor de grad $ n $ asociat funcției $ f $ în jurul
+punctului $ x = a $ se definește prin:
+\[
+    T_{n, f, a} = \sum_{k = 0}^n \dfrac{f^{(k)}(a)}{k!} (x - a)^k.
+\]
+
+Restul (eroarea de aproximare) se poate calcula prin:
+\[
+    R_{n, f, a} = f(x) - T_{n, f, a},
+\]
+dar există și alte formule.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Să se studieze convergența punctuală și uniformă a șirurilor de funcții:
+\begin{enumerate}[(a)]
+\item $ f_n : (0, 1) \to \RR, f_n(x) = \dfrac{1}{nx + 1}, n \geq 0 $;
+\item $ f_n : [0, 1] \to \RR, f_n(x) = x^n - x^{2n}, n \geq 0 $;
+\item $ f_n : \RR \to \RR, f_n(x) = \sqrt{x^2 + \dfrac{1}{n^2}}, n > 0 $;
+\item $ f_n : [-1,1] \to \RR, f_n(x) = \dfrac{x}{1 + nx^2} $;
+\item $ f_n : (-1, 1) \to \RR, f_n(x) = \dfrac{1 - x^n}{1 - x} $;
+\item $ f_n : [0, 1] \to \RR, f_n(x) = \dfrac{2nx}{1 + n^2 x^2} $;
+\item $ f_n : \RR_+ \to \RR, f_n(x) = \dfrac{x + n}{x + n + 1} $;
+\item $ f_n : \RR_+ \to \RR, f_n(x) = \dfrac{x}{1 + nx^2} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se arate că șirul de funcții dat de:
+\[
+  f_n : \RR \to \RR, \quad f_n(x) = \frac{1}{n} \arctan x^n
+\]
+converge uniform pe $ \RR $, dar:
+\[
+  \Big( \lim_{n \to \infty} f_n(x) \Big)'_{x = 1} \neq \lim_{n \to \infty} f'_n(1).
+\]
+
+Rezultatele diferă deoarece șirul derivatelor nu converge uniform pe $ \RR $.
+
+\vspace{1cm}
+
+3. Să se arate că șirul de funcții dat de:
+\[
+  f_n : [0, 1] \to \RR, \quad f_n(x) = nxe^{-nx^2}
+\]
+este convergent, dar:
+\[
+  \lim_{n \to \infty} \int_0^1 f_n(x) dx \neq \int_0^1 \lim_{n \to \infty} f_n(x) dx.
+\]
+Rezultatul se explică prin faptul că șirul nu este uniform convergent.
+De exemplu, pentru $ x_n = \dfrac{1}{n} $, avem $ f_n(x_n) \to 1 $, dar,
+în general, $ f_n(x) \to 0 $.
+
+\vspace{1cm}
+
+4. Să se dezvolte următoarele funcții în serie Maclaurin, precizînd și
+domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $ f(x) = e^x $;
+\item $ f(x) = \sin x $;
+\item $ f(x) = \cos x $;
+\item $ f(x) = (1 + x)^\alpha, \alpha \in \RR $;
+\item $ f(x) = \dfrac{1}{1 + x} $;
+\item $ f(x) = \ln(1 + x) $;
+\item $ f(x) = \arctan x $;
+\item $ f(x) = \ln(1 + 5x)$;
+\item $ f(x) = 3 \ln(2 + 3x) $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{1cm}
+
+5. Să se calculeze raza de convergență și mulțimea de convergență pentru
+următoarele serii de puteri:
+\begin{enumerate}[(a)]
+\item $ \sum_{n \geq 0} x^n $;
+\item $ \sum_{n \geq 1} n^n x^n $;
+\item $ \sum_{n \geq 1} (-1)^{n+1} \dfrac{x^n}{n} $;
+\item $ \sum_{n \geq 1} \dfrac{n^nx^n}{n!} $;
+\item $ \sum \dfrac{(x - 1)^{2n}}{n \cdot 9^n} $;
+\item $ \sum \dfrac{(x + 3)^n}{n^2} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Găsiți mulțimea de convergență și suma seriei:
+\[
+  \sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1}.
+\]
+\emph{Indicație}: Se derivează termen cu termen și rezultă seria
+geometrică de rază $ -x^2 $, căreia i se poate calcula suma, care apoi
+se integrează.
+
+\vspace{1cm}
+
+7.  Găsiți mulțimea de convergență și suma seriei:
+\[
+  \sum_{n \geq 0} (-1)^n \dfrac{x^{2n + 1}}{2n + 1}.
+\]
+
+\emph{Indicație:} $ R = 1 $ (raport), iar suma se poate afla derivînd
+termen cu termen. Rezultă (prin derivare) seria geometrică de rază $ -x^2 $,
+cu suma $ \dfrac{1}{x^2 + 1} $, valabilă pentru $ x \in (-1, 1) $.
+
+Rezultă $ f(x) = \arctan x + c $.
+
