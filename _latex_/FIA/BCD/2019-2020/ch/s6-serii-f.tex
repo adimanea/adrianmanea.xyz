@@ -1,0 +1,165 @@
+% ! TEX root = ../bcd-19-20.tex
+\chapter{Serii de funcții}
+\index{serii!de funcții}
+
+Șirurile de funcții studiate în seminarul anterior se pot studia și în \emph{serii de funcții},
+cu forma generală $ \sum f_n(x) $, pentru $ f_n : D \seq \RR \to \RR $, un șir de funcții.
+Convergența acestora se studiază folosind \emph{criteriul lui Weierstrass}.
+\index{criteriul!Weierstrass}
+
+\begin{theorem}[Weierstrass]\label{thm:weier}
+  Fie $ \sum f_n(x) $ o serie de funcții, cu $ f_n : [a, b] \to \RR $ și fie
+  $ \sum a_n $ o serie convergentă de numere reale pozitive.
+
+  Dacă $ | f_n(x) | \leq a_n $, pentru orice $ x \in [a, b] $ și $ n \geq N $, cu $ N $
+  fixat, atunci seria de funcții $ \sum f_n(x) $ este uniform convergentă pe $ [a, b] $.
+\end{theorem}
+
+În exerciții, pentru a găsi termenul general al seriei numerice $ a_n $, studiem
+funcțiile $ f_n(x) $, cărora le căutăm valoarea maximă. Astfel, inegalitatea cerută:
+\[
+  | f_n(x) | \leq a_n \quad \forall x \in [a, b], n \geq N
+\]
+este automată.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Studiați convergența seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $ \sum \dfrac{n^2}{\sqrt{n!}} (x^n + x^{-n}) $, cu $ x \in \left[ \dfrac{1}{2}, 2 \right] $;
+\item $ \sum \dfrac{nx}{1 + n^5 x^2}, x \in \RR $;
+\item $ \sum \dfrac{\cos(3^n x)}{2^n}, x \in \RR $;
+\item $ \sum x^n(1 - x), x \in [0, 1] $;
+\item $ \sum \dfrac{(x + n)^2}{n^4}, x \in [0, 2] $;
+\item $ \sum \dfrac{\ln(1 + nx)}{nx^n}, x > 0 $;
+\item $ \sum \dfrac{xe^{-nx}}{\sqrt{n}}, x \geq 0 $.
+\end{enumerate}
+
+\emph{Indicații:} În fiecare caz, se găsește valoarea maximă a funcției $ | f_n | $,
+pe care o notăm cu $ a_n $, apoi studiem convergența seriei numerice $ \sum a_n $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Serii de puteri}
+\index{serii!de puteri}
+
+Seriile de puteri sînt cazuri particulare ale seriilor de funcții, în care funcțiile sînt
+polinomiale. De aceea, în general, o serie de puteri se va nota:
+\[
+  \sum a_n (x - \alpha)^n, \quad \alpha \in \RR,
+\]
+care se numește \emph{serie de puteri centrată în $ x = \alpha $} sau
+\emph{serie de puteri ale lui $ x - \alpha $}.
+
+În general, o serie de puteri este absolut convergentă pentru $ x \in (\alpha - R, \alpha + R) $, unde
+$ R \in \RR $ se numește \emph{raza de convergență} și se calculează după una dintre
+formulele:
+\begin{itemize}
+\item $ R = \ds\lim_{n \to \infty} \left| \dfrac{a_n}{a_{n+1}} \right| $;
+\item $ R = \ds\lim_{n \to \infty} \dfrac{1}{\sqrt[n]{|a_n|}} $.
+\end{itemize}
+
+În plus, se studiază separat cazurile $ x = \pm R $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Să se calculeze raza de convergență și mulțimea de convergență pentru
+următoarele serii de puteri:
+\begin{enumerate}[(a)]
+\item $ \sum_{n \geq 0} x^n $;
+\item $ \sum_{n \geq 1} n^n x^n $;
+\item $ \sum_{n \geq 1} (-1)^{n+1} \dfrac{x^n}{n} $;
+\item $ \sum_{n \geq 1} \dfrac{n^nx^n}{n!} $;
+\item $ \sum \dfrac{(x - 1)^{2n}}{n \cdot 9^n} $;
+\item $ \sum \dfrac{(x + 3)^n}{n^2} $.
+\end{enumerate}
+
+2. Găsiți mulțimea de convergență și suma seriei:
+\[
+  \sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1}.
+\]
+\emph{Indicație}: Se derivează termen cu termen și rezultă seria
+geometrică de rază $ -x^2 $, căreia i se poate calcula suma, care apoi
+se integrează.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Serii Taylor}
+
+Orice funcție cu anumite proprietăți poate fi aproximată cu un polinom:
+
+\begin{definition}\label{def:pol-taylor}
+  \index{serii!polinom Taylor}
+  Fie $ I \seq \RR $ un interval deschis și $ f: I \to \RR $ o funcție de clasă
+  $ \kal{C}^m(I) $. Pentru orice $ a \in I $, definim \emph{polinomul Taylor}
+  de gradul $ n \leq m $ asociat funcției $ f $ în punctual $ a $ prin:
+  \[
+    T_{n,f,a}(x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k.
+  \]
+  \emph{Restul} (eroarea de aproximare) este definit prin:
+  \[
+    R_{n,f,a} = f(x) - T_{n,f,a}(x).
+  \]
+\end{definition}
+
+Acest polinom poate fi mai departe utilizat pentru a studia \emph{seria Taylor}
+asociată unei funcții.
+
+\begin{theorem}\label{thm:seria-taylor}
+  \index{serii!Taylor}
+  Fie $ a < b $ și $ f \in \kal{C}^\infty([a,b]) $ astfel încît să existe
+  $ M > 0 $ cu proprietatea că $ \forall n \in \NN $ și $ x \in [a, b] $, avem
+  $ |f^{(n)}(x)| \leq M $.
+
+  Atunci pentru orice $ x_0 \in (a,b) $, seria Taylor a lui $ f $ în jurul
+  punctului $ x_0 $ este uniform convergentă pe $ [a,b] $ și suma ei este
+  funcția $ f $, adică avem:
+  \[
+    f(x) = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n, \quad %
+    \forall x \in [a,b].
+  \]
+\end{theorem}
+
+Pentru cazul particular $ x_0 = 0 $, seria se numește \emph{Maclaurin}.
+\index{serii!Maclaurin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Să se dezvolte următoarele funcții în serie Maclaurin, precizînd și
+domeniul de convergență:
+\begin{enumerate}[(a)]
+\item $ f(x) = e^x $;
+\item $ f(x) = \sin x $;
+\item $ f(x) = \cos x $;
+\item $ f(x) = (1 + x)^\alpha, \alpha \in \RR $;
+\item $ f(x) = \dfrac{1}{1 + x} $;
+\item $ f(x) = \ln(1 + x) $;
+\item $ f(x) = \arctan x $;
+\item $ f(x) = \ln(1 + 5x)$;
+\item $ f(x) = 3 \ln(2 + 3x) $.
+\end{enumerate}
+
+2. Să se calculeze polinomul Taylor de grad 3 în jurul originii
+pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x) = 3 \ln(2 + x) $;
+\item $ f(x) = \arctan x $;
+\item $ f(x) = \sqrt{1 + 2x} $.
+\end{enumerate}
+
+
+3. Găsiți aproximarea liniară și pătratică a funcțiilor:
+\begin{enumerate}[(a)]
+\item $ f(x) = \sqrt[3]{x} $;
+\item $ f(x) = \sin(\cos x) $;
+\item $ f(x) = e^{\sin x} $;
+\item $ f(x) = \arcsin x $.
+\end{enumerate}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-19-20"
+%%% End:
