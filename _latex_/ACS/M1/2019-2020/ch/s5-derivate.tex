@@ -1,0 +1,178 @@
+% ! TEX root = ../m1-19-20.tex
+\chapter{Derivate parțiale}
+\index{derivate parțiale}
+
+În general, putem lucra cu funcții de mai multe variabile, sub forma
+$ f : \RR^n \to \RR $, funcții care acceptă $ n $ variabile ca \qq{date de intrare}
+și rezultatul este o variabilă reală, deci $ f(x_1, \dots, x_n) = y \in \RR $,
+pentru orice $ n $-tuplu $ (x_1, \dots, x_n) \in \RR^n $.
+
+Cazurile pe care le vom întîlni cel mai des la acest seminar vor fi, însă,
+$ n = 2 $ și $ n = 3 $, cazuri în care variabilele de intrare se vor nota,
+respectiv $ (x, y) $ sau $ (x, y, z) $.
+
+Fie, deci, $ f : \RR^3 \to \RR $ o funcție de 3 variabile reale, cu valori
+reale, $ f = f(x, y, z) $.
+
+Putem defini \emph{derivata parțială} a funcției $ f $ după variabila $ x $,
+de exemplu, ca fiind derivata obținută prin tratarea lui $ y $ și $ z $ ca
+parametri (\qq{constante}). Notația este $ \dfrac{\partial f}{\partial x} $
+sau $ f_x $ sau $ \partial_x f $.
+
+Similar se pot defini și celelalte derivate parțiale. Un exemplu simplu:
+\[
+  f : \RR^3 \to \RR, \quad f(x, y, z) = 3x^2 y + 5xe^y + \sin(yz).
+\]
+
+Avem:
+\begin{align*}
+  f_x &= 6xy + 5e^y \\
+  f_y &= 3x^2 + 5xe^y + z \cos(yz) \\
+  f_z &= y\cos(yz).
+\end{align*}
+
+Calculele pot continua și putem defini \emph{derivatele parțiale de ordin %
+  superior}:
+\[
+  f_{xx} = \dfrac{\partial^2 f}{\partial x^2} = %
+  \dfrac{\partial}{\partial x} \left( \dfrac{\partial f}{\partial x} \right)
+\]
+și similar pentru derivate mixte de forma $ f_{xy}, f_{yx} $ sau derivate de ordin
+și mai mare.
+
+În cazul funcțiilor pe care le vom folosi, are loc:
+\begin{theorem}[Teorema de simetrie a lui Schwarz]\label{thm:schwarz}\index{teorema!Schwarz}
+  În anumite ipoteze\footnotemark, derivatele mixte au proprietatea de simetrie,
+  adică $ f_{x_i x_j} = f_{x_j x_i} $ sau, scris pe larg:
+  \[
+    \dfrac{\partial^2 f}{\partial x_i \partial x_j} = \dfrac{\partial^2 f}{\partial x_j \partial x_i},%
+    \forall x_i, x_j.
+  \]
+\end{theorem}
+\footnotetext{O prezentare a teoremei se poate găsi \href{https://en.wikipedia.org/wiki/Symmetry\_of\_second\_derivatives\#Schwarz.27s\_theorem}{aici},
+  iar în exercițiile de la seminar, ipotezele vor fi verificate automat.}
+
+În exercițiile pe care le vom aborda, vor fi de folos derivatele de ordinul întîi și
+cele de ordinul al doilea. În plus, pentru o funcție de 3 variabile reale,
+$ f : \RR^3 \to \RR, f = f(x, y, z) $, se definește \emph{laplacianul} (sau
+\emph{operatorul Laplace}) prin:
+\index{derivate parțiale!laplacian}
+\[
+  \Delta f = f_{xx} + f_{yy} + f_{zz}.
+\]
+
+Similar, desigur, putem defini laplacianul și pentru funcții de 2 variabile reale prin:
+\[
+  \Delta f = f_{xx} + f_{yy}.
+\]
+
+O funcție se numește \emph{armonică} dacă $ \Delta f = 0 $.
+\index{derivate parțiale!funcție armonică}
+
+\vspace{1cm}
+
+Dată o funcție de 3 variabile, se poate defini \emph{diferențiala totală},
+care conține laolaltă informațiile furnizate de derivatele parțiale. Pentru o
+funcție $ f : \RR^3 \to \RR $, diferențiala totală se notează $ df $ și se calculează
+cu formula:
+\[
+  df = f_x dx + f_y dy + f_z dz,
+\]
+unde $ dx, dy, dz $ sînt diferențialele elementare (nu se calculează! ele
+constituie vectori-bază într-un anumit spațiu vectorial).
+
+O expresie ca mai sus, de forma $ df $, se numește \emph{1-formă diferențială},
+pe care o vom reîntîlni în studiul integralelor curbilinii.
+
+Avem mai departe și diferențiala totală de ordinul al doilea, definită
+pentru aceeași funcție de mai sus prin:
+\[
+  d^2 f = f_{xx} dx^2 + 2f_{xy} dxdy + f_{yy} dy^2,
+\]
+expresie care se mai numește \emph{2-formă diferențială} și pe care o
+vom reîntîlni în studiul integralelor de suprafață.
+
+\vspace{1cm}
+
+De asemenea, o altă noțiune utilă este aceea a \emph{polinoamelor Taylor}
+pentru funcții de mai multe variabile. Fie $ f = f(x, y) $ o funcție
+de 2 variabile și fie $ A(x_A, y_A) \in \RR^2 $ un punct arbitrar. În exerciții,
+vom întîlni doar polinoamele Taylor de grad 1 și 2, care se definesc astfel,
+în jurul punctului $ A $:
+\begin{align*}
+  T_1(X, Y) &= f(A) + \dfrac{1}{1!}\left[f_x(A)(X - x_A) + f_y(A)(Y - y_A)\right] \\
+  T_2(X, Y) &= T_1(X, Y) + \dfrac{1}{2!} \left[ f_{xx}(A)(X - x_A)^2 + f_{yy}(A)(Y - y_A)^2 +%
+              2f_{xy}(A)(X - x_A)(Y - y_A) \right].
+\end{align*}
+
+Ca în cazul seriilor Taylor pentru funcțiile de o singură variabilă,
+eroarea aproximației folosind aceste polinoame este comparabilă cu primul termen neglijat.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Extreme libere}
+
+Fie o funcție de 2 variabile $ f : \RR^2 \to \RR, f = f(x, y) $. Ne propunem
+să studiem valorile sale extreme, adică să îi găsim minimul și maximul,
+considerînd că funcția este definită, derivabilă și continuă pe tot domeniul
+de definiție.
+
+Pașii pe care îi urmăm sînt:
+\begin{enumerate}[(1)]
+\item Rezolvăm sistemul de ecuații dat de anularea derivatelor parțiale
+  de ordinul întîi, din care aflăm \emph{punctele critice}, care \emph{este posibil}
+  să fie de extrem. Așadar, rezolvăm sistemul:
+  \[
+    \begin{cases}
+      f_x &= 0 \\
+      f_y &= 0
+    \end{cases} \Longrightarrow A_1(x_1, y_1), A_2(x_2, y_2)\dots
+  \]
+\item Pentru fiecare dintre punctele critice $ A_i $ se alcătuiește
+  \emph{matricea hessiană} a funcției, alcătuită din derivatele de ordinul al
+  doilea și se evaluează matricea în punctele critice:
+  \[
+    H_f(A_i) = \begin{pmatrix}
+      f_{xx}(A_i) & f_{xy}(A_i) \\
+      f_{yx}(A_i) & f_{yy}(A_i)
+    \end{pmatrix}
+  \]
+  \index{derivate parțiale!matricea hessiană}
+\item Fie $ A_i $ un punct critic fixat. Calculăm valorile proprii $ \lambda_{1,2} $ ale
+  matricei hessiene $ H_f(A_i) $ și decidem astfel:
+  \begin{itemize}
+  \item Dacă $ \lambda_1, \lambda_2 > 0 $, atunci punctul $ A_i $ este de \emph{minim local};
+  \item Dacă $ \lambda_1, \lambda_2 < 0 $, punctul $ A_i $ este \emph{maxim local};
+  \item Dacă $ \lambda_1 \cdot \lambda_2 < 0 $, punctul $ A_i $ \emph{nu este de extrem};
+  \item Dacă $ \lambda_1 \cdot \lambda_2 = 0 $, nu putem decide.
+  \end{itemize}
+\item Se repetă procedura pentru fiecare dintre punctele critice.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Verificați dacă următoarele funcții de 2 variabile sînt armonice (presupunem
+că domeniile de definiție au fost date corect):
+\begin{enumerate}[(a)]
+\item $ f(x, y) = \ln(x^2 + y^2) $;
+\item $ f(x, y) = \sqrt{x^2 + y^2} $;
+\item $ f(x, y) = \arctan \dfrac{x}{y} + \arctan\dfrac{y}{x} $;
+\item $ f(x, y) = \dfrac{x + y}{x - y} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Găsiți punctele de extrem pentru funcțiile de 2 sau 3 variabile, definite
+corespunzător pe $ \RR^2 $ sau $ \RR^3 $:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = 3x^2y - 2x + 5y - xy^2 $;
+\item $ f(x, y) = x^3 + y^3 - 6xy $;
+\item $ f(x, y) = 3xy^2 - x^3 - 15x - 36y + 9 $;
+\item $ f(x, y) = 4xy - x^4 - y^4 $;
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-19-20"
+%%% End:
