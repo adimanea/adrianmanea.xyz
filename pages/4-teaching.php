@@ -23,7 +23,7 @@
         </p>
 
         <p>
-            The source (LaTeX) files are available on <a href="https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/latex" target="_blank">GitLab</a>, where contributions or comments are more than welcome.
+            The source (LaTeX) files are available on <a href="https://github.com/adimanea/adrianmanea.xyz/tree/master/_latex_" target="_blank">GitHub</a>, where contributions or comments are more than welcome.
     </p>
 
         <h3>Other materials</h3>

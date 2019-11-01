@@ -245,12 +245,11 @@ include ("../includes/navigation.php");
                 <li>Culegere analiză (Costache): &nbsp; <a href="../docs/altele/costache.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
                 <li>Culegere algebră (Bălan): &nbsp; <a href="../docs/altele/balan-ag.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
                 <li>Culegere algebră (Purcaru): &nbsp; <a href="../docs/altele/purcaru-ag" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
-                <li>Diverse resurse: <a href="../docs/altele/resurse.md">descarcă</a> fișierul Markdown sau <a href="https://gitlab.com/adimanea/adrianmanea.xyz/blob/master/docs/altele/resurse.md" target="_blank">citește</a> online.</li>
             </ul>
         </div>
 
         <br /><br /><br />
-        <p style="text-align:center">Sursele LaTeX pentru documentele incluse sînt disponibile <a href="https://gitlab.com/adimanea/adrianmanea.xyz/tree/master/_latex_" target="_blank"><b>pe GitLab</b></a>, unde încurajez orice comentarii sau contribuții.</p>
+        <p style="text-align:center">Sursele LaTeX pentru documentele incluse sînt disponibile <a href="https://github.com/adimanea/adrianmanea.xyz/tree/master/_latex_" target="_blank"><b>pe GitHub</b></a>, unde încurajez orice comentarii sau contribuții.</p>
         </div>
         <script src="../scripts/bookmarks-script.js"></script>
 </body>
