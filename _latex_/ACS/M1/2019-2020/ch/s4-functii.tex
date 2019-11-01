@@ -298,6 +298,22 @@ asociată unei funcții. Formal, conceptul este definit mai jos.
   termen din polinomul Taylor).
 \end{remark}
 
+\textbf{Seriile Taylor uzuale} pentru funcțiile elementare, împreună cu domeniile
+de convergență, sînt date mai jos.
+\begin{align*}
+  e^x &= \sum_{n \geq 0} \dfrac{1}{n!} x^n, x \in \RR \\
+  \dfrac{1}{1 - x} &= \sum_{n \geq 0} x^n, |x| < 1 \\
+  \dfrac{1}{1 + x} &= \sum_{n \geq 0} (-1)^n x^n, |x| < 1 \\
+  \cos x &= \sum_{n \geq 0} \dfrac{(-1)^n}{(2n)!} x^{2n}, x \in \RR \\
+  \sin x &= \sum_{n \geq 0} \dfrac{(-1)^n}{(2n + 1)!} x^{2n + 1}, x \in \RR \\
+  (1 + x)^\alpha &= \sum_{n \geq 0} \dfrac{\alpha(\alpha - 1)(\alpha - 2) \cdots (\alpha - n + 1)}{n!} x^n,%
+                   |x| < 1, \alpha \in \RR \\
+  \arctan x &= \sum_{n \geq 0} \dfrac{(-1)^n}{2n + 1} x^{2n + 1}, | x | \leq 1.
+\end{align*}
+
+Seriile pentru alte funcții se pot obține fie prin calcul direct, fie
+prin derivare sau integrare termen cu termen a seriilor de mai sus.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Exerciții}
