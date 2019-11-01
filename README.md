@@ -16,6 +16,7 @@ The following are not available on the website, but I use them on the server, so
 ## TODOs
 - [ ] move to [Hugo](https://gohugo.io/);
 - [ ] simplify!
+- [ ] add last modified date (& link to latest commit?);
 - [ ] add blog section;
 - [ ] add newsfeeds (my own recipe for RSS/Atom feeds);
 - [ ] add [Gitea](https://gitea.io/en-us/) (?);
