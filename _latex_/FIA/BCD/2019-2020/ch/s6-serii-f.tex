@@ -74,14 +74,45 @@ următoarele serii de puteri:
 \item $ \sum_{n \geq 1} \dfrac{n^nx^n}{n!} $;
 \item $ \sum \dfrac{(x - 1)^{2n}}{n \cdot 9^n} $;
 \item $ \sum \dfrac{(x + 3)^n}{n^2} $.
+\item $ \sum \dfrac{n - 1}{n^2 + 2} (x - 2)^2 $;
+\item $ \sum \dfrac{n + 1}{\sqrt{n^4 + n^3 + 1}} \left( \dfrac{x + 1}{2x + 3} \right) $.
 \end{enumerate}
 
+\vspace{0.5cm}
+
 2. Găsiți mulțimea de convergență și suma seriilor:
-\begin{enumerate}{[a]}
-    \item $ \sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1} $;
-    \item $ \sum_{n \geq 0} \dfrac{2^n}{2n + 1} x^n $;
-    \item $ \sum_{n \geq 0} \dfrac{n}{n + 1} x^n $.
+\begin{multicols}{3}
+    \begin{enumerate}[(a)]
+        \item $ \ds\sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1} $;
+        \item $ \ds\sum_{n \geq 0} \dfrac{2^n}{2n + 1} x^n $;
+        \item $ \ds\sum_{n \geq 0} \dfrac{n}{n + 1} x^n $.
+    \end{enumerate}
+\end{multicols}
+
+\emph{Indicații:} Se pornește de la seria geometrică, pentru cazul
+convergent:
+\[
+    S(x) = \sum x^n = \dfrac{1}{1 - x}, \quad x \in (-1, 1).
+\]
+Putem să o derivăm sau integrăm termen cu termen și obținem serii
+convergente pe același domeniu:
+\begin{align*}
+    S'(x) &= \sum nx^{n-1} = \dfrac{1}{(1 - x)^2}, \quad x \in (-1, 1) \\
+    \ds\int S(x) dx &= \sum \dfrac{x^{n+1}}{n + 1} = - \ln(1 - x), \quad x \in (-1, 1).
+\end{align*}
+
+Se prelucrează seriile date pînă se ajunge la una dintre aceste formule:
+\begin{enumerate}[(a)]
+    \item se derivează termen cu termen;
+    \item se notează $ 2x = \pm t^2 $, în funcție de semnul lui $ x $;
+    \item se descompune, folosind $ \dfrac{n}{n + 1} = 1 - \dfrac{1}{n + 1} $,
+        apoi cele două serii se studiază separat.
 \end{enumerate}
+
+Dacă este necesar, se poate și înmulți sau împărți prin $ x $.
+
+\textbf{Atenție!} Pentru $ x = 0$, majoritatea metodelor de mai sus nu
+funcționează, dar avem $ S(0) = 0 $, ca valoare particulară.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Serii Taylor}
