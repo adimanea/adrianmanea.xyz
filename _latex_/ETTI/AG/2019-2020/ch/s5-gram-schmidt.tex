@@ -2,6 +2,8 @@
 
 \chapter{Spații euclidiene}
 
+\section{Ortonormare și complement ortogonal}
+
 Ne îndreptăm spre aplicațiile în geometria \emph{clasică}, adică
 euclidiană, în care este esențial să putem calcula \emph{lungimi (distanțe)}
 și \emph{unghiuri}.
@@ -139,6 +141,127 @@ Așadar, baza $ C' = \{ c'_1, \dots, c'_n \} $ este o \emph{bază ortonormată},
 adică formată doar din versori, iar procedeul se încheie.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Aplicații în geometrie}
+
+Amintim, înainte de generalizarea într-un spațiu vectorial arbitrar, că
+în geometria analitică din liceu am studiat și condiții de coliniaritate
+pentru doi vectori. Această noțiune poate fi generalizată ușor:
+
+\begin{definition}\label{def:vectori-col}
+  \index{vectori!coliniari}
+  Fie $ v, w \in \RR^n $ doi vectori, care se scriu într-o bază fixată
+  $ B = \{ b_i \} $ a lui $ \RR^n $ cu coordonatele $ \{ \alpha_i \} $,
+  respectiv $ \{ \beta_i \} $.
+
+  Spunem că cei doi vectori sînt coliniari, notat $ v \parallel w $
+  dacă și numai dacă au coordonatele proporționale:
+  \[
+    \dfrac{\alpha_1}{\beta_1} = \dfrac{\alpha_2}{\beta_2} = \dots = %
+    \dfrac{\alpha_n}{\beta_n} = k \in \RR.
+  \]
+  Evident, dacă $ k = 1 $, avem $ v = w $.
+\end{definition}
+
+De asemenea, în liceu, dacă este dat un vector din plan
+$ \vec{v} = a \vec{i} + b \vec{j} $, lui i se poate calcula \emph{proiecția}
+pe axa OX calculînd produsul scala $ \vec{v} \cdot \vec{i} = a $.
+
+Noțiunea poate fi generalizată astfel:
+
+\begin{definition}\label{def:proiectie-subspatiu}
+  Fie $ v \in \RR^n $ un vector arbitrar și $ V $ un subspațiu al lui $ \RR^n $
+  de bază $ B = \{ b_1, \dots, b_t \} $.
+
+  \emph{Proiecția ortogonală a vectorului $ v $ pe subspațiul $ V $} se definește
+  prin:
+  \[
+    v_{\parallel V} = \dr{pr}_V v = \sum_{i = 1}^t \dfrac{\langle v, b_i\rangle}{%
+      \langle b_i, b_i \rangle} b_i.
+  \]
+\end{definition}
+
+Geometric, $ \dr{pr}_V v $ este \qq{cel mai apropiat} de $ v $ vector din $ V $.
+
+Mai mult, un rezultat important este:
+\begin{theorem}\label{thm:proi-perp}
+  În condițiile și cu notațiile de mai sus, $ v = v_{\parallel V} + v_{\perp V} $,
+  unde $ v_{\perp V} \in V^\perp $.
+\end{theorem}
+
+Cîteva aplicații geometrice simple urmează.
+
+În plan, produsul scalar poate fi folosit pentru a calcula aria paralelogramului.
+
+\begin{proposition}\label{pr:aria-paral}
+  Produsul scalar al vectorilor $ u, v \in \RR^2 $ este egal cu aria
+  paralelogramului determinat de cei doi vectori.
+\end{proposition}
+
+În spațiu, fie doi vectori:
+\begin{align*}
+  \vec{a} &= a_1 \vec{i} + a_2 \vec{j} + a_3 \vec{k} \\
+  \vec{b} &= b_1 \vec{i} + b_2 \vec{j} + b_3 \vec{k}.
+\end{align*}
+
+\index{produs!vectorial}
+\emph{Produsul vectorial} al celor doi vectori, notat $ \vec{a} \times \vec{b} $
+poate fi calculat ca un determinant formal:
+\[
+  \vec{a} \times \vec{b} = %
+  \begin{vmatrix}
+    \vec{i} & \vec{j} & \vec{k} \\
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3
+  \end{vmatrix}.
+\]
+
+Geometric, produsul vectorial produce un vector care este perpendicular pe
+planul determinat de cei doi factori, a cărui orientare este dată cu regula
+burghiului.
+
+\begin{proposition}\label{pr:vol-paral}
+  Norma (modulul) produsului vectorial este egală cu volumul paralelipipedului
+  determinat de cei trei vectori, ca muchii adiacente.
+\end{proposition}
+
+De asemenea, avem și:
+\begin{proposition}\label{pr:prod-vec-paral}
+  Păstrînd notațiile și condițiile de mai sus,
+  \[
+    \vec{a} \parallel \vec{b} \Leftrightarrow \vec{a} \times \vec{b} = \vec{0}.
+  \]
+\end{proposition}
+
+\index{produs!mixt}
+Totodată, se poate defini și \emph{produsul mixt} pentru trei vectori.
+
+Fie cei doi vectori de mai sus și $ \vec{c} = c_1 \vec{i} + c_2 \vec{j} + c_3 \vec{k} $>
+
+Produsul mixt al celor trei vectori se calculează prin:
+\[
+  \vec{a} \cdot (\vec{b} \times \vec{c}) = %
+  \begin{vmatrix}
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3 \\
+    c_1 & c_2 & c_3
+  \end{vmatrix}.
+\]
+
+\begin{proposition}\label{pr:vectori-copl}
+  Păstrînd notațiile și contextul de mai sus, vectorii $ \vec{a}, \vec{b} $
+  și $ \vec{c} $ sînt coplanari dacă și numai dacă produsul lor mixt este nul.
+\end{proposition}
+
+\begin{proposition}\label{pr:volum-tetra}
+  Păstrînd notațiile și contextul de mai sus, volumul tetraedrului determinat
+  de vectorii $ \vec{a}, \vec{b}, \vec{c} $ ca muchii adiacente se calculează:
+  \[
+    V = \dfrac{1}{6} \vec{a} \cdot (\vec{b} \times \vec{c}).
+  \]
+\end{proposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Exerciții}
 
@@ -150,15 +273,17 @@ adică formată doar din versori, iar procedeul se încheie.
   a lui $ \RR^4 $.
 \end{enumerate}
 
+\vspace{0.5cm}
+
 2. Să se completeze mulțimea $ \{ (1, -1, 2), (1, 2, 3) \} $ pînă la o bază
 a lui $ \RR^3 $ și să se ortonormeze baza rezultată.
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 3. Să se completeze mulțimea $ \{ 3, 2X + 1 \} $ pînă la o bază a lui $ \RR_2[X] $
 și să se ortonormeze baza rezultată.
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 4. Găsiți complementele ortogonale pentru:
 \begin{enumerate}[(a)]
@@ -174,3 +299,47 @@ a lui $ \RR^3 $ și să se ortonormeze baza rezultată.
   în $ \RR^4 $.
 \end{enumerate}
 
+\vspace{0.5cm}
+
+5. Folosind produsele scalare canonice, calculați $ \langle u, v \rangle, ||u||, ||v|| $
+și proiecțiile $ \dr{pr}_u v, \dr{pr}_v u $. Calculați și consinusul unghiului între
+$ u $ și $ v $ și decideți dacă vectorii sînt ortogonali:
+\begin{enumerate}[(a)]
+\item $ u = (1, 2), v = (-1, 2) \in \RR^2 $;
+\item $ u = (1, 1, 1), v = (1, -2, 0) \in \RR^3 $;
+\item $ u = 1 + X, v = X^2 \in \RR_2[X] $;
+\item $ u = \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix} $,
+  $ v = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \in M_2(\RR) $;
+\end{enumerate}
+
+\vspace{0.5cm}
+
+6. Fie subspațiul $ W = \dr{Sp} \{ v_1 = (1, 0, 1, 1), v_2 = (1, -1, 1, 0) \} \seq \RR^4 $.
+\begin{enumerate}[(a)]
+\item Determinați $ W^\perp $;
+\item Arătați că $ W \oplus W^\perp \simeq \RR^4 $;
+\item Pentru $ v = (1, 1, 1, 1) $, determinați $ v_0 = \dr{pr}_{v_1} v $;
+\item Pentru $ v $ de mai sus, determinați $ v_{\parallel W} v \in W $
+  și $ v_{\perp W} = v - v_{\parallel W} $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+7. Aflați proiecția $ v_{\parallel W} $ a vectorului $ v $ pe
+subspațiul $ W $, precum și componenta sa ortogonală $ v_{\perp W} \in W^\perp $ pentru:
+\begin{enumerate}[(a)]
+\item (*) $ v = 1 + x \in \RR_2[x], W = \dr{Sp}\{ p_1 = 1 + x^2, p_2 = 1 \} $, cu
+  produsul scalar definit prin:
+  \[
+    \langle p, q \rangle = \int_{-1}^1 p(t) q(t) dt, \quad \forall p, q \in \RR_2[x].
+  \]
+\item $ v = (1, 2, 1), W = \dr{Sp} \{ v_1 = (2, 1, 0), v_2 = (-1, 4, 1) \} \seq \RR^3 $;
+\item $ v = \begin{pmatrix} 1 & 2 \\ 4 & 1 \end{pmatrix} $, $ W = \dr{Sp} %
+    \left\{ C = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, %
+      D = \begin{pmatrix} 0 & 1 \\ 2 & 1 \end{pmatrix} \right\} \seq M_2(\RR) $;
+\item $ v = (2, 1, -1), W = \{ (x, y, z) \mid x + y - 2z = 0 \} \seq \RR^3 $.
+\end{enumerate}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-19-20"
+%%% End:
