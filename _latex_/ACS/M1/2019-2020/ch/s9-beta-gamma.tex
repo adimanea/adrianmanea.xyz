@@ -1,0 +1,76 @@
+%! TEX root = ../m1-19-20.tex
+
+\chapter{Integrale improprii și cu parametri}
+\index{integrale!improprii}
+
+Integralele improprii sînt integrale în care fie unul dintre capete este
+infinit, fie funcția nu este definită în cel puțin un punct din domeniul
+de integrare. De exemplu:
+\begin{itemize}
+    \item $ \ds\int_0^1 \dfrac{\ln x}{x} $ este improprie în $ x = 0 $;
+    \item $ \ds\int_0^\infty \dfrac{\ln x}{x} $ este improprie în ambele capete.
+\end{itemize}
+
+Pentru aceste integrale, calculul se poate face trecînd la limită, dacă
+unul dintre capete este infinit. Mai precis, avem:
+\[
+    \int_a^\infty f(x) dx = \lim_{t \to \infty} \int_a^t f(x) dx,
+\]
+dacă integrala nu este improprie și în capătul $ x = a $ sau în alt
+punct din interiorul domeniului.
+
+Pentru celelalte cazuri, există criterii de convergență, care însă
+depășesc scopul acestui seminar.
+
+Un caz particular care ne interesează este acela al integralelor
+improprii cu parametri. Un exemplu este:
+\[
+    I(m) = \int_0^{\dfrac{\pi}{2}} \ln(\cos^2 x + m^2 \sin^2 x)dx, \quad m > 0,
+\]
+care se poate rezolva folosind tehnica de derivare în interiorul
+integralei, adică:
+\[
+    I'(m) = \int_0^{\dfrac{\pi}{2}} \dfrac{\partial}{\partial m} %
+    \ln(\cos^2 x + m^2 \sin^2 x) dx.
+\]
+
+Însă accentul pentru acest seminar va cădea pe \emph{funcțiile lui Euler},
+Beta și Gamma, care se definesc astfel:
+\index{integrale!Beta}
+\index{integrale!Gamma}
+\begin{align*}
+    \Gamma(t) &= \int_0^\infty x^{t - 1} e^{-x} dx, t > 0 \\
+    B(p,q) &= \int_0^1 x^{p-1}(1 - x)^{q-1}, p, q > 0.
+\end{align*}
+
+Remarcăm că integrala Gamma este improprie pentru $ x \to \infty $,
+iar integrala Beta nu este improprie, ci doar cu parametri.
+
+Proprietățile pe care le vom folosi în exerciții sînt:
+\begin{enumerate}[(1)]
+    \item $ B(p, q) = B(q, p), \forall p, q > 0 $;
+    \item $ B(p, q) = \dfrac{\Gamma(p) \cdot \Gamma(q)}{\Gamma(p + q)} $;
+    \item $ B(p, q) = \ds\int_0^\infty \dfrac{y^{p-1}}{(1 + y)^{p + q}} dy $;
+    \item $ \Gamma(1) = 1 $;
+    \item $ \Gamma(t + 1) = t \cdot \Gamma(t), \forall t > 0 $;
+    \item $ \Gamma(n) = (n - 1)!, \forall n \in \NN^\ast $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+Calculați, folosind funcțiile $ B $ și $ \Gamma $, integralele:
+\begin{enumerate}[(a)]
+\item $ \ds\int_0^\infty e^{-x^p} dx, p > 0 $;
+\item $ \ds\int_0^\infty \dfrac{x^{\frac{1}{4}}}{(x + 1)^2} dx $;
+\item $ \ds\int_0^\infty \dfrac{dx}{x^3 + 1} dx $;
+\item $ \ds\int_0^{\frac{\pi}{2}} \sin^p x \cos^q x dx, p > -1, q > -1 $;
+\item $ \ds\int_0^1 x^{p + 1}(1 - x^m)^{q - 1} dx, p, q, m > 0 $;
+\item $ \ds\int_0^\infty x^p e^{-x^q} dx, p > -1, q > 0 $;
+\item $ \ds\int_0^1 \ln^p x^{-1} dx, p > -1 $;
+\item $ \ds\int_0^1 \dfrac{dx}{(1 - x^n)^{\frac{1}{n}}}, n \in \NN $;
+\item $ \ds\int_1^e \dfrac{1}{x} \ln^3 x \cdot (1 - \ln x)^4 dx $;
+\item $ \ds\int_0^1 \sqrt{\ln\dfrac{1}{x}} dx $;
+\item $ \ds\int_0^\infty \dfrac{x^2}{(1 + x^4)^2} dx $;
+\item $ \ds\int_{-1}^\infty e^{-x^2 - 2x + 3} dx $.
+\end{enumerate}
