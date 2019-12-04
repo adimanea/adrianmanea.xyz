@@ -1,0 +1,125 @@
+%! TEX root = ../am1-19-20.tex
+
+\chapter{Integrale curbilinii}
+
+\section{Elemente de teorie}
+
+\textbf{Integrale curbilinii de speța întîi}
+
+Fie $ \gamma = \gamma(t) $ o curbă netedă, definită pe un interval 
+$ t \in [a, b] $. Se definește integrala curbilinie a unei
+funcții $ f : \RR^3 \to \RR, f = f(x, y, z) $ prin formula:
+\[
+    \int_\gamma f(x, y, z) ds = \int_a^b f(x(t), y(t), z(t)) \cdot %
+    \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2} dt.
+\]
+
+De asemenea, cîteva cazuri particulare de interes sînt:
+\begin{itemize}
+    \item \emph{lungimea curbei $ \gamma $} se obține pentru $ f = 1 $,
+        deci:
+        \[
+            \ell(\gamma) = \int_a^b \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2} dt;
+        \]
+    \item dacă funcția $ f $ reprezintă \emph{densitatea} unui fir pe care
+        îl aproximăm cu o curbă netedă $ \gamma $, atunci \emph{masa firului}
+        se calculează cu formula:
+        \[
+            M(\gamma) = \int_\gamma f(x,y,z) ds;
+        \]
+    \item în aceeași ipoteză de mai sus, \emph{coordonatele centrului de %
+        greutate} al firului, $ x_i^G $ se calculează cu formula
+        (am notat $ x_1 = x, x_2 = y, x_3 = z $):
+        \[
+            x_i^G = \dfrac{1}{M} \int_\gamma x_i f(x_1, x_2, x_3) ds,
+        \]
+        unde $ M $ este masa calculată mai sus.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Integrala curbilinie de speța a doua}
+
+Fie $ \omega = Pdx + Qdy + Rdz $ o 1-formă diferențială. Se definește
+integrala curbilinie a formei $ \omega $ în lungul curbei $ \gamma $ ca mai sus
+prin formula:
+\[
+    \int_\gamma \omega = \int_a^b (P \circ \gamma) x' + (Q \circ \gamma) y' + %
+    (R \circ \gamma) z' dt,
+\]
+unde $ \gamma = \gamma(t), t \in [a, b] $ este o parametrizare a curbei $ \gamma $.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+Calculați integralele curbilinii de mai jos:
+
+\textbf{Speța întîi}:
+\begin{enumerate}[(a)]
+    \item $ \ds\int_\gamma ye^{-x} ds $, unde parametrizarea curbei $ \gamma $
+        este dată de:
+        \[
+              \gamma : %
+              \begin{cases}
+                  x(t) &= \ln(1 + t^2) \\
+                  y(t) &= 2 \arctan t - t
+              \end{cases}, \quad t \in [0, 1];
+        \]
+    \item $ \ds\int_\gamma (x^2 + y^2) \ln z ds $, unde parametrizarea curbei
+        $ \gamma $ este dată de:
+        \[
+              \gamma : %
+              \begin{cases}
+                  x(t) &= e^t \cos t \\
+                  y(t) &= e^t \sin t \\
+                  z(t) &= e^t
+              \end{cases}, \quad t \in [0, 1];
+        \]
+    \item $ \ds\int_\gamma xyz ds $, unde parametrizarea curbei $ \gamma $ este:
+        \[
+              \gamma : %
+              \begin{cases}
+                  x(t) &= t \\
+                       & \\
+                  y(t) &= \dfrac{2}{3}\sqrt{2t^3} \\
+                       & \\
+                  z(t) &= \dfrac{1}{2} t^2
+              \end{cases}, \quad t \in [0, 1];
+        \]
+    \item $ \ds\int_\gamma x^2y ds $, unde $ \gamma = [AB] \cup [BC] $,
+        iar capetele segmentelor sînt $ A(-1, 1), B(2, 1), C(2, 5) $;
+    \item $ \ds\int_\gamma x^2 ds $, unde $ \gamma $ este dată de:
+        \[
+              \gamma : x^2 + y^2 = 2, \quad x, y \geq 0;
+        \]
+    \item $ \ds\int_\gamma (x^2 + y^2) ds $, unde $ \gamma $ este sectorul
+        de cerc $ x^2 + y^2 = 1 $, parcurs de la $ A(0, -1) $ la $ B(1, 0) $;
+    \item Calculați lungimea segmentului $ [AB] $, unde $ A(1, 2), B(3, 5) $.
+\end{enumerate}
+
+\textbf{Speța a doua}: $ \ds\int_\gamma \omega $ pentru:
+
+\begin{enumerate}[(a)]
+    \item $ \omega = (x^2 + y^2) dx + (x^2 - y^2) dy $, unde $ \gamma $ este
+        dată de:
+        \[
+            \gamma: %
+            \begin{cases}
+                x(t) &= \sqrt{t} \\
+                y(t) &= \sqrt{t + 1}
+            \end{cases}, \quad t \in [1, 4];
+        \]
+    \item $ \omega = \dfrac{1}{y^2 + 1} dx + \dfrac{y}{x^2 + 1} dy $, unde
+        $ \gamma $ este dată de:
+        \[
+              \gamma: %
+              \begin{cases}
+                  x(t) &= t^2 \\
+                  y(t) &= t
+              \end{cases}, \quad t \in [0, 1];
+        \]
+    \item $ \omega = \sqrt{x} dx + xy^2 dy $, unde $ \gamma $ este
+        parabola $ y = x^2 $, pentru $ x \in [0, 1] $.
+\end{enumerate}
