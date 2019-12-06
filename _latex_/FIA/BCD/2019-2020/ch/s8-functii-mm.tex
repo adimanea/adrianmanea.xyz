@@ -1,4 +1,4 @@
-%! TEX root = ../bcd-19-20.tex
+% ! TEX root = ../bcd-19-20.tex
 
 \chapter{Funcții de mai multe variabile}
 
@@ -14,7 +14,7 @@ uneia dintre ele și considerînd pe celelalte drept parametri.
 1. Să se arate, folosind definiția, că următoarele funcții nu au limită în origine:
 \begin{enumerate}[(a)]
 \item $f(x, y) = \dfrac{2xy}{x^2 + y^2}, (x, y) \neq (0, 0)$;
-\item $f(x, y) = \dfrac{x^2 + 2x}{y^2 - 2x}, (x, y) \neq (0, 0)$.
+\item $f(x, y) = \dfrac{y^2 + 2x}{y^2 - 2x}, (x, y) \neq (0, 0)$.
 \end{enumerate}
 
 \emph{Soluție:} Vom folosi definiția cu șiruri, punînd în evidență șiruri de puncte,
@@ -78,7 +78,7 @@ că și limita inițială este nulă.
 \[
   f(x, y) = \begin{cases}
     \dfrac{xy^2 + \sin(x^3 + y^5)}{x^2 + y^4}, & (x, y) \neq (0, 0) \\
-                                               & \\
+    & \\
     0, & (x, y) = (0, 0)
   \end{cases}
 \]
@@ -137,7 +137,7 @@ variabilelor în acest punct.
 
 Însă pentru $x \to 0$ și $y = mx$, limita globală depinde de $m$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Derivate parțiale}
 
@@ -186,7 +186,7 @@ diferențiala totală de ordinul 2:
   2 \frac{\partial^2 f}{\partial x \partial y} dxdy.
 \]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Exerciții}
 
@@ -288,3 +288,19 @@ pentru funcțiile:
 \item $ f(x, y, z) = (x^2 + y^2 + z^2)^{-1} $.
 \end{enumerate}
 
+\vspace{0.5cm}
+
+7. Fie funcția $ f(x, y,) = xy\varphi\left(\ln(x + y) + \dfrac{x}{y}\right) $,
+unde $ \varphi : \RR \to \RR $ este o funcție derivabilă.
+
+Aduceți la forma cea mai simplă expresia:
+\[
+  E(x, y) = x\dfrac{\partial f}{\partial x} + y \dfrac{\partial f}{\partial y} - %
+  \dfrac{x + y}{xy} f(x, y).
+\]
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-19-20"
+%%% End:
