@@ -50,6 +50,29 @@ prin formula:
 \]
 unde $ \gamma = \gamma(t), t \in [a, b] $ este o parametrizare a curbei $ \gamma $.
 
+O aplicație fizică importantă a integralelor curbilinii de speța a doua
+este calculul \emph{circulației} cîmpurilor vectoriale.
+
+Fie, deci, un cîmp vectorial în spațiu:
+\[
+    \vec{V} = P(x, y, z)\vec{i} + Q(x, y, z)\vec{j} + R(x, y, z) \vec{k}.
+\]
+Atunci \emph{circulația\footnotemark} cîmpului vectorial în lungul unei curbe netede $ \gamma $
+se calculează cu integrala curbilinie:
+\[
+    \int_\gamma P(x, y, z) dx + Q(x, y, z) dy + R(x, y, z) dz
+\]
+și putem asocia o 1-formă diferențială cîmpului, anume:
+\[
+    \omega = P(x, y, z) dx + Q(x, y, z)dy + R(x, y, z) dz.
+\]
+
+\footnotetext{Circulația unui cîmp vectorial este analogul fluxului, dar
+    în dimensiune 1. Astfel, dacă fluxul se calculează pentru cîmpuri care
+    traversează o suprafață (vom întîlni conceptul în lecția despre integrale
+    de suprafață), circulația se calculează pentru cîmpuri în lungul
+unor curbe.}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Formula Green-Riemann}
 \index{formula!Green-Riemann}
