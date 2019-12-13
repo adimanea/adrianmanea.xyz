@@ -36,6 +36,15 @@ include ("../includes/navigation.php");
                 <div class="panel">
                     <ul class="big-list">
                         <li>Notițe disponibile aici: <a href="../docs/19-20-etti-am1/am1-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
+                        <li><b>Materia pentru examen:</b></li>
+                            <ul>
+                                <li>Integrale Beta și Gamma (v. notițele de la curs și fișele Prof. Purtan);</li>
+                                <li>Integrale duble: <a href="https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-int-duble.pdf" target="_blank">fișa Prof. Purtan</a>;</li>
+                                <li>Integrale triple: <a href="https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-int-triple.pdf" target="_blank">fișa Prof. Purtan</a>;</li>
+                                <li>Integrale curbilinii: v. notițele de seminar și <a href="https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-int-curb.pdf" target="_blank">fișa Prof. Purtan</a>;</li>
+                                <li>Integrale de suprafață: <a href="https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-int-sup.pdf" target="_blank">fișa Prof. Purtan</a>;</li>
+                                <li>Formule integrale: <a href="https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-f-int.pdf" target="_blank">fișa Prof. Purtan</a>.</li>
+                            </ul>
                     </ul>
                 </div>
             <button class="accordion">FIA, Bazele calculului diferențial</button>
