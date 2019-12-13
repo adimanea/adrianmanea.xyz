@@ -59,7 +59,7 @@ găsi punctele de extrem ale funcției, parcurgem următoarele etape:
   \]
 \item Evaluăm matricea în fiecare punct critic. Astfel, dacă $ A(x_0, y_0) $ este
   punct critic, calculăm $ H_f(x_0, y_0) $;
-\item Determinăm \emph{valorile proprii} $ \lambda_{1,2} $ ale matricei hessiene,
+\item Determinăm \emph{valorile proprii}\footnotemark $ \lambda_{1,2} $ ale matricei hessiene,
   adică rădăcinile polinomului caracteristic $ P_M(X) = \det (M - XI_2) $,
   unde $ M = H_f(x_0, y_0)$.
   \begin{itemize}
@@ -76,6 +76,13 @@ găsi punctele de extrem ale funcției, parcurgem următoarele etape:
   \end{itemize}
 \item Se repetă procedura pentru fiecare punct critic.
 \end{enumerate}
+\footnotetext{Există o metodă alternativă, aceea care se bazează pe
+    \emph{criteriul lui Sylvester} pentru forme pătratice, studiată
+    la curs. Cîteva indicații teoretice puteți găsi și în notițele
+    mele \href{https://adrianmanea.xyz/docs/17-18-fia-bcd/seminar11a-extreme-alt.pdf}{aici}.
+
+    Vom prefera, în seminar, să folosim această metodă a valorilor
+proprii, însă.}
 
 Procedura de mai sus se aplică în cazul așa-numitelor \emph{extreme libere},
 adică atunci cînd domeniul este $ D = \RR^2 $ sau un dreptunghi dat de un
