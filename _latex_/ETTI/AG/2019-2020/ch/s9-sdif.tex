@@ -1,0 +1,331 @@
+%! TEX root = ../ag-19-20.tex
+
+\chapter{Sisteme diferențiale}
+
+\section{Calcul matriceal direct}
+
+Ca în cazul sistemelor de ecuații liniare, putem scrie un sistem în formă matriceală $X' = A \cdot X$,
+unde $A$ este matricea coeficienților.
+
+Distingem mai multe cazuri, în funcție de proprietățile matricei $A$.
+
+\textbf{Dacă $A$ se diagonalizează}, fie $\{\lambda_i\}$ valorile proprii ale sale,
+iar $\{u_i\}$ vectorii proprii asociați. Atunci funcțiile:
+\[
+  \{ x_i(t) = e^{\lambda_i t} \cdot u_i \}_i
+\]
+dau o bază în spațiul vectorial al soluțiilor. Soluția generală poate fi scrisă,
+atunci, ca o combinație liniară a acestora:
+\[
+  x(t) = \sum_i c_i x_i(t).
+\]
+
+Se obișnuiește ca soluția să fie prezentată sub formă matriceală, alcătuind
+\textbf{matricea fundamentală} a sistemului: $X(t) = {}^t (e^{\lambda_i t} u_i)$.
+
+\vspace{0.5cm}
+
+\textbf{Exemplu:}
+\[
+  \begin{cases}
+    x' &= x - y \\
+    y' &= -4x + y.
+  \end{cases}
+\]
+
+Matricea sistemului este $A = \begin{pmatrix} 1 & -1 \\ -4 & 1 \end{pmatrix}$.
+
+Obținem $\lambda_1 = 1$ și $\lambda_2 = 3$. Cum acestea au multiplicitatea algebrică
+egală cu 1, rezultă că matricea se diagonalizează. Se obțin subspații proprii de dimensiune
+1, bazele fiind, de exemplu:
+\[
+  X_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \quad
+  X_2 = \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+\]
+
+Atunci soluția generală se scrie:
+\[
+  X(t) = \begin{pmatrix} x(t) \\ y(t) \end{pmatrix} = %
+  C_1 e^{\lambda_1 t} \begin{pmatrix} 1 \\ 2 \end{pmatrix} + %
+  C_2 e^{\lambda_2 t} \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+\]
+
+Atunci matricea fundamentală se scrie:
+\[
+  X(t) = \begin{pmatrix}
+    C_1 e^{-t} + C_2 e^{3t} \\
+    2C_1 e^{-t} - 2C_2 e^{3t}
+  \end{pmatrix}.
+\]
+
+\vspace{0.5cm}
+
+\textbf{Dacă $A$ nu se diagonalizează}, fie $\lambda_1, \dots, \lambda_k$ valorile proprii,
+de multiplicități algebrice $n_1, \dots, n_k$. Atunci se caută soluții de forma:
+\[
+  x_j(t) = \sum_{i = 1}^k P_{ij}(t) e^{\lambda_i t}, \quad \mathrm{grad}P_{ij} \leq n_i - 1.
+\]
+
+Înlocuim în ecuația inițială și găsim $P_{ij}$. Această metodă poartă numele de
+\textbf{metoda coeficienților nedeterminați}.
+
+\vspace{0.5cm}
+
+\textbf{Exemplu:}
+\[
+  \begin{cases}
+    x_1' &= x_2 \\
+    x_2' &= -x_1 + 2x_2
+  \end{cases}
+\]
+
+\emph{Soluție:} Matricea sistemului este $A = \begin{pmatrix} 0 & 1 \\ -1 & 2 \end{pmatrix}$,
+care are valoarea proprie $\lambda = 1$, de multiplicitate algebrică 2. Se poate verifica faptul
+că matricea nu este diagonalizabilă și atunci căutăm soluții de forma:
+\[
+  \begin{cases}
+    x_1(t) &= (A_1 + B_1 t) e^t \\
+    x_2(t) &= (A_2 + B_2 t) e^t
+  \end{cases}
+\]
+
+Înlocuim în sistem și obținem un sistem liniar cu necunoscutele $A_1, A_2, B_1, B_2$,
+care va fi dublu nedeterminat. Așadar, soluția se prezintă cu 2 parametri în forma:
+\[
+  (A_1, A_2, B_1, B_2) \in \{ (\alpha, \alpha + \beta, \beta, \beta) \mid \alpha, \beta \in \RR \}.
+\]
+
+Rezultă că matricea fundamentală este:
+\[
+  X(t) = \begin{pmatrix}
+    (\alpha + \beta t) e^t \\
+    (\alpha + \beta + \beta t) e^t
+  \end{pmatrix}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Dacă matricea $A$ nu se diagonalizează, iar $\lambda_i \in \CC$}, lucrăm cu numere complexe.
+
+\textbf{Exemplu:}
+\[
+  \begin{cases}
+    x'_1 &= 2x_1 + x_2 \\
+    x'_2 &= -8x_1 - 2x_2
+  \end{cases}
+\]
+știind că soluția conține la $t = 0$ punctul $M_0(1, 0)$.
+
+\emph{Soluție:} Matricea sistemului este $A = \begin{pmatrix} 2 & 1 \\ -8 & 2 \end{pmatrix}$.
+
+Valorile sale proprii sînt $\lambda_{1,2} = \pm 2i$. Atunci subspațiul invariant va fi:
+\[
+  V_{\lambda_1} = \mathrm{Sp} \{(1, -2 + 2i )\}.
+\]
+
+Obținem o soluție generală în forma:
+\[
+  x_1(t) = e^{2it} \begin{pmatrix} 1 \\ -2 + 2i \end{pmatrix} = %
+  (\cos 2t + i \sin 2t) \begin{pmatrix} 1 \\ -2 + 2i \end{pmatrix}.
+\]
+
+Din proprietățile algebrice ale numerelor complexe, avem că $x_t(t) = \overline{x_1(t)}$ și atunci
+soluția generală va fi $x(t) = c_1 x_1(t) + c_2 x_2(t)$.
+
+Folosind condițiile inițiale, avem că $x_1(0) = 1$ și $x_2(0) = 0$, deci $c_1 = c_2 = 1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Folosind forma Jordan}
+\label{sec:jordan}
+
+\textbf{Exemplu:} Fie matricea:
+\[
+  A = \begin{pmatrix}
+    1 & -1 & 1 \\
+    1 & 1 & -1 \\
+    0 & -1 & 2 
+  \end{pmatrix}
+\]
+\begin{enumerate}[(a)]
+\item Să se calculeze $e^{At}$, pentru $t \in \RR$;
+\item Să se determine soluția generală a sistemului $X' = AX$, apoi soluția particulară
+  care verifică condiția $x(0) = 1, y(0) = 2, z(0) = 0$.
+\end{enumerate}
+
+\emph{Soluție:}
+
+(a) Matricea $A$ are valorile proprii $\lambda_1 = \lambda_2 = 1, \lambda_3 = 2$.
+Vectorii proprii (baze în subspațiile invariante) sînt:
+\[
+  v_1 = (1, 1, 1), \quad v_2 = (1, 0, 1).
+\]
+
+Forma canonică Jordan a matricei se obține a fi:
+\[
+  J = \begin{pmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 2
+  \end{pmatrix},
+\]
+folosind matricea de trecere
+\[
+  T = \begin{pmatrix}
+    2 & 1 & 1 \\ 0 & 1 & 0 \\ 1 & 1 & 1
+  \end{pmatrix}.
+\]
+
+Deci $A = TJT^{-1}$.
+
+Știm din teorie că $e^{At} = T \cdot e^{Jt} \cdot T^{-1}$.
+
+Folosim acum dezvoltarea în serie Taylor a funcției exponențiale:
+\[
+  e^x = \sum_{n \geq 0} \frac{x}{n!},
+\]
+adevărată și pentru matrice. În plus, dacă matricea este diagonală,
+exponențiala sa va conține ex\-po\-nen\-ți\-a\-la pe diagonală, adică, dacă
+$M = \mathrm{diag}(x_1, x_2, \dots, x_n)$, atunci
+$e^M = \mathrm{diag}(e^{x_1},\dots, e^{x_n})$.
+
+Pentru a folosi această proprietate, ne legăm de descompunerea în blocuri
+Jordan a lui $A$. Fie $J_1$ blocul Jordan de dimensiune 2, corespunzător
+valorii proprii $\lambda_1 = \lambda_2 = 1$ și $J_2$ blocul Jordan de dimensiune 1
+corespunzător valorii proprii $\lambda_3 = 2$. Avem descompunerea pe blocuri și
+pentru exponențială:
+\[
+  e^{Jt} = \begin{pmatrix}
+    e^{J_1 t} & 0 \\
+    0 & e^{J_2 t}
+  \end{pmatrix}
+\]
+
+Cum $e^{J_2 t} = e^{2t}$, calculăm celălalt bloc:
+\begin{align*}
+  e^{J_1 t} &= e^{\begin{pmatrix} t & 0 \\ t & t \end{pmatrix}} \\
+            &= e^{\begin{pmatrix} t & 0 \\ 0 & t \end{pmatrix}
+                                               \begin{pmatrix} 0 & 0 \\ t & 0 \end{pmatrix}} \\
+            &= \begin{pmatrix} e^t & 0 \\ 0 & e^t \end{pmatrix} \cdot
+                                              \Bigg[ \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} +
+                                                                                  \frac{1}{1!} \begin{pmatrix} 0 & 0 \\ t & 0 \end{pmatrix} \Bigg] \\
+            &= \begin{pmatrix}
+              e^t & 0 \\
+              te^t & e^t 
+            \end{pmatrix}
+\end{align*}
+
+Am folosit faptul că $\begin{pmatrix} 0 & 0 \\ t & 0 \end{pmatrix}^2 = 0$, așadar
+din seria Taylor va fi suficient să păstrăm primii 2 termeni. Calculăm și $T^{-1}$,
+obținînd:
+\[
+  T^{-1} = \begin{pmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & 0 \\
+    -1 & -1 & 2
+  \end{pmatrix}
+\]
+găsim, în fine:
+\[
+  e^{At} = T \cdot e^{Jt} \cdot T^{-1} =
+  \begin{pmatrix}
+    e^t(t + 2) - e^{2t} & e^t - e^{2t} & -e^t(t + 2) + 2e^{2t} \\
+    te^t & e^t & -te^t \\
+    e^t(t + 1) - e^{2t} & e^t - e^{2t} & -e^t(t + 1) + 2e^{2t}
+  \end{pmatrix}
+\]
+
+(b) Conform teoriei, soluția generală a sistemului este:
+\[
+  X(t) = e^{At} \cdot \begin{pmatrix}
+    C_1 \\ C_2 \\ C_3
+  \end{pmatrix},
+\]
+constantele $C_i$ determinîndu-se din condițiile inițiale. În acest caz:
+\[
+  X(t) = e^{At} X(0) = e^{At}
+  \begin{pmatrix}
+    1 \\ 2 \\ 0 
+  \end{pmatrix}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Exemplu 2}: Să se determine soluția sistemului diferențial liniar neomogen:
+\[
+  \begin{cases}
+    x' &= 2x - y \\
+    y' &= -x + 2z + e^t z \\
+    z' &= -y + 2,
+  \end{cases}
+\]
+știind că satisface condițiile inițiale $X(0) = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$.
+
+\emph{Soluție:} Fie matricele:
+\[
+  X = \begin{pmatrix}
+    x \\ y \\ z 
+  \end{pmatrix}, \quad
+  A = \begin{pmatrix}
+    2 & -1 & 0 \\
+    -1 & 0 & 2 \\
+    0 & -1 & 2 
+  \end{pmatrix}, \quad
+  B(t) = \begin{pmatrix}
+    0 \\ e^t \\ 0
+  \end{pmatrix}.
+\]
+
+Atunci sistemul se scrie matriceal $X' = AX + B(t)$. Valorile proprii ale matricei $A$
+sînt $\lambda_1 = \lambda_2 = 1$ și $\lambda_3 = 2$. Avem vectorul propriu $(1, 1, 1)$
+bază în $V_{\lambda_{1,2}}$ și vectorul $(2, 0, 1)$ bază în $V_{\lambda_3}$.
+
+Aducem matricea $A$ la forma canonică Jordan, folosind matricea de trecere:
+\[
+  T = \begin{pmatrix}
+    0 & 1 & 2 \\
+    -1 & 1 & 0 \\
+    0 & 1 & 1
+  \end{pmatrix} \Rightarrow
+  T^{-1} = \begin{pmatrix}
+    -1 & -1 & 2 \\
+    -1 & 0 & 2 \\
+    1 & 0 & -1
+  \end{pmatrix}
+\]
+
+Forma canonică Jordan se obține a fi:
+\[
+  J = \begin{pmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 2
+  \end{pmatrix}.
+\]
+
+Putem descompune matricea Jordan în două blocuri, unul de dimensiune 2 și unul de
+dimensiune 1, ceea ce ne ajută să calculăm:
+\[
+  e^{At} = \begin{pmatrix}
+    2e^{2t} - (t + 1)e^t & -te^t & 2e^t(t + 1) - 2 e^{2t} \\
+    -te^t & (1 - t)e^t & 2te^t \\
+    2e^{2t} - (t + 1)e^t & -te^t & 2e^t(t + 1) -2e^{2t}
+  \end{pmatrix}
+\]
+
+Conform teoriei, obținem soluția problemei Cauchy (ținînd cont de valorile inițiale) sub forma:
+\[
+  X(t) = e^{At} X(0) + \int_0^t e^{A(t-s)} B(s) ds.
+\]
+
+Integrala se calculează integrînd fiecare din elementele matricei și obținem, în final:
+\[
+  X(t) = e^t \begin{pmatrix}
+    -t - \dfrac{t^2}{2} \\
+    \\
+    1 - \dfrac{t^2}{2} \\
+    \\
+    -t - \dfrac{t^2}{2}
+  \end{pmatrix}
+\]
+
