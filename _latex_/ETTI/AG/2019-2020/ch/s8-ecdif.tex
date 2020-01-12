@@ -263,7 +263,7 @@ Derivăm după $x$ și găsim:
 \[
   p = p + x \cdot \frac{dp}{dx} + \varphi'(p) \cdot \frac{dp}{dx},
 \]
-de unde $\big( x + \varphi'(p) \big) \frac{dp}{dx} = 0$.
+de unde $\big( x + \varphi'(p) \big) \dfrac{dp}{dx} = 0$.
 
 Mai departe:
 \begin{itemize}
@@ -310,7 +310,7 @@ Revenind la $y$, găsim $y = \dfrac{x^2}{4}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Ecuații exacte. Factor integrant}
+\section{Ecuații exacte}
 \label{sec:exc-int}
 \index{ecuații!exacte}
 \index{ecuații!exacte!factor integrant}
@@ -320,10 +320,12 @@ Forma generală este:
   P(x, y) + Q(x, y) y' = 0.
 \]
 
-\subsection{Rezolvare cu formulă}
+\subsection{Cu diferențiale totale}
+
+\subsubsection{Rezolvare cu formulă}
 
 Dacă are loc $\dfrac{\partial P}{\partial y} = \dfrac{\partial Q}{\partial x}$, atunci
-ecuația se numește \emph{exactă}, iar soluția ei generală se prezintă prin:
+ecuația se numește \emph{cu diferențiale totale}, iar soluția ei generală se prezintă prin:
 \[
   F(x, y) = \int_{x_0}^x P(t, y_0) dt + \int_{y_0}^y Q(x, t) dt,
 \]
@@ -332,7 +334,7 @@ pentru orice $(x, y)$ din domeniul de definiție, iar $(x_0, y_0)$ un punct arbi
 
 \begin{remark}\label{rk:partial}
   Pentru simplitate, vom mai folosi notațiile $P_y = \dfrac{\partial P}{\partial y}$ și
-  similar pentru $Q_x$. Deci condiția de exactitate se mai scrie, pe scurt, $P_y = Q_x$.
+  similar pentru $Q_x$. Deci condiția de diferențiale totale se mai scrie, pe scurt, $P_y = Q_x$.
 \end{remark}
 
 \vspace{0.5cm}
@@ -340,7 +342,8 @@ pentru orice $(x, y)$ din domeniul de definiție, iar $(x_0, y_0)$ un punct arbi
 \textbf{Exemplu:} $(3x^2 - y) + (3y^2 - x) y' = 0$.
 
 \emph{Soluție:} Remarcăm că avem $P(x, y) = 3x^2 - y$ și $Q(x, y) = 3y^2 - x$, deci
-$P_y = Q_x = -1$, ecuația fiind exactă. Obținem direct, din formula pentru soluția generală:
+$P_y = Q_x = -1$, ecuația avînd diferențiale totale. Obținem direct, din formula
+pentru soluția generală:
 \[
   F(x, y) = x^3 + y^3 - xy + x_0y_0 - x_0^3 - y_0^3.
 \]
@@ -350,13 +353,12 @@ unde $\varphi = x^3 + y^3 - xy = c$, constanta fiind expresia de $(x_0, y_0)$ de
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Rezolvare directă}
+\subsubsection{Rezolvare directă}
 
-Din teorie, știm că dacă o ecuație diferențială este exactă, ea se mai numește
-\emph{cu diferențiale totale}, deoarece se poate arăta că, în cazul ecuației
-scrisă în forma generală $ P(x, y) dx + Q(x, y) dy = 0 $, există o funcție
-$ F(x, y) $ de clasă (cel puțin $\kal{C}^1$) astfel încît $ F_x = P(x, y) $ și
-$ F_y = Q(x, y) $.
+Din teorie, știm că dacă o ecuație diferențială are diferențiale totale, se poate
+arăta că, în cazul ecuației scrisă în forma generală $ P(x, y) dx + Q(x, y) dy = 0 $,
+există o funcție $ F(x, y) $ de clasă (cel puțin) $\kal{C}^1$ astfel încît
+$ F_x = P(x, y) $ și $ F_y = Q(x, y) $.
 
 Să vedem acest lucru pe exemplul de mai sus.
 
@@ -366,7 +368,7 @@ Avem ecuația:
 \]
 
 Avem $P(x,y) = 3x^2 - y $ și $ Q(x,y) = 3y^2 - x$. Am văzut că ecuația este
-exactă, deci există o funcție $ F : \RR^2 \to \RR $ de clasă (cel puțin)
+cu diferențiale totale, deci există o funcție $ F : \RR^2 \to \RR $ de clasă (cel puțin)
 $ \kal{C}^1 $ astfel încît $ F_x = P $ și $ F_y = Q $. Deci:
 \begin{align*}
   \dfrac{\partial F}{\partial x} &= 3x^2 - y \Rightarrow F(x, y) = \int 3x^2 - y dx = %
@@ -387,10 +389,11 @@ este funcția căutată, care dă \emph{soluția implicită} a ecuației.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Cazul inexact}
+\subsection{Cu factor integrant}
 
-Dacă ecuația nu este exactă, se caută \emph{un factor integrant}, adică o funcție $\mu(x, y)$
-cu care se înmulțește ecuația pentru a deveni exactă.
+Dacă ecuația nu are diferențiale totale, se caută \emph{un factor integrant},
+adică o funcție $\mu(x, y)$ cu care se înmulțește ecuația pentru a deveni
+cu diferențiale totale.
 
 Există două cazuri particulare în care factorul integrant se găsește simplu:
 \begin{itemize}
@@ -426,7 +429,7 @@ integrant, putem lua $\mu(x) = \dfrac{1}{x^2}$. Înmulțim ecuația cu $\mu$ și
 \[
   \Big( \frac{1}{x^2} - y \Big) + (y - x)y' = 0,
 \]
-care este exactă. Atunci putem scrie direct soluția generală:
+care este cu diferențiale totale. Atunci putem scrie direct soluția generală:
 \[
   F(x, y) = \frac{y^2}{2} - \frac{1}{x} - xy + C,
 \]
@@ -519,7 +522,6 @@ din ecuația inițială.
 Rezolvați următoarele ecuații diferențiale, precizînd și tipul lor:
 \begin{enumerate}[(1)]
   \item $xy^\prime - y + 2x^2 y^2 = 0 $; \hfill(Bernoulli)
-  \item $ (3x^2 + 2)y^\prime + xy^2 = 0 $; \hfill(exactă)
   \item $(2x - y + 2) dx + (-x + y + 1) dy = 0 $; \hfill(exactă)
   \item $ xy^\prime = 4y + x^2 \sqrt{y} $; \hfill(Bernoulli)
   \item $ (x^2 + 1) y^\prime + 2xy^2 = 0 $; \hfill(exactă)
@@ -542,3 +544,8 @@ Rezolvați următoarele ecuații diferențiale, precizînd și tipul lor:
   \item $ y^\prime = -\dfrac{1}{x}y + \dfrac{\ln x}{x} y^2 $. \hfill(Bernoulli)
 \end{enumerate}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-19-20"
+%%% End:
