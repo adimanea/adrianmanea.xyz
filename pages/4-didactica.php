@@ -18,6 +18,22 @@ include ("../includes/navigation.php");
     <h1 class="title">Didactică</h1>
     <div class="articol">
 
+	  <button class="accordion"><span class="accordion1">Semestrul II, 2019 &mdash; 2020</span></button>
+	  <div class="panel">
+		<button class="accordion">ACS, Matematică 3</button>
+		<div class="panel">
+		  <ul class="big-list">
+			<li>Notițele vor fi disponibile aici: <a href="../docs/19-20-acs-m3/m3-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
+		  </ul>
+		</div>
+		<button class="accordion">ETTI, Analiză 2</button>
+		<div class="panel">
+		  <ul class="big-list">
+			<li>Notițele vor fi disponibile aici: <a href="../docs/19-20-etti-am2/am2-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
+		  </ul>
+		</div>
+	  </div>
+	  
     <button class="accordion"><span class="accordion1">Semestrul I, 2019 &mdash; 2020</span></button>
         <div class="panel">
             <button class="accordion">ACS, Matematică 1 (Analiză)</button>
