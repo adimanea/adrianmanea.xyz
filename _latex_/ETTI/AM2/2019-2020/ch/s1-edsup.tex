@@ -1,0 +1,263 @@
+% !TEX root = ../am2-19-20.tex
+
+\chapter{Ecuații diferențiale de ordin superior}
+
+\section{Ecuații liniare de ordinul $n$ cu coeficienți constanți}
+
+Forma generală este:
+\[
+  L[y] = a_0 y^{(n)} + a_1 y^{(n-1)} + \dots + a_n y = f(x),
+\]
+cu $a_i \in \RR$ constante.
+
+Dacă avem $f(x) = 0$, atunci ecuația se numește \emph{omogenă}.
+
+Avem o metodă algebrică de a rezolva această ecuație, folosind:
+
+\begin{definition}\label{def:pol-car-ec}
+  Se numește \emph{polinomul caracteristic} atașat ecuației omogene $L[y] = 0$
+  polinomul:
+  \[
+    F(r) = a_0 r^n + a_1 r^{n-1} + \dots + a_n,
+  \]
+  iar $F(r) = 0$ se numește \emph{ecuația caracteristică} atașată ecuației diferențiale.
+\end{definition}
+
+Folosind această noțiune, putem rezolva direct ecuația, ținînd seama de următoarele
+cazuri posibile:
+
+\begin{theorem}\label{thm:ec-car-dif}
+  \begin{enumerate}[(1)]
+  \item Dacă ecuația caracteristică $F(r) = 0$ are rădăcini reale și distincte $r_i$,
+    atunci un sistem fundamental de soluții este dat de:
+    \[
+      \big\{ y_i(x) = e^{r_i x} \big\}_{i=1,\dots,n}.
+    \]
+  \item Dacă printre rădăcinile lui $F(r)$ există și rădăcini multiple, de exemplu
+    $r_1$, cu ordinul de multiplicitate $p$, atunci pentru această rădăcină avem
+    $p$ soluții liniar independente (pe lîngă celelalte):
+    \[
+      y_1(x) = e^{r_1 x}, y_2(x) = xe^{r_1 x}, \dots, y_p(x) = x^{p-1} e^{r_1 x}.
+    \]
+  \item Dacă printre rădăcinile ecuației caracteristice avem și rădăcini complexe,
+    de exemplu $r = a + ib$ și $\overline{r} = a - ib$, atunci fiecărei perechi
+    de rădăcini complexe conjugate îi corespund două soluții liniar independente
+    (pe lîngă celelalte):
+    \[
+      y_1(x) = e^{ax} \cos bx, \quad y_2(x) = e^{ax} \sin bx.
+    \]
+  \item Dacă ecuația caracteristică are rădăcini complexe ca mai sus, cu ordinul
+    de multiplicitate $p$, atunci lor le corespund $2p$ soluții liniar independente:
+    \[
+      \big\{ y_j(x) = x^{j-1} e^{ax} \cos bx \big\}_{j=1, \dots p}, \quad
+      \big\{ y_k(x) = x^{k-p-1} e^{ax} \sin bx\big\}_{k=p+1, \dots, 2p}.
+    \]
+  \end{enumerate}
+\end{theorem}
+
+De exemplu: $y^{\prime\prime} - y = 0$, cu condițiile $y(0) = 2$ și $y'(0) = 0$.
+
+\emph{Soluție:} Ecuația caracteristică este $r^2 - 1 = 0$, deci $r_{1,2} = \pm 1$.
+Sîntem în primul caz al teoremei, deci un sistem fundamental de soluții este:
+\[
+  y_1(x) = e^{-x}, \quad y_2(x) = e^x.
+\]
+Soluția generală este $y(x) = c_1 e^{-x} + c_2 e^x$.
+
+Folosind condițiile Cauchy, obținem $c_1 = c_2 = 1$, deci soluția particulară este:
+\[
+  y(x) = e^{-x} + e^x.
+\]
+
+\vspace{1cm}
+
+\begin{remark}\label{rk:neomogen}
+  Dacă ecuația inițială $L[y] = f(x)$ \emph{nu} este omogenă, putem rezolva folosind
+  \emph{metoda variației constantelor (Lagrange)}.
+\end{remark}
+
+În acest caz, metoda variației constantelor presupune următoarele etape.
+Fie ecuația neomogenă scrisă în forma:
+\[
+  \sum_{k = 0}^n a_k y^{(k)} = f(x).
+\]
+
+Pentru simplitate, vom presupune $n = 2$ și fie o soluție particulară de forma:
+\[
+  y_p(x) = c_1(x) y_1 + c_2(x) y_2.
+\]
+
+Atunci, prin metoda variației constantelor, vom determina funcțiile $c_1(x), c_2(x)$
+ca soluții ale sistemului algebric:
+\[
+  \begin{cases}
+    c'_1(x) y_1 + c'_2(x) y_2 &= 0 \\
+    c'_1(x) y'_1 + c'_2(x) y'_2 &= \dfrac{f(x)}{a_n(x)}
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+De exemplu: $y^{\prime \prime} + 3y' + 2y = \frac{1}{e^x + 1}$.
+
+\emph{Soluție:} Asociem ecuația omogenă, care are ecuația caracteristică
+$r^2 + 3r + 2 = 0$, cu rădăcinile $r_1 = -1, r_2 = -2$. Așadar, soluția generală
+a ecuației omogene este:
+\[
+  \overline{y}(x) = c_1 e^{-x} + c_2 e^{-2x}.
+\]
+
+Determinăm o soluție particulară $y_p(x)$ cu ajutorul metodei variației constantelor.
+Mai precis, căutăm:
+\[
+  y_p(x) = c_1(x) e^{-x} + c_2(x) e^{-2x}.
+\]
+
+Înlocuind în ecuația neomogenă, rezultă sistemul:
+\[
+  \begin{cases}
+    c_1'(x) e^{-x} + c_2'(x) e^{-2x} &= 0 \\
+    -c_1'(x) e^{-x} - 2c_2'(x) e^{-2x} &= \frac{1}{1 + e^x}
+  \end{cases}
+\]
+
+Rezolvînd ca pe un sistem algebric, obținem:
+\[
+  c_1'(x) = \frac{e^x}{1 + e^x}, \quad c_2'(x) = -\frac{e^{2x}}{1 + e^x},
+\]
+de unde obținem:
+\[
+  c_1(x) = \ln(1 + e^x), \quad c_2(x) = -e^x + \ln(1 + e^x).
+\]
+
+În fine, înlocuim în soluția particulară $y_p$ și apoi în cea generală,
+$y(x) = \overline{y}(x) + y_p(x)$.
+
+\vspace{1cm}
+
+Un alt exemplu: $y^{\prime\prime} - y = 4e^x$.
+
+\emph{Soluție:} Ecuația caracteristică $r^2 - 1$ are rădăcinile $r_{1,2} = \pm 1$,
+deci soluția generală a ecuației liniare omogene este $y_0(x) = c_1 e^x + c_2e^{-x}$.
+
+Căutăm acum o soluție particulară a ecuației neomogene, folosind metoda variației
+constantelor. Așadar, căutăm $y_p(x) = c_1(x) e^x + c_2(x) e^{-x}$. Din condiția
+ca $y_p$ să verifice ecuația liniară neomogenă, obținem sistemul:
+\[
+  \begin{cases}
+    c_1'(x) e^x + c_2'(x) e^{-x} = 0 \\
+    c_1'(x) e^x - c_2'(x) e^{-x} = 4e^x
+  \end{cases}
+\]
+Rezultă $c'_1(x)e^x = 2e^x$, deci $c'_1(x) = 2 \Rightarrow c_1(x) = 2x$, iar
+$c'_2(x) e^{-x} = -2e^x$, deci $c_2(x) = -e^{2x}$.
+
+În fine, soluția particulară este $y_p(x) = 2xe^x - e^x$, iar soluția generală:
+\[
+  y(x) = y_0(x) + y_p(x) = c_1e^x + c_2 e^{-x} + e^x(2x - 1).
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Metoda eliminării pentru sisteme diferențiale liniare}
+
+Putem reduce sistemele diferențiale de ordinul I la ecuații de ordin superior.
+
+De exemplu, să pornim cu sistemul:
+\[
+  \begin{cases}
+    x' + 5x + y &= 7e^t - 27 \\
+    y' - 2x + 3y &= -3e^t + 12
+  \end{cases}
+\]
+
+\emph{Soluție:} Din prima ecuație, scoatem $y$ și derivăm:
+\[
+  y = 7e^t - 27 - 5x - x' \Rightarrow y' = 7e^t - 5 - x^{\prime\prime}.
+\]
+Înlocuim în a doua ecuație și obținem o ecuație liniară de ordin superior:
+\[
+  x^{\prime\prime} + 8x' + 17x = 31e^t - 93.
+\]
+Ecuația caracteristică este $r^2 + 8r + 17 = 0$, cu rădăcinile $r_{1,2} = -4 \pm i$.
+Atunci soluția generală a ecuației omogene este:
+\[
+  \overline{x}(t) = e^{-4t}(c_1 \cos t + c_2 \sin t).
+\]
+Mai departe, căutăm o soluție particulară a ecuației neomogene folosind metoda
+variației constantelor, a lui Lagrange:
+\[
+  x_p(t) = e^{-4t}(c_1(t) \cos t + c_2(t) \sin t).
+\]
+Determinăm funcțiile $c_1(t), c_2(t)$ din sistemul:
+\[
+  \begin{cases}
+    c'_1(t) \cos t e^{-4t} + c_2'(t) \sin t e^{-4t} &= 0 \\
+    c'_1(t) (-\sin t e^{-4t} - 4\cos t e^{-4t}) + %
+    c'_2(t) (\cos t e^{-4t} - 4\sin t e^{-4t}) &= 31e^t - 93.
+  \end{cases}
+\]
+Rezultă:
+\begin{align*}
+  c'_1(t) &= -31 \sin t e^{5t} + 93 \sin t e^{4t} \\
+  \Rightarrow c_1(t) &= -\frac{31}{26} e^{5t}(5 \sin t - \cos t) + %
+                        \frac{93}{17} e^{4t}(4 \sin t - \cos t) \\
+  c'_2(t) &= 31 \cos t e^{5t} - 93\cos t e^{4t} \\
+  \Rightarrow c_2(t) &= \frac{31}{26} e^{5t}(5 \sin t + \cos t) - %
+                       \frac{93}{17} e^{4t}(4 \sin t + \cos t).
+\end{align*}
+În fine, obținem:
+\[
+  x(t) = e^{-4t}(c_1 \cos t + c_2 \sin t) + \frac{31}{26}e^t - \frac{93}{17},
+\]
+iar mai departe:
+\[
+  y(t) = e^{-4t}[(c_1 - c_2) \sin t - (c_1(t) - c_2) \cos t) - \frac{2}{13} e^t + \frac{6}{17}.
+\]
+
+\vspace{1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Rezolvați următoarele ecuații diferențiale liniare de ordin superior:
+\begin{enumerate}[(a)]
+  \item $ y^{(3)} + 4y^{(2)} + 3y^{(1)} = 0 $;
+  \item $ y^{(2)} + 4y^{(1)} + 4y = 0 $;
+  \item $ y^{(3)} + y = 0 $;
+  \item $ y^{(4)} + 4y^{(2)} = 0 $;
+  \item $ y^{(2)} - 2y^{(1)} + y = \dfrac{1}{x} e^x $;
+  \item $ y^{(2)} + y = \dfrac{1}{\cos x} $;
+  \item $ y^{(3)} + y^{(1)} = \tan x $;
+  \item $ y^{(3)} + 2y^{(2)} = x + 2 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Rezolvați următoarele sisteme diferențiale, folosind metoda eliminării:
+\begin{enumerate}[(a)]
+  \item $ \begin{cases}
+      y' &= 2y + z \\
+      z' &= y + 2z
+    \end{cases}, \quad y = y(x), z = z(x)
+    $;
+  \item $ \begin{cases}
+      y' &= -3y - 4z \\
+      z' &= y + 2z
+    \end{cases}, \quad y = y(x), z = z(x)
+    $;
+  \item $ \begin{cases}
+      x' &= x + 3y \\
+      y' &= -x + 5y - 2e^t
+    \end{cases}, \quad x = x(t), y = y(t) $,
+    cu condițiile inițiale $ x(0) = 3, y(0) = 1 $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-19-20"
+%%% End:
