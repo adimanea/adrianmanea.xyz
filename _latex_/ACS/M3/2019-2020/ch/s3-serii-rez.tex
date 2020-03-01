@@ -1,0 +1,377 @@
+% ! TEX root = ../m3-19-20.tex
+\chapter{Serii Laurent și reziduuri}
+
+\section{Serii de puteri. Serii Laurent}
+
+Noțiunile privitoare la scrierea funcțiilor cu ajutorul seriilor de puteri,
+întîlnite în cazul real prin serii Taylor, se pot generaliza și în cazul
+complex. Situația este ceva mai problematică în acest caz, deoarece
+argumentele sînt obiecte bidimensionale. În orice caz, multe dintre noțiunile
+din cazul real pot fi preluate aproape fără modificare și în cazul complex.
+
+\begin{definition}\label{def:serie-cpx}\index{serie!de puteri complexă}
+  O serie de forma $ \ds\sum_{n \geq 0} a_n(z - z_0)^n $, cu $ z \in \CC $
+  oarecare, $ z_0 \in \CC $ fixat și $ a_n \in \CC $ coeficienți, pentru
+  orice $ n \in \NN $, se numește \emph{serie de puteri} centrată în $ z_0 $.
+\end{definition}
+
+Ca în cazul real, se poate calcula \emph{raza de convergență} a seriilor
+de puteri cu una dintre formulele:
+\[
+  R = \dfrac{1}{\ds\lim_{n \to \infty} \sqrt[n]{|a_n|}} = %
+  \lim_{n \to \infty} \left| \dfrac{a_n}{a_{n+1}} \right|.
+\]
+
+Atunci, deoarece lucrăm în planul complex, se definește \emph{discul de convergență}
+al seriei prin:
+\[
+  B(z_0,R) = \{ z \in \CC \mid | z - z_0| < R \}.
+\]
+
+Știm, de asemenea, că:
+\begin{itemize}
+\item seria este absolut convergentă pe $ |z - z_0| < R $;
+\item seria este divergentă pe $ |z - z_0| > R $;
+\item seria este uniform convergentă pe $ |z - z_0| \leq \rho $, pentru
+  orice $ \rho < R $,
+\end{itemize}
+iar pe frontiera discului trebuie testat separat.
+
+În interiorul discului de convergență, suma seriei este o funcție olomorfă $ S(z) $
+și au sens rezultate de forma derivării sau integrării termen cu termen.
+
+\begin{definition}\label{def:analitica}\index{funcție!analitică}
+  O funcție $ f : A \to \CC $ se numește \emph{analitică} dacă poate fi
+  dezvoltată într-o serie de puteri complexă cu discul de convergență
+  inclus în $ A $.
+\end{definition}
+
+Dacă acesta este cazul, avem formula cunoscută:
+\[
+  f(z) = \sum_{n \geq 0} \dfrac{f^{(n)}(z_0)}{n!} (z - z_0)^n.
+\]
+
+Are loc rezultatul important:
+\begin{theorem}[Weierstrass-Riemann-Cauchy]\label{thm:wrc}
+  O funcție complexă definită pe o mulțime deschisă este analitică dacă și
+  numai dacă este olomorfă.
+\end{theorem}
+
+Deducem de aici că, dacă domeniul de definiție $ A $ al funcției complexe
+studiate, $ f : A \to \CC $, este o mulțime deschisă, atunci olomorfia
+(pe care o verificăm cu condițiile Cauchy-Riemann, de exemplu) este echivalentă
+cu analiticitatea, verificată cu ajutorul seriilor de puteri. Rezultă
+implicit că orice funcție olomorfă definită pe un deschis poate fi dezvoltată
+în serie de puteri.
+
+Dar pentru cazul complex, avem și serii ceva mai complicate:
+\begin{definition}\label{def:laurent}\index{serie!Laurent}
+  O serie de puteri de forma $ \ds\sum_{n \in \ZZ} a_n(z - z_0)^n $,
+  cu $ a_n, z, z_0 \in \CC $ se numește \emph{serie Laurent} centrată în
+  punctul $ z_0 \in \CC $.
+\end{definition}
+
+O serie Laurent este convergentă dacă și numai dacă atît partea pozitivă
+$ a_n > 0 $, cît și partea negativă, $ a_n \leq 0 $ sînt simultan convergente.
+
+Partea pozitivă se numește \emph{partea Taylor}, iar partea negativă se numește
+\emph{partea principală}.
+
+Pentru cazul Taylor, seriile uzuale pentru funcțiile elementare, împreună cu domeniile
+de convergență, sînt date mai jos. În toate cazurile, $ x \in \RR $ se poate înlocui
+cu $ z \in \CC $.
+\begin{align*}
+  e^x &= \sum_{n \geq 0} \dfrac{1}{n!} x^n, x \in \RR \\
+  \dfrac{1}{1 - x} &= \sum_{n \geq 0} x^n, |x| < 1 \\
+  \dfrac{1}{1 + x} &= \sum_{n \geq 0} (-1)^n x^n, |x| < 1 \\
+  \cos x &= \sum_{n \geq 0} \dfrac{(-1)^n}{(2n)!} x^{2n}, x \in \RR \\
+  \sin x &= \sum_{n \geq 0} \dfrac{(-1)^n}{(2n + 1)!} x^{2n + 1}, x \in \RR \\
+  (1 + x)^\alpha &= \sum_{n \geq 0} \dfrac{\alpha(\alpha - 1)(\alpha - 2) \cdots (\alpha - n + 1)}{n!} x^n,%
+                   |x| < 1, \alpha \in \RR \\
+  \arctan x &= \sum_{n \geq 0} \dfrac{(-1)^n}{2n + 1} x^{2n + 1}, | x | \leq 1.
+\end{align*}
+
+Seriile pentru alte funcții se pot obține fie prin calcul direct, fie
+prin substituții, fie prin derivare sau integrare termen cu termen a
+seriilor de mai sus.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Singularități și reziduuri}
+
+În cazul funcțiilor reale, domeniul de definiție trebuie ales atent astfel încît
+să evităm \qq{punctele cu probleme}. Exemplele tipice sînt cele în care se
+anulează numitorul unei fracții, cînd apar logaritmi sau radicali etc.
+Pentru funcții reale, cel mult putem calcula asimptote verticale în acele
+\qq{puncte cu probleme}. Dar în cazul complex, distincția se face mult mai fin.
+
+\begin{definition}\label{def:sing-iz}\index{singularitate!izolată}
+  Fie $ A \seq \CC $ o mulțime deschisă nevidă și $ f : A \to \CC $ o funcție
+  complexă, olomorfă pe $ A $. Fie un punct $ z_0 \in \CC $.
+
+  Punctul $ z_0 $ se numește \emph{punct singular izolat} (\emph{singularitate izolată})
+  pentru $ f $ dacă există un disc centrat în $ z_0 $, de forma $ B(z_0, r) $, cu
+  $ r \neq 0 $, astfel încît, dacă eliminăm centrul discului, funcția este
+  olomorfă pe $ B(z_0, r) \setminus \{ z_0 \} $.
+\end{definition}
+
+Amintim că, dacă funcția este olomorfă pe \emph{discul punctat} (i.e.\ discul
+$ B(z_0, r) $, din care am scos centrul), atunci ea are o dezvoltare în serie Laurent,
+conform teoremei Weierstrass-Riemann-Cauchy.
+
+\begin{definition}\label{def:sing-ap}\index{singularitate!aparentă}
+  În condițiile și cu notațiile din definiția anterioară, punctul $ z_0 \in \CC $
+  se numește \emph{punct singular izolat} (\emph{singularitate izolată}) dacă
+  seria Laurent asociată funcției $ f $ are partea principală nulă, adică este
+  o serie Taylor.
+\end{definition}
+
+\begin{definition}\label{def:pol}\index{singularitate!pol}
+  În condițiile și cu notațiile din definiția anterioară, punctul $ z_0 \in \CC $
+  se numește \emph{pol} dacă în seria Laurent asociată funcției $ f $ există
+  un număr finit de termeni nenuli în partea principală. Indicele ultimului
+  termen nenul $ m $ (în sensul că $ |m| $ este cel mai mare, iar $ m < 0 $)
+  se numește \emph{ordinul polului}.
+\end{definition}
+
+\begin{definition}\label{def:sing-es}\index{singularitate!esențială}
+  În condițiile și cu notațiile din definiția anterioară, punctul $ z_0 \in \CC $
+  se numește \emph{punct singular esențial} (\emph{singularitate esențială})
+  dacă în partea principală a seriei Laurent asociată funcției $ f $ există o
+  infinitate de termeni nenuli.
+\end{definition}
+
+\vspace{0.3cm}
+
+\textbf{Idee intuitivă:} Singularitățile, în general, sînt \qq{puncte cu probleme}.
+Chiar și în cazul real există această noțiune, întîlnită în analiză. De exemplu,
+un punct unghiular sau de întoarcere al unei funcții reale se numește singularitate.
+Alt exemplu la îndemînă: găurile negre sînt interpretate în cosmologie (ramura fizicii
+teoretice care utilizează geometria pentru studiul \qq{formei} Universului) ca
+\emph{singularități ale spațiu-timpului}. Dar, din fericire, în majoritatea cazurilor,
+singularitățile fie pot fi \qq{ignorate} sau \qq{eliminate} i.e. se poate extrage
+informația de bază și din domeniul din care ele au fost scoase. Amintiți-vă, de exemplu,
+că în analiza de liceu există o teoremă care afirmă că \emph{dacă se scoate un număr numărabil %
+  de puncte din graficul unei funcții, integrala sa definită nu se schimbă}.
+
+Similar este și cazul singularităților din analiza complexă: toate, cu excepția
+celor esențiale, pot fi \qq{eliminate}, adică se poate extrage informație
+foarte importantă despre comportamentul funcțiilor și în lipsa lor (sau, uneori,
+chiar \emph{numai} din ele, ca în cazul reziduurilor, precum vom vedea).
+
+\vspace{0.3cm}
+
+Polii vor fi elementul central de studiu mai departe. Pentru ei, mai avem
+o caracterizare utilă:
+
+\begin{proposition}\label{pr:pol}
+  În condițiile și cu notațiile de mai sus, punctul $ z_0 \in \CC $ este pol pentru
+  funcția $ f $ dacă și numai dacă $ \ds\lim_{z \to z_0} f(z) = \infty $.
+\end{proposition}
+
+\textbf{Exemplu:} Putem vedea foarte simplu acest lucru pentru funcția
+$ f(z) = \dfrac{z}{z - 1} $. Atunci $ z = 1 $ este pol simplu, deoarece
+$ \ds\lim_{z \to 1} f(z) = \infty $ și mai mult, putem scrie dezvoltarea
+în serie Laurent a funcției $ f $ în jurul lui $ z = 1 $, sub forma:
+\[
+  f(z) = \dfrac{1 + z - 1}{z - 1} = \dfrac{1}{z - 1} + 1,
+\]
+care are partea principală $ \dfrac{1}{z - 1} $, cu un singur termen
+(care dă ordinul polului).
+
+\begin{proposition}\label{pr:sing-es}
+  În condițiile și cu notațiile de mai sus, punctul $ z_0 \in \CC $ este
+  singularitate esențială dacă și numai dacă nu există
+  $ \ds\lim_{z \to z_0} f(z) $.
+\end{proposition}
+
+Ajungem la o altă noțiune esențială:
+\begin{definition}\label{def:rez}\index{singularitate!reziduu}
+  În condițiile și cu notațiile de mai sus, fie $ z_0 $ o singularitate
+  izolată a funcției $ f $. Coeficientul $ a_{-1} $ din seria Laurent
+  a funcției $ f $ în coroana $ B(z_0; 0, r) $ se numește
+  \emph{reziduul} funcției în $ z_0 $ și se notează $ \Rez(f,z_0) $.
+\end{definition}
+
+\begin{remark}\label{rk:calcul-rez}
+  În multe situații, reziduurile se pot calcula simplu cu teorema \ref{thm:calc-rez},
+  dar uneori sîntem obligați să folosim definiția, pentru că limitele complexe
+  se calculează mult mai dificil decît în cazul real.
+\end{remark}
+
+Un exemplu este următorul: considerăm funcția $ f(z) = \dfrac{1}{z \sin z^2} $.
+Vrem să calculăm $ \Rez(f, 0) $. Evident, acest punct este pol, deoarece
+$ \ds\lim_{z \to 0} f(z) = \infty $, dar orice formulă am folosi din
+teorema \ref{thm:calc-rez}, nedeterminarea nu este eliminată. Astfel că sîntem
+obligați să folosim definiția, cu ajutorul seriei Laurent.
+
+Ca în cazul seriei Taylor pentru funcția sinus, avem:
+\begin{align*}
+  \sin z &= \dfrac{z}{1!} - \dfrac{z^3}{3!} + \dfrac{z^5}{5!} - \dots \\
+  \Rightarrow z \sin z^2 &= z \cdot \left( \dfrac{z^2}{1!} - \dfrac{z^6}{3!} + \dfrac{z^{10}}{5!} - \dots \right) \\
+         &= z^3 \left( 1 - \dfrac{z^4}{3!} + \dfrac{z^8}{5!} - \dots \right).
+\end{align*}
+
+Atunci, inversînd, obținem funcția scrisă sub forma:
+\[
+  f(z) = z^{-3} \cdot \left( 1 - \dfrac{z^4}{3!} + \dfrac{z^8}{5!} - \dots \right)^{-1}.
+\]
+
+Vrem să inversăm seria din paranteză (admitem fără demonstrație că acest lucru
+este posibil), pentru ca în final, să putem scrie toată funcția ca o serie de
+puteri (în forma actuală nu este așa ceva!). Așadar, căutăm o serie de forma
+$ \sum a_n z^n $, cu $ n \in \NN $, astfel încît:
+\[
+  \left( 1 - \dfrac{z^4}{3!} + \dfrac{z^8}{5!} - \dots \right) \cdot %
+  \left(a_0 + a_1 z + a_2 z^2 + \dots \right) = 1.
+\]
+Prin identificarea coeficienților, rezultă $ a_0 = 1, a_2 = 0 $. Făcînd acum
+înmulțirea, avem:
+\[
+  f(z) = \dfrac{1}{z^3} \sum_{n \geq 0} a_n z^n = %
+  \dfrac{a_0}{z^3} + \dfrac{a_1}{z^2} + \dfrac{a_2}{z} + a_3 + \dots.
+\]
+Partea principală a seriei are 3 termeni nenuli, deci $ z = 0 $ este pol triplu
+(intuitiv, simplu pentru $ z $ și dublu pentru $ \sin z^2 $), deci rezultă
+$ \Rez(f, 0) = a_2 = 0 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+\indent\indent 1. Să se determine discul de convergență pentru seriile:
+\begin{enumerate}[(a)]
+\item $ \ds\sum_{n \geq 0} \dfrac{(2n)!}{(n!)^2} (z - 3i)^n $;
+\item $ \ds\sum_{n \geq 0} a^{n^2}z^n, |a| < 1 $;
+\item $ \ds\sum_{n \geq 0} \dfrac{\cos in}{2^n} z^n $;
+\item $ \ds\sum_{n \geq 1} \dfrac{\exp(in)}{n^2} (z - 1)^n $.
+\end{enumerate}
+
+\emph{Indicație:} Se folosește formula pentru raza de convergență.
+
+\vspace{0.3cm}
+
+2. Determinați dezvoltarea în serie Taylor sau Laurent pentru funcțiile următoare,
+în jurul punctelor indicate $ z_0 $:
+\begin{enumerate}[(a)]
+\item $ f(z) = \cos^2 z, z_0 = 0 $;
+\item $ f(z) = \dfrac{z + 3}{z^2 - 8z + 15}, z_0 = 4 $;
+\item $ f(z) = \sin \dfrac{1}{1 - z}, z_0 = 1 $;
+\item $ f(z) = \dfrac{2z^2 + 9z + 5}{z^3 + z^2 - 8z - 12}, z_0 = 1 $;
+\item $ f(z) = \dfrac{z - 1}{z - 2}, z_0 = i $;
+\item $ f(z) = \dfrac{1}{z^2 - 3z + 2} $, pe domeniile $ |z| < 1 $,
+  $ 1 < |z| < 2 $ și $ |z| > 2 $.
+\end{enumerate}
+
+\emph{Indicație:} Se pot folosi seriile uzuale, cu anumite substituții,
+dar atenție la domeniile de convergență, precum și la eventualii poli ai
+funcțiilor. A se vedea exemplul rezolvat de mai jos.
+
+\vspace{0.3cm}
+
+3. Determinați punctele singulare și precizați natura lor pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(z) = \dfrac{z^5}{(z^2 + 1)^2} $;
+\item $ f(z) = z^3 \exp\left( -\dfrac{3}{z} \right) $;
+\item $ f(z) = \sin \dfrac{1}{z} $;
+\item $ f(z) = \tan z $;
+\item $ f(z) = \dfrac{\sin 2z}{z^6} $;
+\item $ f(z) = \dfrac{6z + 1}{z - 3} $;
+\item $ f(z) = \dfrac{1}{z^2 \sin z} $;
+\end{enumerate}
+
+\emph{Indicație:} După identificarea \qq{punctelor cu probleme}, se cercetează
+existență limitei către punctele respective și/sau se utilizează dezvoltarea
+în serie Taylor/Laurent.
+
+\vspace{0.3cm}
+
+4. Calculați:
+\begin{enumerate}[(a)]
+\item $ \ds\int_{|z| = 1} \dfrac{z^2 + \exp(z)}{z^3} dz $;
+\item $ \ds\int_\gamma z^2 \exp\left(\dfrac{2z}{z+1}\right) dz $, unde
+  $ \gamma: x^2 + y^2 + 2x = 0 $;
+\item $ \ds\int_{|z - 1| = 3} \dfrac{iz + 1}{z^2 - iz + 2} dz $.
+\end{enumerate}
+
+\emph{Indicație:} Se folosește teorema reziduurilor.
+
+\vspace{0.3cm}
+
+\textbf{Exemplu rezolvat} pentru seria Laurent: Să se dezvolte funcția
+\[
+  f(z) = \dfrac{2z^2 + 3z - 1}{z^3 + z^2 - z - 1}
+\]
+în jurul originii și în jurul punctelor $ z = \pm i $.
+
+\emph{Soluție:} Numitorul se descompune sub forma $ (z - 1)(z + 1)^2 $,
+deci avem un pol simplu $ z = 1 $ și un pol dublu $ z = - 1 $.
+
+Putem descompune funcția în fracții simple, sub forma:
+\[
+  f(z) = \dfrac{1}{z - 1} + \dfrac{1}{z + 1} + \dfrac{1}{(z + 1)^2}.
+\]
+
+Primii doi termeni sînt sume de serii geometrice, iar al treilea poate
+fi obținut prin derivarea seriei geometrice:
+\[
+  \dfrac{1}{z + 1} = \sum (-1)^n z^n \Rightarrow %
+  -\dfrac{1}{(z + 1)^2} = \sum (-1)^{n+1} (n + 1) z^n,
+\]
+după ce am făcut trecerea $ n \mapsto n + 1 $, întrucît seria derivatelor
+ar fi pornit de la $ n = 1 $, dat fiind termenul $ z^{n-1} $.
+
+Pe cazuri acum:
+
+\textbf{Pentru $ |z| < 1 $:} funcția este olomorfă, deoarece nu avem
+niciun pol în acest disc deschis. Atunci putem scrie direct seria ca sumă
+a celor trei serii corespunzătoare:
+\[
+  f(z) = -\sum_{n \geq 0} z^n + \sum_{n \geq 0} (-1)^n z^n + %
+  \sum_{n \geq 0} (-1)^n (n + 1)z^n = %
+  \sum_{n \geq 0} z^n \left( -1 + (-1)^n + (-1)^n(n + 1)\right).
+\]
+
+\textbf{În jurul punctului $ z = - 1 $}, unde avem pol,
+trebuie să rescriem funcția sub forma:
+\[
+  f(z) = \dfrac{1}{(z + 1)^2} + \dfrac{1}{z + 1} - %
+  \dfrac{1}{2} \cdot \dfrac{1}{1 - \frac{z + 1}{2}},
+\]
+astfel punînd în evidență puteri (negative!) ale lui $ z + 1 $. Primii doi
+termeni nu necesită prelucrare, iar pentru al treilea, întrucît
+ne aflăm în domeniul de convergență a seriei geometrice, adică $ |z + 1| < 2 $
+putem scrie:
+\[
+  \dfrac{1}{1 - \frac{z + 1}{2}} = \sum_{n \geq 0} \left( \dfrac{z + 1}{2} \right)^n.
+\]
+
+\textbf{În jurul punctului $ z = 1 $}, unde avem din nou pol, rescriem
+funcția sub forma:
+\[
+  f(z) = \dfrac{1}{z - 1} + \dfrac{1}{2} \cdot \dfrac{1}{1 + \frac{z - 1}{2}} + %
+  \dfrac{1}{4} \cdot \dfrac{1}{\left( 1 + \frac{z - 1}{2} \right)^2}.
+\]
+
+Primul termen nu necesită prelucrare, iar pentru al doilea, remarcăm că
+ne aflăm în interiorul domeniului său de convergență, căci $ |z - 1| < 2 $
+și atunci avem direct suma seriei geometrice:
+\[
+  \dfrac{1}{1 + \frac{z - 1}{2}} = \sum_{n \geq 0} (-1)^n \left( \dfrac{z - 1}{2} \right)^n.
+\]
+
+Al treilea termen se obține prin derivarea termen cu termen a seriei
+de mai sus (ca în cazul de la început) și avem:
+\[
+  \dfrac{1}{\left(1 + \frac{z - 1}{2}\right)^2} = %
+  \sum_{n \geq 0} (-1)^n \dfrac{(n + 1)(z - 1)^n}{2^n}
+\]
+și în fine, funcția se obține ca sumă a acestor trei serii, adică, după
+calcule:
+\[
+  f(z) = \dfrac{1}{z - 1} + \sum_{n \geq 0} \dfrac{n + 3}{2^{n+2}} (z - 1)^n.
+\]
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m3-19-20"
+%%% End:
