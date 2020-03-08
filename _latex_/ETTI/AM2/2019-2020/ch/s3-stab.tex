@@ -1,0 +1,343 @@
+% ! TEX root = ../am2-19-20.tex
+\chapter{Stabilitate și linii de cîmp}
+
+\indent\indent Problema stabilității soluțiilor este una foarte importantă și dificilă,
+în general. Ideea de bază este că, dacă ne gîndim la interpretarea fizică
+a sistemelor de ecuații și soluțiilor lor, de exemplu în cazul mecanicii,
+soluția returnată este posibil să fie validă într-o vecinătate foarte mică
+a punctului în care a fost calculată. În cazul acesta, situația corespunde
+unei poziții de \textit{echilibru (mecanic) instabil}, adică atunci cînd
+deplasarea corpului la o mică distanță de poziția curentă îl face să iasă
+din poziția de echilibru. Similar, putem avea și \textit{echilibru (mecanic) stabil}
+sau \textit{echilibru (mecanic) indiferent}.
+
+Teoria stabilității soluțiilor sistemelor diferențiale este un subiect amplu,
+fondat și discutat în detaliu de \textit{H.\ Poincar\'e} și \textit{A.\ Liapunov},
+de aceea, majoritatea teoremelor și rezultatelor importante le sînt atribuite.
+
+Contextul în care lucrăm este următorul. fie un sistem diferențial de forma
+$ x^\prime = v(t, x) $, unde $ x $ poate fi vector (adică să țină loc de mai
+multe variabile). Presupunem că sînt îndeplinite condițiile teoremei fundamentale
+de existență și unicitate a soluției problemei Cauchy, pentru $ t \in [t_0, \infty) $
+și că avem $ x \in U \seq \RR^n $, un deschis. Așadar, pentru orice $ x_0 \in U $,
+există și este unică o soluție $ x = \varphi(t) $, cu $ \varphi : [t_0, \infty) \to U $<
+astfel încît $ \varphi(t_0) = x_0 $.
+
+Tipurile de stabilitate sînt definite mai jos.
+
+\begin{definition}\label{def:stabil-inf}
+  \index{stabilitate!spre $\infty$}
+  O soluție $ x = \varphi(t) $ ca mai sus se numește \emph{stabilă spre $\infty$}
+  în sens Poincar\'e-Lia\-pu\-nov (sau, echivalent, $ x_0 = \varphi(t_0) $
+  se numește \emph{poziție de echilibru}) dacă la variații mici ale
+  lui $ x_0 $ ob\-ți\-nem variații mici ale soluției.
+
+  Formal, pentru orice $ \varepsilon > 0 $, există $ \delta(\varepsilon) > 0 $
+  astfel încît pentru orice $ \tilde{x_0} \in \RR^n $, cu
+  $ ||\tilde{x_0} - x_0 || < \delta(\varepsilon) $, soluțiile corespunzătoare,
+  $ \tilde{\varphi}(t) $ și $ \varphi(t) $ satisfac inegalitatea:
+  \[
+    | \tilde{\varphi}(t) - \varphi(t) | < \varepsilon, \quad \forall t \geq t_0.
+  \]
+\end{definition}
+
+\begin{definition}\label{def:stabil}
+  \index{stabilitate!Poincar\'e-Liapunov}
+  Poziția de echilibru $ x = 0 $ se numește \emph{stabilă în sens Poincar\'e-Liapunov}
+  dacă pentru orice $ \varepsilon > 0 $, există $ \delta > 0 $, care depinde
+  doar de $ \varepsilon $, astfel încît pentru orice $ x_0 \in U $ pentru care
+  $ ||x_0|| < \delta $, soluția $ \varphi $ a sistemului cu condiția inițială
+  $ \varphi(0) = x_0 $ se prelungește pe întreaga semiaxă $ t > 0 $ și
+  satisface inegalitatea $ || \varphi(t) || < \varepsilon, \forall t > 0 $.
+
+\end{definition}
+
+\begin{definition}\label{def:stabil-as}
+  \index{stabilitate!asimptotică}
+  Poziția de echilibru $ x = 0 $ a sistemului diferențial autonom se
+  numește \emph{asimptotic stabilă} dacă este stabilă și, în plus, pentru
+  soluția $ \varphi(t) $ din definiția de mai sus, are loc:
+  \[
+    \lim_{t \to \infty} \varphi(t) = 0.
+  \]
+\end{definition}
+
+În exercițiile pe care le vom întîlni, vom folosi următorul rezultat fundamental.
+
+Presupunem că avem un sistem diferențial scris în forma matriceală:
+\[
+  X' = AX, \quad A \in M_n(\mathbb{R}),
+\]
+unde $ A $ este matricea sistemului. Mai presupunem, de asemenea, că
+matricea $ A $ este inversabilă, astfel încît sistemul admite soluția
+$ X = 0 $.
+
+Atunci avem:
+\begin{theorem}[Poincar\'e-Liapunov]\label{thm:poi-li}
+  Păstrînd contextul și notațiile de mai sus, dacă toate valorile proprii
+  ale matricei $ A $ au partea reală negativă, atunci poziția de e\-chi\-li\-bru
+  $ x = 0 $ este \emph{a\-simp\-to\-tic stabilă}.
+
+  Dacă există $ \lambda \in \sigma(A) $, cu $\mathrm{Re}\lambda > 0 $, atunci
+  $ x = 0 $ este instabilă.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+1. Studiați stabilitatea poziției de echilibru $ x = 0 $ pentru sistemele
+diferențiale:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    x^\prime &= -4x + y \\
+    y^\prime &= -x - 2y
+  \end{cases} $;
+\item $ \begin{cases}
+    x^\prime &= -x + z \\
+    y^\prime &= -2y - z \\
+    z^\prime &= y - z
+  \end{cases} $;
+\item $ \begin{cases}
+    x^\prime &= 2y \\
+    y^\prime &= x + ay
+  \end{cases}, a \in \RR $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se afle pentru ce valori ale lui $ a \in \RR $ soluția nulă a
+sistemului de mai jos este asimptotic stabilă:
+\[
+  \begin{cases}
+    x^\prime &= ax + y \\
+    y^\prime &= (2 + a)x + ay \\
+    z^\prime &= x + y - z
+  \end{cases}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Integrale prime și linii de cîmp}
+
+\begin{definition}\label{def:sist-autonom}
+  \index{sistem!autonom}
+  Un sistem diferențial de forma:
+  \[
+    x^\prime_j = v_j(x_1, \dots, x_n), \quad j = 1, \dots, n,
+  \]
+  unde $ v = (v_1, \dots, v_n) : U \to \RR^n $ este un cîmp de vectori definit
+  într-un domeniu $ U \seq \RR^n $ se numește \emph{sistem diferențial autonom}.
+\end{definition}
+
+O altă formă de scriere a sistemului de mai sus este \emph{forma simetrică}:
+\[
+  \dfrac{dx_1}{v_1} = \dfrac{dx_2}{v_2} = \dots = \dfrac{dx_n}{v_n}.
+\]
+Dacă $ f : U \to \RR $ este o funcție oarecare, de clasă $ \kal{C}^1(U) $, atunci
+pentru orice $ x \in U $ se poate scrie \emph{derivata lui $ f $ în $ x $ %
+  în direcția vectorului $ v $}, notată $ \dfrac{df}{dv}(x) $, și definită
+prin formula cunoscută:
+\[
+  \dfrac{df}{dv}(x) = \sum_{i = 1}^n \dfrac{\partial f}{\partial x_i} v_i(x).
+\]
+
+\begin{definition}\label{def:int-prim}
+  \index{integrală!primă}
+  \index{linii!de cîmp}
+  Fie $ v : U \to \RR^n $ un cîmp de vectori și $ f : U \to \RR^n $ o funcție
+  de clasă $ \kal{C}^1(U) $. Funcția se numește (o) \emph{integrală primă} a
+  sistemului diferențial autonom $ x' = v(x), x \in U $ dacă derivata sa
+  în direcția cîmpului de vectori $ v $ este nulă în fiecare punct din
+  $ U $, adică $ \dfrac{df}{dv} = 0 $.
+\end{definition}
+
+Echivalent, putem înțelege definiția astfel: $ f : U \to \RR $ este o
+integrală primă pentru sistemul diferențial autonom $ x' = v(x) $ dacă
+și numai dacă pentru orice soluție $ x = \varphi(t), \varphi : I \to U $,
+funcția $ f \circ \varphi $ este constantă pe $ I $. De aceea, uneori
+mai putem scrie pe scurt $ f(x_1, \dots, x_n) = c $, constant. Rezultă
+că putem înțelege integralele prime ca pe \emph{legi de conservare}.
+
+În exerciții, pentru a găsi integralele prime asociate unui sistem autonom,
+se rescrie sistemul în forma simetrică, iar apoi, folosind proprietățile rapoartelor
+egale, încercăm să ajungem la un raport de forma $ \dfrac{df}{0} $, egal cu
+rapoartele precedente. Atunci $ f $ va fi integrală primă, deoarece va
+rezulta $ df = 0 $, adică $ f $ constantă în lungul curbelor integrale.
+
+\textbf{Exemplu:} Să se găsească integralele prime ale sistemului simetric:
+\[
+  \dfrac{dx}{z - y} = \dfrac{dy}{x - z} = \dfrac{dz}{y - x}.
+\]
+
+\emph{Soluție:} Folosind proprietățile proporțiilor, rescriem sistemul:
+\[
+  \dfrac{dx}{z - y} = \dfrac{dy}{x - z} = \dfrac{dz}{y - x} = %
+  \dfrac{dx + dy + dz}{z - x + x - z + y - x} = %
+  \dfrac{dx + dy + dz}{0}.
+\]
+
+O altă formă de a obține o integrală primă este:
+\[
+  \dfrac{xdx + ydy + zdz}{x(z - x) + y(x - z) + z(y - x)} = %
+  \dfrac{xdx + ydy + zdz}{0}.
+\]
+
+Rezultă:
+\[
+  \begin{cases}
+    dx + dy + dz &= 0 \\
+    xdx + ydy + zdz &= 0,
+  \end{cases}
+\]
+de unde obținem două integrale prime:
+\[
+  x + y + z = c_1, \quad x^2 + y^2 + z^2 = c_2.
+\]
+
+\begin{remark}\label{rk:sist-cimp}
+  Rezolvarea este identică în cazul în care cerința pornește cu un
+  cîmp vectorial în spațiu, de forma:
+  \[
+    \vec{V} = (z - y)\vec{i} + (x - z)\vec{j} + (y - x) \vec{k}.
+  \]
+  Astfel, se asociază sistemul simetric de mai sus, etc.
+
+  Pentru acest caz, integralele prime se mai numesc \emph{linii de cîmp}
+  sau \emph{curbe integrale}.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+1. Să se determine liniile de cîmp pentru cîmpurile vectoriale de pe $\RR^3$:
+\begin{enumerate}[(a)]
+\item $\vec{v} = x\vec{i} + y \vec{j} + xyz \vec{k}$;
+\item $\vec{v} = (2z - 3y)\vec{i} + (6x - 2z)\vec{j} + (3y - 6x)\vec{k}$;
+\item $\vec{v} = (xz + y) \vec{i} + (x + yz) \vec{j} + (1 - z^2)\vec{k}$;
+\item $\vec{v} = (x^2 + y^2)\vec{i} + 2xy \vec{j} - z^2 \vec{k}$.
+\end{enumerate}
+
+\emph{Indicație (a):} Scriem sistemul autonom asociat cîmpului vectorial $\vec{v}$
+sub forma:
+\[
+  \frac{dx}{x} = \frac{dy}{y} = \frac{dz}{xyz}.
+\]
+Din prima egalitate, rezultă $x = c_1 y$, deci a doua egalitate devine:
+\[
+  c_1 ydy = \frac{dz}{z} \Rightarrow c_1 \frac{y^2}{2} = \ln |z| + c_2.
+\]
+Așadar, obținem $\dfrac{x}{y} \cdot \dfrac{y^2}{2} = \ln |z| + c_2$.
+
+Rezultă că liniile de cîmp pentru $\vec{v}$ sînt curbele:
+\[
+  \begin{cases}
+    \dfrac{x}{y} &= c_1 \\
+    xy - \ln|z| &= c_2.
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+(b) Sistemul poate fi scris sub forma:
+\[
+  \frac{dx}{2z - 3y} = \frac{dy}{6x - 2z} = \frac{dz}{3y-6x} = \frac{dx + dy + dz}{0}.
+\]
+Așadar, $dx + dy + dz = 0$, deci $x + y + z = c_1$.
+
+Din forma inițială obținem și:
+\[
+  \frac{3xdx}{3x(2z - 3y)} = \frac{\frac{3}{2}ydy}{\frac{3}{2}y(3x - z)} = \frac{zdz}{z(y - 2x)} = %
+  \frac{3xdx + \frac{3}{2}ydy + zdz}{0},
+\]
+deci $3xdx + \dfrac{3}{2}ydy + zdz = 0$, adică
+$3\dfrac{x^2}{2} + \dfrac{3}{4}y^2 + \dfrac{z^2}{22} = c_2$.
+
+\vspace{1cm}
+
+(c) Obținem:
+\[
+  \frac{dx + dy}{(x + y)(z + 1)} = \frac{dz}{1 - z^2} \Rightarrow %
+  \frac{d(x + y)}{x + y} = -\frac{dz}{z - 1}.
+\]
+Rezultă $\ln|x + y| + \ln|z - 1| = \ln c_1$, adică $(x + y)(z - 1) = c_1$.
+
+Apoi:
+\[
+  \frac{dy - dx}{x + zy - xz - y} = \frac{dy - dx}{(x - y)(1 - z)} = \frac{dz}{1 - z^2}.
+\]
+
+Rezultă $-\dfrac{d(x - y)}{x - y} = \dfrac{dz}{z + 1}$, de unde $(x - y)(z + 1) = c_2$.
+
+Așadar, liniile de cîmp sînt curbele:
+\[
+  \begin{cases}
+    (x + y)(z - 1) &= c_1 \\
+    (x - y)(z + 1) &= c_2
+  \end{cases}
+\]
+
+\vspace{1cm}
+
+(d) Sistemul simetric rezultat este:
+\[
+  \frac{dx}{x^2 + y^2} = \frac{dy}{2xy} = \frac{dz}{-z^2}.
+\]
+
+Prin adunarea primelor două rapoarte, obținem:
+\[
+  \frac{d(x + y)}{(x + y)^2} = \frac{dz}{-z^2},
+\]
+adică $\dfrac{1}{x + y} + \dfrac{1}{z} = c_1$.
+
+Prin scădere, avem $\dfrac{d(x - y)}{(x - y)^2} = \dfrac{dz}{-z^2}$, deci
+$\dfrac{1}{x - y} + \dfrac{1}{z} = c_2$.
+
+Liniile de cîmp se obțin:
+\[
+  \begin{cases}
+    \dfrac{1}{x + y} + \dfrac{1}{z} &= c_1 \\
+    & \\
+    \dfrac{1}{x - y} + \dfrac{1}{z} &= c_2
+  \end{cases}
+\]
+
+\vspace{0.3cm}
+
+2. Fie cîmpul vectorial:
+\[
+  \vec{V} = (x + y)\vec{i} + (y - x)\vec{j} - 2z\vec{k}.
+\]
+
+Determinați liniile de cîmp care conțin punctul $ M(1, 0, 1) $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Resurse suplimentare}
+
+\indent\indent Termenul în engleză pentru linii de cîmp este \texttt{field line}, iar cîteva
+explicații, împreună cu exemple cunoscute din cazul cîmpurilor fizice, se pot
+găsi pe \href{https://en.wikipedia.org/wiki/Field\_line}{Wikipedia}.
+
+Metoda rezolvării ecuațiilor diferențiale în mod grafic, folosind \emph{cîmpul %
+  tangent} (eng.\ \texttt{slope field}), cu semnificația fizică a cîmpului de
+viteze, poate fi foarte utilă. Ea este prezentată succint pe
+\href{https://en.wikipedia.org/wiki/Slope\_field}{Wikipedia} și mai detaliat,
+inclusiv cu exerciții rezolvate, la \href{https://www.khanacademy.org/math/ap-calculus-ab/ab-differential-equations-new/ab-7-3/v/creating-a-slope-field}{Khan Academy}.
+
+Trecerea de la cîmpuri vectoriale în spațiu la ecuații diferențiale (sau sisteme)
+autonome este explicată pe scurt \href{http://www.math.tamu.edu/~zelenko/308\_w3\_qual.pdf}{aici}.
+
+
+\vspace{1cm}
+
+Alte materiale se mai pot găsi în cursul de la \href{http://www.mec.tuiasi.ro/diverse/matematici\_speciale.pdf}{Iași} (v.\ \S2.1.2),
+în cursul \href{http://www.edumanager.ro/community/documente/ecuatii\_cu\_derivate\_partiale\_de\_ordinul\_al\_doilea.pdf}{prof.\ Crăciun și Barbu} (cap.\ 2)
+și în \href{https://www.yumpu.com/ro/document/read/17874390/ecuatii-diferentiale-n-forma-simetrica-integrale-prime}{aceste notițe} de la UBB Cluj.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-19-20"
+%%% End:
