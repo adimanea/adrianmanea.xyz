@@ -316,7 +316,7 @@ Determinați liniile de cîmp care conțin punctul $ M(1, 0, 1) $.
 
 \section{Resurse suplimentare}
 
-\indent\indent Termenul în engleză pentru linii de cîmp este \texttt{field line}, iar cîteva
+\indent\indent Termenul în engleză pentru linii de cîmp este \texttt{(vector) field line}, iar cîteva
 explicații, împreună cu exemple cunoscute din cazul cîmpurilor fizice, se pot
 găsi pe \href{https://en.wikipedia.org/wiki/Field\_line}{Wikipedia}.
 
@@ -336,6 +336,43 @@ Alte materiale se mai pot găsi în cursul de la \href{http://www.mec.tuiasi.ro/
 în cursul \href{http://www.edumanager.ro/community/documente/ecuatii\_cu\_derivate\_partiale\_de\_ordinul\_al\_doilea.pdf}{prof.\ Crăciun și Barbu} (cap.\ 2)
 și în \href{https://www.yumpu.com/ro/document/read/17874390/ecuatii-diferentiale-n-forma-simetrica-integrale-prime}{aceste notițe} de la UBB Cluj.
 
+\vspace{1cm}
+
+Vizualizarea grafică a liniilor de cîmp se poate face folosind GeoGebra,
+accesînd link-ul de \href{https://www.geogebra.org/m/u3xregNW}{aici}.
+
+De exemplu, reluăm primul exercițiu rezolvat:
+\[
+  \vec{V} = (z - y)\vec{i} + (x - z)\vec{j} + (y - x)\vec{k},
+\]
+unde am găsit liniile de cîmp:
+\begin{align*}
+  L_1 &: x + y + z = c_1 \\
+  L_2 &: x^2 + y^2 + z^2 = c_2.
+\end{align*}
+
+Prima linie de cîmp este un plan, iar a doua este o sferă. Grafic, acestea
+înseamnă că dacă reprezentăm în suficiente puncte din spațiu vectori
+care alcătuiesc cîmpul $ \vec{V} $, vom vedea că apar \qq{tipare}, se disting
+forme care reprezintă plane, respectiv sfere. Într-adevăr, reprezentarea
+folosind GeoGebra pentru exemplul de mai sus arată, dintr-un punct de vedere,
+plane la diverse distanțe față de origine, dar paralele,
+iar din altul, sfere de raze diferite. Imaginea se poate obține interactiv,
+pentru a putea fi rotită, introducînd componentele cîmpului în link-ul de
+mai sus.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[scale=0.5]{figs/vector-field2.png}
+  \caption{Liniile de cîmp $ L_1 $, plane paralele}
+\end{figure}
+
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[scale=0.5]{figs/vector-field1.png}
+  \caption{Liniile de cîmp $ L_2 $, sfere concentrice}
+\end{figure}
 
 %%% Local Variables:
 %%% mode: latex
