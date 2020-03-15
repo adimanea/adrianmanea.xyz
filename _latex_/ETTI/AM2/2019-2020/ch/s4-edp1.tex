@@ -1,0 +1,425 @@
+% ! TEX root = ../am2-19-20.tex
+
+\chapter{Ecuații cu derivate parțiale și suprafețe de cîmp}
+
+
+\section{Ecuații cu derivate parțiale de ordinul întîi}
+\index{EDP}
+\index{EDP!ordinul întîi}
+\indent\indent Forma generală a unei ecuații cu derivate parțiale (EDP) de ordinul
+întîi pentru funcția necunoscută $ u = u(x, y, z) $ este:
+\[
+  P(x, y, z) \dfrac{\partial u}{\partial x} + Q(x, y, z) \dfrac{\partial u}{\partial y} + %
+  R(x, y, z) \dfrac{\partial u}{\partial z} = 0,
+\]
+unde $ P, Q, R : \RR^3 \to \RR $ sînt funcții de clasă (cel puțin) $\kal{C}^1$.
+
+Pentru rezolvare, se scrie sistemul simetric asociat, care are forma generală
+\[
+  \dfrac{dx}{P} = \dfrac{dy}{Q} = \dfrac{dz}{R}
+\]
+și i se determină integralele prime. Dacă $ I_1 = C_1 $ și $ I_2 = C_2 $ sînt
+integralele prime ale sistemului, atunci soluția finală a ecuației inițiale
+este:
+\[
+  u(x, y, z) = \varphi(I_1, I_2),
+\]
+unde $ \varphi $ este o funcție oarecare de clasă (cel puțin) $\kal{C}^1$.
+
+\begin{remark}\label{rk:not-dp}
+  Pentru simplitate, vom mai folosi notațiile cunoscute pentru derivate parțiale,
+  anume $ u_x = \dfrac{\partial u}{\partial x} $ etc.
+\end{remark}
+
+\begin{remark}\label{rk:int-indep}
+  Metoda de rezolvare de mai sus cere implică și verificarea independenței celor
+  două integrale prime, în sensul exemplificat mai jos.
+\end{remark}
+
+\textbf{Exemplu:} Rezolvăm ecuația cu derivate parțiale:
+\[
+  (4z - 5y)u_x + (5x - 3z)u_y + (3y - 4x)u_z = 0.
+\]
+
+\emph{Soluție:} Scriem sistemul simetric asociat, care este:
+\[
+  \dfrac{dx}{4z - 5y} = \dfrac{dy}{5x - 3z} = \dfrac{dz}{3y - 4x},
+\]
+sistem care este valabil pe domeniul:
+\[
+  D = \{(x, y, z \in \RR^3) \mid 4z \neq 5y, 5x \neq 3z, 3y \neq 4x \}.
+\]
+
+Pentru a obține integralele prime, amplificăm prima fracție cu 3, a doua cu 4 și
+a treia cu 5 și obținem:
+\[
+  \dfrac{3dx}{12z - 15y} = \dfrac{4dy}{20x - 12z} = \dfrac{5dz}{15y - 20x} = %
+  \dfrac{3dx + 4dy + 5dz}{0},
+\]
+de unde $ I_1(x, y, z) = 3x + 4y + 5z = c_1 $ este o integrală primă.
+
+Mai putem amplifica și primul raport cu $ 2x $, pe al doilea cu $ 2y $ și
+pe al treilea cu $ 2z $ și obținem:
+\[
+  \dfrac{2xdx}{8xz - 10xy} = \dfrac{2ydy}{10xy - 6yz} = \dfrac{2zdz}{6yz - 8xz} = %
+  \dfrac{2xdx + 2ydy + 2zdz}{0},
+\]
+deci o a doua integrală primă este $ I_2(x, y, z) = x^2 + y^2 + z^2 = c_2 $.
+
+Evident, cele două integrale prime sînt definite pe același domeniu $ D $.
+
+Independența celor două înseamnă verificarea că matricea dată de derivatele
+lor par\-ți\-a\-le are rangul maxim pe domeniul de definiție. Avem, așadar:
+\[
+  A = \begin{pmatrix}
+    I_{1x} & I_{2x} \\
+    I_{1y} & I_{2y} \\
+    I_{1z} & I_{2z}
+  \end{pmatrix} = \begin{pmatrix}
+    3 & 2x \\
+    4 & 2y \\
+    5 & 2z
+  \end{pmatrix},
+\]
+matrice care se poate verifica imediat că are rangul 2, adică maxim, pentru orice
+$(x,y,z) \in D $. Deci integralele prime sînt independente și soluția finală a
+ecuației este:
+\[
+  u(x, y, z) = \varphi(3x + 4y + 5z, x^2 + y^2 + z^2),
+\]
+unde $ \varphi $ este o funcție arbitrară de clasă $ \kal{C}^1 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Suprafețe de cîmp}
+\index{suprafețe!de cîmp}
+
+\indent\indent Suprafețele de cîmp pentru un cîmp vectorial tridimensional
+se obțin scriind o ecuație cu derivate parțiale asociată, căreia îi determinăm
+soluția generală. Suprafața de cîmp este, atunci, dată de anularea soluției
+generale, scrisă în forma implicită.
+
+\textbf{Exemplu:} Fie cîmpul vectorial:
+\[
+  \vec{V} = xy^2 \vec{i} + x^2y \vec{j} + z(x^2 + y^2) \vec{k}.
+\]
+Determinăm suprafețele de cîmp.
+
+\emph{Soluție:} Scriem ecuația cu derivate parțiale asociată cîmpului,
+pentru o funcție necunoscută $ u = u(x, y, z) $. Avem:
+\[
+  xy^2 u_x + x^2y u_y + z(x^2 + y^2)u_z = 0. 
+\]
+Rezolvarea ecuației se face ca mai sus, scriind sistemul asociat:
+\[
+  \dfrac{dx}{xy^2} = \dfrac{dy}{x^2y} = \dfrac{dz}{z(x^2 + y^2)},
+\]
+definit pe domeniul potrivit, adică $ D = \RR^3 - \{(0, 0, 0)\}$.
+
+Din prima egalitate, putem simplifica cu $ xy $ și avem $ xdx = ydy $, deci
+o integrală primă este $ x^2 - y^2 = c_1 $.
+
+Putem amplifica rapoartele cu $ y, x $ și respectiv $ 1 $ și avem:
+\[
+  \dfrac{ydx}{xy^3} = \dfrac{xdy}{x^3y} = \dfrac{dz}{z(x^2 + y^2)} = %
+  \dfrac{ydx + xdy}{xy(x^2 + y^2)}.
+\]
+Din ultimele două rapoarte, obținem, după simplificare cu $ x^2 + y^2 $:
+\[
+  \dfrac{dz}{z} = \dfrac{d(xy)}{xy},
+\]
+deci $ \dfrac{xy}{z} = c_2 $.
+
+Acum soluția generală a ecuației cu derivate parțiale este:
+\[
+  u(x, y, z) = \varphi\Big(x^2 - y^2, \dfrac{xy}{z} \Big),
+\]
+cu $ \varphi $ o funcție arbitrară de clasă $ \kal{C}^1 $, deci suprafețele de
+cîmp ale cîmpului $ \vec{V} $ au forma:
+\[
+  \varphi\Big( x^2 - y^2, \dfrac{xy}{z} \Big) = 0.
+\]
+
+\vspace{1cm}
+
+În unele cazuri, se pot cere anume suprafețe de cîmp, de exemplu:
+
+\textbf{Exemplu:} Să se determine suprafața de cîmp a cîmpului vectorial:
+\[
+  \vec{V} = yz\vec{i} + xz \vec{j} + xy\vec{k},
+\]
+care trece prin curba dată de intersecția cilindrului $ x^2 + z^2 = 4 $ cu
+planul $ y = 0 $.
+
+\emph{Soluție:} Mai întîi, determinăm toate suprafețele de cîmp, ca mai sus.
+Scriem direct sistemul asociat:
+\[
+  \dfrac{dx}{yz} = \dfrac{dy}{xz} = \dfrac{dz}{xy}.
+\]
+Amplificăm cu $ x, y $, respectiv $ z $ și obținem $ xdx = ydy = zdz $, adică
+$ x^2 - y^2 = c_1, x^2 - z^2 = c_2 $ sînt două integrale prime.
+
+Aceste integrale prime dau o familie infinită de suprafețe, dintre care
+vrem să aflăm pe cea care trece prin curba dată. Așadar, avem de rezolvat
+sistemul de ecuații:
+\[
+  \begin{cases}
+    x^2 - y^2 &= c_1  \\
+    x^2 - z^2 &= c_2 \\
+    x^2 + z^2 &= 4 \\
+    y &= 0
+  \end{cases}
+\]
+pentru constantele $ c_1 $ și $ c_2 $, care ne vor identifica exact suprafața.
+
+Este suficient să găsim condiția de compatibilitate a sistemului, care se poate
+obține din primele două ecuații. Înmulțim prima ecuație cu 2 și o scădem din ea
+pe a doua și comparăm cu a treia ecuație. Se obține $ 2c_1 - c_2 = 4 $.
+Apoi, înlocuim în integralele prime și avem $ 2(x^2 - y^2) - (x^2 - z^2) = 4 $, care
+se prelucrează și se aduce la forma canonică:
+\[
+  \dfrac{x^2}{4} - \dfrac{y^2}{2} + \dfrac{z^2}{4} = 1,
+\]
+care este un \emph{hiperboloid cu o pînză}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Ecuații cu derivate parțiale cvasiliniare}
+\index{EDP!cvasiliniare}
+
+\indent\indent Forma generală a ecuațiilor cu derivate parțiale cvasiliniare
+pentru o funcție $ u = u(x_1, x_2, \dots, x_n) $ este:
+\[
+  P_1(x_1, \dots, x_n) u_{x_1} + P_2(x_1, \dots, x_n)u_{x_2} + \dots + %
+  P_{n-1}(x_1, \dots, x_n) u_{x_{n-1}} + Q(x_1, \dots, x_n) = 0,
+\]
+adică apar toate derivatele parțiale ale lui $ u $, mai puțin ultima.
+
+În exercițiile pe care o să le întîlnim cel mai des, funcția
+$ u $ este înlocuită cu $ z = z(x, y) $, iar atunci ultima derivată
+parțială o putem gîndi, de exemplu, ca $ z_z = 1 $.
+
+Modul de rezolvare este explicat pe exemplul de mai jos.
+
+\textbf{Exemplu:} Fie ecuația cvasiliniară:
+\[
+  (z - y)^2 \dfrac{\partial z}{\partial x} + xz \dfrac{\partial z}{\partial y} = xy.
+\]
+\emph{Soluție:} Se poate vedea că ecuația este cvasiliniară, funcția
+necunoscută fiind $ z = z(x, y) $.
+
+Din teorie, ecuația trebuie să aibă o soluție scrisă în formă implicită
+$ u(x, y, z) = 0 $. De fapt, această funcție trebuie înțeleasă ca
+$ u = u(x, y, z(x, y)) $. Folosind formula de derivare a funcțiilor compuse,
+dacă vrem să scriem derivata parțială în raport cu $ x $ a lui $ u $, trebuie
+să ținem cont că $ x $ apare și în $ z(x, y) $, deci avem:
+\[
+  0 = \dfrac{\partial u}{\partial x} + \dfrac{\partial u}{\partial z} \cdot %
+  \dfrac{\partial z}{\partial x},
+\]
+și similar pentru derivata în raport cu $ y $. Rezultă:
+\[
+  z_x = -\dfrac{u_x}{u_z}, \quad z_y = -\dfrac{u_y}{u_z}.
+\]
+Înlocuim în ecuația dată și înmulțim relația cu $ u_z $, obținînd:
+\[
+  (z - y)^2 u_x + xz u_y + xy u_z = 0,
+\]
+care este o ecuație cu derivate parțiale de ordinul întîi și o putem rezolva
+ca în prima secțiune.
+
+Scriem sistemul asociat:
+\[
+  \dfrac{dx}{(z - y)^2} = \dfrac{dy}{xz} = \dfrac{dz}{xy}.
+\]
+Din a doua egalitate obținem direct $ y^2 - z^2 = c_1 $, care este o integrală primă.
+
+Amplificăm primul raport cu $ x $, pe al doilea cu $ (y - z) $ și pe al treilea cu $ (z - y)$ 
+și obținem prin adunare:
+\[
+  xdx + (y - z)dy + (z - y) dz = 0 \Rightarrow xdx + ydy + zdz - d(yz) = 0.
+\]
+Rezultă a doua integrală primă $ x^2 + y^2 + z^2 - 2yz = x^2 + (y - z)^2 = c_2 $.
+
+Soluția pentru $ u $ va fi:
+\[
+  u(x, y, z) = \varphi(y^2 - z^2, x^2 + (y - z)^2),
+\]
+cu $ \varphi $ o funcție de clasă $ \kal{C}^1 $ pe domeniul de definiție.
+
+Atunci soluția pentru $ z $ se obține din forma implicită $ u(x, y, z) = 0 $.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+\indent\indent 1. Rezolvați ecuațiile cvasiliniare:
+\begin{enumerate}[(a)]
+\item $x(y^3 - 2x^3)z_x + y(2y^3 - x^3)z_y = 9z(x^3 - y^3) $;
+\item $ 2xzz_x + 2yzz_y = z^2 - x^2 - y^2 $;
+\item $ 2y z_x + 3x^2 z_y + 6x^2 y = 0 $;
+\item $ x \Big( y^2 - z^2 \Big) z_x - y \Big( x^2 + y^2 \Big) z_y = z \Big( x^2 + y^2 \Big) $;
+\item $ xz z_x + yz z_y = x + y $.
+\end{enumerate}
+
+\emph{Indicații:} (a) Sistemul diferențial autonom la care se ajunge este:
+\[
+  \dfrac{dx}{x(y^3 - 2x^3)} = \dfrac{dy}{y(2y^3 - x^3)} = \dfrac{dz}{9z(x^3 - y^3)}.
+\]
+
+Rezultă:
+\[
+  \dfrac{ydx + xdy}{3xy(y^3 - x^3)} = \dfrac{dz}{9z(x^3 - y^3)} \Rightarrow %
+  \dfrac{d(xy)}{xy} = -\dfrac{dz}{3z} \Rightarrow x^3 y^3 z = c_1.
+\]
+
+Din primele două rapoarte obținem:
+\[
+  \dfrac{y(2y^3 - x^3)}{x(y^3 - 2x^3)} = \dfrac{dy}{dx}.
+\]
+
+Simplificăm forțat cu $ \dfrac{y}{x} = u $ și ajungem la ecuația:
+\[
+  \dfrac{u^3 - 2}{u(u+1)(u^2 - u + 1)} du = \dfrac{dx}{x}.
+\]
+
+Rezultă $ \ln(c_2 x) = -2\ln u + \ln(u + 1) + \ln(u^2 - u + 1) $, adică, în final,
+$ c_2 = \dfrac{x^3 + y^3}{x^2 y^2} $.
+
+(b) Se ajunge la sistemul autonom:
+\[
+  \dfrac{dx}{2xz} = \dfrac{dy}{2yz} = \dfrac{dz}{z^2 - x^2 - y^2}.
+\]
+
+Din primele două rapoarte avem $ \dfrac{y}{x} = c_1 $ și apoi:
+\[
+  \dfrac{2xdx}{2x^2} = \dfrac{2ydy}{2y^2} = \dfrac{2zdz}{z^2 - x^2 - y^2},
+\]
+adică $ c_2x = x^2 + y^2 + z^2 $.
+
+(d) Dacă $ u(x, y, z) = 0 $ este soluția căutată în formă implicită, atunci ajungem
+la ecuația cu derivate parțiale de ordinul întîi:
+\[
+  x(y^2 - z^2)u_x - y(x^2 + z^2) u_y + z(x^2 + y^2) u_z = 0.
+\]
+
+Din sistemul diferențial asociat, obținem:
+\[
+  xdx + ydy + zdz = 0 \Rightarrow x^2 + y^2 + z^2 = c_1.
+\]
+Mai departe:
+\[
+  \dfrac{ydx - xdy}{xy(y^2 - z^2) + xy(x^2 + z^2)} = %
+  \dfrac{ydx - xdy}{xy(x^2 + y^2)} = \dfrac{dz}{z(x^2 + y^2)},
+\]
+de unde rezultă:
+\[
+  \dfrac{ydx - xdy}{xy} = \dfrac{dz}{z} \Rightarrow \dfrac{x}{yz} = c_2.
+\]
+
+\vspace{1cm}
+
+2. Determinați suprafețele de cîmp pentru cîmpurile vectoriale:
+\begin{enumerate}[(a)]
+\item $ \vec{V} = (x + y + z)\vec{i} + (x - y)\vec{j} + (y - x)\vec{k} $;
+\item $ \vec{V} = (x - y)\vec{i} + (x + y) \vec{j} + \vec{k} $.
+\end{enumerate}
+
+\emph{Indicații:} (a) Ajungem la sistemul:
+\[
+  \dfrac{dx}{x + y + z} = \dfrac{dy}{x - y} = \dfrac{dz}{y - x}.
+\]
+
+Din prima egalitate, rezultă $ dy + dz = 0 \Rightarrow y + z = c_1 $. Înlocuind
+în cea de-a doua egalitate $ z = c_1 - y $, rezultă $ (x - y)dx = (x + c_1)dy $,
+deci $ xdx - d(xy) - c_1 dy = 0 $, adică $ \dfrac{x^2}{2} - xy - c_1y = c_2 $. Înlocuim
+$ c_1 = y + z $ și obtinem $ \dfrac{x^2}{2} - xy - y^2 - yz = c_2 $.
+
+Domeniul de definiție va fi $ D = \{ (x, y, z) \in \RR^3 \mid x + y + z \neq 0 \} $.
+
+(b) Se ajunge la sistemul:
+\[
+  \dfrac{dx}{x - y} = \dfrac{dy}{x + y} = \dfrac{dz}{1}.
+\]
+
+Rezultă:
+\[
+  \dfrac{xdx}{x^2 - xy} = \dfrac{ydy}{xy + y^2} = \dfrac{xdx + ydy}{x^2 + y^2} = %
+  \dfrac{\frac{1}{2} d(x^2 + y^2)}{x^2 + y^2} = \dfrac{dz}{1},
+\]
+deci $ x^2 + y^2 = c_1 e^{2z} $, iar apoi, din $ \dfrac{dy}{dx} = \dfrac{x + y}{x - y} $,
+putem nota $ \dfrac{y}{x} = u $ și rezultă $ x^2 + y^2 = c_2 e^{2 \arctan \frac{y}{x}} $.
+
+\vspace{1cm}
+
+3. Determinați suprafața de cîmp a cîmpului vectorial:
+\[
+  \vec{V} = 2xz\vec{i} + 2yz\vec{j} + (z^2 - x^2 - y^2)\vec{k},
+\]
+care conține cercul dat de $ z = 0 $ și $ x^2 + y^2 - 2x = 0 $.
+
+\emph{Indicație:} Integralele prime independente ale sistemului se
+determină din:
+\[
+  \dfrac{dx}{2xz} = \dfrac{dy}{2yz} = \dfrac{dz}{z^2 - x^2 - y^2}.
+\]
+Din primele două rapoarte, obținem $ y = c_1 x $, iar apoi, putem înmulți
+toate egalitățile cu $ 2z $ și prelucrăm mai departe:
+\[
+  \dfrac{dx}{x} = \dfrac{dy}{y} = \dfrac{2z}{z^2 - x^2 - y^2} \Rightarrow %
+  \dfrac{2xdx}{2x^2} = \dfrac{2ydy}{2y^2} = \dfrac{2zdz}{z^2 - x^2 - y^2} = %
+  \dfrac{2(xdx + ydy + zdz)}{x^2 + y^2 + z^2},
+\]
+deci $ x^2 + y^2 + z^2 = c_2 x $.
+
+Pentru a obține intersecția cu cercul dat, avem condiția ca sistemul de mai jos să fie
+compatibil:
+\[
+  \begin{cases}
+    y &= c_1 x \\
+    x^2 + y^2 + z^2 &= c_2 x \\
+    z &= 0 \\
+    x^2 + y^2 - 2x &= 0
+  \end{cases}.
+\]
+
+Din ultimele trei ecuații se obține că sistemul este compatibil dacă și numai dacă $ c_2 = 2 $.
+
+Rezultă $ x^2 + y^2 + z^2 - 2x = 0 $, care este o sferă.
+
+\vspace{1cm}
+
+4. Fie cîmpul vectorial:
+\[
+  \vec{V} = (x + y)\vec{i} + (y - x)\vec{j} - 2z\vec{k}.
+\]
+Să se determine:
+\begin{enumerate}[(a)]
+\item liniile de cîmp;
+\item linia de cîmp ce conține punctul $ M(1, 0, 1) $;
+\item suprafețele de cîmp;
+\item suprafața de cîmp care conține dreapta $ z = 1, y - x\sqrt{3} = 0 $.
+\end{enumerate}
+
+\emph{Indicație:} Pentru liniile de cîmp, ecuația dată de primele două rapoarte:
+\[
+  \dfrac{dx}{dy} = \dfrac{x + y}{y - x}
+\]
+este o ecuație diferențială de ordinul întîi, omogenă, care se poate rezolva cu
+substituția $ y = tx $.
+
+\vspace{1cm}
+
+5. Să se determine soluția ecuațiilor cu derivate parțiale de ordinul întîi:
+\begin{enumerate}[(a)]
+\item $ y u_x - x u_y = 0 $;
+\item $ xz u_x - yz u_y + (x^2 + y^2) u_z = 0 $;
+\item $ x u_x - y u_y = 0 $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-19-20"
+%%% End:
