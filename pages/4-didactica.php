@@ -24,14 +24,14 @@ include ("../includes/navigation.php");
 		<div class="panel">
 		  <ul class="big-list">
 			<li>Notițele sînt disponibile aici: <a href="../docs/19-20-acs-m3/m3-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
-			<li><b>Seminar 3 &amp; 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/kmFyKKwT3tbCHrD" target="_blank">video</a> și <a href="../docs/19-20-acs-m3/online/seminar4-acs.pdf" target="_blank">PDF</a>.</li>
+			<li><b>Seminar 3 &amp; 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/kmFyKKwT3tbCHrD" target="_blank">video</a> și <a href="../docs/online/seminar4-acs.pdf" target="_blank">PDF</a>.</li>
 		  </ul>
 		</div>
 		<button class="accordion">ETTI, Analiză 2</button>
 		<div class="panel">
 		  <ul class="big-list">
 			<li>Notițele sînt disponibile aici: <a href="../docs/19-20-etti-am2/am2-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
-			<li><b>Seminar 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/B4pkN3cpeotQCJm" target="_blank">video</a> și <a href="../docs/19-20-acs-m3/online/seminar4-etti.pdf" target="_blank">PDF</a>.</li>
+			<li><b>Seminar 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/B4pkN3cpeotQCJm" target="_blank">video</a> și <a href="../docs/online/seminar4-etti.pdf" target="_blank">PDF</a>.</li>
 		  </ul>
 		</div>
 	  </div>
