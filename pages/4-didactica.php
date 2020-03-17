@@ -32,6 +32,11 @@ include ("../includes/navigation.php");
 		  <ul class="big-list">
 			<li>Notițele sînt disponibile aici: <a href="../docs/19-20-etti-am2/am2-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
 			<li><b>Seminar 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/B4pkN3cpeotQCJm" target="_blank">video</a> și <a href="../docs/online/seminar4-etti.pdf" target="_blank">PDF</a>.</li>
+			<ul>
+			  <li>Temă Teodora Mihăilă, exercițiul 2a: <a href="https://cloud.adrianmanea.xyz/index.php/s/JtRRE2j8Zq4qQ5W" target="_blank">video</a>;</li>
+			  <li>Temă Mircea Bănaru, exercițiul 5c: <a href="https://cloud.adrianmanea.xyz/index.php/s/WGPQm26XcEGSnjc" target="_blank">video</a>;</li>
+			  <li>Temă Radu Bolborici, exercițiul 5b: <a href="https://cloud.adrianmanea.xyz/index.php/s/CHnDL7cZgbtDCpp" target="_blank">video</a>;</li>
+			</ul>
 		  </ul>
 		</div>
 	  </div>
