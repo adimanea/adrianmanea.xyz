@@ -1,0 +1,265 @@
+% ! TEX root = ../m3-19-20.tex
+
+\chapter{Transformarea Fourier}
+
+Transformarea Fourier, cu diversele sale variante (discretă, rapidă etc.)
+este foarte utilă pentru studiul undelor sinusoidale. Dacă o \emph{serie}
+Fourier dezvoltă o funcție într-o serie în care termenii sînt sinusuri
+și cosinusuri, \emph{transformata} Fourier este o transformare integrală,
+în care aspectele periodice corespunzătoare funcțiilor trigonometrice
+se păstrează.
+
+De aceea, veți întîlni foarte des transformatele Fourier în cazul analizelor
+semnalelor sonore, fie pentru digitalizare sau pentru diverse descompuneri.
+Un exemplu concret este în inteligența artificială și învățarea automată,
+unde se lucrează la programe care să facă recunoaștere vocală, transcrieri
+și traduceri. În toate aceste aplicații, o analiză a semnalului audio cu
+ajutorul transformatei Fourier este indispensabil.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elemente teoretice}
+
+Foarte pe scurt, vom da definițiile și principalele proprietăți care vor
+fi de folos în exerciții.
+
+Avem nevoie de următoarea noțiune:
+\begin{definition}\label{def:functie-l1}\index{funcție!$L^1$}
+  Fie $ f : \RR \to \RR $ o funcție reală. Spunem că ea este $ L^1 $
+  (formal, \emph{aparține mulțimii $ L^1(\RR) $}), dacă are proprietatea:
+  \[
+    \int_{-\infty}^\infty |f(t)| dt < \infty.
+  \]
+  Intuitiv, mutînd tot graficul funcției deasupra axei $ Ox $ (prin
+  oglindire pe intervalele negative), aria de sun grafic este finită.
+  Deci funcția nu are nicio zonă în care \enquote{explodează} spre
+  $ \pm \infty $ asimptotic.
+\end{definition}
+
+Acestea sînt funcțiile cărora le vom defini transformările Fourier. Deci,
+dacă nu se precizează altfel, toate funcțiile care se transformă vor fi
+presupuse $ L^1 $.
+
+Definiția principală urmează.
+
+\begin{definition}\label{def:transf-f}\index{transformata!Fourier}
+  Fie $ f $ o funcție $ L^1 $. Se definește \emph{transformata Fourier} a lui
+  $ f $, notată $ \kal{F} $ (alternativ, $ \kal{F}[f] $ sau, și mai
+  explicit, $ \kal{F}[f(t)](\omega) $)\footnotemark funcția complexă
+  definită prin:
+  \[
+    \kal{F}[f] : \RR \to \CC, \quad \kal{F}[f](\omega) = %
+    \int_{-\infty}^\infty f(t) e^{i\omega t} dt.
+  \]
+\end{definition}
+
+\footnotetext{Pentru a nu încărca inutil notația, vom folosi această
+  variantă explicită doar aici. Regula care se va păstra în continuare
+  este următoarea: argumentul funcției $ f $ care se transformă este $ t $,
+  iar argumentul transformatei $\kal{F}[f] $ este $ \omega $.
+  De asemenea, argumentul $ t $ al funcției $ f $ se mai numește \emph{timp}, iar
+  argumentul $ \omega $ al transformatei se mai numește \emph{frecvență}.}
+
+Se vede aici importanța faptului că $ f $ este $ L^1 $.
+
+Folosind formula lui Euler pentru exponențiala complexă care apare în
+integrală, precum și paritatea funcțiilor trigonometrice, facem următoarele
+observații imediate:
+\begin{itemize}
+\item Dacă $ f $ este funcție pară, atunci transformata Fourier are partea
+  imaginară nulă (integrala sinsului pe un interval simetric față de origine ---
+  în acest caz special, $ (-\infty, \infty) $ --- este nulă, iar integrala
+  funcției pare cosinus este dublul integralei calculate pe jumătate din
+  interval) și rămînem cu:
+  \[
+    \kal{F}[f](\omega) = 2 \int_0^\infty f(t)\cos(\omega t) dt;
+  \]
+\item Dacă $ f $ este funcție impară, folosind argumentul din cazul anterior,
+  transformarea Fourier are partea reală nulă și rămînem cu:
+  \[
+    \kal{F}[f](\omega) = -2i \int_0^\infty f(t) \sin (\omega t) dt.
+  \]
+\end{itemize}
+
+Cele două cazuri speciale se numesc, respectiv, \emph{transformarea (Fourier) prin sinus}
+și \emph{transformarea (Fourier) prin cosinus} ale funcției $ f $.
+
+Transformarea Fourier se poate inversa relativ simplu:
+\begin{theorem}[Transformarea Fourier inversă]\label{thm:fourier-inv}
+  \index{transformata!Fourier!inversă}
+  Fie $ f $ o funcție $ L^1 $ și $ \kal{F}[f] $ transformata sa Fourier.
+  Presupunem că și $ \kal{F}[f] $ este funcție $ L^1 $ și atunci
+  se poate recupera funcția $ f $ prin formula:
+  \[
+    f(t) = \dfrac{1}{2 \pi} \int_{-\infty}^\infty \kal{F}[f]e^{i\omega t}d\omega.
+  \]
+\end{theorem}
+
+Dacă funcția $ f $ care se transformă are \enquote{puncte cu probleme}
+(care sigur aparțin domeniului de integrare, deoarece acesta este întreg
+$ \RR $), atunci transformarea Fourier se calculează cu ajutorul reziduurilor.
+Fie, așadar, $ p_1, \dots, p_n $ poli ai funcției $ f $ și presupunem că
+$ \ds\lim_{|z| \to \infty} f(z) = 0 $. Atunci:
+\begin{itemize}
+\item Dacă $ \dr{Im}p_k > 0 $, atunci:
+  \[
+    \kal{F}[f](\omega) = 2\pi i \sum_{k=1}^n \dr{Rez}\left(f(z)e^{-i\omega z} p_k\right), %
+    \quad \text{ pentru } \omega < 0;
+  \]
+\item Dacă $ \dr{Im}p_k < 0 $, atunci:
+  \[
+    \kal{F}[f](\omega) = -2\pi i \sum_{k=1}^n \dr{Rez}\left(f(z)e^{-i\omega z} p_k\right), %
+    \quad \text{ pentru } \omega > 0;
+  \]
+\end{itemize}
+
+În exerciții, ne vor mai fi de folos și următoarele proprietăți ale
+transformatei Fourier:
+\begin{enumerate}[(1)]
+\item \textbf{Liniaritatea:} $ \kal{F}[\alpha f + \beta g] = \alpha \kal{F}[f] + \beta \kal{F}[g] $,
+  pentru orice $ f, g $ funcții $ L^1 $ și $ \alpha, \beta \in \CC $ scalari;
+\item \textbf{Simetria:} $ \kal{F}\left[\kal{F}[f](\omega)\right] = 2\pi f(-\omega) $;
+\item \textbf{Rescalarea:} Fie $ \alpha \in \CC $. Atunci:
+  \[
+    \kal{F}\left[f\left(\alpha t\right)\right](\omega) = %
+    \dfrac{1}{|\alpha|}\kal{F}[f]\left(\dfrac{\omega}{\alpha}\right).
+  \]
+\item \textbf{Translația după $ t $:}
+  \[
+    \kal{F}[f(t - t_0)] = \kal{F}[f(t)] \cdot e^{-i\omega t_0}, %
+    \quad \forall t_0 \in \RR;
+  \]
+\item \textbf{Translația după $ \omega $:}
+  \[
+    \kal{F}\left[e^{i\omega_0 t}f(t)\right] = \kal{F}[f(t)](\omega - \omega_0), %
+    \quad \forall \omega_0 \in \RR;
+  \]
+\item \textbf{Derivarea după $ t $:}
+  \[
+    \kal{F}[f^{(n)}(t)] = (i\omega)^n \kal{F}[f](\omega),
+  \]
+  în ipoteza că $ f $ este de $ n $ ori derivabilă, pentru un anume $ n $;
+\item \textbf{Derivarea după $ \omega $:}
+  \[
+    \kal{F}\left[(-it)^n f(t)\right] = \kal{F}^{(n)}[f](\omega),
+  \]
+  în ipoteza că derivatele de pînă la $ n $ ori au sens;
+\item \textbf{Transformata conjugatei complexe:} Notăm $ f^\ast(t) $ funcția
+  conjugată complexă asociată lui $ f(t) $. Atunci:
+  \[
+    \kal{F}[f^\ast(t)] = \left(\kal{F}[f(t)]\right)^\ast(-\omega).
+  \]
+  Altfel spus, se transformă funcția inițială, apoi se ia conjugatul
+  rezultatului și se schimbă semnul argumentului;
+\item \textbf{Convoluția în timp:} Definim:
+  \[
+    h(t) = (f \ast g)(t) = \int_{-\infty}^\infty f(\tau)g(t - \tau)d\tau
+  \]
+  produsul de convoluție al funcțiilor $ f $ și $ g $.
+  Atunci:
+  \[
+    \kal{F}[f \ast g] = \kal{F}[f] \cdot \kal{F}[g];
+  \]
+\item \textbf{Convoluția în frecvență:}
+  \[
+    \kal{F}\left[f(t) \cdot g(t)\right] = %
+    \dfrac{1}{2 \pi} \int_{-\infty}^\infty \kal{F}[f](y) \cdot \kal{F}[g](\omega - y)dy.
+  \]
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Aplicații la ecuații integrale}
+
+Folosind formula de transformare Fourier, precum și inversarea acesteia,
+putem rezolva ecuații integrale. Vom prezenta acest lucru pe un exemplu.
+
+\textbf{Exemplu:} Rezolvăm ecuația integrală:
+\[
+  \int_0^\infty y(t) \cos tx dt = \dfrac{1}{x^2 + 1}.
+\]
+
+\emph{Soluție:} Pentru a face legătura cu transformările Fourier,
+avem nevoie să prelungim funcția $ y $ (astfel încît integrala
+să fie pe $ (-\infty, \infty) $). Deoarece integrandul este par,
+acest lucru conduce la dublarea rezultatului. Deci avem:
+\[
+  \int_{-\infty}^\infty y(t) \cos tx dt = \dfrac{2}{x^2 + 1}, \quad %
+  \int_{-\infty}^\infty y(t) \sin tx dt = 0.
+\]
+
+Acest lucru conduce la:
+\[
+  \dfrac{1}{ 2\pi} \int_{-\infty}^\infty y(t) e^{itx} dt = \dfrac{1}{\pi(x^2 + 1)}.
+\]
+
+Recunoaștem în membrul stîng formula de trasnformare Fourier,
+deci rezultă:
+\[
+  \kal{F}[y(t)](x) = \dfrac{1}{\pi(x^2 + 1)}.
+\]
+
+Folosim acum formula de inversare și rezultă:
+\[
+  y(t) = \dfrac{1}{\pi} \int_{-\infty}^\infty \dfrac{1}{x^2 + 1} e^{-itx} dx.
+\]
+
+Acest calcul se poate face cu teorema reziduurilor, deoarece integrandul
+are doi poli, $ p_{1,2} = \pm i $, ambii simpli. Obținem:
+\begin{itemize}
+\item Pentru $ t < 0 $ și polul $ p_1 = i $:
+  \begin{align*}
+    y(t) &= \dfrac{1}{\pi} \cdot 2 \pi i \dr{Rez}\left(\dfrac{1}{x^2 + 1} e^{-itx}, i\right) \\
+         &= 2 i \cdot \lim_{z \to i} (z - i) \dfrac{1}{z^2 + 1} e^{-itx} \\
+         &= 2i \cdot e^t;
+  \end{align*}
+\item Pentru $ t > 0 $ și polul $ p_2 = -i $:
+  \begin{align*}
+    y(t) &= \dfrac{1}{pi} \cdot - 2\pi i \dr{Rez}\left( \dfrac{1}{x^2 + 1} e^{-itx}, -i\right) \\
+         &= -2i \cdot \lim_{z \to -i} (z + i) \dfrac{1}{z^2 + 1} e^{-itz} \\
+         &= 2i e^{-t}.
+  \end{align*}
+\end{itemize}
+
+Concluzia este că soluția arată astfel:
+\[
+  y(t) = \begin{cases}
+    \exp(t), & t < 0 \\
+    \exp(-t), & t < 0
+  \end{cases} = \exp\left(|t|\right).  
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+1. Rezolvați ecuațiile integrale:
+\begin{enumerate}[(a)]
+\item $ \ds\int_0^\infty f(t) \sin tx dt = e^{-x}, \quad x > 0 $;
+\item $ \ds\int_0^\infty f(t) \cos tx dt = \dfrac{1}{(1 + x^2)^2} $;
+\end{enumerate}
+
+\vspace{0.3cm}
+
+2. Calculați transformatele Fourier pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(t) = \begin{cases} 1 - |t|, & t \in [-1, 1] \\ 0, & \text{ în rest} \end{cases} $;
+\item $ f(t) = \dfrac{t}{t^2 + a^2}, a > 0 $;
+\item $ f(t) = \dfrac{1}{(t^2 + 1)^2} $;
+\item $ f(t) = \begin{cases} \exp(2t), & t \leq 0 \\ 0, & t > 0 \end{cases} $;
+\item $ f(t) = \begin{cases} t^2 - t, & 0 < t < 1 \\ 0, & \text{ în rest} \end{cases} $;
+\item $ f(t) = \begin{cases} t, & |t| < 1 \\ 0, & |t| > 1 \end{cases} $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+3. Calculați transformatele Fourier pentru funcțiile de mai jos,
+folosind teorema reziduurilor:
+\begin{enumerate}[(a)]
+\item $ f(t) = \dfrac{2}{t^2 + 9} $;
+\item $ f(t) = \dfrac{t}{(t^2 + 9)(t^2 + 1)} $;
+\item $ f(t) = \dfrac{1}{(t^2 + 4)^2} $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m3-19-20"
+%%% End:
