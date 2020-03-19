@@ -27,6 +27,9 @@
 		  <li><a href="https://onlyo.co/2vtigf3" target="_blank"><b>TABEL DE ALEGERE A EXERCIȚIILOR</b></a>;</li>
 		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>FOLDERUL PENTRU UPLOAD</b></a>;</li>
 		  <li><b>Seminar 3 &amp; 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/kmFyKKwT3tbCHrD" target="_blank">video</a> și <a href="../docs/online/seminar4-acs.pdf" target="_blank">PDF</a>.</li>
+		  <ul>
+			<li>Dorian Verna, seminar 3, exercițiul 4a: <a href="https://cloud.adrianmanea.xyz/index.php/s/6Ntbq5zqsqB43fs" target="_blank">video</a>;</li>
+		  </ul>
 		</ul>
 	  </div>
 	  <button class="accordion">ETTI, Analiză 2</button>
@@ -40,8 +43,13 @@
 			<li>Teodora Mihăilă, exercițiul 2a: <a href="https://cloud.adrianmanea.xyz/index.php/s/JtRRE2j8Zq4qQ5W" target="_blank">video</a>;</li>
 			<li>Mircea Bănaru, exercițiul 5c: <a href="https://cloud.adrianmanea.xyz/index.php/s/WGPQm26XcEGSnjc" target="_blank">video</a>;</li>
 			<li>Radu Bolborici, exercițiul 5b: <a href="https://cloud.adrianmanea.xyz/index.php/s/CHnDL7cZgbtDCpp" target="_blank">video</a>;</li>
-			<li>Negru Alexandru, exercițiul 5a: <a href="https://cloud.adrianmanea.xyz/index.php/s/JdcPC8yeyFTkJPn" target="_blank">video</a>;</li>
-			<li>Vințeler Ștefan, exercițiul 1e: <a href="https://cloud.adrianmanea.xyz/index.php/s/faJPoLeACozb6Fa" target="_blank">video</a>;</li>
+			<li>Alexandru Negru, exercițiul 5a: <a href="https://cloud.adrianmanea.xyz/index.php/s/JdcPC8yeyFTkJPn" target="_blank">video</a>;</li>
+			<li>Ștefan Vințeler, exercițiul 1e: <a href="https://cloud.adrianmanea.xyz/index.php/s/faJPoLeACozb6Fa" target="_blank">video</a>;</li>
+			<li>Bianca Stoianovici, exercițiul 1c: <a href="https://cloud.adrianmanea.xyz/index.php/s/WAETA7RTJ4mCZD3" target="_blank">video</a>;</li>
+			<li>Miruna Stănescu, exercițiul 1d: <a href="https://cloud.adrianmanea.xyz/index.php/s/KGbqYzzpNf5g2Cn" target="_blank">video</a>;</li>
+			<li>Adrian Iamandache, exercițiul 2b: <a href="https://cloud.adrianmanea.xyz/index.php/s/2kkpesJZNFiQkFD" target="_blank">video</a>;</li>
+			<li>Maria Niculae, exercițiul 3: <a href="https://cloud.adrianmanea.xyz/index.php/s/zbkSErqLerrFkMZ" target="_blank">video</a>;</li>
+			<li>Mădălina Bălăbăneanu, exercițiul 1b: <a href="https://cloud.adrianmanea.xyz/index.php/s/kmHygTYKWx3RcAr" target="_blank">video</a>;</li>
 		  </ul>
 		</ul>
 	  </div>
@@ -288,6 +296,9 @@
 
     <br /><br /><br />
     <p style="text-align:center">Sursele LaTeX pentru documentele incluse sînt disponibile <a href="https://github.com/adimanea/adrianmanea.xyz/tree/master/_latex_" target="_blank"><b>pe GitHub</b></a>, unde încurajez orice comentarii sau contribuții.</p>
+
+	<p style="text-align:center">Dacă materialele sau informațiile de aici vă sînt de folos și doriți să-mi cumpărați o cafea, o puteți face prin <a href="https://paypal.me/acmanea?locale.x=en_US" target="_blank"><b>PayPal.me</b></a>.</p>
+	
   </div>
   <script src="../scripts/bookmarks-script.js"></script>
 </body>
