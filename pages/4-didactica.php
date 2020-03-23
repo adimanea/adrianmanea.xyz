@@ -24,33 +24,22 @@
 	  <div class="panel">
 		<ul class="big-list">
 		  <li>Notițele sînt disponibile aici: <a href="../docs/19-20-acs-m3/m3-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
-		  <li><a href="https://onlyo.co/2vtigf3" target="_blank"><b>TABEL DE ALEGERE A EXERCIȚIILOR</b></a>;</li>
-		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>FOLDERUL PENTRU UPLOAD</b></a>;</li>
-		  <li><b>Seminar 3 &amp; 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/kmFyKKwT3tbCHrD" target="_blank">video</a> și <a href="../docs/online/seminar4-acs.pdf" target="_blank">PDF</a>.</li>
-		  <ul>
-			<li>Dorian Verna, seminar 3, exercițiul 4a: <a href="https://cloud.adrianmanea.xyz/index.php/s/6Ntbq5zqsqB43fs" target="_blank">video</a>;</li>
-		  </ul>
+		  <li><a href="https://onlyo.co/2vtigf3" target="_blank"><b>Tabel de alegere a exercițiilor</b></a>;</li>
+		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: email cu link);</li>
+		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEMBe0muCvyYPCOE3h6Mq0B0"><b>Playlist seminarii</b></a>;</li>
+		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/8sQKp83r84fs76b"><b>Folder notițe de mînă</b></a>;</li>
+		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEPoGKpRwSpstzCCf5BIQFOI" target="_blank"><b>Playlist teme</b></a>.</li>
 		</ul>
 	  </div>
 	  <button class="accordion">ETTI, Analiză 2</button>
 	  <div class="panel">
 		<ul class="big-list">
 		  <li>Notițele sînt disponibile aici: <a href="../docs/19-20-etti-am2/am2-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
-		  <li><a href="https://onlyo.co/38WesRb" target="_blank"><b>TABEL DE ALEGERE A EXERCIȚIILOR</b></a>;</li>
-		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/EWbaJnEdR3DMAAN" target="_blank"><b>FOLDERUL PENTRU UPLOAD</b></a> și varianta pentru <a href="https://cloud.adrianmanea.xyz/index.php/s/ffPB32a7T8mBD3H" target="_blank"><b>download</b></a>;</li>
-		  <li><b>Seminar 4 online</b>: <a href="https://cloud.adrianmanea.xyz/index.php/s/B4pkN3cpeotQCJm" target="_blank">video</a> și <a href="../docs/online/seminar4-etti.pdf" target="_blank">PDF</a>.</li>
-		  <ul>
-			<li>Teodora Mihăilă, exercițiul 2a: <a href="https://cloud.adrianmanea.xyz/index.php/s/JtRRE2j8Zq4qQ5W" target="_blank">video</a>;</li>
-			<li>Mircea Bănaru, exercițiul 5c: <a href="https://cloud.adrianmanea.xyz/index.php/s/WGPQm26XcEGSnjc" target="_blank">video</a>;</li>
-			<li>Radu Bolborici, exercițiul 5b: <a href="https://cloud.adrianmanea.xyz/index.php/s/CHnDL7cZgbtDCpp" target="_blank">video</a>;</li>
-			<li>Alexandru Negru, exercițiul 5a: <a href="https://cloud.adrianmanea.xyz/index.php/s/JdcPC8yeyFTkJPn" target="_blank">video</a>;</li>
-			<li>Ștefan Vințeler, exercițiul 1e: <a href="https://cloud.adrianmanea.xyz/index.php/s/faJPoLeACozb6Fa" target="_blank">video</a>;</li>
-			<li>Bianca Stoianovici, exercițiul 1c: <a href="https://cloud.adrianmanea.xyz/index.php/s/WAETA7RTJ4mCZD3" target="_blank">video</a>;</li>
-			<li>Miruna Stănescu, exercițiul 1d: <a href="https://cloud.adrianmanea.xyz/index.php/s/KGbqYzzpNf5g2Cn" target="_blank">video</a>;</li>
-			<li>Adrian Iamandache, exercițiul 2b: <a href="https://cloud.adrianmanea.xyz/index.php/s/2kkpesJZNFiQkFD" target="_blank">video</a>;</li>
-			<li>Maria Niculae, exercițiul 3: <a href="https://cloud.adrianmanea.xyz/index.php/s/zbkSErqLerrFkMZ" target="_blank">video</a>;</li>
-			<li>Mădălina Bălăbăneanu, exercițiul 1b: <a href="https://cloud.adrianmanea.xyz/index.php/s/kmHygTYKWx3RcAr" target="_blank">video</a>;</li>
-		  </ul>
+		  <li><a href="https://onlyo.co/38WesRb" target="_blank"><b>Tabel de alegere a exercițiilor</b></a>;</li>
+		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/EWbaJnEdR3DMAAN" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: email cu link);</li>
+		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEPFu1WVMM___e5o5XnKFxjk" target="_blank"><b>Playlist seminarii</b></a>;</li>
+		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/4CTHTDrNKo5Jw8Z" target="_blank"><b>Folder notițe de mînă</b></a>;</li>
+		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEMe9aZ8Pqw8LNGYjubMdq6z" target="_blank"><b>Playlist teme</b></a>.</li>
 		</ul>
 	  </div>
 	</div>
