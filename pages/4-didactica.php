@@ -27,6 +27,9 @@
 		  <li><a href="https://onlyo.co/2vtigf3" target="_blank"><b>Tabel de alegere a exercițiilor</b></a>;</li>
 		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: email cu link);</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEMBe0muCvyYPCOE3h6Mq0B0"><b>Playlist seminarii</b></a>;</li>
+		  <ul>
+			<li><b>Observație:</b> Seminarul 6 conține doar recapitularea noțiunilor de bază ale teoriei probabilităților, studiate și în liceu. De aceea, videoclipul va lipsi și vă indic, pe lîngă materialele de la curs, <a href="https://adrianmanea.xyz/docs/17-18-fia-intprob/seminar11-prob.pdf" target="_blank"><b>notițe ale mele</b></a>, cu teorie și exemple rezolvate, de diverse grade de dificultate. <i>Tema se poate lua fie din notițele mele, fie din exercițiile de la curs.</i></li>
+		  </ul>
 		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/8sQKp83r84fs76b"><b>Folder notițe de mînă</b></a>;</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEPoGKpRwSpstzCCf5BIQFOI" target="_blank"><b>Playlist teme</b></a>.</li>
 		</ul>
