@@ -32,6 +32,8 @@
 		  </ul>
 		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/8sQKp83r84fs76b"><b>Folder notițe de mînă</b></a>;</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEPoGKpRwSpstzCCf5BIQFOI" target="_blank"><b>Playlist teme</b></a>.</li>
+		  <li><a href="https://adrianmanea.xyz/docs/19-20-acs-m3/teste/t1-314cc.pdf"><b>Test 1 314CC</b></a> (<a href="https://cloud.adrianmanea.xyz/index.php/s/82EqbTKpCs5A9cS"><b>mirror</b></a>); <b>Trimiteți rezolvarea pe email pînă la 26.03.2020, ora 13.00!</b></li>
+		  <li><a href="https://adrianmanea.xyz/docs/19-20-acs-m3/teste/t1-315cc.pdf"><b>Test 1 315CC</b></a> (<a href="https://cloud.adrianmanea.xyz/index.php/s/zdHebZoTzXzRobr"><b>mirror</b></a>); <b>Trimiteți rezolvarea pe email pînă la 26.03.2020, ora 13.00!</b></li>
 		</ul>
 	  </div>
 	  <button class="accordion">ETTI, Analiză 2</button>
