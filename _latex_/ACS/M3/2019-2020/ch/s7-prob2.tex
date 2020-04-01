@@ -1,0 +1,245 @@
+% ! TEX root = ../m3-19-20.tex
+
+\chapter{Scheme clasice de probabilitate}
+
+Schemele clasice de probabilitate sînt modele matematice care ne permit calculul
+probabilității de realizare a unui eveniment în cazul unor distribuții anume.
+
+\section{Schema lui Poisson}
+
+\indent\indent Schema lui Poisson se formulează astfel. Presupunem că avem $ n $
+urne $ U_i, 1 \leq i \leq n $, care conțin bile albe și bile negre în proporții
+cunoscute. Fie $ p_i $ probabilitatea de extragere a unei bile albe din urna $ U_i $,
+respectiv $ q_i $, probabilitatea de extragere a unei bile negre din urna $ U_i $.
+
+Extragem cîte o bilă din fiecare urnă. Probabilitatea de a obține $ k $ bile albe
+este coeficientul lui $ X^k $ din polinomul:
+\[
+  \prod_{i = 1}^n (p_i X + q_i) = (p_1 X + q_1) (p_2 X + q_2) \cdots (p_n X + q_n).
+\]
+
+\textbf{Observație:} În cazul schemei lui Poisson, extragerea se face \emph{fără %
+  revenire}. O bilă, după ce a fost extrasă, nu este repusă în urnă, astfel că, după
+fiecare extragere, numărul de bile din urnă scade.
+
+\vspace{0.3cm}
+
+\textbf{Exemplu:} Avem 3 sisteme de siguranță, primul funcționează cu probabilitatea
+de 80\%, al doilea, de 70\%, iar al treilea, în 90\% din cazuri. Să se determine
+probabilitatea ca oricare două dintre sisteme să funcționeze simultan.
+
+\emph{Soluție:} Ne aflăm în cazul schemei lui Poisson, \qq{bilele} fiind sistemele
+de siguranță, iar \qq{extragerea} înseamnă funcționarea lor. Așadar, căutăm
+coeficientul lui $ X^2 $ din polinomul:
+\[
+  \pi = (0,8 \cdot X + 0,2)(0,7 \cdot X + 0,3)(0,9 \cdot X + 0,1),
+\]
+coeficient care este $ p = 0,398 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Schema lui Bernoulli (binomială)}
+
+\indent\indent Situația este similară cu cea din cazul Poisson, doar că acum
+extragerile se fac \emph{cu repunere}. Adică, după ce fiecare bilă este extrasă
+și se înregistrează culoarea sa, este repusă în urnă, pentru a putea fi extrasă din
+nou, eventual.
+
+Așadar, schema lui Bernoulli se formulează astfel. Avem o urnă cu $ a $ bile albe
+și $ b $ bile negre. Extragem cu repunere $ n $ bile. Probabilitatea să extragem
+$ k $ bile albe, cu $ 0 \leq k \leq n $ este dată de:
+\[
+  p(n, k) = C_n^k p^k q^{n-k}, \quad \text{unde } p = \frac{a}{a + b}, %
+  q = \frac{b}{a + b}.
+\]
+
+De remarcat că în acest caz, $ p $ corespunde evenimentului favorabil, iar $ q = 1 - p $.
+
+\vspace{0.3cm}
+
+\textbf{Exemplu:} Se aruncă două zaruri de 10 ori. Care este probabilitatea să se obțină
+de exact 4 ori suma 7?
+
+\emph{Soluție:} Ne aflăm în cazul schemei lui Bernoulli, unde \qq{bilele} sînt sumele
+de pe zaruri, iar \qq{extragerea} este aruncarea zarului. Evident, modelul potrivit
+este acela al extragerii cu revenire, deoarece orice sumă poate fi obținută la fiecare
+aruncare.
+
+În acest caz, avem $ p = \dfrac{1}{6} $, deoarece suma 7 poate fi obținută în 6 moduri
+din punctele de pe două zaruri, iar cazurile posibile sînt 36. Rezultă $ q = \dfrac{5}{6} $.
+
+În plus, avem $ n = 10, k = 4 $, deci:
+\[
+  p(10, 4) = C_{10}^4 \frac{1}{6^4} \cdot \frac{5^6}{6^6}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Schema multinomială}
+
+\indent\indent Schema lui Bernoulli se mai numește \emph{schema binomială},
+deoarece $ p(n, k) $ este, de fapt, coeficientul lui $ X^k $ din dezvoltarea
+binomului $ (pX + q)^n $.
+
+O generalizare a acestei situații este \emph{schema multinomială}, în care
+presupunem că avem o urnă cu bile de $ s \in \NN $ culori și se extrag cu
+repunere $ n $ bile. Probabilitatea de a extrage $ k_i $ bile de culoare
+$ i $, cu $ 1 \leq i \leq s $ este dată de formula:
+\[
+  p(n; k_1, \dots, k_s) = \frac{n!}{k_1! k_2! \cdots k_s!} \cdot %
+  p_1^{k_1} \cdot p_2^{k_2} \cdots p_s^{k_s},
+\]
+unde $ n = k_1 + \dots + k_s $ și $ p_1 + \dots + p_s = 1 $, iar
+$ p_i $ este probabilitatea de a extrage o bilă de culoare $ i $.
+
+\vspace{0.3cm}
+
+\textbf{Exemplu:} Se aruncă cu un zar de 10 ori. Care este probabilitatea
+ca exact de 2 ori să apară fața cu 1 punct și de 3 ori să apară fața cu 2 puncte?
+
+\emph{Soluție:} Evident, sîntem în cazul schemei multinomiale. \qq{Culorile}
+sînt punctele de pe zaruri și vrem să \qq{extragem 2 bile de culoarea 1 și 3
+  bile de culoarea 2}.
+
+Atunci $ n = 10 $, deoarece facem 10 \qq{extrageri}, $ k_1 = 2 $ și $ k_2 = 3 $.
+În plus, avem $ p_1 = p_2 = \dfrac{1}{6} $, deoarece orice număr de pe zar are
+aceeași probabilitate de a apărea. Rezultă, de asemenea, că avem nevoie și
+de $ k_3 = n - k_1 - k_2 = 5 $ și $ p_3 = 1 - p_1 - p_2 = \frac{2}{3} $.
+
+Probabilitatea cerută este:
+\[
+  p(10; 2, 3, 5) = \frac{10!}{2! \cdot 3! \cdot 5!} \cdot %
+  \frac{1}{6^2} \cdot \frac{1}{6^3} \cdot \frac{2^5}{3^5}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Schema geometrică}
+
+\indent\indent Dintr-o urnă cu $ a $ bile albe și $ b $ bile negre, extragem
+fără repunere $ n $ bile, cu $ n \leq a + b $. Probabilitatea de a obține
+$ k \leq a $ bile albe, \emph{fără repunere}, este dată de:
+\[
+  p_{a, b}^{k, n - k} = \frac{C_a^k \cdot C_b^{n-k}}{C_{a+b}^n}.
+\]
+
+Mai general, dacă avem $ a_i $ bile de culoarea $ i, 1 \leq i \leq s $ și
+extragem $ n $ bile fără repunere, atunci probabilitatea de a extrage $ k_i $,
+cu $ k_1 + \dots + k_s = n $ bile de culoarea $ i $ este dată de formula:
+\[
+  p_{a_1, \dots, a_s}^{k_1, \dots, k_s} = %
+  \frac{C_{a_1}^{k_1} \cdots C_{a_s}^{k_s}}{C_{k_1 + \dots + k_s}^n}.
+\]
+
+\vspace{0.3cm}
+
+\textbf{Exemplu:} Avem un lot de 100 articole, dintre care 80 sînt corespunzătoare,
+15 sînt cu defecțiuni remediabile și 5 rebuturi. Alegem 6 articole. Care este
+probabilitatea ca dintre acestea, 3 să fie bune, 2 cu defecțiuni remediabile și
+un rebut?
+
+\emph{Soluție:} Presupunem că extragerile se fac cu repunere. Atunci sîntem în cazul
+schemei multinomiale, deci:
+\[
+  p(6; 3, 2, 1) = \frac{6!}{3! \cdot 2! \cdot 1!} \Big(\frac{80}{100}\Big)^3 \cdot %
+  \Big( \frac{15}{100} \Big)^2 \cdot \Big( \frac{5}{100} \Big)^1.
+\]
+
+Dacă extragerile se fac fără repunere, ne aflăm în cazul schemei geometrice și avem:
+\[
+  p_{80, 15, 5}^{3, 2, 1} = \frac{C_{80}^3 \cdot C_{15}^2 \cdot C_5^1}{C_{100}^6}.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Un lot de 50 de procesoare conține 3 defecte. Alegem la întîmplare
+10, simultan, și le verificăm. Care este probabilitatea ca 2 să fie defecte?
+
+\emph{Indicație:} Schema geometrică (fără repunere).
+
+\vspace{0.3cm}
+
+2. (a) Un semnal este transmis pe 3 canale diferite, iar probabilitățile de
+recepționare corectă sînt 0,9; 0,8 și 0,7. Care este probabilitatea să se
+recepționeze corect un semnal?
+
+(b) Dar dacă semnalul este transmis pe un canal ales la întîmplare și presupunem
+că orice canal poate fi ales cu aceeași probabilitate?
+
+\emph{Indicație:} (a) Schema lui Poisson.
+
+(b) Formula probabilității totale: $ \dfrac{1}{3} \cdot (0,9 + 0,8 + 0,7) $.
+
+\vspace{0.3cm}
+
+3. O urnă conține 2 bile albe și 3 bile negre. Alegem la întîmplare 2 bile,
+fără repunere. Care este probabilitatea ca acestea să fie ambele negre?
+
+Dar dacă extragerea se face cu repunere?
+
+\vspace{0.3cm}
+
+4. Se testează 5 dispozitive care funcționează în condiții identice, independent
+și cu randament de 0,9 fiecare. Care este probabilitatea ca exact două să
+funcționeze?
+
+\emph{Indicație:} Schema Bernoulli.
+
+\vspace{0.3cm}
+
+5. Se consideră 3 urne: $ U_1 $, care conține 5 bile albe și 5 negre, $ U_2 $,
+care conține 4 bile albe și 6 negre și $ U_3 $, care conține 4 bile albe
+și 5 negre. Din fiecare urnă se extrag cu repunere cîte 5 bile.
+
+Care este probabilitatea ca din 2 urne să obținem cîte 2 bile albe și 3 negre,
+iar din a treia urnă să obținem o altă combinație?
+
+\emph{Indicație:} Schema Poisson sau Bernoulli, după cazuri (cu/fără repunere).
+
+\vspace{0.3cm}
+
+6. Se consideră urnele din problema precedentă. Din fiecare urnă se extrage
+cîte o bilă. Dacă se repetă experiența de 5 ori, care este probabilitatea ca
+de 3 ori să se obțină o bilă albă și 2 negre?
+
+\emph{Indicație:} Schema Poisson.
+
+\vspace{0.3cm}
+
+7. Fie 8 canale de transmisie a informației care funcționează independent.
+Presupunem că un canal este activ cu probabilitatea 1/3.
+
+Să se calculeze probabilitatea ca la un moment dat să fie mai mult de 6 canale
+active.
+
+\emph{Indicație:} Schema Bernoulli.
+
+\vspace{0.3cm}
+
+8. Șase vînători au zărit o vulpe și au tras simultan. Presupunem că de la
+distanța de la care au tras, fiecare vînător nimerește în mod obișnuit vulpea
+cu o probabilitate de $ \dfrac{1}{3} $. Aflați probabilitatea ca vulpea să
+fie nimerită.
+
+\vspace{0.3cm}
+
+9. Se aruncă o monedă de 8 ori. Aflați probabilitatea ca stema să apară
+de 6 ori. Aflați probabilitatea ca stema să apară de \emph{cel puțin} 6 ori.
+
+\vspace{0.3cm}
+
+10. Un muncitor produce piese astfel încît 99\% sînt bune, 7\% au defecte
+remediabile și 3\% sînt rebuturi.
+
+Se aleg aleatoriu 3 piese produse de muncitor. Care este probabilitatea
+ca dintre aceste 3 piese, cel puțin una să fie bună și cel puțin una să fie
+rebut?
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m3-19-20"
+%%% End:
