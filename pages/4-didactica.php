@@ -24,6 +24,7 @@
 	  <div class="panel">
 		<ul class="big-list">
 		  <li>Notițele sînt disponibile aici: <a href="../docs/19-20-acs-m3/m3-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
+		  <li>Material suplimentar teoria probabilităților: <a href="http://math.etti.tuiasi.ro/lpopa/seminarTP.pdf" target="_blank"><b>carte TUIASI</b></a>;</li>
 		  <li><a href="https://onlyo.co/2vtigf3" target="_blank"><b>Tabel de alegere a exercițiilor</b></a>;</li>
 		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: email cu link);</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEMBe0muCvyYPCOE3h6Mq0B0"><b>Playlist seminarii</b></a>;</li>
