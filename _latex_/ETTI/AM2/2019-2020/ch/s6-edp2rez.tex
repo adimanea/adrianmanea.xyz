@@ -362,15 +362,15 @@ problemei Cauchy, deci satisface și condițiile la limită, adică:
 \[
   \begin{cases}
     u(x, 0) &= \sum_{n\geq 1} a_n \sin \dfrac{n\pi}{l} x = \varphi(x) \\
-    \dfrac{\partial u}{\partial t}(x, 0) &= \dfrac{n\pi}{l}ab_n\sin\dfrac{n\pi}{l}x = \psi(x)
+    \dfrac{\partial u}{\partial t}(x, 0) &= \dfrac{n\pi}{l}a \sum_{n \geq 1} b_n\sin\dfrac{n\pi}{l}x = \psi(x)
   \end{cases}.
 \]
 
 Putem privi aceste egalități ca dezvoltarea funcțiilor $ \varphi $ și $ \psi $ în serie
 Fourier de sinusuri. Rezultă că putem afla coeficienții:
 \begin{eqnarray} \label{eq:fourier}
-  a_n &= \dfrac{2}{l} \int_0^l \varphi(x) \sin \dfrac{n\pi}{l} xdx \\
-  b_n &= \dfrac{2}{n\pi a} \int_0^l \psi(x) \sin \dfrac{n \pi}{l} xdx.
+  a_n &= \dfrac{2}{l} \ds\int_0^l \varphi(x) \sin \dfrac{n\pi}{l} xdx \\
+  b_n &= \dfrac{2}{n\pi a} \ds\int_0^l \psi(x) \sin \dfrac{n \pi}{l} xdx.
 \end{eqnarray}
 
 \begin{remark}\label{rk:coarda-finita-fourier}
