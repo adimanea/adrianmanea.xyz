@@ -1,4 +1,5 @@
 % ! TEX root = ../am2-19-20.tex
+
 \chapter{Integrale complexe}
 
 \section{Teorema lui Cauchy}
@@ -296,15 +297,15 @@ Rezultă:
 (c) Avem doi poli, $ z = 1, z = -2 $ în interiorul conturului. Se vede că $ z_1 = 1 $
 este pol de ordinul 2, iar $ z_2 = -2 $ este pol de ordinul 1. Calculăm reziduurile:
 \begin{align*}
-  \Rez(f, z_1) &= \frac{1}{2!} \lim_{z \to 1} \Big[ (z - 1)^2 \frac{z^2 + 1}{(z - 1)^2(z + 2)} \Big] \\
-               &= \frac{1}{2!} \lim_{z \to 1} \frac{z^2 + 4z - 1}{(z + 2)^2} \\
-               &= \frac{2}{9} \\
+  \Rez(f, z_1) &= \frac{1}{(2-1)!} \lim_{z \to 1} \Big[ (z - 1)^2 \frac{z^2 + 1}{(z - 1)^2(z + 2)} \Big]^\prime \\
+               &= \frac{1}{1!} \lim_{z \to 1} \frac{z^2 + 4z - 1}{(z + 2)^2} \\
+               &= \frac{4}{9} \\
   \Rez(f, z_2) &= \lim_{z \to -2} (z + 2) \frac{z^2 + 1}{(z - 1)^2(z + 2)} = \frac{5}{9}.
 \end{align*}
 
 Rezultă:
 \[
-  I = \int_{|z| = 3} \frac{z^2 + 1}{(z - 1)^2(z + 2)} dz = \frac{14}{9} \pi i.
+  I = \int_{|z| = 3} \frac{z^2 + 1}{(z - 1)^2(z + 2)} dz = 2 \pi i.
 \]
 
 \vspace{1cm}
@@ -400,12 +401,6 @@ sînt $ z = -2 \pm \sqrt{3} $, care sînt poli simpli. Numai $ z = -2 + \sqrt{3
 în interiorul cercului $ |z| = 1 $ și calculăm reziduul folosind
 Teorema \ref{thm:calc-rez}(2).
 \index{integrală!trigonometrică}
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../m3-19-20"
-%%% End:
 
 
 %%% Local Variables:
