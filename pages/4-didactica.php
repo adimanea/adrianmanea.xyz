@@ -26,7 +26,7 @@
 		  <li>Notițele sînt disponibile aici: <a href="../docs/19-20-acs-m3/m3-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
 		  <li>Material suplimentar teoria probabilităților: <a href="http://math.etti.tuiasi.ro/lpopa/seminarTP.pdf" target="_blank"><b>carte TUIASI</b></a>;</li>
 		  <li><a href="https://onlyo.co/2vtigf3" target="_blank"><b>Tabel de alegere a exercițiilor</b></a>;</li>
-		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: <a href="https://send.firefox.com/"><b>Firefox Send</b> [limită 1GB] sau email cu link de cloud);</li>
+		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/PqSkQzizWi4wP32" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: <a href="https://send.firefox.com/"><b>Firefox Send</b></a> [limită 1GB] sau email cu link de cloud);</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEMBe0muCvyYPCOE3h6Mq0B0"><b>Playlist seminarii</b></a>;</li>
 		  <ul>
 			<li><b>Observație:</b> Seminarul 6 conține doar recapitularea noțiunilor de bază ale teoriei probabilităților, studiate și în liceu. De aceea, videoclipul va lipsi și vă indic, pe lîngă materialele de la curs, <a href="https://adrianmanea.xyz/docs/17-18-fia-intprob/seminar11-prob.pdf" target="_blank"><b>notițe ale mele</b></a>, cu teorie și exemple rezolvate, de diverse grade de dificultate. <i>Tema se poate lua fie din notițele mele, fie din exercițiile de la curs.</i></li>
@@ -42,7 +42,7 @@
 		<ul class="big-list">
 		  <li>Notițele sînt disponibile aici: <a href="../docs/19-20-etti-am2/am2-19-20.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
 		  <li><a href="https://onlyo.co/38WesRb" target="_blank"><b>Tabel de alegere a exercițiilor</b></a>;</li>
-		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/EWbaJnEdR3DMAAN" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: <a href="https://send.firefox.com/"><b>Firefox Send</b> [limită 1GB] sau email cu link de cloud);</li>
+		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/EWbaJnEdR3DMAAN" target="_blank"><b>Folderul pentru upload</b></a> (alternativă: <a href="https://send.firefox.com/"><b>Firefox Send</b></a> [limită 1GB] sau email cu link de cloud);</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEPFu1WVMM___e5o5XnKFxjk" target="_blank"><b>Playlist seminarii</b></a>;</li>
 		  <li><a href="https://cloud.adrianmanea.xyz/index.php/s/4CTHTDrNKo5Jw8Z" target="_blank"><b>Folder notițe de mînă</b></a>;</li>
 		  <li><a href="https://www.youtube.com/playlist?list=PL3wzJNq9bJEMe9aZ8Pqw8LNGYjubMdq6z" target="_blank"><b>Playlist teme</b></a>.</li>
