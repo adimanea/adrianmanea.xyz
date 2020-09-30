@@ -53,6 +53,7 @@
 		  <li>Repository-ul de lucru este <a href="https://github.com/adimanea/fsa-lab-cripto" target="_blank"><b>aici</b></a>.</li>
 		</ul>
 	  </div>
+	</div>
 
 <!--------------------------------------------------------->
 
