@@ -36,7 +36,7 @@
 	  <button class="accordion">ETTI, Analiză 1</button>
 	  <div class="panel">
 		<ul class="big-list">
-		  <li>Notițele vor fi aici.</li>
+		  <li>Notițele sînt disponibile <a href="../docs/20-21-etti-am1/am1-20-21.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
 		</ul>
 	  </div>
 
