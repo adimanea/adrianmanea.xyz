@@ -36,7 +36,8 @@
 	  <button class="accordion">ETTI, Analiză 1</button>
 	  <div class="panel">
 		<ul class="big-list">
-		  <li>Notițele sînt disponibile aici: <a href="../docs/20-21-etti-am1/am1-20-21.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>.</li>
+		  <li>Notițele sînt disponibile aici: <a href="../docs/20-21-etti-am1/am1-20-21.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
+		  <li>Notițele de mînă de după fiecare seminar, <a href="https://cloud.adrianmanea.xyz/index.php/s/cRjiq6L5Dcp7kBC" target="_blank"><b>aici</b></a>.</li>
 		</ul>
 	  </div>
 
