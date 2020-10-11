@@ -1,0 +1,218 @@
+% ! TEX root = ../ag-20-21.tex
+
+\chapter{Recapitulare: Metoda lui Gauss}
+
+\section{Eliminare gaussiană}
+\index{eliminare gaussiană}
+
+Metoda eliminării gaussiene (numită și metoda Gauss(-Jordan)) este folosită
+pentru a aduce matrice la o formă mai simplă, anume triunghiulară sau chiar
+forma matricei unitate.
+
+Principalele aplicații ale eliminării gaussiene sînt în rezolvarea sistemelor
+de ecuații liniare și în inversarea matricelor.
+
+În ambele situații, se trece de la o stare la alta făcînd \emph{transformări %
+  elementare}, adică acele operații permise în determinanți, care nu schimbă
+valoarea determinantului. În general, operațiile pe care le putem face intră
+sub denumirea de \emph{combinații liniare cu linii sau coloane}.
+
+Un exemplu este următorul. Fie sistemul de ecuații:
+\[
+  \begin{cases}
+    mx_1 + x_2 + x_3 &= 1 \\
+    x_1 + mx_2 + x_3 &= m \\
+    x_1 + x_2 + mx_3 &= m^2,
+  \end{cases}
+\]
+unde $ m \in \RR $. Evident, soluția sistemului va implica o discuție după $ m $.
+
+Fie $ A $ matricea sistemului, iar $ B $ matricea-coloană a termenilor liberi.
+Prelucrăm matricea extinsă $ (A \mid B) $ pînă cînd aducem pe $ A $ în formă
+(superior) triunghiulară.
+
+Considerăm matricea $M = (A \mid B) $ de mai sus:
+\begin{align*}
+  (A | B) &= \begin{pmatrix}
+    m & 1 & 1 & \mid & 1 \\
+    1 & m & 1 & \mid & m \\
+    1 & 1 & m & \mid & m^2
+  \end{pmatrix} \\
+          &\xrightarrow{L_1 \leftrightarrow L_2}
+            \begin{pmatrix}
+              1 & m & 1 & \mid & m \\
+              m & 1 & 1 & \mid & 1 \\
+              1 & 1 & m & \mid & m^2
+            \end{pmatrix} \\
+          &\stackrel{L_2 \to L_2 - mL_1}{\xrightarrow{L_3 \to L_3 - L_1}}
+            \begin{pmatrix}
+              1 & m & 1 & \mid & m \\
+              0 & 1 - m^2 & 1 - m & \mid & 1 - m^2 \\
+              0 & 1 - m & m - 1 & \mid & m^2 - m.
+            \end{pmatrix}
+\end{align*}
+
+În acest punct, avem o discuție:
+
+(a) Dacă $m = 1$, atunci sistemul se reduce la prima ecuație, deci este compatibil
+dublu nedeterminat. Rezultă soluția
+\[
+  \{ (1 - \alpha - \beta, \alpha, \beta) \mid \alpha, \beta \in \RR \}.
+\]
+
+(b) Dacă $m \neq 1$, atunci putem continua transformările și ajungem, în fine, la:
+\[
+  M = \begin{pmatrix}
+    1 & 0 & 1 + m & \mid & m + m^2 \\
+    0 & 1 & -1 & \mid & -m \\
+    0 & 0 & 2 & \mid & (m + 1)^2
+  \end{pmatrix}
+\]
+
+Aici discutăm din nou:
+
+(b1) Dacă $m = -2$, sistemul este incompatibil, deoarece ultima ecuație devine $0 = 1$.
+
+(b2) Dacă $m \neq -2$, putem continua transformările și ajungem, în cele din urmă, la:
+\[
+  M = %
+  \begin{pmatrix}
+    1 & 0 & 0 & \mid & -(m+1)/2 \\
+    0 & 1 & 0 & \mid & 1/(m+2) \\
+    0 & 0 & 1 & \mid & (m+1)^2/(m+2)
+  \end{pmatrix}
+\]
+
+
+În acest ultim caz, sistemul este compatibil determinat, soluția fiind dată de ultima coloană:
+\[
+  \begin{cases}
+    x_1  &= -\dfrac{m + 1}{2} \\
+    & \\
+    x_2  &= \dfrac{1}{m + 2} \\
+    & \\
+    x_3  &= \dfrac{(m + 1)^2}{m + 2}.
+  \end{cases}
+\]
+
+Concluzia generală este:
+\begin{enumerate}[(a)]
+\item Dacă $m \in \RR - \{-2, 1\}$, sistemul are soluție unică;
+\item Dacă $m = -2$, sistemul este incompatibil;
+\item Dacă $m = -1$, sistemul este compatibil nedeterminat.
+\end{enumerate}
+
+\vspace{1cm}
+
+Similar, pentru a calcula inversa unei matrice, bordăm matricea dată cu matricea
+unitate și efectuăm transformări elementare pînă ce matricea inițială devine
+matricea unitate.
+
+Iată un exemplu, notînd și transformările:
+\begin{align*}
+  \begin{pmatrix}
+    2 & 1 & 3 & \mid & 1 & 0 & 0 \\
+    -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+    5 & 1 & 1 & \mid & 0 & 0 & 1
+  \end{pmatrix} &\xrightarrow{L_1 \to (1/2)L_1}
+                  \begin{pmatrix}
+                    1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+                    -2 & 3 & 4 & \mid & 0 & 1 & 0 \\
+                    5 & 1 & 1 & \mid & 0 & 0 & 1 
+                  \end{pmatrix} \\
+      &\stackrel{L_2 \to 2L_1 + L_2}{\xrightarrow{L_3 \to -5L_1 + L_3}}
+        \begin{pmatrix}
+          1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+          0 & 4 & 7 & \mid & 1 & 1 & 0 \\
+          0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1
+        \end{pmatrix} \\
+      &\xrightarrow{L_2 \to (1/4)L_2}
+        \begin{pmatrix}
+          1 & 1/2 & 3/2 & \mid & 1/2 & 0 & 0 \\
+          0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+          0 & -3/2 & -13/2 & \mid & -5/2 & 0 & 1 
+        \end{pmatrix} \\
+      &\stackrel{L_1 \to (-1/2)L_2 + L_1}{\xrightarrow{L_3 \to (3/2)L_2 + L_3}}
+        \begin{pmatrix}
+          1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+          0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+          0 & 0 & -31/8 & \mid & -17/8 & 3/8 & 1
+        \end{pmatrix} \\
+      &\xrightarrow{L_3 \to (-8/31)L_3}
+        \begin{pmatrix}
+          1 & 0 & 5/8 & \mid & 3/8 & -1/8 & 0 \\
+          0 & 1 & 7/4 & \mid & 1/4 & 1/4 & 0 \\
+          0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+        \end{pmatrix} \\
+      &\stackrel{L_1 \to (-5/8)L_3 + L_1}{\xrightarrow{L_2 \to (-7/4)L_3 + L_2}}
+        \begin{pmatrix}
+          1 & 0 & 0 & \mid & 1/31 & -2/31 & 5/31 \\
+          0 & 1 & 0 & \mid & -22/31 & 13/31 & 14/31 \\
+          0 & 0 & 1 & \mid & 17/31 & -3/31 & -8/31
+        \end{pmatrix}
+\end{align*}
+
+Rezultă că 
+\[
+  A^{-1} = %
+  \begin{pmatrix} 
+    1/31 & -2/31 & 5/31 \\
+    -22/31 & 13/31 & 14/31 \\
+    17/31 & -3/31 & -8/31
+  \end{pmatrix}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsection{Exerciții}
+
+1. Rezolvați următoarele sisteme, atît cu metoda matriceală clasică, cît și cu
+metoda lui Gauss:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    x + 3y - z &= 1 \\
+    3x + y + 2z &= 4 \\
+    5x - 2y + z &= 2
+  \end{cases} $
+\item $ \begin{cases}
+    3x - y + 2z + 3t &= 4 \\
+    x + 3y - z + t &= -1
+  \end{cases} $
+\item $ \begin{cases}
+    2x - y + 3z &= 1 \\
+    3x + 2y - z &= 4 \\
+    x + 3y - 4z &= 3
+  \end{cases} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Calculați inversele matricelor, atît cu metoda folosind matricea adjunctă,
+cît și folosind metoda lui Gauss:
+\begin{enumerate}[(a)]
+\item $ A =
+  \begin{pmatrix}
+    1 & 0 & -1 \\
+    3 & 2 & 1 \\
+    0 & 1 & 1
+  \end{pmatrix} $;
+\item $ B =
+  \begin{pmatrix}
+    -1 & 2 & 4 & 1 \\
+    3 & 0 & 1 & 4 \\
+    0 & 1 & 1 & 0 \\
+    2 & 1 & 0 & 1
+  \end{pmatrix} $;
+\item $ C =
+  \begin{pmatrix}
+    1 & 1 & 2 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+  \end{pmatrix} $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-20-21"
+%%% End:

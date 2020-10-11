@@ -29,7 +29,7 @@
 	  <button class="accordion">ETTI, Algebră și Geometrie</button>
 	  <div class="panel">
 		<ul class="big-list">
-		  <li>Notițele vor fi aici.</li>
+		  <li>Notițele sînt disponibile aici: <a href="../docs/20-21-etti-ag/ag-20-21.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i></a>;</li>
 		</ul>
 	  </div>
 
