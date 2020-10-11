@@ -51,7 +51,8 @@
 	  <button class="accordion">FSA, Criptografie</button>
 	  <div class="panel">
 		<ul class="big-list">
-		  <li>Repository-ul de lucru este <a href="https://github.com/adimanea/fsa-lab-cripto" target="_blank"><b>aici</b></a>.</li>
+		  <li>Repository-ul de lucru este <a href="https://github.com/adimanea/fsa-lab-cripto" target="_blank"><b>aici</b></a>;</li>
+		  <li>Laboratorul 1: Verificare inițială <a href="https://github.com/adimanea/fsa-lab-cripto/blob/master/lab1/init.md" target="_blank"><b>aici</b></a>;</li>
 		</ul>
 	  </div>
 	</div>
