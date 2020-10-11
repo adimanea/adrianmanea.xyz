@@ -1,0 +1,165 @@
+%! TEX root = ../m1-19-20.tex
+\chapter{Serii de numere reale pozitive}
+\index{serii!de numere pozitive}
+
+Intuitiv, o serie poate fi gîndită ca o sumă infinită, dată de o
+regulă a unui termen general. De exemplu, seria:
+\[
+    \sum_{n \geq 0} \dfrac{3n}{5n^2 + 2n - 1}
+\]
+are termenul general de forma $ x_n = \dfrac{3n}{5n^2 + 2n - 1} $
+și putem rescrie seria mai simplu $ \sum x_n $, presupunînd implicit
+că indicele $ n $ ia cea mai mică valoare permisă și merge pînă la $ \infty $.
+
+Natura seriilor este fundamental diferită de cea a șirurilor prin faptul că
+seriile \emph{acumulează}. De exemplu, să considerăm șirul constant $ a_n = 1, \forall n $.
+Atunci, evident, $ \ds\lim_{n \to \infty} a_n = 1 $. Pe de altă parte, dacă luăm
+seria de termen general $ a_n $, adică $ \sum a_n $, observăm că aceasta are suma $ \infty $,
+deci este divergentă.
+
+În continuare, vom studia criterii prin care putem decide dacă o serie este
+sau nu convergentă. Dar înainte de aceasta, vom folosi foarte des două serii
+particulare, pe care le detaliem în continuare.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Seria geometrică}
+\index{serii!geometrice}
+
+Pornim de la progresiile geometrice studiate în liceu. Fie $ (b_n) $ o progresie
+geometrică, cu primul termen $ b_1 $ și cu rația $ q $. Deci termenul general
+are formula $ b_n = b_1 q^{n-1} $. Atunci suma primilor $ n $ termeni ai progresiei
+se poate calcula cu formula:
+\[
+    S_n = \sum_{k = 1}^n b_k = b_1 \cdot \dfrac{q^n - 1}{q - 1}.
+\]
+
+Dacă, însă, în această sumă considerăm \qq{toți} termenii progresiei, obținem
+\emph{seria} geometrică, anume $ \ds\sum_{n \geq 1} b_n $.
+
+Suma acestei serii coincide cu $ \ds\lim_{n \to \infty} S_n $ și se poate
+observa cu ușurință că seria geometrică este convergentă dacă și numai dacă
+$ |q| < 1 $. Mai mult, în caz de convergență, suma seriei se poate calcula
+imediat ca fiind $ b_1 \cdot \dfrac{1}{1 - q} $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Seria armonică}
+\index{serii!armonice}
+
+Această serie se mai numește \emph{funcția zeta a lui Riemann} și se
+definește astfel:
+\[
+    \zeta(s) = \sum_{n \geq 1} \dfrac{1}{n^s}, \quad s \in \QQ.
+\]
+
+Remarcăm cîteva cazuri particulare:
+\begin{align*}
+    \zeta(0) &= \sum 1 = \infty \\
+    \zeta(1) &= \sum \dfrac{1}{n} = \infty \\
+    \zeta(2) &= \sum \dfrac{1}{n^2} = \dfrac{\pi^2}{6} \\
+    \zeta(-1) &= \sum n = \infty \\
+    \zeta(-2) &= \sum n^2 = \infty.
+\end{align*}
+
+Rezultatul general este:
+\begin{theorem}\label{thm:zeta-conv}
+    Seria armonică $ \zeta(s) $ este convergentă dacă și numai dacă
+    $ s > 1 $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Criterii de convergență}
+
+Ne păstrăm în continuare în contextul seriilor cu termeni reali și pozitivi,
+pe care le scriem în general $ \sum x_n $.
+
+Convergența poate fi decisă ușor folosind criteriile de mai jos.
+
+\vspace{1cm}
+
+\index{criteriul!necesar}
+\textbf{Criteriul necesar:} Dacă $ \ds\lim_{n \to \infty} x_n \neq 0 $, atunci
+seria $ \sum x_n $ este divergentă.
+
+\begin{remark}\label{rk:nec}
+    Să remarcăm că, așa cum îi spune și numele, criteriul de mai sus dă doar
+    condiții necesare, nu și suficiente pentru convergență! De exemplu, pentru
+    $ \zeta(1) $, termenul general tinde către 0, dar seria este divergentă.
+\end{remark}
+
+\vspace{1cm}
+
+\index{criteriul!de comparație!termen cu termen}
+\textbf{Criteriul de comparație termen cu termen:} Fie $ \sum y_n $ o altă serie
+de numere reale și pozitive.
+\begin{itemize}
+    \item Dacă $ x_n \leq y_n, \forall n $, iar seria $ \sum y_n $ este convergentă,
+        atunci și seria $ \sum x_n $ este convergentă;
+    \item Dacă $ x_n \geq y_n, \forall n $, iar seria $ \sum y_n $ este divergentă,
+        atunci și seria $ \sum x_n $ este divergentă.
+\end{itemize}
+
+Acest criteriu seamănă foarte mult cu criteriul de comparație de la șiruri.
+Astfel, avem că un șir mai mare (termen cu termen) decît un șir divergent este
+divergent, iar un șir mai mic (termen cu termen) decît un șir convergent este
+convergent. Celelalte cazuri sînt nedecise.
+
+De asemenea, mai remarcăm că, în studiul seriei $ \sum x_n $ apare seria $ \sum y_n $,
+care trebuie aleasă convenabil astfel încît să aibă loc condițiile criteriului.
+În practică, cel mai des vom alege această nouă serie ca fiind o serie geometrică
+sau una armonică, cu rația, respectiv exponentul alese convenabil.
+
+\vspace{1cm}
+
+\index{criteriul!de comparație!la limită}
+\textbf{Criteriul de comparație la limită:} Fie $ \sum y_n $ o altă serie de numere
+reale și pozitive, astfel încît $ \ds\lim_{n \to \infty} \dfrac{x_n}{y_n} \in (0, \infty) $.
+Atunci cele două serii au aceeași natură, adică $ \sum x_n $ este convergentă
+dacă și numai dacă $ \ds\sum y_n $ este convergentă.
+
+\vspace{1cm}
+
+\index{criteriul!raportului}
+\textbf{Criteriul raportului:} Fie $ \ell = \ds\lim_{n \to \infty} \dfrac{x_{n+1}}{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria $ \sum x_n $ este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria $ \sum x_n $ este convergentă;
+    \item Dacă $ \ell = 1 $, atunci criteriul nu decide.
+\end{itemize}
+
+\vspace{1cm}
+
+\index{criteriul!radical}
+\textbf{Criteriul radical:} Fie $ \ell = \ds\lim_{n \to \infty} \sqrt[n]{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria $ \sum x_n $ este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria $ \sum x_n $ este convergentă;
+    \item Dacă $ \ell = 1 $, atunci criteriul nu decide.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Exerciții}
+
+1. Studiați convergența seriilor $ \sum x_n $ în cazurile de mai jos:
+\begin{enumerate}[(a)]
+    \item $ x_n = \left( \dfrac{3n}{3n + 1} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{1}{n!} $; \hfill(C, raport)
+    \item $ x_n = \dfrac{1}{n\sqrt{n + 1}} $; \hfill(C, comparație la limită cu $\zeta(3/2)$)
+    \item $ x_n = \arcsin \dfrac{n+1}{2n + 3} $; \hfill(D, necesar)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{n!}{n^{2n}} $; \hfill(C, raport)
+    \item $ x_n = \left( \dfrac{n + 1}{3n + 1}\right)^n $; \hfill(C, radical)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^{n^2} $; \hfill(C, radical)
+    \item $ x_n = \dfrac{1}{7^n + 3^n} $; \hfill(C, comparație cu geometrică)
+    \item $ x_n = \dfrac{2 + \sin n}{n^2} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \dfrac{\sin^2 n}{n^2 + 1} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \sqrt{n^4 + 2n + 1} - n^2 $; \hfill(D, comparație cu armonică)
+\end{enumerate}
+
+2*. Studiați convergența \emph{șirurilor} cu termenul general $ x_n $ din
+exercițiul anterior și comparați cu comportamentul seriilor.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-19-20"
+%%% End:

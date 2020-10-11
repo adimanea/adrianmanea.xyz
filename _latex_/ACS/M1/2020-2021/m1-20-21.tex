@@ -1,0 +1,42 @@
+\documentclass[12pt, a4paper]{report}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Matematică 1 (Analiză)} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: Mircea Olteanu}}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\footnotesize{\color{gray}Matematică 1, 2020-2021}}
+\lhead{\footnotesize{\color{gray}Adrian Manea}}
+
+\pagestyle{plain} % restore page numbering
+
+\include{ch/s1-serii}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+\end{document}
