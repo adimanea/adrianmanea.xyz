@@ -1,0 +1,176 @@
+%! TEX root = ../bcd-20-21.tex
+\chapter{Serii cu termeni pozitivi}
+
+
+\section{Seria geometrică și seria armonică}
+
+Intuitiv, seriile sînt \emph{sume infinite}. Înainte de a le studia mai amănunțit,
+începem cu două exemple foarte utilizate.
+
+Dacă $ (b_n) $ este o progresie geometrică de rație $ q $, atunci suma primilor
+$ n $ termeni se poate scrie sub forma:
+\[
+    S_n = b_0 \cdot \dfrac{q^n - 1}{q - 1}.
+\]
+În cazul seriilor, ne punem problema să calculăm suma \emph{tuturor} termenilor
+progresiei, adică:
+\[
+    \ds\lim_{n \to \infty} S_n = \sum_{n \geq 0} b_n.
+\]
+
+Folosind formula de mai sus, se poate vedea ușor că seria geometrică
+este convergentă, adică limita de mai sus este finită, dacă și numai
+dacă $ |q| < 1 $. Mai mult, în acest caz, suma seriei este:
+\[
+    \sum_{n \geq 0} b_n = b_0 \cdot \dfrac{1}{1 - q}.
+\]
+
+\vspace{1cm}
+\index{serie!geometrică}
+\index{serie!armonică}
+
+Un alt exemplu foarte important de serie este \emph{seria armonică}, numită
+și \emph{funcția zeta a lui Riemann}. Aceasta se definește astfel:
+\[
+    \zeta(s) = \sum_{n \geq 0} \dfrac{1}{n^s}, \quad s \in \QQ.
+\]
+
+Cîteva exemple imediate:
+\begin{align*}
+    \zeta(0) &= \sum 1 = \infty \\
+    \zeta(1) &= \sum \dfrac{1}{n} = \infty \\
+    \zeta(2) &= \sum \dfrac{1}{n^2} = \dfrac{\pi^2}{6} \\
+    \zeta(-1) &= \sum n = \infty \\
+    \zeta(-2) &= \sum n^2 = \infty.
+\end{align*}
+
+Un rezultat general este următorul:
+\begin{theorem}\label{thm:zeta-conv}
+    Seria armonică este convergentă dacă și numai dacă exponentul $ s $
+    este strict supraunitar, adică $ s > 1 $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Criterii de convergență}
+
+Putem afla dacă o serie este convergentă aplicînd unul dintre criteriile care urmează.
+Fixăm mai întîi notația: presupunem că vorbim despre o serie cu termenul general
+$ x_n $, adică $ \ds\sum_{n \geq 1} x_n = \sum x_n $.
+
+\index{criteriul!necesar}
+\textbf{Criteriul necesar:} Dacă $ \ds\lim_{n \to \infty} x_n \neq 0 $, atunci
+seria $ \sum x_n $ este divergentă.
+
+\begin{remark}\label{rk:nec}
+    Să remarcăm că acest criteriu dă o condiție necesară, care nu este suficientă!
+    Într-adevăr, seria $ \zeta(1) $ are termenul general tinzînd spre 0, dar seria
+    este divergentă!
+\end{remark}
+
+\vspace{1cm}
+
+\index{criteriul!comparație!termen cu termen}
+\textbf{Criteriul de comparație termen cu termen:} Fie $ \sum y_n $ o altă serie
+de numere reale și pozitive.
+\begin{itemize}
+    \item Dacă $ x_n \leq y_n, \forall n $ și $ \sum y_n $ este convergentă,
+        atunci și seria $ \sum x_n $ este convergentă;
+    \item Dacă $ x_n \geq y_n, \forall n $ și $ \sum y_n $ este divergentă,
+        atunci și seria $ \sum x_n $ este divergentă.
+\end{itemize}
+
+\vspace{1cm}
+
+\index{criteriul!comparație!la limită}
+\textbf{Criteriul de comparație la limită:} Fie $ \sum y_n $ o altă serie
+de numere reale și pozitive. Dacă $ \ds\lim_{n \to \infty} \dfrac{x_n}{y_n} = l \in (0, \infty) $,
+atunci cele două serii au aceeași natură (seria $ \sum x_n $ este convergentă
+dacă și numai dacă seria $ \sum y_n $ este convergentă).
+
+\begin{remark}\label{rk:comparatie}
+    În ambele criterii de comparație, un candidat foarte bun pentru seria $ y_n $
+    este fie seria armonică, cu un anume exponent $ s $, fie seria geometrică,
+    cu o anume rație, alese convenabil.
+\end{remark}
+
+\begin{remark}\label{rk:comp-alte-cazuri}
+    Criteriul de comparație la limită poate fi folosit și în cazuri care nu sînt
+    cuprinse în enunțul de mai sus. De exemplu, dacă $ \dfrac{x_n}{y_n} \to 0 $,
+    înseamnă că $ x_n \leq y_n, \forall n $, deci putem folosi un argument de tip
+    comparație termen cu termen: 
+    \begin{itemize}
+        \item dacă seria $ \sum y_n $ este convergentă, atunci seria $ \sum x_n $ 
+            este convergentă; 
+        \item dacă seria $ \sum x_n $ este divergentă, atunci seria $ \sum y_n $ 
+            este divergentă.
+    \end{itemize}
+    În celelalte cazuri nu putem decide.
+\end{remark}
+
+\vspace{1cm}
+
+\index{criteriul!raportului}
+\textbf{Criteriul raportului (D'Alembert):} Fie $ \ell = \ds\lim_{n \to \infty} \dfrac{x_{n+1}}{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+\vspace{1cm}
+
+\index{criteriul!radical}
+\textbf{Criteriul radical (rădăcinii, Cauchy):} Fie $ \ell = \ds\lim_{n \to \infty} \sqrt[n]{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+\vspace{1cm}
+
+\index{criteriul!Raabe-Duhamel}
+\textbf{Criteriul Raabe-Duhamel:} Fie 
+$ \ell = \ds\lim_{n \to \infty} n \left( \dfrac{x_n}{x_{n + 1}} - 1 \right) $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria este convergentă;
+    \item Dacă $ \ell < 1 $, atunci seria este divergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Studiați convergența seriilor $ \sum x_n $ în cazurile de mai jos:
+\begin{enumerate}[(a)]
+    \item $ x_n = \left( \dfrac{3n}{3n + 1} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{1}{n!} $; \hfill(C, raport)
+    \item $ x_n = \dfrac{1}{n\sqrt{n + 1}} $; \hfill(C, comparație la limită cu $\zeta(3/2)$)
+    \item $ x_n = \arcsin \dfrac{n+1}{2n + 3} $; \hfill(D, necesar)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{n!}{n^{2n}} $; \hfill(C, raport)
+    \item $ x_n = \left( \dfrac{n + 1}{3n + 1}\right)^n $; \hfill(C, radical)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^{n^2} $; \hfill(C, radical)
+    \item $ x_n = \dfrac{1}{7^n + 3^n} $; \hfill(C, comparație cu geometrică)
+    \item $ x_n = \dfrac{2 + \sin n}{n^2} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \dfrac{\sin^2 n}{n^2 + 1} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \sqrt{n^4 + 2n + 1} - n^2 $; \hfill(D, comparație cu armonică)
+    \item $ x_n = \dfrac{2}{n} - \dfrac{1}{2^n} $; \hfill(D, descompunere în 2 serii)
+    \item $ x_n = \dfrac{1 \cdot 3 \cdot 5 \cdots (2n - 1)}{2 \cdot 4 \cdot 6 \cdots 2n} $; \hfill(D, Raabe)
+    \item $ x_n = \dfrac{(n!)^2}{(2n)!} $; \hfill(C, raport)
+    \item $ x_n = \dfrac{n! \cdot 3^n}{1 \cdot 3 \cdot 5 \cdots (2n - 1) } $; \hfill(D, raport)
+    \item $ x_n = \dfrac{3n - 1}{5n^2 + 2} $; \hfill(D, comparație la limită)
+    \item $ x_n = (\arctan 1)^n $; \hfill(C, radical)
+\end{enumerate}
+
+\vspace{1cm}
+
+2*. Studiați convergența \emph{seriilor} cu termenul general dat de șirurile de
+la exercițiul 2 al secțiunii anterioare.
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-20-21"
+%%% End:
