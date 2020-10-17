@@ -1,0 +1,318 @@
+\chapter{Serii de numere reale pozitive}
+\index{serii!de numere pozitive}
+
+Intuitiv, o serie poate fi gîndită ca o sumă infinită, dată de o
+regulă a unui termen general. De exemplu, seria:
+\[
+    \sum_{n \geq 0} \dfrac{3n}{5n^2 + 2n - 1}
+\]
+are termenul general de forma $ x_n = \dfrac{3n}{5n^2 + 2n - 1} $
+și putem rescrie seria mai simplu $ \sum x_n $, presupunînd implicit
+că indicele $ n $ ia cea mai mică valoare permisă și merge pînă la $ \infty $.
+
+Natura seriilor este fundamental diferită de cea a șirurilor prin faptul că
+seriile \emph{acumulează}. De exemplu, să considerăm șirul constant $ a_n = 1, \forall n $.
+Atunci, evident, $ \ds\lim_{n \to \infty} a_n = 1 $. Pe de altă parte, dacă luăm
+seria de termen general $ a_n $, adică $ \sum a_n $, observăm că aceasta are suma $ \infty $,
+deci este divergentă.
+
+În continuare, vom studia criterii prin care putem decide dacă o serie este
+sau nu convergentă. Dar înainte de aceasta, vom folosi foarte des două serii
+particulare, pe care le detaliem în continuare.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Seria geometrică}
+\index{serii!geometrice}
+
+Pornim de la progresiile geometrice studiate în liceu. Fie $ (b_n) $ o progresie
+geometrică, cu primul termen $ b_1 $ și cu rația $ q $. Deci termenul general
+are formula $ b_n = b_1 q^{n-1} $. Atunci suma primilor $ n $ termeni ai progresiei
+se poate calcula cu formula:
+\[
+    S_n = \sum_{k = 1}^n b_k = b_1 \cdot \dfrac{q^n - 1}{q - 1}.
+\]
+
+Dacă, însă, în această sumă considerăm \qq{toți} termenii progresiei, obținem
+\emph{seria} geometrică, anume $ \ds\sum_{n \geq 1} b_n $.
+
+Suma acestei serii coincide cu $ \ds\lim_{n \to \infty} S_n $ și se poate
+observa cu ușurință că seria geometrică este convergentă dacă și numai dacă
+$ |q| < 1 $. Mai mult, în caz de convergență, suma seriei se poate calcula
+imediat ca fiind $ b_1 \cdot \dfrac{1}{1 - q} $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Seria armonică}
+\index{serii!armonice}
+
+Această serie se mai numește \emph{funcția zeta a lui Riemann} și se
+definește astfel:
+\[
+    \zeta(s) = \sum_{n \geq 1} \dfrac{1}{n^s}, \quad s \in \QQ.
+\]
+
+Remarcăm cîteva cazuri particulare:
+\begin{align*}
+    \zeta(0) &= \sum 1 = \infty \\
+    \zeta(1) &= \sum \dfrac{1}{n} = \infty \\
+    \zeta(2) &= \sum \dfrac{1}{n^2} = \dfrac{\pi^2}{6} \\
+    \zeta(-1) &= \sum n = \infty \\
+    \zeta(-2) &= \sum n^2 = \infty.
+\end{align*}
+
+Rezultatul general este:
+\begin{theorem}\label{thm:zeta-conv}
+    Seria armonică $ \zeta(s) $ este convergentă dacă și numai dacă
+    $ s > 1 $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Criterii de convergență}
+
+Ne păstrăm în continuare în contextul seriilor cu termeni reali și pozitivi,
+pe care le scriem în general $ \sum x_n $.
+
+Convergența poate fi decisă ușor folosind criteriile de mai jos.
+
+\vspace{1cm}
+
+\index{criteriul!necesar}
+\textbf{Criteriul necesar:} Dacă $ \ds\lim_{n \to \infty} x_n \neq 0 $, atunci
+seria $ \sum x_n $ este divergentă.
+
+\begin{remark}\label{rk:nec}
+    Să remarcăm că, așa cum îi spune și numele, criteriul de mai sus dă doar
+    condiții necesare, nu și suficiente pentru convergență! De exemplu, pentru
+    $ \zeta(1) $, termenul general tinde către 0, dar seria este divergentă.
+\end{remark}
+
+\vspace{1cm}
+
+\index{criteriul!de comparație!termen cu termen}
+\textbf{Criteriul de comparație termen cu termen:} Fie $ \sum y_n $ o altă serie
+de numere reale și pozitive.
+\begin{itemize}
+    \item Dacă $ x_n \leq y_n, \forall n $, iar seria $ \sum y_n $ este convergentă,
+        atunci și seria $ \sum x_n $ este convergentă;
+    \item Dacă $ x_n \geq y_n, \forall n $, iar seria $ \sum y_n $ este divergentă,
+        atunci și seria $ \sum x_n $ este divergentă.
+\end{itemize}
+
+Acest criteriu seamănă foarte mult cu criteriul de comparație de la șiruri.
+Astfel, avem că un șir mai mare (termen cu termen) decît un șir divergent este
+divergent, iar un șir mai mic (termen cu termen) decît un șir convergent este
+convergent. Celelalte cazuri sînt nedecise.
+
+De asemenea, mai remarcăm că, în studiul seriei $ \sum x_n $ apare seria $ \sum y_n $,
+care trebuie aleasă convenabil astfel încît să aibă loc condițiile criteriului.
+În practică, cel mai des vom alege această nouă serie ca fiind o serie geometrică
+sau una armonică, cu rația, respectiv exponentul alese convenabil.
+
+\vspace{1cm}
+
+\index{criteriul!de comparație!la limită}
+\textbf{Criteriul de comparație la limită:} Fie $ \sum y_n $ o altă serie de numere
+reale și pozitive, astfel încît $ \ds\lim_{n \to \infty} \dfrac{x_n}{y_n} \in (0, \infty) $.
+Atunci cele două serii au aceeași natură, adică $ \sum x_n $ este convergentă
+dacă și numai dacă $ \ds\sum y_n $ este convergentă.
+
+\vspace{1cm}
+
+\index{criteriul!raportului}
+\textbf{Criteriul raportului:} Fie $ \ell = \ds\lim_{n \to \infty} \dfrac{x_{n+1}}{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria $ \sum x_n $ este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria $ \sum x_n $ este convergentă;
+    \item Dacă $ \ell = 1 $, atunci criteriul nu decide.
+\end{itemize}
+
+\vspace{1cm}
+
+\index{criteriul!radical}
+\textbf{Criteriul radical:} Fie $ \ell = \ds\lim_{n \to \infty} \sqrt[n]{x_n} $.
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, atunci seria $ \sum x_n $ este divergentă;
+    \item Dacă $ \ell < 1 $, atunci seria $ \sum x_n $ este convergentă;
+    \item Dacă $ \ell = 1 $, atunci criteriul nu decide.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Exerciții}
+
+1. Studiați convergența seriilor $ \sum x_n $ în cazurile de mai jos:
+\begin{enumerate}[(a)]
+    \item $ x_n = \left( \dfrac{3n}{3n + 1} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{1}{n!} $; \hfill(C, raport)
+    \item $ x_n = \dfrac{1}{n\sqrt{n + 1}} $; \hfill(C, comparație la limită cu $\zeta(3/2)$)
+    \item $ x_n = \arcsin \dfrac{n+1}{2n + 3} $; \hfill(D, necesar)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^n $; \hfill(D, necesar)
+    \item $ x_n = \dfrac{n!}{n^{2n}} $; \hfill(C, raport)
+    \item $ x_n = \left( \dfrac{n + 1}{3n + 1}\right)^n $; \hfill(C, radical)
+    \item $ x_n = \left( 1 - \dfrac{1}{n} \right)^{n^2} $; \hfill(C, radical)
+    \item $ x_n = \dfrac{1}{7^n + 3^n} $; \hfill(C, comparație cu geometrică)
+    \item $ x_n = \dfrac{2 + \sin n}{n^2} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \dfrac{\sin^2 n}{n^2 + 1} $; \hfill(C, comparație cu armonică)
+    \item $ x_n = \sqrt{n^4 + 2n + 1} - n^2 $; \hfill(D, comparație cu armonică)
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Alte criterii de convergență. Serii oarecare}
+
+Pe lîngă criteriile prezentate în secțiunile anterioare, vor mai fi de folos
+și altele, pe care le enumerăm mai jos. În continuare, menționăm că
+vom lucra cu o serie de forma $ \sum x_n $ și sîntem în ipoteza
+$ x_n \in \RR_+, \forall n \in \NN $.
+
+\index{criteriul!Raabe-Duhamel}
+\textbf{Criteriul Raabe-Duhamel:} Fie limita următoare:
+\[
+    \ell = \lim_{n \to \infty} n \left( \dfrac{x_n}{x_{n+1}} - 1 \right).
+\]
+Atunci:
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, seria este convergentă;
+    \item Dacă $ \ell < 1 $, seria este divergentă;
+    \item Dacă $ \ell = 1 $ criteriul nu decide.
+\end{itemize}
+
+În multe situații, criteriul Raabe-Duhamel este folositor cînd criteriul
+raportului nu decide. Remarcați că, în acest caz, limita de mai sus
+este o nedeterminare de forma $ \infty \cdot 0 $, care de multe ori
+se poate calcula și este diferită de 1.
+
+\vspace{1cm}
+
+\index{criteriul!logaritmic}
+\textbf{Criteriul logaritmic:} Fie limita:
+\[
+    \ds\lim_{n \to \infty} \dfrac{- \ln x_n}{\ln n}.
+\]
+\begin{itemize}
+    \item Dacă $ \ell > 1 $, seria este convergentă;
+    \item Dacă $ \ell < 1 $, seria este divergentă;
+    \item Dacă $ \ell = 1 $, criteriul nu decide.
+\end{itemize}
+
+\vspace{1cm}
+
+\index{criteriul!condensării}
+\textbf{Criteriul condensării:} Dacă $ (x_n) $ este un șir
+descrescător și cu termeni pozitivi, atunci seriile $ \sum x_n $ și
+$ \sum 2^n x_{2^n} $ au aceeași natură.
+
+\vspace{1cm}
+
+\index{criteriul!integral}
+\textbf{Criteriul integral:} Fie $ f : (0, \infty) \to [0, \infty) $ o funcție
+crescătoare și definim șirul:
+\[
+    a_n = \int_1^n f(t) dt.
+\]
+Atunci seria $ \sum f(n) $ este convergentă dacă și numai dacă șirul $ (a_n) $ este
+convergent.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Studiați natura următoarelor serii cu termeni pozitivi, cu termenul
+general $ x_n $ dat de:
+\begin{enumerate}[(a)]
+    \item $ x_n = \dfrac{1}{\ln n} $; \hfill(D, integral/comparație)
+    \item $ x_n = \dfrac{1}{n \ln n} $; \hfill(D, integral/condensare)
+    \item $ x_n = \dfrac{1 \cdot 3 \cdot 5 \cdots (2n - 1)}{2 \cdot 4 \cdot 6 \cdots 2n} $ \hfill(D, Raabe)
+    \item $ x_n = \left( 1 - \dfrac{3 \ln n}{2n} \right)^n $ \hfill(C, logaritmic)
+    \item $ x_n = \dfrac{1}{n \sqrt[n]{n}} $ \hfill(D, comparație/logaritmic)
+    \item $ x_n = \left( \dfrac{1}{\ln n} \right)^{\ln(\ln n)} $; \hfill(D, logaritmic)
+    \item $ x_n = n^2 e^{-\sqrt{n}} $ \hfill(C, logaritmic)
+    \item $ x_n = \dfrac{a^n (n!)^2}{(2n)!}, a > 0. $ \hfill(raport, discuție $ a ? 4 $)
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Serii alternante}
+
+\index{serii!alternante}
+În continuare, discutăm și cazul cînd termenii seriei pot fi negativi. Dar
+vom fi interesați doar de un caz particular, anume acela al seriilor \emph{alternante},
+adică acelea în care un termen este negativ, iar celălalt pozitiv. Mai precis,
+o serie $ \sum x_n $ se numește \emph{alternantă} dacă $ x_n \cdot x_{n+1} < 0 $, 
+pentru orice $ n $.
+
+Singurul criteriu de convergență pe care îl folosim pentru aceste cazuri este:
+
+\index{criteriul!Leibniz}
+\textbf{Criteriul lui Leibniz:} Fie $ \sum_n (-1)^n x_n $ o serie
+alternantă. Dacă șirul $ (x_n) $ este descrescător și converge către 0,
+seria este convergentă.
+
+De asemenea, vom mai fi interesați și de:
+\begin{itemize}
+    \item \emph{serii absolut convergente}, adică acele serii pentru care și
+        seria modulelor, și seria dată sînt convergente;
+    \item \emph{serii semiconvergente}, adică acele serii pentru care seria
+        inițială este convergentă, dar seria modulelor este divergentă.
+\end{itemize}
+
+Evident, cum $ x \leq |x| $, rezultă că orice serie absolut convergentă este
+convergentă, dar reciproca nu este adevărată.
+
+Pentru acest caz, avem:
+
+\index{criteriul!Abel-Dirichlet}
+\textbf{Criteriul Abel-Dirichlet:} Presupunem că seria $ \sum x_n $ se mai poate
+scrie sub forma $ \sum \alpha_n y_n $, unde $ (\alpha_n) $ este un șir monoton
+și mărginit (deci convergent). Dacă și seria $ \sum y_n $ este convergentă,
+atunci seria inițială $ \sum \alpha_n y_n $ este convergentă.
+
+Formulare alternativă: Dacă $ (\alpha_n) $ este un șir monoton, care tinde
+către 0, iar șirul cu termenul general $ Y_n = y_1 + \dots + y_n $ este
+mărginit, atunci seria $ \sum \alpha_n y_n $ este convergentă.
+
+De exemplu, studiem seria $ \sum_n \dfrac{(-1)^n}{n} $. Este o serie
+alternantă, deci:
+\begin{itemize}
+    \item seria modulelor este $ \zeta(1) $, care este divergentă;
+    \item pentru seria dată, aplicăm criteriul lui Leibniz, cu șirul $ x_n = \dfrac{1}{n} $,
+        care este descrescător către 0, deci seria este convergentă.
+\end{itemize}
+
+Concluzia este că seria $ \sum \dfrac{(-1)^n}{n} $ este \emph{semiconvergentă}.
+
+\textbf{Exercițiu:} Folosind criteriul Leibniz, studiați natura seriei cu termenul general:
+\[
+    x_n = (-1)^n \dfrac{\log_a n}{n}, a > 1.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Aproximarea sumelor seriilor convergente}
+
+Presupunem că avem o serie convergentă și alternantă. Se poate arăta foarte
+simplu că, dacă notăm cu $ S $ suma seriei, iar cu $ s_n $ suma primilor $ n $
+termeni, cu $ x_n $ termenul general al seriei, are loc inegalitatea:
+\begin{equation}\label{eq:aprox}
+    \varepsilon = | S - s_n | \leq x_{n + 1}.
+\end{equation}
+Cu alte cuvinte, eroarea aproximației are ordinul de mărime al primului
+termen neglijat.
+
+Deocamdată, exemplele simple pe care le studiem sînt de forma:
+
+\textbf{Exercițiu:} Să se aproximeze cu o eroare mai mică decît $ \varepsilon $
+sumele seriilor definite de termenul general $ x_n $ de mai jos:
+\begin{enumerate}[(a)]
+    \item $ x_n = \dfrac{(-1)^n}{n!}, \varepsilon = 10^{-3} $;
+    \item $ x_n = \dfrac{(-1)^n}{n^3 \sqrt{n}}, \varepsilon = 10^{-2} $.
+\end{enumerate}
+
+În ambele cazuri, se folosește inegalitatea din~\eqref{eq:aprox}, de unde se 
+scoate $ n $. Se obține $ n = 6 $ pentru primul exercițiu și $ n = 4 $ pentru
+al doilea.
+
+Concluzia este că, pentru a obține valoarea sumei seriei cu o precizie de 3, respectiv
+2 zecimale, este suficient să considerăm primii 5, respectiv primii 3 termeni ai seriei. 
+Eroarea este comparabilă cu primul termen \emph{neglijat} din serie.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am1-20-21"
+%%% End:

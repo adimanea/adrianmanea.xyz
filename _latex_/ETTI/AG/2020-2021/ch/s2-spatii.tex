@@ -1,0 +1,409 @@
+\chapter{Spații vectoriale. Generalități}
+
+
+  
+\section{Spații vectoriale}
+\index{spații!vectoriale}
+
+Noțiunea de spațiu vectorial face legătura între geometrie și algebră. De fapt,
+a permis utilizarea metodelor de structuri algebrice în geometria analitică.
+Exemplul de bază este acela al planului real $ V = \RR^2 $, în care considerăm
+adunarea vectorilor și înmulțirea lor cu scalari. Astfel, fie vectorii:
+\[
+    \vec{v} = a\vec{i} + b \vec{j}, \quad \vec{w} = c \vec{i} + d \vec{j},
+\]
+unde $ a, b, c, d \in \RR $.
+
+Definim operația de adunare a vectorilor, pe componente:
+\[
+    \vec{v} + \vec{w} = (a + c)\vec{i} + (b + d) \vec{j}.
+\]
+
+Cu această definiție, observăm că $ (V, +) $ are o structură de grup comutativ
+(justificați!).
+
+În plus, mai avem la dispoziție și operația de înmulțire cu scalari. Fie $ \alpha \in \RR $
+un scalar (număr real, în cazul de față). Se definește operația:
+\[
+    \alpha \cdot \vec{v} = \alpha a \vec{i} + \alpha b \vec{j}.
+\]
+
+Cu această definiție, se verifică imediat proprietățile (pentru orice $ \alpha, \beta \in \RR $
+și $ \vec{v}, \vec{w} \in \RR^2 $):
+\begin{itemize}
+    \item $ (\alpha \beta)\vec{v} = \alpha (\beta \vec{v}) $;
+    \item $ \alpha \cdot (\vec{v} + \vec{w}) = \alpha \vec{v} + \alpha \vec{w}) $;
+    \item $ 1_\RR \cdot \vec{v} = \vec{v} $;
+    \item $ 0_\RR \cdot \vec{v} = \vec{0} $.
+\end{itemize}
+
+Mai amintim, de asemenea, că mulțimea numerelor reale are o structură de corp comutativ,
+$ (\RR, +, \cdot) $.
+
+Sîntem, astfel, conduși la următoarea:
+\begin{definition}\label{def:sp-vect}
+    Spunem că $ V $ are structură de \emph{spațiu vectorial peste $ K $} (echivalent,
+    $ V $ este $ K $-spațiu vectorial) dacă:
+    \begin{enumerate}
+        \item $ (V, +) $ are structură de grup comutativ;
+        \item $ (K, +, \cdot) $ are structură de corp comutativ;
+        \item există o \emph{operație externă} $ \cdot : V \times K \to K $ care satisface
+            \begin{itemize}
+                \item $ \alpha \cdot (x + y) = \alpha \cdot x + \alpha \cdot y $;
+                \item $ (\alpha + \beta) \cdot x = \alpha \cdot x + \beta \cdot x $;
+                \item $ \alpha \cdot (\beta \cdot x) = (\alpha \beta) \cdot x $;
+                \item $ \alpha \cdot (x + y) = \alpha \cdot x + \alpha \cdot y $;
+                \item $ 1_K \cdot x = x $;
+                \item $ 0_K \cdot x = 0_V $;
+            \end{itemize}
+            pentru orice $ x, y \in V $ și $ \alpha, \beta \in K $.
+    \end{enumerate}
+    În general, elementele grupului $ V $ se vor nota cu litere din alfabetul latin
+    și se vor numi \emph{vectori}, iar elementele corpului $ K $ se vor nota cu litere
+    grecești și se vor numi \emph{scalari}.
+\end{definition}
+
+\begin{remark}\label{rk:spatiu-necom}
+    Are sens, în general, să lucrăm și pe cazul necomutativ, adică, de exemplu,
+    înmulțirea cu scalari să fie posibilă doar într-o parte sau să nu fie egală expresia
+    $ \alpha v $ cu $ v \alpha $. Dar aceste cazuri depășesc scopul acestui seminar și vor
+    fi omise. De aceea, comutativitatea va fi presupusă implicit în tot ceea ce urmează.
+\end{remark}
+
+Spațiile vectoriale se mai numesc și \emph{spații liniare}, deoarece toate expresiile
+și ecuațiile ce vor apărea vor fi liniare, i.e.\ de gradul întîi.
+
+Dacă corpul $ K $ este $ \RR $ sau $ \CC $, vom mai numi spațiile reale, respectiv complexe.
+În acest seminar, majoritatea cazurilor vor fi de spații vectoriale reale.
+
+Cîteva exemple de bază urmează. Cititorul este încurajat să verifice afirmațiile cu o scurtă
+demonstrație.
+\begin{enumerate}
+    \item $ K $ este un $ K $-spațiu vectorial, deci putem avea, de exemplu, $ V = K = \RR $;
+    \item $ \RR^n $ este un $ \RR $-spațiu vectorial, unde vectorii sînt $ n $-tupluri
+        de numere reale, $ v = (x_1, x_2, \dots, x_n) $.
+    \item $ M_{m, n}(K) $ este un $ K $-spațiu vectorial, indiferent de $ m, n, K $. În particular,
+        $ M_4(\RR) $ este un spațiu vectorial real, iar $ M_{2, 7}(\ZZ_{13}) $ este un
+        $ \ZZ_{13} $-spațiu vectorial.
+    \item $ \RR $ este un $ \QQ $-spațiu vectorial, dar nu este un $ \CC $-spațiu vectorial;
+    \item $ \RR[X] $ (mulțimea polinoamelor cu coeficienți reali) este un spațiu vectorial real;
+    \item $ \RR_n[X] = \{ f \in \RR[X] \mid \dr{grad}f \leq n \} $ este un spațiu vectorial
+        real.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Subspații vectoriale}
+
+Ca de obicei, atunci cînd se introduc structuri algebrice noi, se caută
+și conceptul de \emph{substructură} corespunzător. În cazul de față, este vorba
+despre \emph{subspații vectoriale}. Ca în cazul grupurilor, acestea
+se definesc simplu:
+
+\begin{definition}\label{def:subspatii}\index{spații!subspații}
+    Fie $ V $ un $ K $-spațiu vectorial. Submulțimea $ W \seq V $ se numește
+    \emph{subspațiu vectorial} al lui $ V $, notat $ W \hookrightarrow V $ dacă $ W $
+    la rîndul său are structură de $ K $-spațiu vectorial.
+\end{definition}
+
+Tot ca în cazul grupurilor, avem o teoremă de caracterizare care ne este
+de ajutor în calcule.
+
+%\begin{theorem}\label{thm:subspatiu}
+    %Fie $ V $ un $ K $-spațiu vectorial și $ W \seq V $.
+
+    %Atunci $ W \hookrightarrow V $ dacă și numai dacă, pentru orice $ w_1, w_2 \in W $
+    %și $ \alpha, \beta \in K $, are loc $ \alpha w_1 \pm \beta w_2 \in W $.
+%\end{theorem}
+
+Cîteva exemple simple (justificați!):
+\begin{enumerate}
+    \item Mulțimea $ \{ 0_V \} $ formează un subspațiu vectorial al lui $ V $,
+        numit subspațiul nul sau trivial. De asemenea, $ V $ este la rîndul
+        său subspațiu al lui $ V $. Aceste exemple se numesc \emph{subspații improprii},
+        iar noi vom fi interesați de celelalte cazuri, numite \emph{subspații proprii}.
+    \item $ \RR_n[X] \hookrightarrow \RR[X] $, pentru orice număr natural $ n $.
+    \item Submulțimea $ W = \{ (x_1, x_2) \in \RR^2 \mid 2x_1 - 3x_2 = 0 \} $ este
+        un subspațiu al spațiului $ \RR^2 $.
+    \item Mulțimea matricelor pătratice de mărime $ n $, superior triunghiulare,
+        este un subspațiu al spațiului de matrice pătratice de mărime $ n $.
+    \item În spațiul $ \RR^3 $, dreptele și planele care conțin originea sînt subspații.
+    \item În spațiul $ \RR^2 $, mulțimea $ W = \{ (x, y) \in \RR^2 \mid y = 2x - 1 \} $
+        \emph{nu} formează un subspațiu.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Operații cu subspații}
+
+Fie $ V $ un $ K $-spațiu vectorial și $ V_1, V_2 $ două subspații ale sale.
+
+\begin{definition}\label{def:suma-sp}\index{spații!vectoriale!sumă de subspații}
+    Mulțimea $ V_1 + V_2 = \{ x \in V \mid \exists x_1 \in V_1, x_2 \in V_2, x = x_1 + x_2 \} $
+    se numește \emph{suma subspațiilor} $ V_1 $ și $ V_2 $.
+
+    Dacă, în plus, $ V_1 \cap V_2 = \{ 0_V \} $, atunci suma se numește \emph{directă}
+    și se notează $ V_1 \oplus V_2 $.
+\end{definition}
+
+\begin{remark}\label{rk:inters-subsp}
+    Dacă $ V_1, V_2 \hookrightarrow V $, este imposibil ca $ V_1 \cap V_2 = \emptyset $. (Justificați!)
+\end{remark}
+
+Cazul în care suma a două subspații este directă este foarte util prin următorul rezultat.
+
+\begin{proposition}\label{prop:suma-dir}
+    Suma dintre subspațiile $ V_1 $ și $ V_2 $ ale spațiului $ V $ este directă dacă și 
+    numai dacă orice vector din $ v $ se descompune în mod unic în $ v = v_1 + v_2 $,
+    cu $ v_1 \in V_1 $ și $ v_2 \in V_2 $.
+
+    Dacă acesta este cazul, spunem că $ v_1 $ este proiecția lui $ V $ pe $ V_1 $ și
+    similar pentru $ V_2 $.
+\end{proposition}
+
+O altă operație permisă cu subspații este intersecția: Dacă $ V_1, V_2 $ sînt subspații
+ale lui $ V $, atunci și $ V_1 \cap V_2 $ este subspațiu.
+
+Reuniunea de subspații, însă, nu este subspațiu, în general!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bază și dimensiune}
+
+Fie $ V $ un $ K $-spațiu vectorial și $ S = \{ x_1, \dots, x_n \} \leq V $ o submulțime
+nevidă de vectori din $ V $.
+
+O expresie de forma $ v = \ds\sum_{i = 1}^n \alpha_i x_i $ se numește \emph{combinația %
+liniară} a vectorilor $ x_i $ cu scalarii $ \alpha_i \in K $.
+
+\begin{definition}\label{def:indep-sg-baza}\index{spații!bază}
+    Mulțimea $ S $ de mai sus se numește:
+    \begin{itemize}
+        \item \emph{sistem liniar independent} dacă orice combinație liniară a vectorilor
+            din $ S $ cu scalari din $ K $ care este nulă are toți scalarii nuli.
+            Cu alte cuvinte, dacă $ \ds\sum_{i=1}^n \alpha_i x_i = 0 $, atunci toți
+            $ \alpha_i = 0, \forall i $, adică singura combinație liniară nulă care
+            folosește toți vectorii din $ S $ este cea trivială.
+        \item \emph{sistem de generatori} dacă orice vectori $ v \in V $ se poate
+            scrie în funcție de vectorii din $ S $. Cu alte cuvinte, pentru orice
+            $ v \in V $, există scalarii $ \alpha_1, \dots, \alpha_n $
+            astfel încît $ v = \sum \alpha_i x_i $. Dacă un spațiu vectorial admite
+            un sistem de generatori cu un număr finit de vectori, atunci spațiul
+            se numește \emph{finit generat}. Dacă mulțimea $ \{x_1, \dots, x_n \} $
+            este un sistem de generatori pentru $ V $, notăm aceasta cu
+            $ V = \dr{Sp}\{x_1, \dots, x_n\} $, de la englezescul \emph{span} (acoperire, întindere).
+        \item \emph{bază} dacă este simultan sistem liniar independent și sistem
+            de generatori. Cu alte cuvinte, orice vector din $ V $ se poate scrie
+            în funcție de vectorii din $ S $, iar această scriere este unică.
+    \end{itemize}
+    Dacă $ S $ este bază, numărul de elemente din $ S $ se numește \emph{dimensiunea}
+    spațiului vectorial $ V $, notat $ \dim_K V $ sau mai simplu $ \dim V $, cînd
+    corpul de scalari este clar din context.
+\end{definition}
+
+Un rezultat esențial este:
+\begin{theorem}\label{thm:exist-baza}
+    Orice spațiu vectorial admite (cel puțin) o bază și orice două baze ale unui
+    spațiu vectorial au același număr de elemente.
+\end{theorem}
+
+Așadar, fie că este vorba despre spații finit dimensionale sau infinit dimensionale,
+știm sigur că o bază există, iar conceptul de dimensiune este corect definit.
+
+În plus, în toate cazurile pe care le vom discuta în continuare, vom lucra
+doar cu spații finit dimensionale.
+
+Exemple fundamentale:
+\begin{enumerate}
+    \item Pentru spațiul real $ \RR^n $, o bază este:
+        \[
+            \left\{ e_1 = (1, 0, 0, \dots, 0), e_2 = (0, 1, 0, \dots, 0), \dots, %
+            e_n = (0, 0, \dots, 0, 1) \right\},
+        \]
+        care se numește \emph{baza canonică}.
+    \item Pentru spațiul real $ \RR[X] $, o bază este $ \{ 1, X, X^2, X^3, \dots, X^n, \dots, \} $.
+    \item Pentru spațiul de matrice $ M_n(\RR) $, o bază este formată din matricele
+        care au toate elementele nule, mai puțin unul, care este egal cu 1. De exemplu,
+        pentru $ M_2(\RR) $, o bază este:
+        \[
+            \left\{ \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+            \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \right\}.
+        \]
+    \item Pentru spațiul real $ \CC $, o bază este formată din $ \{ 1, i \} $.
+    \item Pentru spațiul real $ \RR $, o bază este $ \{ 1 \} $.
+    \end{enumerate}
+
+Să mai dăm cîteva detalii pentru cazul binecunoscut al spațiului real $ \RR^2 $.
+Dimensiunea lui este 2 și o bază (baza canonică) este $ B = \{ (1, 0), (0, 1) \} $.
+Elementele bazei pot fi asimilate cu versorii $ \vec{i} = (1, 0) $ și $ \vec{j} = (0, 1) $.
+Mai mult, dat un vector oarecare, $ v = (a, b) $, el poate fi scris în funcție de elementele
+bazei în mod unic:
+\[
+    (a, b) = a \cdot (1, 0) + b \cdot (0, 1).
+\]
+Scalarii $ a $ și $ b $ de mai sus se numesc \emph{coordonatele} vectorului $ v $ în
+baza canonică $ B $.
+
+Similar, de exemplu, în spațiul $ V = \RR_3[X] $, baza canonică este
+$ B = \{ 1, X, X^2, X^3 \} $, iar dacă luăm polinomul
+\[
+    f = 3 - 5X + 2X^2 + 7X^3,
+\]
+atunci coordonatele sale în baza canonică sînt $ 3, -5, 2, 7 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Teorema lui Grassmann}
+
+Fie $ V $ un $ K $-spațiu vectorial finit dimensional și $ V_1, V_2 $ două subspații
+ale sale. Teorema următoare leagă conceptul de dimensiune de operațiile cu subspații.
+
+\begin{theorem}[\textsc{Hermann Grassmann}]\label{thm:grass}\index{teorema!Grassmann}
+    În contextul și cu notațiile de mai sus, are loc egalitatea:
+    \[
+        \dim(V_1 + V_2) = \dim V_1 + \dim V_2 - \dim(V_1 \cap V_2).
+    \]
+\end{theorem}
+
+Comparați rezultatul de mai sus cu unul cunoscut, despre cardinale:
+\[
+    |A \cup B| = |A| + |B| - |A \cap B|.
+\]
+
+De aici rezultă că o bază în $ V_1 + V_2 $ este reuniunea bazelor din $ V_1 $,
+respectiv $ V_2 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Arătați că următoarele mulțimi sînt subspații vectoriale în spațiile indicate.
+Determinați o bază și dimensiunea fiecărui subspațiu.
+\begin{enumerate}[(a)]
+    \item $ V_1 = \{ (x, y) \in \RR^2 \mid 3x - y = 0 \} \hookrightarrow \RR^2 $;
+    \item $ V_2 = \{ (x, y, z) \in \RR^3 \mid 3x - y = 0 \} \hookrightarrow \RR^3 $;
+    \item $ V_3 = \{ (x, y, z) \in \RR^3 \mid x = 0 \} \hookrightarrow \RR^3 $;
+    \item $ V_4 = \{ p \in \RR_2[X] \mid p(1) = 0 \} \hookrightarrow \RR_2[X] $;
+    \item $ V_5 = \{ p \in \RR_2[X] \mid p'(1) = 0 \} \hookrightarrow \RR_2[X] $;
+    \item $ V_6 = \{ (x, y, z) \in \RR^3 \mid 3x - y + z = 0, 2x + y = 0 \} \hookrightarrow \RR^3 $;
+    \item $ V_7 = \{ A \in M_2(\RR) \mid A = A^t \} \hookrightarrow M_2(\RR) $;
+    \item $ V_8 = \{ A \in M_2(\RR) \mid \dr{tr}A = 0 \} \hookrightarrow M_2(\RR) $.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Se consideră mulțimea:
+\[
+    W = \left\{ A \in M_{2, 3}(\RR) \mid A = \begin{pmatrix} x & 0 & y \\ 0 & u & z \end{pmatrix},
+    x, y, z, u \in \RR, x = y + z \right\}.
+\]
+\begin{enumerate}[(a)]
+    \item Să se arate că $ W \hookrightarrow M_{2, 3}(\RR) $;
+    \item Găsiți o bază a lui $ W $ și $ \dim_\RR W $.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Arătați că sistemul de vectori $ \{v_1, v_2, v_3 \} $ este liniar independent,
+unde:
+\[
+    v_1 = (1, -1, 2), \quad v_2 = (3, -1, 1), \quad v_3 = (0, 1, 5).
+\]
+
+Este acesta și sistem de generatori?
+
+\vspace{1cm}
+
+4. Fie mulțimea $ B = \{ p_1, p_2, p_3 \} \seq \RR_2[X] $, unde:
+\[
+    p_1 = X^2 - 1, \quad p_2 = 2X + 1, \quad p_3 = X^2 + 3.
+\]
+Arătați că $ B $ este o bază a lui $ \RR_2[X] $ și găsiți coordonatele
+vectorului $ q = 3X^2 - X + 4 $ în baza $ B $.
+
+\vspace{1cm}
+
+5. Fie subspațiile:
+\begin{align*}
+    V_1 &= \{ (x, y, z) \in \RR^3 \mid 2x - y + z = 0 \} \\
+    V_2 &= \dr{Sp} \{ (1, -1, 2), (3, 1, 0) \}.
+\end{align*}
+
+Găsiți cîte o bază și dimensiunea subspațiilor: $ V_1, V_2, V_1 + V_2, V_1 \cap V_2 $.
+
+Este suma $ V_1 + V_2 $ directă?
+
+\vspace{1cm}
+
+6. Aceeași cerință ca la exercițiul 5 pentru spațiile:
+\begin{enumerate}[(a)]
+    \item %
+        \begin{align*}
+            V_1 &= \{ (x, y, z) \in \RR^3 \mid 3x - y + z = 0 \} \\
+            V_2 &= \dr{Sp}\{(1, -1, 0), (2, 1, 1), (1, 1, 0) \}
+        \end{align*}
+    \item %
+        \begin{align*}
+            V_1 &= \{ p \in \RR_2[X] \mid p(2) = 0 \} \\
+            V_2 &= \dr{Sp}\{ X, 2X^2 + 1, 3 \}
+        \end{align*}
+    \item %
+        \begin{align*}
+            V_1 &= \{ A \in M_2(\RR) \mid A = -A^t \} \\
+            V_2 &= \{ A \in M_2(\RR) \mid A = A^t \}
+        \end{align*}
+    \item %
+        \begin{align*}
+            V_1 &= \{ (x, y, z, t) \in \RR^4 \mid 3x - y + z = 0 \text{ și } %
+            5y - 2t = 0 \} \\
+            V_2 &= \dr{Sp}\{ (1, -1, 1, 0), (1, 0, 1, 0), (2, 0, 0, 2) \}.
+        \end{align*}
+\end{enumerate}
+
+\vspace{1cm}
+
+7. Verificați dacă mulțimile $ S $ de vectori din spațiul vectorial $ V $
+sînt liniar independente, iar în caz afirmativ, completați-le pînă la o bază
+a lui $ V $:
+\begin{enumerate}[(a)]
+    \item $ V = \RR^3, S = \{(1, -1, 0), (2, 0, 0) \} $;
+    \item $ V = \RR^3, S = \{(1, 1, 1), (2, 1, 2) \} $;
+    \item $ V = \RR^3, S = \{(1, -1, 2), (0, 2, 0), (1, 1, 1) \} $;
+    \item $ V = \RR^3, S = \{(1, 1, 1), (2, 2, 0), (-1, 1, 1), (0, 0, 2) \} $;
+    \item $ V = \RR_2[X], S = \{ X, 1 + 2X \} $;
+    \item $ V = \RR_2[X], S = \{ X^2, -X \} $;
+    \item $ V = M_2(\RR), S = \left\{ \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}, %
+        \begin{pmatrix} -1 & -1 \\ 0 & 0 \end{pmatrix} \right\} $;
+    \item $ V = \RR_3[X], S = \{ 2 + X, 5 - X, 3 - 2X + X^2 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+8. Verificați dacă mulțimile $ S $ de vectori din spațiul vectorial $ V $ sînt
+sisteme de generatori, iar în caz afirmativ, extrageți din ele o bază a lui $ V $:
+\begin{enumerate}[(a)]
+    \item $ V = \RR^3, S = \{ (-1, 2, 0), (3, 1, 1), (0, 1, 1), (-1, 2, 5), (0, 2, 2) \} $;
+    \item $ V = \RR^3, S = \{ (0, 0, 0), (2, 0, 0), (1, 0, 1), (-1, 1, 1), (2, 1, 2) \} $;
+    \item $ V = \RR_2[X], S = \{ X, X^2, 1 - 3X, 2 + 2X - X^2, 1 + X^2, 1 - X, 1 + X \} $;
+    \item $ V = \RR_2[X], S = \{ 1 - X, 1 + X, 1 - X^2, 1 + X^2 \} $.
+\end{enumerate}
+
+\vspace{1cm}
+
+9. Pentru spațiile vectoriale $ V $ de mai jos, arătați că mulțimea $ B $
+este o bază, apoi găsiți coordonatele vectorului $ v $ în baza $ B $:
+\begin{enumerate}[(a)]
+    \item $ V = \RR^3, B = \{ (1, -1, 0), (2, 0, 1), (0, -1, 2) \}, %
+        v = (1, 2, 3) $;
+    \item $ V = \RR^3, B = \{ (0, -1, 2), (3, 1, 1), (2, -1, 3) \}, %
+        v = (3, 2, 1) $;
+    \item $ V = \RR^3, B = \{ (1, 1, 1), (-2, 3, 1), (3, 1, 1) \}, %
+        v = (2, 2, 2) $;
+    \item $ V = \RR_2[X], B = \{ 1 + X, 1 - X^2, 5 \}, v = X $;
+    \item $ V = \RR_2[X], B = \{ 3 + X - 2X^2, 1 + 3X, 2 \}, v = 2 + 3X^2 $;
+    \item $ V = \RR_3[X], B = \{ 5 - X, 2, 4 + 3X^2, 1 + 2X \}, v = 1 + X + X^2 + X^3 $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-20-21"
+%%% End:
