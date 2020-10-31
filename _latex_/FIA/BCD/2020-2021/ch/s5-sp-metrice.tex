@@ -1,0 +1,122 @@
+%! TEX root = ../bcd-20-21.tex
+
+\chapter{Spații metrice}
+
+\section{Noțiuni teoretice}
+
+\begin{definition}\label{def:sp-metric}
+  \index{spațiu metric}
+  Fie $ X $ o mulțime nevidă. O aplicație $ d : X \times X \to \RR $
+  se numește \emph{distanță} (metrică) pe $ X $ dacă:
+  \begin{enumerate}[(a)]
+  \item $ d(x, y) \geq 0, \forall x, y \in \RR $;
+  \item $ d(x, y) = 0 \Leftrightarrow x = y $;
+  \item $ d(x, y) = d(y, x), \forall x, y \in X $;
+  \item $ d(x, z) \leq d(x, y) + d(y, z) $ (\emph{inegalitatea triunghiului}).
+  \end{enumerate}
+
+  În acest context, perechea $ (X, d) $ se numește \emph{spațiu metric}.
+\end{definition}
+
+Această noțiune generalizează calculul distanțelor cu ajutorul modulului,
+cum se procedează în cazul mulțimii numerelor reale, de exemplu. În consecință,
+avem că $ (\RR, |\cdot|) $ este spațiu metric.
+
+Principala noțiune teoretică de interes folosește următoarea:
+\begin{definition}\label{def:contractie}
+  \index{spațiu metric!contracție}
+  Fie $ (X, d) $ un spațiu metric și fie $ f: X \to X $ o funcție.
+
+  Aplicația $ f $ se numește \emph{contracție} pe $ X $ dacă există
+  $ k \in [0, 1) $ astfel încît:
+  \[
+    d(f(x), f(y)) \leq k \cdot d(x, y), \quad \forall x, y \in X.
+  \]
+
+  Numărul $ k $ se numește \emph{factor de contracție}.
+\end{definition}
+
+Rezultatul fundamental este:
+
+\begin{theorem}[Banach]\label{thm:banach}
+  \index{spațiu metric!teorema Banach}
+  Fie $ (X, d) $ un spațiu metric complet\footnotemark și fie $ f : X \to X $
+  o contracție de factor $ k $. Atunci există un unic punct $ \xi \in X $
+  astfel încît $ f(\xi) = \xi $.
+
+  În acest context, $ \xi $ se numește \emph{punct fix} pentru $ f $.
+\end{theorem}
+
+Putem folosi \emph{metoda aproximațiilor succesive} pentru a găsit punctul
+fix al unei aplicații. Se construiește un șir recurent astfel. Fie $ x_0 \in X $
+arbitrar. Definim șirul $ x_{n + 1} = f(x_n) $. Se poate demonstra că șirul
+$ x_n $ este convergent, iar limita sa este punctul fix căutat. În plus,
+eroarea aproximației cu acest șir este dată de:
+\[
+  d(x_n, \xi) \leq \dfrac{k^n}{1 - k} \cdot d(x_0, x_1), \quad \forall n \in \NN.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exemplu rezolvat}
+
+Vom aproxima cu o eroare mai mică decît $ 10^{-3} $ soluția reală a
+ecuației
+\[
+  x^3 + 4x - 1 = 0.
+\]
+
+\emph{Soluție:} Folosind, eventual, metode de analiză (e.g.\ șirul lui Rolle),
+se poate arăta că ecuația are o singură soluție reală $ \xi \in (0, 1) $. Folosim
+mai departe metoda aproximațiilor succesive pentru a o găsi.
+
+Fie $ X = [0, 1] $ și $ f : X \to X, f(x) = \dfrac{1}{x^2 + 4} $. Se vede că,
+pînă la o translație (constantă), ecuația dată este echivalentă cu $ f(x) = x $,
+adică a găsi un punct fix pentru $ f $.
+
+Spațiul metric $ X $ este complet, ca orice subspațiu al lui $ \RR $. Mai
+demonstrăm că $ f $ este contracție pe $ X $. Derivata este:
+\[
+  f'(x) = \frac{-2x}{(x^2 + 4)^2} \Rightarrow %
+  \sup_{x \in X}|f'(x)| = -f'(1) = \frac{2}{25} < 1.
+\]
+Am obținut că $ f $ este o contracție de factor $ \dfrac{2}{25}. $
+
+Construim șirul aproximațiilor succesive. Alegem $ x_0 = 0 $ (pentru simplitate)
+și:
+\[
+  x_{n + 1} = f(x_n) = \dfrac{1}{x_n^2 + 4}.
+\]
+Evaluarea erorii:
+\[
+  |x_n - \xi| < \frac{k^n}{1 - k} | x_0 - x_1 | = %
+  \frac{1}{3} \Big( \frac{2}{25} \Big)^2 \leq 10^{-3}
+\]
+de unde rezultă că putem lua:
+\[
+  \xi \simeq x_3 = f \Big(\frac{16}{65} \Big) \simeq 0,235.
+\]
+
+\begin{remark}\label{rk:alt}
+  Alternativ, puteam lucra cu $ g(x) = \dfrac{1}{4} (1 - x^3) $, cu $ x\in [0, 1] $.
+  Se arată că și $ g $ este o contracție, de factor $ k = \dfrac{3}{4} $. În acest
+  caz, șirul aproximațiilor succesive converge mai încet și avem $ \xi \simeq x_6 $.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții propuse}
+
+Găsiți soluția reală a ecuațiilor de mai jos, cu eroarea $ \varepsilon $:
+\begin{enumerate}[(a)]
+\item $ x^3 + 12x - 1 = 0, \varepsilon = 10^{-3} $;
+\item $ x^5 + x - 15 = 0, \varepsilon = 10^{-3} $;
+\item $ 3x + e^{-x} = 1, \varepsilon = 10^{-3} $;
+\item $ x^3 - x + 5 = 0, \varepsilon = 10^{-2} $;
+\item $ x^5 + 3x - 2 = 0, \varepsilon = 10^{-3} $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-20-21"
+%%% End:
