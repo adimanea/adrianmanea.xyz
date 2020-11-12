@@ -1,0 +1,284 @@
+\chapter{Serii de funcții}
+\index{serii!de funcții}
+
+Șirurile de funcții studiate în seminarul anterior se pot studia și în \emph{serii de funcții},
+cu forma generală $ \sum f_n(x) $, pentru $ f_n : D \seq \RR \to \RR $, un șir de funcții.
+Convergența acestora se studiază folosind \emph{criteriul lui Weierstrass}.
+\index{criteriul!Weierstrass}
+
+\begin{theorem}[Weierstrass]\label{thm:weier}
+  Fie $ \sum f_n(x) $ o serie de funcții, cu $ f_n : [a, b] \to \RR $ și fie
+  $ \sum a_n $ o serie convergentă de numere reale pozitive.
+
+  Dacă $ | f_n(x) | \leq a_n $, pentru orice $ x \in [a, b] $ și $ n \geq N $, cu $ N $
+  fixat, atunci seria de funcții $ \sum f_n(x) $ este uniform convergentă pe $ [a, b] $.
+\end{theorem}
+
+În exerciții, pentru a găsi termenul general al seriei numerice $ a_n $, studiem
+funcțiile $ f_n(x) $, cărora le căutăm valoarea maximă. Astfel, inegalitatea cerută:
+\[
+  | f_n(x) | \leq a_n \quad \forall x \in [a, b], n \geq N
+\]
+este automată.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Studiați convergența seriilor de funcții:
+\begin{enumerate}[(a)]
+\item $ \sum \dfrac{n^2}{\sqrt{n!}} (x^n + x^{-n}) $, cu $ x \in \left[ \dfrac{1}{2}, 2 \right] $;
+\item $ \sum \dfrac{nx}{1 + n^5 x^2}, x \in \RR $;
+\item $ \sum \dfrac{\cos(3^n x)}{2^n}, x \in \RR $;
+\item $ \sum x^n(1 - x), x \in [0, 1] $;
+\item $ \sum \dfrac{(x + n)^2}{n^4}, x \in [0, 2] $;
+\item $ \sum \dfrac{\ln(1 + nx)}{nx^n}, x > 0 $;
+\item $ \sum \dfrac{xe^{-nx}}{\sqrt{n}}, x \geq 0 $;
+\item $ \sum ne^{-nx}, x \geq 1 $.
+\end{enumerate}
+
+\emph{Indicații:} În fiecare caz, se găsește valoarea maximă a funcției $ | f_n | $,
+pe care o notăm cu $ a_n $, apoi studiem convergența seriei numerice $ \sum a_n $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Serii de puteri}
+\index{serii!de puteri}
+
+Seriile de puteri sînt cazuri particulare ale
+seriilor de funcții, în care funcțiile sînt polinomiale. De aceea, în general,
+o serie de puteri se va nota:
+\[
+  \sum a_n (x - \alpha)^n, \quad \alpha \in \RR,
+\]
+care se numește \emph{serie de puteri centrată în $ x = \alpha $} sau
+\emph{serie de puteri ale lui $ x - \alpha $}.
+
+În general, o serie de puteri este absolut convergentă pentru $ x \in (\alpha - R, \alpha + R) $, unde
+$ R \in \RR $ se numește \emph{raza de convergență} și se calculează după una dintre
+formulele:
+\begin{itemize}
+\item $ R = \ds\lim_{n \to \infty} \left| \dfrac{a_n}{a_{n+1}} \right| $;
+\item $ R = \ds\lim_{n \to \infty} \dfrac{1}{\sqrt[n]{|a_n|}} $.
+\end{itemize}
+
+În plus, se studiază separat cazurile $ x = \pm R $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+1. Să se calculeze raza de convergență și mulțimea de convergență pentru
+următoarele serii de puteri:
+\begin{enumerate}[(a)]
+\item $ \sum_{n \geq 0} x^n $;
+\item $ \sum_{n \geq 1} n^n x^n $;
+\item $ \sum_{n \geq 1} (-1)^{n+1} \dfrac{x^n}{n} $;
+\item $ \sum_{n \geq 1} \dfrac{n^nx^n}{n!} $;
+\item $ \sum \dfrac{(x - 1)^{2n}}{n \cdot 9^n} $;
+\item $ \sum \dfrac{(x + 3)^n}{n^2} $.
+\item $ \sum \dfrac{n - 1}{n^2 + 2} (x - 2)^2 $;
+\item $ \sum \dfrac{n + 1}{\sqrt{n^4 + n^3 + 1}} \left( \dfrac{x + 1}{2x + 3} \right) $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+2. Găsiți mulțimea de convergență și suma seriilor:
+\begin{multicols}{3}
+    \begin{enumerate}[(a)]
+        \item $ \ds\sum_{n \geq 0} (-1)^n \frac{x^{2n+1}}{2n + 1} $;
+        \item $ \ds\sum_{n \geq 0} \dfrac{2^n}{2n + 1} x^n $;
+        \item $ \ds\sum_{n \geq 0} \dfrac{n}{n + 1} x^n $.
+    \end{enumerate}
+\end{multicols}
+
+\emph{Indicații:} Se pornește de la seria geometrică, pentru cazul
+convergent:
+\[
+    S(x) = \sum x^n = \dfrac{1}{1 - x}, \quad x \in (-1, 1).
+\]
+Putem să o derivăm sau integrăm termen cu termen și obținem serii
+convergente pe același domeniu:
+\begin{align*}
+    S'(x) &= \sum nx^{n-1} = \dfrac{1}{(1 - x)^2}, \quad x \in (-1, 1) \\
+    \ds\int S(x) dx &= \sum \dfrac{x^{n+1}}{n + 1} = - \ln(1 - x), \quad x \in (-1, 1).
+\end{align*}
+
+Se prelucrează seriile date pînă se ajunge la una dintre aceste formule:
+\begin{enumerate}[(a)]
+    \item se derivează termen cu termen;
+    \item se notează $ 2x = \pm t^2 $, în funcție de semnul lui $ x $;
+    \item se descompune, folosind $ \dfrac{n}{n + 1} = 1 - \dfrac{1}{n + 1} $,
+        apoi cele două serii se studiază separat.
+\end{enumerate}
+
+Dacă este necesar, se poate și înmulți sau împărți prin $ x $.
+
+\textbf{Atenție!} Pentru $ x = 0$, majoritatea metodelor de mai sus nu
+funcționează, dar avem $ S(0) = 0 $, ca valoare particulară.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Serii Taylor}
+
+Orice funcție cu anumite proprietăți poate fi aproximată cu un polinom:
+
+\begin{definition}\label{def:pol-taylor}
+  \index{serii!polinom Taylor}
+  Fie $ I \seq \RR $ un interval deschis și $ f: I \to \RR $ o funcție de clasă
+  $ \kal{C}^m(I) $. Pentru orice $ a \in I $, definim \emph{polinomul Taylor}
+  de gradul $ n \leq m $ asociat funcției $ f $ în punctual $ a $ prin:
+  \[
+    T_{n,f,a}(x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k.
+  \]
+  \emph{Restul} (eroarea de aproximare) este definit prin:
+  \[
+    R_{n,f,a} = f(x) - T_{n,f,a}(x).
+  \]
+\end{definition}
+
+Acest polinom poate fi mai departe utilizat pentru a studia \emph{seria Taylor}
+asociată unei funcții.
+
+\begin{theorem}\label{thm:seria-taylor}
+  \index{serii!Taylor}
+  Fie $ a < b $ și $ f \in \kal{C}^\infty([a,b]) $ astfel încît să existe
+  $ M > 0 $ cu proprietatea că $ \forall n \in \NN $ și $ x \in [a, b] $, avem
+  $ |f^{(n)}(x)| \leq M $.
+
+  Atunci pentru orice $ x_0 \in (a,b) $, seria Taylor a lui $ f $ în jurul
+  punctului $ x_0 $ este uniform convergentă pe $ [a,b] $ și suma ei este
+  funcția $ f $, adică avem:
+  \[
+    f(x) = \sum_{n \geq 0} \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n, \quad %
+    \forall x \in [a,b].
+  \]
+\end{theorem}
+
+Pentru cazul particular $ x_0 = 0 $, seria se numește \emph{Maclaurin}.
+\index{serii!Maclaurin}
+
+\textbf{Serii Taylor uzuale}, pentru funcții elementare, împreună cu
+domeniile de convergență, sînt date mai jos:
+\begin{align*}
+  e^x &= \sum_{n \geq 0} \dfrac{1}{n!} x^n, x \in \RR \\
+  \dfrac{1}{1 - x} &= \sum_{n \geq 0} x^n, |x| < 1 \\
+  \dfrac{1}{1 + x} &= \sum_{n \geq 0} (-1)^n x^n, |x| < 1 \\
+  \cos x &= \sum_{n \geq 0} \dfrac{(-1)^n}{(2n)!} x^{2n}, x \in \RR \\
+  \sin x &= \sum_{n \geq 0} \dfrac{(-1)^n}{(2n + 1)!} x^{2n + 1}, x \in \RR \\
+  (1 + x)^\alpha &= \sum_{n \geq 0} \dfrac{\alpha(\alpha - 1)(\alpha - 2) \cdots (\alpha - n + 1)}{n!} x^n,%
+                   |x| < 1, \alpha \in \RR \\
+  \arctan x &= \sum_{n \geq 0} \dfrac{(-1)^n}{2n + 1} x^{2n + 1}, | x | \leq 1.
+\end{align*}
+
+Seriile pentru alte funcții se pot obține fie prin calcul direct, fie
+prin derivare sau integrare termen cu termen a seriilor de mai sus.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+\indent\indent 1. Să se dezvolte următoarele funcții în serie Maclaurin, precizînd și
+domeniul de convergență:
+\begin{enumerate}[(a)]
+    \item $ f(x) = e^x $;
+    \item $ f(x) = \sin x $;
+    \item $ f(x) = \cos x $;
+    \item $ f(x) = (1 + x)^\alpha, \alpha \in \RR $;
+    \item $ f(x) = \dfrac{1}{1 + x} $;
+    \item $ f(x) = \ln(1 + x) $;
+    \item $ f(x) = \arctan x $;
+    \item $ f(x) = \ln(1 + 5x)$;
+    \item $ f(x) = \ln(2 + 3x)^3 $;
+    \item $ f(x) = \dfrac{1}{x^2 - 5x + 6} $;
+    \item $ f(x) = \dfrac{1}{x^2 - 3x + 2} $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+2. Să se calculeze polinomul Taylor de grad 3 în jurul originii
+pentru funcțiile:
+\begin{enumerate}[(a)]
+\item $ f(x) = 3 \ln(2 + x) $;
+\item $ f(x) = \arctan x $;
+\item $ f(x) = \sqrt{1 + 2x} $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+3. Găsiți aproximarea liniară și pătratică a funcțiilor:
+\begin{enumerate}[(a)]
+\item $ f(x) = \sqrt[3]{x} $;
+\item $ f(x) = \sin(\cos x) $;
+\item $ f(x) = e^{\sin x} $;
+\item $ f(x) = \arcsin x $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+4. Calculați mulțimea de convergență și suma seriei:
+\[
+    \sum_{n \geq 0} \dfrac{(-1)^n}{n!} \dfrac{x^{2n - 1}}{5^n}.
+\]
+
+\vspace{0.5cm}
+
+5. Calculați cu o eroare mai mică decît $ 10^{-3} $ integralele:
+\begin{enumerate}[(a)]
+    \item $ \ds\int_0^{\frac{1}{2}} \dfrac{\sin x}{x} dx $;
+    \item $ \ds\int_0^{\frac{1}{2}} \dfrac{\ln(1 + x)}{x} dx $;
+    \item $ \ds\int_0^1 e^{-x^2} dx $;
+    \item $ \ds\int_0^{\frac{1}{2}} \dfrac{1 - \cos x}{x^2} dx $;
+    \item $ \ds\int_0^{\frac{1}{2}} \dfrac{1 - e^x}{x} dx $;
+\end{enumerate}
+
+\vspace{0.5cm}
+
+6. Folosind dezvoltarea în serie Taylor, calculați cu o eroare
+de maximum $ 10^{-3} $:
+\begin{enumerate}[(a)]
+    \item $ \sqrt[3]{65} $;
+    \item $ \sqrt[4]{10005} $;
+    \item $ \cos \dfrac{1}{2} $;
+    \item $ \sin \dfrac{1}{3} $;
+    \item $ 3 \arctan \dfrac{1}{2} $;
+    \item $ e^{-0,2} $;
+    \item $ \ln(1,1) $;
+    \item $ \ln 4 $;
+    \item $ \ln 5 $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+7. Estimați eroarea pentru calculele de la exercițiul anterior.
+
+\vspace{0.5cm}
+
+8. \begin{enumerate}[(a)]
+    \item Fie funcția $ f(x) = \sqrt[3]{x + 1} $.
+        \begin{enumerate}[(i)]
+            \item Scrieți polinoamele Taylor $ T_1 $ și $ T_2 $ în jurul
+                originii.
+            \item Calculați $ \sqrt[3]{29} $ folosind $ T_2 $.
+            \item Estimați eroarea calculului de mai sus.
+        \end{enumerate}
+    \item Fie funcția $ f(x) = \sqrt{\sin(x)}, x \in [0, \pi] $. 
+        \begin{enumerate}[(i)]
+            \item Scrieți polinoamele Taylor $ T_1 $ și $ T_2 $ în jurul
+                originii.
+            \item Calculați $ \dfrac{1}{\sqrt[4]{2}} $ folosind $ T_2 $.
+            \item Estimați eroarea calculului de mai sus.
+        \end{enumerate}
+    \item Fie funcția $ f(x) = \ln(1 + 3x)^2 $.
+        \begin{enumerate}[(i)]
+            \item Scrieți polinoamele Taylor $ T_1 $ și $ T_2 $ în jurul originii.
+            \item Calculați $ \ln 49 $ folosind $ T_2 $.
+            \item Estimați eroarea calculului de mai sus.
+        \end{enumerate}
+    \item Fie funcția $ f(x) = \arctan \sqrt{x}, x \geq 0 $.
+        \begin{enumerate}[(i)]
+            \item Scrieți polinoamele Taylor $ T_1 $ și $ T_2 $ în jurul originii.
+            \item Calculați $ \arctan 4 $ folosind $ T_2 $.
+            \item Estimați eroarea calculului de mai sus.
+        \end{enumerate}
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-20-21"
+%%% End:
