@@ -1,0 +1,224 @@
+\chapter{Vectori și valori proprii. Diagonalizare}
+
+\section{Vectori și valori proprii}
+
+Fie $ V $ un $ K $-spațiu vectorial și $ f : V \to V $ o aplicație
+liniară.
+\begin{definition}\label{def:vvp} \index{vector!propriu}
+  Un vector $ v \in V $ se numește \emph{vector propriu} (eng.\ \emph{eigenvector})
+  pentru aplicația $ f $ dacă există un scalar $ \lambda \in K $ astfel încît
+  $ f(v) = \lambda v $.
+
+  În acest caz, $ \lambda $ se numește \emph{valoarea proprie} (eng.\ \emph{eigenvalue})
+  asociată vectorului propriu $ v $.
+\end{definition}
+
+Rezultă că vectorii proprii sînt aceia pentru care aplicația liniară
+are o acțiune simplă, de \qq{rescalare}, adică doar de înmulțire cu un scalar,
+care se numește valoarea proprie asociată.
+
+Pașii pentru calculul vectorilor și valorilor proprii sînt:
+\begin{enumerate}[(1)]
+\item Presupunem $ \dim V = n $. Scriem matricea aplicației $ f $ în baza
+  canonică a lui $ V $ și obținem $ A = M_f^B \in M_n(K) $;
+\item Scriem \emph{polinomul caracteristic} al matricei, anume:
+  \[
+    P(x) = \det(A - x \cdot I_n).
+  \]
+\item Rădăcinile polinomului caracteristic sînt valorile proprii ale
+  endomorfismului $ f $. Mulțimea valorilor proprii se mai numește \emph{spectrul}
+  endomorfismului și se notează $ \sigma(f) $. \index{polinom!caracteristic}
+  \index{valoare proprie!spectru}
+\item Pentru a găsi vectorii proprii asociați fiecărei valori proprii $ \lambda_i $,
+  se rezolvă ecuația $ f(v_i) = \lambda_i v_i $ și se determină $ v_i \in V $.
+\end{enumerate}
+
+Alte elemente de terminologie:
+\begin{definition}\label{def:mult}
+  Fie $ \lambda $ o valoare proprie a unui endomorfism $ f $, iar $ v $, vectorul
+  propriu asociat.
+
+  Notăm $ V(\lambda) = V_\lambda = \dr{Sp}(v) $ subspațiul lui $ V $ generat
+  de $ v $, numit \emph{subspațiul invariant} (propriu) asociat lui $ v $.
+
+  Dimensiunea acestui subspațiu se numește \emph{multiplicitatea geometrică}
+  a valorii proprii, notată $ m_g(\lambda) = g(\lambda) = \dim V(\lambda) $.
+  \index{valoare proprie!multiplicitate geometrică}
+  \index{valoare proprie!multiplicitate algebrică}
+  \index{vector!propriu!subspațiu invariant}
+
+  Se numește \emph{multiplicitatea algebrică} a valorii proprii $ \lambda $,
+  notată $ m_a(\lambda) = a(\lambda) $, multiplicitatea rădăcinii $ x = \lambda $
+  în polinomul caracteristic. Adică
+  $ a(\lambda) = n \Leftrightarrow P_A(x) \vdots (x - \lambda)^n $.
+\end{definition}
+
+O proprietate importantă este:
+\begin{theorem}[Cayley-Hamilton]\label{thm:ch}
+  \index{teorema!Cayley-Hamilton}
+  $ P_A(A) = 0 $, unde $ A $ este polinomul caracteristic al matricei $ A $.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Matrice de trecere. Diagonalizare}
+\index{matrice!de trecere}
+\index{matrice!diagonalizare}
+
+Putem avea două sau mai multe baze ale aceluiași spațiu vectorial,
+iar între ele există o legătură strînsă, matriceală.
+
+Fie $ B = \{ b_1, \dots, b_n \} $ și $ C = \{ c_1, \dots, c_n \} $ două
+baza ale aceluiași spațiu vectorial $ V $. Se numește \emph{matricea de trecere}
+de la baza $ B $ la baza $ C $, notată $ M_B^C $ sau $ {}^B M^C $, matricea
+coeficienților din scrierea vectorilor $ c_i $ în funcție de vectorii $ b_i $.
+Mai precis, deoarece $ B $ este bază, avem:
+\[
+  \forall i,j, \quad c_i = \sum_j \alpha_{ij} b_j,
+\]
+iar matricea de trecere este matricea $ (\alpha_{ij}) $.
+
+\begin{definition}\label{def:diag}
+  O matrice $ A \in M_n(K) $ se numește \emph{diagonalizabilă} dacă ea
+  este asemenea cu o matrice diagonală $ D $, care are elemente nenule doar
+  pe diagonala principală.
+
+  Altfel spus, există $ T \in M_n(K) $ inversabilă, cu $ T^{-1} AT = D $.
+\end{definition}
+
+\begin{remark}\label{rk:diag}
+  Dacă matricea $ A $ este diagonalizabilă, atunci $ D $ din definiția de mai sus
+  conține pe diagonală doar valorile proprii ale lui $ A $.
+\end{remark}
+
+Condițiile necesare și suficiente pentru diagonalizare sînt:
+\begin{theorem}\label{thm:diag}
+  Următoarele afirmații sînt echivalente:
+  \begin{enumerate}[(a)]
+  \item Matricea $ A $ este diagonalizabilă;
+  \item Există o bază a spațiului vectorial $ V $ formată doar din vectorii
+    proprii ai lui $ A $;
+  \item $ a(\lambda_i) = g(\lambda_i), \forall \lambda_i \in \sigma(A) $.
+  \end{enumerate}
+\end{theorem}
+
+Evident, discuția are sens atît pentru cazul în care pornim cu o aplicație
+liniară, caz în care îi luăm matricea în baza canonică și lucrăm cu ea,
+cît și dacă pornim direct cu o matrice.
+
+Pașii pentru diagonalizare sînt:
+\begin{enumerate}[(1)]
+\item Fixăm o bază $ B $ a lui $ V $ (e.g.\ baza canonică) și scriem $ A = M_f^B $;
+\item Determinăm valorile proprii $ \lambda_i $ ale lui $ A $ și multiplicitățile
+  lor geometrice;
+\item Pentru fiecare valoare proprie, determinăm vectorii proprii, subspațiile
+  invariante, cîte o bază $ B_i $ în fiecare dintre acestea și multiplicitățile
+  geometrice;
+\item Dacă există o valoare proprie $ \lambda_j $ cu $ a(\lambda_j) \neq g(\lambda_j)$,
+  algoritmul se oprește și matricea nu se poate diagonaliza;
+\item Dacă $ a(\lambda_i) = g(\lambda_i), \forall i $, matricea se poate
+  diagonaliza, iar $ B' = \ds\cup_i B_i $ este o bază a lui $ V $, formată
+  numai din vectori proprii;
+\item Se determină matricea de trecere de la baza $ B $ la baza $ B' $, notată $ T $,
+  care este inversabilă, iar forma diagonală este:
+  \begin{equation}
+    \label{eq:diag}
+    A \sim T^{-1} AT = \dr{diag} (\lambda_i).
+  \end{equation}
+\end{enumerate}
+
+Observați că ecuația~\eqref{eq:diag} poate fi scrisă și astfel:
+\[
+  T^{-1}AT = \dr{diag}(\lambda_i) \stackrel{\text{not.}}{=\joinrel=} D \Leftrightarrow %
+  A = TDT^{-1},
+\]
+unde $ D $ este o matrice diagonală. Astfel că, în general, se poate formula următoarea:
+
+\begin{definition}\label{def:diag}
+  O matrice $ A \in M_n(\RR) $ este diagonalizabilă dacă există o matrice diagonală $ D $
+  și o matrice inversabilă $ T $ astfel încît $ A = TDT^{-1} $.
+\end{definition}
+
+Această definiție abstractă este concretizată în procedura de mai sus:
+\begin{itemize}
+\item matricea inversabilă este matricea de trecere de la baza canonică la o bază
+  formată doar din vectori proprii;
+\item matricea diagonală conține valorile proprii pe diagonala principală.
+\end{itemize}
+
+\begin{remark}\label{rk:diag-putere}
+  Unul dintre avantajele diagonalizării matricelor este ușurința calculelor
+  ulterioare. În particular, dacă $ A \sim \dr{diag}(\lambda_i) $,
+  atunci $ A^k \sim \dr{diag}(\lambda_i^k), \forall k $.
+
+  Mai mult, folosind relația din ecuația~\eqref{eq:diag}, putem scrie și:
+  \[
+    A^n = (TDT^{-1})^n = TD^nT^{-1},
+  \]
+  cu avantajul că $ D^n = \left(\mathrm{diag}(\lambda_i)\right)^n = \mathrm{diag}(\lambda_i^n) $.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Să se determine vectorii și valorile proprii pentru matricele:
+\[
+  A = \begin{pmatrix} 1 & 0 \\ 8 & 2 \end{pmatrix}, \quad %
+  B = \begin{pmatrix} 0 & 2 & 2 \\ 2 & 0 & -2 \\ 2 & -2 & 0 \end{pmatrix}, \quad %
+  C = \begin{pmatrix} 0 & 1 & -2 \\ 1 & 1 & 1 \\ 1 & -1 & -1 \end{pmatrix}.
+\]
+
+2. Fie aplicația liniară $ f : \RR^3 \to \RR^3, f(x, y, z) = (-y, x, z) $.
+
+Să se calculeze vectorii și valorile proprii ale lui $ f $.
+
+\vspace{0.3cm}
+
+3. Aceeași cerință pentru:
+\[
+  f : \RR^3 \to \RR^3, \quad f(x, y, z) = (x - z, 8x + y - 2z, z).
+\]
+
+4. Fie aplicația liniară $ f : M_2(\RR) \to M_2(\RR) $, definită prin:
+\[
+  f \begin{pmatrix} a & b \\ c & d \end{pmatrix} = %
+  \begin{pmatrix} 2a + b + d & 2b + 4c + 5d \\ 2c + d & 8d \end{pmatrix}.
+\]
+
+Să se arate că $ f $ nu este diagonalizabilă.
+
+\vspace{0.3cm}
+
+5. Să se diagonalizeze endomorfismul:
+\[
+  f : \RR^3 \to \RR^3, \quad f(x, y, z) = (y + z, x + z, x + y).
+\]
+
+6. Să se diagonalizeze matricele:
+\[
+  A = \begin{pmatrix}
+    7 & 2 & -2 \\
+    2 & 4 & -1 \\
+    -2 & -1 & 4
+  \end{pmatrix}, \quad %
+  B = \begin{pmatrix}
+    1 & 1 \\ 4 & 1
+  \end{pmatrix}, \quad %
+  C = \begin{pmatrix}
+    11 & -5 & 5 \\
+    -5 & 3 & -3 \\
+    5 & -3 & 3
+  \end{pmatrix}.
+\]
+
+
+7. Determinați vectorii și valorile proprii pentru aplicația:
+\[
+  f : \RR^3 \to \RR^3, \quad f(a, b, c) = (a - b + c, b, b-c).
+\]
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-20-21"
+%%% End:
