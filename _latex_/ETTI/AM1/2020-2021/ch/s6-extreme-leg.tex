@@ -1,0 +1,187 @@
+\chapter{Extreme cu legături}
+
+\index{extreme!cu legături}
+
+În seminarul anterior am văzut cum se studiază punctele de extrem
+și valorile extreme pentru funcții de 2 sau 3 variabile, definite
+pe întreg domeniu, $ \RR^2 $ sau $ \RR^3 $. În multe situații, însă,
+domeniul de definiție va fi doar o porțiune a planului sau spațiului,
+definită prin (in)ecuații.
+
+Există mai multe posibilități pentru a delimita domeniul de definiție
+și le prezentăm în ordinea crescătoare a dificultății.
+
+Considerăm, pentru simplitate, că lucrăm cu o funcție de două variabile:
+\[
+    f : D \seq \RR^2 \to \RR, \quad f = f(x, y).
+\]
+
+\textbf{Pentru toate cazurile cînd domeniul de definiție are o frontieră
+    (chiar și interval deschis), studiul se împarte în 2 etape: pe interior
+și pe frontieră.}
+
+Pentru \textbf{domenii de tip dreptunghiular}, $ D = [a, b] \times [c, d] $:
+\begin{itemize}
+    \item se studiază mai întîi pe interiorul domeniului, adică
+        $ \dr{Int} D = (a, b) \times (c, d) $, cu metoda din cazul extremelor libere.
+        Se impune condiția ca punctele critice să aparțină interiorul domeniului.
+    \item se studiază apoi pe frontieră ($\dr{Fr}D = \partial D $), care poate fi 
+        împărțită în mai multe bucăți: $ x = a, y \in [c, d] $ și celelalte,
+        caz pentru care funcția devine de o singură variabilă. În exemplul dat,
+        avem $ f(x, y) = f(a, y) = g(y) $, pentru care se studiază extremele
+        ca în liceu, fiind vorba de o funcție de o singură variabilă.
+\end{itemize}
+
+Pentru \textbf{domenii delimitate de ecuații sau inecuații de gradul întîi}, de
+forma $ D = \{ x \in [a, b], m_1 x + n_1 \leq y \leq m_2 x + n_2 \} $, 
+studiul se poate face ca mai sus pe interior, iar pe frontieră, se substituie
+$ x \in [a, b] $, iar $ y = m_1 x + n_1 $, respectiv $ x \in [a, b] $,
+iar $ y = m_2 x + n_2 $, în ambele cazuri avînd funcții de o singură variabilă.
+
+\textbf{Domeniile delimitate de ecuații oarecare} se studiază folosind o metodă
+generală (care, de altfel, poate fi folosită și în celelalte cazuri), numită
+\emph{metoda multiplicatorilor lui Lagrange}. Astfel, să presupunem că
+avem un domeniu de forma $ D : E(x, y) \leq \alpha \in \RR$, cum ar fi, de exemplu,
+interiorul unui disc:
+\[
+    D : x^2 + (y - 2)^2 \leq 9.
+\]
+\index{extreme!funcția lui Lagrange}
+Metoda constă în:
+\begin{itemize}
+    \item studiul pe interiorul domeniului, ca în cazul extremelor libere,
+        dar se impune condiția ca punctele critice să satisfacă
+        \emph{inegalitatea strictă} $ E(x, y) < \alpha $;
+    \item pe frontieră, se definește \emph{funcția lui Lagrange}:
+        \[
+            F(x, y) = f(x, y) - \lambda E(x, y), \quad \lambda \in \RR
+        \]
+        și se reia calculul, pentru funcția $ F $, cu parametrul $ \lambda $. Mai precis,
+        avem de rezolvat sistemul:
+        \[
+            \begin{cases}
+                F_x &= 0 \\
+                F_y &= 0 \\
+                E(x, y) - \alpha &= 0
+            \end{cases} \Longrightarrow (x, y, \lambda), \text{ puncte critice.}
+        \]
+        Din aceste puncte, extragem perechile $ (x, y) $, pe care le folosim
+        mai departe. Rezultatul central este:
+\end{itemize}
+
+\begin{theorem}\label{thm:functie-marg}
+    O funcție continuă definită pe un domeniu \emph{compact}\footnotemark
+    este mărginită și își atinge mar\-gi\-ni\-le.
+\end{theorem}
+\index{extreme!domeniu compact}
+
+\footnotetext{Compacitatea este un concept matematic destul de subtil și nu
+    ușor de înțeles. Intuitiv, însă, va fi suficient să menționăm că domeniile care
+    din punct de vedere geometric nu au \qq{găuri} sînt compacte. În particular,
+    ceea ce vom folosi în exerciții (discuri, elipse, triunghiuri etc.)
+vor fi toate compacte, deci sîntem în ipotezele teoremei.}
+
+Mai departe, putem continua ca în cazul extremelor libere, i.e.\ cu matricea hessiană
+pentru punctele critice $ (x_c, y_c) $ obținute, fie putem cita teorema și va fi
+suficient să calculăm $ f(x_c, y_c) $. Aceasta deoarece punctele de extrem
+sigur sînt printre punctele critice (teorema lui Fermat din liceu) și deci,
+valoarea maximă dintre $ f(x_c, y_c) $ va fi punctul de maxim, iar cea
+minimă, punctul de minim.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+\indent\indent 1. Fie funcția $ f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + y^3 - 6xy $.
+Determinați valorile extreme ale funcției pentru:
+\begin{enumerate}[(a)]
+    \item $ D = [0, 1] \times [0, 1] $;
+    \item $ D = \{ (x, y) \in \RR^2 \mid x \geq 0, y \geq 0, x + y \geq 5 \} $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+2. Fie funcția $ f : D \to \RR^2, f(x, y) = x^2 + xy + y^2 - 4\ln x - 10\ln y + 3 $.
+Determinați valorile extreme ale funcției, dacă $ D $ este domeniul
+maxim de definiție (extreme libere!).
+
+\vspace{0.5cm}
+
+3. Fie funcția $ f : D \to \RR^2, f(x, y) = 3xy^2 - x^3 - 15x - 36y + 9 $.
+\begin{enumerate}[(a)]
+    \item Pentru $ D = \RR^2 $, determinați valorile extreme ale funcției.
+    \item Pentru $ D = [-4, 4] \times [-3, 3] $, determinați valorile
+        extreme ale funcției.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+4. Fie funcția $ f : D \seq \RR^2 \to \RR, f(x, y) = 4xy - x^4 - y^4 $.
+Determinați valorile extreme ale funcției pentru:
+\begin{enumerate}[(a)]
+    \item $ D = \RR^2 $;
+    \item $ D = [ -1, 2 ] \times [0, 2] $;
+\end{enumerate}
+
+\vspace{0.5cm}
+
+5. Fie $ f : D \seq \RR^2 \to \RR, f(x, y) = x^3 + 3x^2y - 15x - 12y $.
+Aceeași cerință ca mai sus pentru:
+\begin{enumerate}[(a)]
+    \item $ D = \RR^2 $;
+    \item $ D = \{ (x, y) \in \RR^2 \mid x \geq 0, y \geq 0, 3y + x \leq 3 \} $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+6. Determinați valorile extreme pentru funcțiile $ f $, definite pe
+domeniile $ D $, unde:
+\begin{enumerate}[(a)]
+    \item $ f(x, y) = xy(1 - x - y), \quad D = [0, 1] \times [0, 1] $;
+    \item $ f(x, y) = x^4 + y^4 - 2x^2 + 4xy - 2y^2, \quad D = (-\infty 0) \times (0, \infty) $;
+    \item $ f(x, y) = x^3 + 8y^3 - 2xy, \quad D = \{ (x, y) \in \RR^2 \mid x, y \geq 0, y + 2x \leq 2 \} $;
+    \item $ f(x, y) = x^4 + y^3 - 4x^3 - 3y^2 + 3y, \quad D = \{ (x, y) \in \RR^2 \mid x^2 + y^2 < 4 \} $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+7. (Parțial ETTI, Prof.\ Purtan) Fie funcția: $ f : D \seq \RR^2 \to \RR, f(x, y) = x^2 + 2xy - 4x - y $.
+Pentru $ D = \{ (x, y) \in \RR^2 \mid 0 \leq x \leq 1, 0 \leq y \leq -x^2 + 2x \} $,
+determinați valorile extreme ale funcției.
+
+\vspace{0.5cm}
+
+8. (Examen ACS, Prof.\ Olteanu) Aflați valorile extreme ale funcției:
+\[
+    f(x, y) = x^2 + y^2 - 3x - 2y + 1
+\]
+pe mulțimea $ K : x^2 + y^2 \leq 1 $.
+
+\vspace{0.5cm}
+
+9*. Dintre toate paralelipipedele dreptunghice cu volum constant 1, determinați
+pe cel cu aria totală minimă.
+
+\vspace{0.5cm}
+
+10. Fie funcția $ f : D \to \RR, f(x, y, z) = x + 2y - 2z $.
+Găsiți extremele funcției pentru $ D = \{ (x, y, z) \in \RR^3 \mid x^2 + y^2 + z^2 \leq 16 \} $.
+
+\vspace{0.5cm}
+
+11. Fie funcția $ f : D \to \RR, f(x, y, z) = -4x - 3y + 6z $.
+Găsiți extremele funcției pentru $ D = \{ (x, y, z) \in \RR^3 \mid x^2 + y^2 + z^2 \leq 1 \} $.
+
+\vspace{0.5cm}
+
+12. Fie funcția $ f : D \to \RR, f(x, y) = xy^2(x + y - 2) $. Găsiți extremele funcției
+pentru $ D = \{ (x, y) \in \RR^2 \mid x + y \leq 3, x, y \geq 0 \} $.
+
+\vspace{0.5cm}
+
+13. Fie funcția $ f : \RR^2 \to \RR, f(x, y) = xy $. Găsiți extremele funcție pentru
+$ D = \{ (x, y) \in \RR \mid x^2 + 2y^2 \leq 1 \} $.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am1-20-21"
+%%% End:
