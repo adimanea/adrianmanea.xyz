@@ -1,0 +1,121 @@
+%! TEX root = ../bcd-19-20.tex
+
+\chapter{Extreme cu legături}
+
+\section{Generalități}
+
+În cazul în care domeniul de definiție este specificat cu o ecuație sau este
+dat de un produs de intervale, se aplică o metodă specifică, numită, în general,
+\emph{metoda multiplicatorilor lui Lagrange}.
+
+Astfel, fie funcția $ f : D \seq \RR^2 \to \RR $ ca mai sus, căreia vrem să îi determinăm
+extremele și presupunem că vrem să o facem numai într-un domeniu dat de:
+\[
+  D = \{ (x, y) \in \RR^2 \mid x^2 + y^2 = 4 \}.
+\]
+
+Atunci, ecuația $ x^2 + y^2 = 4 $ se numește \emph{legătură} și o scriem sub
+forma unei funcții $ g(x, y) = x^2 + y^2 - 4 $, pentru ca legătura să devină
+$ g(x, y) = 0 $.
+
+Cu aceasta, metoda multiplicatorilor lui Lagrange înseamnă să alcătuim
+\emph{funcția lui Lagrange}\footnotemark:
+\[
+  F(x, y) = f(x, y) - \lambda g(x, y), \quad \lambda \in \RR.
+\]
+\index{funcții!Lagrange}
+\index{funcții!multiplicator Lagrange}
+\footnotetext{Detalii și explicații geometrice sînt date, de exemplu, %
+    foarte clar în această %
+\href{https://www.youtube.com/watch?v=CQnZy4n85fE}{lecție video}.}
+
+Cu aceasta, singura modificare care trebuie aplicată metodei de mai sus este
+că sistemul pentru găsirea punctelor critice devine:
+\[
+  \begin{cases}
+    f_x &= 0 \\
+    f_y &= 0 \\
+    g &= 0
+  \end{cases} \Longrightarrow (x, y, \lambda).
+\]
+Pentru punctele critice, ne putem dispensa de $ \lambda $, iar rezolvarea funcționează
+ca mai devreme.
+
+\begin{remark}\label{rk:leg-simpla}
+  Nu întotdeauna este nevoie să ne complicăm cu funcția lui Lagrange.
+  Dacă, de exemplu, legătura era $ x + y = 3 $, putem să o scriem ca $ y = 3 - x $,
+  iar funcția inițială devine o funcție de o variabilă, $ f(x, 3 - x) $,
+  căreia îi studiem extremele ca în liceu.
+\end{remark}
+
+\begin{remark}\label{rk:mm-leg}
+  Dacă legăturile sînt multiple, de exemplu, $ g_1, g_2, g_3, \dots, g_k $,
+  funcția lui Lagrange corespunzătoare este:
+  \[
+    F(x, y) = f(x, y) - \sum \lambda_i g_i(x, y),
+  \]
+  iar sistemul de rezolvat este dat de anularea derivatelor parțiale și
+  a tuturor legăturilor.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsection{Cazul compact}
+
+Dacă domeniul de definiție este un \emph{spațiu compact} --- ceea ce, în esență,
+pentru uzul acestui seminar înseamnă un produs de intervale (semi)închise
+sau legături date de inegalități ---, problema se studiază în două etape:
+\begin{itemize}
+\item \textbf{În interiorul domeniului}, caz în care legătura este inexistentă;
+\item \textbf{Pe frontieră}, caz în care legătura este dată de egalitate.
+\end{itemize}
+
+De exemplu, pentru domeniile:
+\[
+  D_1 = [3, 4] \times [1, 5], \quad D_2 = \{ (x, y) \in \RR^2 \mid 3x + 2y \leq 2 \}
+\]
+\begin{itemize}
+\item Interiorul înseamnă:
+  \begin{itemize}
+  \item pentru $ D_1 $, $ \dr{Int}D_1 = (3, 4) \times (1, 5) $, caz în care avem
+    doar de verificat că punctele critice se găsesc în intervalele date;
+  \item pentru $ D_2 $, avem legătura $ 3x + 2y < 2 $, caz în care, din nou,
+    verificăm dacă punctele critice satisfac inegalitatea \emph{strictă}.
+  \end{itemize}
+\item Frontierele înseamnă:
+  \begin{itemize}
+  \item pentru $ D_1 $, cazurile separate $ x = 3, y \in [1, 5] $, apoi
+    $ x = 4, y \in [1, 5] $ și invers;
+  \item pentru $ D_2 $, legătura devine $ 3x + 2y = 2 $, pe care o putem rezolva
+    cu Lagrange sau cu metoda simplificată din observația~\ref{rk:leg-simpla}.
+  \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Să se determine valorile extreme ale funcțiilor $ f $,
+cu legătura $ g $ în cazurile:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = x^2 + y^2 - 6x - 2y + 1, g(x, y) = x + y - 2 $;
+\item $ f(x, y) = x^2 + y^2 - 2y + 1, g(x, y) = x^2 + y^2 - 2x - 2y + 1 $;
+\item $ f(x, y) = 3x + 4y, g(x, y) = x^2 + y^2 + 25 $
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Să se determine valorile extreme pentru funcțiile $ f $, definite pe
+mulțimea $ D $:
+\begin{enumerate}[(a)]
+\item $ f(x, y) = 5x^2 + 4xy + 8y^2, D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \} $;
+\item $ f(x, y) = xy^2(x + y - 2), D = \{(x, y) \in \RR^2 \mid x + y \leq 3, x, y \geq 0 \} $;
+\item $ f(x, y) = \dfrac{x + y}{1 + xy}, D = [0, 1] \times [0, 1] $;
+\item $ f(x, y, z) = x^2 + y^2 + xz - yz, D = \{(x, y, z \in \RR^3 \mid %
+  x + y + z = 1, x, y, z \geq 0 \} $.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../bcd-20-21"
+%%% End:

@@ -1,0 +1,320 @@
+\chapter{Integrale de suprafață}
+
+\section{Integrale de suprafață de speța întîi}
+\index{integrale!de suprafață!speța întîi}
+Integralele de suprafață reprezintă generalizarea într-o dimensiune
+superioară pentru integralele curbilinii. Astfel, multe dintre formulele
+și abordările de calcul pe care le vom folosi vor fi similare.
+
+Fie $ \Phi : D \to \RR^3 $ o pînză parametrizată și fie $ \Sigma = \Phi(D) $
+imaginea ei (i.e.\ suprafață pe care vom integra). Fie $ f : U \seq \Sigma \to \RR $
+o funcție continuă (deci integrabilă), definită pe (o porțiune din) imaginea
+pînzei.
+
+Vom fi interesați de un caz particular (și, totodată, cel mai des întîlnit) pentru
+integrala de suprafață, anume cînd pînza este dată într-o \emph{parametrizare %
+  carteziană}. Adică ecuația suprafeței poate fi scrisă în forma $ z = z(x, y) $.
+
+Integrala de suprafață de speța întîi a funcției $ f $ pe suprafața $ \Sigma $
+parametrizată cartezian prin $ z = z(x, y) $ este:
+\[
+  \int_\Sigma f(x, y, z) d\sigma = \iint_D f(x, y, z(x, y)) \cdot %
+  \sqrt{1 + p^2 + q^2} dxdy,
+\]
+unde:
+\begin{itemize}
+\item $ D $ este domeniul de definiție al parametrizării carteziene,
+  adică proiecția pe planul XOY a suprafeței ($ z : D \seq \RR^2 \to \RR $);
+\item coeficienții de sub radical sînt $ p = \dfrac{\partial z}{\partial x} $
+  și $ q = \dfrac{\partial z}{\partial y} $.
+\end{itemize}
+
+În cazul particular în care $ f = 1 $, se obține \emph{aria suprafeței $ \Sigma $}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Integrale de suprafață de speța a doua}
+\index{integrale!de suprafață!speța a doua}
+Fie, ca mai sus, o pînză tridimensională, pe care o considerăm a fi parametrizată:
+\[
+  \Phi : D \to \RR^3, \quad \Phi(u, v) = (X(u, v), Y(u, v), Z(u, v)).
+\]
+
+Fie, de asemenea, o 2-formă diferențială\footnotemark:
+\[
+  \omega = P dy\wedge dz + Q dz \wedge dx + R dx \wedge dy.
+\]
+
+\footnotetext{$ \omega $ este o \textbf{2}-formă diferențială deoarece
+  ea conține produse de cîte 2 elemente diferențiale $ dx, dy, dz $. De asemenea,
+  notația $ \wedge $ (citită \qq{wedge} sau \qq{produs exterior}) este o
+  notație specifică pentru produsul care se definește între diferențialele
+  $ dx, dy, dz $. Alternativ, puteți găsi scrierea și prin juxtapunere:
+  \[
+    \omega = P dydz + Q dzdx + R dxdy.
+  \]
+  Însă acest produs \emph{nu este comutativ}, deci ordinea în care scriem
+  2-forma diferențială este esențială! (observați permutările circulare:
+  $ dydz \to dzdx \to dxdy $).}
+
+Integrala pe suprafața orientată $ \Sigma = \Phi(D) $ a 2-formei diferențiale
+$ \omega $ se definește prin:
+\[
+  \int_\Sigma \omega = \iint_D (P \circ \Phi) \cdot \frac{D(Y,Z)}{D(u, v)} + %
+  (Q \circ \Phi) \cdot \frac{D(Z, X)}{D(u, v)} + %
+  (R \circ \Phi) \cdot \frac{D(X, Y)}{D(u, v)} dudv,
+\]
+unde $ D $ este domeniul parametrizării ($(u, v) \in D$),
+iar $ \dfrac{D(Y, Z)}{D(u, v)} $ etc.\ sînt jacobienii parametrizării
+$ (X, Y, Z) $ în funcție de $ u, v $. Concret, de exemplu, avem:
+\[
+  \frac{D(X, Y)}{D(u, v)} = %
+  \begin{vmatrix}
+    X_u & X_v \\
+    Y_u & Y_v
+  \end{vmatrix},
+\]
+și celelalte, folosind notația simplificată $ X_u = \dfrac{\partial X}{\partial u} $ etc.
+\footnote{Ordinea scrierii jacobienilor este, evident, esențială. Pentru
+  a-i reține mai ușor, observați că ordinea urmează tot o permutare circulară,
+  asemănătoare diferențialelor din 2-forma diferențială $ \omega $.}
+
+Într-o formă simplificată, putem scrie integrala folosind un determinant formal:
+\[
+  \int_\Sigma \omega = \int %
+  \begin{vmatrix}
+    P \circ \Phi & Q \circ \Phi & R \circ \Phi \\
+    X_u & Y_u & Z_u \\
+    X_v & Y_v & Z_v
+  \end{vmatrix} dudv.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula Gauss-Ostrogradski}
+\index{formula!Gauss-Ostrogradski}
+\index{formula!flux-divergență}
+Această formulă ne permite să schimbăm o integrală de suprafață de speța
+a doua cu una triplă, similar formulei Green-Riemann, dar în dimensiune
+superioară.
+
+Păstrînd notațiile și contextul de mai sus, formula Gauss-Ostrogradski se
+scrie:
+\[
+  \int_\Sigma \omega = \iiint_K P_x + Q_y + R_z dxdydz,
+\]
+unde $ K = \dr{Int}\Sigma $ este solidul care are drept frontieră suprafața
+$ \Sigma $, iar $ P_x, Q_y, R_z $ notează derivatele parțiale corespunzătoare
+coeficienților din 2-forma diferențială $ \omega $.
+
+\begin{remark}\label{rk:go-exist}
+  Formula Gauss-Ostrogradski are, ca și formula Green-Riemann, \emph{condiții %
+  de aplicare (existență)}. Încercați să le formulați, analizînd formula.
+\end{remark}
+
+Formula Gauss-Ostrogradski se mai numește \emph{formula flux-divergență}.
+Într-adevăr, folosind o interpretare fizică, se poate asocia 2-formei diferențiale
+$ \omega $ cîmpul vectorial $ \vec{V} = (P, Q, R) $, iar membrul stîng, adică
+integrala de suprafață, calculează \emph{fluxul cîmpului $ \vec{V}$ prin suprafața
+  $ \Sigma $}. În fizică, acesta se definește ca produsul scalar dintre cîmpul
+vectorial și versorul normal la suprafață. Membrul drept este, după cum se poate
+vedea ușor, divergența cîmpului vectorial \emph{în solidul $ \dr{Int}\Sigma $},
+deci avem:
+\[
+  \int_\Sigma \vec{V} \cdot \vec{n} d\sigma = \iiint_K \nabla \cdot \vec{V} dxdydz.
+\]
+
+Versorul normal se poate calcula prin formula:
+\[
+  \vec{n} = \dfrac{1}{||\nabla \vec{V}||} \cdot \nabla \vec{V}.
+\]
+
+Pentru cazul cînd suprafața este parametrizată, adică avem:
+\[
+  \Phi = \Phi(X(u, v), Y(u, v), Z(u, v)),
+\]
+se pot calcula \emph{vectorii tangenți} la suprafață, după direcțiile
+lui $ u $ și $ v $, prin derivate parțiale:
+\[
+  \vec{T}_u = \dfrac{\partial \Phi}{\partial u}, \qquad %
+  \vec{T}_v = \dfrac{\partial \Phi}{\partial v}.
+\]
+
+Apoi, normala la suprafață se poate calcula prin produs vectorial\footnote{
+  amintiți-vă, produsul vectorial al doi vectori este un vector perpendicular
+  pe planul dat de cei doi factori}. O variantă simplă de a reține formula
+de calcul pentru produsul vectorial folosește determinantul formal:
+\[
+  \vec{n} = \vec{T}_u \times \vec{T}_v = %
+  \begin{vmatrix}
+    \vec{i} & \vec{j} & \vec{k} \\
+    \vec{T}_u^1 & \vec{T}_u^2 & \vec{T}_u^3 \\
+    \vec{T}_v^1 & \vec{T}_v^2 & \vec{T}_v^3
+  \end{vmatrix},
+\]
+unde $ \vec{T}_{u,v}^i $ notează componenta $ i $ a vectorului $ \vec{T}_{u, v} $.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Parametrizări uzuale}
+
+Următoarele formule de parametrizare pot fi folosite în calcule:
+\begin{enumerate}[(1)]
+\item \textbf{Sfera:} Fie $ R > 0 $ și $ (u, v) \in D = [0, \pi] \times [0, 2\pi) $.
+  Parametrizarea sferei $ \Phi = \Phi(u, v) $ este:
+  \[
+    \Phi(u, v) = (R \sin u \cos v, R \sin u \sin v, R \cos u);
+  \]
+\item \textbf{Elipsoidul:} Fie $ a, b, c > 0 $ și
+  $ (u, v) \in D = [0, \pi] \times [0, 2\pi) $. Parametrizarea elipsoidului este:
+  \[
+    \Phi(u, v) = (a \sin u \cos v, b \sin u \sin v, c \cos u);
+  \]
+\item \textbf{Paraboloidul:} Fie $ a > 0, h > 0 $ și
+  $ (u, v) \in D = [0, h] \times [0, 2\pi) $. Parametrizarea paraboloidului este:
+  \[
+    \Phi(u, v) = (au\cos v, au \sin v, u^2);
+  \]
+\item \textbf{Conul:} Fie $ h > 0 $ și $ (u, v) \in D = [0, 2\pi) \times [0, h] $.
+  Parametrizarea conului este:
+  \[
+    \Phi(u, v) = (v \cos u, v \sin u, v);
+  \]
+\item \textbf{Cilindrul:} Fie $ a > 0, 0 \leq h_1 \leq h_2 $ și
+  $ (u, v) \in [0, 2\pi] \times [h_1, h_2] $. Parametrizarea cilindrului
+  este:
+  \[
+    \Phi(u, v) = (a \cos u, a \sin u, v).
+  \]
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Calculați vectorii tangenți și versorul normalei la suprafețele
+parametrizate din secțiunea anterioară.
+
+\vspace{0.5cm}
+
+2. Să se calculeze integrala de suprafață de prima speță:
+\[
+  \int_\Sigma f(x, y, z) d\sigma,
+\]
+unde $ f(x, y, z) = y \sqrt{z} $, iar $ \Sigma: x^2 + y^2 = 6z, z \in [0, 2] $.
+
+\vspace{0.5cm}
+
+3. Folosind integrala de suprafață, calculați aria suprafeței $ \Sigma $, unde:
+\[
+  \Sigma : 2z = 4 - x^2 - y^2, \quad z \in [0, 1].
+\]
+
+\vspace{0.5cm}
+
+4. Calculați fluxul cîmpului vectorial $ \vec{V} $ prin suprafața $ \Sigma $
+pentru:
+\[
+  \vec{V} = y\vec{i} + x\vec{j} + z^2 \vec{k}, \quad %
+  \Sigma : z = x^2 + y^2, z \in [0, 1].
+\]
+
+\vspace{0.5cm}
+
+5. Calculați $ \ds\int_\Sigma \omega $, unde:
+\begin{enumerate}[(a)]
+\item
+  \begin{itemize}
+  \item $ \omega = y dy \wedge dz + z dz \wedge dx + x dx \wedge dy $;
+  \item $ \Sigma : x^2 + y^2 = z^2, z \in [1, 2] $.
+  \end{itemize}
+\item
+  \begin{itemize}
+  \item $ \omega = x(z + 3) dy \wedge dz + yz dz \wedge dx - %
+    (z + z^2) dx \wedge dy $;
+  \item $ \Sigma : x^2 + y^2 + z^2 = 1, z \geq 0 $.
+  \end{itemize}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+6. Calculați fluxul cîmpului:
+\[
+  \vec{V} = (x + y) dy \wedge dz + (y + z) dz \wedge dx -2z dx \wedge dy
+\]
+prin emisfera $ \Sigma: x^2 + y^2 + z^2 = 4, z > 0 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formula lui Stokes}
+\index{formula!Stokes}
+Această ultimă formulă integrală ne permite să schimbăm o integrală curbilinie
+de speța a doua cu una de suprafață de speța a doua.
+
+Fie $ \Sigma $ o suprafață cu bord (frontieră) și fie o 1-formă diferențială
+\[
+  \alpha = Pdx + Qdy + Rdz,
+\]
+care este de clasă $ \kal{C}^1 $ într-o vecinătate a lui $ \Sigma $.
+
+Notăm frontiera lui $ \Sigma $ prin $ \partial \Sigma $, care este o
+curbă (conturul suprafeței) sau, mai precis, un \emph{drum neted}.
+
+Are loc \emph{formula lui Stokes:}
+\[
+  \int_{\partial \Sigma} Pdx + Qdy + Rdz = %
+  \int_\Sigma \Big( \frac{\partial R}{\partial y} - %
+  \frac{\partial Q}{\partial z} \Big) dy \wedge dz + %
+  \Big( \frac{\partial P}{\partial z} - %
+  \frac{\partial R}{\partial x} \Big) dz \wedge dx + %
+  \Big( \frac{\partial Q}{\partial x} - %
+  \frac{\partial P}{\partial y}\Big) dx \wedge dy.
+\]
+
+În notație vectorială, dacă asociem cîmpul vectorial $ \vec{V} = (P, Q, R) $
+1-formei diferențiale $ \alpha $, atunci formula lui Stokes se scrie:
+\[
+  \int_{\partial \Sigma} \vec{V} \cdot d\vec{r} = %
+  \int_\Sigma (\nabla \times \vec{V}) \cdot \vec{n} d \sigma,
+\]
+unde $ \nabla \times \vec{V} = \dr{rot} \vec{V} $ se numește \emph{rotorul}
+cîmpului vectorial, calculat cu ajutorul produsului vectorial formal între
+operatorul diferențial $ \nabla = \left( \dfrac{\partial}{\partial x}, %
+\dfrac{\partial}{\partial y}, \dfrac{\partial}{\partial z} \right) $ și
+cîmpul $ \vec{V} = (P, Q, R) $.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+7. Să se calculeze, folosind formula lui Stokes, integrala curbilinie
+$ \ds\int_\gamma \alpha $ pentru cazurile:
+\begin{enumerate}[(a)]
+\item $ \alpha = (y - z) dx + (z - x) dy + (x - y) dz $, iar curba $ \gamma $
+  este frontiera suprafeței $ \Sigma : z = x^2 + y^2, z = 1 $;
+\item $ \alpha = y dx + zdy + xdz $, iar curba $ \gamma $ este frontiera
+  suprafeței $ \Sigma: x^2 + y^2 + z^2 = 1, x + y + z = 0 $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Resurse suplimentare}
+
+\textbf{Formula Green-Riemann, formula Gauss-Ostrogradski} și \textbf{formula Stokes}
+se numesc, în general, \emph{formule integrale}. Pentru coerență,
+le-am introdus în capitolele potrivite, în loc să le dedic un capitol separat.
+
+Recomand materialele Prof.\ Purtan, care conțin exerciții rezolvate complet:
+\begin{itemize}
+    \item \href{https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-int-sup.pdf}{integrale de suprafață};
+    \item \href{https://adrianmanea.xyz/docs/18-19-etti-am1/purtan-f-int.pdf}{formule integrale}.
+\end{itemize}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m1-20-21"
+%%% End:

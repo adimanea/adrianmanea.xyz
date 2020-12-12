@@ -1,0 +1,125 @@
+\chapter{Integrale duble}
+
+\section{Exerciții}
+
+Reprezentați grafic domeniile date de următoarele (in)ecuații:
+\begin{enumerate}[(a)]
+    \item $ D_1 = \{ (x, y) \in \RR^2 \mid y = x^2, y^2 = x \} $
+    \item $ D_2 = \{ (x, y) \in \RR^2 \mid x = 2, y = x, xy = 1 \} $;
+    \item $ D_3 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 2y \} $;
+    \item $ D_4 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y \geq 0 \} $;
+    \item $ D_5 = \{ (x, y) \in \RR^2 \mid y = 0, x + y - 6 = 0, y^2 = 8x \} $;
+    \item $ D_6 = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 2x + 2y - 1 \} $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Metode de calcul}
+\index{integrale!duble}
+
+Cazurile particular care ne interesează sînt de 4 feluri.
+
+\textbf{Integralele pe dreptunghiuri} se calculează direct, ca niște
+integrale iterate. De exemplu, pentru $ D = [a, b] \times [c, d] $,
+avem:
+\[
+    \iint_D f(x, y) dxdy = \int_c^d \int_a^b f(x, y) dxdy = %
+    \int_a^b \int_c^d f(x, y) dxdy,
+\]
+ultima egalitate rezultînd dintr-o teoremă, numită \textit{teorema lui %
+Fubini}.
+\index{teorema!Fubini}
+
+\textbf{Integralele pe domenii intergrafic} se calculează prin a le descrie
+ca pe niște dreptunghiuri, cu o latură variabilă.
+
+Considerăm, de exemplu, cazul $ D_1 $ de mai sus. Acest domeniu poate fi
+descris astfel (vedeți desenul):
+\[
+    x \in [0, 1], y \in [x^2, \sqrt{x}],
+\]
+deci putem calcula integrale duble pe acest domeniu sub forma:
+\[
+    \iint_{D_1} f(x, y) dxdy = \int_0^1 \int_{x^2}^{\sqrt{x}} f(x, y) dy dx.
+\]
+
+\textbf{Integralele pe cercuri centrate în origine} se calculează folosind
+trecerea la coordonate polare:
+\index{coordonate!polare}
+\[
+    \begin{cases}
+        x &= r \cos t \\
+        y &= r \sin t
+    \end{cases}, \quad (r, t) \in [0, \infty) \times [0, 2\pi).
+\]
+
+Aceasta este, de fapt, o schimbare de variabile, deci trebuie schimbate și
+diferențialele, folosind \emph{matricea jacobiană:}\index{integrale!jacobian}
+\[
+    dxdy \mapsto |J|drdt, \quad \text{unde } %
+    J = \begin{vmatrix}
+        x_r & x_t \\
+        y_r & y_t
+    \end{vmatrix} = r.
+\]
+
+Astfel, de exemplu, dacă $ D = \{ (x, y) \in \RR^2 \mid x^2 + y^2 \leq 4 \} $,
+putem calcula:
+\[
+    \iint_D f(x, y) dxdy = \int_0^2 \int_0^{2 \pi} f(r, t) \cdot r dtdr.
+\]
+
+\textbf{Pentru cercuri necentrate în origine sau alte domenii arbitrare},
+se explicitează ca domenii intergrafic. De exemplu, pentru domeniul $ D_4 $
+din primul exercițiu, avem:
+\[
+    \left( x - \dfrac{1}{2} \right)^2 + y^2 \leq \dfrac{1}{2}, y \geq 0,
+\]
+care este un disc, centrat în $ \left( \dfrac{1}{2}, 0 \right) $ și cu
+rază $ \dfrac{1}{2} $, din care se ia doar partea superioară, corespunzătoare
+lui $ y \geq 0 $. Așadar, acesta poate fi descris astfel (vedeți desenul):
+\[
+    x \in [0, 1], \quad y \in \left[0, \sqrt{\dfrac{1}{2} - (x - \dfrac{1}{2})^2}\right].
+\]
+Integrala se calculează în continuare pe acest domeniu.
+
+\vspace{0.5cm}
+
+Pentru toate cazurile de mai sus, \textbf{aria domeniului $ D $} se calculează
+prin:
+\[
+    A(D) = \iint_D dxdy.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+\indent\indent 1. Calculați $ \ds\iint_D f(x, y) dx dy $ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $ D = [0, 1] \times [2, 3] $, iar $ f(x, y) = xy^2 $;
+\item $ D = \{(x, y) \in \RR^2 \mid 0 \leq x \leq 1, 2x \leq y \leq x^2 + 1 \} $,
+  iar $ f(x, y) = x $;
+\item $ D = \{(x, y) \in \RR^2 \mid y = x, y = x^2 \} $, iar
+  $ f(x, y) = 3x - y + 2 $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq 1 \} $,
+  iar $ f(x, y) = e^{x^2 + y^2} $;
+\item $ D = \{(x, y) \in \RR^2 \mid x \geq 0, y \geq 0 \} $,
+  iar $ f(x, y) = e^{-2(x^2 + y^2)} $;
+\item $ D = \{(x, y) \in \RR^2 \mid x^2 + y^2 \leq x, y \geq 0 \} $,
+  iar $ f(x, y) = xy $.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+2. Calculați ariile domeniilor de mai sus.
+
+\vspace{0.5cm}
+
+3. Calculați aria domeniului:
+\[
+  D = \{(x, y) \in \RR^2 \mid 2 \leq x^2 + y^2 \leq 4, x + y \geq 0 \}.
+\]
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am1-20-21"
+%%% End:

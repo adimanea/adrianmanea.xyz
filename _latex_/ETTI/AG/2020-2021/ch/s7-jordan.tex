@@ -1,0 +1,363 @@
+\chapter{Forma canonică Jordan}
+\index{matrice!forma Jordan}
+
+\section{Metoda nucleului stabil}
+
+După cum am văzut, nu orice matrice poate fi adusă la forma diagonală.
+Însă vom vedea că, pentru spații vectoriale reale, orice matrice poate fi
+adusă la \emph{forma canonică Jordan}, care este \qq{aproape diagonală},
+într-un anume sens.
+
+Prezentarea de mai jos urmează materialul de
+\href{https://www.scribd.com/doc/233533692/Matematici-Speciale-by-Brinzanescu-Stanasila-1998}{aici}, 
+paginile 90--108.
+
+Algoritmul va proceda similar cu cazul diagonalizării, în prima parte.
+
+Fie $A \in M_n(\RR)$ o matrice căreia vrem să-i găsim forma canonică Jordan.
+\begin{itemize}
+\item Se calculează polinomul caracteristic al matricei, $ P_A(X) $, de unde
+  se obțin valorile proprii, $ \sigma(A) = \{ \lambda_1, \dots, \lambda_p \} $;
+\item Pentru fiecare valoare proprie, se determină vectorii proprii și subspațiile
+  invariante corespunzătoare;
+\item Pentru fiecare valoare proprie $ \lambda_i $, definim matricea
+  $ M = A - \lambda_i I_n $. Observăm că $ \dr{Ker}M = V(\lambda_i) $.
+
+  Pentru această matrice, se calculează \emph{șirul ascendent de nuclee}:
+  \[
+    V(\lambda_i) = \dr{Ker}M \subset \dr{Ker}M^2 \subset \dots \subset \dr{Ker}M^s,
+  \]
+  ultimul spațiu notîndu-se fie $ K(M) $, fie $ V^{\lambda_i} $ și numindu-se
+  \emph{nucleu stabil} al lui $ M $.
+
+  Prin definiție, $ \dim V^{\lambda_i} = m_a(\lambda_i) $.
+\item Alegem vectori liniar independenți astfel:
+  \begin{itemize}
+  \item $ u_1, \dots, u_{p_1} \in \dr{Ker}M^s - \dr{Ker}M^{s - 1} $, astfel încît
+    $ \dr{Ker}M^{s-1} \oplus \dr{Sp} \{ u_i \} \simeq \dr{Ker}M^s $. Altfel spus,
+    completăm baza lui $ \dr{Ker}M^{s-1} $ la o bază a lui $ \dr{Ker}M^s $;
+  \item Calculăm $ Mu_j^t \in \dr{Ker}M^{s-1} - \dr{Ker}M^{s-2} $ și
+    completăm rezultatele la o bază a lui $ \dr{Ker}M^{s-1} $.
+  \item Continuăm acești pași și în final se obține o listă de forma:
+    \[
+      \begin{cases}
+        & u_1, \dots, u_{p_1} \\
+        & Mu_1, \dots, Mu_{p_1}, u_{p_1 + 1}, \dots, u_{p_2} \\
+        & \dots \\
+        & M^{s-1}u_1, \dots, M^{s-1} up_1, \dots, u_{p_s}
+      \end{cases}
+    \]
+    ultima linie reprezentînd o bază pentru $ V(\lambda_i) $, pe care o notăm
+    cu $ B_1 $.
+  \end{itemize}
+\item Refacem pașii anteriori pentru fiecare valoare proprie și va rezulta
+  $ B = B_1 \cup \dots\ cup B_p $ o bază a lui $ \RR^n $;
+\item Fie $ T $ matricea de trecere de la baza canonică la această bază.
+  Atunci forma canonică Jordan se scrie $ J = T^{-1} AT $.
+\end{itemize}
+
+
+\begin{remark}\label{rk:jordan-morf}
+  Dacă, în loc de matrice, se pornește cu un endomorfism $ f $, se consideră
+  mai întîi matricea asociată în baza canonică, $ A $, apoi putem continua
+  ca mai sus.
+
+  De asemenea, în locul matricei $ M $, putem gîndi că definim un nou
+  endomorfism $ g = f - \lambda \dr{Id}_{\RR^n} $.
+\end{remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exemple rezolvate}
+
+Prezentăm în continuare cîteva exerciții rezolvate, în care insistăm
+pe elementele de noutate. Am omis calculele intermediare, pe care le
+puteți verifica ușor.
+
+1. Fie matricea:
+\[
+  A = \begin{pmatrix}
+    1 & -1 & -1 \\
+    -3 & -4 & -3 \\
+    4 & 7 & 6
+  \end{pmatrix}.
+\]
+
+Calculăm forma canonică Jordan a acestei matrice.
+
+Polinomul caracteristic este:
+\[
+  P_A(X) = \det(A - XI_3) = -(X + 1)(X - 2)^2,
+\]
+deci avem două valori proprii $ \lambda_1 = -1, m_a(-1) = 1 $ și
+$ \lambda_2 = 2, m_a(2) = 2 $.
+
+Fie $ \lambda_1 = -1 $. Definim $ M = A - \lambda_1 I_3 $.
+Atunci $ \dr{Ker}M = V(\lambda_1) = \dr{Sp} \{(0, 1, -1)\} $. Deoarece
+$ \dim V(\lambda_1) = 1 = m_g(\lambda_1) = m_a(\lambda_1) $, rezultă
+că șirul nucleelor are un singur termen, deci lista va conține
+doar $ u_1 = (0, 1, -1) $.
+
+Fie acum $ \lambda_2 = 2 $. Definim $ M = A - \lambda_2 I_3 $.
+
+Calculăm $ \dr{Ker}M = V(\lambda_2) = \dr{Sp} \{(1, 0, -1) \} $.
+Cum $ m_a(\lambda_2) = 2 $, rezultă că șirul nucleelor va conține un pas și
+va fi de forma $ V(\lambda_2) \subset V^{\lambda_2} $. Într-adevăr, calculăm:
+\[
+  V^{\lambda_2} = \dr{Ker}M^2 = \{ (x_1, x_2, x_3) \in \RR^3 \mid x_1 + 2x_2 + x_3 = 0 \}.
+\]
+
+Alegem $ u_2 \in V^{\lambda_2} - V(\lambda_2) $ astfel încît
+$ V(\lambda_2) \oplus \dr{Sp} \{ u_2 \} = V^{\lambda_2} $. Altfel spus,
+completăm baza lui $ V(\lambda_2) $ la o bază a lui $ V^{\lambda_2} $.
+
+De exemplu, putem lua $ u_2 = (-2, 1, 0) $. Mai departe, calculăm $ Mu_2^t = (1, 0, -1) $.
+
+Din lista $ \{ u_1, u_2, Mu_2^t \} $ obținem o bază a lui $ \RR^3 $, iar matricea
+de trecere de la baza canonică va fi:
+\[
+  T = \begin{pmatrix}
+    0 & -2 & 1 \\
+    1 & 1 & 0 \\
+    -1 & 0 & -1
+  \end{pmatrix}
+\]
+
+Iar forma canonică Jordan este:
+\[
+  J = T^{-1}AT = \begin{pmatrix}
+    -1 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 1 & 2
+  \end{pmatrix}
+\]
+
+Spunem că această matrice este alcătuită din \emph{2 blocuri Jordan},
+unul de mărime 2, asociat valorii proprii 2, iar unul de mărime 1,
+asociat valorii proprii -1. Observați forma \qq{aproape diagonală} a matricei:
+într-adevăr, blocul Jordan asociat valorii proprii 2 conține un element
+nenul sub diagonală.
+
+\vspace{1cm}
+
+2. Fie matricea:
+\[
+  A = \begin{pmatrix}
+    1 & 1 & 1 & 0 \\
+    -1 & 3 & 0 & 1 \\
+    -1 & 0 & -1 & 1 \\
+    0 & -1 & -1 & 1
+  \end{pmatrix}.
+\]
+
+Aducem această matrice la forma canonică Jordan.
+
+Calculînd polinomul caracteristic, găsim:
+\[
+  P_A(X) = (X - 1)^4 \Rightarrow \sigma(A) = \{ 1 \}, m_a(1) = 4.
+\]
+Rezultă că $ V^\lambda \simeq \RR^4 $.
+
+Calculăm spațiul vectorilor proprii și obținem:
+\[
+  V(\lambda) = \{ (\alpha, \beta, -\beta, \alpha - 2 \beta) \in \RR^4 \}.
+\]
+Definim $ M = A - \lambda I_4 $ și avem $ \dr{Ker}M = V(\lambda) $.
+
+Cum $ m_g(\lambda) = 2 $, rezultă că șirul nucleelor va avea 3 termeni:
+\[
+  V(\lambda) = \dr{Ker} M \subset \dr{Ker}M^2 \subset V^\lambda \simeq \RR^4.
+\]
+
+Calculînd $ M^2 $ și apoi $ \dr{Ker}M^2 $, obținem:
+\[
+  \dr{Ker}M^2 = \{ (x_1, x_2, x_3, x_4) \in \RR^4 \mid x_1 - x_2 + x_3 - x_4 = 0 \},
+\]
+deci un spațiu de dimensiune 3.
+
+Alegem $ u_1 \in V^\lambda - \dr{Ker}M^2 $ astfel încît
+$ \dr{Ker}M^2 \oplus \dr{Sp} \{ u_1 \} = V^\lambda $.
+Fie, de exemplu, $ u_1 = (1, 0, 0, 0) $.
+
+Calculăm $ Mu_1^t = (0, -1, -1, 0) $ și $ M^2u_1^t = (-2, -2, 2, 2) $.
+
+Acum alegem $ u_2 \in V(\lambda) $ astfel încît $ \{ M^2u_1^t, u_2 \} $ să
+fie o bază a lui $ V(\lambda) $. Fie, de exemplu, $ u_2 = (1, 0, 0, 1) $.
+
+Lista conține: $ u_1, Mu_1^t, M^2u_1, u_2 $, vectori independenți, suficienți
+pentru o bază a lui $ \RR^4 $. Scriem matricea de trecere de la baza canonică:
+\[
+  T = \begin{pmatrix}
+    1 & 0 & -2 & 1 \\
+    0 & -1 & -2 & 0 \\
+    0 & -1 & 2 & 0 \\
+    0 & 0 & 2 & 1
+  \end{pmatrix},
+\]
+iar forma Jordan se obține a fi:
+\[
+  J = T^{-1} AT = \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{pmatrix}.
+\]
+
+Observăm că această matrice este alcătuită dintr-un bloc de mărime 3 și unul
+de mărime 1, ambele corespunzătoare valorii proprii $ \lambda = 1 $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Metodă alternativă}
+
+Prezentarea de mai jos urmează cartea de 
+\href{https://www.scribd.com/document/76218300/Algebra-Liniara-Geometrie-Analitica-Si-Diferentiala}{aici},
+paginile 35--37.
+
+Pe scurt, presupunem că pornim cu un endomorfism $ f : \RR^n \to \RR^n $.
+
+Pașii pe care îi urmăm pentru a aduce endomorfismul la forma Jordan sînt:
+\begin{enumerate}[(1)]
+    \item fixăm o bază $ B $ în $ V $ și determinăm matricea asociată
+        lui $ f $ în baza $ B $ (de exemplu, baza canonică);
+    \item determinăm valorile proprii $ \lambda_i, 1 \leq i \leq p $ și
+        multiplicitățile algebrice $ m_a(\lambda_i) $. Evident, pentru a
+        putea ajunge la forma canonică Jordan, trebuie să avem
+        $ \lambda_i \in \RR $, deoarece lucrăm doar cu spații vectoriale
+        reale. Altfel, endomorfismul nu poate fi adus la forma Jordan;
+    \item găsim vectorii proprii, liniar independenți, corespunzători 
+        fiecărei valori proprii $ \lambda_i $;
+    \item calculăm numărul de celule Jordan pentru fiecare valoare proprie
+        $ \lambda_i $ în parte, numărul celulelor fiind dat de:
+        \[
+            \dim V(\lambda_i) = \dim V - \dr{rang}(A - \lambda_i I_n)
+        \]
+    \item rezolvăm sistemul $ (A - \lambda_i I_n)^{m_a(\lambda_i)} \cdot X = O $,
+        pentru fiecare valoare proprie $ \lambda_i $. Pentru un anumit
+        $ i $ fixat, soluțiile nenule generează subspațiul invariant $ V(\lambda_i) $;
+    \item reunim bazele pentru toate subspațiile invariante $ V(\lambda_i) $
+        și obținem o bază $ B' $, după care determinăm matricea $ T $
+        de trecere de la baza $ B $ la baza $ B' $;
+    \item în fine, $ J = T^{-1} A T $ este forma Jordan.
+\end{enumerate}
+
+\textbf{Exemplu rezolvat:} Considerăm matricea:
+\[
+    A = \begin{pmatrix}
+        4 & -5 & 2 \\
+        5 & -7 & 3 \\
+        6 & -9 & 4
+    \end{pmatrix}
+\]
+
+\emph{Soluție:} Polinomul caracteristic al matricei este:
+\[
+    P_A(X) = \det(A - XI_3) = -X^2(X - 1),
+\]
+deci valorile proprii sînt $ \lambda_1 = \lambda_2 = 0, \lambda_3 = 1 $,
+cu $ m_a(\lambda_1) = 2, m_a(\lambda_3) = 1 $.
+
+Subspațiul invariant pentru $ \lambda_{1,2} $ se obține:
+\[
+    V(\lambda_{1,2}) = \{ (\alpha, 2\alpha, 3\alpha) \mid \alpha \in \RR \},
+\]
+deci $ \dim(V(\lambda_{1,2})) = m_g(\lambda_{1,2}) = 1 \neq m_a(\lambda_1) $.
+Așadar, matricea nu are formă diagonală, dar are formă Jordan, pe care o
+obținem în continuare.
+
+Pentru $ \lambda_3 $, rezultă:
+\[
+    V(\lambda_3) = \{ (\alpha, \alpha, \alpha) \mid \alpha \in \RR \},
+\]
+adică $ m_g(\lambda_3) = \dim(V(\lambda_3)) = 1 $.
+
+Bazele în subspațiile invariante pot fi:
+\[
+    B(\lambda_{1,2}) = \{(1, 2, 3)\}, \quad B(\lambda_3) = \{ (1, 1, 1) \}.
+\]
+
+Rezultă că vom avea o celulă Jordan de mărime 2 pentru $ \lambda_{1,2} $ și una
+de mărime 1 pentru $ \lambda_3 $. Determinăm baza corespunzătoare formei
+Jordan, i.e.\ rezolvăm ecuația:
+\[
+    (A - \lambda_1I_3)^2 \cdot X = A^2 X = %
+    \begin{pmatrix}
+        3 & -3 & 1 \\
+        3 & -3 & 1 \\
+        3 & -3 & 1
+    \end{pmatrix} \cdot %
+    \begin{pmatrix}
+        x \\ y \\ z
+    \end{pmatrix} = %
+    \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix},
+\]
+de unde rezultă 
+\[
+    X \in \{ (\alpha, \beta, 3\beta - 3 \alpha)^t \mid \alpha, \beta \in \RR \}
+\]
+
+Așadar, obținem o bază formată din $ \{ (1, 0, -3), (0, 1, 3) \} $
+pe care o reunim cu baza din celălalt subspațiu invariant,
+$ \{ (1, 1, 1) \} $ și matricea de trecere de la baza canonică la această
+bază este:
+\[
+    T = \begin{pmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 1 \\
+        -3 & 3 & 1
+    \end{pmatrix},
+\]
+iar forma Jordan finală este:
+\[
+    J = T^{-1} A T = %
+    \begin{pmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}.
+\]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții propuse}
+
+
+Aduceți la forma canonică Jordan endomorfismul:
+\[
+  f : \RR^3 \to \RR^3, \quad f(x, y, z) = (3x + y - z, 2y, x + y + z)
+\]
+
+și matricele:
+
+\[
+  A = \begin{pmatrix}
+    4 & -1 & 1 \\
+    1 & 3 & -1 \\
+    0 & 1 & 1
+  \end{pmatrix}, \quad
+  B =
+  \begin{pmatrix}
+    1 & 1 & 1 & 0 \\
+    -1 & 3 & 0 & 1 \\
+    -1 & 0 & -1 & 1 \\
+    0 & -1 & -1 & 1
+  \end{pmatrix}, \quad
+  C =
+  \begin{pmatrix}
+    0 & -1 & 0 \\
+    -1 & -2 & 2 \\
+    0 & -1 & 0
+  \end{pmatrix}, \quad
+  D = %
+  \begin{pmatrix}
+    -4 & -7 & -5 \\
+    2 & 3 & 3 \\
+    1 & 2 & 1
+  \end{pmatrix}.
+\]
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ag-20-21"
+%%% End:
