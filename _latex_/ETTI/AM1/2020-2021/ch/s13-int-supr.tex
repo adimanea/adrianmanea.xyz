@@ -124,11 +124,6 @@ deci avem:
   \int_\Sigma \vec{V} \cdot \vec{n} d\sigma = \iiint_K \nabla \cdot \vec{V} dxdydz.
 \]
 
-Versorul normal se poate calcula prin formula:
-\[
-  \vec{n} = \dfrac{1}{||\nabla \vec{V}||} \cdot \nabla \vec{V}.
-\]
-
 Pentru cazul cînd suprafața este parametrizată, adică avem:
 \[
   \Phi = \Phi(X(u, v), Y(u, v), Z(u, v)),
@@ -153,6 +148,16 @@ de calcul pentru produsul vectorial folosește determinantul formal:
   \end{vmatrix},
 \]
 unde $ \vec{T}_{u,v}^i $ notează componenta $ i $ a vectorului $ \vec{T}_{u, v} $.
+
+Ulterior, \emph{vectorul} normal $ \vec{N} $ devine \emph{versorul} normal $ \vec{n} $,
+prin normare, adică $ \vec{n} = \dfrac{1}{||\vec{N}||} \vec{N} $.
+
+Dar, ținînd cont că avem relația între diferențiale $ d\sigma = ||\vec{N}|| dudv $,
+rezultă că obținem:
+\[
+  \int_\Sigma \vec{V} \cdot \vec{n} d\sigma = \int_\Sigma \vec{V} \cdot \dfrac{1}{||\vec{N}||} \vec{N} \cdot ||\vec{N}|| dudv = %
+  \int_\Sigma \vec{V} \cdot \vec{N} dudv.
+\]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
