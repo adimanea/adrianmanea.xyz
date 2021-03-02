@@ -1,0 +1,453 @@
+% ! TEX root = ../m3-19-20.tex
+
+\chapter{Vectori aleatori bidimensionali}
+
+Putem gîndi vectorii aleatori bidimensionali ca pe niște \emph{matrice %
+  aleatoare}. Însă noțiunea este chiar ceva mai generală. Astfel, dacă
+$ X $ și $ Y $ sînt două variabile aleatoare, atunci pur și simplu
+formăm perechea $ (X, Y) $, care se numește \emph{vector aleator bidimensional}.
+În majoritatea cazurilor, vom lucra cu $ X $ și $ Y $ definite pe același spațiu
+de evenimente, deci dacă $ \dr{card}(X) = \dr{card}(Y) = n $, atunci perechea
+lor devine o matrice aleatoare $ 2 \times n $.
+
+\emph{Repartiția} unei astfel de matrice aleatoare se calculează intuitiv
+folosind repartițiile individuale. Avem, deci:
+\[
+  P(X = x_i, Y = y_j) = p_{ij},
+\]
+unde se pot considera $ 1 \leq i \leq n $ și $ 1 \leq j \leq m $.
+Mai notăm probabilitățile individuale cu $ p_i $, respectiv $ q_j $,
+adică $ p_i = P(X = x_i) $ și $ q_j = P(Y = y_j) $. Aceste mărimi se mai
+numesc \emph{probabilități marginale}.
+
+Evident, dacă fixăm oricare dintre cele două variabile, obținem, de exemplu,
+pentru $ X $ fixat:
+\[
+  \ds\cup_j (X = x_i, Y = y_j) = \sum_j P(X = x_i, Y = y_j) = \sum_j p_{ij} = p_i,
+\]
+deoarece ambele variabile aleatoare $ X $ și $ Y $ sînt, individual, normate.
+Adică $ \sum_i p_i = \sum_i P(X = x_i) = \sum_j q_j = \sum_j P(Y = y_j) = 1 $.
+
+Analog, desigur, $ \sum_i p_{ij} = q_j $.
+
+Luate împreună, obținem automat condiția de normare pentru perechea de
+variabile aleatoare, adică $ \sum_{i,j} p_{ij} = 1 $, în ipoteza că ambele
+componente ale perechii sînt normate.
+
+Notăm cu $ F_{(X, Y)}(x, y) = P(X < x, Y < y) $ funcția de repartiție
+a perechii de variabile aleatoare (vectorului aleator bidimensional) $ (X, Y) $.
+Separat, $ F_X(x) $ și $ F_Y(y) $ se numesc \emph{funcții de repartiție marginale}
+ale vectorului aleator $ (X, Y) $.
+
+Pentru \emph{cazul continuu}, întîlnim noțiunea cunoscută din cazul vectorilor
+aleatori 1-dimensionali. Mai precis, avem:
+\[
+  F_{(X, Y)} (x, y) = \int_{-\infty}^x \int_{-\infty y} f(u, v) dudv,
+\]
+unde $ f $ este \emph{densitatea de probabilitate} și este o funcție cu
+valori pozitive, dublu-normată, adică:
+\[
+  \int_{-\infty}^\infty \int_{-\infty}^\infty f(u, v) du dv = 1.
+\]
+
+Totodată, putem recupera din această ecuație și densitatea de probabilitate
+știind funcția de repartiție, prin:
+\[
+  f(x, y) = \dfrac{\partial^2 F_{(X, Y)}(x, y)}{\partial x \partial y},
+\]
+evident, pentru punctele $ (x, y) $ unde egalitatea are sens.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Repartiții condiționate}
+
+Pornim cu un vector aleator bidimensional $ (X, Y) $, discret.
+Ne punem problema din cazul probabilităților condiționate, i.e. vom nota
+cu $ P(x_i/y_j) $ probabilitatea să aibă loc evenimentul $ X = x_i $,
+știind că a avut loc (i.e.\ condiționat de) evenimentul $ Y = y_j $.
+
+Aceasta se poate calcula simplu, ca în cazul probabilităților condiționate:
+\[
+  P(x_i / y_j) = \dfrac{P(X = x_i, Y = y_j)}{P(Y = y_j)} = \dfrac{p_{ij}}{q_j}.
+\]
+Invers, obținem desigur $ P(y_j / x_i) = \dfrac{p_{ij}}{p_i} $.
+
+Dacă fixăm un eveniment $ Y = y $, putem defini o \emph{funcție de repartiție %
+  condiționată}, $ F(x/y) = P(X < x / Y = y) $, asociată vectorului $ X $
+(deoarece $ Y $ este fixat). Aceasta se calculează generalizînd formulele de
+mai sus pe cazul continuu, anume:
+\[
+  F(x/y) = \dfrac{1}{f_Y(y)} \cdot \int_{-\infty}^x f(u, v) du.
+\]
+
+Prin derivare în raport cu $ x $, obținem densitatea de probabilitate a
+lui $ X $, în ipoteza că $ Y = y $:
+\[
+  f_X(x/y) = \dfrac{f(x, y)}{f_Y(y)}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Variabile aleatoare independente}
+
+Știm deja că două variabile aleatoare $ X $ și $ Y $ sînt independente
+dacă evenimentele $ X = x_i $ și $ Y = y_j $ sînt independente,
+adică dacă are loc:
+\[
+  P(X = x_i, Y = y_j) = P(X = x_i) \cdot P(Y = y_j).
+\]
+Egalitatea poate fi formulată și cun funcțiile de repartiție:
+\[
+  F_{(X, Y)}(x, y) = F_X(x) \cdot F_Y(y).
+\]
+
+Mai mult decît atît, rezultatul de mai jos ne arată că egalitatea are
+loc și pentru densitățile de probabilitate:
+
+\begin{theorem}\label{thm:indep}
+  Fie $ X, Y $ variabile aleatoare cu densitățile de probabilitate
+  $ f_X $, respectiv $ f_Y $. Atunci $ X $ și $ Y $ sînt independente
+  dacă și numai dacă are loc:
+  \[
+    f(x, y) = f_X(x) \cdot f_Y(y),
+  \]
+  unde $ f(x, y) $ este densitatea de probabilitate a vectorului $ (X, Y) $,
+  format de cele două variabile aleatoare.
+\end{theorem}
+
+\textbf{Atenție:} Dacă lucrăm cu alte variabile aleatoare $ U, V $, obținute
+din $ X $ și $ Y $ prin transformări funcționale de forma generală:
+\[
+  U = \varphi(X, Y), \quad V = \psi(X, Y),
+\]
+atunci calculele care folosesc densitățile de probabilitate și funcțiile
+de repartiție se fac folosind schimbări de variabile de forma:
+\[
+  u = \varphi(x, y), v = \psi(x, y) \Leftrightarrow %
+  x = \varphi_1(u, v), y = \psi_1(u,v),
+\]
+după care noua densitate de probabilitate se schimbă cu ajutorul jacobianului
+transformărilor de mai sus:
+\[
+  f_{(U, V)}(u,v) = \left| \dfrac{D(x, Y)}{D(u,v)} \right| \cdot %
+  f_{(X, Y)}(\varphi_1(u,v), \psi_1(u, v)),
+\]
+unde:
+\[
+  \left| \dfrac{D(x, y)}{D(u,v)} \right| = \det %
+  \begin{pmatrix}
+    x_u & x_v \\
+    y_u & y_v
+  \end{pmatrix},
+\]
+determinantul matricei jacobiene a transformării ($ x_u = \dfrac{\partial x}{\partial u} $
+etc.).
+
+\vspace{0.3cm}
+
+Dintre toate caracteristicile numerice asociate variabilelor aleatoare
+(medie, dispersie, coeficient de corelație, covarianță), pentru cazul
+bidimensional avem în plus \emph{media condiționată}. Astfel, fie $ X, Y $
+variabile aleatoare \emph{discrete}. Atunci putem calcula mediile condiționate
+prin:
+\begin{itemize}
+\item $ E(X / Y = y_j) = \sum_i x_i \cdot P(x_i / y_j) $;
+\item $ E(Y / X = x_i) = \sum_j y_j P(y_j / x_i) $.
+\end{itemize}
+
+Pentru \emph{cazul continuu}, sumele devin integrale, iar probabilitățile
+devin densități:
+\begin{itemize}
+\item $ E(X / Y = y) = \int_{-\infty}^\infty x \cdot f_X(x/y) dx $;
+\item $ E(Y / X = x) = \int_{-\infty}^\infty y \cdot f_Y(y/x) dy $.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Caracteristici numerice}
+
+Media și dispersia unei variabile aleatoare au fost discutate anterior.
+De asemenea, atunci cînd lucrăm cu două sau mai multe variabile aleatoare,
+devin relevante și alte mărimi, precum \emph{covarianța} și
+\emph{coeficientul de corelație}. Le redăm mai jos, împreună cu proprietăți
+importante ale lor și ale mediei și dispersiei.
+
+Funcția de medie are următoarele proprietăți esențiale:
+\begin{enumerate}[(a)]
+\item \textbf{Liniaritatea:} $ E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y) $, pentru
+  orice $ \alpha, \beta \in \CC $;
+\item \textbf{Monotonia:} Dacă $ X \leq Y $, atunci $ E(X) \leq E(Y) $;
+\item Dacă $ X $ este o constantă $ c $, atunci $ E(X) = c $;
+\item Dacă $ X $ și $ Y $ sînt variabile aleatoare independente, adică descriu evenimente
+  independente, atunci $ E(XY) = E(X) \cdot E(Y) $.
+\end{enumerate}
+
+Funcția de dispersie are proprietățile:
+\begin{enumerate}[(a)]
+\item $ D^2(X) = E(X^2) - (E(X))^2 $;
+\item $ D^2(X) \geq 0 $;
+\item $ D^2(X) = 0 \Leftrightarrow P(X = E(X)) = 1 $, adică $ X $ este o constantă cu
+  probabilitatea 1 ($ X $ descrie doar evenimentul sigur);
+\item \textbf{Cebîșev:} Pentru orice $ \varepsilon > 0 $, are loc:
+  \[
+    P(|X - E(X)| \geq \varepsilon) < \frac{D^2(X)}{\varepsilon^2}. 
+  \]
+  Echivalent, se mai poate scrie:
+  \[
+    P(|X - E(X)| < \varepsilon) \geq 1 - \frac{D^2(X)}{\varepsilon^2}.
+  \]
+\item $ D^2(\alpha X) = \alpha^2 D^2(X) $, pentru orice $ \alpha \in \CC $;
+\item Dacă $ X $ și $ Y $ sînt independente, atunci:
+  \[
+    D^2(X + Y) = D^2(X) + D^2(Y).
+  \]
+\end{enumerate}
+
+Mai definim două mărimi care se asociază variabilelor aleatorii.
+
+\begin{definition}\label{def:cov}
+  Fie $ X $ și $ Y $ două variabile aleatoare. Numim \emph{covarianță} a
+  variabilelor $ X $ și $ Y $, notată $ \mathrm{cov}(X, Y) $ numărul:
+  \[
+    \mathrm{cov}(X, Y) = E((X - E(X))(Y - E(Y))) = E(XY) - E(X)E(Y).
+  \]
+\end{definition}
+
+Proprietățile esențiale ale covarianței sînt date de:
+\begin{enumerate}[(a)]
+\item Dacă $ X $ și $ Y $ sînt variabile aleatoare independente, atunci
+  $ \mathrm{cov}(X, Y) = 0 $;
+\item Dacă $ X_1, \dots, X_n $ sînt variabile aleatoare cu dispersiile
+  $ D_i^2 $ și covarianțele $ \mathrm{cov}(X_i, X_j), i \neq j $, atunci are loc:
+  \[
+    D^2\Big( \sum_{i = 1}^n X_i \Big) = \sum_{i = 1}^n D_i^2 + %
+    2 \sum_{i < j} \mathrm{cov}(X_i, X_j).
+  \]
+\end{enumerate}
+
+\begin{definition}\label{def:cor}
+  Dacă $ X $ și $ Y $ sînt variabile aleatoare, se numește \emph{coeficient de corelație}
+  al lor, notat $ \rho(X, Y) $, numărul calculat prin:
+  \[
+    \rho(X, Y) = \frac{\mathrm{cov}(X, Y)}{\sqrt{D^2(X) \cdot D^2(Y)}}
+  \]
+\end{definition}
+
+Se poate vedea din definiție că, atît covarianța, cît și corelația arată \qq{gradul de %
+  independență} a variabilelor aleatoare $ X $ și $ Y $. Într-adevăr, dacă $ X $ și $ Y $
+sînt independente, atunci avem $ \rho(X, Y) = 0 $. Afirmația reciprocă este, însă, falsă!
+
+Să luăm un exemplu: Fie $ A = \{ a_1, a_2, a_3, a_4 \}$, cu $ P(a_i) = \dfrac{1}{4} $.
+
+Presupunem că variabila aleatoare $ X $ realizează corespondența:
+\[
+  X(a_1) = 1, X(a_2) = -1, X(a_3) = 2, X(a_4) = -2.
+\]
+Atunci, ea are matricea de repartiție:
+\[
+  X \sim
+  \begin{pmatrix}
+    -2 & -1 & 1 & 2 \\
+    \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4}
+  \end{pmatrix}.
+\]
+
+Presupunem că o altă variabilă aleatoare $ Y $ realizează corespondența:
+\[
+  Y(a_1) = 1, Y(a_2) = 1, Y(a_3) = -1, Y(a_4) = -1.
+\]
+Atunci matricea ei se poate reduce la:
+\[
+  Y \sim
+  \begin{pmatrix}
+    -1 & 1 \\
+    \frac{1}{2} & \frac{1}{2}
+  \end{pmatrix}.
+\]
+
+Produsul celor două variabile aleatoare are matricea de repartiție:
+\[
+  XY :
+  \begin{pmatrix}
+    -2 & -1 & 1 & 2 \\
+    \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4}
+  \end{pmatrix}.
+\]
+
+Rezultă că $ E(X) = E(Y) = E(XY) $, deci $ \mathrm{cov}(X, Y) = 0 $. Însă putem
+observa că $ X $ și $ Y $ nu sînt independente. Într-adevăr, avem:
+\[
+  P(X = 1 \land Y = 1) = P(a_1) = \frac{1}{4} \neq %
+  P(X = 1) \cdot P(Y = 1) = \frac{1}{4} \cdot \frac{1}{2}.
+\]
+
+În fine, o altă noțiune de care avem nevoie este \emph{funcția generatoare}.
+
+\begin{definition}\label{def:generatoare}
+  Fie $ X $ o variabilă aleatoare discretă care ia valori naturale.
+
+  Funcția $ G_X(t) $, definită prin:
+  \[
+    G_X(t) = E(t^X) = \sum_{n \geq 0} p_n t^n, 
+  \]
+  cu $ t \leq 1 $ și $ p_n = P(X = n) $ se numește \emph{funcția generatoare}
+  a variabilei aleatoare $ X $.
+\end{definition}
+
+Funcția generatoare codifică, de fapt, în coeficienții unei serii formale,
+repartiția unei variabile aleatoare. Ea are următoarele proprietăți:
+\begin{enumerate}[(a)]
+\item Dacă avem variabilele aleatoare independente $ X_1, \dots, X_n $,
+  iar $ X = X_1 + \dots + X_n $, atunci:
+  \[
+    G_X(t) = G_{X_1}(t) \cdots G_{X_n}(t);
+  \]
+\item $ E(X) = G'_X(1) $;
+\item $ D^2(X) = G_X^{\prime\prime}(1) + G'_X(1) - [G'_X(1)]^2 $;
+\item Două variabile aleatoare cu aceeași funcție generatoare au aceeași repartiție.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Exerciții}
+
+\indent\indent 1. Fie variabilele aleatoare:
+\[
+  X = \begin{pmatrix}
+    -1 & 2 \\
+    0.5 & 0.5
+  \end{pmatrix}, \quad
+  Y = \begin{pmatrix}
+    -2 & 0 & 1 \\
+    0.3 & 0.3 & 0.4
+  \end{pmatrix}.
+\]
+
+\begin{enumerate}[(a)]
+\item Calculați $ E(X / Y = 1) $;
+\item Calculați $ D^2(X) $ și $ D^2(Y) $;
+\item Calculați $ XY $ și apoi $ E(XY) $;
+\item Determinați coeficientul de corelația $ \rho(X, Y) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+2. Fie vectorul aleator $ (X, Y) $, cu densitatea de repartiție:
+\[
+  f(x, y) = \begin{cases}
+    e^{-y}, & 0 < x < y \\
+    0, & \text{ în rest}
+  \end{cases}.
+\]
+Determinați:
+\begin{enumerate}[(a)]
+\item Densitățile marginale $ f_X(x) $ și $ f_Y(y) $;
+\item Densitatea variabilei aleatoare $ Y $ condiționată de $ X $;
+\item Probabilitatea ca $ (x, y) \in (X, Y) $ să aparțină pătratului
+  unitate $ [0, 1] \times [0, 1] $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+3. Fie vectorul aleator $ (X, Y) $, cu densitatea de repartiție:
+\[
+  f(x, y) = \begin{cases}
+    k, & 0 < y \leq x < 1 \\
+    0, & \text{ în rest}
+  \end{cases},
+\]
+unde $ k \in \RR $ este o constantă fixată.
+\begin{enumerate}[(a)]
+\item Determinați $ k $, astfel încît funcția de mai sus să fie corect
+  definită, ca densitate de repartiție;
+\item Determinați densitățile de repartiție marginale $ f_X(x), f_Y(y) $;
+\item Calculați $ P(0 < X < 0.5, 0 < Y < 0.5) $;
+\item Determinați densitățile condiționate $ f(y/x) $ și $ f(x/y) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+4. Fie funcția:
+\[
+  f(x, y) = \begin{cases}
+    x^2 + \dfrac{xy}{c}, & x \in (0, 1), y \in (0,2) \\
+    0, & \text{ în rest}
+  \end{cases}.
+\]
+\begin{enumerate}[(a)]
+\item Determinați $ c \in \RR $ astfel încît $ f(x, y) $ să fie o densitate
+  de repartiție;
+\item Determinați funcția de repartiție $ F_{(X,Y)}(x, y) $ a vectorului aleator
+  bidimensional $ (X, Y) $ care are densitatea de repartiție calculată mai sus;
+\item Determinați densitățile marginale $ f_X(x), f_Y(y) $ și funcțiile de
+  repartiție $ F_X(x), F_Y(y) $;
+\item Calculați $ P(X > 0.5) $ și $ P(Y < 0.5 / X < 0.5) $;
+\item Calculați densitatea de repartiție condiționată $ F(Y | X = x) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+5. Vectorul aleator $ (X, Y) $ se dă prin tabloul de repartiție comună:
+\begin{center}
+  \begin{tabular}{l|l|l|l|l}
+    $ X \mid Y $ & $ y_1 = -2 $ & $ y_2 = -1 $ & $ y_3 = 4 $ & $ y_4 = 5 $ \\
+    \hline
+    $ x_1 = 1 $ & $ p_{11} = 0.1 $ & $ p_{12} = 0.2 $ & $ p_{13} = 0 $ & $ p_{14} = 0.3 $ \\
+    \hline
+    $ x_2 = 2 $ & $ p_{21} = 0.2 $ & $ p_{22} = 0.1 $ & $ p_{23} = 0.1 $ & $ p_{24} = 0 $
+  \end{tabular}.
+\end{center}
+\begin{enumerate}[(a)]
+\item Determinați repartițiile marginale $ p_X $ și $ p_Y $ ale celor două
+  variabile aleatoare $ X $ și $ Y $;
+\item Aflați dacă variabilele aleatoare sînt independente;
+\item Calculați $ E(X) $ și $ E(Y) $;
+\item Calculați $ \dr{cov}(X, Y) $ si determinați dacă variabilele aleatoare sînt
+  corelate sau nu;
+\item Calculați $ \rho(X, Y) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+6. Vectorul aleator $ (X, Y) $ se dă prin tabloul de repartiție comună:
+\begin{center}
+  \begin{tabular}{l|l|l}
+    $ X \mid Y $ & $ y_1 = 0 $ & $ y_2 = 1 $ \\
+    \hline
+    $ x_1 = -1 $ & $ p_{11} = \lambda $ & $ p_{12} = 3/20 $ \\
+    \hline
+    $ x_2 = 0 $ & $ p_{21} = 3/20 $ & $ p_{22} = 1/4 $ \\
+    \hline
+    $ x_3 = 1 $ & $ p_{31} = 1/4 $ & $ p_{32} = 3/20 $
+  \end{tabular}.
+\end{center}
+\begin{enumerate}[(a)]
+\item Determinați parametrul $ \lambda $;
+\item Determinați $ D^2(X) $ și $ D^2(Y) $;
+\item Verificați dacă cele două variabile aleatoare sînt independente.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+7. Vectorul aleator $ (X, Y) $ se dă prin tabloul de repartiție comună:
+\begin{center}
+  \begin{tabular}{l|l|l|l}
+    $ X \mid Y $ & $ y_1 = 0 $ & $ y_2 = 1 $ & $ y_3 = 2 $ \\
+    \hline
+    $ x_1 = 2 $ & $ p_{11} = 0.2 $ & $ p_{12} = 0.3 $ & $ p_{13} = 0.1 $ \\
+    \hline
+    $ x_2 = 3 $ & $ p_{21} = 0.1 $ & $ p_{22} = 0.1 $ & $ p_{23} = \lambda $
+  \end{tabular}.
+\end{center}
+\begin{enumerate}[(a)]
+\item Determinați parametrul $ \lambda $;
+\item Determinați repartițiile marginale ale vectorului aleator $ (X, Y) $;
+\item Calculați $ E(Y / X = 2) $ și $ E(X / Y = 2) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Observație:} Exercițiile din seminar valorează fiecare cîte 2 puncte.
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m3-19-20"
+%%% End:

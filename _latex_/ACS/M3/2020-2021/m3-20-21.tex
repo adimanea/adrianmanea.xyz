@@ -1,0 +1,57 @@
+\documentclass[12pt, a4paper]{report}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Matematică 3} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: Luminița Costache}}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\footnotesize{\color{gray}Matematică 3, 2020--2021}}
+\lhead{\footnotesize{\color{gray}Adrian Manea}}
+
+\pagestyle{plain} % restore page numbering
+
+\include{ch/s1-complex-recap}
+% \include{ch/s2-int-compx}
+% \include{ch/s3-serii-rez}
+% \include{ch/s4-laplace-z}
+% \include{ch/s5-fourier}
+% \include{ch/s6-prob1}
+% \include{ch/s7-prob2}
+% \include{ch/s8-val}
+% \include{ch/s9-val2}
+% \include{ch/s10-sir-val}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+% BIBLIOGRAPHY
+% \addcontentsline{toc}{chapter}{\protect\numberline{}Bibliografie}
+% \bibliography{../2018-2019/m1.bib}
+% \bibliographystyle{apalike}
+% \nocite{*}
+
+\end{document}

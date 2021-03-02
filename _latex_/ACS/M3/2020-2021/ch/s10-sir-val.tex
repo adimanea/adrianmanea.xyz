@@ -1,0 +1,266 @@
+% ! TEX root = ../m3-19-20.tex
+
+\chapter{Șiruri de variabile aleatoare}
+
+Pentru aspectele teoretice privitoare la aceste noțiuni, puteți consulta
+\emph{Lecții de matematici speciale}, L.\ Costache.
+
+În continuare, vom insista pe exerciții.
+
+\section{Exerciții rezolvate}
+
+1. Fie variabila aleatoare:
+\[
+  X = \begin{pmatrix}
+    0.2 & 0.3 & 0.4 & 0.5 \\
+    0.1 & 0.2 & 0.3 & 0.4
+  \end{pmatrix}.
+\]
+Estimați probabilitatea $ P\left( \left\{ |X - m| < 0.2 \right\} \right) $,
+unde $ m = M[X] = E[X] $ este media lui $ X $.
+
+\emph{Soluție:} Se folosește inegalitatea lui Cebîșev, sub forma:
+\[
+  P \left( \left\{ | X - m| < \varepsilon \right\} \right) \geq 1 - \dfrac{\sigma^2}{\varepsilon^2},
+\]
+unde $ \sigma $ este dispersia, iar $ \varepsilon = 0.2 $ în acest caz (alegem).
+
+Avem succesiv: $ M[X] = 0.4 $, deci $ (M[X])^2 = 0.16 $, iar variabila la pătrat
+este:
+\[
+  X^2 = \begin{pmatrix}
+    0.04 & 0.09 & 0.16 & 0.25 \\
+    0.1 & 0.2 & 0.3 & 0.4
+  \end{pmatrix}.
+\]
+Rezultă $ M[X^2] = 0.17 $, de unde obținem
+$ \sigma^2 = D^2[X] = M[X^2] - (M[X])^2 = 0.01 $.
+
+Din egalitatea lui Cebîșev, rezultă în fine:
+\[
+  P\left( \left\{ | X - m | < 0.02 \right\} \right) \geq 0.9975.
+\]
+
+\vspace{0.3cm}
+
+2. Se aruncă 2 monede, simultan, de 800 de ori. Determinați probabilitatea
+de apariție a stemei pe ambele monede de un număr de ori cuprins între
+150 și 250.
+
+\emph{Soluție:} Fie evenimentul $ A $, care arată că apare stema pe ambele
+monede. Pentru o singură aruncare, avem $ p = P(A) = \dfrac{1}{4} $.
+
+Fie acum o variabilă aleatoare cu repartiție binomială (potrivită pentru
+studiul aruncării monedelor), deci de forma:
+\[
+  X = \begin{pmatrix}
+    k \\
+    C_n^k p^k q^{n-k}
+  \end{pmatrix},
+\]
+unde $ n = 800, 1 \leq k \leq 800 $ și $ p = \dfrac{1}{4} $.
+
+Media variabilei (folosim direct formulele cunoscute din seminariile anterioare)
+este $ M[X] = np = 800 \cdot \dfrac{1}{4} = 200 $, iar dispersia se calculează cu:
+\[
+  \sigma^2 = np(1-p) = 150.
+\]
+
+Acum, din egalitatea lui Cebîșev:
+\[
+  P \left( \left\{ | X - m | < \varepsilon \right\} \right) \geq 1 - \dfrac{\sigma^2}{\varepsilon^2},
+\]
+unde $ m = M[X] $, trebuie să determinăm $ \varepsilon $ convenabil.
+
+Evenimentul căutat $ |X - m| < \varepsilon $ poate fi scris în mod echivalent:
+\[
+  m-\varepsilon < X < \varepsilon + m \Rightarrow 200 - \varepsilon < X < \varepsilon + 200.
+\]
+Dar în ipoteză, avem cerința $ 150 < X < 250 $, deci se ajunge la sistemul:
+\[
+  \begin{cases}
+    200 - \varepsilon &= 150 \\
+    200 + \varepsilon &= 250
+  \end{cases},
+\]
+sistem care are soluția $ \varepsilon = 50 $. Acum revenim în inegalitatea
+lui Cebîșev și obținem:
+\[
+  P(150 < X < 250) \geq 1 - \dfrac{150}{50^2} \Rightarrow %
+  P(150 < X < 250) \geq 0.94.
+\]
+
+\vspace{0.3cm}
+
+3. Un zar se aruncă de 1200 de ori. Să se determine probabilitatea minimă ca
+numărul de apariții ale feței cu $ i $ puncte, pentru un $ i $ fixat, să fie
+între 150 și 250.
+
+\emph{Soluție:} Fie evenimentul $ A $ care arată că apare fața cu $ i $ puncte,
+pentru un $ i $ fixat, la o anume aruncare. Considerăm $ n = 1200 $ variabile
+aleatoare identic repartizate, cu forma Bernoulli (potrivită pentru aruncarea
+zarului), deci:
+\[
+  X_k = \begin{pmatrix}
+    1 & 0 \\
+    p & q
+  \end{pmatrix},
+\]
+unde $ p + q = 1 $ și $ P(X_k = 1) = P(A) = p = \dfrac{1}{6} $.
+
+Media unei asemenea variabile (din formula corespunzătoare cazului Bernoulli)
+este $ M[X_k] = p $, pentru orice $ k $.
+
+Vom folosi legea slabă a numerelor mari, în forma generală, unde frecvența
+relativă de apariție a evenimentului $ A $ este $ f_{1200} = \dfrac{k}{1200} $.
+Rezultă:
+\[
+  P \left( \left| \dfrac{k}{1200} - \dfrac{1}{6} \right| < \varepsilon \right) > 1 - \delta,
+\]
+unde avem $ n = \dfrac{1}{4\delta \varepsilon^2} $, care conduce la
+$ \delta = \dfrac{1}{4 \cdot 1200 \cdot \varepsilon^2} $.
+
+Pentru a determina valoarea lui $ \varepsilon $, calculăm:
+\[
+  \left| \dfrac{k}{1200} - \dfrac{1}{6} \right| < \varepsilon \Leftrightarrow %
+  \dfrac{1}{6} - \varepsilon < \dfrac{k}{1200} < \dfrac{1}{6} + \varepsilon,
+\]
+de unde, în fine: $ 200 - 1200\varepsilon < k < 200 + 1200 \varepsilon $.
+Deoarece cerința problemei este $ 150 < k < 250 $, se ajunge la sistemul:
+\[
+  \begin{cases}
+    200 - 1200 \varepsilon &= 150 \\
+    200 + 1200 \varepsilon &= 250
+  \end{cases} \Rightarrow \varepsilon = \dfrac{1}{24}.
+\]
+
+Pentru această valoare, avem $ \delta = 0.12 $, deci $ 1 - \delta = 0.88 $.
+Concluzia este că probabilitatea cerută este de 80\%.
+
+\vspace{0.3cm}
+
+4. Folosind teorema Moivre-Laplace, estimați probabilitatea ca din 100 de
+aruncări ale unei monede, să apară banul de un număr de ori cuprins între
+40 și 60.
+
+\emph{Soluție:} Fie $ n = 100 $ variabile aleatoare repartizate identic,
+binomial (model potrivit pentru aruncarea monedelor). Putem considera simplu:
+\[
+  X_k = \begin{pmatrix} 1 & 0 \\ p & q \end{pmatrix},
+\]
+unde $ P(X_k = 1) = p = 0.5 $. Media fiecăreia dintre aceste variabile este
+$ M[X_k] = p $. Avem de calculat probabilitatea:
+\[
+  P \left( a < \sum_{k=1}^n X_k < b \right), \quad a = 40, b = 60.
+\]
+Aplicăm teorema Moivre-Laplace:
+\[
+  \ell = \lim_{n \to \infty} P \left( a < \sum_{k=1}^n X_k < b \right) = %
+  \phi\left( \dfrac{b - np}{\sqrt{npq}} \right) - %
+  \phi\left( \dfrac{a - np}{\sqrt{npq}} \right).
+\]
+Rezultă $ \ell = \phi(2) - \phi(-2) = \phi(2) - (1 - \phi(2)) $. Acum,
+cu valorile din tabel pentru funcția lui Laplace, avem rezultatul cerut
+ca fiind 0.9544.
+
+\vspace{0.3cm}
+
+5. Fie șirul de variabile aleatoare, independente $ (X_n)_{n \in \NN} $, cu
+repartiția:
+\[
+  X_n = \begin{pmatrix}
+    -n & 0 & n \\
+    & & \\
+    \dfrac{1}{2n^2} & 1 - \dfrac{1}{n^2} & \dfrac{1}{2n^2}
+  \end{pmatrix}.
+\]
+Arătați că acest șir de variabile aleatoare îndeplinește condițiile legii
+numerelor mari în forma Cebîșev.
+
+\emph{Soluție:} Avem de arătat că dispersiile șirului de variabile aleatoare
+sînt finite și uniform mărginite, adică există $ c \in \RR $ constantă,
+astfel încît $ \sigma^2(X_k) \leq c $, pentru toți $ k $.
+
+Dar calcule imediate arată:
+\begin{align*}
+  M[X_n] &= -\dfrac{n}{2n^2} + \dfrac{n}{2n^2} = 0 \\
+  M[X^2_n] &= \dfrac{n^2}{2n^2} + \dfrac{n^2}{2n^2} = 1 \\
+  \sigma^2 &= M[X_n^2] - M^2[X_n] = 1 - 0 = 1,
+\end{align*}
+care adeveresc condiția.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții propuse}
+
+\indent\indent 1. Timpul mediu de răspuns al unui calculator este de 15 secunde pentru o
+anumită operație, cu abaterea standard de 3 secunde.
+
+Estimați probabilitatea ca timpul de răspuns să se abată cu mai puțin de
+5 secunde față de medie.
+
+\emph{Indicație:} Folosiți inegalitatea Cebîșev.
+
+\vspace{0.3cm}
+
+2. Arătați că șirul de variabile aleatore $ (X_n)_n $, independente, cu
+repartiția:
+\[
+  X_n = \begin{pmatrix}
+    -\sqrt{\ln n} & \sqrt{\ln n} \\
+    0.5 & 0.5
+  \end{pmatrix}
+\]
+urmează legea slabă a numerelor mari.
+
+\emph{Indicație:} Verificați mai întîi dacă variabilele din șir au dispersii
+finite, iar în caz negativ, verificați formularea Markov.
+
+\vspace{0.3cm}
+
+3. Într-o școală se află 100 de unități electrice care funcționează
+independent. Probabilitatea deconectării uneia dintre ele într-un interval de
+timp dat este de 5\%. Determinați probabilitatea ca în acest interval anume
+să fie deconectate:
+\begin{enumerate}[(a)]
+\item nu mai puțin de 5 unități;
+\item nu mai mult de 5 unități;
+\item între 5 și 10 unități.
+\end{enumerate}
+
+\emph{Indicație:} Teorema Moivre-Laplace, pentru variabile repartizate
+Bernoulli.
+
+\vspace{0.3cm}
+
+4. Se știe că 5\% dintre produsele unui anumit lot sînt defecte. Care
+este probabilitatea ca dintr-o selecție de 200 de produse, cel puțin
+10\% să fie defecte?
+
+\emph{Indicație:} Teorema Moivre-Laplace, pentru variabile repartizate
+Bernoulli.
+
+\vspace{0.3cm}
+
+5. O fabrică folosește 2 tipuri de aparate, $ A $ și $ B $.
+După un timp, tipul $ A $ se strică și trebuie reparate cu probabilitatea de 20\%,
+iar tipul $ B $, cu probabilitatea de 40\%.
+
+Numărul total de aparate din tip $ A $ disponibile în fabrică este de 1000,
+iar cele de tip $ B $ sînt în număr de 1500.
+
+\begin{enumerate}[(a)]
+\item Care este probabilitatea ca la un moment dat, numărul de aparate care
+  trebuie reparate (de oricare dintre tipuri) să fie între 750 și 850?
+\item Determinați, cu o probabilitate de 0.99, numărul maxim de aparate care
+  ar trebui reparate la un moment dat.
+\end{enumerate}
+
+\emph{Indicație:} Teorema Moivre-Laplace, pentru variabile repartizate
+Bernoulli (considerați două șiruri, corespunzătoare celor două tipuri
+de aparate).
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../m3-19-20"
+%%% End:
