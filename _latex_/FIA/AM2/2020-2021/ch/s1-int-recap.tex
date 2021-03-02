@@ -1,0 +1,45 @@
+\chapter{Primitive și integrale --- Recapitulare}
+
+Pentru acest prim seminar, ne vom aminti cîteva din formulele
+de calcul integral, precum și tehnicile de calcul.
+
+Puteți consulta o listă de primitive uzuale în orice manual de
+clasa a XII-a sau online, de exemplu, \href{https://ro.wikipedia.org/wiki/Tabel_de_integrale}{aici}.
+
+În special, vom avea nevoie în exercițiile de mai jos, de următoarele formule:
+
+\begin{itemize}
+\item $ \ds\int \dfrac{dx}{x^2 + a^2} = \dfrac{1}{a} \arctan \dfrac{x}{a} + c $;
+\item $ \ds\int \dfrac{dx}{x^2 - a^2} = \dfrac{1}{2a} \ln \left| \dfrac{x - a}{x + a} \right| + c $;
+\item $ \ds\int \dfrac{dx}{\sqrt{x^2 + a^2}} = \ln\ \left( x + \sqrt{x^2 + a^2} \right) + c $;
+\item $ \ds\int \dfrac{dx}{\sqrt{x^2 - a^2}} = \ln \left( x + \sqrt{x^2 - a^2} \right) + c $;
+\item $ \ds\int \dfrac{dx}{\sqrt{a^2 - x^2}} = \arcsin \dfrac{x}{a} + c $;
+\item $ \ds\int \dfrac{-dx}{\sqrt{a^2 - x^2}} = \arccos \dfrac{x}{a} + c $.
+\end{itemize}
+
+\newpage
+
+Folosind acestea, calculați integralele de mai jos:
+
+\begin{multicols}{2}
+  \begin{enumerate}[(1)]
+  \item $ \ds\int \dfrac{2x + 1}{\sqrt{x^2 - 16}} dx $;
+  \item $ \ds\int \dfrac{2x - 5}{x^2 - 5x + 7} dx $;
+  \item $ \ds\int \dfrac{2x + 3}{x^2 - 5x + 6} dx $;
+  \item $ \ds\int \dfrac{x - 1}{3x^2 - 6x + 11} dx $;
+  \item $ \ds\int \dfrac{2x}{x^4 - 1} dx $;
+  \item $ \ds\int_1^{\sqrt{e}} x \log_3 x dx $;
+  \item $ \ds\int_1^e \sin(\ln x) dx $;
+  \item $ \ds\int_0^{\frac{1}{\sqrt{2}}} \dfrac{3 - 2x}{2x^2 + 1} dx $;
+  \item $ \ds\int_1^e \dfrac{\ln x}{x(2 + \ln x)} dx $;
+  \item $ \ds\int_0^1 \dfrac{3x^4 + x^3 - 2x^2 + x + 1}{x^2 - 5x + 6} dx $;
+  \item $ \ds\int_0^1 \dfrac{x^5 + 2x^3 - 3x^2 + 2x - 1}{x^2 + 2x + 1} dx $;
+  \item $ \ds\int_0^1 \dfrac{1}{x^2 + x + 3} dx $;
+  \item $ \ds\int_0^1 \dfrac{5}{3x^2 + 6x + 21} dx $.
+  \end{enumerate}
+\end{multicols}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-20-21"
+%%% End:
