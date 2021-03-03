@@ -1,0 +1,409 @@
+% ! TEX root = ../am2-19-20.tex
+
+\chapter{Integrale complexe}
+
+\section{Teorema lui Cauchy}
+\index{integrală!complexă}
+\indent\indent În multe situații, putem calcula integralele complexe direct,
+într-o manieră asemănătoare cu integralele curbilinii. Un exemplu simplu:
+
+\[
+  I_1 = \int_{|z| = 1} z |dz|.
+\]
+
+Folosind forma polară, $ z = e^{it} $, deoarece integrala se face pe
+$ |z| = 1 $, iar $ t \in [0, 2\pi] $. Rezultă $ dz = ie^{it} dt $,
+deci $ |dz| = dt $. Atunci:
+\[
+  I_1 = \int_0^{2\pi} e^{it} dt = \dfrac{1}{i} e^{it} \Big|_0^{2\pi} = 0.
+\]
+
+Un alt exemplu:
+\[
+  I_2 = \int_S z |dz|,
+\]
+unde $ S $ este segmentul care unește pe $ 0 $ și $ i $. Putem parametriza
+acest segment: $S : z = ti, t \in [0,1] $, deci $ dz = idt $ și din nou
+$ |dz| = dt $. Rezultă:
+\[
+  I_2 = \int_0^1 tidt = \dfrac{1}{2}.
+\]
+
+Dar în unele situații, putem calcula chiar mai ușor:
+\begin{theorem}[Cauchy]\label{thm:tcauchy} \index{teorema!Cauchy}
+  Fie $ D \seq \CC $ un domeniu simplu conex și $ f : D \to \CC $ o funcție
+  olomorfă pe $ D $, cu $ P = \dr{Re}f $ și $ Q = \dr{Im} f $, funcții de clasă
+  $ \kal{C}^1(D) $.
+
+  Fie $ \gamma : [a, b] \to D $ o curbă închisă și jordaniană (fără autointersecții)
+  de clasă $ \kal{C}^1 $ pe porțiuni, astfel încît $ \dr{Int}\gamma $ să verifice
+  condițiile formulei Green-Riemann.
+
+  Atunci $ \ds\int_\gamma f(z) dz = 0 $.
+\end{theorem}
+
+Acesta este un caz simplu în care calculul se termină imediat cu rezultat nul.
+
+În exerciții, vom folosi adesea următoarea:
+\begin{theorem}[Formula integrală Cauchy]\label{thm:fintcauchy}\index{formula!Cauchy}
+  Fie $ D \seq \CC $ un domeniu și $ f : D \to \CC $ o funcție olomorfă pe $ D $.
+  Fie $ \overline{\Delta} \seq D $, unde $ \Delta $ este un domeniu simplu conex,
+  mărginit, cu frontiera $ \gamma $, care este o curbă închisă, jordaniană, de
+  clasă $ \kal{C}^1 $ pe porțiuni, orientată pozitiv.
+
+  Atunci pentru orice $ a \in \Delta $ fixat are loc:
+  \[
+    f(a) = \dfrac{1}{2 \pi i} \int_\gamma \dfrac{f(z)}{z - a} dz.
+  \]
+\end{theorem}
+
+Principala aplicație a acestei teoreme este să ne ajute să calculăm integrale pe
+domenii în interiorul cărora funcția pe care o integrăm are probleme. Un exemplu:
+\[
+  \int_{|z - 2i| = 1} \dfrac{1}{z^2 + 4} dz.
+\]
+Observăm că $ z = 2i $ este un punct cu probleme pentru funcția considerată și
+aplicăm formula integrală Cauchy.
+
+Putem rescrie integrala astfel, izolînd punctul cu probleme:
+\[
+  \int_{|z - 2i| = 1} \dfrac{1}{z^2 + 4} dz = \int_{|z - 2i| = 1} \dfrac{\frac{1}{z + 2i}}{z - 2i} dz = %
+  \dfrac{f(z)}{z - 2i} dz,
+\]
+unde am introdus exact funcția cu probleme, adică $ f(z) = \dfrac{1}{z + 2i} $.
+
+Aplicăm formula integrală Cauchy și obținem:
+\[
+  f(2i) = \dfrac{1}{2\pi i} \int_{|z - 2i| = 1} \dfrac{f(z)}{z - 2i} dz \Rightarrow %
+  \int_{|z - 2i| = 1} \dfrac{f(z)}{z - 2i} dz = 2\pi i f(2i) = \dfrac{\pi}{2}.
+\]
+
+Vor exista situații cînd punctul izolat nu poate fi eliminat atît de ușor (sau chiar deloc),
+cazuri în care vom aplica un rezultat fundamental, \emph{teorema reziduurilor}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+1. Calculați integrala $ \ds\int_{\Gamma} z^2 dz $, unde:
+\begin{enumerate}[(a)]
+\item $ \Gamma = [-1, i] \cup [i, 1] $;
+\item $ \Gamma = \{ z(t) = 2 + it^2 \mid 0 \leq t \leq 1 \} $;
+\item $ \Gamma = \{ z(t) = t + i \cos \dfrac{\pi t}{2} \mid -1 \leq t \leq 1 \} $;
+\item $ \Gamma = OA $, cu $O(0, 0) $ și $ A(2, 1) $.
+\end{enumerate}
+
+\emph{Indicații:} Se parametrizează drumurile și se calculează ca în exemplele
+de mai sus.
+
+\vspace{1cm}
+
+2. Folosind teorema Cauchy sau formula integrală Cauchy, calculați:
+\begin{enumerate}[(a)]
+\item $ \ds\int_{|z - 1| = 3} z^4 dz $;
+\item $ \ds\int_{|z| = 4} \dfrac{\cos z}{z^2 - 6z + 5}dz $;
+\item $ \ds\int_{|z| = 1} \dfrac{\sin z}{z(z-2)} dz $;
+\item $ \ds\int_\Gamma \dfrac{\exp(z^2)}{z^2 - 6z} dz $, unde
+  $ \Gamma: |z - 2| = r, r \in \{1, 3, 5\} $;
+\item $ \ds\int_{|z| = 1} \dfrac{\exp(3z)}{z^4} dz $;
+\item $ \ds\int_{|z - i| = 1} \dfrac{1}{(z^2 + 1)^2} dz $;
+\item $ \ds\int_{|z| = 1} \dfrac{\sin z}{z^2(z - 2)} dz $.
+\end{enumerate}
+
+\emph{Indicații:} Ideea de bază este să identificăm punctele cu probleme ale
+funcțiilor de integrat în interiorul domeniilor pe care integrăm, apoi să descompunem
+integrandul cu o funcție căreia i se poate aplica teorema Cauchy.
+\begin{enumerate}[(a)]
+\item funcția $ z^4 $ este olomorfă, deci integrala este nulă;
+\item avem $ \dfrac{\cos z}{(z - 1)(z - 5)} $, dar singurul punct cu probleme din interiorul
+  domeniului este $ z_1 = 1 $. Definim $ f(z) = \dfrac{\cos z}{z - 5} $, iar integrala
+  devine $ \ds\int_{|z| = 4} \dfrac{f(z)}{z - 1} dz $, care se calculează cu formula Cauchy.
+\item pentru $ r = 1 $, funcția este olomorfă, deci integrala este nulă. Pentru $ r = 3 $,
+  $ z = 0 $ este punct cu probleme, deci definim $ f(z) = \dfrac{\exp(z^2)}{z - 6} $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Teorema reziduurilor}
+
+Similar cu orice funcție reală, și funcțiile complexe pot fi dezvoltate în serii
+de puteri. În cazul complex, seriile se numesc \emph{serii Laurent} și pot conține
+și puteri negative.
+
+Informal, punctele cu probleme care ne interesează se numesc \emph{poli}
+sau \emph{puncte singulare}. Ordinul unui pol $ z = a $ este multiplicitatea algebrică
+a rădăcinii $ z = a $ în dezvoltarea în serie Laurent a funcției $ f $. În particular,
+avem \emph{poli simpli, dubli} etc.
+
+\begin{definition}\label{def:rez}\index{funcție!complexă!reziduu}
+  Fie $ f : \CC \to \CC $ o funcție complexă și dezvoltarea sa în serie Laurent
+  în jurul unui punct $ z_0 \in \CC $:
+  \[
+    f(z) = \sum_{n \in \ZZ} a_n (z - z_0)^n, \quad a_n \in \RR.
+  \]
+
+  Se numește \emph{reziduul} funcției $ f $ în punctul singular $ z_0 $ coeficientul
+  $ a_{-1} $ din dezvoltarea de mai sus, notat $ \mathrm{Rez}(f, z_0) $.
+\end{definition}
+
+Următoarea teoremă ne dă metode de calcul al reziduurilor, în funcție de multiplicitatea
+lor:
+
+\begin{theorem}[Calculul reziduurilor]\label{thm:calc-rez}\index{teorema!calculul reziduurilor}
+  (1) $ \dr{Rez}(f, a) = c_{-1} $, unde $ c_{-1} $ este coeficientul lui $ \dfrac{1}{z-a} $
+  în dezvoltarea în serie Laurent a funcției $ f $ în vecinătatea singularității $ z = a $.
+
+  (2) Dacă $ z = a $ este pol de ordinul $ p \geq 2 $ pentru $ f $, atunci:
+  \[
+    \dr{Rez}(f, a) = \dfrac{1}{(p-1)!} \lim_{z \to a} \Big[ (z - a)^p f(z) \Big]^{(p-1)};
+  \]
+
+  (3) Dacă $ z = a $ este pol simplu pentru $ f $, atunci, particularizînd formula
+  de mai sus, avem:
+  \[
+    \dr{Rez}(f, a) = \lim_{z \to a} (z - a) f(z);
+  \]
+
+  (4) Dacă $ f $ se poate scrie ca un cît de funcții, $ f = \dfrac{A}{B} $, olomorfe în
+  jurul lui $ a $ și dacă $ z = a $ este pol simplu pentru $ f $, adică $ B(a) = 0 $,
+  atunci:
+  \[
+    \dr{Rez}(f, a) = \lim_{z \to a} \dfrac{A(z)}{B'(z)}.
+  \]
+\end{theorem}
+
+Rezultatul esențial al acestei secțiuni ne arată că, dacă integrăm o funcție
+cu probleme, valoarea integralei este dată în mod esențial de reziduurile sale:
+
+\begin{theorem}[Teorema reziduurilor]\label{thm:t-rez}\index{teorema!reziduurilor}
+  Fie $ D \seq \CC $ un domeniu și $ f : D - \{ \alpha_1, \dots, \alpha_k \} \to \CC $ o funcție
+  olomorfă pentru care $ \alpha_i $ sînt poli.
+
+  Fie $ K \seq D $ un compact cu frontiera $ \Gamma = \partial K $, o curbă de clasă
+  $ \kal{C}^1 $, jordaniană, orientată pozitiv și care conține toate $ \alpha_i $ în
+  interior. Atunci:
+  \[
+    \int_\Gamma f(z) dz = 2 \pi i \sum_{j = 1}^k \dr{Rez}(f, \alpha_j).
+  \]
+\end{theorem}
+
+De exemplu, să calculăm integrala:
+\[
+  I = \int_{|z| = r} \frac{e^z}{(z - i)(z - 2)} dz, r > 0, r \neq 1, 2.
+\]
+
+\emph{Soluție:} Dacă $ 0 < r < 1 $, putem aplica teorema lui Cauchy (\ref{thm:tcauchy})
+și găsim $ I = 0 $.
+
+Dacă $ 1 < r < 2 $, aplicăm formula integrală a lui Cauchy (\ref{thm:fintcauchy}) și găsim:
+\[
+  \int_{|z| = r} \frac{e^z}{(z - i)(z - 2)} dz = %
+  \int_{|z| = r} \frac{\frac{e^z}{z - 2}}{z - i} dz = %
+  \int_{|z| = r} \frac{f(z)}{z - i} dz,
+\]
+unde $ f(z) = \dfrac{e^z}{z - 2} $. Rezultă:
+\[
+  \int_{|z| = r} \frac{f(z)}{z - i} dz = 2 \pi i f(i) = 2 \pi i \frac{e^i}{i - 2}.
+\]
+
+Dacă $ r > 2 $, aplicăm teorema reziduurilor, cu $ i $ și $ 2 $ poli simpli. Avem:
+\begin{align*}
+  \mathrm{Rez}(f, i) &= \lim_{z \to i} (z - i) \frac{e^z}{(z - i)(z - 2)} = \frac{e^i}{i - 2} \\
+  \mathrm{Rez}(f, 2) &= \lim_{z \to 2} \frac{e^z}{(z - i)(z - 2)} = \frac{e^2}{2 - i}.
+\end{align*}
+
+Rezultă, din teorema reziduurilor:
+\[
+  \int_{|z| = r} \frac{e^z}{(z - i)(z - 2)} dz = 2 \pi i \Big( \frac{e^i}{i - 2} + %
+  \frac{e^2}{2 - i} \Big).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Exerciții}
+
+1. Calculați reziduurile funcțiilor în punctele $ a $ indicate:
+\begin{enumerate}[(a)]
+\item $ f(z) = \dfrac{\exp\big(z^2\big)}{z - 1}, a = 1 $;
+\item $ f(z) = \dfrac{\exp\big(z^2\big)}{(z - 1)^2}, a = 1 $;
+\item $ f(z) = \dfrac{z + 2}{z^2 - 2z}, a = 0 $;
+\item $ f(z) = \dfrac{1 + e^z}{z^4}, a = 0 $;
+\item $ f(z) = \dfrac{\sin z}{4z^2}, a = 0 $;
+\item $ f(z) = \dfrac{z}{1 - \cos z}, a = 0 $.
+\end{enumerate}
+
+\emph{Indicație:} Verificăm multiplicitatea polului $ z = a $ și aplicăm formula
+corespunzătoare din teorema \ref{thm:calc-rez}.
+
+\vspace{1cm}
+
+2. Să se calculeze următoarele integrale:
+\begin{enumerate}[(a)]
+\item $ I = \ds\int_{|z| = 2} \frac{dz}{z^2 - 1} $;
+\item $ I = \ds\int_\gamma \frac{dz}{z^4 + 1}, \gamma: x^2 + y^2 - 2x = 0 $;
+\item $ I = \ds\int_{|z| = 3} \frac{z^2 + 1}{(z - 1)^2 (z + 2)} dz $.
+\end{enumerate}
+
+\emph{Soluție:} (a) Punctele $ z = \pm 1 $ sînt poli de ordinul 1 pentru
+funcția $ f(z) = \dfrac{1}{z^2 - 1} $. Ele sînt situate în interiorul discului pe
+care integrăm, cu $ |z| = 2 $, deci putem aplica teorema reziduurilor:
+\[
+  I = 2 \pi i \cdot \Big( \mathrm{Rez}(f, z_1) + \mathrm{Rez}(f, z_2) \Big).
+\]
+
+Calculăm separat reziduurile:
+\begin{align*}
+  \Rez(f, z_1) &= \lim_{z \to 1} (z - 1) \cdot \frac{1}{z^2 - 1} = \frac{1}{2} \\
+  \Rez(f, z_2) &= \lim_{z \to -1} (z + 1) \cdot \frac{1}{z^2 - 1} = -\frac{1}{2}.
+\end{align*}
+
+Rezultă:
+\[
+  I = \int_{|z| = 2} \frac{dz}{z^2 - 1} = 2 \pi i \cdot \Big( \frac{1}{2} - \frac{1}{2} \Big) = 0.
+\]
+
+\vspace{1cm}
+
+(b) Curba $ \gamma $ este un cerc centrat în $ (1, 0) $ și cu raza $ 1 $. Căutăm
+polii funcției $ f(z) = \dfrac{1}{z^4 + 1} $ care se află în interiorul lui $ \gamma $.
+
+Avem succesiv:
+\begin{align*}
+  z^4 + 1 &= 0 \Rightarrow z^4 = -1 = \cos \pi + i \sin \pi \Rightarrow \\
+  z &= \sqrt[4]{\cos \pi + i \sin \pi} \Rightarrow \\
+  z_k &= \cos \frac{\pi + 2k\pi}{4} + i \sin \frac{\pi + 2k\pi}{4}, k = 0, 1, 2, 3.
+\end{align*}
+
+Doar punctele $ z_0, z_3 $ se află în interiorul discului delimitat de $ \gamma $
+și calculăm reziduurile în aceste puncte.
+
+Putem aplica formula din Teorema \ref{thm:calc-rez} (4) și avem:
+\begin{align*}
+  \Rez(f, z_0) &= \frac{A(z)}{B'(z)}\Big|_{z_0} = \frac{1}{4z^3}\Big|_{z_0} %
+                 = -\frac{1}{4} e^{\frac{\pi i}{4}} \\
+  \Rez(f, z_3) &= \frac{A(z)}{B'(z)}\Big|_{z_3} = \frac{1}{4z^3}\Big|_{z_3} %
+                 = - \frac{1}{4} e^{\frac{7 \pi i}{4}}.
+\end{align*}
+
+Rezultă:
+\[
+  I = \int_\gamma \frac{dz}{z^4 + 1} = %
+  2 \pi i \Big( -\frac{1}{4} e^{\frac{\pi i}{4}} - \frac{1}{4} e^{\frac{7 \pi i}{4}} \Big) = %
+  -\frac{\pi \sqrt{2} i}{2}.
+\]
+
+\vspace{1cm}
+
+(c) Avem doi poli, $ z = 1, z = -2 $ în interiorul conturului. Se vede că $ z_1 = 1 $
+este pol de ordinul 2, iar $ z_2 = -2 $ este pol de ordinul 1. Calculăm reziduurile:
+\begin{align*}
+  \Rez(f, z_1) &= \frac{1}{(2-1)!} \lim_{z \to 1} \Big[ (z - 1)^2 \frac{z^2 + 1}{(z - 1)^2(z + 2)} \Big]^\prime \\
+               &= \frac{1}{1!} \lim_{z \to 1} \frac{z^2 + 4z - 1}{(z + 2)^2} \\
+               &= \frac{4}{9} \\
+  \Rez(f, z_2) &= \lim_{z \to -2} (z + 2) \frac{z^2 + 1}{(z - 1)^2(z + 2)} = \frac{5}{9}.
+\end{align*}
+
+Rezultă:
+\[
+  I = \int_{|z| = 3} \frac{z^2 + 1}{(z - 1)^2(z + 2)} dz = 2 \pi i.
+\]
+
+\vspace{1cm}
+
+3. Să se calculeze integralele:
+\begin{enumerate}[(a)]
+\item $ \ds\int_{|z| = 1} \frac{dz}{\sin z} $;
+\item $ \ds\int_{|z| = 1} \frac{e^z}{z^2}dz $;
+\item $ \ds\int_{|z| = 5} z e^{\frac{3}{z}} dz $;
+\item $ \ds\int_{|z - 1| = 1} \frac{dz}{(z + 1)(z - 1)^3} $;
+\item $ \ds\int_{|z| = 1} \frac{\sin z}{z^4} dz $.
+\end{enumerate}
+
+\emph{Indicații}: (a) $ z = 0 $ este singurul pol din interiorul domeniului;
+
+(b), (c): Dezvoltăm în serie Laurent și identificăm reziduurile folosind definiția.
+
+(d) Avem $ z = 1 $ pol de ordin 3 și $ z = -1 $ pol simplu. Doar $ z = 1 $ se află
+în interiorul domeniului și dezvoltăm în serie Laurent după puterile lui $ z - 1 $:
+\begin{align*}
+  \frac{1}{z + 1} &= \frac{1}{2 - (-(z - 1))} \\
+                  &= \frac{1}{2} \frac{1}{1 - \big(-\frac{z - 1}{2}\big)} \\
+                  &= \frac{1}{2} \sum_{n \geq 0} (-1)^n \frac{(z - 1)^n}{2^n} \\
+                  &= \sum_{n \geq 0} (-1)^n \frac{(z - 1)^n}{2^{n+1}},
+\end{align*}
+pentru $ |z - 1| < 2 $.
+
+Rezultă:
+\[
+  \frac{1}{(z + 1)(z - 1)^3} = \sum_{n \geq 0} (-1)^n \frac{(z - 1)^{n-3}}{2^{n+1}} = %
+  \frac{1}{2(z - 1)^3} - \frac{1}{4(z - 1)^2} + \frac{1}{8(z - 1)} - \frac{1}{16} + \dots,
+\]
+deci $ \Rez(f, 1) = \frac{1}{8} $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Aplicații ale teoremei reziduurilor}
+
+\indent\indent Putem folosi teorema reziduurilor pentru a calcula integrale trigonometrice de forma:
+\[
+  I = \int_0^{2 \pi} R(\cos \theta, \sin \theta) d \theta,
+\]
+unde $ R $ este o funcție rațională.
+
+Facem schimbarea de variabilă $ z = e^{i\theta} $ și atunci, pentru $ \theta \in [0, 2\pi] $,
+$ z $ descrie cercul $ |z| = 1 $, o dată, în sens direct.
+
+Folosim formulele lui Euler:
+\begin{align*}
+  \cos \theta &= \frac{e^{i\theta} + e^{-i\theta}}{2} = \frac{1}{2} \Big( z + \frac{1}{z} \Big) \\
+  \sin \theta &= \frac{e^{i\theta} - e^{-i\theta}}{2i} = \frac{1}{2i} \Big( z - \frac{1}{z} \Big).
+\end{align*}
+
+Atunci, dacă $ z = e^{i\theta} $, rezultă $ dz = ie^{i\theta} d\theta = izd\theta $,
+iar integrala devine:\footnote{$\oint$ marchează o integrală pe un contur \emph{închis}}
+\[
+  I = \int_0^{2 \pi} R(\cos \theta, \sin \theta) d\theta = \oint_{|z| = 1} R_1(z) dz,
+\]
+unde:
+\[
+  R_1(z) = \frac{1}{iz} R\Big( \frac{z^2 + 1}{2z}, \frac{z^2 - 1}{2iz} \Big).
+\]
+
+Această funcție poate avea poli și deci putem folosi teorema reziduurilor. Dacă
+$ a_1, \dots, a_n $ sînt polii din interiorul cercului unitate, avem:
+\[
+  I_1 = 2 \pi i \sum_{k \geq 1} \Rez(R_1, a_k).
+\]
+
+\vspace{1cm}
+
+Să vedem cîteva exemple:
+\begin{enumerate}[(a)]
+\item $ \ds\int_0^{2 \pi} \frac{d\theta}{2 + \cos \theta} $;
+\item $ \ds\int_0^{2 \pi} \frac{d\theta}{1 + 3 \cos^2 \theta} $;
+\item $ \ds\int_0^{2 \pi} \frac{\sin \theta}{1 + i \sin \theta} d\theta $;
+\item $ \ds\int_0^{2 \pi} \frac{d\theta}{1 + a \sin \theta}, |a| < 1, a \in \RR $.
+\end{enumerate}
+
+\emph{Soluție:}
+
+(a) Notăm $ z = e^{i\theta} $, cu $ \theta \in [0, 2\pi] $. Atunci avem succesiv:
+\begin{align*}
+  dz &= ie^{i\theta} d\theta = izdz \Rightarrow d\theta = \frac{dz}{iz} \\
+  \cos \theta &= \frac{e^{i\theta} + e^{-i\theta}}{2} = \frac{1}{2} \Big( z + \frac{1}{z} \Big) \\
+  \frac{1}{2 + \cos \theta} &= \frac{2z}{z^2 + 4z + 1} \\
+  \int_0^{2 \pi} \frac{d\theta}{2 + \cos \theta} &= \oint_{|z| = 1} \frac{2z}{z^2 + 4z + 1} \frac{dz}{iz} \\
+     &= -2i \oint_{|z| = 1} \frac{dz}{z^2 + 4z + 1}.
+\end{align*}
+
+Acum folosim teorema reziduurilor. Singularitățile funcției $ f(z) = \dfrac{1}{z^2 + 4z + 1} $
+sînt $ z = -2 \pm \sqrt{3} $, care sînt poli simpli. Numai $ z = -2 + \sqrt{3} $ se află
+în interiorul cercului $ |z| = 1 $ și calculăm reziduul folosind
+Teorema \ref{thm:calc-rez}(2).
+\index{integrală!trigonometrică}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-19-20"
+%%% End:

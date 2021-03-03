@@ -1,0 +1,370 @@
+% ! TEX root = ../am2-19-20.tex
+
+\chapter{Numere și funcții complexe --- recapitulare}
+
+\section{Numere complexe -- Noțiuni de bază}
+
+Începem cu cîteva noțiuni esențiale și recapitulative privitoare la mulțimea
+numerelor complexe. Amintim definiția:
+\[
+  \CC = \{ a + bi \mid a, b \in \RR, i^2 = -1 \},
+\]
+precum și faptul că avem, în general, șirul de incluziuni:
+\[
+  \NN \seq \ZZ \seq \QQ \seq \RR \seq \CC.
+\]
+
+Dat un număr complex $ z = a + bi $, se numește \emph{partea reală},
+notată $ \dr{Re}(z) $, numărul real $ a $, iar \emph{partea imaginară},
+notată $ \dr{Im}(z) $, numărul real $ b $.
+
+De asemenea, \emph{conjugatul} numărului complex $ z $ de mai sus este
+$ \overline{z} = z^\ast = a - bi $, iar \emph{modulul} numărului complex
+$ z $ este $ |z| = \sqrt{a^2 + b^2} $.
+
+Există mai multe forme de reprezentare a numerelor complexe:
+\begin{itemize}
+\item \emph{forma algebrică}, dată mai sus, $ z = a + bi, a, b \in \RR $;
+\item \emph{forma trigonometrică}, $ z = r(\cos \theta + i \sin \theta) $,
+  unde $ r = |z| $, iar $ \theta = \dr{Arg}(z) $ se numește \emph{argumentul %
+  principal};
+\item \emph{forma polară}, $ z = r e^{i\theta} = r \exp(i \theta) $, unde
+  $ r $ și $ \theta $ au înțelesul din forma trigonometrică;
+\item \emph{forma geometrică}, în care $ z = a + bi $ reprezintă
+  \emph{afixul} punctului din plan $ A(a, b) $. Pentru acest caz, menționăm
+  că $ |z| = \sqrt{a^2 + b^2} $ reprezintă lungimea vectorului de poziție
+  al punctului $ A $, iar $ \theta $ reprezintă unghiul pe care îl face
+  acest vector de poziție cu axa $ OX $, măsurat în sens trigonometric.
+\end{itemize}
+
+Operațiile cu numere complexe se fac în modul uzual, ținînd seama de
+proprietatea $ i^2 = -1 $. Mai amintim \emph{formula lui Moivre}, utilă
+în special atunci cînd numărul complex a fost scris sub formă trigonometrică.
+Fie, așadar, numerele complexe:
+\[
+  z_1 = r_1(\cos \theta_1 + i\sin\theta_1), \quad %
+  z_2 = r_2(\cos \theta_2 + i \sin\theta_2).
+\]
+Atunci înmulțirea acestora se face cu formula:
+\[
+  z_1 \cdot z_2 = r_1r_2 \left( \cos(\theta_1 + \theta_2) + i \sin(\theta_1 + \theta_2) \right),
+\]
+formulă care se generalizează ușor în forma:
+\[
+  z^n = r^n(\cos (n\theta) + i \sin (n\theta)), \forall n.
+\]
+
+Tot folosind numere complexe, putem reprezenta și curbe:
+\begin{itemize}
+\item \emph{Cercul} centrat în punctul de afix $ z_0 $ și de rază $ R $ are ecuația:
+  \[
+    |z - z_0| = r;
+  \]
+\item \emph{Elipsa} cu focarele în punctele de afixe $ z_0 $ și $ w_0 $,
+  iar axa mare are lungimea $ d $ are ecuația:
+  \[
+    |z - z_0| + |z - w_0| = d.
+  \]
+\end{itemize}
+
+Amintim și \emph{formele canonice} ale ecuațiilor acestor conice:
+\begin{itemize}
+\item \emph{Cercul} centrat în $ (x_0, y_0) $ și de rază $ R $ are
+  ecuația:
+  \[
+    (x - x_0)^2 + (y - y_0)^2 = R^2;
+  \]
+\item \emph{Elipsa} de semiaxe $ a, b $ are ecuația:
+  \[
+    \dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1.
+  \]
+\end{itemize}
+
+Tot din punct de vedere geometric, mai amintim și că \emph{distanța} între
+două puncte $ A(z) $ și $ B(w) $ este $ AB = |z - w| $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Funcții complexe elementare}
+
+Cea mai simplă funcție complexă este \emph{funcția exponențială}, definită prin:
+\[
+  \exp : \CC \to \CC, \quad \exp z = e^z = \sum_{n \geq 0} \dfrac{z^n}{n!}.
+\]
+
+Se observă imediat că au loc proprietățile așteptate:
+\begin{itemize}
+\item $ \exp(0) = 1 $;
+\item $ \exp(z_1 + z_2) = \exp(z_1) \cdot \exp(z_2), \forall z_{1,2} \in \CC $;
+\item $ \exp(iy) = \cos y + i \sin y, \forall y \in \RR $ (formula lui Euler).
+\end{itemize}
+
+Mai departe, putem calcula simplu \emph{logaritmul complex}, dacă numărul complex
+a fost adus în forma polară. Fie, așadar, $ z = re^{i\theta} $. Rezultă:
+\[
+  \ln z = \ln r + i\theta.
+\]
+
+În general, cum argumentul unui număr complex nu este unic ($ \theta $ de mai sus
+reprezintă \emph{argumentul principal}, dar $ \theta + 2 k\pi $ este argumentul
+general), spunem că funcția logaritm este \emph{multiformă}, deoarece valoarea ei
+generală este:
+\[
+  \dr{Ln}z = \{ \ln |z| + i(\dr{Arg}z + 2 k \pi) \mid k \in \ZZ \},
+\]
+iar $ \ln z $ se numește \emph{valoarea principală} a logaritmului.
+
+\emph{Funcția putere} se definește acum simplu pornind de la formula:
+\[
+  a^b = \exp\left(b \ln a\right).
+\]
+
+Rezultă:
+\[
+  z^m = \exp\left(m \ln z\right) = \exp \left( m(\ln|z| + i\dr{Arg}z) \right),
+\]
+folosind valoarea principală.
+
+Similar se definește și puterea rațională, adică \emph{funcția radical}:
+\[
+  \sqrt[n]{z} = z^{\frac{1}{n}} = \exp\left( \dfrac{1}{n} \ln z \right).
+\]
+
+Folosind funcțiile exponențiale și identitatea lui Euler, putem defini și
+\emph{funcții trigonometrice complexe:}
+\begin{align*}
+  \cos z &= \dfrac{\exp(iz) + \exp(-iz)}{2} \\
+  \sin z &= \dfrac{\exp(iz) - \exp(-iz)}{2i} \\
+  \tan z &= -i\dfrac{\exp(iz) - \exp(-iz)}{\exp(iz) + \exp(-iz)} \\
+\end{align*}
+
+Mai avem nevoie și de \emph{funcțiile trigonometrice hiperbolice}:
+\begin{align*}
+  \sinh z &= \dfrac{\exp(z) - \exp(-z)}{2} \\
+  \cosh z &= \dfrac{\exp(z) + \exp(-z)}{2} \\
+  \tanh z &= \dfrac{\sinh z}{\cosh z}
+\end{align*}
+și au loc legăturile:
+\[
+  \sinh z = -i\sin(iz), \quad \cosh z = \cos(iz).
+\]
+
+\emph{Funcțiile trigonometrice inverse} se pot obține din rezolvarea unor
+ecuații trigonometrice\footnotemark:
+\[
+  w = \dr{arcsin z} \Rightarrow z = \sin w \Rightarrow %
+  z = \dfrac{\exp(iw) - \exp(-iw)}{2i} \Leftrightarrow %
+  \exp(2iw) - 2iz\exp(iw) - 1 = 0,
+\]
+care se rezolvă (pentru $ w $) ca o ecuație de gradul al doilea și se obține:
+\[
+  w = \dr{arcsin} z = -i\ln(iz \pm \sqrt{1 - z^2})
+\]
+și se procedează similar pentru $ \dr{arccos} $ și $ \dr{arctan} $.
+
+\footnotetext{Pentru corectitudine, ar trebui să notăm funcțiile
+  trigonometrice cu inițială mare, $ \dr{Arcsin}, \dr{Arccos} $ etc. Dar
+  vom folosi de fiecare dată doar valoarea principală, astfel că, prin
+  abuz de notație, folosim scrierea din cazul real. Însă trebuie reținut
+  că majoritatea funcțiilor complexe sînt \emph{multiforme}, i.e.\ pot
+  avea mai multe valori!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Funcții olomorfe}
+
+Fie o funcție complexă oarecare $ f : A \to \CC $, cu $ A \seq \CC $.
+Pentru orice $ z \in A \seq \CC $, deoarece $ z $ are o parte reală și
+o parte imaginară, și imaginea sa prin $ f $ se poate separa. Deci, în general,
+orice funcție complexă $ f $ ca mai sus poate fi scrisă sub forma
+\[
+  f = P + iQ, \quad P, Q : \RR^2 \to \RR.
+\]
+
+Rezultă că noțiunile de \emph{limită, continuitate, derivabilitate} pot fi puse
+pe componente.
+
+\begin{definition}\label{def:olo}
+  O funcție complexă $ f : \CC \to \CC $ se numește \emph{olomorfă} dacă este
+  derivabilă în orice punct din domeniul de definiție.
+\end{definition}
+
+Nu intrăm în detalii, deoarece nu vom rezolva exerciții cu derivate complexe.
+
+Vor fi foarte importante, însă, rezultatele:
+
+\begin{theorem}\label{thm:cauchy-riemann}
+  Funcție $ f : \CC \to \CC, f = P + iQ $ este olomorfă dacă $ P, Q : \RR^2 \to \RR $
+  sunt diferențiabile, iar derivatele lor parțiale verifică \emph{condițiile %
+    Cauchy-Riemann}, adică:
+  \[
+    \dfrac{\partial P}{\partial x} = \dfrac{\partial Q}{\partial y}, \quad %
+    \dfrac{\partial Q}{\partial x} = -\dfrac{\partial P}{\partial y}.
+  \]
+\end{theorem}
+
+\begin{remark}\label{rk:der-part}
+  Pentru simplitate, vom mai nota derivatele parțiale cu indici, adică, de exemplu:
+  \[
+    \dfrac{\partial f}{\partial x} \stackrel{\dr{not.}}{=\joinrel=} f_x
+  \]
+  și similar $ f_y, f_{xx}, f_{xy}, f_{yx} $ etc.
+\end{remark}
+
+\begin{corollary}\label{cor:olo-arm}
+  Dacă funcția complexă $ f = P + iQ $ este olomorfă, atunci $ P $ și $ Q $ sînt
+  armonice, adică:
+  \[
+    \Delta P = P_{xx} + P_{yy} = \Delta Q = Q_{xx} + Q_{yy} = 0.
+  \]
+\end{corollary}
+
+Atenție, însă, la formularea rezultatului: condiția de olomorfie este \emph{necesară},
+în niciun caz suficientă! Negarea corolarului de mai sus este:
+
+\begin{corollary}\label{cor:not-olo}
+  Dacă una dintre funcțiile $ P $ sau $ Q $ nu este armonică, atunci funcția
+  $ f = P + iQ $ nu poate fi olomorfă.
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+\indent\indent 1. Verificați dacă funcția de mai jos este olomorfă:
+\[
+  f : \CC \to \CC, \quad f(z) = z^2 + \exp(iz).
+\]
+
+\emph{Indicație:} Se separă partea reală și partea imaginară a funcției
+și se verifică condițiile Cauchy-Riemann și faptul că cele două componente
+sînt armonice.
+
+\vspace{0.3cm}
+
+2. Fie $ P(x, y) = e^{2x}\cos 2y + y^2 - x^2 $. Determinați funcția olomorfă
+$ f = P + iQ $ astfel încît $ f(0) = 1 $.
+
+\emph{Indicație:} Verificăm dacă $ \Delta P = 0 $ (condiție necesară!).
+Apoi, prin integrarea condițiilor Cauchy-Riemann, se obține componenta
+$ Q $. În final, $ f(z) = e^{2z} - z^2 + ki, k \in \CC $ și folosind
+condiția din enunț, obținem $ k = 0 $.
+
+\vspace{0.3cm}
+
+3. Rezolvați ecuațiile:
+\begin{enumerate}[(a)]
+\item $ \exp w = -2i $;
+\item $ z^3 + 2 - 2i = 0 $;
+\item $ \sin z = 2 $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+4. Calculați:
+\begin{enumerate}[(a)]
+\item $ \sin(1 + i) $;
+\item $ \sinh(1 - i) $;
+\item $ \ln i $;
+\item $ \ln(1 - i) $;
+\item $ (1 + i)^{20} $;
+\item $ \sqrt[5]{1 - i} $;
+\item $ \dr{arcsin}(i\sqrt{3}) $;
+\item $ \dr{arccos}(i\sqrt{3}) $;
+\item $ \tan(1 - i) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+5. Determinați funcția olomorfă $ f(z) = P(x, y) + iQ(x, y) $, pentru:
+\begin{enumerate}[(a)]
+\item $ P(x, y) = x^2 - y^2 - 2y $, știind că $ f(0) = i $;
+\item $ P(x, y) = x^4 - 6x^2y^2 + y^4 $, știind că $ f(1) = 1 $;
+\item $ P(x, y) = (x \cos y - y \sin y)e^x $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+6. Scrieți sub formă trigonometrică și polară numerele complexe și
+reprezentați-le grafic:
+\begin{enumerate}[(a)]
+\item $ z = 3 - i $;
+\item $ z = 3 + i $;
+\item $ z = i $;
+\item $ z = 1 $;
+\item $ z = 1 + 2i $;
+\item $ z = 2 + i $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+7. Găsiți forma canonică și ecuația complexă pentru:
+\begin{enumerate}[(a)]
+\item Cercul centrat în $ (0, 1) $ și cu raza $ 2 $;
+\item Cercul centrat în $ (1, 0) $ și cu raza $ 1 $;
+\item Cercul centrat în $ (1, 2) $ și cu raza $ 1 $;
+\item Elipsa cu focarele în $ (-1, 0) $ și $ (3, 0) $ și cu
+  axa mare de lungime 6;
+\item Elipsa cu focarele în $ (0, 1) $ și $ (0, -2) $ și
+  cu axa mare de lungime 5.
+\end{enumerate}
+
+Reprezentați grafic fiecare dintre cazurile de mai sus.
+
+\vspace{0.3cm}
+
+8. Fie punctele $ A(1 + 2i) $ și $ B(-1) $, iar $ M $, mijlocul
+segmentului $ [AB] $. Calculați distanța de la punctul $ M $
+la punctul $ N $, de afix $ -2 + 3i $. Reprezentare grafică.
+
+\vspace{0.3cm}
+
+\textbf{Observație:} De data aceasta, pentru temă NU mai este suficient să
+rezolvați un singur subpunct de la un exercițiu, cel puțin nu pentru toate
+exercițiile. Astfel, tema poate conține oricare dintre variantele de mai jos:
+\begin{itemize}
+\item exercițiul 1;
+\item exercițiul 2;
+\item un subpunct de la exercițiul 3 și unul de la exercițiul 4;
+\item două subpuncte care folosesc funcții diferite de la exercițiul 4
+  (exemple: c și f, g și e, a și f etc.);
+\item un subpunct de la exercițiul 5;
+\item un subpunct de la exercițiul 6 și un subpunct de la exercițiul 7;
+\item un subpunct de la exercițiul 7 și exercițiul 8.
+\end{itemize}
+
+\newpage
+
+\textbf{Temă specială:} Propun și o temă specială pentru această lecție.
+Alegeți un subiect din cartea lui Paul Nahin despre istoria numerelor complexe
+și faceți un clip în care să îl prezentați. Detalii și cerințe:
+\begin{itemize}
+\item puteți alege orice subiect din carte, DAR trebuie să mă anunțați cînd ați
+  ales prin email și să-l validez eu;
+\item după validare, aveți maximum 2 săptămîni la dispoziție;
+\item videoclipul trebuie să dureze minimum 10 minute;
+\item conținutul matematic sofisticat nu este obligatoriu; puteți insista pe aspecte
+  istorice;
+\item puteți folosi și alte surse, dar subiectul să fie legat de istoria descoperirilor
+  și aplicațiilor numerelor complexe;
+\item dacă nu știți ce subiect să alegeți, scrieți-mi și vi-l propun eu.
+\end{itemize}
+
+\textbf{Punctaje:
+\begin{itemize}
+\item video $ \geq $ 10 minute = 5 puncte de seminar și $ \geq $ 5, $ \leq $ 10 puncte la examenul
+  final;
+\item eseu $ \geq $ 5 pagini = 5 puncte de seminar;
+\item video + eseu = 8 puncte la seminar și $ \geq $ 5, $ \leq $ 10 puncte la examenul final\footnotemark.
+\end{itemize}
+}
+
+\footnotetext{Asta înseamnă că \emph{sigur} rotunjim în sus de la o notă $ x,5 $ și,
+  în funcție de cum vă descurcați la examen, \emph{este posibil} să rotunjim chiar și de
+  la $ x,2 $ sau $ x,3 $ sau $ x,4 $.}
+
+  
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-19-20"
+%%% End:

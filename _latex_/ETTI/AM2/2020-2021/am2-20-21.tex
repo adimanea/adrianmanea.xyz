@@ -1,0 +1,61 @@
+\documentclass[12pt, a4paper]{report}
+
+\input{includes/packages}
+\input{includes/macros}
+\input{includes/thms}
+\input{includes/formatting}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{plain} % fix for page numbers
+
+\title{\huge\textbf{Analiză 2} \\ \Large{Notițe de seminar}}
+\vspace{1cm}
+\author{\Large\textsc{Adrian Manea} \\ \large{Curs: A.\ Niță}}
+
+\maketitle
+
+\pagenumbering{gobble}
+\tableofcontents
+
+\setcounter{page}{1} % page 1 after TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN CONTENT
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\footnotesize{\color{gray}Analiză 2, 2020--2021}}
+\lhead{\footnotesize{\color{gray}Adrian Manea}}
+
+\pagestyle{plain} % restore page numbering
+
+\include{ch/s1-edsup}
+% \include{ch/s2-ecsup}
+% \include{ch/s3-stab}
+% \include{ch/s4-edp1}
+% \include{ch/s5-edp2}
+% \include{ch/s6-edp2rez}
+% \include{ch/s7-recap}
+% \include{ch/s8-complex}
+% \include{ch/s9-int-compx}
+% \include{ch/s10-rez}
+% \include{ch/s11-lap}
+% \include{ch/s12-z}
+% \include{ch/s13-fourier}
+% \include{ch/examen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INDEX
+\renewcommand{\indexname}{Index}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Index}
+\printindex
+
+% BIBLIOGRAPHY
+%\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliografie}
+%\bibliography{../2018-2019/m1.bib}
+%\bibliographystyle{apalike}
+%\nocite{*}
+
+\end{document}

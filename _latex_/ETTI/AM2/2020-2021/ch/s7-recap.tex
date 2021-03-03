@@ -1,0 +1,239 @@
+% ! TEX root = ../am2-19-20.tex
+
+\chapter{Recapitulare}
+
+1. Rezolvați ecuațiile diferențiale de ordin superior:
+\begin{enumerate}[(a)]
+\item $ (1 - y)y^{\prime\prime} + 2y^{\prime 2} = 0 $;
+\item $ yy^{\prime\prime} - y^{\prime 2} = 0 $;
+\item $ (x^2 + 1) y^{\prime\prime} - 2xy^{\prime} + 2y = 0 $, știind că are soluție
+  particulară un polinom de gradul întîi;
+\item $ y^{\prime\prime} + y = x \cos x $;
+\item $ (x - 2)^2 y^{\prime\prime} - 3(x - 2) y^{\prime} + 4y = x, \quad x > 2 $;
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Ecuația se poate rescrie ca:
+  \[
+    \dfrac{y^{\prime\prime}}{y^\prime} = \dfrac{2y^\prime}{y-1},
+  \]
+  pe care o putem integra direct și obținem:
+  \[
+    \ln |y^\prime| = 2 \ln |y-1| + \ln c.
+  \]
+  Apoi separăm $ y^\prime $ și mai integrăm o dată pentru a obține pe $ y $.
+\item Ecuația se poate rescrie:
+  \[
+    \dfrac{y^{\prime\prime}}{y^\prime} = \dfrac{y^\prime}{y}.
+  \]
+  Putem integra direct și obținem:
+  \[
+    \ln |y^\prime| = \ln |y| + \ln c,
+  \]
+  de unde calculăm $ y $.
+\item Putem deriva direct ecuația inițială și rezultă imediat $ y^{\prime\prime\prime} = 0 $,
+  de unde $ y $ este un polinom de gradul al doilea în raport cu $ x $.
+
+  Înlocuind în ecuația dată, găsim legături între coeficienții polinomului.
+
+  Cît despre soluția particulară ca polinom de gradul întîi, fie $ y_p(x) = ax + b $.
+  Înlocuind în ecuație, obținem că $ a \neq 0 $ și $ b = 0 $.
+\item Ecuație de ordin superior, cu ecuația algebrică asociată $ r^2 + 1 = 0 $ etc.
+\item Ecuație Euler, cu schimbarea de variabilă $ a = x - 2 $, apoi $ a = e^t $ etc.
+\end{enumerate}
+
+\vspace{1cm}
+
+2. Rezolvați sistemele de ecuații diferențiale:
+\begin{enumerate}[(a)]
+\item $ \begin{cases}
+    y^\prime &= -2z + 1 \\
+    x^2 z^\prime &= -2y + x^2 \ln x
+  \end{cases} $, cu $ y = y(x), z = z(x) $.
+\item $ \begin{cases}
+    x^\prime &= x + 3y \\
+    y^\prime &= -x + 5y - 2e^t
+  \end{cases} $, cu condițiile inițiale $ x(0) = 3, y(0) = 1 $.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Derivăm prima ecuație din nou și obținem $ z^\prime = - y^{\prime\prime} $. Înlocuim în
+  a doua ecuație și rezultă o ecuație Euler pentru $ y $, pe care o rezolvăm și revenim și calculăm
+  $ z(x) $.
+\item Se aplică metoda substituției și se ajunge la o ecuație de ordin superior, neomogenă.
+\end{enumerate}
+
+\vspace{1cm}
+
+3. Fie cîmpul vectorial:
+\[
+  \vec{V} = (x + y)\vec{i} + (y - x)\vec{j} - 2z\vec{k}.
+\]
+Să se determine:
+\begin{enumerate}[(a)]
+\item liniile de cîmp;
+\item linia de cîmp ce conține punctul $ M(1, 0, 1) $;
+\item suprafețele de cîmp;
+\item suprafața de cîmp care conține dreapta $ z = 1, y - x\sqrt{3} = 0 $.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Sistemul caracteristic asociat este:
+  \[
+    \dfrac{dx}{x + y} = \dfrac{dy}{y - x} = \dfrac{dz}{-2z}.
+  \]
+  Din primele două, rezultă:
+  \[
+    \dfrac{xdx + ydy}{x^2 + y^2} = \dfrac{dz}{-2z} \Rightarrow %
+    z(x^2 + y^2) = c_1.
+  \]
+  Tot din primele rapoarte obținem:
+  \[
+    \dfrac{dy}{dx} = \dfrac{y - x}{x + y}.
+  \]
+  Dacă notăm $ y^\prime = \dfrac{dy}{dx} $, putem rezolva fie ca pe o ecuație liniară
+  de ordinul întîi, anume:
+  \[
+    y^\prime (x + y) - y = x
+  \]
+  sau putem face substituția $ y = tx $. Rezultă:
+  \[
+    x \dfrac{dt}{dx} + t = \dfrac{t - 1}{t + 1} \Leftrightarrow %
+    \dfrac{dx}{x} = - \dfrac{t + 1}{t^2 + 1} dt \Rightarrow \ln(x^2 + y^2) + 2 \arctan \dfrac{y}{x} = c_2.
+  \]
+  Deci liniile de cîmp sînt date de:
+  \[
+    \begin{cases}
+      (x^2 + y^2)z &= c_1 \\
+      \ln(x^2 + y^2) + 2 \arctan \dfrac{y}{x} &= c_2
+    \end{cases}.
+  \]
+\item Folosind condiția ca punctul $ M(1, 0, 1) $ să se găsească pe linia de cîmp, găsim
+  condiția de compatibilitate a sistemului de mai sus $ c_1 = c_2 = 0 $.
+\item Ecuația suprafeței de cîmp este dată de:
+  \[
+    \Phi\Big((x^2 + y^2)z, \ln(x^2 + y^2) + 2 \arctan \dfrac{y}{x}\Big) = 0.
+  \]
+\item Pentru condiția ca suprafața de cîmp să conțină dreapta $ z = 1, y - \sqrt{3} x = 0 $,
+  avem sistemul:
+  \[
+    \begin{cases}
+      (x^2 + y^2)z &= c_1 \\
+      \ln(x^2 + y^2) + 2 \arctan \dfrac{y}{x} &= c_2 \\
+      z &= 1 \\
+      y - x\sqrt{3} &= 0
+    \end{cases}.
+  \]
+  Înlocuim pe $ x , y , z $ în funcție de constante în ecuația a doua și rezultă:
+  \[
+    \ln c_1 + 2 \arctan \sqrt{3} = c_2.
+  \]
+  Pentru a afla suprafața, din prima ecuație avem:
+  \[
+    \ln(x^2 + y^2) + \ln z = \ln c_1.
+  \]
+  Atunci a doua ecuație devine:
+  \[
+    \ln(x^2 + y^2) + 2 \arctan \dfrac{y}{x} = c_2 = \ln c_1 + \dfrac{2\pi}{3} \Rightarrow %
+    -\ln z = 2 \Big( \arctan \dfrac{y}{x} - \dfrac{2\pi}{3}\Big),
+  \]
+  de unde se obține $ z(x, y) $, ecuația suprafeței căutate.
+\end{enumerate}
+
+\vspace{1cm}
+
+4. Rezolvați ecuația cu derivate parțiale de ordinul întîi, cvasiliniară:
+\[
+  (1 + \sqrt{z - x - y})z_x + z_y = 2.
+\]
+
+\emph{Indicație:} Se caută o soluție implicită sub forma $ u = u(x, y, z) = 0 $, se calculează
+noile derivate parțiale și se ajunge la sistemul caracteristic de forma:
+\[
+  \dfrac{dx}{1 + \sqrt{z - x - y}} = \dfrac{dy}{1} = \dfrac{dz}{2}.
+\]
+Ultimele două rapoarte dau $ z - 2y = c_1 $ și, prin scădere, obținem:
+\[
+  dy = \dfrac{dz - dx - dy}{-\sqrt{z - x - y}},
+\]
+care poate fi integrată pentru a obține $ y + 2 \sqrt{z - x - y} = c_2 $.
+
+Rezultă soluția generală sub forma implicită:
+\[
+  \Phi(z - 2y, y + 2 \sqrt{z - x - y}) = 0.
+\]
+
+\vspace{1cm}
+
+5. Aduceți la forma canonică ecuațiile liniare cu coeficienți constanți:
+\begin{enumerate}[(a)]
+\item $ 4u_{xx} + 4u_{xy} + u_{yy} - 2u_y = 0 $;
+\item $ u_{xx} - 6u_{xy} + 10u_{yy} + u_x - 3u_y = 0 $;
+\item $ 2u_{xx} - 7u_{xy} + 3u_{yy} = 0 $.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Ecuația este parabolică. Noile derivate parțiale sînt:
+  \begin{align*}
+    u_y &= -2u_\tau \\
+    u_{xx} &= u_{\tau\tau} + 2u_{\tau\eta} + 2_{\eta\eta} \\
+    u_{yy} &= 4u_{\tau\tau} \\
+    u_{xy} &= -2u_{\tau\tau} - 2u_{\tau\eta}.
+  \end{align*}
+  Forma canonică rezultă $ u_{\eta\eta} + u_\tau = 0 $.
+\item Ecuația este de tip eliptic. Noile derivate parțiale sînt:
+  \begin{align*}
+    u_x &= 3u_\tau + u_\eta \\
+    u_y &= u_\tau \\
+    u_{xx} &= 9u_{\tau\tau} + 6u_{\tau\eta} + u_{\eta\eta} \\
+    u_{xy} &= 3u_{\tau\tau} + u_{\tau\eta} \\
+    u_{yy} &= u_{\tau\tau}.
+  \end{align*}
+  Forma canonică rezultă: $ u_{\tau\tau} + u_{\eta\eta} + u_\eta = 0 $.
+\item Ecuația este de tip hiperbolic. Noile derivate parțiale sînt:
+  \begin{align*}
+    u_{xx} &= 9u_{\tau\tau} + 6u_{\tau\eta} + u_{\eta\eta} \\
+    u_{xy} &= 3u_{\tau\tau} + 7u_{\tau\eta} + 2u_{\eta\eta} \\
+    u_{yy} &= u_{\tau\tau} + 4u_{\tau\eta} + 4u_{\eta\eta}.
+  \end{align*}
+  Forma canonică rezultă a fi $ u_{\tau\eta} = 0 $.
+\end{enumerate}
+
+\vspace{1cm}
+
+6. Rezolvați ecuația:
+\[
+  u_{tt} - 9 u_{xx} = 0,
+\]
+cu condițiile inițiale $ u(x, 0) = x^2, u_t(x, 0) = 3x^2 $.
+
+\emph{Indicație:} Avem $ a = 3 $ și putem aplica metoda lui D'Alembert pentru
+coarda vibrantă infinită.
+
+\vspace{1cm}
+
+7. Rezolvați următoarele ecuații cu derivate parțiale de ordinul al doilea:
+\begin{enumerate}[(a)]
+\item $ u_{xx} + 2u_{xy} - 3u_{yy} = 0 $, cu condițiile $ u(x, 0) = 0, u_y(x, 0) = x + \cos x $
+\item $ x^2 u_{xx} + 2xy u_{xy} + y^2 u_{yy} = 0 $, cu condițiile $ u(1, y) = y^2, u_x(1, y) = y^2 + y $;
+\item $ u_{tt} = 4u_{xx} $, cu condițiile $ u(x, 0) = 2x, u_t(x, 0) = e^x \cos x $;
+\item $ u_{tt} = u_{xx} $, cu condițiile $ u(x, 0) = x^2, u_t(x, 0) = 0 $.
+\end{enumerate}
+
+\emph{Indicații:}
+\begin{enumerate}[(a)]
+\item Ecuație hiperbolică. Cum $ D = 0 $, se poate scrie direct forma canonică, dar mai
+  determinăm și substituțiile care trebuie făcute ($\tau$ și $\eta$).
+\item Ecuație parabolică, cu $ D = 0 $.
+\item Formula lui D'Alembert sau calcul direct.
+\item Formula lui D'Alembert sau calcul direct.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-19-20"
+%%% End:
