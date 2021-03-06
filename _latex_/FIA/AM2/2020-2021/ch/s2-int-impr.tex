@@ -1,0 +1,324 @@
+\chapter{Integrale improprii și cu parametri}
+\index{integrale!improprii}
+
+Integralele improprii sînt integrale în care fie unul dintre capete este
+infinit, fie funcția nu este definită în cel puțin un punct din domeniul
+de integrare. De exemplu:
+\begin{itemize}
+    \item $ \ds\int_0^1 \dfrac{\ln x}{x} $ este improprie în $ x = 0 $;
+    \item $ \ds\int_0^\infty \dfrac{\ln x}{x} $ este improprie în ambele capete.
+\end{itemize}
+
+Pentru aceste integrale, calculul se poate face trecînd la limită, dacă
+unul dintre capete este infinit. Mai precis, avem:
+\[
+    \int_a^\infty f(x) dx = \lim_{t \to \infty} \int_a^t f(x) dx,
+\]
+dacă integrala nu este improprie și în capătul $ x = a $ sau în alt
+punct din interiorul domeniului.
+
+Pentru celelalte cazuri, există criterii de convergență, care
+depășesc scopul acestui seminar. Le includem mai jos, pentru completitudine.
+
+\begin{center}
+    {\Large *****}
+\end{center}
+
+Fie $a, b \in \RR$ și $f : [a, b) \to \RR$ o funcție \emph{local integrabilă}
+(i.e.\ integrabilă pe orice interval compact $[u, v] \seq [a, b)$).
+
+Integrala improprie (în $b$) $\ds\int_a^b f(x) dx$ se numește \emph{convergentă}
+dacă limita:
+\[
+  \lim_{t \to b} \int_a^t f(x) dx
+\]
+există și este finită. Valoarea limitei este valoarea integralei. În caz contrar,
+integrala se numește \emph{divergentă}.
+
+Dacă $f : [a, \infty) \to \RR$ este local integrabilă, atunci integrala
+improprie (la $\infty$) $\ds\int_a^\infty f(x) dx$ se numește \emph{convergentă}
+dacă limita:
+\[
+  \lim_{t \to \infty} \int_a^t f(x) dx
+\]
+există și este finită. Valoarea limitei este egală cu valoarea integralei.
+
+Integrala improprie $\ds\int_a^b f(x) dx$ se numește \emph{absolut convergentă}
+dacă integrala $\ds\int_a^b |f(x)| dx$ este convergentă.
+
+Criteriile de convergență pentru integralele improprii sînt foarte asemănătoare
+cu cele pentru serii (amintiți-vă, că, de fapt, integralele definite se construiesc
+cu ajutorul sumelor infinite, adică serii, v.\ \emph{sumele Riemann}).
+
+Așadar, avem:
+
+\textbf{Criteriul lui Cauchy} (general): Fie $f:[a, b) \to \RR$ local integrabilă.
+Atunci integrala $\ds\int_a^b f(t) dt$ este convergentă dacă și numai dacă:
+\[
+    \forall \varepsilon > 0, \exists b_\varepsilon \in [a, b) \text{ a.î. } %
+  \forall x, y \in (b_\varepsilon, b), \big| \int_x^y f(t) dt \big| < \varepsilon.
+\]
+
+\vspace{0.5cm}
+
+\textbf{Criteriul de comparație} (\qq{termen cu termen}): Fie $f, g : [a, b) \to \RR$
+astfel încît $0 \leq f \leq g$.
+\begin{itemize}
+\item Dacă $\ds\int_a^b g(x) dx$ este convergentă, atunci și integrala
+  $\ds\int_a^b f(x) dx$ este convergentă;
+\item Dacă integrala $\ds\int_a^b f(x) dx$ este divergentă, atunci și integrala
+  $\ds\int_a^b g(x) dx$ este divergentă.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Criteriul de comparație la limită}: Fie $f, g : [a, b) \to [0, \infty)$,
+astfel încît să existe limita:
+\[
+  \ell = \lim_{x \to b} \frac{f(x)}{g(x)}.
+\]
+\begin{itemize}
+\item Dacă $\ell \in [0, \infty)$, iar $\ds\int_a^b g(x) dx$ este convergentă,
+  atunci $\ds\int_a^b f(x) dx$ este convergentă;
+\item Dacă $\ell \in (0, \infty)$ sau $\ell = \infty$, iar $\ds\int_a^b g(x) dx$
+  este divergentă, atunci și $\ds\int_a^b f(x) dx$ este divergentă.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Criteriul de comparație cu $\dfrac{1}{x^\alpha}$}:
+Fie $a \in \RR$ și $f : [a, \infty) \to [0, \infty)$ local integrabilă, astfel
+încît să existe:
+\[
+  \ell = \lim_{x \to \infty} x^\alpha f(x).
+\]
+\begin{itemize}
+\item Dacă $\alpha > 1$ și $0 \leq \ell < \infty$, atunci $\ds\int_a^\infty f(x) dx$
+  este convergentă;
+\item Dacă $\alpha \leq 1$, iar $0 < \ell \leq \infty$, atunci $\ds\int_a^\infty f(x) dx$
+  este divergentă.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Criteriul de comparație cu $\dfrac{1}{(b - x)^\alpha}$}: Fie $a < b$ și
+$f : [a, b) \to [0, \infty)$, local integrabilă, astfel încît să existe:
+\[
+  \ell = \lim_{x \to b} (b - x)^\alpha f(x).
+\]
+\begin{itemize}
+\item Dacă $\alpha < 1$ și $0 \leq \ell < \infty$, atunci $\ds\int_a^b f(x) dx$
+  este convergentă;
+\item Dacă $\alpha \geq 1$ și $0 < \ell \leq \infty$, atunci $\ds\int_a^b f(x) dx$
+  este divergentă.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Criteriul lui Abel}: Fie $f, g : [a, \infty) \to \RR$, cu proprietățile:
+\begin{itemize}
+\item $f$ este de clasă $\kal{C}^1$, $\ds\lim_{x \to \infty} f(x) = 0$, iar
+  $\ds\int_a^\infty f'(x) dx$ este absolut convergentă;
+\item $g$ este continuă, iar $G(x) = \ds\int_a^x f(t) dt$ este mărginită pe
+  $[a, \infty)$.
+\end{itemize}
+Atunci integrala $\ds\int_a^\infty f(x) g(x) dx$ este convergentă.
+
+\vspace{0.5cm}
+
+\textbf{Exercițiu:} 
+Folosind criteriile de comparație, să se studieze natura integralelor improprii:
+\begin{enumerate}[(a)]
+\item $\ds\int_1^\infty \frac{dx}{\sqrt{x^2 + 1}}$ \hfill(D);
+\item $\ds\int_0^1 \frac{x^2}{\sqrt{1 - x^2}} dx$ \hfill(C);
+\item $\ds\int_0^1 \frac{\sin x}{1 - x^2} dx$ \hfill(D);
+\item $\ds\int_1^\infty \frac{x}{\sqrt{x^3 - 1}} dx$ \hfill(C $x = 1$, D
+  $x \to \infty \Rightarrow$ D);
+\item $\ds\int_1^\infty \frac{\ln x}{\sqrt{x^3 - 1}} dx$ \hfill(C);
+\item $\ds\int_1^\infty \frac{dx}{x \sqrt{x} - 1} dx$ \hfill(C $x \to \infty$,
+  D $x = 1 \Rightarrow$ D);
+\item $\ds\int_1^\infty \frac{dx}{x(\ln x)^\alpha}, \alpha > 0$ \hfill(D);
+\end{enumerate}
+
+\begin{center}
+    {\Large *****}
+\end{center}
+
+
+Un caz particular care ne interesează este acela al integralelor
+improprii cu parametri. Un exemplu este:
+\[
+    I(m) = \int_0^{\dfrac{\pi}{2}} \ln(\cos^2 x + m^2 \sin^2 x)dx, \quad m > 0,
+\]
+care se poate rezolva folosind tehnica de derivare în interiorul
+integralei, adică:
+\[
+    I'(m) = \int_0^{\dfrac{\pi}{2}} \dfrac{\partial}{\partial m} %
+    \ln(\cos^2 x + m^2 \sin^2 x) dx.
+\]
+
+\textbf{Exemple rezolvate:}
+
+Să se calculeze integralele, folosind derivarea sub integrală:
+\begin{enumerate}[(a)]
+\item $ I(m) = \ds\int_0^{\frac{\pi}{2}} \ln(\cos^2 x + m^2 \sin^2 x) dx, m > 0 $;
+\item $ I(a) = \ds\int_0^{\frac{\pi}{2}} \ln(a^2 - \sin^2 \theta) d\theta, a > 1 $;
+\item $ I(a) = \ds\int_0^1 \frac{\arctan ax}{x \sqrt{1 - x^2}} dx, a > 0 $.
+\end{enumerate}
+
+\emph{Soluții:}
+
+(a) Dacă considerăm funcția:
+\[
+  f(x, m) = \ln(\cos^2 x + m^2 \sin^2 x),
+\]
+observăm că este continuă și admite o derivată parțială continuă în raport cu $m$.
+
+Atunci obținem:
+\[
+  \frac{\partial f}{\partial m} = I'(m) = 2m \int_0^{\frac{\pi}{2}} %
+  \frac{\sin^2 x}{\cos^2 x + m^2 \sin^2 x} dx
+\]
+
+Pentru a calcula integrala, facem schimbarea de variabilă $\tan x = t$ și atunci:
+\[
+  dt = \frac{1}{\cos^2 x} dx.
+\]
+
+Integrala inițială se poate prelucra:
+\[
+  I'(m) = 2m \int_0^{\frac{\pi}{2}} \frac{\sin^2 x}{cos^2 x(1 + m^2 \tan^2 x)} dx.
+\]
+Așadar, pentru a obține $\sin^2 x$ în funcție de $t$ calculăm:
+\[
+  \frac{\sin^2 x}{1 - \sin^2 x} = t^2 \Rightarrow \sin^2 x = \frac{t^2}{1 + t^2}.
+\]
+
+În fine, integrala devine:
+\[
+  I'(m) = 2m \int_0^\infty \frac{t^2}{(1 + m^2 t^2)(1 + t^2)} dt.
+\]
+Făcînd descompunerea în fracții simple, obținem:
+\[
+  \frac{t^2}{(1 + m^2 t^2)(1 + t^2)} = \frac{1}{m^2 - 1} \Big( \frac{1}{t^2 + 1} - %
+  \frac{1}{m^2 t^2 + 1} \Big).
+\]
+și calculăm în fine integrala $I'(m) = \frac{\pi}{m + 1}$. Integrăm și găsim
+$I(m) = \pi \ln(m + 1) + c$. Deoarece $I(1) = 0$, rezultă $c = -\pi \ln 2$
+și, în fine:
+\[
+  I(m) = \pi \ln \frac{m + 1}{2}.
+\]
+
+\vspace{0.5cm}
+
+(b) Dacă considerăm funcția:
+\[
+  f(\theta, a) = \ln(a^2 - \sin^2 \theta),
+\]
+observăm că este continuă și admite o derivată parțială continuă în raport cu $a$.
+
+Atunci avem:
+\[
+  I'(a) = \frac{\partial f}{\partial a} = \ds\int_0^{\frac{\pi}{2}} \frac{2a}{a^2 - \sin^2 \theta} d\theta.
+\]
+
+Cu schimbarea de variabilă $t = \tan \theta $, avem succesiv:
+\begin{align*}
+  I'(a) &= \int_0^\infty \frac{2a}{a^2 - \frac{t^2}{1 + t^2}} \cdot \frac{1}{1 + t^2} dt \\
+        &= \int_0^\infty \frac{2a}{t^2(a^2 - 1) + a^2} dt \\
+        &= \frac{2a}{a^2 - 1} \int_0^\infty \frac{1}{t^2 + \frac{a^2}{a^2 - 1}} dt \\
+        &= \frac{2a}{a^2 - 1} \cdot \frac{\sqrt{a^2 - 1}}{a} \cdot \arctan t \frac{\sqrt{a^2 - 1}}{a} \Big|_0^\infty \\
+        &= \frac{2}{\sqrt{a^2 - 1}} \cdot \frac{\pi}{2} \\
+        &= \frac{\pi}{\sqrt{a^2 - 1}}.
+\end{align*}
+
+Integrăm pentru a obține $I(a)$ și găsim:
+\[
+  I(a) = \int \frac{\pi}{\sqrt{a^2 - 1}} da = \pi \ln(a + \sqrt{a^2 - 1}) + c.
+\]
+
+Pentru a calcula constanta $c$, putem rescrie integrala din forma inițială:
+\begin{align*}
+  I(a) &= \int_0^{\frac{\pi}{2}} \ln\Big( a^2\Big(1 - \frac{\sin^2 \theta}{a^2}\Big) \Big) d\theta \\
+       &= \int_0^{\frac{\pi}{2}} \ln a^2 d\theta + \int_0^{\frac{\pi}{2}} \ln \Big(1 - \frac{\sin^2 \theta}{a^2} \Big) d\theta.
+\end{align*}
+
+Putem considera limita $ a \to \infty $ și atunci integrala de calculat tinde la 0, deci $ c = -\pi \ln 2 $.
+
+Concluzie: $ I(a) = \pi \ln \dfrac{a + \sqrt{a^2 - 1}}{2} $.
+
+\vspace{0.5cm}
+
+(c) Dacă considerăm funcția $ f(x, a) = \dfrac{\arctan ax}{x \sqrt{1 - x^2}}$, observăm că este continuă
+și admite o derivată parțială continuă în raport cu $ a $. Atunci:
+\[
+  I'(a) = \frac{\partial f}{\partial a} = \int_0^1 \frac{dx}{(1 + a^2 x^2) \sqrt{1 - x^2}}.
+\]
+
+Pentru a calcula integrala, facem schimbarea de variabilă $ x = \sin t $ și obținem:
+\[
+  I'(a) = \int_0^{\frac{\pi}{2}} \frac{dt}{1 + a^2 \sin^2 t}.
+\]
+
+Mai departe, aplicăm schimbarea de variabilă $ \tan t = u $ și obținem succesiv:
+\begin{align*}
+  I'(a) &= \int_0^\infty \frac{du}{(1 + a^2)u^2 + 1} \\
+        &= \frac{\pi}{2} \cdot \frac{1}{\sqrt{1 + a^2}}.
+\end{align*}
+
+Așadar, printr-o integrare în funcție de $ a $, găsim:
+\[
+  I(a) = \frac{\pi}{2} \ln(a + \sqrt{1 + a^2}) + c.
+\]
+
+Cum $ I(0) = 0 $, găsim $ c = 0 $.
+
+\vspace{0.5cm}
+
+Însă accentul pentru acest seminar va cădea pe \emph{funcțiile lui Euler},
+Beta și Gamma, care se definesc astfel:
+\index{integrale!Beta}
+\index{integrale!Gamma}
+\begin{align*}
+    \Gamma(t) &= \int_0^\infty x^{t - 1} e^{-x} dx, t > 0 \\
+    B(p,q) &= \int_0^1 x^{p-1}(1 - x)^{q-1}, p, q > 0.
+\end{align*}
+
+Remarcăm că integrala Gamma este improprie pentru $ x \to \infty $,
+iar integrala Beta nu este improprie, ci doar cu parametri.
+
+Proprietățile pe care le vom folosi în exerciții sînt:
+\begin{enumerate}[(1)]
+    \item $ B(p, q) = B(q, p), \forall p, q > 0 $;
+    \item $ B(p, q) = \dfrac{\Gamma(p) \cdot \Gamma(q)}{\Gamma(p + q)} $;
+    \item $ B(p, q) = \ds\int_0^\infty \dfrac{y^{p-1}}{(1 + y)^{p + q}} dy $;
+    \item $ \Gamma(1) = 1 $;
+    \item $ \Gamma(t + 1) = t \cdot \Gamma(t), \forall t > 0 $;
+    \item $ \Gamma(n) = (n - 1)!, \forall n \in \NN^\ast $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+
+Calculați, folosind funcțiile $ B $ și $ \Gamma $, integralele:
+\begin{enumerate}[(a)]
+\item $ \ds\int_0^\infty e^{-x^p} dx, p > 0 $;
+\item $ \ds\int_0^\infty \dfrac{\sqrt[4]{x}}{(x + 1)^2} dx $;
+\item $ \ds\int_0^\infty \dfrac{dx}{x^3 + 1} $;
+\item $ \ds\int_0^{\frac{\pi}{2}} \sin^p x \cos^q x dx, p > -1, q > -1 $;
+\item $ \ds\int_0^1 x^{p + 1}(1 - x^m)^{q - 1} dx, p, q, m > 0 $;
+\item $ \ds\int_0^\infty x^p e^{-x^q} dx, p > -1, q > 0 $;
+\item $ \ds\int_0^1 \ln^p x^{-1} dx, p > -1 $;
+\item $ \ds\int_0^1 \dfrac{dx}{\sqrt[n]{1 - x^n}}, n \in \NN $;
+\item $ \ds\int_1^e \dfrac{1}{x} \ln^3 x \cdot (1 - \ln x)^4 dx $;
+\item $ \ds\int_0^1 \sqrt{\ln\dfrac{1}{x}} dx $;
+\item $ \ds\int_0^\infty \dfrac{x^2}{(1 + x^4)^2} dx $;
+\item $ \ds\int_{-1}^\infty e^{-x^2 - 2x + 3} dx $.
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../am2-20-21"
+%%% End:
