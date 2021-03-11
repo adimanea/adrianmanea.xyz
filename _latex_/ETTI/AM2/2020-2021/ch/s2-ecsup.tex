@@ -271,27 +271,17 @@ Mai departe, de exemplu, pentru derivatele superioare:
 
 \vspace{1cm}
 
-\textbf{Exemplu:} $ x^2 y^{\prime\prime} + xy^{\prime} + x = x $.
+\textbf{Exemplu:} $ x^2 y^{\prime\prime} + xy^{\prime} + y = x $.
 
 \emph{Soluție:} Facem substituția $ |x| = e^t $ și, folosind calculele
 de mai sus, obținem:
 \[
-  e^{2t} \cdot e^{-2t} (\ddot{y} - \dot{y}) - e^t \cdot e^{-t} + y(t) = e^t.
+  e^{2t} \cdot e^{-2t} (\ddot{y} - \dot{y}) + e^t \cdot e^{-t} \cdot \dot{y} + y = e^t.
 \]
-Echivalent: $ \ddot{y} - 2\dot{y} + y = e^t $.
+Echivalent: $ \ddot{y} + y = e^t $.
 
-Aceasta este o ecuație liniară de ordinul al doilea, neomogenă. Asociem ecuația
-algebrică $ r^2 - 2r + 1 = (r - 1)^2 = 0 $, deci soluția generală a variantei
-omogene este:
-\[
-  y(t) = c_1 e^t + c_2 te^t.
-\]
-
-Folosind metoda variației constantelor, obținem succesiv:
-\begin{align*}
-  y(t) &= c_1 e^t + c_2 t e^t + \dfrac{t^2 e^t}{2} \Rightarrow \\
-  y(x) &= c_1 x + c_2 x \ln x + \dfrac{x \ln^2 x}{2}.
-\end{align*}
+Scriem ecuația caracteristică, $ r^2 + 1 = 0 $, cu rădăcinile $ \pm i $, deci
+sistemul fundamental de soluții este $ \{ \cos t, \sin t \} $ etc.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,7 +308,6 @@ Folosind metoda variației constantelor, obținem succesiv:
   \item $ x^2 y^{(2)} = y^{\prime 2} $;
   \item $ y^{(4)} - 3y^{(3)} + 3y^{(2)} - y^{(1)} = 0 $;
   \item $ y^{(2)} - y^{(1)} - 2y = 3e^{2x} $;
-  \item $ 4(x + 1)^2 y^{(2)} + y = 0 $;
   \item $ \begin{cases}
       x^\prime &= x + ye^{2t} \\
       y^\prime &= y - xe^{2t} + 1
@@ -372,7 +361,6 @@ avem soluțiile:
     \]
     de unde observăm soluțiile $ r = 0, r = 1 $ etc.
   \item Ecuația caracteristică este $ r^2 - r - 2 = (r + 1)(r - 2) = 0 $.
-  \item Este o ecuație Euler în raport cu $ t = x + 1 $.
   \item Aplicăm metoda substituției (eliminării).
 \end{enumerate}
 
