@@ -1,4 +1,3 @@
-% ! TEX root = ../am2-19-20.tex
 \chapter{Stabilitate și linii de cîmp}
 
 \indent\indent Problema stabilității soluțiilor este una foarte importantă și dificilă,
@@ -104,7 +103,7 @@ diferențiale:
   \end{cases}, a \in \RR $.
 \end{enumerate}
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 2. Să se afle pentru ce valori ale lui $ a \in \RR $ soluția nulă a
 sistemului de mai jos este asimptotic stabilă:
@@ -195,6 +194,35 @@ de unde obținem două integrale prime:
   x + y + z = c_1, \quad x^2 + y^2 + z^2 = c_2.
 \]
 
+Mai trebuie să ne asigurăm de \emph{independența funcțională} a celor
+două integrale prime. Astfel, dacă le notăm cu:
+\[
+  I_1(x, y, z) = x + y + z, \quad I_2(x, y, z) = x^2 + y^2 + z^2,
+\]
+trebuie să ne asigurăm că:
+\[
+  \mathrm{rang} \begin{pmatrix}
+    I_{1x} & I_{2x} \\
+    I_{1y} & I_{2y} \\
+    I_{1z} & I_{2z}
+  \end{pmatrix} = \mathrm{max} = 2, \quad \forall x, y, z \in \RR.
+\]
+
+(Am folosit notația cunoscută, $ I_{1x} = \dfrac{\partial I_1}{\partial x} $ etc.).
+
+Într-adevăr, se vede imediat rezultatul, deoarece matricea de mai sus este
+$  \begin{pmatrix}
+    1 & 2x \\
+    1 & 2y \\
+    1 & 2z
+  \end{pmatrix}
+$
+și putem lua orice minor, de pildă $ \begin{vmatrix} 1 & 2x \\ 1 & 2y \end{vmatrix} = 2y - 2x $,
+care în general este nenul, cu excepția cazului $ y = x $.
+
+Așadar, spunem că cele două integrale prime sînt funcțional
+independente și am terminat.
+
 \begin{remark}\label{rk:sist-cimp}
   Rezolvarea este identică în cazul în care cerința pornește cu un
   cîmp vectorial în spațiu, de forma:
@@ -238,7 +266,7 @@ Rezultă că liniile de cîmp pentru $\vec{v}$ sînt curbele:
   \end{cases}
 \]
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 (b) Sistemul poate fi scris sub forma:
 \[
@@ -254,7 +282,7 @@ Din forma inițială obținem și:
 deci $3xdx + \dfrac{3}{2}ydy + zdz = 0$, adică
 $3\dfrac{x^2}{2} + \dfrac{3}{4}y^2 + \dfrac{z^2}{22} = c_2$.
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 (c) Obținem:
 \[
@@ -278,7 +306,7 @@ Așadar, liniile de cîmp sînt curbele:
   \end{cases}
 \]
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 (d) Sistemul simetric rezultat este:
 \[
@@ -330,13 +358,13 @@ Trecerea de la cîmpuri vectoriale în spațiu la ecuații diferențiale (sau si
 autonome este explicată pe scurt \href{http://www.math.tamu.edu/~zelenko/308\_w3\_qual.pdf}{aici}.
 
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 Alte materiale se mai pot găsi în cursul de la \href{http://www.mec.tuiasi.ro/diverse/matematici\_speciale.pdf}{Iași} (v.\ \S2.1.2),
 în cursul \href{http://www.edumanager.ro/community/documente/ecuatii\_cu\_derivate\_partiale\_de\_ordinul\_al\_doilea.pdf}{prof.\ Crăciun și Barbu} (cap.\ 2)
 și în \href{https://www.yumpu.com/ro/document/read/17874390/ecuatii-diferentiale-n-forma-simetrica-integrale-prime}{aceste notițe} de la UBB Cluj.
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 Vizualizarea grafică a liniilor de cîmp se poate face folosind GeoGebra,
 accesînd link-ul de \href{https://www.geogebra.org/m/u3xregNW}{aici}.
@@ -376,5 +404,5 @@ mai sus.
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../am2-19-20"
+%%% TeX-master: "../am2-20-21"
 %%% End:
