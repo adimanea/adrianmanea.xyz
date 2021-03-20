@@ -1,10 +1,8 @@
-% ! TEX root = ../m3-19-20.tex
+% ! TEX root = ../m3-20-21.tex
 
-\chapter{Transformata Laplace și transformata Z}
+\chapter{Transformata Laplace}
 
-\section{Transformata Laplace}
-
-\subsection{Definiții și proprietăți}
+\section{Definiții și proprietăți}
 
 Transformata Laplace este o transformare integrală, care se poate aplica unor
 funcții speciale, numite \emph{funcții original}.
@@ -88,7 +86,7 @@ regăsește direct într-un tabel de valori.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \newpage
-\subsection{Tabel de transformate Laplace}
+\section{Tabel de transformate Laplace}
 
 \indent\indent În tabelul de mai jos, vom considera funcțiile $ f(t) $ ca fiind funcții original,
 adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind, de fapt,
@@ -126,7 +124,7 @@ adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \newpage
-\subsection{Exerciții}
+\section{Exerciții}
 
 1. Calculați transformatele Laplace pentru funcțiile (presupuse original):
 \begin{enumerate}[(a)]
@@ -162,7 +160,7 @@ pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
   F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
 \]
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 2. Folosind tabelul de valori și proprietățile, să se determine transformatele Laplace
 pentru funcțiile (presupuse original):
@@ -191,7 +189,7 @@ pentru funcțiile (presupuse original):
 
 (l) Folosim $ \Lap(t^n f(t)) = (-1)^n \dfrac{d^n F(s)}{ds^n} $;
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 3. Folosind teorema derivării imaginii, să se determine transformatele Laplace pentru funcțiile
 (presupuse original):
@@ -207,7 +205,7 @@ pentru funcțiile (presupuse original):
   \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
 \]
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 4. Folosind teorema integrării originalului, să se determine transformatele Laplace pentru
 funcțiile (presupuse original):
@@ -226,7 +224,7 @@ avem:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\subsection{Aplicații ale transformatei Laplace}
+\section{Aplicații ale transformatei Laplace}
 
 Principala aplicație a transformatei Laplace este pentru rezolvarea ecuațiilor și
 sistemelor diferențiale de ordinul întîi sau superior.
@@ -281,7 +279,7 @@ de unde rezultă:
 În forma aceasta, descompunem $ Y(s) $ în fracții simple, dacă este nevoie și
 folosim tabelul de transformate Laplace, pentru a afla $ y = \Lap^{-1}(Y) $.
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 De exemplu:
 \[
@@ -309,11 +307,11 @@ Folosind tabelul și proprietățile transformatei Laplace, obținem soluția:
        &= e^t + \sinh t - t.
 \end{align*}
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\subsection{Exerciții}
+\section{Exerciții}
 
 \indent\indent 1. Să se rezolve următoarele probleme Cauchy, folosind transformata
 Laplace:
@@ -327,7 +325,7 @@ Laplace:
 \end{enumerate}
 
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 2. Să se rezolve următoarele sisteme diferențiale:
 \begin{enumerate}[(a)]
@@ -360,7 +358,7 @@ Laplace:
 aplicăm transformata Laplace inversă.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Formula de inversare Mellin-Fourier}
+\section{Formula de inversare Mellin-Fourier}
 
 În cazul simplu, dacă se dă o imagine Laplace și vrem să recuperăm funcția
 original, putem pur și simplu să citim tabelul de transformate de la stînga
@@ -436,357 +434,351 @@ $ f(t) = e^{3t} + 2e^{-2t} $.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Transformata Z}
-
-Această transformată se definește pe un caz discret, pornind de la:
-\begin{definition}\label{def:semnal}\index{semnal!discret}
-  Se numește \emph{semnal discret} o funcție $ x : \ZZ \to \CC $ dată
-  de $ n \mapsto x_n $ sau, echivalent, $ x(n) $ ori $ x[n] $.
-\end{definition}
-
-Mulțimea semnalelor discrete se va nota cu $ S_d $, iar cele cu suport pozitiv
-(nule pentru $ n < 0 $ se va nota $ S_d^+ $.
-
-Un semnal particular este \emph{impulsul unitar discret} la momentul $ k $,
-definit prin:\index{semnal!unitar}
-\[
-  \delta_k(n) = \begin{cases} 1, & n = k \\ 0 & n \neq k \end{cases},
-\]
-definit pentru $ k \in \ZZ $ fixat.
-
-Pentru $ k = 0 $, vom nota $ \delta_0 = \delta $.
-
-\begin{definition}\label{def:intirziat} \index{semnal!intîrziat}
-  Fie $ x \in S_d $ și $ k \in \ZZ $ fixat. Semnalul $ y = (x_{n-k}) $ se numește
-  \emph{întîrziatul lui $ x $ cu $ k $ momente}.
-\end{definition}
-
-O operație foarte importantă, pe care se vor baza unele proprietăți esențiale ale
-transformatei $ Z $ este \emph{convoluția:} \index{convoluție}
-\begin{definition}\label{def:convolutie}
-  Fie $ x, y \in S_d $. Dacă seria $ \ds\sum_{k \in \ZZ} x_{n-k} y_k $
-  este convergentă pentru orice $ n \in \ZZ $ și are suma $ z_n $, atunci semnalul
-  $ z = (z_n) $ se numește \emph{convoluția} semnalelor $ x $ și $ y $ și
-  se notează $ z = x \ast y $.
-\end{definition}
-
-Trei proprietăți imediate sînt:
-\begin{itemize}
-\item $ x \ast y = y \ast x $;
-\item $ x \ast \delta = x $;
-\item $ (x \ast \delta_k)(n) = x_{n - k} $.
-\end{itemize}
-
-Ajungem acum la definiția principală:
-\begin{definition}\label{def:z}\index{transformata!Z}
-  Fie $ s \in S_d $, cu $ s = (a_n)_n $. Se numește \emph{transformata Z} sau
-  \emph{transformata Laplace discretă} a acestui semnal funcția definită prin:
-  \[
-    L_s(z) = Z_s(z) = \sum_{n \in \ZZ} a_n z^{-n},
-  \]
-  care se definește în domeniul de convergență al seriei Laurent din definiție.
-\end{definition}
-
-Principalele proprietăți pe care le vom folosi în calcule sînt:
-\begin{enumerate}[(1)]
-\item \textbf{Inversarea transformării $ Z $:} Fie $ s \in S_d^+ $, cu $ s = (a_n) $.
-  Presupunem că $ Z_s(z) $ este olomorfă în domeniul $ |z| \in (r, R) $. Atunci
-  putem recupera semnalul $ a_n $ prin formula:
-  \[
-    a_n = \dfrac{1}{2 \pi i} \int_{\gamma} z^{n-1} Z_s(z) dz, \quad n \in \ZZ,
-  \]
-  unde $ \gamma $ este discul de rază $ \rho \in (r, R) $.
-\item \textbf{Teorema de convoluție:} Fie $ s, t \in S_d^+ $. Atunci $ s \ast t = S_d^+ $
-  și are loc $ L_{s \ast t} = L_s \cdot L_t $. În particular:
-  \[
-    L_{s \ast \delta_k}(z) = z^{-k} L_s(z), \quad k \in \ZZ;
-  \]
-\item \textbf{Prima teoremă de întîrziere:} Pentru $ n\in \NN^\ast $:
-  \[
-    L_s( z_{t - n}) = z^{-n} L_s(f);
-  \]
-\item \textbf{A doua teoremă de întîrziere (teorema de deplasare):}
-  \[
-    L_s(z_{t + n}) = z^n \cdot \Big( L_s(z) - \sum_{t = 0}^{n-1} z_t z^{-t} \Big), \quad n \in \NN^\ast.
-  \]
-\end{enumerate}
-
-Cîteva transformate uzuale sînt:
-\begin{tabular}{c | c}
-  $ s $ & $ L_s $ \\
-  \hline\hline
-  $ \begin{cases}
-    h_n = 0, & n < 0 \\
-    h_n = 1, & n \geq 0
-  \end{cases} $ & $ \dfrac{z}{z - 1} $ \\
-        & \\
-  $ \delta_k, k \in \ZZ $ & $ \dfrac{1}{z^k} $ \\
-        &\\
-  $ s = (n)_{n \in \NN} $ & $ \dfrac{z}{(z - 1)^2} $ \\
-        &\\
-  $ s = (n^2)_{n \in \NN} $ & $ \dfrac{z(z+1)}{(z - 1)^3} $ \\
-        &\\
-  $ s = (a^n)_{n \in \NN}, a \in \CC $ & $ \dfrac{z}{z - a} $ \\
-        &\\
-  $ s = (e^{an})_{n \in \NN}, a \in \RR $ & $ \dfrac{z}{z - e^a} $ \\
-        &\\
-  $ s = (\sin(\omega n))_{n \in \NN}, \omega \in \RR $ & $ \dfrac{z \sin \omega}{z^2 - 2z \cos \omega + 1} $ \\
-        &\\
-  $ s = (\cos(\omega n))_{n \in \NN}, \omega \in \RR $ & $ \dfrac{z(z - \cos \omega)}{z^2 - 2z \cos \omega + 1} $
-\end{tabular}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-\subsection{Exerciții}
-
-\indent\indent 1. Să se determine semnalul $x \in S_d^+$, a cărui transformată $Z$ este 
-dată de:
-\begin{enumerate}[(a)]
-\item $\Lap_s (z) = \dfrac{z}{(z-3)^2}$ ;
-\item $\Lap_s (z) = \dfrac{z}{(z-1)(z^2 + 1)}$ ;
-\item $\Lap_s (z) = \dfrac{z}{(z-1)^2(z^2 + z - 6)}$ ;
-\item $\Lap_s (z) = \dfrac{z}{z^2 + 2az + 2a^2}, a > 0$ parametru.
-\end{enumerate}
-
-\emph{Soluție:}
-
-(a) Avem:
-\begin{align*}
-  x_n &= \dfrac{1}{2\pi i} \int_{|z| = \rho} z^{n-1} \Lap_s (z) dz \\
-      &= \Rez(z^{n-1} \Lap_s(z), 3) \\
-      &= \Rez \Big( \dfrac{z^n}{(z-3)^2}, 3 \Big) \\
-      &= \lim_{z \to 3} \Big( (z-3)^2 \cdot \dfrac{z^n}{(z-3)^2} \Big)^{\prime} \\
-      &= \lim_{z \to 3} nz^{n-1} \\
-      &= n3^{n-1}.
-\end{align*}
-
-(b)
-\begin{align*}
-  x_n &= \dfrac{1}{2 \pi i} \int_{|z| = \rho} z^{n-1} \Lap_s(z) dz \\
-      &= \Rez(z^{n-1} \Lap_s (z), 1) + \Rez(z^{n-1} \Lap_s(z), i) + 
-        \Rez(z^{n-1} \Lap_s(z), -i) \\
-  \Rez(z^{n-1}\Lap_s(z),1) &= \lim_{z \to 1} z^{n-1} \dfrac{z}{(z - 1)(z^2 + 1)} 
-                             \cdot (z-1) = \dfrac{1}{2} \\
-  \Rez(z^{n-1} \Lap_s(z), i) &= \dfrac{i^n}{2i \cdot (i-1)} \\
-  \Rez(z^{n-1} \Lap_s(z), -i) &= \dfrac{(-1)^n i^n}{2i(i+1)}.
-\end{align*}
-
-Remarcăm că pentru $n = 4k$ și $n = 4k+1$, avem $x_n = 0$, iar în celelalte 
-două cazuri, $x_n = 1$. \\
-
-(c)
-\begin{align*}
-  \Rez(z^{n-1} \Lap_s(z), 1) &= \lim_{z\to 1} \Big[ z^{n-1} \cdot (z-1)^2 \cdot 
-                               \dfrac{z^2}{(z-1)^2 \cdot (z^2 + z - 6)} \Big]^{\prime}\\
-                             &= - \dfrac{4n + 3}{16}. \\
-  \Rez(z^{n-1} \Lap_s(z), 2) &= \dfrac{2^n}{5} \\
-  \Rez(z^{n-1} \Lap_s(z), -3) &= -\dfrac{(-3)^n}{80}.
-\end{align*}
-
-Obținem $x_n = - \dfrac{4n+3}{16} + \dfrac{2^n}{5} - \dfrac{(-3)^n}{80}$. \\
-
-(d) $z_{1,2} = a (-1 \pm i)$ sînt poli simpli. Avem:
-\begin{align*}
-  x_n &= \Rez\Big( \dfrac{z^n}{(z^2 + 2a + 2a^2)}, z_1 \Big) + 
-        \Rez\Big(  \dfrac{z^n}{(z^2 + 2a + 2a^2)}, z_2 \Big) \\
-      &= \dfrac{a^n(-1 + i)^n}{2z_1 + 2a} + \dfrac{a^n(-1-i)^n}{2z_1 + 2a} \\
-      &= -\dfrac{i}{2a}(z_1^n - z_2^n).
-\end{align*}
-
-Putem scrie trigonometric numerele $z_1$ și $z_2$:
-\begin{align*}
-  z_1 &= a(-1 + i) = a \sqrt{2} \Big( \cos \dfrac{3\pi}{4} + 
-        i \sin \dfrac{3 \pi}{4} \Big) \\
-  z_2 &= a(-1 - i) = a \sqrt{2} \Big( \cos \dfrac{3 \pi}{4} - 
-        i \sin \dfrac{3 \pi}{4} \Big).
-\end{align*}
-
-Deci: $x_n = 2^{\frac{n}{2}} a^{n-1} \sin \dfrac{3 n \pi}{4}$.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-\vspace{1cm}
-
-2. Fie $x = (x_n) \in S_d^+$ și $y = (y_n)$, unde $y_n = x_0 + \dots + x_n$. 
-Să se arate că $Y(z) = \dfrac{z}{z-1} X(z)$.
-
-\emph{Soluție:}
-
-Avem $Y(z) = \displaystyle\sum_{n=0}^\infty y_n z^{-n}.$ Dar: 
-\[
-  X(z) = \sum_{n=0}^\infty x_n z^{-n} \text{ și } 
-  \sum_{n=0}^\infty x_{n-1} z^n = \dfrac{1}{z} X(z),
-\]
-deoarece $x_{-1} = 0$. Putem continua și obținem 
-$\displaystyle\sum_{n=0}^\infty x_{n-k} z^{-n} = \dfrac{1}{z^k} X(z)$. Așadar: 
-\[
-  Y(z) = X(z) \cdot \Big( 1 + \dfrac{1}{z} + \dfrac{1}{z^2} + \dots \Big) 
-  = X(z) \cdot \dfrac{z}{z-1}.
-\]
-
-
-\vspace{1cm}
-
-3. Cu ajutorul transformării $Z$, să se determine șirurile $(x_n)$ definite 
-prin următoarele relații:
-\begin{enumerate}[(a)]
-\item $x_0 = 0, x_1 = 1, x_{n+2} = x_{n+1} + x_n, n \in \mathbb{N}$ 
-  (șirul lui Fibonacci);
-\item $x_0 = 0, x_1 = 1, x_{n+2} = x_{n+1} - x_n, n \in \mathbb{N}$;
-\item $x_0 = x_1 = 0, x_2 = -1, x_3 = 0, x_{n+4} + 
-  2x_{n+3} + 3 x_{n+2} + 2 x_{n+1} + x_n = 0, n \in \mathbb{N}$;
-\item $x_0 = 2, x_{n+1} + 3x_n = 1, n \in \mathbb{Z}$;
-\item $x_0 = 0, x_1 = 1, x_{n+2} - 4 x_{n+1} + 3x_n 
-  = (n+1)4^n, n \in \mathbb{N}$.
-\end{enumerate}
-
-\emph{Soluție:}
-
-Abordarea generală este să considerăm șirul $(x_n)$ ca fiind restricția unui 
-semnal $x \in S_d^+$ la $\mathbb{N}$ și rescriem relațiile de recurență sub 
-forma unor ecuații de convoluție $a \ast x = y$, pe care le rezolvăm în $S_d^+$.\\
-
-(a) Fie $x \in S_d^+$, astfel încît restricția lui la $\mathbb{N}$ să fie șirul 
-căutat. Deoarece avem: 
-\[
-  x_{n+2} - x_{n+1} - x_n = y_n, n \in \mathbb{Z},
-\]
-cu $y_n = 0$ pentru $n \neq -1$ și $y_{-1} = 1$, avem ecuația de convoluție: 
-\[
-  a \ast x = y, \text{ unde } a 
-  = \delta_{-2} + \delta_{-1} + \delta, y = \delta_{-1}.
-\]
-
-Aplicăm transformata $Z$ și rezultă: 
-\[
-  \Lap_s x(z) (z^2 - z - 1) = z \Longrightarrow x_n 
-  = \dfrac{1}{\sqrt{5}} \Big[ \Big( \dfrac{1 + \sqrt{5}}{2} \Big)^n - 
-  \Big( \dfrac{1 - \sqrt{5}}{2} \Big)^n \Big].
-\]
-
-(b) Ca în cazul anterior, avem $a \ast x = y$, cu 
-$a = \delta_{-2} - \delta_{-1} + \delta$, unde $y = \delta_{-1}$. Aplicînd 
-transformata $Z$, obținem: 
-\[
-  \Lap_s x(z) (z^2 - z + 1) = z \Longrightarrow \Lap_s x(z) 
-  = \dfrac{z}{z^2 - z + 1}.
-\]
-
-Obținem:
-\[
-  x_n = \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
-  \dfrac{1 + i \sqrt{3}}{2} \Big) + \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
-  \dfrac{1 - i \sqrt{3}}{2} \Big).
-\]
-
-Calculăm reziduurile, cu notația $\varepsilon = \dfrac{1 + i \sqrt{3}}{2}$ și 
-$\overline{\varepsilon} = \dfrac{1 - i \sqrt{3}}{2}$:
-\begin{align*}
-  \Rez \Big( \dfrac{z^n}{z^2 - z + 1}, \varepsilon \Big) 
-  &= \lim_{z \to \varepsilon} \dfrac{z^n}{z^2 - z + 1} 
-    \big( z - \varepsilon \big) \\
-  &= \dfrac{\varepsilon^n}{i \sqrt{3}} \\
-  &= \dfrac{\cos \frac{2 n \pi}{3} + i \sin \frac{2 n \pi}{3}}{i \sqrt{3}}.
-\end{align*}
-
-Similar: 
-\[
-  \Rez \Big( \dfrac{z^n}{z^2 - z + 1}, \overline{\varepsilon} \Big) 
-  = \dfrac{\cos \frac{2n\pi}{3} - i \sin \frac{2 n \pi}{3}}{-i\sqrt{3}}.
-\]
-
-Rezultă: 
-\[
-  x_n = \dfrac{2}{\sqrt{3}} \sin \dfrac{2n\pi}{3}, n \in \mathbb{N}.
-\]
-
-(c) Ecuația $a \ast x = y$ este valabilă pentru: 
-\[
-  a = \delta_{-4} + 2 \delta_{-3} + 3 \delta_{-2} + 2 \delta_{-1} + \delta, 
-  \quad y = -\delta_{-2} - 2 \delta_{-1}.
-\]
-
-Aplicăm transformata $Z$ și obținem: 
-$\Lap_s x(z) = - \dfrac{z(z+2)}{(z^2 + z + 1)^2}$. Descompunem în fracții 
-simple, calculăm reziduurile și ținem cont de faptul că rădăcinile numitorului, 
-$\varepsilon_1, \varepsilon_2$ sînt poli de ordinul 2, obținem: 
-\[
-  x_n = \dfrac{(2n-4)(\varepsilon_1^n - \varepsilon_2^n) - 
-    (n+1)(\varepsilon_1^{n-1} + \varepsilon_1^{n-2} - \varepsilon_2^{n-1} - 
-    \varepsilon_2^{n-2})}{(\varepsilon_2 - \varepsilon_1)^3} 
-  = \dfrac{2(n-1)}{\sqrt{3}} \sin \dfrac{2 n \pi}{3}, n \in \mathbb{N}.
-\]
-
-(d) Ecuația corespunzătoare este $a \ast x = y$, cu $a = \delta_{-1} + 3 \delta$ și 
-$y_n = 1, \forall n \geq 1$, iar $y_{-1} = x_0 + 3 x_{-1} = 2$, cu 
-$y_n = 0, \forall n \leq -2$, adică $y = 1 + 2 \delta_{-1}$.
-
-Așadar: 
-\[
-  \delta_{-1} \ast x + 3 \delta \ast x = 1 + 2 \delta_{-1}.
-\]
-
-Aplicăm transformata $Z$ și obținem:
-\begin{align*}
-  z \Lap_s x(z) + 3 \Lap_s x(z) &= \dfrac{z}{z-1} + 2z \\
-                                &= \dfrac{2z^2 + 3z}{z-1} \\
-  \Longrightarrow \Lap_s x(z) &= \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
-  \Longrightarrow x_n &= \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) + 
-                        \Rez (z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) \\
-  \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) &= \lim_{z \to 1} (z-1) 
-                                                         \cdot z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)} = \dfrac{5}{4} \\
-  \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) 
-                                &= \lim_{z \to -3} (z+3) z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
-                                &= (-3)^{n-1} \cdot \dfrac{12}{-4} = -3 \cdot (-3)^{n-1}.	                              
-\end{align*}
-
-Rezultă: $x_n = \dfrac{5}{4} - 3 \cdot (-3)^{n-1}$. \\
-
-(e) Avem ecuația: $a \ast x = y$, unde 
-$a = \delta_{-2} - 4 \delta_{-1} + 3 \delta$, cu 
-$y_n = 0, \forall n \leq -2, y_{-1} = 1$ și 
-$y_n = (n+1)4^n, \forall n \in \mathbb{N}$.
-
-Fie $s_1 = (n4^n)_n, s_2 = (4^n)_n$. Atunci:
-\begin{align*}
-  \Lap_s s_1(z) &= -z \Lap_s s_2^{\prime}(z) 
-                  = - z \big( \dfrac{z}{z-4} \big)^{\prime} = \dfrac{4z}{(z-4)^2} \\
-  \Longrightarrow \Lap_s x(z)(z^2 - 4z + 3) 
-                &= \dfrac{4z}{(z-4)^2} + \dfrac{z}{z-4} + z \\
-                &= \dfrac{z^2}{(z-4)^2} + z \\
-  \Longrightarrow  \Lap_s x(z) &= \dfrac{z(z^2 - 7z + 16)}{(z-4)^2 (z-1) (z-3)}.
-\end{align*}
-
-Descompunem în fracții simple și obținem, în fine: 
-\[
-  x_n = \dfrac{1}{9} \big[ 18 \cdot 3^n + (3n - 13) 4^n - 5 \big], 
-  n \in \mathbb{N}.
-\]
-
-\textbf{OBSERVAȚIE:} Toate exercițiile cu recurențe se mai pot rezolva în alte
-două moduri:
-
-(1) Se poate aplica teorema de convoluție relației de recurență. De exemplu,
-din recurența:
-\[
-  x_{n + 2} - 2x_{n + 1} + x_n = 2
-\]
-putem obține:
-\[
-  Z(x_{n+2}) - 2Z(x_{n + 1}) + Z(x_n) = 2Z(1),
-\]
-iar $ Z(x_{n+2}) = Z(x_n \ast \delta_{-2}) = Z(x_n) \cdot Z(\delta_{-2}) $ etc.
-
-(2) Se poate aplica teorema de deplasare. În aceeași recurență de mai sus,
-de exemplu, avem:
-\[
-  Z(x_{n+2}) = z^n \Big( Z(x_n) - x_0 - x_1 z^{-1} \Big)
-\]
-și la fel pentru celelalte.
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../m3-19-20"
-%%% End:
+% \chapter{Transformata Z}
+% 
+% Această transformată se definește pe un caz discret, pornind de la:
+% \begin{definition}\label{def:semnal}\index{semnal!discret}
+%   Se numește \emph{semnal discret} o funcție $ x : \ZZ \to \CC $ dată
+%   de $ n \mapsto x_n $ sau, echivalent, $ x(n) $ ori $ x[n] $.
+% \end{definition}
+% 
+% Mulțimea semnalelor discrete se va nota cu $ S_d $, iar cele cu suport pozitiv
+% (nule pentru $ n < 0 $ se va nota $ S_d^+ $.
+% 
+% Un semnal particular este \emph{impulsul unitar discret} la momentul $ k $,
+% definit prin:\index{semnal!unitar}
+% \[
+%   \delta_k(n) = \begin{cases} 1, & n = k \\ 0 & n \neq k \end{cases},
+% \]
+% definit pentru $ k \in \ZZ $ fixat.
+% 
+% Pentru $ k = 0 $, vom nota $ \delta_0 = \delta $.
+% 
+% \begin{definition}\label{def:intirziat} \index{semnal!intîrziat}
+%   Fie $ x \in S_d $ și $ k \in \ZZ $ fixat. Semnalul $ y = (x_{n-k}) $ se numește
+%   \emph{întîrziatul lui $ x $ cu $ k $ momente}.
+% \end{definition}
+% 
+% O operație foarte importantă, pe care se vor baza unele proprietăți esențiale ale
+% transformatei $ Z $ este \emph{convoluția:} \index{convoluție}
+% \begin{definition}\label{def:convolutie}
+%   Fie $ x, y \in S_d $. Dacă seria $ \ds\sum_{k \in \ZZ} x_{n-k} y_k $
+%   este convergentă pentru orice $ n \in \ZZ $ și are suma $ z_n $, atunci semnalul
+%   $ z = (z_n) $ se numește \emph{convoluția} semnalelor $ x $ și $ y $ și
+%   se notează $ z = x \ast y $.
+% \end{definition}
+% 
+% Trei proprietăți imediate sînt:
+% \begin{itemize}
+% \item $ x \ast y = y \ast x $;
+% \item $ x \ast \delta = x $;
+% \item $ (x \ast \delta_k)(n) = x_{n - k} $.
+% \end{itemize}
+% 
+% Ajungem acum la definiția principală:
+% \begin{definition}\label{def:z}\index{transformata!Z}
+%   Fie $ s \in S_d $, cu $ s = (a_n)_n $. Se numește \emph{transformata Z} sau
+%   \emph{transformata Laplace discretă} a acestui semnal funcția definită prin:
+%   \[
+%     L_s(z) = Z_s(z) = \sum_{n \in \ZZ} a_n z^{-n},
+%   \]
+%   care se definește în domeniul de convergență al seriei Laurent din definiție.
+% \end{definition}
+% 
+% Principalele proprietăți pe care le vom folosi în calcule sînt:
+% \begin{enumerate}[(1)]
+% \item \textbf{Inversarea transformării $ Z $:} Fie $ s \in S_d^+ $, cu $ s = (a_n) $.
+%   Presupunem că $ Z_s(z) $ este olomorfă în domeniul $ |z| \in (r, R) $. Atunci
+%   putem recupera semnalul $ a_n $ prin formula:
+%   \[
+%     a_n = \dfrac{1}{2 \pi i} \int_{\gamma} z^{n-1} Z_s(z) dz, \quad n \in \ZZ,
+%   \]
+%   unde $ \gamma $ este discul de rază $ \rho \in (r, R) $.
+% \item \textbf{Teorema de convoluție:} Fie $ s, t \in S_d^+ $. Atunci $ s \ast t = S_d^+ $
+%   și are loc $ L_{s \ast t} = L_s \cdot L_t $. În particular:
+%   \[
+%     L_{s \ast \delta_k}(z) = z^{-k} L_s(z), \quad k \in \ZZ;
+%   \]
+% \item \textbf{Prima teoremă de întîrziere:} Pentru $ n\in \NN^\ast $:
+%   \[
+%     L_s( z_{t - n}) = z^{-n} L_s(f);
+%   \]
+% \item \textbf{A doua teoremă de întîrziere (teorema de deplasare):}
+%   \[
+%     L_s(z_{t + n}) = z^n \cdot \Big( L_s(z) - \sum_{t = 0}^{n-1} z_t z^{-t} \Big), \quad n \in \NN^\ast.
+%   \]
+% \end{enumerate}
+% 
+% Cîteva transformate uzuale sînt:
+% \begin{tabular}{c | c}
+%   $ s $ & $ L_s $ \\
+%   \hline\hline
+%   $ \begin{cases}
+%     h_n = 0, & n < 0 \\
+%     h_n = 1, & n \geq 0
+%   \end{cases} $ & $ \dfrac{z}{z - 1} $ \\
+%         & \\
+%   $ \delta_k, k \in \ZZ $ & $ \dfrac{1}{z^k} $ \\
+%         &\\
+%   $ s = (n)_{n \in \NN} $ & $ \dfrac{z}{(z - 1)^2} $ \\
+%         &\\
+%   $ s = (n^2)_{n \in \NN} $ & $ \dfrac{z(z+1)}{(z - 1)^3} $ \\
+%         &\\
+%   $ s = (a^n)_{n \in \NN}, a \in \CC $ & $ \dfrac{z}{z - a} $ \\
+%         &\\
+%   $ s = (e^{an})_{n \in \NN}, a \in \RR $ & $ \dfrac{z}{z - e^a} $ \\
+%         &\\
+%   $ s = (\sin(\omega n))_{n \in \NN}, \omega \in \RR $ & $ \dfrac{z \sin \omega}{z^2 - 2z \cos \omega + 1} $ \\
+%         &\\
+%   $ s = (\cos(\omega n))_{n \in \NN}, \omega \in \RR $ & $ \dfrac{z(z - \cos \omega)}{z^2 - 2z \cos \omega + 1} $
+% \end{tabular}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+% \section{Exerciții}
+% 
+% \indent\indent 1. Să se determine semnalul $x \in S_d^+$, a cărui transformată $Z$ este 
+% dată de:
+% \begin{enumerate}[(a)]
+% \item $\Lap_s (z) = \dfrac{z}{(z-3)^2}$ ;
+% \item $\Lap_s (z) = \dfrac{z}{(z-1)(z^2 + 1)}$ ;
+% \item $\Lap_s (z) = \dfrac{z}{(z-1)^2(z^2 + z - 6)}$ ;
+% \item $\Lap_s (z) = \dfrac{z}{z^2 + 2az + 2a^2}, a > 0$ parametru.
+% \end{enumerate}
+% 
+% \emph{Soluție:}
+% 
+% (a) Avem:
+% \begin{align*}
+%   x_n &= \dfrac{1}{2\pi i} \int_{|z| = \rho} z^{n-1} \Lap_s (z) dz \\
+%       &= \Rez(z^{n-1} \Lap_s(z), 3) \\
+%       &= \Rez \Big( \dfrac{z^n}{(z-3)^2}, 3 \Big) \\
+%       &= \lim_{z \to 3} \Big( (z-3)^2 \cdot \dfrac{z^n}{(z-3)^2} \Big)^{\prime} \\
+%       &= \lim_{z \to 3} nz^{n-1} \\
+%       &= n3^{n-1}.
+% \end{align*}
+% 
+% (b)
+% \begin{align*}
+%   x_n &= \dfrac{1}{2 \pi i} \int_{|z| = \rho} z^{n-1} \Lap_s(z) dz \\
+%       &= \Rez(z^{n-1} \Lap_s (z), 1) + \Rez(z^{n-1} \Lap_s(z), i) + 
+%         \Rez(z^{n-1} \Lap_s(z), -i) \\
+%   \Rez(z^{n-1}\Lap_s(z),1) &= \lim_{z \to 1} z^{n-1} \dfrac{z}{(z - 1)(z^2 + 1)} 
+%                              \cdot (z-1) = \dfrac{1}{2} \\
+%   \Rez(z^{n-1} \Lap_s(z), i) &= \dfrac{i^n}{2i \cdot (i-1)} \\
+%   \Rez(z^{n-1} \Lap_s(z), -i) &= \dfrac{(-1)^n i^n}{2i(i+1)}.
+% \end{align*}
+% 
+% Remarcăm că pentru $n = 4k$ și $n = 4k+1$, avem $x_n = 0$, iar în celelalte 
+% două cazuri, $x_n = 1$. \\
+% 
+% (c)
+% \begin{align*}
+%   \Rez(z^{n-1} \Lap_s(z), 1) &= \lim_{z\to 1} \Big[ z^{n-1} \cdot (z-1)^2 \cdot 
+%                                \dfrac{z^2}{(z-1)^2 \cdot (z^2 + z - 6)} \Big]^{\prime}\\
+%                              &= - \dfrac{4n + 3}{16}. \\
+%   \Rez(z^{n-1} \Lap_s(z), 2) &= \dfrac{2^n}{5} \\
+%   \Rez(z^{n-1} \Lap_s(z), -3) &= -\dfrac{(-3)^n}{80}.
+% \end{align*}
+% 
+% Obținem $x_n = - \dfrac{4n+3}{16} + \dfrac{2^n}{5} - \dfrac{(-3)^n}{80}$. \\
+% 
+% (d) $z_{1,2} = a (-1 \pm i)$ sînt poli simpli. Avem:
+% \begin{align*}
+%   x_n &= \Rez\Big( \dfrac{z^n}{(z^2 + 2a + 2a^2)}, z_1 \Big) + 
+%         \Rez\Big(  \dfrac{z^n}{(z^2 + 2a + 2a^2)}, z_2 \Big) \\
+%       &= \dfrac{a^n(-1 + i)^n}{2z_1 + 2a} + \dfrac{a^n(-1-i)^n}{2z_1 + 2a} \\
+%       &= -\dfrac{i}{2a}(z_1^n - z_2^n).
+% \end{align*}
+% 
+% Putem scrie trigonometric numerele $z_1$ și $z_2$:
+% \begin{align*}
+%   z_1 &= a(-1 + i) = a \sqrt{2} \Big( \cos \dfrac{3\pi}{4} + 
+%         i \sin \dfrac{3 \pi}{4} \Big) \\
+%   z_2 &= a(-1 - i) = a \sqrt{2} \Big( \cos \dfrac{3 \pi}{4} - 
+%         i \sin \dfrac{3 \pi}{4} \Big).
+% \end{align*}
+% 
+% Deci: $x_n = 2^{\frac{n}{2}} a^{n-1} \sin \dfrac{3 n \pi}{4}$.
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+% \vspace{0.3cm}
+% 
+% 2. Fie $x = (x_n) \in S_d^+$ și $y = (y_n)$, unde $y_n = x_0 + \dots + x_n$. 
+% Să se arate că $Y(z) = \dfrac{z}{z-1} X(z)$.
+% 
+% \emph{Soluție:}
+% 
+% Avem $Y(z) = \displaystyle\sum_{n=0}^\infty y_n z^{-n}.$ Dar: 
+% \[
+%   X(z) = \sum_{n=0}^\infty x_n z^{-n} \text{ și } 
+%   \sum_{n=0}^\infty x_{n-1} z^n = \dfrac{1}{z} X(z),
+% \]
+% deoarece $x_{-1} = 0$. Putem continua și obținem 
+% $\displaystyle\sum_{n=0}^\infty x_{n-k} z^{-n} = \dfrac{1}{z^k} X(z)$. Așadar: 
+% \[
+%   Y(z) = X(z) \cdot \Big( 1 + \dfrac{1}{z} + \dfrac{1}{z^2} + \dots \Big) 
+%   = X(z) \cdot \dfrac{z}{z-1}.
+% \]
+% 
+% 
+% \vspace{0.3cm}
+% 
+% 3. Cu ajutorul transformării $Z$, să se determine șirurile $(x_n)$ definite 
+% prin următoarele relații:
+% \begin{enumerate}[(a)]
+% \item $x_0 = 0, x_1 = 1, x_{n+2} = x_{n+1} + x_n, n \in \mathbb{N}$ 
+%   (șirul lui Fibonacci);
+% \item $x_0 = 0, x_1 = 1, x_{n+2} = x_{n+1} - x_n, n \in \mathbb{N}$;
+% \item $x_0 = x_1 = 0, x_2 = -1, x_3 = 0, x_{n+4} + 
+%   2x_{n+3} + 3 x_{n+2} + 2 x_{n+1} + x_n = 0, n \in \mathbb{N}$;
+% \item $x_0 = 2, x_{n+1} + 3x_n = 1, n \in \mathbb{Z}$;
+% \item $x_0 = 0, x_1 = 1, x_{n+2} - 4 x_{n+1} + 3x_n 
+%   = (n+1)4^n, n \in \mathbb{N}$.
+% \end{enumerate}
+% 
+% \emph{Soluție:}
+% 
+% Abordarea generală este să considerăm șirul $(x_n)$ ca fiind restricția unui 
+% semnal $x \in S_d^+$ la $\mathbb{N}$ și rescriem relațiile de recurență sub 
+% forma unor ecuații de convoluție $a \ast x = y$, pe care le rezolvăm în $S_d^+$.\\
+% 
+% (a) Fie $x \in S_d^+$, astfel încît restricția lui la $\mathbb{N}$ să fie șirul 
+% căutat. Deoarece avem: 
+% \[
+%   x_{n+2} - x_{n+1} - x_n = y_n, n \in \mathbb{Z},
+% \]
+% cu $y_n = 0$ pentru $n \neq -1$ și $y_{-1} = 1$, avem ecuația de convoluție: 
+% \[
+%   a \ast x = y, \text{ unde } a 
+%   = \delta_{-2} + \delta_{-1} + \delta, y = \delta_{-1}.
+% \]
+% 
+% Aplicăm transformata $Z$ și rezultă: 
+% \[
+%   \Lap_s x(z) (z^2 - z - 1) = z \Longrightarrow x_n 
+%   = \dfrac{1}{\sqrt{5}} \Big[ \Big( \dfrac{1 + \sqrt{5}}{2} \Big)^n - 
+%   \Big( \dfrac{1 - \sqrt{5}}{2} \Big)^n \Big].
+% \]
+% 
+% (b) Ca în cazul anterior, avem $a \ast x = y$, cu 
+% $a = \delta_{-2} - \delta_{-1} + \delta$, unde $y = \delta_{-1}$. Aplicînd 
+% transformata $Z$, obținem: 
+% \[
+%   \Lap_s x(z) (z^2 - z + 1) = z \Longrightarrow \Lap_s x(z) 
+%   = \dfrac{z}{z^2 - z + 1}.
+% \]
+% 
+% Obținem:
+% \[
+%   x_n = \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
+%   \dfrac{1 + i \sqrt{3}}{2} \Big) + \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
+%   \dfrac{1 - i \sqrt{3}}{2} \Big).
+% \]
+% 
+% Calculăm reziduurile, cu notația $\varepsilon = \dfrac{1 + i \sqrt{3}}{2}$ și 
+% $\overline{\varepsilon} = \dfrac{1 - i \sqrt{3}}{2}$:
+% \begin{align*}
+%   \Rez \Big( \dfrac{z^n}{z^2 - z + 1}, \varepsilon \Big) 
+%   &= \lim_{z \to \varepsilon} \dfrac{z^n}{z^2 - z + 1} 
+%     \big( z - \varepsilon \big) \\
+%   &= \dfrac{\varepsilon^n}{i \sqrt{3}} \\
+%   &= \dfrac{\cos \frac{2 n \pi}{3} + i \sin \frac{2 n \pi}{3}}{i \sqrt{3}}.
+% \end{align*}
+% 
+% Similar: 
+% \[
+%   \Rez \Big( \dfrac{z^n}{z^2 - z + 1}, \overline{\varepsilon} \Big) 
+%   = \dfrac{\cos \frac{2n\pi}{3} - i \sin \frac{2 n \pi}{3}}{-i\sqrt{3}}.
+% \]
+% 
+% Rezultă: 
+% \[
+%   x_n = \dfrac{2}{\sqrt{3}} \sin \dfrac{2n\pi}{3}, n \in \mathbb{N}.
+% \]
+% 
+% (c) Ecuația $a \ast x = y$ este valabilă pentru: 
+% \[
+%   a = \delta_{-4} + 2 \delta_{-3} + 3 \delta_{-2} + 2 \delta_{-1} + \delta, 
+%   \quad y = -\delta_{-2} - 2 \delta_{-1}.
+% \]
+% 
+% Aplicăm transformata $Z$ și obținem: 
+% $\Lap_s x(z) = - \dfrac{z(z+2)}{(z^2 + z + 1)^2}$. Descompunem în fracții 
+% simple, calculăm reziduurile și ținem cont de faptul că rădăcinile numitorului, 
+% $\varepsilon_1, \varepsilon_2$ sînt poli de ordinul 2, obținem: 
+% \[
+%   x_n = \dfrac{(2n-4)(\varepsilon_1^n - \varepsilon_2^n) - 
+%     (n+1)(\varepsilon_1^{n-1} + \varepsilon_1^{n-2} - \varepsilon_2^{n-1} - 
+%     \varepsilon_2^{n-2})}{(\varepsilon_2 - \varepsilon_1)^3} 
+%   = \dfrac{2(n-1)}{\sqrt{3}} \sin \dfrac{2 n \pi}{3}, n \in \mathbb{N}.
+% \]
+% 
+% (d) Ecuația corespunzătoare este $a \ast x = y$, cu $a = \delta_{-1} + 3 \delta$ și 
+% $y_n = 1, \forall n \geq 1$, iar $y_{-1} = x_0 + 3 x_{-1} = 2$, cu 
+% $y_n = 0, \forall n \leq -2$, adică $y = 1 + 2 \delta_{-1}$.
+% 
+% Așadar: 
+% \[
+%   \delta_{-1} \ast x + 3 \delta \ast x = 1 + 2 \delta_{-1}.
+% \]
+% 
+% Aplicăm transformata $Z$ și obținem:
+% \begin{align*}
+%   z \Lap_s x(z) + 3 \Lap_s x(z) &= \dfrac{z}{z-1} + 2z \\
+%                                 &= \dfrac{2z^2 + 3z}{z-1} \\
+%   \Longrightarrow \Lap_s x(z) &= \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
+%   \Longrightarrow x_n &= \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) + 
+%                         \Rez (z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) \\
+%   \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) &= \lim_{z \to 1} (z-1) 
+%                                                          \cdot z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)} = \dfrac{5}{4} \\
+%   \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) 
+%                                 &= \lim_{z \to -3} (z+3) z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
+%                                 &= (-3)^{n-1} \cdot \dfrac{12}{-4} = -3 \cdot (-3)^{n-1}.	                              
+% \end{align*}
+% 
+% Rezultă: $x_n = \dfrac{5}{4} - 3 \cdot (-3)^{n-1}$. \\
+% 
+% (e) Avem ecuația: $a \ast x = y$, unde 
+% $a = \delta_{-2} - 4 \delta_{-1} + 3 \delta$, cu 
+% $y_n = 0, \forall n \leq -2, y_{-1} = 1$ și 
+% $y_n = (n+1)4^n, \forall n \in \mathbb{N}$.
+% 
+% Fie $s_1 = (n4^n)_n, s_2 = (4^n)_n$. Atunci:
+% \begin{align*}
+%   \Lap_s s_1(z) &= -z \Lap_s s_2^{\prime}(z) 
+%                   = - z \big( \dfrac{z}{z-4} \big)^{\prime} = \dfrac{4z}{(z-4)^2} \\
+%   \Longrightarrow \Lap_s x(z)(z^2 - 4z + 3) 
+%                 &= \dfrac{4z}{(z-4)^2} + \dfrac{z}{z-4} + z \\
+%                 &= \dfrac{z^2}{(z-4)^2} + z \\
+%   \Longrightarrow  \Lap_s x(z) &= \dfrac{z(z^2 - 7z + 16)}{(z-4)^2 (z-1) (z-3)}.
+% \end{align*}
+% 
+% Descompunem în fracții simple și obținem, în fine: 
+% \[
+%   x_n = \dfrac{1}{9} \big[ 18 \cdot 3^n + (3n - 13) 4^n - 5 \big], 
+%   n \in \mathbb{N}.
+% \]
+% 
+% \textbf{OBSERVAȚIE:} Toate exercițiile cu recurențe se mai pot rezolva în alte
+% două moduri:
+% 
+% (1) Se poate aplica teorema de convoluție relației de recurență. De exemplu,
+% din recurența:
+% \[
+%   x_{n + 2} - 2x_{n + 1} + x_n = 2
+% \]
+% putem obține:
+% \[
+%   Z(x_{n+2}) - 2Z(x_{n + 1}) + Z(x_n) = 2Z(1),
+% \]
+% iar $ Z(x_{n+2}) = Z(x_n \ast \delta_{-2}) = Z(x_n) \cdot Z(\delta_{-2}) $ etc.
+% 
+% (2) Se poate aplica teorema de deplasare. În aceeași recurență de mai sus,
+% de exemplu, avem:
+% \[
+%   Z(x_{n+2}) = z^n \Big( Z(x_n) - x_0 - x_1 z^{-1} \Big)
+% \]
+% și la fel pentru celelalte.
