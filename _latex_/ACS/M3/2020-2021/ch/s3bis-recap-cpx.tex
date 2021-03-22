@@ -1,0 +1,81 @@
+% ! TEX root = ../m3-20-21.tex
+
+\chapter{Recapitulare analiză complexă}
+
+\indent\indent 1. Determinați funcția olomorfă $ f = P + iQ $ în cazurile:
+\begin{enumerate}[(a)]
+    \item $ Q(x, y) = \ln(x^2 + y^2) + x - 2y $;
+    \item $ P(x, y) = x^2 - y^2 $ și știind $ f(0) = 0 $;
+    \item $ P(x, y) = x^2 - y^2 - 2y $;
+    \item $ Q(x, y) = x^3 - 3xy^2 $;
+\end{enumerate}
+
+\vspace{0.3cm}
+
+2. Calculați:
+\begin{enumerate}[(a)]
+    \item $ \exp\left( -\dfrac{5 \pi i}{2} \right) $;
+    \item $ \dr{Ln}(-2) $;
+    \item $ i^{3i} $;
+    \item $ i^{1 + i} $;
+    \item $ (1 + i \sqrt{3})^{42} $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+3. Să se dezvolte în serie de puteri ale lui $ z $ funcția $ f(z) = \dfrac{1}{z^2 - 3z + 2} $
+în domeniile $ |z| < 1 $, $ 1 < |z| < 2 $ și $ |z| > 2 $.
+
+\vspace{0.3cm}
+
+4. Determinați singularitățile, precizați natura lor și calculați reziduurile pentru funcțiile:
+\begin{enumerate}[(a)]
+    \item $ f(z) = \dfrac{z^5}{(z^2 + 1)^2} $;
+    \item $ f(z) = \dfrac{\sin z}{z^2} $;
+    \item $ f(z) = z^2 \cdot \cos \dfrac{1}{z} $;
+    \item $ f(z) = \dfrac{\exp(z^{-1})}{z^4} $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+5. Calculați integralele complexe:
+\begin{enumerate}[(a)]
+    \item $ \ds\int_0^{1 + i} z^2 dz $;
+    \item $ \ds\int_C (z^2 + \overline{z}^2) dz $, unde $ C $ este segmentul
+        care unește punctele $ 0 $ și $ 2 + 2i $.
+    \item $ \ds\int_{|z| = 3} \overline{z}^2 dz $;
+    \item $ \ds\int_0^{2\pi} \dfrac{\cos 2\theta}{2 + \cos^2 \theta} d\theta $;
+    \item $ \ds\int_0^{2\pi} \dfrac{1 + \sin \theta}{(3 - 2 \cos\theta)^2} d\theta $;
+    \item $ \ds\int_{-\infty}^\infty \dfrac{dx}{(1 + x^4)^2} $;
+    \item $ \ds\int_{-\infty}^\infty \dfrac{dx}{(1 + x^2)^4} $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\emph{Indicații:} (f,g): Se definește un contur închis de forma $ C = [-r,r] \cup \Gamma_r $, unde
+$ \Gamma_r $ este cercul centrat în origine și de rază $ r $. Considerăm funcția complexă asociată
+$ f(z) = \dfrac{1}{(1 + z^4)^2} $ sau, respectiv, $ f(z) = \dfrac{1}{(1 + z^2)^4} $ și se calculează
+reziduurile pentru integrarea lui $ f(z) $ pe $ C $. Integrala reală revine la a calcula limita
+$ r \to \infty $ a integralei. Dar, conform lemei Jordan, integrala pe semicercul $ \Gamma_r $
+este nulă. Rămîne calculul cu reziduuri.
+
+Pe scurt:
+
+Luăm $ \Gamma: (-r, r) \cup \gamma $, unde $ \gamma: |z| = r, \dr{Im}(z) > 0 $ și fie
+$ f(z) = \dfrac{P(z)}{Q(z)} $.
+
+Calculăm:
+\begin{align*}
+    I_r &= \ds\int_\Gamma f(z) dz = \ds\int_{-r}^r f(x) dx + \ds\int_\gamma f(z) dz \\
+        &= 2 \pi i \ds\sum_{k=1}^n \mathrm{Rez}(f, z_k) + \pi i \ds\sum_{k=1}^n \mathrm{Rez}(f, z'_k),
+\end{align*}
+
+pentru $ z_k $ pol cu $ \dr{Im}z_k > 0 $ și $ z'_k $ pol simplu, cu $ \dr{Im}z_k = 0 $ (\textbf{teorema semireziduurilor}).
+
+Apoi:
+\[
+    \lim_{r \to \infty} I_r = \int_{-\infty}^\infty \dfrac{P(x)}{Q(x)} dx + \lim_{r \to \infty} \int_\gamma f(z) dz.
+\]
+
+Și, deoarece $ \ds\lim_{r \to \infty} |z f(z)| = 0 $, rezultă, cu lema Jordan, că $ \ds\lim_{r \to \infty} \int_\gamma f(z) dz = 0 $,
+deci integrala căutată este egală cu $ \ds\lim_{r \to \infty} I_r $.
