@@ -359,6 +359,25 @@ Determinați liniile de cîmp care conțin punctul $ M(1, 0, 1) $.
     \item $ \dfrac{dx}{2xz} = \dfrac{dy}{2yz} = \dfrac{dz}{x^2 - y^2} $.
 \end{enumerate}
 
+{
+    \color{blue}
+    \emph{Rezolvare (a):} Din primul și ultimul raport obținem:
+    \[
+        \dfrac{dx}{x - 2a} = \dfrac{dz}{z},
+    \]
+    care conduce la integrala primă $ \dfrac{x - 2a}{z} = c_1 $.
+
+    Pentru a doua integrală primă, amplificăm primul raport cu $ x $,
+    pe al doilea cu $ y $ și pe al treilea cu $ z $ și, prin egalare cu 
+    ultimul raport obținem:
+    \[
+        \dfrac{xdx + ydy + zdz}{-y(x^2 + y^2 + z^2)} = \dfrac{dz}{-2yz} \Longrightarrow %
+        \dfrac{d(x^2 + y^2 + z^2)}{x^2 + y^2 + z^2} = \dfrac{dz}{z},
+    \]
+    care conduce la integrala primă $ \dfrac{x^2 + y^2 + z^2}{z} = c_2 $.
+
+    Se arată independența funcțională a celor două integrale prime etc.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -369,7 +388,7 @@ explicații, împreună cu exemple cunoscute din cazul cîmpurilor fizice, se po
 găsi pe \href{https://en.wikipedia.org/wiki/Field\_line}{Wikipedia}.
 
 Metoda rezolvării ecuațiilor diferențiale în mod grafic, folosind \emph{cîmpul %
-  tangent} (eng.\ \texttt{slope field}), cu semnificația fizică a cîmpului de
+tangent} (eng.\ \texttt{slope field}), cu semnificația fizică a cîmpului de
 viteze, poate fi foarte utilă. Ea este prezentată succint pe
 \href{https://en.wikipedia.org/wiki/Slope\_field}{Wikipedia} și mai detaliat,
 inclusiv cu exerciții rezolvate, la \href{https://www.khanacademy.org/math/ap-calculus-ab/ab-differential-equations-new/ab-7-3/v/creating-a-slope-field}{Khan Academy}.
@@ -391,12 +410,12 @@ accesînd link-ul de \href{https://www.geogebra.org/m/u3xregNW}{aici}.
 
 De exemplu, reluăm primul exercițiu rezolvat:
 \[
-  \vec{V} = (z - y)\vec{i} + (x - z)\vec{j} + (y - x)\vec{k},
+    \vec{V} = (z - y)\vec{i} + (x - z)\vec{j} + (y - x)\vec{k},
 \]
 unde am găsit liniile de cîmp:
 \begin{align*}
-  L_1 &: x + y + z = c_1 \\
-  L_2 &: x^2 + y^2 + z^2 = c_2.
+    L_1 &: x + y + z = c_1 \\
+    L_2 &: x^2 + y^2 + z^2 = c_2.
 \end{align*}
 
 Prima linie de cîmp este un plan, iar a doua este o sferă. Grafic, acestea
@@ -410,16 +429,16 @@ pentru a putea fi rotită, introducînd componentele cîmpului în link-ul de
 mai sus.
 
 \begin{figure}[!htb]
-  \centering
-  \includegraphics[scale=0.5]{figs/vector-field2.png}
-  \caption{Liniile de cîmp $ L_1 $, plane paralele}
+    \centering
+    \includegraphics[scale=0.5]{figs/vector-field2.png}
+    \caption{Liniile de cîmp $ L_1 $, plane paralele}
 \end{figure}
 
 
 \begin{figure}[!htb]
-  \centering
-  \includegraphics[scale=0.5]{figs/vector-field1.png}
-  \caption{Liniile de cîmp $ L_2 $, sfere concentrice}
+    \centering
+    \includegraphics[scale=0.5]{figs/vector-field1.png}
+    \caption{Liniile de cîmp $ L_2 $, sfere concentrice}
 \end{figure}
 
 %%% Local Variables:
