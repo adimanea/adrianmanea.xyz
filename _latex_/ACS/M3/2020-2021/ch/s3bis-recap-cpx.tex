@@ -56,7 +56,7 @@
 $ \Gamma_r $ este cercul centrat în origine și de rază $ r $. Considerăm funcția complexă asociată
 $ f(z) = \dfrac{1}{(1 + z^4)^2} $ sau, respectiv, $ f(z) = \dfrac{1}{(1 + z^2)^4} $ și se calculează
 reziduurile pentru integrarea lui $ f(z) $ pe $ C $. Integrala reală revine la a calcula limita
-$ r \to \infty $ a integralei. Dar, conform lemei Jordan, integrala pe semicercul $ \Gamma_r $
+$ r \to \infty $ a integralei complexe, deoarece conform lemei Jordan, integrala pe semicercul $ \Gamma_r $
 este nulă. Rămîne calculul cu reziduuri.
 
 Pe scurt:
@@ -67,15 +67,14 @@ $ f(z) = \dfrac{P(z)}{Q(z)} $.
 Calculăm:
 \begin{align*}
     I_r &= \ds\int_\Gamma f(z) dz = \ds\int_{-r}^r f(x) dx + \ds\int_\gamma f(z) dz \\
-        &= 2 \pi i \ds\sum_{k=1}^n \mathrm{Rez}(f, z_k) + \pi i \ds\sum_{k=1}^n \mathrm{Rez}(f, z'_k),
+        &= 2 \pi i \ds\sum_{k=1}^n \mathrm{Rez}(f, z_k),
 \end{align*}
-
-pentru $ z_k $ pol cu $ \dr{Im}z_k > 0 $ și $ z'_k $ pol simplu, cu $ \dr{Im}z_k = 0 $ (\textbf{teorema semireziduurilor}).
 
 Apoi:
 \[
     \lim_{r \to \infty} I_r = \int_{-\infty}^\infty \dfrac{P(x)}{Q(x)} dx + \lim_{r \to \infty} \int_\gamma f(z) dz.
 \]
 
-Și, deoarece $ \ds\lim_{r \to \infty} |z f(z)| = 0 $, rezultă, cu lema Jordan, că $ \ds\lim_{r \to \infty} \int_\gamma f(z) dz = 0 $,
-deci integrala căutată este egală cu $ \ds\lim_{r \to \infty} I_r $.
+Și, deoarece $ \ds\lim_{r \to \infty} |z f(z)| = 0 $, rezultă, cu lema Jordan, că 
+integrala pe semicerc e nulă, adică $ \ds\lim_{r \to \infty} \int_\gamma f(z) dz = 0 $,
+deci integrala reală căutată este egală cu rezultatul obținut cu teorema reziduurilor.
