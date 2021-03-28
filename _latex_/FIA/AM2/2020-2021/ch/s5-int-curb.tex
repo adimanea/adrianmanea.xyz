@@ -1,0 +1,284 @@
+%! TEX root = ../am2-20-21.tex
+
+\chapter{Integrale curbilinii}
+\index{integrale!curbilinii}
+
+\section{Elemente de teorie}
+
+\textbf{Integrale curbilinii de speța întîi}
+
+Fie $ \gamma = \gamma(t) $ o curbă netedă, definită pe un interval 
+$ t \in [a, b] $. Se definește integrala curbilinie a unei
+funcții $ f : \RR^3 \to \RR, f = f(x, y, z) $ prin formula:
+\[
+  \int_\gamma f(x, y, z) ds = \int_a^b f(x(t), y(t), z(t)) \cdot %
+  \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2} dt.
+\]
+
+De asemenea, cîteva cazuri particulare de interes sînt:
+\begin{itemize}
+\item \emph{lungimea curbei $ \gamma $} se obține pentru $ f = 1 $,
+  deci:
+  \[
+    \ell(\gamma) = \int_a^b \sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2} dt;
+  \]
+\item dacă funcția $ f $ reprezintă \emph{densitatea} unui fir pe care
+  îl aproximăm cu o curbă netedă $ \gamma $, atunci \emph{masa firului}
+  se calculează cu formula:
+  \[
+    M(\gamma) = \int_\gamma f(x,y,z) ds;
+  \]
+\item în aceeași ipoteză de mai sus, \emph{coordonatele centrului de %
+    greutate} al firului, $ x_i^G $ se calculează cu formula
+  (am notat $ x_1 = x, x_2 = y, x_3 = z $):
+  \[
+    x_i^G = \dfrac{1}{M} \int_\gamma x_i f(x_1, x_2, x_3) ds,
+  \]
+  unde $ M $ este masa calculată mai sus.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Integrala curbilinie de speța a doua}
+
+Fie $ \omega = Pdx + Qdy + Rdz $ o 1-formă diferențială. Se definește
+integrala curbilinie a formei $ \omega $ în lungul curbei $ \gamma $ ca mai sus
+prin formula:
+\[
+  \int_\gamma \omega = \int_a^b (P \circ \gamma) x' + (Q \circ \gamma) y' + %
+  (R \circ \gamma) z' dt,
+\]
+unde $ \gamma = \gamma(t), t \in [a, b] $ este o parametrizare a curbei $ \gamma $.
+
+O aplicație fizică importantă a integralelor curbilinii de speța a doua
+este calculul \emph{circulației} cîmpurilor vectoriale.
+
+Fie, deci, un cîmp vectorial în spațiu:
+\[
+    \vec{V} = P(x, y, z)\vec{i} + Q(x, y, z)\vec{j} + R(x, y, z) \vec{k}.
+\]
+Atunci \emph{circulația\footnotemark} cîmpului vectorial în lungul unei curbe netede $ \gamma $
+se calculează cu integrala curbilinie:
+\[
+    \int_\gamma P(x, y, z) dx + Q(x, y, z) dy + R(x, y, z) dz
+\]
+și putem asocia o 1-formă diferențială cîmpului, anume:
+\[
+    \omega = P(x, y, z) dx + Q(x, y, z)dy + R(x, y, z) dz.
+\]
+
+\footnotetext{Circulația unui cîmp vectorial este analogul fluxului, dar
+    în dimensiune 1. Astfel, dacă fluxul se calculează pentru cîmpuri care
+    traversează o suprafață (vom întîlni conceptul în lecția despre integrale
+    de suprafață), circulația se calculează pentru cîmpuri în lungul
+unor curbe.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formula Green-Riemann}
+\index{formula!Green-Riemann}
+
+Această formulă, care face parte din formulele integrale esențiale pe care
+le vom studia, ne permite să transformăm o integrală curbilinie de speța a doua
+într-una dublă.
+
+Mai precis, avem formula:
+\[
+  \int_\gamma Pdx + Qdy = %
+  \iint_K \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} dxdy,
+\]
+unde $ K $ este suprafața bidimensională închisă de curba $ \gamma $.
+\index{teorema!Green-Riemann}
+
+\textbf{Observație importantă:} Pentru a putea aplica formula Green-Riemann,
+este necesar ca drumul $ \gamma $ să fie închis, pentru a putea descrie
+o suprafață închisă $ K $! De asemenea, evident, forma diferențială trebuie
+să fie de clasă $ \kal{C}^1 $, inclusiv în $ K $, pentru a putea calcula
+derivatele parțiale.
+
+\subsection{Forme diferențiale închise}
+
+Fie $ \alpha = Pdx + Qdy $ o 1-formă diferențială de clasă $ \kal{C}^1 $ pe o
+vecinătate a $ K = \dr{Int}(\gamma) $. Această formă diferențială se numește
+\emph{închisă} dacă are loc:
+\[
+  \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}.
+\]
+
+Se poate observa, folosind formula Green-Riemann, că pentru forme diferențiale
+închise, integrala curbilinie în lungul oricărui drum este nulă. Această observație
+se mai numește \emph{independența de drum a integralei curbilinii} sau
+\emph{teorema Poincar\'e}. \index{teorema!Poincar\'e}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
+1. Să se calculeze următoarele integrale curbilinii de speța întîi:
+\begin{enumerate}[(a)]
+\item $ \ds\int_\gamma xds $, unde $ \gamma : y = x^2, x \in [0, 2] $;
+\item $ \ds\int_\gamma y^5ds $, unde $ \gamma : x = \dfrac{y^4}{4}, y \in [0, 2] $;
+\item $ \ds\int_\gamma x^2ds $, unde $ \gamma: x^2 + y^2 = 2, x, y \geq 0 $;
+\item $ \ds\int_\gamma y^2ds $, unde $ \gamma: x^2 + y^2 = 4, x \leq 0, y \geq 0 $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+2. Calculați, direct și aplicînd formula Green-Riemann, integrala curbilinie
+$ \ds\int_\gamma \alpha $ în următoarele cazuri:
+\begin{enumerate}[(a)]
+\item $ \alpha = y^2 dx + x dy $, unde $ \gamma $ este pătratul cu vîrfurile
+  $ A(0,0), B(2, 0), C(2, 2), D(0, 2) $;
+\item $ \alpha = ydx + x^2 dy $, unde $ \gamma $ este cercul centrat în origine
+  și de rază $ 2 $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+3. Calculați următoarele integrale curbilinii de speța a doua:
+\begin{enumerate}[(a)]
+\item $ \ds\int_\gamma xdy - ydx $, unde $ \gamma: x^2 + y^2 = 4, y = x\sqrt{3} \geq 0 $
+  și $ y = \dfrac{x}{\sqrt{3}} $;
+\item $ \ds\int_\gamma (x + y) dx + (x - y) dy $, pe domeniul:
+  \[
+    \gamma: x^2 + y^2 = 4, y \geq 0;
+  \]
+\item $ \ds\int_\gamma \dfrac{y}{x + 1} dx + dy $, unde $ \gamma $ este
+  triunghiul cu vîrfurile $ A(2, 0), B(0, 0), C(0, 2) $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+4. Să se calculeze $ \ds\int_\gamma ydx + xdy $ pe un drum de la $ A(2, 1) $
+la $ B(1, 3) $.
+
+\vspace{0.3cm}
+
+5. Să se calculeze circulația cîmpului de vectori $ \vec{V} $ de-a lungul curbei
+$ \gamma $, pentru:
+$ \vec{V} = -(x^2 + y^2) \vec{i} - \vec{x^2 - y^2} \vec{j} $, cu:
+\[
+  \gamma: \{ x^2 + y^2 = 4, y < 0 \} \cup \{ x^2 + y^2 - 2x = 0, y \geq 0 \}
+\]
+
+\vspace{0.3cm}
+
+6. Să se calculeze masa firului material $ \gamma $, cu ecuațiile parametrice:
+\[
+  \begin{cases}
+    x(t) &= t \\
+    y(t) &= t^2/2, t \in [0, 1] \\
+    z(t) &= t^3/3
+  \end{cases}
+\]
+iar densitatea $ f(x, y, z) = \sqrt{2y} $.
+
+\vspace{0.3cm}
+
+7. Fie forma diferențială:
+\[
+  \alpha = \dfrac{-y}{x^2 + y^2} dx + \dfrac{x}{x^2 + y^2} dy.
+\]
+Să se calculeze $ \ds\int_\gamma \alpha $, unde $ \gamma $ este cercul centrat
+în origine și cu raza 2.
+
+\vspace{0.3cm}
+
+8. Să se calculeze integrala curbilinie $ \ds\int_\gamma xydx + \dfrac{x^2}{2} dy $,
+pe conturul:
+\[
+  \gamma : \{ x^2 + y^2 = 1, x \leq 0 \leq y \} \cup \{ x + y = -1, x, y < 0 \}.
+\]
+\emph{Indicație:} Curba $ \gamma $ nu este închisă, deci nu putem aplica
+formula Green-Riemann. Considerăm segmentul orientat $ [AB] $, cu
+$ A(0, -1), B(0, 1) $, cu care închidem curba. Definim $ C = \gamma \cup [AB] $
+și acum putem aplica Green-Riemann pe $ C $. Vom avea, de fapt:
+\[
+  \int_C \alpha = \int_\gamma \alpha + \int_{[AB]} \alpha,
+\]
+unde $ \alpha $ este forma diferențială de integrat.
+
+Putem calcula acum integrala pe $ C $ cu Green-Riemann, iar cea pe $ [AB] $ cu
+definiția, obținînd în final integrala pe $ \gamma $.
+
+\vspace{0.3cm}
+
+9. Calculați, folosind integrala curbilinie:
+\begin{enumerate}[(a)]
+\item lungimea unui cerc de rază 2;
+\item lungimea segmentului $ AB $, cu $ A(1, 2) $ și $ B(3, 5) $;
+\item lungimea arcului de parabolă $ y = 3x^2 $, cu $ x \in [-2, 2] $;
+\item lungimea arcului de hiperbolă $ xy = 1 $, cu $ x \in [1, 2] $.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții suplimentare (ETTI)}
+
+Calculați integralele curbilinii de mai jos:
+
+\textbf{Speța întîi}:
+\begin{enumerate}[(a)]
+\item $ \ds\int_\gamma ye^{-x} ds $, unde parametrizarea curbei $ \gamma $
+  este dată de:
+  \[
+    \gamma : %
+    \begin{cases}
+      x(t) &= \ln(1 + t^2) \\
+      y(t) &= 2 \arctan t - t
+    \end{cases}, \quad t \in [0, 1];
+  \]
+\item $ \ds\int_\gamma (x^2 + y^2) \ln z ds $, unde parametrizarea curbei
+  $ \gamma $ este dată de:
+  \[
+    \gamma : %
+    \begin{cases}
+      x(t) &= e^t \cos t \\
+      y(t) &= e^t \sin t \\
+      z(t) &= e^t
+    \end{cases}, \quad t \in [0, 1];
+  \]
+\item $ \ds\int_\gamma xyz ds $, unde parametrizarea curbei $ \gamma $ este:
+  \[
+    \gamma : %
+    \begin{cases}
+      x(t) &= t \\
+      & \\
+      y(t) &= \dfrac{2}{3}\sqrt{2t^3} \\
+      & \\
+      z(t) &= \dfrac{1}{2} t^2
+    \end{cases}, \quad t \in [0, 1];
+  \]
+\item $ \ds\int_\gamma x^2y ds $, unde $ \gamma = [AB] \cup [BC] $,
+  iar capetele segmentelor sînt $ A(-1, 1), B(2, 1), C(2, 5) $;
+\item $ \ds\int_\gamma x^2 ds $, unde $ \gamma $ este dată de:
+  \[
+    \gamma : x^2 + y^2 = 2, \quad x, y \geq 0;
+  \]
+\item $ \ds\int_\gamma (x^2 + y^2) ds $, unde $ \gamma $ este sectorul
+  de cerc $ x^2 + y^2 = 1 $, parcurs de la $ A(0, -1) $ la $ B(1, 0) $;
+\item Calculați lungimea segmentului $ [AB] $, unde $ A(1, 2), B(3, 5) $.
+\end{enumerate}
+
+\textbf{Speța a doua}: $ \ds\int_\gamma \omega $ pentru:
+
+\begin{enumerate}[(a)]
+\item $ \omega = (x^2 + y^2) dx + (x^2 - y^2) dy $, unde $ \gamma $ este
+  dată de:
+  \[
+    \gamma: %
+    \begin{cases}
+      x(t) &= \sqrt{t} \\
+      y(t) &= \sqrt{t + 1}
+    \end{cases}, \quad t \in [1, 4];
+  \]
+\item $ \omega = \dfrac{1}{y^2 + 1} dx + \dfrac{y}{x^2 + 1} dy $, unde
+  $ \gamma $ este dată de:
+  \[
+    \gamma: %
+    \begin{cases}
+      x(t) &= t^2 \\
+      y(t) &= t
+    \end{cases}, \quad t \in [0, 1];
+  \]
+\item $ \omega = \sqrt{x} dx + xy^2 dy $, unde $ \gamma $ este
+  parabola $ y = x^2 $, pentru $ x \in [0, 1] $.
+\end{enumerate}
+
