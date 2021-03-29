@@ -76,12 +76,22 @@ regăsește direct într-un tabel de valori.
   $ g(t) = \ds\int_0^t f(\tau) d\tau $. Atunci:
   \[
     \Lap g(t) = \dfrac{1}{s} F(s);
-  \]
+\]
 \item \textbf{Teorema integrării imaginii:} Fie $ \Lap f(t) = F(s) $ și $ G $ o primitivă a
-  lui $ F $ în $ S(s_0) $, cu $ G(\infty) = 0 $. Atunci:
-  \[
-    \Lap \dfrac{f(t)}{t} = -G(s).
-  \]
+    lui $ F $ în $ S(s_0) $, cu $ G(\infty) = 0 $. Atunci:
+    \[
+        \Lap \dfrac{f(t)}{t} = -G(s).
+    \]
+
+\item \textbf{Teorema de convoluție:} Definim \emph{produsul de convoluție} al două
+    funcții, $ h = f \ast g $, prin formula:
+    \[
+        h(t) = \int_0^t f(\tau) \cdot g(t - \tau) d\tau
+    \]
+    și fie $ F, G $ transformatele Laplace ale funcțiilor $ f $ și respectiv $ g $,
+    presupuse original. Dacă $ H $ este imaginea Laplace a funcției $ h $, atunci
+    $ H(s) = F(s) \cdot G(s) $. Cu alte cuvinte, transformata Laplace acționează
+    ca înmulțire pe produsul de convoluție.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -92,31 +102,31 @@ regăsește direct într-un tabel de valori.
 adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind, de fapt,
 înmulțite cu \emph{funcția lui Heaviside}:
 \[
-  u(t) =
-  \begin{cases}
-    1, & t \geq 0 \\
-    0, & t < 0 
-  \end{cases}.
+    u(t) =
+    \begin{cases}
+        1, & t \geq 0 \\
+        0, & t < 0 
+    \end{cases}.
 \]
 
 \begin{center}
-\begin{tabular}{c | c}
-  $ f(t) = \Lap^{-1} (F(s)) $ & $ F(s) = \Lap(f(t)) $ \\
-  \hline\hline
-  $ u(t) $ & $ \dfrac{1}{s} $ \\
-  $ u(t - \tau) $ & $ \dfrac{1}{s} e^{-\tau s} $ \\
-  $ t $ & $ \dfrac{1}{s^2} $ \\
-  $ t^n $ & $ \dfrac{n!}{s^{n+1}} $ \\
-  $ t^n e^{-\alpha t} $ & $ \dfrac{n!}{(s + \alpha)^{n+1}} $ \\
-  $ e^{-\alpha t} $ & $ \dfrac{1}{s + \alpha} $ \\
-  $ \sin (\omega t) $ & $ \dfrac{\omega}{s^2 + \omega^2} $ \\
-  $ \cos (\omega t) $ & $ \dfrac{s}{s^2 + \omega^2} $ \\
-  $ \sinh(\alpha t) $ & $ \dfrac{\alpha}{s^2 - \alpha^2} $ \\
-  $ \cosh(\alpha t) $ & $ \dfrac{s}{s^2 - \alpha^2} $ \\
-  $ e^{-\alpha t}\sin(\omega t) $ & $ \dfrac{\omega}{(s + \alpha)^2 + \omega^2} $ \\
-  $ e^{-\alpha t}\cos(\omega t) $ & $ \dfrac{s + \alpha}{(s + \alpha^2) + \omega^2} $ \\
-  $ \ln t $ & $ -\dfrac{1}{s} \big( \ln s + \gamma\footnotemark \big) $
-\end{tabular}
+    \begin{tabular}{c | c}
+        $ f(t) = \Lap^{-1} (F(s)) $ & $ F(s) = \Lap(f(t)) $ \\
+        \hline\hline
+        $ u(t) $ & $ \dfrac{1}{s} $ \\
+        $ u(t - \tau) $ & $ \dfrac{1}{s} e^{-\tau s} $ \\
+        $ t $ & $ \dfrac{1}{s^2} $ \\
+        $ t^n $ & $ \dfrac{n!}{s^{n+1}} $ \\
+        $ t^n e^{-\alpha t} $ & $ \dfrac{n!}{(s + \alpha)^{n+1}} $ \\
+        $ e^{-\alpha t} $ & $ \dfrac{1}{s + \alpha} $ \\
+        $ \sin (\omega t) $ & $ \dfrac{\omega}{s^2 + \omega^2} $ \\
+        $ \cos (\omega t) $ & $ \dfrac{s}{s^2 + \omega^2} $ \\
+        $ \sinh(\alpha t) $ & $ \dfrac{\alpha}{s^2 - \alpha^2} $ \\
+        $ \cosh(\alpha t) $ & $ \dfrac{s}{s^2 - \alpha^2} $ \\
+        $ e^{-\alpha t}\sin(\omega t) $ & $ \dfrac{\omega}{(s + \alpha)^2 + \omega^2} $ \\
+        $ e^{-\alpha t}\cos(\omega t) $ & $ \dfrac{s + \alpha}{(s + \alpha^2) + \omega^2} $ \\
+        $ \ln t $ & $ -\dfrac{1}{s} \big( \ln s + \gamma\footnotemark \big) $
+    \end{tabular}
 \end{center}
 
 \footnotetext{Constanta Euler-Mascheroni, $ \gamma \simeq 0,577\dots \in \RR - \QQ $}
@@ -128,28 +138,28 @@ adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind,
 
 1. Calculați transformatele Laplace pentru funcțiile (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = 1, t \geq 0 $;
-\item $ f(t) = t, t \geq 0 $;
-\item $ f(t) = t^n, n \in \NN $;
-\item $ f(t) = e^{at}, t \geq 0, a \in \RR $;
-\item $ f(t) = \sin(at), t \geq 0, a \in \RR $.
+    \item $ f(t) = 1, t \geq 0 $;
+    \item $ f(t) = t, t \geq 0 $;
+    \item $ f(t) = t^n, n \in \NN $;
+    \item $ f(t) = e^{at}, t \geq 0, a \in \RR $;
+    \item $ f(t) = \sin(at), t \geq 0, a \in \RR $.
 \end{enumerate}
 
 \emph{Soluție:} (a) Avem direct din definiție:
 \[
-  F(s) = \int_0^\infty e^{-st} dt = \lim_{n \to \infty} \int_0^n e^{-st} dt = \frac{1}{s}, s > 0.
+    F(s) = \int_0^\infty e^{-st} dt = \lim_{n \to \infty} \int_0^n e^{-st} dt = \frac{1}{s}, s > 0.
 \]
 
 (b) Integrăm prin părți și obținem $ F(s) = \dfrac{1}{s^2} $.
 
 (c) Facem substituția $ st = \tau $ și găsim:
 \[
-  F(s) = \int_0^\infty e^{-st} t^n dt = \frac{1}{s^{n+1}} \int_0^\infty e^{-\tau} \tau^n d\tau = %
-  \frac{n!}{s^{n+1}},
+    F(s) = \int_0^\infty e^{-st} t^n dt = \frac{1}{s^{n+1}} \int_0^\infty e^{-\tau} \tau^n d\tau = %
+    \frac{n!}{s^{n+1}},
 \]
 pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
 \[
-  \Gamma(a) = \int_0^\infty x^{a-1}e^{-x} dx, a > 0, \quad \Gamma(n + 1) = n!, n \in \NN.
+    \Gamma(a) = \int_0^\infty x^{a-1}e^{-x} dx, a > 0, \quad \Gamma(n + 1) = n!, n \in \NN.
 \]
 
 (d) $ F(s) = \ds\int_0^\infty e^{at} e^{-st} dt = \ds\int_0^\infty e^{-(s - a)t} dt = %
@@ -157,7 +167,7 @@ pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
 
 (e) Integrăm prin părți și ajungem la:
 \[
-  F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
+    F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
 \]
 
 \vspace{0.3cm}
@@ -165,19 +175,19 @@ pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
 2. Folosind tabelul de valori și proprietățile, să se determine transformatele Laplace
 pentru funcțiile (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = 5 $;
-\item $ f(t) = 3t + 6t^2 $;
-\item $ f(t) = e^{-3t} $;
-\item $ f(t) = 5e^{-3t} $;
-\item $ f(t) = \cos (5t) $;
-\item $ f(t) = \sin (3t) $;
-\item $ f(t) = 3(t-1) + e^{-t-1} $;
-\item $ f(t) = 3t^3(t - 1) + e^{-5t} $;
-\item $ f(t) = 5e^{-3t} \cos (5t) $;
-\item $ f(t) = e^{2t} \sin (3t) $;
-\item $ f(t) = te^{-t} \cos (4t) $;
-\item $ f(t) = t^2 \sin (3t) $;
-\item $ f(t) = t^3 \cos t $.
+    \item $ f(t) = 5 $;
+    \item $ f(t) = 3t + 6t^2 $;
+    \item $ f(t) = e^{-3t} $;
+    \item $ f(t) = 5e^{-3t} $;
+    \item $ f(t) = \cos (5t) $;
+    \item $ f(t) = \sin (3t) $;
+    \item $ f(t) = 3(t-1) + e^{-t-1} $;
+    \item $ f(t) = 3t^3(t - 1) + e^{-5t} $;
+    \item $ f(t) = 5e^{-3t} \cos (5t) $;
+    \item $ f(t) = e^{2t} \sin (3t) $;
+    \item $ f(t) = te^{-t} \cos (4t) $;
+    \item $ f(t) = t^2 \sin (3t) $;
+    \item $ f(t) = t^3 \cos t $.
 \end{enumerate}
 
 \emph{Indicații:} În majoritatea cazurilor, se folosește tabelul și proprietatea de liniaritate.
@@ -194,15 +204,15 @@ pentru funcțiile (presupuse original):
 3. Folosind teorema derivării imaginii, să se determine transformatele Laplace pentru funcțiile
 (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = t $;
-\item $ f(t) = t^2 $;
-\item $ f(t) = t\sin t $;
-\item $ f(t) = te^t $.
+    \item $ f(t) = t $;
+    \item $ f(t) = t^2 $;
+    \item $ f(t) = t\sin t $;
+    \item $ f(t) = te^t $.
 \end{enumerate}
 
 \emph{Indicație:} Conform proprietății de derivare a imaginii, avem:
 \[
-  \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
+    \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
 \]
 
 \vspace{0.3cm}
@@ -210,15 +220,15 @@ pentru funcțiile (presupuse original):
 4. Folosind teorema integrării originalului, să se determine transformatele Laplace pentru
 funcțiile (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = \ds\int_0^t \cos (2\tau) d\tau $;
-\item $ f(t) = \ds\int_0^t e^{3 \tau} \cos(2 \tau) d\tau $;
-\item $ f(t) = \ds\int_0^t \tau e^{-3\tau} d\tau $.
+    \item $ f(t) = \ds\int_0^t \cos (2\tau) d\tau $;
+    \item $ f(t) = \ds\int_0^t e^{3 \tau} \cos(2 \tau) d\tau $;
+    \item $ f(t) = \ds\int_0^t \tau e^{-3\tau} d\tau $.
 \end{enumerate}
 
 \emph{Indicație:} Conform proprietății de integrare a originalului,
 avem:
 \[
-  \Lap \int_0^t f(\tau) d\tau = \frac{F(s)}{s}.
+    \Lap \int_0^t f(\tau) d\tau = \frac{F(s)}{s}.
 \]
 
 
@@ -232,48 +242,48 @@ sistemelor diferențiale de ordinul întîi sau superior.
 Aceste aplicații se bazează pe calculele care se pot obține imediat din definiția
 transformatei Laplace și a proprietăților sale:
 \begin{align*}
-  \Lap f' &= s \Lap f - f(0) \\
-  \Lap f^{''} &= s^2 \Lap f - sf(0) - f'(0).
+    \Lap f' &= s \Lap f - f(0) \\
+    \Lap f^{''} &= s^2 \Lap f - sf(0) - f'(0).
 \end{align*}
 
 De fapt, în general, avem:
 \[
-  \Lap f^{(n)} = s^n \Lap f - s^{n-1} f(0) - s^{n-2} f'(0) - \dots - f^{(n-1)}(0).
+    \Lap f^{(n)} = s^n \Lap f - s^{n-1} f(0) - s^{n-2} f'(0) - \dots - f^{(n-1)}(0).
 \]
 
 De asemenea, pentru integrale, știm deja teorema integrării originalului:
 \[
-  \Lap \int_0^t f(\tau) d\tau = \dfrac{1}{s} F(s), \quad F(s) = \Lap f(t).
+    \Lap \int_0^t f(\tau) d\tau = \dfrac{1}{s} F(s), \quad F(s) = \Lap f(t).
 \]
 
 Rezultă, folosind transformarea inversă:
 \[
-  \int_0^t f(\tau) d\tau = \Lap^{-1} \Big( \dfrac{1}{s} F(s) \Big).
+    \int_0^t f(\tau) d\tau = \Lap^{-1} \Big( \dfrac{1}{s} F(s) \Big).
 \]
 
 De exemplu, pentru a rezolva ecuația diferențială:
 \[
-  y^{\prime \prime} + ay^\prime + by = r(t), \quad y(0) = K_0, y'(0) = K_1,
+    y^{\prime \prime} + ay^\prime + by = r(t), \quad y(0) = K_0, y'(0) = K_1,
 \]
 aplicăm transformata Laplace și folosim proprietățile de mai sus. Fie $ Y = \Lap y(t) $
 
 Se obține ecuația algebrică:
 \[
-  (s^2 Y - sy(0) - y'(0)) + a(sY - y(0)) + bY = R(s),
+    (s^2 Y - sy(0) - y'(0)) + a(sY - y(0)) + bY = R(s),
 \]
 unde $ R(s) = \Lap r $. Forma echivalentă este:
 \[
-  (s^2 + as + b) Y = (s + a)y(0) + y'(0) + R(s).
+    (s^2 + as + b) Y = (s + a)y(0) + y'(0) + R(s).
 \]
 
 Împărțim prin $ s^2 + as + b $ și folosim formula:
 \[
-  Q(s) = \frac{1}{s^2 + as + b} =
-  \frac{1}{(s + \frac{1}{2}a)^2 + b - \frac{1}{4}a^2},
+    Q(s) = \frac{1}{s^2 + as + b} =
+    \frac{1}{(s + \frac{1}{2}a)^2 + b - \frac{1}{4}a^2},
 \]
 de unde rezultă:
 \[
-  Y(s) = \big( (s + a) y(0) + y'(0)\big) Q(s) + R(s) Q(s).
+    Y(s) = \big( (s + a) y(0) + y'(0)\big) Q(s) + R(s) Q(s).
 \]
 
 În forma aceasta, descompunem $ Y(s) $ în fracții simple, dacă este nevoie și
@@ -283,28 +293,28 @@ folosim tabelul de transformate Laplace, pentru a afla $ y = \Lap^{-1}(Y) $.
 
 De exemplu:
 \[
-  y^{\prime\prime} - y = t, \quad y(0) = 1, y'(0) = 1.
+    y^{\prime\prime} - y = t, \quad y(0) = 1, y'(0) = 1.
 \]
 
 \emph{Soluție:} Aplicăm transformata Laplace și ajungem la ecuația:
 \begin{align*}
-  s^2 Y - sy(0) - y'(0) - Y &= \frac{1}{s^2} \\
-  (s^2 - 1)Y &= s + 1 + \frac{1}{s^2}.
+    s^2 Y - sy(0) - y'(0) - Y &= \frac{1}{s^2} \\
+    (s^2 - 1)Y &= s + 1 + \frac{1}{s^2}.
 \end{align*}
 
 Rezultă $ Q = \dfrac{1}{s^2 - 1} $ și ecuația devine:
 \begin{align*}
-  Y &= (s + 1)Q + \frac{1}{s^2} Q \\
-    &= \frac{s + 1}{s^2 - 1} + \frac{1}{s^2(s^2 - 1)} \\
-    &= \frac{1}{s - 1} + \Big( \frac{1}{s^2 - 1} - \frac{1}{s^2} \Big)
+    Y &= (s + 1)Q + \frac{1}{s^2} Q \\
+      &= \frac{s + 1}{s^2 - 1} + \frac{1}{s^2(s^2 - 1)} \\
+      &= \frac{1}{s - 1} + \Big( \frac{1}{s^2 - 1} - \frac{1}{s^2} \Big)
 \end{align*}
 
 Folosind tabelul și proprietățile transformatei Laplace, obținem soluția:
 \begin{align*}
-  y(t) &= \Lap^{-1} Y \\
-       &= \Lap^{-1} \Big( \frac{1}{s^{-1}} \Big) + \Lap^{-1} \Big( \frac{1}{s^2 - 1} \Big) - %
+    y(t) &= \Lap^{-1} Y \\
+         &= \Lap^{-1} \Big( \frac{1}{s^{-1}} \Big) + \Lap^{-1} \Big( \frac{1}{s^2 - 1} \Big) - %
          \Lap^{-1} \Big( \frac{1}{s^2} \Big) \\
-       &= e^t + \sinh t - t.
+         &= e^t + \sinh t - t.
 \end{align*}
 
 \vspace{0.3cm}
@@ -316,12 +326,12 @@ Folosind tabelul și proprietățile transformatei Laplace, obținem soluția:
 \indent\indent 1. Să se rezolve următoarele probleme Cauchy, folosind transformata
 Laplace:
 \begin{enumerate}[(a)]
-\item $ y'(t) + 2y(t) = 4t, y(0) = 1 $ ;
-\item $ y'(t) + y(t) = \sin 4t, y(0) = 0 $;
-\item $ y^{\prime\prime}(t) + 2y'(t) + 5y(t) = 0, y(0) = 0, y'(0) = 0 $;
-\item $ 2y^{\prime\prime}(t) - 6y'(t) + 4y(t) = 3e^{3t}, y(0) = 1, y'(0) = -1 $;
-\item $ y^{\prime\prime}(t) - 2y(t) + y(t) = e^t, y(0) = -2, y'(0) = -3 $;
-\item $ y^{\prime\prime}(t) + 4y(t) = 3\cos^2(t), y(0) = 1, y'(0) = 2 $.  
+    \item $ y'(t) + 2y(t) = 4t, y(0) = 1 $ ;
+    \item $ y'(t) + y(t) = \sin 4t, y(0) = 0 $;
+    \item $ y^{\prime\prime}(t) + 2y'(t) + 5y(t) = 0, y(0) = 0, y'(0) = 0 $;
+    \item $ 2y^{\prime\prime}(t) - 6y'(t) + 4y(t) = 3e^{3t}, y(0) = 1, y'(0) = -1 $;
+    \item $ y^{\prime\prime}(t) - 2y(t) + y(t) = e^t, y(0) = -2, y'(0) = -3 $;
+    \item $ y^{\prime\prime}(t) + 4y(t) = 3\cos^2(t), y(0) = 1, y'(0) = 2 $.  
 \end{enumerate}
 
 
@@ -329,27 +339,27 @@ Laplace:
 
 2. Să se rezolve următoarele sisteme diferențiale:
 \begin{enumerate}[(a)]
-\item $
-  \begin{cases}
-    x' + x + 4y &= 10 \\
-    x - y' - y &= 0 \\
-    x(0) = 4, & y(0) = 3
-  \end{cases}
-  $
-\item $
-  \begin{cases}
-    x' + x - y &= e^t \\
-    y' + y - x &= e^t \\
-    x(0) = 1, & y(0) = 1
-  \end{cases}
-  $
-\item $
-  \begin{cases}
-    x' + 2y' + x - y &= 5 \sin t \\
-    2x' + 3y' + x - y &= e^t \\
-    x(0) = 2, & y(0) = 1
-  \end{cases}
-  $
+    \item $
+        \begin{cases}
+            x' + x + 4y &= 10 \\
+            x - y' - y &= 0 \\
+            x(0) = 4, & y(0) = 3
+        \end{cases}
+        $
+    \item $
+        \begin{cases}
+            x' + x - y &= e^t \\
+            y' + y - x &= e^t \\
+            x(0) = 1, & y(0) = 1
+        \end{cases}
+        $
+    \item $
+        \begin{cases}
+            x' + 2y' + x - y &= 5 \sin t \\
+            2x' + 3y' + x - y &= e^t \\
+            x(0) = 2, & y(0) = 1
+        \end{cases}
+        $
 \end{enumerate}
 
 \emph{Indicație:} Aplicăm transformata Laplace fiecărei ecuații
@@ -370,47 +380,47 @@ Mellin-Fourier, pe care o prezentăm mai jos într-o variantă simplificată,
 mai potrivită pentru aplicații.
 
 \begin{theorem}[Mellin-Fourier]\label{thm:mellin-fourier}
-  \index{teorema!Mellin-Fourier}
-  Fie $ f $ o funcție original, $ F = \Lap f $.
+    \index{teorema!Mellin-Fourier}
+    Fie $ f $ o funcție original, $ F = \Lap f $.
 
-  Atunci are loc egalitatea:
-  \[
-    f(t) = \sum_{k=1}^n \Rez\left(F(p)e^{pt}, p_k\right).
-  \]
+    Atunci are loc egalitatea:
+    \[
+        f(t) = \sum_{k=1}^n \Rez\left(F(s)e^{st}, s_k\right).
+    \]
 \end{theorem}
 
 Deoarece avem mai multe moduri particulare de a calcula reziduurile, distingem
 și aici două calcule speciale:
 \begin{itemize}
-\item Dacă $ p_1, p_2, \dots, p_r $ sînt poli de ordin $ n_1, n_2, \dots, n_r $, atunci
-  formula de inversare se mai scrie:
-  \[
-    f(t) = \sum_{k=1}^r \dfrac{1}{(n_k - 1)!} \cdot %
-    \lim_{p \to p_k} \dfrac{d^{n_k - 1}}{dp^{n_k - 1}} \left[ %
-      F(p)(p - p_k)^{n_k} e^{pt} \right];
-  \]
-\item Dacă imaginea Laplace se poate scrie $ F(p) = \dfrac{A(p)}{B(p)} $,
-  unde $ A $ și $ B $ sînt polinoame cu coeficienți reali, astfel încît
-  $ \dr{grad}(A) < \dr{grad}B $, atunci formula de inversare devine:
-  \[
-    f(t) = \sum_k \Rez\left(\dfrac{A(p)}{B(p)}e^{pt}, p_k\right) + %
-    \sum_k 2 \dr{Re} \left( \Rez \left( \dfrac{A(p)}{B(p)}e^{pt}, p_k \right) \right),
-  \]
-  unde prima sumă se calculează pentru polii reali, iar cea de-a doua, pentru
-  polii complecși cu partea imaginară pozitivă.
+    \item Dacă $ s_1, s_2, \dots, s_r $ sînt poli de ordin $ n_1, n_2, \dots, n_r $, atunci
+        formula de inversare se mai scrie:
+        \[
+            f(t) = \sum_{k=1}^r \dfrac{1}{(n_k - 1)!} \cdot %
+            \lim_{s \to s_k} \dfrac{d^{n_k - 1}}{ds^{n_k - 1}} \left[ %
+            F(s)(s - s_k)^{n_k} e^{st} \right];
+        \]
+    \item Dacă imaginea Laplace se poate scrie $ F(s) = \dfrac{A(s)}{B(s)} $,
+        unde $ A $ și $ B $ sînt polinoame cu coeficienți reali, astfel încît
+        $ \dr{grad}(A) < \dr{grad}B $, atunci formula de inversare devine:
+        \[
+            f(t) = \sum_k \Rez\left(\dfrac{A(s)}{B(s)}e^{st}, s_k\right) + %
+            \sum_k 2 \dr{Re} \left( \Rez \left( \dfrac{A(s)}{B(s)}e^{st}, s_k \right) \right),
+        \]
+        unde prima sumă se calculează pentru polii reali, iar cea de-a doua, pentru
+        polii complecși cu partea imaginară pozitivă.
 \end{itemize}
 
 \textbf{Exemplu:} Determinați funcția original corespunzătoare imaginii
 Laplace:
 \[
-  F(p) = \dfrac{3p - 4}{p^2 - p - 6}.
+    F(s) = \dfrac{3s - 4}{s^2 - s - 6}.
 \]
 
-\emph{Soluție:} Observăm că avem $ p_1 = 3, p_2 = -2 $ poli simpli.
+\emph{Soluție:} Observăm că avem $ s_1 = 3, s_2 = -2 $ poli simpli.
 Atunci rezultă:
 \[
-  f(t) = \Rez\left( \dfrac{3p - 4}{p^2 - p - 6} e^{pt}, 3\right) + %
-  \Rez\left( \dfrac{3p - 4}{p^2 - p - 6} e^{pt}, -2 \right).
+    f(t) = \Rez\left( \dfrac{3s - 4}{s^2 - s - s} e^{st}, 3\right) + %
+    \Rez\left( \dfrac{3s - 4}{s^2 - s - 6} e^{st}, -2 \right).
 \]
 
 Cum ambii sînt poli simpli, reziduurile se calculează folosind
@@ -418,367 +428,32 @@ formula din teorma \ref{thm:calc-rez}(3) și se obține în final
 $ f(t) = e^{3t} + 2e^{-2t} $.
 
 \begin{remark}\label{rk:no-mellin}
-  Această problemă, ca și altele, pot fi rezolvate și fără formula de inversare.
-  Trebuie doar atenție și suficient exercițiu astfel încît, în afară de citirea
-  \qq{invers} a tabelului de transformate Laplace, să putem folosi și teoreme
-  de tip întîrziere, derivarea originalului etc. De exemplu, exercițiul de mai
-  sus putea începe cu descompunerea în fracții simple:
-  \[
-    \dfrac{3p - 4}{p^2 - p - 6} = \dfrac{A}{p - 3} + \dfrac{B}{p + 2}.
-  \]
-  Se determină $ A $ și $ B $, apoi se folosește tabelul de transformate.
+    Această problemă, ca și altele, pot fi rezolvate și fără formula de inversare.
+    Trebuie doar atenție și suficient exercițiu astfel încît, în afară de citirea
+    \qq{invers} a tabelului de transformate Laplace, să putem folosi și teoreme
+    de tip întîrziere, derivarea originalului etc. De exemplu, exercițiul de mai
+    sus putea începe cu descompunerea în fracții simple:
+    \[
+        \dfrac{3s - 4}{s^2 - s - 6} = \dfrac{A}{s - 3} + \dfrac{B}{s + 2}.
+    \]
+    Se determină $ A $ și $ B $, apoi se folosește tabelul de transformate.
 \end{remark}
 
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
 
-% \chapter{Transformata Z}
-% 
-% Această transformată se definește pe un caz discret, pornind de la:
-% \begin{definition}\label{def:semnal}\index{semnal!discret}
-%   Se numește \emph{semnal discret} o funcție $ x : \ZZ \to \CC $ dată
-%   de $ n \mapsto x_n $ sau, echivalent, $ x(n) $ ori $ x[n] $.
-% \end{definition}
-% 
-% Mulțimea semnalelor discrete se va nota cu $ S_d $, iar cele cu suport pozitiv
-% (nule pentru $ n < 0 $ se va nota $ S_d^+ $.
-% 
-% Un semnal particular este \emph{impulsul unitar discret} la momentul $ k $,
-% definit prin:\index{semnal!unitar}
-% \[
-%   \delta_k(n) = \begin{cases} 1, & n = k \\ 0 & n \neq k \end{cases},
-% \]
-% definit pentru $ k \in \ZZ $ fixat.
-% 
-% Pentru $ k = 0 $, vom nota $ \delta_0 = \delta $.
-% 
-% \begin{definition}\label{def:intirziat} \index{semnal!intîrziat}
-%   Fie $ x \in S_d $ și $ k \in \ZZ $ fixat. Semnalul $ y = (x_{n-k}) $ se numește
-%   \emph{întîrziatul lui $ x $ cu $ k $ momente}.
-% \end{definition}
-% 
-% O operație foarte importantă, pe care se vor baza unele proprietăți esențiale ale
-% transformatei $ Z $ este \emph{convoluția:} \index{convoluție}
-% \begin{definition}\label{def:convolutie}
-%   Fie $ x, y \in S_d $. Dacă seria $ \ds\sum_{k \in \ZZ} x_{n-k} y_k $
-%   este convergentă pentru orice $ n \in \ZZ $ și are suma $ z_n $, atunci semnalul
-%   $ z = (z_n) $ se numește \emph{convoluția} semnalelor $ x $ și $ y $ și
-%   se notează $ z = x \ast y $.
-% \end{definition}
-% 
-% Trei proprietăți imediate sînt:
-% \begin{itemize}
-% \item $ x \ast y = y \ast x $;
-% \item $ x \ast \delta = x $;
-% \item $ (x \ast \delta_k)(n) = x_{n - k} $.
-% \end{itemize}
-% 
-% Ajungem acum la definiția principală:
-% \begin{definition}\label{def:z}\index{transformata!Z}
-%   Fie $ s \in S_d $, cu $ s = (a_n)_n $. Se numește \emph{transformata Z} sau
-%   \emph{transformata Laplace discretă} a acestui semnal funcția definită prin:
-%   \[
-%     L_s(z) = Z_s(z) = \sum_{n \in \ZZ} a_n z^{-n},
-%   \]
-%   care se definește în domeniul de convergență al seriei Laurent din definiție.
-% \end{definition}
-% 
-% Principalele proprietăți pe care le vom folosi în calcule sînt:
-% \begin{enumerate}[(1)]
-% \item \textbf{Inversarea transformării $ Z $:} Fie $ s \in S_d^+ $, cu $ s = (a_n) $.
-%   Presupunem că $ Z_s(z) $ este olomorfă în domeniul $ |z| \in (r, R) $. Atunci
-%   putem recupera semnalul $ a_n $ prin formula:
-%   \[
-%     a_n = \dfrac{1}{2 \pi i} \int_{\gamma} z^{n-1} Z_s(z) dz, \quad n \in \ZZ,
-%   \]
-%   unde $ \gamma $ este discul de rază $ \rho \in (r, R) $.
-% \item \textbf{Teorema de convoluție:} Fie $ s, t \in S_d^+ $. Atunci $ s \ast t = S_d^+ $
-%   și are loc $ L_{s \ast t} = L_s \cdot L_t $. În particular:
-%   \[
-%     L_{s \ast \delta_k}(z) = z^{-k} L_s(z), \quad k \in \ZZ;
-%   \]
-% \item \textbf{Prima teoremă de întîrziere:} Pentru $ n\in \NN^\ast $:
-%   \[
-%     L_s( z_{t - n}) = z^{-n} L_s(f);
-%   \]
-% \item \textbf{A doua teoremă de întîrziere (teorema de deplasare):}
-%   \[
-%     L_s(z_{t + n}) = z^n \cdot \Big( L_s(z) - \sum_{t = 0}^{n-1} z_t z^{-t} \Big), \quad n \in \NN^\ast.
-%   \]
-% \end{enumerate}
-% 
-% Cîteva transformate uzuale sînt:
-% \begin{tabular}{c | c}
-%   $ s $ & $ L_s $ \\
-%   \hline\hline
-%   $ \begin{cases}
-%     h_n = 0, & n < 0 \\
-%     h_n = 1, & n \geq 0
-%   \end{cases} $ & $ \dfrac{z}{z - 1} $ \\
-%         & \\
-%   $ \delta_k, k \in \ZZ $ & $ \dfrac{1}{z^k} $ \\
-%         &\\
-%   $ s = (n)_{n \in \NN} $ & $ \dfrac{z}{(z - 1)^2} $ \\
-%         &\\
-%   $ s = (n^2)_{n \in \NN} $ & $ \dfrac{z(z+1)}{(z - 1)^3} $ \\
-%         &\\
-%   $ s = (a^n)_{n \in \NN}, a \in \CC $ & $ \dfrac{z}{z - a} $ \\
-%         &\\
-%   $ s = (e^{an})_{n \in \NN}, a \in \RR $ & $ \dfrac{z}{z - e^a} $ \\
-%         &\\
-%   $ s = (\sin(\omega n))_{n \in \NN}, \omega \in \RR $ & $ \dfrac{z \sin \omega}{z^2 - 2z \cos \omega + 1} $ \\
-%         &\\
-%   $ s = (\cos(\omega n))_{n \in \NN}, \omega \in \RR $ & $ \dfrac{z(z - \cos \omega)}{z^2 - 2z \cos \omega + 1} $
-% \end{tabular}
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% 
-% \section{Exerciții}
-% 
-% \indent\indent 1. Să se determine semnalul $x \in S_d^+$, a cărui transformată $Z$ este 
-% dată de:
-% \begin{enumerate}[(a)]
-% \item $\Lap_s (z) = \dfrac{z}{(z-3)^2}$ ;
-% \item $\Lap_s (z) = \dfrac{z}{(z-1)(z^2 + 1)}$ ;
-% \item $\Lap_s (z) = \dfrac{z}{(z-1)^2(z^2 + z - 6)}$ ;
-% \item $\Lap_s (z) = \dfrac{z}{z^2 + 2az + 2a^2}, a > 0$ parametru.
-% \end{enumerate}
-% 
-% \emph{Soluție:}
-% 
-% (a) Avem:
-% \begin{align*}
-%   x_n &= \dfrac{1}{2\pi i} \int_{|z| = \rho} z^{n-1} \Lap_s (z) dz \\
-%       &= \Rez(z^{n-1} \Lap_s(z), 3) \\
-%       &= \Rez \Big( \dfrac{z^n}{(z-3)^2}, 3 \Big) \\
-%       &= \lim_{z \to 3} \Big( (z-3)^2 \cdot \dfrac{z^n}{(z-3)^2} \Big)^{\prime} \\
-%       &= \lim_{z \to 3} nz^{n-1} \\
-%       &= n3^{n-1}.
-% \end{align*}
-% 
-% (b)
-% \begin{align*}
-%   x_n &= \dfrac{1}{2 \pi i} \int_{|z| = \rho} z^{n-1} \Lap_s(z) dz \\
-%       &= \Rez(z^{n-1} \Lap_s (z), 1) + \Rez(z^{n-1} \Lap_s(z), i) + 
-%         \Rez(z^{n-1} \Lap_s(z), -i) \\
-%   \Rez(z^{n-1}\Lap_s(z),1) &= \lim_{z \to 1} z^{n-1} \dfrac{z}{(z - 1)(z^2 + 1)} 
-%                              \cdot (z-1) = \dfrac{1}{2} \\
-%   \Rez(z^{n-1} \Lap_s(z), i) &= \dfrac{i^n}{2i \cdot (i-1)} \\
-%   \Rez(z^{n-1} \Lap_s(z), -i) &= \dfrac{(-1)^n i^n}{2i(i+1)}.
-% \end{align*}
-% 
-% Remarcăm că pentru $n = 4k$ și $n = 4k+1$, avem $x_n = 0$, iar în celelalte 
-% două cazuri, $x_n = 1$. \\
-% 
-% (c)
-% \begin{align*}
-%   \Rez(z^{n-1} \Lap_s(z), 1) &= \lim_{z\to 1} \Big[ z^{n-1} \cdot (z-1)^2 \cdot 
-%                                \dfrac{z^2}{(z-1)^2 \cdot (z^2 + z - 6)} \Big]^{\prime}\\
-%                              &= - \dfrac{4n + 3}{16}. \\
-%   \Rez(z^{n-1} \Lap_s(z), 2) &= \dfrac{2^n}{5} \\
-%   \Rez(z^{n-1} \Lap_s(z), -3) &= -\dfrac{(-3)^n}{80}.
-% \end{align*}
-% 
-% Obținem $x_n = - \dfrac{4n+3}{16} + \dfrac{2^n}{5} - \dfrac{(-3)^n}{80}$. \\
-% 
-% (d) $z_{1,2} = a (-1 \pm i)$ sînt poli simpli. Avem:
-% \begin{align*}
-%   x_n &= \Rez\Big( \dfrac{z^n}{(z^2 + 2a + 2a^2)}, z_1 \Big) + 
-%         \Rez\Big(  \dfrac{z^n}{(z^2 + 2a + 2a^2)}, z_2 \Big) \\
-%       &= \dfrac{a^n(-1 + i)^n}{2z_1 + 2a} + \dfrac{a^n(-1-i)^n}{2z_1 + 2a} \\
-%       &= -\dfrac{i}{2a}(z_1^n - z_2^n).
-% \end{align*}
-% 
-% Putem scrie trigonometric numerele $z_1$ și $z_2$:
-% \begin{align*}
-%   z_1 &= a(-1 + i) = a \sqrt{2} \Big( \cos \dfrac{3\pi}{4} + 
-%         i \sin \dfrac{3 \pi}{4} \Big) \\
-%   z_2 &= a(-1 - i) = a \sqrt{2} \Big( \cos \dfrac{3 \pi}{4} - 
-%         i \sin \dfrac{3 \pi}{4} \Big).
-% \end{align*}
-% 
-% Deci: $x_n = 2^{\frac{n}{2}} a^{n-1} \sin \dfrac{3 n \pi}{4}$.
-% 
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% 
-% \vspace{0.3cm}
-% 
-% 2. Fie $x = (x_n) \in S_d^+$ și $y = (y_n)$, unde $y_n = x_0 + \dots + x_n$. 
-% Să se arate că $Y(z) = \dfrac{z}{z-1} X(z)$.
-% 
-% \emph{Soluție:}
-% 
-% Avem $Y(z) = \displaystyle\sum_{n=0}^\infty y_n z^{-n}.$ Dar: 
-% \[
-%   X(z) = \sum_{n=0}^\infty x_n z^{-n} \text{ și } 
-%   \sum_{n=0}^\infty x_{n-1} z^n = \dfrac{1}{z} X(z),
-% \]
-% deoarece $x_{-1} = 0$. Putem continua și obținem 
-% $\displaystyle\sum_{n=0}^\infty x_{n-k} z^{-n} = \dfrac{1}{z^k} X(z)$. Așadar: 
-% \[
-%   Y(z) = X(z) \cdot \Big( 1 + \dfrac{1}{z} + \dfrac{1}{z^2} + \dots \Big) 
-%   = X(z) \cdot \dfrac{z}{z-1}.
-% \]
-% 
-% 
-% \vspace{0.3cm}
-% 
-% 3. Cu ajutorul transformării $Z$, să se determine șirurile $(x_n)$ definite 
-% prin următoarele relații:
-% \begin{enumerate}[(a)]
-% \item $x_0 = 0, x_1 = 1, x_{n+2} = x_{n+1} + x_n, n \in \mathbb{N}$ 
-%   (șirul lui Fibonacci);
-% \item $x_0 = 0, x_1 = 1, x_{n+2} = x_{n+1} - x_n, n \in \mathbb{N}$;
-% \item $x_0 = x_1 = 0, x_2 = -1, x_3 = 0, x_{n+4} + 
-%   2x_{n+3} + 3 x_{n+2} + 2 x_{n+1} + x_n = 0, n \in \mathbb{N}$;
-% \item $x_0 = 2, x_{n+1} + 3x_n = 1, n \in \mathbb{Z}$;
-% \item $x_0 = 0, x_1 = 1, x_{n+2} - 4 x_{n+1} + 3x_n 
-%   = (n+1)4^n, n \in \mathbb{N}$.
-% \end{enumerate}
-% 
-% \emph{Soluție:}
-% 
-% Abordarea generală este să considerăm șirul $(x_n)$ ca fiind restricția unui 
-% semnal $x \in S_d^+$ la $\mathbb{N}$ și rescriem relațiile de recurență sub 
-% forma unor ecuații de convoluție $a \ast x = y$, pe care le rezolvăm în $S_d^+$.\\
-% 
-% (a) Fie $x \in S_d^+$, astfel încît restricția lui la $\mathbb{N}$ să fie șirul 
-% căutat. Deoarece avem: 
-% \[
-%   x_{n+2} - x_{n+1} - x_n = y_n, n \in \mathbb{Z},
-% \]
-% cu $y_n = 0$ pentru $n \neq -1$ și $y_{-1} = 1$, avem ecuația de convoluție: 
-% \[
-%   a \ast x = y, \text{ unde } a 
-%   = \delta_{-2} + \delta_{-1} + \delta, y = \delta_{-1}.
-% \]
-% 
-% Aplicăm transformata $Z$ și rezultă: 
-% \[
-%   \Lap_s x(z) (z^2 - z - 1) = z \Longrightarrow x_n 
-%   = \dfrac{1}{\sqrt{5}} \Big[ \Big( \dfrac{1 + \sqrt{5}}{2} \Big)^n - 
-%   \Big( \dfrac{1 - \sqrt{5}}{2} \Big)^n \Big].
-% \]
-% 
-% (b) Ca în cazul anterior, avem $a \ast x = y$, cu 
-% $a = \delta_{-2} - \delta_{-1} + \delta$, unde $y = \delta_{-1}$. Aplicînd 
-% transformata $Z$, obținem: 
-% \[
-%   \Lap_s x(z) (z^2 - z + 1) = z \Longrightarrow \Lap_s x(z) 
-%   = \dfrac{z}{z^2 - z + 1}.
-% \]
-% 
-% Obținem:
-% \[
-%   x_n = \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
-%   \dfrac{1 + i \sqrt{3}}{2} \Big) + \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
-%   \dfrac{1 - i \sqrt{3}}{2} \Big).
-% \]
-% 
-% Calculăm reziduurile, cu notația $\varepsilon = \dfrac{1 + i \sqrt{3}}{2}$ și 
-% $\overline{\varepsilon} = \dfrac{1 - i \sqrt{3}}{2}$:
-% \begin{align*}
-%   \Rez \Big( \dfrac{z^n}{z^2 - z + 1}, \varepsilon \Big) 
-%   &= \lim_{z \to \varepsilon} \dfrac{z^n}{z^2 - z + 1} 
-%     \big( z - \varepsilon \big) \\
-%   &= \dfrac{\varepsilon^n}{i \sqrt{3}} \\
-%   &= \dfrac{\cos \frac{2 n \pi}{3} + i \sin \frac{2 n \pi}{3}}{i \sqrt{3}}.
-% \end{align*}
-% 
-% Similar: 
-% \[
-%   \Rez \Big( \dfrac{z^n}{z^2 - z + 1}, \overline{\varepsilon} \Big) 
-%   = \dfrac{\cos \frac{2n\pi}{3} - i \sin \frac{2 n \pi}{3}}{-i\sqrt{3}}.
-% \]
-% 
-% Rezultă: 
-% \[
-%   x_n = \dfrac{2}{\sqrt{3}} \sin \dfrac{2n\pi}{3}, n \in \mathbb{N}.
-% \]
-% 
-% (c) Ecuația $a \ast x = y$ este valabilă pentru: 
-% \[
-%   a = \delta_{-4} + 2 \delta_{-3} + 3 \delta_{-2} + 2 \delta_{-1} + \delta, 
-%   \quad y = -\delta_{-2} - 2 \delta_{-1}.
-% \]
-% 
-% Aplicăm transformata $Z$ și obținem: 
-% $\Lap_s x(z) = - \dfrac{z(z+2)}{(z^2 + z + 1)^2}$. Descompunem în fracții 
-% simple, calculăm reziduurile și ținem cont de faptul că rădăcinile numitorului, 
-% $\varepsilon_1, \varepsilon_2$ sînt poli de ordinul 2, obținem: 
-% \[
-%   x_n = \dfrac{(2n-4)(\varepsilon_1^n - \varepsilon_2^n) - 
-%     (n+1)(\varepsilon_1^{n-1} + \varepsilon_1^{n-2} - \varepsilon_2^{n-1} - 
-%     \varepsilon_2^{n-2})}{(\varepsilon_2 - \varepsilon_1)^3} 
-%   = \dfrac{2(n-1)}{\sqrt{3}} \sin \dfrac{2 n \pi}{3}, n \in \mathbb{N}.
-% \]
-% 
-% (d) Ecuația corespunzătoare este $a \ast x = y$, cu $a = \delta_{-1} + 3 \delta$ și 
-% $y_n = 1, \forall n \geq 1$, iar $y_{-1} = x_0 + 3 x_{-1} = 2$, cu 
-% $y_n = 0, \forall n \leq -2$, adică $y = 1 + 2 \delta_{-1}$.
-% 
-% Așadar: 
-% \[
-%   \delta_{-1} \ast x + 3 \delta \ast x = 1 + 2 \delta_{-1}.
-% \]
-% 
-% Aplicăm transformata $Z$ și obținem:
-% \begin{align*}
-%   z \Lap_s x(z) + 3 \Lap_s x(z) &= \dfrac{z}{z-1} + 2z \\
-%                                 &= \dfrac{2z^2 + 3z}{z-1} \\
-%   \Longrightarrow \Lap_s x(z) &= \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
-%   \Longrightarrow x_n &= \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) + 
-%                         \Rez (z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) \\
-%   \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) &= \lim_{z \to 1} (z-1) 
-%                                                          \cdot z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)} = \dfrac{5}{4} \\
-%   \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) 
-%                                 &= \lim_{z \to -3} (z+3) z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
-%                                 &= (-3)^{n-1} \cdot \dfrac{12}{-4} = -3 \cdot (-3)^{n-1}.	                              
-% \end{align*}
-% 
-% Rezultă: $x_n = \dfrac{5}{4} - 3 \cdot (-3)^{n-1}$. \\
-% 
-% (e) Avem ecuația: $a \ast x = y$, unde 
-% $a = \delta_{-2} - 4 \delta_{-1} + 3 \delta$, cu 
-% $y_n = 0, \forall n \leq -2, y_{-1} = 1$ și 
-% $y_n = (n+1)4^n, \forall n \in \mathbb{N}$.
-% 
-% Fie $s_1 = (n4^n)_n, s_2 = (4^n)_n$. Atunci:
-% \begin{align*}
-%   \Lap_s s_1(z) &= -z \Lap_s s_2^{\prime}(z) 
-%                   = - z \big( \dfrac{z}{z-4} \big)^{\prime} = \dfrac{4z}{(z-4)^2} \\
-%   \Longrightarrow \Lap_s x(z)(z^2 - 4z + 3) 
-%                 &= \dfrac{4z}{(z-4)^2} + \dfrac{z}{z-4} + z \\
-%                 &= \dfrac{z^2}{(z-4)^2} + z \\
-%   \Longrightarrow  \Lap_s x(z) &= \dfrac{z(z^2 - 7z + 16)}{(z-4)^2 (z-1) (z-3)}.
-% \end{align*}
-% 
-% Descompunem în fracții simple și obținem, în fine: 
-% \[
-%   x_n = \dfrac{1}{9} \big[ 18 \cdot 3^n + (3n - 13) 4^n - 5 \big], 
-%   n \in \mathbb{N}.
-% \]
-% 
-% \textbf{OBSERVAȚIE:} Toate exercițiile cu recurențe se mai pot rezolva în alte
-% două moduri:
-% 
-% (1) Se poate aplica teorema de convoluție relației de recurență. De exemplu,
-% din recurența:
-% \[
-%   x_{n + 2} - 2x_{n + 1} + x_n = 2
-% \]
-% putem obține:
-% \[
-%   Z(x_{n+2}) - 2Z(x_{n + 1}) + Z(x_n) = 2Z(1),
-% \]
-% iar $ Z(x_{n+2}) = Z(x_n \ast \delta_{-2}) = Z(x_n) \cdot Z(\delta_{-2}) $ etc.
-% 
-% (2) Se poate aplica teorema de deplasare. În aceeași recurență de mai sus,
-% de exemplu, avem:
-% \[
-%   Z(x_{n+2}) = z^n \Big( Z(x_n) - x_0 - x_1 z^{-1} \Big)
-% \]
-% și la fel pentru celelalte.
+Folosind, eventual, formula de inversare Mellin-Fourier, aflați funcțiile original
+care au transformatele Laplace date:
+\begin{enumerate}[(1)]
+    \item $ F(s) = \dfrac{s + 3}{s^3 + 4s^2} $;
+    \item $ F(s) = \dfrac{s^2 + 3s + 1}{(s + 1)(s + 2)(s + 3)} $;
+    \item $ F(s) = \dfrac{2s + 1}{s(s + 1)} $;
+    \item $ F(s) = \dfrac{4s + 10}{s^2 - 12s + 32} $;
+    \item $ F(s) = \dfrac{5s + 1}{s^2 + 1} $;
+    \item $ F(s) = \dfrac{s + 2}{s^2(s + 3)} $;
+    \item $ F(s) = \dfrac{1}{s^2(s - 2)^2} $;
+    \item $ F(s) = \dfrac{2s - 7}{s^2 + 2s + 6} $.
+\end{enumerate}
+
+
+
