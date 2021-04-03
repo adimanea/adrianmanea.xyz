@@ -46,7 +46,7 @@ Ajungem acum la definiția principală:
     Fie $ s \in S_d $, cu $ s = (a_n)_n $. Se numește \emph{transformata Z} sau
     \emph{transformata Laplace discretă} a acestui semnal funcția definită prin:
     \[
-        L_s(z) = Z_s(z) = \sum_{n \in \ZZ} a_n z^{-n},
+        L_s(z) = \sum_{n \in \ZZ} a_n z^{-n},
     \]
     care se definește în domeniul de convergență al seriei Laurent din definiție.
 \end{definition}
@@ -54,10 +54,10 @@ Ajungem acum la definiția principală:
 Principalele proprietăți pe care le vom folosi în calcule sînt:
 \begin{enumerate}[(1)]
     \item \textbf{Inversarea transformării $ Z $:} Fie $ s \in S_d^+ $, cu $ s = (a_n) $.
-        Presupunem că $ Z_s(z) $ este olomorfă în domeniul $ |z| \in (r, R) $. Atunci
+        Presupunem că $ L_s(z) $ este olomorfă în domeniul $ |z| \in (r, R) $. Atunci
         putem recupera semnalul $ a_n $ prin formula:
         \[
-            a_n = \dfrac{1}{2 \pi i} \int_{\gamma} z^{n-1} Z_s(z) dz, \quad n \in \ZZ,
+            a_n = \dfrac{1}{2 \pi i} \int_{\gamma} z^{n-1} L_s(z) dz, \quad n \in \ZZ,
         \]
         unde $ \gamma $ este discul de rază $ \rho \in (r, R) $.
     \item \textbf{Teorema de convoluție:} Fie $ s, t \in S_d^+ $. Atunci $ s \ast t = S_d^+ $
@@ -77,7 +77,7 @@ Principalele proprietăți pe care le vom folosi în calcule sînt:
 
 Cîteva transformate uzuale sînt:
 \begin{tabular}{c | c}
-    $ s $ & $ L_s $ \\
+    $ s $ & $ L_s(z) $ \\
     \hline\hline
     $ \begin{cases}
         h_n = 0, & n < 0 \\
@@ -106,18 +106,18 @@ Cîteva transformate uzuale sînt:
 \indent\indent 1. Să se determine semnalul $x \in S_d^+$, a cărui transformată $Z$ este 
 dată de:
 \begin{enumerate}[(a)]
-    \item $\Lap_s (z) = \dfrac{z}{(z-3)^2}$ ;
-    \item $\Lap_s (z) = \dfrac{z}{(z-1)(z^2 + 1)}$ ;
-    \item $\Lap_s (z) = \dfrac{z}{(z-1)^2(z^2 + z - 6)}$ ;
-    \item $\Lap_s (z) = \dfrac{z}{z^2 + 2az + 2a^2}, a > 0$ parametru.
+    \item $L_s (z) = \dfrac{z}{(z-3)^2}$ ;
+    \item $L_s (z) = \dfrac{z}{(z-1)(z^2 + 1)}$ ;
+    \item $L_s (z) = \dfrac{z}{(z-1)^2(z^2 + z - 6)}$ ;
+    \item $L_s (z) = \dfrac{z}{z^2 + 2az + 2a^2}, a > 0$ parametru.
 \end{enumerate}
 
 \emph{Soluție:}
 
 (a) Avem:
 \begin{align*}
-    x_n &= \dfrac{1}{2\pi i} \int_{|z| = \rho} z^{n-1} \Lap_s (z) dz \\
-        &= \Rez(z^{n-1} \Lap_s(z), 3) \\
+    x_n &= \dfrac{1}{2\pi i} \int_{|z| = \rho} z^{n-1} L_s (z) dz \\
+        &= \Rez(z^{n-1} L_s(z), 3) \\
         &= \Rez \Big( \dfrac{z^n}{(z-3)^2}, 3 \Big) \\
         &= \lim_{z \to 3} \Big( (z-3)^2 \cdot \dfrac{z^n}{(z-3)^2} \Big)^{\prime} \\
         &= \lim_{z \to 3} nz^{n-1} \\
@@ -126,13 +126,13 @@ dată de:
 
 (b)
 \begin{align*}
-    x_n &= \dfrac{1}{2 \pi i} \int_{|z| = \rho} z^{n-1} \Lap_s(z) dz \\
-        &= \Rez(z^{n-1} \Lap_s (z), 1) + \Rez(z^{n-1} \Lap_s(z), i) + 
-        \Rez(z^{n-1} \Lap_s(z), -i) \\
-    \Rez(z^{n-1}\Lap_s(z),1) &= \lim_{z \to 1} z^{n-1} \dfrac{z}{(z - 1)(z^2 + 1)} 
+    x_n &= \dfrac{1}{2 \pi i} \int_{|z| = \rho} z^{n-1} L_s(z) dz \\
+        &= \Rez(z^{n-1} L_s (z), 1) + \Rez(z^{n-1} L_s(z), i) + 
+        \Rez(z^{n-1} L_s(z), -i) \\
+    \Rez(z^{n-1}L_s(z),1) &= \lim_{z \to 1} z^{n-1} \dfrac{z}{(z - 1)(z^2 + 1)} 
     \cdot (z-1) = \dfrac{1}{2} \\
-    \Rez(z^{n-1} \Lap_s(z), i) &= \dfrac{i^n}{2i \cdot (i-1)} \\
-    \Rez(z^{n-1} \Lap_s(z), -i) &= \dfrac{(-1)^n i^n}{2i(i+1)}.
+    \Rez(z^{n-1} L_s(z), i) &= \dfrac{i^n}{2i \cdot (i-1)} \\
+    \Rez(z^{n-1} L_s(z), -i) &= \dfrac{(-1)^n i^n}{2i(i+1)}.
 \end{align*}
 
 Remarcăm că pentru $n = 4k$ și $n = 4k+1$, avem $x_n = 0$, iar în celelalte 
@@ -140,11 +140,11 @@ două cazuri, $x_n = 1$. \\
 
 (c)
 \begin{align*}
-    \Rez(z^{n-1} \Lap_s(z), 1) &= \lim_{z\to 1} \Big[ z^{n-1} \cdot (z-1)^2 \cdot %
+    \Rez(z^{n-1} L_s(z), 1) &= \lim_{z\to 1} \Big[ z^{n-1} \cdot (z-1)^2 \cdot %
     \dfrac{z^2}{(z-1)^2 \cdot (z^2 + z - 6)} \Big]^{\prime}\\
-                               &= - \dfrac{4n + 3}{16}. \\
-        \Rez(z^{n-1} \Lap_s(z), 2) &= \dfrac{2^n}{5} \\
-        \Rez(z^{n-1} \Lap_s(z), -3) &= -\dfrac{(-3)^n}{80}.
+                            &= - \dfrac{4n + 3}{16}. \\
+    \Rez(z^{n-1} L_s(z), 2) &= \dfrac{2^n}{5} \\
+    \Rez(z^{n-1} L_s(z), -3) &= -\dfrac{(-3)^n}{80}.
 \end{align*}
 
 Obținem $x_n = - \dfrac{4n+3}{16} + \dfrac{2^n}{5} - \dfrac{(-3)^n}{80}$. \\
@@ -171,7 +171,8 @@ Deci: $x_n = 2^{\frac{n}{2}} a^{n-1} \sin \dfrac{3 n \pi}{4}$.
 \vspace{0.3cm}
 
 2. Fie $x = (x_n) \in S_d^+$ și $y = (y_n)$, unde $y_n = x_0 + \dots + x_n$. 
-Să se arate că $Y(z) = \dfrac{z}{z-1} X(z)$.
+Să se arate că $Y(z) = \dfrac{z}{z-1} X(z)$, unde $ Y(z) = L_x(z) $ și $ X(z) = L_x(z) $
+sînt transformatele Z pentru semnalele $ x $ și $ y $.:
 
 \emph{Soluție:}
 
@@ -222,7 +223,7 @@ cu $y_n = 0$ pentru $n \neq -1$ și $y_{-1} = 1$, avem ecuația de convoluție:
 
 Aplicăm transformata $Z$ și rezultă: 
 \[
-    \Lap_s x(z) (z^2 - z - 1) = z \Longrightarrow x_n 
+    L_x(z) \cdot (z^2 - z - 1) = z \Longrightarrow x_n 
     = \dfrac{1}{\sqrt{5}} \Big[ \Big( \dfrac{1 + \sqrt{5}}{2} \Big)^n - 
     \Big( \dfrac{1 - \sqrt{5}}{2} \Big)^n \Big].
 \]
@@ -231,14 +232,14 @@ Aplicăm transformata $Z$ și rezultă:
 $a = \delta_{-2} - \delta_{-1} + \delta$, unde $y = \delta_{-1}$. Aplicînd 
 transformata $Z$, obținem: 
 \[
-    \Lap_s x(z) (z^2 - z + 1) = z \Longrightarrow \Lap_s x(z) 
+    L_x(z) \cdot (z^2 - z + 1) = z \Longrightarrow L_x(z) 
     = \dfrac{z}{z^2 - z + 1}.
 \]
 
 Obținem:
 \[
     x_n = \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
-        \dfrac{1 + i \sqrt{3}}{2} \Big) + \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
+    \dfrac{1 + i \sqrt{3}}{2} \Big) + \Rez \Big( z^{n-1} \dfrac{z}{z^2 - z + 1}, 
     \dfrac{1 - i \sqrt{3}}{2} \Big).
 \]
 
@@ -270,7 +271,7 @@ Rezultă:
 \]
 
 Aplicăm transformata $Z$ și obținem: 
-$\Lap_s x(z) = - \dfrac{z(z+2)}{(z^2 + z + 1)^2}$. Descompunem în fracții 
+$L_x(z) = - \dfrac{z(z+2)}{(z^2 + z + 1)^2}$. Descompunem în fracții 
 simple, calculăm reziduurile și ținem cont de faptul că rădăcinile numitorului, 
 $\varepsilon_1, \varepsilon_2$ sînt poli de ordinul 2, obținem: 
 \[
@@ -291,9 +292,9 @@ Așadar:
 
 Aplicăm transformata $Z$ și obținem:
 \begin{align*}
-    z \Lap_s x(z) + 3 \Lap_s x(z) &= \dfrac{z}{z-1} + 2z \\
-                                  &= \dfrac{2z^2 + 3z}{z-1} \\
-    \Longrightarrow \Lap_s x(z) &= \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
+    z L_x(z) + 3 L_x(z) &= \dfrac{z}{z-1} + 2z \\
+                        &= \dfrac{2z^2 + 3z}{z-1} \\
+    \Longrightarrow L_x(z) &= \dfrac{2z^2 + 3z}{(z-1)(z+3)} \\
     \Longrightarrow x_n &= \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) + 
     \Rez (z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, -3) \\
     \Rez(z^{n-1} \cdot \dfrac{2z^2 + 3z}{(z-1)(z+3)}, 1) &= \lim_{z \to 1} (z-1) 
@@ -312,12 +313,12 @@ $y_n = (n+1)4^n, \forall n \in \mathbb{N}$.
 
 Fie $s_1 = (n4^n)_n, s_2 = (4^n)_n$. Atunci:
 \begin{align*}
-    \Lap_s s_1(z) &= -z \Lap_s s_2^{\prime}(z) 
+    L_{s_1}(z) &= -z L_{s_2^{\prime}}(z) 
     = - z \big( \dfrac{z}{z-4} \big)^{\prime} = \dfrac{4z}{(z-4)^2} \\
-    \Longrightarrow \Lap_s x(z)(z^2 - 4z + 3) 
-                  &= \dfrac{4z}{(z-4)^2} + \dfrac{z}{z-4} + z \\
-                  &= \dfrac{z^2}{(z-4)^2} + z \\
-    \Longrightarrow  \Lap_s x(z) &= \dfrac{z(z^2 - 7z + 16)}{(z-4)^2 (z-1) (z-3)}.
+    \Longrightarrow L_x(z)(z^2 - 4z + 3) 
+               &= \dfrac{4z}{(z-4)^2} + \dfrac{z}{z-4} + z \\
+               &= \dfrac{z^2}{(z-4)^2} + z \\
+    \Longrightarrow  L_x(z) &= \dfrac{z(z^2 - 7z + 16)}{(z-4)^2 (z-1) (z-3)}.
 \end{align*}
 
 Descompunem în fracții simple și obținem, în fine: 
@@ -336,13 +337,13 @@ din recurența:
 \]
 putem obține:
 \[
-    Z(x_{n+2}) - 2Z(x_{n + 1}) + Z(x_n) = 2Z(1),
+    L_{x_{n+2}}(z) - 2L_{x_{n + 1}}(z) + L_{x_n}(z) = 2L_1(z),
 \]
-iar $ Z(x_{n+2}) = Z(x_n \ast \delta_{-2}) = Z(x_n) \cdot Z(\delta_{-2}) $ etc.
+iar $ L_{x_{n+2}}(z) = L_{x_n \ast \delta_{-2}}(z) = L_{x_n}(z) \cdot L_{\delta_{-2}}(z) $ etc.
 
 (2) Se poate aplica teorema de deplasare. În aceeași recurență de mai sus,
 de exemplu, avem:
 \[
-    Z(x_{n+2}) = z^n \Big( Z(x_n) - x_0 - x_1 z^{-1} \Big)
+    L_{x_{n+2}}(z) = z^n \left( L_{x_n}(z) - x_0 - x_1 z^{-1} \right)
 \]
 și la fel pentru celelalte.
