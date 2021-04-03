@@ -1,4 +1,4 @@
-% ! TEX root = ../am2-19-20.tex
+% ! TEX root = ../am2-20-21.tex
 
 \chapter{Rezolvarea EDP 2}
 
@@ -9,9 +9,9 @@ se rezolvă similar celor cu coeficienți constanți. Vom prezenta două exemple
 
 \textbf{Exemplu 1:} Să se aducă la forma canonică ecuația:
 \[
-  (1 + x^2)\dfrac{\partial^2 u}{\partial x^2} + %
-  (1 + y^2)\dfrac{\partial^2 u}{\partial y^2} + %
-  x \dfrac{\partial u}{\partial x} + y \dfrac{\partial u}{\partial y} = 0.
+    (1 + x^2)\dfrac{\partial^2 u}{\partial x^2} + %
+    (1 + y^2)\dfrac{\partial^2 u}{\partial y^2} + %
+    x \dfrac{\partial u}{\partial x} + y \dfrac{\partial u}{\partial y} = 0.
 \]
 
 \emph{Soluție:} Deoarece avem $ AC - B^2 = (x^2 + 1)(y^2 + 1) > 0 $, rezultă
@@ -19,42 +19,42 @@ că ecuația este de tip eliptic.
 
 Ecuația caracteristică este:
 \[
-  (1 + x^2)dy^2 + (1 + y^2) dx^2 = 0,
+    (1 + x^2)dy^2 + (1 + y^2) dx^2 = 0,
 \]
 care înseamnă:
 \[
-  \sqrt{1 + x^2} dy = \pm i \sqrt{1 + y^2} dx.
+    \sqrt{1 + x^2} dy = \pm i \sqrt{1 + y^2} dx.
 \]
 Rezultă că familiile de curbe caracteristice sînt:
 \[
-  \begin{cases}
-    \ln(y + \sqrt{1 + y^2}) + i \ln(x + \sqrt{1 + x^2}) &= c_1 \\
-    \ln(y + \sqrt{1 + y^2}) - i \ln(x + \sqrt{1 + x^2}) &= c_2
-  \end{cases}
+    \begin{cases}
+        \ln(y + \sqrt{1 + y^2}) + i \ln(x + \sqrt{1 + x^2}) &= c_1 \\
+        \ln(y + \sqrt{1 + y^2}) - i \ln(x + \sqrt{1 + x^2}) &= c_2
+    \end{cases}
 \]
 În consecință, facem schimbarea de variabile:
 \[
-  \begin{cases}
-    \tau &= \ln(y + \sqrt{1 + y^2}) \\
-    \eta &= \ln(x + \sqrt{1 + x^2})
-  \end{cases}
+    \begin{cases}
+        \tau &= \ln(y + \sqrt{1 + y^2}) \\
+        \eta &= \ln(x + \sqrt{1 + x^2})
+    \end{cases}
 \]
 Derivatele parțiale în funcție de noile variabile sînt:
 \begin{align*}
-  \dfrac{\partial u}{\partial x} &= \dfrac{\partial u}{\partial \eta} \cdot %
-                                  \dfrac{1}{\sqrt{1 + x^2}} \\
-  \dfrac{\partial^2 u}{\partial x^2} &= \dfrac{1}{1 + x^2} \cdot \dfrac{\partial^2 u}{\partial \eta^2}%
-                                      - \dfrac{x}{(1 + x^2)^{\dfrac{3}{2}}} \cdot %
-                                      \dfrac{\partial u}{\partial \eta} \\
-  \dfrac{\partial u}{\partial y} &= \dfrac{1}{\sqrt{1 + y^2}} \cdot \dfrac{\partial u}{\partial \tau} \\
-  \dfrac{\partial^2 u}{\partial y^2} &= \dfrac{1}{1 + y^2} \cdot \dfrac{\partial^2 u}{\partial \tau^2}%
-                                      - \dfrac{y}{(1 + y^2)^{\frac{3}{2}}} \cdot %
-                                      \dfrac{\partial u}{\partial \tau}.
+    \dfrac{\partial u}{\partial x} &= \dfrac{\partial u}{\partial \eta} \cdot %
+    \dfrac{1}{\sqrt{1 + x^2}} \\
+    \dfrac{\partial^2 u}{\partial x^2} &= \dfrac{1}{1 + x^2} \cdot \dfrac{\partial^2 u}{\partial \eta^2}%
+    - \dfrac{x}{(1 + x^2)^{\dfrac{3}{2}}} \cdot %
+    \dfrac{\partial u}{\partial \eta} \\
+    \dfrac{\partial u}{\partial y} &= \dfrac{1}{\sqrt{1 + y^2}} \cdot \dfrac{\partial u}{\partial \tau} \\
+    \dfrac{\partial^2 u}{\partial y^2} &= \dfrac{1}{1 + y^2} \cdot \dfrac{\partial^2 u}{\partial \tau^2}%
+    - \dfrac{y}{(1 + y^2)^{\frac{3}{2}}} \cdot %
+    \dfrac{\partial u}{\partial \tau}.
 \end{align*}
 
 Rezultă că ecuația se reduce la forma canonică:
 \[
-  \dfrac{\partial^2 u}{\partial \eta^2} + \dfrac{\partial^2 u}{\partial \tau^2} = 0.
+    \dfrac{\partial^2 u}{\partial \eta^2} + \dfrac{\partial^2 u}{\partial \tau^2} = 0.
 \]
 
 \vspace{0.3cm}
@@ -62,9 +62,9 @@ Rezultă că ecuația se reduce la forma canonică:
 \textbf{Exemplu 2:} Să se aducă la forma canonică și să se determine soluția
 generală a ecuației:
 \[
-  x^2 \dfrac{\partial^2 u}{\partial x^2} - 2xy \dfrac{\partial^2 u}{\partial x\partial y} + %
-  y^2 \dfrac{\partial^2 u}{\partial y^2} + x \dfrac{\partial u}{\partial x} + %
-  y \dfrac{\partial u}{\partial y} = 0.
+    x^2 \dfrac{\partial^2 u}{\partial x^2} - 2xy \dfrac{\partial^2 u}{\partial x\partial y} + %
+    y^2 \dfrac{\partial^2 u}{\partial y^2} + x \dfrac{\partial u}{\partial x} + %
+    y \dfrac{\partial u}{\partial y} = 0.
 \]
 
 \emph{Soluție:} Deoarece $ A = x^2, B = -xy, C = y^2 $, avem $ AC - B^2 = 0 $, deci
@@ -72,44 +72,44 @@ ecuația este de tip parabolic.
 
 Din ecuația caracteristică obținem:
 \[
-  x^2 \cdot \Big(\dfrac{dy}{dx}\Big)^2 + 2xy \cdot \dfrac{dy}{dx} + y^2 = 0 \Rightarrow %
-  \dfrac{dy}{dx} = -\dfrac{y}{x} \Rightarrow xy = c.
+    x^2 \cdot \Big(\dfrac{dy}{dx}\Big)^2 + 2xy \cdot \dfrac{dy}{dx} + y^2 = 0 \Rightarrow %
+    \dfrac{dy}{dx} = -\dfrac{y}{x} \Rightarrow xy = c.
 \]
 Facem schimbarea de variabile:
 \[
-  \begin{cases}
-    \tau &= xy \\
-    \eta &= x
-  \end{cases}
+    \begin{cases}
+        \tau &= xy \\
+        \eta &= x
+    \end{cases}
 \]
 și noile derivate parțiale sînt:
 \begin{align*}
-  \dfrac{\partial u}{\partial x} &= y\dfrac{\partial u}{\partial \tau} + %
-                                  \dfrac{\partial u}{\partial \eta} \\
-  \dfrac{\partial u}{\partial y} &= x \dfrac{\partial u}{\partial \tau} \\
-  \dfrac{\partial^2 u}{\partial x^2} &= y^2 \dfrac{\partial^2 u}{\partial \tau^2} + %
-                                      2y \dfrac{\partial^2 u}{\partial \tau\partial \eta} + %
-                                      \dfrac{\partial^2 u}{\partial \eta^2} \\
-  \dfrac{\partial^2 u}{\partial y^2} &= x^2 \dfrac{\partial^2 u}{\partial \tau^2} \\
-  \dfrac{\partial^2 u}{\partial x\partial y} &= \dfrac{\partial u}{\partial \tau} + %
-                                              xy \dfrac{\partial^2 u}{\partial \tau^2} + %
-                                              x \dfrac{\partial^2 u}{\partial \tau \partial \eta}.
+    \dfrac{\partial u}{\partial x} &= y\dfrac{\partial u}{\partial \tau} + %
+    \dfrac{\partial u}{\partial \eta} \\
+    \dfrac{\partial u}{\partial y} &= x \dfrac{\partial u}{\partial \tau} \\
+    \dfrac{\partial^2 u}{\partial x^2} &= y^2 \dfrac{\partial^2 u}{\partial \tau^2} + %
+    2y \dfrac{\partial^2 u}{\partial \tau\partial \eta} + %
+    \dfrac{\partial^2 u}{\partial \eta^2} \\
+    \dfrac{\partial^2 u}{\partial y^2} &= x^2 \dfrac{\partial^2 u}{\partial \tau^2} \\
+    \dfrac{\partial^2 u}{\partial x\partial y} &= \dfrac{\partial u}{\partial \tau} + %
+    xy \dfrac{\partial^2 u}{\partial \tau^2} + %
+    x \dfrac{\partial^2 u}{\partial \tau \partial \eta}.
 \end{align*}
 
 Atunci ecuația devine:
 \[
-  \dfrac{\partial^2 u}{\partial \eta^2} + \dfrac{1}{\eta} \dfrac{\partial u}{\partial \eta} = 0.
+    \dfrac{\partial^2 u}{\partial \eta^2} + \dfrac{1}{\eta} \dfrac{\partial u}{\partial \eta} = 0.
 \]
 Ea se poate rescrie și rezolva astfel:
 \[
-  \dfrac{\partial}{\partial \eta} \Big( \eta \cdot \dfrac{\partial u}{\partial \eta} \Big) = 0 %
-  \Rightarrow \eta \cdot \dfrac{\partial u}{\partial \eta} = f(\tau) \Rightarrow %
-  \dfrac{\partial u}{\partial \eta} = \dfrac{1}{\eta} f(\tau).
+    \dfrac{\partial}{\partial \eta} \Big( \eta \cdot \dfrac{\partial u}{\partial \eta} \Big) = 0 %
+    \Rightarrow \eta \cdot \dfrac{\partial u}{\partial \eta} = f(\tau) \Rightarrow %
+    \dfrac{\partial u}{\partial \eta} = \dfrac{1}{\eta} f(\tau).
 \]
 Integrăm în raport cu $ \eta $ și obținem, în final:
 \[
-  u(\tau, \eta) = f(\tau) \ln \eta + g(\tau) \Rightarrow %
-  u(x, y) = f(xy) \ln x + g(xy).
+    u(\tau, \eta) = f(\tau) \ln \eta + g(\tau) \Rightarrow %
+    u(x, y) = f(xy) \ln x + g(xy).
 \]
 
 \vspace{0.3cm}
@@ -118,18 +118,18 @@ Integrăm în raport cu $ \eta $ și obținem, în final:
 
 \textbf{Exemplu 3:} Fie ecuația:
 \[
-  y \dfrac{\partial^2 u}{\partial x^2} + (x + y) \dfrac{\partial^2 u}{\partial x\partial y} + %
-  x \dfrac{\partial^2 u}{\partial y^2} = 0.
+    y \dfrac{\partial^2 u}{\partial x^2} + (x + y) \dfrac{\partial^2 u}{\partial x\partial y} + %
+    x \dfrac{\partial^2 u}{\partial y^2} = 0.
 \]
 
 Deoarece $ A = y, B = \dfrac{x + y}{2}, C = x $, avem
 \[
-  \delta = AC - B^2 = \dfrac{-(x - y)^2}{4}
+    \delta = AC - B^2 = \dfrac{-(x - y)^2}{4}
 \]
 și studiem separat pentru:
 \[
-  D_1 = \{(x, y) \in \RR^2 \mid \delta < 0 \}, \quad %
-  D_2 = \{(x, y) \in \RR^2 \mid \delta = 0 \},
+    D_1 = \{(x, y) \in \RR^2 \mid \delta < 0 \}, \quad %
+    D_2 = \{(x, y) \in \RR^2 \mid \delta = 0 \},
 \]
 care corespund, respectiv, cazurilor: \emph{hiperbolic}, pentru $ y \neq x $ și
 \emph{eliptic}, pentru $ y = x $.
@@ -148,93 +148,93 @@ $ u(x, t) $, definită pentru $ x \in \RR $ și $ t \geq 0 $, soluție a ecuați
 coardei vibrante:
 
 \[
-  a^2 \dfrac{\partial^2 u}{\partial x^2} = \dfrac{\partial^2 u}{\partial t^2}, %
-  \forall x \in \RR, t > 0.
+    a^2 \dfrac{\partial^2 u}{\partial x^2} = \dfrac{\partial^2 u}{\partial t^2}, %
+    \forall x \in \RR, t > 0.
 \]
 
 Presupunem că avem condiții inițiale, astfel că problema devine o problemă Cauchy:
 \[
-  u(x, 0) = \varphi(x), \quad \dfrac{\partial u}{\partial t}(x, 0) = \psi(x), \forall x \in \RR,
+    u(x, 0) = \varphi(x), \quad \dfrac{\partial u}{\partial t}(x, 0) = \psi(x), \forall x \in \RR,
 \]
 cu $ \varphi $ și $ \psi $ funcții date.
 
 Cum ecuația este deja în forma canonică, asociem ecuația caracteristică:
 \[
-  a^2 dt^2 - dx^2 = 0 \Rightarrow \dfrac{dt}{dx} = \pm\dfrac{1}{a}.
+    a^2 dt^2 - dx^2 = 0 \Rightarrow \dfrac{dt}{dx} = \pm\dfrac{1}{a}.
 \]
 Rezultă că familiile de curbe caracteristice sînt:
 \[
-  \begin{cases}
-    x - at &= c_1 \\
-    x + at &= c_2
-  \end{cases}.
+    \begin{cases}
+        x - at &= c_1 \\
+        x + at &= c_2
+    \end{cases}.
 \]
 
 Facem schimbarea de variabile corespunzătoare:
 \[
-  \begin{cases}
-    \tau &= x - at \\
-    \eta &= x + at
-  \end{cases}
+    \begin{cases}
+        \tau &= x - at \\
+        \eta &= x + at
+    \end{cases}
 \]
 și rezultă ecuația în forma canonică, în noile variabile:
 \[
-  \dfrac{\partial^2 u}{\partial \tau \partial \eta} = 0.
+    \dfrac{\partial^2 u}{\partial \tau \partial \eta} = 0.
 \]
 Putem să o rezolvăm astfel:
 \[
-  \dfrac{\partial}{\partial \eta} \Big( \dfrac{\partial u}{\partial \tau} \Big) = 0 \Rightarrow %
-  \dfrac{\partial u}{\partial \tau} = f(\tau).
+    \dfrac{\partial}{\partial \eta} \Big( \dfrac{\partial u}{\partial \tau} \Big) = 0 \Rightarrow %
+    \dfrac{\partial u}{\partial \tau} = f(\tau).
 \]
 Acum putem integra în raport cu $ \tau $ și găsim:
 \[
-  u(\tau, \eta) = \int f(\tau) d\tau + \theta_2(\eta) \Leftrightarrow %
-  u(\tau, \eta) = \theta_1(\tau) + \theta_2(\eta).
+    u(\tau, \eta) = \int f(\tau) d\tau + \theta_2(\eta) \Leftrightarrow %
+    u(\tau, \eta) = \theta_1(\tau) + \theta_2(\eta).
 \]
 Revenind la variabilele $ x, t $, avem:
 \[
-  u(x, t) = \theta_1(x + at) + \theta_2(x - at)
+    u(x, t) = \theta_1(x + at) + \theta_2(x - at)
 \]
 și, folosind condițiile inițiale, avem:
 \[
-  \begin{cases}
-    \theta_1(x) + \theta_2(x) &= \varphi(x) \\
-    a\theta'_1(x) - a\theta'_2(x) &= \psi(x)
-  \end{cases}.
+    \begin{cases}
+        \theta_1(x) + \theta_2(x) &= \varphi(x) \\
+        a\theta'_1(x) - a\theta'_2(x) &= \psi(x)
+    \end{cases}.
 \]
 Integrăm a doua ecuație în raport cu $ x $ și obținem:
 \[
-  \begin{cases}
-    \theta_1(x) + \theta_2(x) &= \varphi(x) \\
-    a\theta_1(x) - a\theta_2(x) = \int_0^x \psi(\alpha) d\alpha + c
-  \end{cases}
+    \begin{cases}
+        \theta_1(x) + \theta_2(x) &= \varphi(x) \\
+        a\theta_1(x) - a\theta_2(x) = \int_0^x \psi(\alpha) d\alpha + c
+    \end{cases}
 \]
 Adunăm egalitățile și găsim:
 \[
-  \theta_1(x) = \dfrac{\varphi(x)}{2} + \dfrac{1}{2a} \int_0^x \psi(\alpha) d\alpha + \dfrac{c}{2a},
+    \theta_1(x) = \dfrac{\varphi(x)}{2} + \dfrac{1}{2a} \int_0^x \psi(\alpha) d\alpha + \dfrac{c}{2a},
 \]
 iar prin scădere, găsim:
 \[
-  \theta_2(x) = \dfrac{\varphi(x)}{2} - \dfrac{1}{2a} \int_0^x \psi(\alpha) d\alpha - \dfrac{c}{2a}.
+    \theta_2(x) = \dfrac{\varphi(x)}{2} - \dfrac{1}{2a} \int_0^x \psi(\alpha) d\alpha - \dfrac{c}{2a}.
 \]
 Revenind la variabilele inițiale, avem:
 \[
-  \begin{cases}
-    \theta_1(x + at) &= \dfrac{\varphi(x + at)}{2} + %
-    \dfrac{1}{2a} \int_0^{x + at} \psi(\alpha) d\alpha + \dfrac{c}{2a} \\
-    \theta_2(x - at) &= \dfrac{\varphi(x - at)}{2} - %
-    \dfrac{1}{2a} \int_0^{x - at} \psi(\alpha) d\alpha - \dfrac{c}{2a}
-  \end{cases}.
+    \begin{cases}
+        \theta_1(x + at) &= \dfrac{\varphi(x + at)}{2} + %
+        \dfrac{1}{2a} \int_0^{x + at} \psi(\alpha) d\alpha + \dfrac{c}{2a} \\
+        \theta_2(x - at) &= \dfrac{\varphi(x - at)}{2} - %
+        \dfrac{1}{2a} \int_0^{x - at} \psi(\alpha) d\alpha - \dfrac{c}{2a}
+    \end{cases}.
 \]
 Putem asambla soluția finală în forma:
 \begin{equation} \label{eq:dalembert}
-  u(x, t) = \dfrac{1}{2} \big[ \varphi(x - at) + \varphi(x + at) \big] + %
-  \dfrac{1}{2a} \int_{x - at}^{x + at} \psi(\alpha) d\alpha,
+    u(x, t) = \dfrac{1}{2} \big[ \varphi(x - at) + \varphi(x + at) \big] + %
+    \dfrac{1}{2a} \int_{x - at}^{x + at} \psi(\alpha) d\alpha,
 \end{equation}
 care se numește \textbf{formula lui d'Alembert}.
 
 \begin{remark}\label{rk:ex-unic-coarda}
-  Soluția problemei Cauchy asociată coardei vibrante există și este unică.
+    Soluția problemei Cauchy asociată coardei vibrante există și este unică.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,12 +251,12 @@ Pornim cu o problemă Cauchy similară, doar că lungimea coardei este conținut
 într-un interval finit. Căutăm, deci, funcția $ u(x, t) $, definită pentru
 $ 0 \leq x \leq l $ și $ t \geq 0 $, care satisface următoarele condiții:
 \[
-  \begin{cases}
-    a^2 \dfrac{\partial^2 u}{\partial x^2} &= \dfrac{\partial^2 u}{\partial t^2} \\
-    u(x, 0) &= \varphi(x) \\
-    \dfrac{\partial u}{\partial t}(x, 0) &= \psi(x) \\
-    u(0, t) &= u(l, t) = 0 \text{ (condiții la limită)}
-  \end{cases}.
+    \begin{cases}
+        a^2 \dfrac{\partial^2 u}{\partial x^2} &= \dfrac{\partial^2 u}{\partial t^2} \\
+        u(x, 0) &= \varphi(x) \\
+        \dfrac{\partial u}{\partial t}(x, 0) &= \psi(x) \\
+        u(0, t) &= u(l, t) = 0 \text{ (condiții la limită)}
+    \end{cases}.
 \]
 
 Metoda de separare a variabilelor constă în găsirea unui șir infinit de soluții
@@ -265,117 +265,117 @@ coeficienți se determină în ipoteza ca suma seriei să dea soluția problemei
 
 Soluțiile particulare se caută în forma:
 \[
-  u(x, t) = X(x)T(t)
+    u(x, t) = X(x)T(t)
 \]
 și cerem să satisfacă condițiile la limită:
 \[
-  \begin{cases}
-    u(0, t) &= X(0)T(t) = 0 \\
-    u(l, t) &= X(l)T(t) = 0
-  \end{cases}
+    \begin{cases}
+        u(0, t) &= X(0)T(t) = 0 \\
+        u(l, t) &= X(l)T(t) = 0
+    \end{cases}
 \]
 Rezultă că vrem $ X(0) = X(l) = 0 $. Altfel, am avea $ T(t) = 0 $, ceea ce ar conduce la
 soluția banală $ u(x, t) = 0 $.
 
 Înlocuind în ecuația inițială, avem:
 \[
-  XT^{\prime\prime} = a^2X^{\prime\prime} T \Rightarrow %
-  \dfrac{1}{a^2} \dfrac{T^{\prime\prime}}{T} = \dfrac{X^{\prime\prime}}{X}.
+    XT^{\prime\prime} = a^2X^{\prime\prime} T \Rightarrow %
+    \dfrac{1}{a^2} \dfrac{T^{\prime\prime}}{T} = \dfrac{X^{\prime\prime}}{X}.
 \]
 Să remarcăm că în membrul stîng, funcția depinde doar de variabila $ t $, iar în
 membrul drept, doar de variabila $ x $. Așadar, egalitatea nu poate avea loc
 decît dacă ambele funcții sînt egale cu o constantă. Pentru conveniență, o vom nota
 cu $ -\lambda $. Obținem ecuațiile:
 \[
-  \begin{cases}
-    X^{\prime\prime} + \lambda X &= 0 \\
-    T^{\prime\prime} + a^2\lambda T &= 0
-  \end{cases}
+    \begin{cases}
+        X^{\prime\prime} + \lambda X &= 0 \\
+        T^{\prime\prime} + a^2\lambda T &= 0
+    \end{cases}
 \]
 Prima dintre aceste ecuații este liniară, de ordinul al doilea, cu coeficienți
 constanți. Soluția se obține:
 \begin{itemize}
-\item Dacă $ \lambda < 0 $, atunci
-  \[
-    X(x) = c_1 e^{-\sqrt{\lambda}x} + c_2 e^{-\sqrt{-\lambda} x},
-  \]
-  iar ținînd seama de condițiile la limită, avem:
-  \[
-    \begin{cases}
-      c_1 + c_2 &= 0 \\
-      c_1 e^{\sqrt{-\lambda} l} + c_2e^{-\sqrt{-\lambda} l} &= 0
-    \end{cases},
-  \]
-  care se scrie echivalent:
-  \[
-    \begin{cases}
-      c_1 + c_2 &= 0 \\
-      c_1 e^{2\sqrt{-\lambda} l} + c_2 &= 0
-    \end{cases}
-  \]
-  Determinantul matricei sistemului este nenul, deci el admite doar soluția banală.
-\item Dacă $ \lambda = 0 $, atunci $ X(x) = c_1 x + c_2 $ și, ținînd seama de
-  condițiile la limită, obținem din nou soluția banală.
-\item Dacă $ \lambda > 0 $, soluția generală se scrie:
-  \[
-    X(x) = c_1 \cos \sqrt{\lambda} x + c_2 \sin \sqrt{\lambda} x.
-  \]
-  Din condițiile la limită, găsim:
-  \[
-    \begin{cases}
-      X(0) &= c_1 = 0 \\
-      X(l) &= c_2 \sin \sqrt{\lambda} l = 0.
-    \end{cases}
-  \]
-  Din a doua ecuație, deducem că $ c_2 = 0 $, care conduce la soluția banală, sau
-  $ \sin \sqrt{\lambda} l = 0 $, care înseamnă $ \lambda = \big(\dfrac{n\pi}{l}\big)^2 $.
-  Putem scrie, atunci, soluția corespunzătoare acestei serii de valori în forma:
-  \[
-    X_n = c_n \sin \dfrac{n\pi}{l} x, \quad c_n \in \RR.
-  \]
+    \item Dacă $ \lambda < 0 $, atunci
+        \[
+            X(x) = c_1 e^{-\sqrt{\lambda}x} + c_2 e^{-\sqrt{-\lambda} x},
+        \]
+        iar ținînd seama de condițiile la limită, avem:
+        \[
+            \begin{cases}
+                c_1 + c_2 &= 0 \\
+                c_1 e^{\sqrt{-\lambda} l} + c_2e^{-\sqrt{-\lambda} l} &= 0
+            \end{cases},
+        \]
+        care se scrie echivalent:
+        \[
+            \begin{cases}
+                c_1 + c_2 &= 0 \\
+                c_1 e^{2\sqrt{-\lambda} l} + c_2 &= 0
+            \end{cases}
+        \]
+        Determinantul matricei sistemului este nenul, deci el admite doar soluția banală.
+    \item Dacă $ \lambda = 0 $, atunci $ X(x) = c_1 x + c_2 $ și, ținînd seama de
+        condițiile la limită, obținem din nou soluția banală.
+    \item Dacă $ \lambda > 0 $, soluția generală se scrie:
+        \[
+            X(x) = c_1 \cos \sqrt{\lambda} x + c_2 \sin \sqrt{\lambda} x.
+        \]
+        Din condițiile la limită, găsim:
+        \[
+            \begin{cases}
+                X(0) &= c_1 = 0 \\
+                X(l) &= c_2 \sin \sqrt{\lambda} l = 0.
+            \end{cases}
+        \]
+        Din a doua ecuație, deducem că $ c_2 = 0 $, care conduce la soluția banală, sau
+        $ \sin \sqrt{\lambda} l = 0 $, care înseamnă $ \lambda = \big(\dfrac{n\pi}{l}\big)^2 $.
+        Putem scrie, atunci, soluția corespunzătoare acestei serii de valori în forma:
+        \[
+            X_n = c_n \sin \dfrac{n\pi}{l} x, \quad c_n \in \RR.
+        \]
 \end{itemize}
 
 Înlocuim și integrăm acum ecuația după $ t $:
 \[
-  T^{\prime\prime} + a^2\Big( \dfrac{n\pi}{l} \Big)^2 T = 0,
+    T^{\prime\prime} + a^2\Big( \dfrac{n\pi}{l} \Big)^2 T = 0,
 \]
 care are soluția generală:
 \[
-  T_n(t) = \alpha_n \cos \dfrac{n\pi}{l} at + \beta_n\sin \dfrac{n\pi}{l} at.
+    T_n(t) = \alpha_n \cos \dfrac{n\pi}{l} at + \beta_n\sin \dfrac{n\pi}{l} at.
 \]
 
 Punînd laolaltă soluția după $ x $ și pe cea după $ t $, obținem:
 \begin{equation} \label{eq:coarda-particulara}
-  u_n(x, t) = X_n(x) T_n(t) = \Big( a_n \cos \dfrac{n\pi}{l} at + %
-  b_n \sin \dfrac{n\pi}{l} at \Big) \cdot \sin \dfrac{n\pi}{l} x,
+    u_n(x, t) = X_n(x) T_n(t) = \Big( a_n \cos \dfrac{n\pi}{l} at + %
+    b_n \sin \dfrac{n\pi}{l} at \Big) \cdot \sin \dfrac{n\pi}{l} x,
 \end{equation}
 unde $ a_n, b_n, c_n $ sînt constante ce provin din $ \alpha_n, \beta_n, c_n $.
 
 Pentru a doua etapă a soluției, considerăm seria $ \sum u_n(x, t) $, adică:
 \[
-  \sum_{n = 1}^\infty \Big(a_n\cos\dfrac{n\pi}{l} at + %
-  b_n \sin \dfrac{n\pi}{l} at\Big) \cdot \sin \dfrac{n \pi}{l} x.
+    \sum_{n = 1}^\infty \Big(a_n\cos\dfrac{n\pi}{l} at + %
+    b_n \sin \dfrac{n\pi}{l} at\Big) \cdot \sin \dfrac{n \pi}{l} x.
 \]
 
 Presupunem că există $ u(x, t) $ suma seriei de mai sus, care este și soluția
 problemei Cauchy, deci satisface și condițiile la limită, adică:
 \[
-  \begin{cases}
-    u(x, 0) &= \sum_{n\geq 1} a_n \sin \dfrac{n\pi}{l} x = \varphi(x) \\
-    \dfrac{\partial u}{\partial t}(x, 0) &= \dfrac{n\pi}{l}a \sum_{n \geq 1} b_n\sin\dfrac{n\pi}{l}x = \psi(x)
-  \end{cases}.
+    \begin{cases}
+        u(x, 0) &= \sum_{n\geq 1} a_n \sin \dfrac{n\pi}{l} x = \varphi(x) \\
+        \dfrac{\partial u}{\partial t}(x, 0) &= \dfrac{n\pi}{l}a \sum_{n \geq 1} b_n\sin\dfrac{n\pi}{l}x = \psi(x)
+    \end{cases}.
 \]
 
 Putem privi aceste egalități ca dezvoltarea funcțiilor $ \varphi $ și $ \psi $ în serie
 Fourier de sinusuri. Rezultă că putem afla coeficienții:
 \begin{eqnarray} \label{eq:fourier}
-  a_n &= \dfrac{2}{l} \ds\int_0^l \varphi(x) \sin \dfrac{n\pi}{l} xdx \\
-  b_n &= \dfrac{2}{n\pi a} \ds\int_0^l \psi(x) \sin \dfrac{n \pi}{l} xdx.
+    a_n &= \dfrac{2}{l} \ds\int_0^l \varphi(x) \sin \dfrac{n\pi}{l} xdx \\
+    b_n &= \dfrac{2}{n\pi a} \ds\int_0^l \psi(x) \sin \dfrac{n \pi}{l} xdx.
 \end{eqnarray}
 
 \begin{remark}\label{rk:coarda-finita-fourier}
-  Calculele de mai sus, împreună cu rezultate din teoria seriilor Fourier, ne asigură
-  că funcția $ u(x, t) $ găsită este soluția problemei Cauchy.
+    Calculele de mai sus, împreună cu rezultate din teoria seriilor Fourier, ne asigură
+    că funcția $ u(x, t) $ găsită este soluția problemei Cauchy.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -384,71 +384,71 @@ Fourier de sinusuri. Rezultă că putem afla coeficienții:
 
 1. Determinați soluția ecuației:
 \[
-  \dfrac{\partial^2 u}{\partial x^2} + 2 \dfrac{\partial^2 u}{\partial x \partial y} - %
-  3 \dfrac{\partial^2 u}{\partial y^2} = 0,
+    \dfrac{\partial^2 u}{\partial x^2} + 2 \dfrac{\partial^2 u}{\partial x \partial y} - %
+    3 \dfrac{\partial^2 u}{\partial y^2} = 0,
 \]
 care satisface condițiile:
 \[
-  \begin{cases}
-    u(x, 0) &= 3x^2 \\
-    \dfrac{\partial u}{\partial y}(x, 0) &= \cos x
-  \end{cases}.
+    \begin{cases}
+        u(x, 0) &= 3x^2 \\
+        \dfrac{\partial u}{\partial y}(x, 0) &= \cos x
+    \end{cases}.
 \]
 
 \emph{Soluție:} Cum $ AC - B^2 = -4 < 0 $, ecuația este de tip hiperbolic.
 Din ecuația caracteristică, obținem schimbarea de variabile:
 \[
-  \begin{cases}
-    \tau &= -3x + y \\
-    \eta &= x + y
-  \end{cases},
+    \begin{cases}
+        \tau &= -3x + y \\
+        \eta &= x + y
+    \end{cases},
 \]
 iar forma canonică este $ \dfrac{\partial^2 u}{\partial \tau\partial \eta} = 0 $,
 care are soluția:
 \[
-  u(\tau, \eta) = f(\tau) + g(\eta),
+    u(\tau, \eta) = f(\tau) + g(\eta),
 \]
 cu $ f, g $ funcții de clasă $ \kal{C}^2 $, arbitrare. Revenind la variabilele
 inițiale, avem:
 \[
-  u(x, y) = f(-3x + y) + g(x + y).
+    u(x, y) = f(-3x + y) + g(x + y).
 \]
 Ținînd seama de condițiile inițiale din problema Cauchy, obținem sistemul:
 \[
-  \begin{cases}
-    f(-3x) + g(x) &= 3x^2 \\
-    f'(-3x) + g'(x) &= \cos x
-  \end{cases}
+    \begin{cases}
+        f(-3x) + g(x) &= 3x^2 \\
+        f'(-3x) + g'(x) &= \cos x
+    \end{cases}
 \]
 Integrăm a doua ecuație și avem:
 \[
-  \begin{cases}
-    f(-3x) + g(x) &= 3x^2 \\
-    -\dfrac{1}{3}f(-3x) + g(x) &= \sin x + c
-  \end{cases}
+    \begin{cases}
+        f(-3x) + g(x) &= 3x^2 \\
+        -\dfrac{1}{3}f(-3x) + g(x) &= \sin x + c
+    \end{cases}
 \]
 și prin schimbarea semnului primei ecuații și adunîndu-le, obținem:
 \[
-  \begin{cases}
-    f(-3x) &= \dfrac{9}{4} x^2 - \dfrac{3}{4} \sin x - \dfrac{3c}{4} \\
-    g(x) &= \dfrac{3}{4} x^2 + \dfrac{3}{4} \sin x + \dfrac{3c}{4}
-  \end{cases}.
+    \begin{cases}
+        f(-3x) &= \dfrac{9}{4} x^2 - \dfrac{3}{4} \sin x - \dfrac{3c}{4} \\
+        g(x) &= \dfrac{3}{4} x^2 + \dfrac{3}{4} \sin x + \dfrac{3c}{4}
+    \end{cases}.
 \]
 Dacă notăm $ -3x = t $, atunci $ x = -\dfrac{t}{3} $ și găsim:
 \[
-  f(t) = \dfrac{t^2}{4} + \dfrac{3}{4} \sin \dfrac{t}{3} - \dfrac{3c}{4}.
+    f(t) = \dfrac{t^2}{4} + \dfrac{3}{4} \sin \dfrac{t}{3} - \dfrac{3c}{4}.
 \]
 Așadar, soluția finală este:
 \[
-  \begin{cases}
-    f(-3x + y) &= \dfrac{1}{4}(-3x + y)^2 + \dfrac{3}{4} \sin \dfrac{-3x + y}{3} - \dfrac{3c}{4} \\
-    g(x + y)   &= \dfrac{3}{4}(x + y)^2 + \dfrac{3}{4} \sin(x + y) + \dfrac{3c}{4}
-  \end{cases}.
+    \begin{cases}
+        f(-3x + y) &= \dfrac{1}{4}(-3x + y)^2 + \dfrac{3}{4} \sin \dfrac{-3x + y}{3} - \dfrac{3c}{4} \\
+        g(x + y)   &= \dfrac{3}{4}(x + y)^2 + \dfrac{3}{4} \sin(x + y) + \dfrac{3c}{4}
+    \end{cases}.
 \]
 Rezultă că soluția problemei Cauchy este:
 \[
-  u(x, y) = \dfrac{1}{4}(-3x + y)^2 + \dfrac{3}{4} \sin \dfrac{-3x + y}{3} + %
-  \dfrac{3}{4}(x + y)^2 + \dfrac{3}{4} \sin(x + y).
+    u(x, y) = \dfrac{1}{4}(-3x + y)^2 + \dfrac{3}{4} \sin \dfrac{-3x + y}{3} + %
+    \dfrac{3}{4}(x + y)^2 + \dfrac{3}{4} \sin(x + y).
 \]
 
 
@@ -456,77 +456,77 @@ Rezultă că soluția problemei Cauchy este:
 
 2. Rezolvați ecuația:
 \[
-  3 \dfrac{\partial^2 u}{\partial x^2} + 7 \dfrac{\partial^2 u}{\partial x\partial y} + %
-  2 \dfrac{\partial^2 u}{\partial y^2} = 0,
+    3 \dfrac{\partial^2 u}{\partial x^2} + 7 \dfrac{\partial^2 u}{\partial x\partial y} + %
+    2 \dfrac{\partial^2 u}{\partial y^2} = 0,
 \]
 cu condițiile:
 \[
-  \begin{cases}
-    u(x, 0) &= x^3 \\
-    \dfrac{\partial u}{\partial y}(x, 0) &= 2x^2
-  \end{cases}.
+    \begin{cases}
+        u(x, 0) &= x^3 \\
+        \dfrac{\partial u}{\partial y}(x, 0) &= 2x^2
+    \end{cases}.
 \]
 
 \vspace{0.3cm}
 
 \emph{Soluție:} Ecuația este de tip hiperbolic, iar schimbarea de variabilă este:
 \[
-  \begin{cases}
-    \tau &= 2x - y \\
-    \eta &= x - 3y
-  \end{cases},
+    \begin{cases}
+        \tau &= 2x - y \\
+        \eta &= x - 3y
+    \end{cases},
 \]
 care conduce la forma canonică $ \dfrac{\partial^2 u}{\partial \tau\partial \eta} = 0 $,
 de unde rezultă soluția generală:
 \[
-  u(x, y) = \varphi(2x - y) + \psi(x - 3y).
+    u(x, y) = \varphi(2x - y) + \psi(x - 3y).
 \]
 Din condițiile problemei Cauchy, obținem:
 \[
-  \begin{cases}
-    \varphi(2x) + \psi(x) &= x^3 \\
-    -\varphi'(2x) - 3 \psi'(x) &= 2x^2
-  \end{cases}.
+    \begin{cases}
+        \varphi(2x) + \psi(x) &= x^3 \\
+        -\varphi'(2x) - 3 \psi'(x) &= 2x^2
+    \end{cases}.
 \]
 Integrăm a doua relație și obținem:
 \[
-  -\dfrac{1}{2} \varphi(2x) - 3 \psi(x) = \dfrac{2}{3}x^3 + k.
+    -\dfrac{1}{2} \varphi(2x) - 3 \psi(x) = \dfrac{2}{3}x^3 + k.
 \]
 Atunci:
 \[
-  \begin{cases}
-    \varphi(2x) &= \dfrac{19}{96}(2x)^3 + c_1 \\
-    \psi(x) &= -\dfrac{7}{12}x^3 - c_1
-  \end{cases},
+    \begin{cases}
+        \varphi(2x) &= \dfrac{19}{96}(2x)^3 + c_1 \\
+        \psi(x) &= -\dfrac{7}{12}x^3 - c_1
+    \end{cases},
 \]
 de unde rezultă că soluția problemei Cauchy este:
 \[
-  u(x, y) = \dfrac{19}{96}(2x - y)^3 - \dfrac{7}{12}(x - 3y)^3.
+    u(x, y) = \dfrac{19}{96}(2x - y)^3 - \dfrac{7}{12}(x - 3y)^3.
 \]
 
 3. Rezolvați ecuația coardei vibrante infinite:
 \[
-  \dfrac{\partial^2 u}{\partial x^2} - \dfrac{\partial^2 u}{\partial t^2} = 0,
+    \dfrac{\partial^2 u}{\partial x^2} - \dfrac{\partial^2 u}{\partial t^2} = 0,
 \]
 cu condițiile inițiale:
 \[
-  \begin{cases}
-    u(x, 0) &= \dfrac{x}{1 + x^2} \\
-    \dfrac{\partial u}{\partial t}(x, 0) &= \sin x
-  \end{cases}.
+    \begin{cases}
+        u(x, 0) &= \dfrac{x}{1 + x^2} \\
+        \dfrac{\partial u}{\partial t}(x, 0) &= \sin x
+    \end{cases}.
 \]
 
 \vspace{0.3cm}
 
 \emph{Soluție:} Putem aplica direct formula lui d'Alembert (\ref{eq:dalembert}):
 \begin{align*}
-  u(x, t) &= \dfrac{1}{2} \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] + %
-            \dfrac{1}{2} \int_{x - t}^{x + t} \sin y dy \\
-          &= \dfrac{1}{2} \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] - %
+    u(x, t) &= \dfrac{1}{2} \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] + %
+    \dfrac{1}{2} \int_{x - t}^{x + t} \sin y dy \\
+            &= \dfrac{1}{2} \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] - %
             \dfrac{1}{2}[\cos(x + t) - \cos(x - t)] \\
-          &= \dfrac{1}{2} \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] - %
+            &= \dfrac{1}{2} \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] - %
             \dfrac{1}{2} \Big[ -2\sin \dfrac{x + t + x - t}{2} \sin \dfrac{x + t - x + t}{2} \Big] \\
-          &= \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] + \sin x \sin t.
+            &= \Big[ \dfrac{x - t}{1 + (x - t)^2} + \dfrac{x + t}{1 + (x + t)^2} \Big] + \sin x \sin t.
 \end{align*}
 
 \vspace{0.3cm}
@@ -534,7 +534,7 @@ cu condițiile inițiale:
 4(*). Determinați vibrațiile unei coarde de lungime $ l $, avînd capetele fixate,
 dacă forma inițială a coardei este dată de funcția:
 \[
-  \varphi(x) = 4 \Big( x - \dfrac{x^2}{l} \Big),
+    \varphi(x) = 4 \Big( x - \dfrac{x^2}{l} \Big),
 \]
 iar viteza inițială este $ 0 $.
 
@@ -543,149 +543,149 @@ iar viteza inițială este $ 0 $.
 \emph{Soluție:} Aplicînd direct formula pentru coeficienții Fourier (\ref{eq:fourier}),
 avem $ b_n = 0 $, iar
 \[
-  a_n = \dfrac{2}{l} \int_0^l 4\Big( x - \dfrac{x^2}{l} \Big) \sin \dfrac{n\pi}{l} xdx = %
-  \dfrac{8}{l} \int_0^l x \sin \dfrac{n\pi}{l} xdx - %
-  \dfrac{8}{l^2} \int_0^l x^2 \sin \dfrac{n\pi}{l}xdx.
+    a_n = \dfrac{2}{l} \int_0^l 4\Big( x - \dfrac{x^2}{l} \Big) \sin \dfrac{n\pi}{l} xdx = %
+    \dfrac{8}{l} \int_0^l x \sin \dfrac{n\pi}{l} xdx - %
+    \dfrac{8}{l^2} \int_0^l x^2 \sin \dfrac{n\pi}{l}xdx.
 \]
 
 Calculăm:
 \begin{align*}
-  \int_0^l x\sin \dfrac{n\pi}{l} xdx &= -\dfrac{l}{n\pi} x \cos \dfrac{n\pi}{l}x \Big|_0^l + %
-                                      \dfrac{l}{n\pi} \int_0^l \cos \dfrac{n\pi}{l} xdx \\
-                                    &= -\dfrac{l^2}{n\pi}(-1)^n + %
-                                      \dfrac{l^2}{n^2 \pi^2} \sin\dfrac{n\pi}{l} x\Big|_0^l \\
-                                    &= (-1)^{n + 1} \dfrac{l^2}{n\pi}. \\
-  \int_0^l x^2 \sin \dfrac{n\pi}{l} xdx &= -\dfrac{l}{n\pi}x^2 \cos \dfrac{n\pi}{l}x \Big|_0^l + %
-                                         \dfrac{2l}{n\pi}\int_0^l x\cos \dfrac{n\pi}{l} xdx \\
-                                    &= (-1)^{n + 1} \dfrac{l^3}{n\pi} + %
-                                      \dfrac{2l}{n\pi}\Big[ \dfrac{l}{n\pi} x\sin \dfrac{n\pi}{l}x\Big|_0^l - \dfrac{l}{n\pi}\int_0^l \sin \dfrac{n\pi}{l}xdx \Big] \\
-                                    &= (-1)^{n + 1}\dfrac{l^3}{n\pi} + %
-                                      \dfrac{2l}{n^3 \pi^3}\cos \dfrac{n\pi}{l}x\Big|_0^l \\
-                                    &= (-1)^{n + 1} \dfrac{l^3}{n\pi} + \dfrac{2l}{n^3 \pi^3}[(-1)^n + 1].
+    \int_0^l x\sin \dfrac{n\pi}{l} xdx &= -\dfrac{l}{n\pi} x \cos \dfrac{n\pi}{l}x \Big|_0^l + %
+    \dfrac{l}{n\pi} \int_0^l \cos \dfrac{n\pi}{l} xdx \\
+                                       &= -\dfrac{l^2}{n\pi}(-1)^n + %
+                                       \dfrac{l^2}{n^2 \pi^2} \sin\dfrac{n\pi}{l} x\Big|_0^l \\
+                                       &= (-1)^{n + 1} \dfrac{l^2}{n\pi}. \\
+    \int_0^l x^2 \sin \dfrac{n\pi}{l} xdx &= -\dfrac{l}{n\pi}x^2 \cos \dfrac{n\pi}{l}x \Big|_0^l + %
+    \dfrac{2l}{n\pi}\int_0^l x\cos \dfrac{n\pi}{l} xdx \\
+                                          &= (-1)^{n + 1} \dfrac{l^3}{n\pi} + %
+                                          \dfrac{2l}{n\pi}\Big[ \dfrac{l}{n\pi} x\sin \dfrac{n\pi}{l}x\Big|_0^l - \dfrac{l}{n\pi}\int_0^l \sin \dfrac{n\pi}{l}xdx \Big] \\
+                                          &= (-1)^{n + 1}\dfrac{l^3}{n\pi} + %
+                                          \dfrac{2l}{n^3 \pi^3}\cos \dfrac{n\pi}{l}x\Big|_0^l \\
+                                          &= (-1)^{n + 1} \dfrac{l^3}{n\pi} + \dfrac{2l}{n^3 \pi^3}[(-1)^n + 1].
 \end{align*}
 
 Așadar:
 \[
-  a_n = (-1)^{n + 1} \dfrac{8l}{n\pi} - (-1)^{n + 1}\dfrac{8l}{n\pi} - %
-  \dfrac{16}{n^3 \pi^3}[(-1)^n - 1],
+    a_n = (-1)^{n + 1} \dfrac{8l}{n\pi} - (-1)^{n + 1}\dfrac{8l}{n\pi} - %
+    \dfrac{16}{n^3 \pi^3}[(-1)^n - 1],
 \]
 de unde obținem $ a_{2n} = 0, a_{2n+1} = \dfrac{32l}{(2n + 1)^3 \pi^3} $.
 
 Punem laolaltă coeficienții și obținem soluția:
 \[
-  u(x, t) = \dfrac{32l}{\pi^3} \sum_{n \geq 0} \dfrac{1}{(2n + 1)^3} \cos\dfrac{(2n + 1)\pi}{l} t %
-  \cdot \sin\dfrac{(2n + 1)\pi}{l} x.
+    u(x, t) = \dfrac{32l}{\pi^3} \sum_{n \geq 0} \dfrac{1}{(2n + 1)^3} \cos\dfrac{(2n + 1)\pi}{l} t %
+    \cdot \sin\dfrac{(2n + 1)\pi}{l} x.
 \]
 
 \vspace{0.3cm}
 
 5(*). Rezolvați problema Cauchy asupra coardei vibrante finite:
 \[
-  \dfrac{\partial^2 u}{\partial t^2} = 4 \cdot \dfrac{\partial^2 u}{\partial x^2}, %
-  \quad 0 < x < \pi, t > 0,
+    \dfrac{\partial^2 u}{\partial t^2} = 4 \cdot \dfrac{\partial^2 u}{\partial x^2}, %
+    \quad 0 < x < \pi, t > 0,
 \]
 cu condițiile inițiale și la limită:
 \[
-  \begin{cases}
-    u(x, 0) &= \sin 3x - 4 \sin 10x \\
-    \dfrac{\partial u}{\partial t}(x, 0) &= 2 \sin 4x + \sin 6x, 0 \leq x \leq \pi \\
-    u(0, t) &= u(\pi, t) = 0, t \geq 0
-  \end{cases}.
+    \begin{cases}
+        u(x, 0) &= \sin 3x - 4 \sin 10x \\
+        \dfrac{\partial u}{\partial t}(x, 0) &= 2 \sin 4x + \sin 6x, 0 \leq x \leq \pi \\
+        u(0, t) &= u(\pi, t) = 0, t \geq 0
+    \end{cases}.
 \]
 
 \vspace{0.3cm}
 
 \emph{Soluție:} Determinăm coeficienții din seria Fourier:
 \[
-  u(x, 0) = \sin 3x - 4\sin 10x \Rightarrow \sum a_n \sin nx = \sin 3x - 4 \sin 10x.
+    u(x, 0) = \sin 3x - 4\sin 10x \Rightarrow \sum a_n \sin nx = \sin 3x - 4 \sin 10x.
 \]
 Egalînd coeficienții, obținem $ a_3 = 1, a_{10} = -4, a_n = 0 $ în rest.
 
 Mai departe:
 \[
-  \dfrac{\partial u}{\partial t}(x, 0) = 2\sin 4x + \sin 6x \Rightarrow %
-  \sum 2nb_n \sin nx = 2\sin 4x + \sin 6x.
+    \dfrac{\partial u}{\partial t}(x, 0) = 2\sin 4x + \sin 6x \Rightarrow %
+    \sum 2nb_n \sin nx = 2\sin 4x + \sin 6x.
 \]
 Egalînd coeficienții, avem: $ b_4 = \dfrac{1}{4}, b_6 = \dfrac{1}{12}, b_n = 0 $ în rest.
 
 Rezultă:
 \[
-  u(x, t) = \cos 6t \sin 3x - 4\cos 20t \sin 10x + \dfrac{1}{4} \sin 8t \sin 4x + %
-  \dfrac{1}{12} \sin 12t \sin 6x.
+    u(x, t) = \cos 6t \sin 3x - 4\cos 20t \sin 10x + \dfrac{1}{4} \sin 8t \sin 4x + %
+    \dfrac{1}{12} \sin 12t \sin 6x.
 \]
 
 \vspace{0.3cm}
 
 6(*). Aceeași cerință pentru:
 \begin{enumerate}[(a)]
-\item
-  \[
-    \dfrac{\partial^2 u}{\partial x^2} = \dfrac{1}{9}\dfrac{\partial^2 u}{\partial t^2}, %
-    \quad 0 \leq x \leq \pi, t \geq 0,
-  \]
-  cu condițiile inițiale și la limită:
-  \[
-    \begin{cases}
-      u(x, 0) &= \sin x \\
-      \dfrac{\partial u}{\partial t}(x, 0) &= \sin x \\
-      u(0, t) &= u(\pi, t) = 0
-    \end{cases}.
-  \]
-\item
-  \[
-    \dfrac{\partial^2 u}{\partial x^2} - \dfrac{1}{4} \dfrac{\partial^2 u}{\partial t^2} = 0, %
-    \quad 0 \leq x \leq 1, t \geq 0
-  \]
-  cu condițiile inițiale și la limită:
-  \[
-    \begin{cases}
-      u(x, 0) &= x(1 - x) \\
-      \dfrac{\partial u}{\partial t}(x, 0) &= 0 \\
-      u(0, t) &= u(1, t) = 0
-    \end{cases}.
-  \]
-\item
-  \[
-    \dfrac{\partial^2 u}{\partial x^2} - \dfrac{1}{4} \dfrac{\partial^2 u}{\partial t^2} = 0, %
-    0 \leq x \leq \pi, t \geq 0
-  \]
-  cu condițiile inițiale și la limită:
-  \[
-    \begin{cases}
-      u(x, 0) &= \sin 3x - 4\sin 10x \\
-      \dfrac{\partial u}{\partial t}(x, 0) &= 2 \sin 4x + \sin 6x \\
-      u(0, t) &= u(\pi, t) = 0
-    \end{cases}.
-  \]
+    \item
+        \[
+            \dfrac{\partial^2 u}{\partial x^2} = \dfrac{1}{9}\dfrac{\partial^2 u}{\partial t^2}, %
+            \quad 0 \leq x \leq \pi, t \geq 0,
+        \]
+        cu condițiile inițiale și la limită:
+        \[
+            \begin{cases}
+                u(x, 0) &= \sin x \\
+                \dfrac{\partial u}{\partial t}(x, 0) &= \sin x \\
+                u(0, t) &= u(\pi, t) = 0
+            \end{cases}.
+        \]
+    \item
+        \[
+            \dfrac{\partial^2 u}{\partial x^2} - \dfrac{1}{4} \dfrac{\partial^2 u}{\partial t^2} = 0, %
+            \quad 0 \leq x \leq 1, t \geq 0
+        \]
+        cu condițiile inițiale și la limită:
+        \[
+            \begin{cases}
+                u(x, 0) &= x(1 - x) \\
+                \dfrac{\partial u}{\partial t}(x, 0) &= 0 \\
+                u(0, t) &= u(1, t) = 0
+            \end{cases}.
+        \]
+    \item
+        \[
+            \dfrac{\partial^2 u}{\partial x^2} - \dfrac{1}{4} \dfrac{\partial^2 u}{\partial t^2} = 0, %
+            0 \leq x \leq \pi, t \geq 0
+        \]
+        cu condițiile inițiale și la limită:
+        \[
+            \begin{cases}
+                u(x, 0) &= \sin 3x - 4\sin 10x \\
+                \dfrac{\partial u}{\partial t}(x, 0) &= 2 \sin 4x + \sin 6x \\
+                u(0, t) &= u(\pi, t) = 0
+            \end{cases}.
+        \]
 \end{enumerate}
 
 \vspace{0.3cm}
 
 7. Să se determine soluția problemei Cauchy:
 \[
-  u_{xx} - \dfrac{1}{4} u_{tt} = 0, \quad x \in \RR, t \geq 0,
+    u_{xx} - \dfrac{1}{4} u_{tt} = 0, \quad x \in \RR, t \geq 0,
 \]
 cu condițiile inițiale:
 \[
-  u(x, 0) = e^x, \quad u_t(x, 0) = 4x.
+    u(x, 0) = e^x, \quad u_t(x, 0) = 4x.
 \]
 
 \emph{Indicație:} Metoda 1: Putem folosi direct formula lui D'Alembert. Avem
 $ a = 2, f(x) = e^x, g(x) = 4x $, deci soluția se obține direct:
 \[
-  u(x, t) = \dfrac{1}{2} \Big( e^{x - 2t} + e^{x + 2t} \Big) + %
-  \dfrac{1}{4} \int_{x - 2t}^{x + 2t} 4 \alpha d\alpha.
+    u(x, t) = \dfrac{1}{2} \Big( e^{x - 2t} + e^{x + 2t} \Big) + %
+    \dfrac{1}{4} \int_{x - 2t}^{x + 2t} 4 \alpha d\alpha.
 \]
 
 Metoda 2: Alternativ, putem folosi rezolvarea directă. Scriem ecuația
 atașată pentru $ t = t(x) $, care ne conduce la substituțiile:
 \[
-  \tau = x - 2t, \quad \eta = x + 2t.
+    \tau = x - 2t, \quad \eta = x + 2t.
 \]
 Forma canonică este $ u_{\tau\eta} = 0 $, a cărei soluție generală
 este:
 \[
-  u(\tau, \eta) = f(\tau) + g(\eta).
+    u(\tau, \eta) = f(\tau) + g(\eta).
 \]
 
 Folosim acum condițiile inițiale și determinăm $ f $ și $ g $, ca funcții
@@ -695,14 +695,9 @@ de $ x $ și $ t $.
 
 8. Rezolvați problema Cauchy:
 \[
-  u_{xx} - \dfrac{1}{a^2} u_{tt} = 0, \quad x \in \RR, t \geq 0,
+    u_{xx} - \dfrac{1}{a^2} u_{tt} = 0, \quad x \in \RR, t \geq 0,
 \]
 cu condițiile inițiale:
 \[
-  u(x, 0) = \cos x, \quad u_t(x, 0) = 1.
+    u(x, 0) = \cos x, \quad u_t(x, 0) = 1.
 \]
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../am2-19-20"
-%%% End:
