@@ -53,6 +53,8 @@ Ajungem acum la definiția principală:
 
 Principalele proprietăți pe care le vom folosi în calcule sînt:
 \begin{enumerate}[(1)]
+    \item \textbf{Liniaritatea:} Transformata $ Z $ este liniară în raport
+    cu înmulțirea cu scalari și adunarea semnalelor discrete;
     \item \textbf{Inversarea transformării $ Z $:} Fie $ s \in S_d^+ $, cu $ s = (a_n) $.
         Presupunem că $ L_s(z) $ este olomorfă în domeniul $ |z| \in (r, R) $. Atunci
         putem recupera semnalul $ a_n $ prin formula:
@@ -64,14 +66,6 @@ Principalele proprietăți pe care le vom folosi în calcule sînt:
         și are loc $ L_{s \ast t} = L_s \cdot L_t $. În particular:
         \[
             L_{s \ast \delta_k}(z) = z^{-k} L_s(z), \quad k \in \ZZ;
-        \]
-    \item \textbf{Prima teoremă de întîrziere:} Pentru $ n\in \NN^\ast $:
-        \[
-            L_s( z_{t - n}) = z^{-n} L_s(f);
-        \]
-    \item \textbf{A doua teoremă de întîrziere (teorema de deplasare):}
-        \[
-            L_s(z_{t + n}) = z^n \cdot \Big( L_s(z) - \sum_{t = 0}^{n-1} z_t z^{-t} \Big), \quad n \in \NN^\ast.
         \]
 \end{enumerate}
 
