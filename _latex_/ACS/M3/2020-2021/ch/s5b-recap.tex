@@ -1,0 +1,73 @@
+%! TEX root = ../m3-20-21.tex
+
+\chapter{Recapitulare test (L.\ Costache)}
+
+\indent\indent \textbf{Integrale complexe}
+
+Calculați:
+
+\begin{enumerate}[(a)]
+    \item $ \ds\int_{|z| = 4} \dfrac{zdz}{\sin z(1 - \cos z)} $;
+    \item $ \ds\int_{|z| = 4} \dfrac{dz}{3 \sin z - \sin 3z} $;
+    \item $ \ds\int_{|z| = 2} \dfrac{z^n \cdot e^{\frac{1}{z}}}{z^2 - 1} dz $;
+    \item $ \ds\int_0^{2\pi} \dfrac{\cos 4\theta}{1 - 2a \cos \theta + a^2} d\theta, a > 1 $;
+    \item $ \ds\int_{-\infty}^{\infty} \dfrac{x \cos x}{x^2 - 6x + 13} dx $;
+    \item $ \ds\int_0^\infty \dfrac{x \sin ax}{(x^2 + b^2)(x^2 + c^2)} dx, b, c > 0 $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Transformata Laplace}
+
+1. Să se determine transformata Laplace a funcției:
+\[
+    f(t) = \begin{cases}
+        2, & 0 < t < 1 \\
+        \dfrac{t^2}{2}, & 1 < t < \dfrac{\pi}{2} \\
+        \cos t, & t > \dfrac{\pi}{2}
+    \end{cases}
+\]
+
+\vspace{0.3cm}
+
+2. Folosind transformata Laplace, rezolvați ecuațiile diferențiale:
+
+\begin{enumerate}[(a)]
+    \item $ y^{\prime\prime} + 3y^\prime + 2y = u(t - 1) - u(t - 2) $, știind $ y(0) = 0, y'(0) = 0 $;
+    \item $ y^{\prime\prime} + 4y = \begin{cases} 8t^2, & 0 < t < 5 \\ 200, & t > 5 \end{cases} $,
+    știind $ y(1) = 1 + \cos 2 $ și $ y'(1) = 4 - 2 \sin 2 $;
+    \item $ x^{\prime\prime}(t) - 2x^\prime(t - 1) = t $, știind $ x(0) = x'(0) = 0 $;
+    \item $ y^{\prime\prime} + 2 y^\prime - 2y = %
+    \begin{cases}
+        3 \sin t - \cos t, & 0 < t < 2\pi \\
+        3 \sin 2t - \cos 2t, & t > 2 \pi
+    \end{cases} $, știind $ y(0) = 1, y'(0) = 0 $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+3. Folosind transformata Laplace, rezolvați ecuația integrală:
+
+\[
+    x(t) = t + 2 \int_0^t \left[ t - \tau - \sin(t - \tau) \right] \cdot x(\tau) d \tau
+\]
+
+\vspace{0.3cm}
+
+\textbf{Transformata Fourier}
+
+1. Determinați transformata Fourier a semnalului:
+\[
+    f(t) = (t + 2)e^{-(t + 2)(3i + 5)}, \quad t > 0.
+\]
+
+\vspace{0.3cm}
+
+2. Rezolvați ecuația integrală, folosind transformata Fourier:
+\[
+    \int_0^\infty f(t) \sin (\omega t) dt = %
+    \begin{cases}
+        \dfrac{\pi}{2} \sin \omega, & \omega \in (0, \pi) \\
+        0, & \omega \geq \pi
+    \end{cases}
+\]
