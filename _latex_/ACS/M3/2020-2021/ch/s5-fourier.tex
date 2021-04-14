@@ -48,7 +48,7 @@ Definiția principală urmează.
     definită prin:
     \[
         \kal{F}[f] : \RR \to \CC, \quad \kal{F}[f](\omega) = %
-        \int_{-\infty}^\infty f(t) e^{i\omega t} dt.
+        \int_{-\infty}^\infty f(t) e^{-i\omega t} dt.
     \]
 \end{definition}
 
@@ -102,12 +102,12 @@ $ \ds\lim_{|z| \to \infty} f(z) = 0 $. Atunci:
 \begin{itemize}
     \item Dacă $ \dr{Im}p_k > 0 $, atunci:
         \[
-            \kal{F}[f](\omega) = 2\pi i \sum_{k=1}^n \dr{Rez}\left(f(z)e^{-i\omega z} p_k\right), %
+            \kal{F}[f](\omega) = 2\pi i \sum_{k=1}^n \dr{Rez}\left(f(z)e^{-i\omega z}, p_k\right), %
             \quad \text{ pentru } \omega < 0;
         \]
     \item Dacă $ \dr{Im}p_k < 0 $, atunci:
         \[
-            \kal{F}[f](\omega) = -2\pi i \sum_{k=1}^n \dr{Rez}\left(f(z)e^{-i\omega z} p_k\right), %
+            \kal{F}[f](\omega) = -2\pi i \sum_{k=1}^n \dr{Rez}\left(f(z)e^{-i\omega z}, p_k\right), %
             \quad \text{ pentru } \omega > 0;
         \]
 \end{itemize}
@@ -188,7 +188,7 @@ acest lucru conduce la dublarea rezultatului. Deci avem:
 
 Acest lucru conduce la:
 \[
-    \dfrac{1}{ 2\pi} \int_{-\infty}^\infty y(t) e^{itx} dt = \dfrac{1}{\pi(x^2 + 1)}.
+    \dfrac{1}{ 2\pi} \int_{-\infty}^\infty y(t) e^{-itx} dt = \dfrac{1}{\pi(x^2 + 1)}.
 \]
 
 Recunoaștem în membrul stîng formula de trasnformare Fourier,
@@ -199,7 +199,7 @@ deci rezultă:
 
 Folosim acum formula de inversare și rezultă:
 \[
-    y(t) = \dfrac{1}{\pi} \int_{-\infty}^\infty \dfrac{1}{x^2 + 1} e^{-itx} dx.
+    y(t) = \dfrac{1}{\pi} \int_{-\infty}^\infty \dfrac{1}{x^2 + 1} e^{itx} dx.
 \]
 
 Acest calcul se poate face cu teorema reziduurilor, deoarece integrandul
@@ -207,24 +207,24 @@ are doi poli, $ p_{1,2} = \pm i $, ambii simpli. Obținem:
 \begin{itemize}
     \item Pentru $ t < 0 $ și polul $ p_1 = i $:
         \begin{align*}
-            y(t) &= \dfrac{1}{\pi} \cdot 2 \pi i \dr{Rez}\left(\dfrac{1}{x^2 + 1} e^{-itx}, i\right) \\
-                 &= 2 i \cdot \lim_{z \to i} (z - i) \dfrac{1}{z^2 + 1} e^{-itx} \\
-                 &= 2i \cdot e^t;
+            y(t) &= \dfrac{1}{\pi} \cdot 2 \pi i \dr{Rez}\left(\dfrac{1}{x^2 + 1} e^{itx}, i\right) \\
+                 &= 2 i \cdot \lim_{z \to i} (z - i) \dfrac{1}{z^2 + 1} e^{itz} \\
+                 &= 2i \cdot e^{-t};
         \end{align*}
     \item Pentru $ t > 0 $ și polul $ p_2 = -i $:
         \begin{align*}
-            y(t) &= \dfrac{1}{pi} \cdot - 2\pi i \dr{Rez}\left( \dfrac{1}{x^2 + 1} e^{-itx}, -i\right) \\
-                 &= -2i \cdot \lim_{z \to -i} (z + i) \dfrac{1}{z^2 + 1} e^{-itz} \\
-                 &= 2i e^{-t}.
+            y(t) &= \dfrac{1}{pi} \cdot - 2\pi i \dr{Rez}\left( \dfrac{1}{x^2 + 1} e^{itx}, -i\right) \\
+                 &= -2i \cdot \lim_{z \to -i} (z + i) \dfrac{1}{z^2 + 1} e^{itz} \\
+                 &= 2i e^{t}.
         \end{align*}
 \end{itemize}
 
 Concluzia este că soluția arată astfel:
 \[
     y(t) = \begin{cases}
-        \exp(t), & t < 0 \\
-        \exp(-t), & t < 0
-    \end{cases} = \exp\left(|t|\right).  
+        2i \cdot \exp(-t), & t < 0 \\
+        2i \cdot \exp(t), & t > 0
+    \end{cases} = 2i \cdot \exp\left( |t| \right).  
 \]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
