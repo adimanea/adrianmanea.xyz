@@ -1,6 +1,6 @@
-This is makeindex, version 2.15 [TeX Live 2021/W32TeX] (kpathsea + Thai support).
-Scanning input file am2-20-21.idx....done (14 entries accepted, 0 rejected).
-Sorting entries....done (63 comparisons).
-Generating output file am2-20-21.ind....done (31 lines written, 0 warnings).
+This is makeindex, version 2.15 [MiKTeX 21.2].
+Scanning input file am2-20-21.idx....done (19 entries accepted, 0 rejected).
+Sorting entries....done (84 comparisons).
+Generating output file am2-20-21.ind....done (37 lines written, 0 warnings).
 Output written in am2-20-21.ind.
 Transcript written in am2-20-21.ilg.
