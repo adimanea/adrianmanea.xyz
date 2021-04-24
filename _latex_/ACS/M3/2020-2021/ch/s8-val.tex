@@ -1,4 +1,4 @@
-% ! TEX root = ../m3-19-20.tex
+% ! TEX root = ../m3-20-21.tex
 
 \chapter{Variabile aleatoare}
 
@@ -229,7 +229,7 @@ Proprietățile esențiale ale covarianței sînt date de:
 \item Dacă $ X_1, \dots, X_n $ sînt variabile aleatoare cu dispersiile
   $ D_i^2 $ și covarianțele $ \mathrm{cov}(X_i, X_j), i \neq j $, atunci are loc:
   \[
-    D^2\Big( \sum_{i = 1}^n X_i \Big) = \sum_{i = 1}^n D_i^2 + %
+    D^2\left( \sum_{i = 1}^n X_i \right) = \sum_{i = 1}^n D_i^2 + %
     2 \sum_{i < j} \mathrm{cov}(X_i, X_j).
   \]
 \end{enumerate}
@@ -360,7 +360,7 @@ de succes, care trebuie repetate pînă la apariția primului succes. Atunci:
 \begin{itemize}
 \item $ P(X = k) = p(1 - p)^{k - 1}, k \in \NN^\ast $;
 \item $ E(X) = \dfrac{1}{p} $;
-\item $ D^2(X) = \dfrac{1 - p}{p^2} $;
+\item $ D^2(X) = \dfrac{1 - p}{p^2} $;
 \item $ G_X(t) = \dfrac{pt}{1 - qt} $.
 \end{itemize}
 
@@ -374,7 +374,7 @@ de succes $ p $ care trebuie efectuate pentru a obține $ m $ succese. Atunci:
 \item $ P(X = n) = C_{n-1}^{m - 1} p^m q^{n-m} $ (pentru $ m = 1 $, găsim repartiția
   geometrică);
 \item $ E(X) = \dfrac{m}{p} $;
-\item $ D^2(X) = \dfrac{mq}{p^2} $;
+\item $ D^2(X) = \dfrac{mq}{p^2} $;
 \item $ G_X(t) = \dfrac{p^m t^m}{(1 - qt)^m} $.
 \end{itemize}
 
@@ -540,7 +540,7 @@ $ D^2(X) = \dfrac{(b - a)^2}{12} $.
 
 \subsection{Repartiția exponențială}
 
-Dat un parametru $ \lambda > 0 $, repartiția exponențială are densitatea:
+Dat un parametru $ \lambda > 0 $, repartiția exponențială are densitatea:
 \[
   f(x) = \begin{cases}
     \lambda e^{-\lambda x}, & x > 0 \\
@@ -551,8 +551,8 @@ Dat un parametru $ \lambda > 0 $, repartiția exponențială are densitatea:
 
 Pentru aceasta, avem:
 \begin{itemize}
-\item $ E(X) = \dfrac{1}{\lambda} $;
-\item $ D^2(X) = \dfrac{1}{\lambda^2} $;
+\item $ E(X) = \dfrac{1}{\lambda} $;
+\item $ D^2(X) = \dfrac{1}{\lambda^2} $;
 \item $ \varphi_X(t) = \Big( 1 - \dfrac{it}{\lambda} \Big)^{-1} $.
 \end{itemize}
 
@@ -592,8 +592,7 @@ Din repartiția Gamma, putem obține alte cîteva cazuri particulare:
 În acest caz, $ X $ nu admite valoare medie.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Exerciții}
+\section{Exerciții rezolvate}
 
 \indent\indent 1. Doi parteneri egal cotați boxează 12 runde. Probabilitatea
 ca oricare dintre ei să cîștige o rundă este 50\%. Să se calculeze valoarea
@@ -746,14 +745,88 @@ Avem succesiv (cf.~\eqref{eq:p-phi-lap}):
                             &= 0,8664.
 \end{align*}
 
-\textbf{Observație:} Cum exercițiile din acest seminar sînt rezolvate integral,
-pentru temă, puteți alege exerciții nerezolvate fie din notițele doamnei profesoare
-Costache (paginile 102--105) sau din cartea de la Universitatea din Iași (paginile 82--87).
-Chiar dacă exercițiile au răspunsuri, ca și pînă acum, soluțiile trebuie însoțite
-de un videoclip care să le explice.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții propuse}
 
+\indent\indent 1. Dacă efectuăm o măsurătoare, iar rezultatul este cuprins între valorile
+$ k $ și $ k + 1 $, îl aproximăm cu $ k + \dfrac{1}{2} $. Astfel, eroarea
+comisă poate fi presupusă uniform distribuită pe intervalul
+$ \left( - \dfrac{1}{2}, \dfrac{1}{2} \right) $.
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../m3-19-20"
-%%% End:
+Care este probabilitatea ca eroarea să fie mai mare ca $ \dfrac{1}{4} $?
+
+\vspace{0.3cm}
+
+2. Fie variabila aleatoare $ X $, distribuită uniform pe $ (-1, 1 ) $.
+Determinați densitățile de probabilitate, mediile și dispersiile
+pentru variabilele $ Y = 2X + 1 $ și $ Z = 2X^2 + 1 $.
+
+\vspace{0.3cm}
+
+3. Durata medie de funcționare a unei baterii este o variabilă aleatoare,
+pe care o notăm $ X $ și care este repartizată normal, $ N(m, \sigma^2 ) $,
+unde $ m = 120 $ zile este timpul mediu de funcționare, iar $ \sigma = 10 $
+zile este abaterea față de medie. Determinați:
+\begin{enumerate}[(a)]
+  \item probabilitatea ca bateria să funcționeze cel puțin 100 zile;
+  \item probabilitatea ca bateria să funcționeze între 100 și 150 zile;
+  \item intervalul de timp în care se poate spune că bateria funcționează
+  cu o probabilitate de cel puțin $ 75\% $.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+4. Fie $ a, b > 0 $ și $ n \in \NN $. Determinați $ a, b $ astfel încît
+funcția $ f_n(x) = ax^n e^{-b^2x^2} $ pentru $ x > 0 $ să fie o densitate
+de probabilitate pentru o variabilă aleatoare cu media $ m $.
+
+\vspace{0.3cm}
+
+5. Fie densitatea de probabilitate a unei variabile aleatoare $ X $
+de forma:
+\[
+  f(x) = \begin{cases}
+           c \cdot \ln \left(\dfrac{a}{x} \right), & 0 < x < a \\
+           0, & \text{ în rest}
+           \end{cases}
+\]
+Să se determine constanta $ c $ astfel încît $ f $ să fie corect
+definită și să se calculeze valoarea medie și dispersia variabilei $ X $.
+
+\vspace{0.3cm}
+
+6. Determinați funcția caracteristică a variabilei aleatoare $ X $ cu
+densitatea de probabilitate dată de:
+\[
+  f(x) = \begin{cases}
+           \dfrac{1}{2} \left( 1 - \dfrac{|x|}{2} \right), & |x| \leq 2 \\
+           0, & |x| > 2
+           \end{cases}
+\]
+Aflați funcția caracteristică a acestei variabile aleatoare.
+
+\vspace{0.3cm}
+
+7. Fie $ X, Y $ două variabile aleatoare independente, cu $ X : N(1, 2) $ și $ Y: U(0, 2) $.
+Determinați $ M(X + Y), M(XY), M(X^2), M(X - Y^2), D^2(X + Y), D^2(X - Y) $.
+
+\vspace{0.3cm}
+
+8. Presupunem că emisia de particule dintr-un experiment este modelată
+de legea Poisson, cu $ \lambda = 30 $ particule pe oră. Care este
+probabilitatea ca în 10 minute să fie emise cel mult 20 particule?
+
+\vspace{0.3cm}
+
+9. Fie variabilele aleatoare $ X, Y $, în relația $ Y = 2 - 3X $.
+Calculați media și dispersia pentru $ Y $, precum și corelația și coeficientul
+de corelație, știind că $ m_X = -1, D^2_X = 4 $.
+
+\vspace{0.3cm}
+
+10. Presupunem că modulul vectorului viteză a unei particule este o variabile
+aleatoare care este repartizată după legea Maxwell, adică are:
+\[
+  f(v) = \dfrac{4h^2}{\sqrt{\pi}} \cdot v^2 \cdot e^{-h^2 v^2}, \quad v > 0.
+\]
+Aflați media și dispersia vitezei.
