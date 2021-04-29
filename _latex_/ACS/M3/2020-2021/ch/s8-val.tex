@@ -153,7 +153,7 @@ Similar se calculează și celelalte valori și, folosind definițiile operații
 obținem:
 \begin{align*}
   X + Y &: \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0,12 & 0,32 & 0,4 & 0,16 \end{pmatrix} \\
-  XY &: \begin{pmatrix} 0 & 1 & 2 & 3 & 4 \\ 0,2 & 0,24 & 0,4 & 0,6 \end{pmatrix} \\
+  XY &: \begin{pmatrix} 0 & 1 & 2 & 4 \\ 0,2 & 0,24 & 0,4 & 0,6 \end{pmatrix} \\
   2 + X &: \begin{pmatrix} 2 & 3 & 4 \\ 0,2 & 0,4 & 0,4 \end{pmatrix} \\
   X^2 &: \begin{pmatrix} 0 & 1 & 4 \\ 0,2 & 0,4 & 0,4 \end{pmatrix} \\
   3Y &: \begin{pmatrix} 3 & 6 \\ 0,6 & 0,4 \end{pmatrix}
@@ -494,7 +494,8 @@ Pentru cazul particular $ m = 0 $ și $ \sigma = 1 $, $ X $ se numește
 Funcția caracteristică este dată de $ \varphi_X(t) = e^{imt - \frac{\sigma^2 t^2}{2}}. $
 
 Pentru cazul variabilelor normale standard, funcția de repartiție are o formă
-particulară și se numește \emph{funcția lui Laplace}:
+particulară și se numește \emph{funcția lui Laplace} (eng.\ CDF, \emph{Cumulative
+Distribution Function}):
 \[
   \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{t^2}{2}} dt.
 \]
@@ -729,7 +730,7 @@ Distribuția este de asemenea de tip Poisson, cu $ \lambda = 2 + 2 = 4 $. Atunci
 
 6. La un anumit cîntar erorile de măsurare sînt normal distribuite cu $ m = 0 $ și
 $ \sigma = 0,1 g $. Dacă se cîntărește un obiect la acest aparat, care este
-probabilitatea ca eroarea de măsurare să fie mai mică decît 15g?
+probabilitatea ca eroarea de măsurare să fie mai mică decît 0,15g?
 
 \emph{Soluție:} Fie $ X $ variabila aleatoare care reprezintă eroarea de măsurare
 dată cînd un obiect este cîntărit. Această variabilă este continuă și distribuită
@@ -771,7 +772,7 @@ zile este abaterea față de medie. Determinați:
   \item probabilitatea ca bateria să funcționeze cel puțin 100 zile;
   \item probabilitatea ca bateria să funcționeze între 100 și 150 zile;
   \item intervalul de timp în care se poate spune că bateria funcționează
-  cu o probabilitate de cel puțin $ 75\% $.
+  cu o probabilitate de cel puțin $ 75\% $ (\qq{aproape sigur}).
 \end{enumerate}
 
 \vspace{0.3cm}
