@@ -1,4 +1,4 @@
-% ! TEX root = ../am2-19-20.tex
+% ! TEX root = ../am2-20-21.tex
 
 \chapter{Serii Laurent și reziduuri}
 
@@ -81,7 +81,6 @@ Partea pozitivă se numește \emph{partea Taylor}, iar partea negativă se nume�
 Pentru cazul Taylor, seriile uzuale pentru funcțiile elementare, împreună cu domeniile
 de convergență, sînt date mai jos. În toate cazurile, $ x \in \RR $ se poate înlocui
 cu $ z \in \CC $.
-
 \begin{align*}
   e^x &= \sum_{n \geq 0} \dfrac{1}{n!} x^n, x \in \RR \\
   \dfrac{1}{1 - x} &= \sum_{n \geq 0} x^n, |x| < 1 \\
@@ -187,7 +186,7 @@ care are partea principală $ \dfrac{1}{z - 1} $, cu un singur termen
 \end{proposition}
 
 Ajungem la o altă noțiune esențială:
-\begin{definition}\label{def:rez}\index{singularitate!reziduu}
+\begin{definition}\index{singularitate!reziduu}
   În condițiile și cu notațiile de mai sus, fie $ z_0 $ o singularitate
   izolată a funcției $ f $. Coeficientul $ a_{-1} $ din seria Laurent
   a funcției $ f $ în coroana $ B(z_0; 0, r) $ se numește
@@ -239,26 +238,14 @@ $ \Rez(f, 0) = a_2 = 0 $.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exerciții}
 
-\indent\indent 1. Să se determine discul de convergență pentru seriile:
-\begin{enumerate}[(a)]
-\item $ \ds\sum_{n \geq 0} \dfrac{(2n)!}{(n!)^2} (z - 3i)^n $;
-\item $ \ds\sum_{n \geq 0} a^{n^2}z^n, |a| < 1 $;
-\item $ \ds\sum_{n \geq 0} \dfrac{\cos in}{2^n} z^n $;
-\item $ \ds\sum_{n \geq 1} \dfrac{\exp(in)}{n^2} (z - 1)^n $.
-\end{enumerate}
-
-\emph{Indicație:} Se folosește formula pentru raza de convergență.
-
-\vspace{0.3cm}
-
-2. Determinați dezvoltarea în serie Taylor sau Laurent pentru funcțiile următoare,
-în jurul punctelor indicate $ z_0 $:
+\indent\indent 1. Determinați dezvoltarea în serie Taylor sau Laurent pentru funcțiile următoare,
+în jurul punctelor indicate $ z_0 $, precizînd și domeniile pe care sînt valabile:
 \begin{enumerate}[(a)]
 \item $ f(z) = \cos^2 z, z_0 = 0 $;
 \item $ f(z) = \dfrac{z + 3}{z^2 - 8z + 15}, z_0 = 4 $;
 \item $ f(z) = \sin \dfrac{1}{1 - z}, z_0 = 1 $;
 \item $ f(z) = \dfrac{2z^2 + 9z + 5}{z^3 + z^2 - 8z - 12}, z_0 = 1 $;
-\item $ f(z) = \dfrac{z - 1}{z - 2}, z_0 = i $;
+\item $ f(z) = \dfrac{z - 1}{z - 2}, z_0 = 1 $;
 \item $ f(z) = \dfrac{1}{z^2 - 3z + 2} $, pe domeniile $ |z| < 1 $,
   $ 1 < |z| < 2 $ și $ |z| > 2 $.
 \end{enumerate}
@@ -269,12 +256,11 @@ funcțiilor. A se vedea exemplul rezolvat de mai jos.
 
 \vspace{0.3cm}
 
-3. Determinați punctele singulare și precizați natura lor pentru funcțiile:
+2. Determinați punctele singulare și precizați natura lor pentru funcțiile:
 \begin{enumerate}[(a)]
 \item $ f(z) = \dfrac{z^5}{(z^2 + 1)^2} $;
 \item $ f(z) = z^3 \exp\left( -\dfrac{3}{z} \right) $;
 \item $ f(z) = \sin \dfrac{1}{z} $;
-\item $ f(z) = \tan z $;
 \item $ f(z) = \dfrac{\sin 2z}{z^6} $;
 \item $ f(z) = \dfrac{6z + 1}{z - 3} $;
 \item $ f(z) = \dfrac{1}{z^2 \sin z} $;
@@ -286,12 +272,12 @@ existență limitei către punctele respective și/sau se utilizează dezvoltare
 
 \vspace{0.3cm}
 
-4. Calculați:
+3. Calculați:
 \begin{enumerate}[(a)]
 \item $ \ds\int_{|z| = 1} \dfrac{z^2 + \exp(z)}{z^3} dz $;
-\item $ \ds\int_\gamma z^2 \exp\left(\dfrac{2z}{z+1}\right) dz $, unde
+\item $ \ds\int_\gamma (z + 1) \exp\left(\dfrac{1}{z+1}\right) dz $, unde
   $ \gamma: x^2 + y^2 + 2x = 0 $;
-\item $ \ds\int_{|z - 1| = 3} \dfrac{iz + 1}{z^2 - iz + 2} dz $.
+\item $ \ds\int_{|z| = r} \dfrac{\exp(z^{-1})}{1 - z} dz $, pentru $ r \in \left\{ \dfrac{1}{2}, 1, 2 \right\} $.
 \end{enumerate}
 
 \emph{Indicație:} Se folosește teorema reziduurilor.
@@ -302,7 +288,7 @@ existență limitei către punctele respective și/sau se utilizează dezvoltare
 \[
   f(z) = \dfrac{2z^2 + 3z - 1}{z^3 + z^2 - z - 1}
 \]
-în jurul originii și în jurul punctelor $ z = \pm i $.
+în jurul originii și în jurul punctelor $ z = \pm 1 $.
 
 \emph{Soluție:} Numitorul se descompune sub forma $ (z - 1)(z + 1)^2 $,
 deci avem un pol simplu $ z = 1 $ și un pol dublu $ z = - 1 $.
@@ -371,9 +357,3 @@ calcule:
 \[
   f(z) = \dfrac{1}{z - 1} + \sum_{n \geq 0} \dfrac{n + 3}{2^{n+2}} (z - 1)^n.
 \]
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../am2-19-20"
-%%% End:
