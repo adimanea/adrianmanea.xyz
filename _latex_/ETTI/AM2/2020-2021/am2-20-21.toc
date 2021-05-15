@@ -1,0 +1,52 @@
+\babel@toc {romanian}{}
+\contentsline {chapter}{\numberline {1}Ecuații diferențiale de ordin superior}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Ecuații liniare de ordinul $n$ cu coeficienți constanți}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Metoda eliminării pentru sisteme diferențiale liniare}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Exerciții}{6}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Alte ecuații de ordin superior}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Ecuații rezolvabile prin cuadraturi}{8}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Ecuații de forma $ f(x, y^{(n)}) = 0 $}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Ecuații de forma $ f(y^{(n-1)}, y^{(n)}) = 0 $}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Ecuații de forma $ f(x, y^{(k)}, \dots , y^{(n)}) = 0 $}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Ecuații de forma $ f(y^{\prime }, y^{\prime \prime }, \dots , y^{(n)}) = 0 $}{11}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Ecuații autonome (ce nu conțin pe $ x $)}{11}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Ecuații Euler}{13}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Exerciții}{13}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Stabilitate și linii de cîmp}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Exerciții}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Integrale prime și linii de cîmp}{18}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Exerciții}{19}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Resurse suplimentare}{22}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Ecuații cu derivate parțiale și suprafețe de cîmp}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ecuații cu derivate parțiale de ordinul întîi}{26}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Suprafețe de cîmp}{27}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Ecuații cu derivate parțiale cvasiliniare}{29}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Exerciții}{30}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Exerciții suplimentare EDP1}{34}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Ecuații cu derivate parțiale de ordinul doi (EDP 2)}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Clasificare și forma canonică}{37}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Forma canonică}{38}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Cazul coeficienților constanți și $D = 0$}{39}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Exerciții}{40}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Rezolvarea EDP 2}{44}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Cazul coeficienților variabili}{44}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Coarda infinită. Metoda lui d'Alembert}{46}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Coarda finită. Metoda separării variabilelor (*)}{48}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Exerciții}{50}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Recapitulare}{57}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Numere și funcții complexe --- recapitulare}{63}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Numere complexe -- Noțiuni de bază}{63}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Funcții complexe elementare}{64}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Funcții olomorfe}{66}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Exerciții}{67}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Integrale complexe}{71}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Teorema lui Cauchy}{71}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Exerciții}{72}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Teorema reziduurilor}{74}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Exerciții}{75}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Aplicații ale teoremei reziduurilor}{78}{section.10.5}%
+\contentsline {chapter}{\numberline {11}Serii Laurent și reziduuri}{81}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Serii de puteri. Serii Laurent}{81}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Singularități și reziduuri}{83}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Exerciții}{86}{section.11.3}%
+\contentsline {chapter}{\numberline {12}Recapitulare analiză complexă}{89}{chapter.12}%
