@@ -1,0 +1,124 @@
+%! TEX root = ../am2-20-21.tex
+
+\chapter{Serii Fourier}
+
+Pentru funcțiile care au proprietăți de periodicitate (sau pot fi transformate
+în unele cu astfel de proprietăți), ne interesează o dezvoltare specială a lor,
+anume în serii de sinusuri și cosinusuri, numită \emph{serie Fourier}.
+
+Mai exact, în general, pentru o funcție cu proprietățile potrivite, vom avea
+o dezvoltare de forma:
+\[
+    f(x) = \sum_{n \geq 0} \left[ a_n \cos(nx) + b_n \sin(nx) \right]
+\]
+
+Sumele parțiale ale acestei serii se numesc polinoame trigonometrice,
+notate în general $ P_n(x) $ și definite prin:
+\[
+    P_n(x) = \sum_{k = 0}^n a_k \cos(kx) + b_k \sin(kx).
+\]
+
+Problema principală de interes este determinarea coeficienților
+care apar în seria Fourier. Vom ține cont de identitățile de mai jos,
+datorate parității funcțiilor trigonometrice:
+\begin{align*}
+    \ds\int_0^{2\pi} \cos kx dx &= \begin{cases} 0, & k \neq 0 \\ 2 \pi, & k = 0 \end{cases} \\
+    \ds\int_0^{2\pi} \sin kx dx &= \begin{cases} 0, & k \neq 0 \\ 2 \pi, & k = 0 \end{cases}
+\end{align*}
+
+Obținem, înlocuind în serie, că:
+\[
+    \ds\int_0^{2\pi} f(x) dx = a_0 \cdot 2\pi,
+\]
+de unde putem calcula primul coeficient imediat:
+\[
+    a_0 = \dfrac{1}{2 \pi} \int_0^{2\pi} f(x) dx.
+\]
+
+Din motive teoretice explicate la curs, de obicei, în calculul de mai sus se ia
+coeficientul din fața integralei $ \dfrac{1}{\pi} $.
+
+Prelucrări simple conduc apoi și la calculul celorlalți coeficienți
+și avem $ b_0 = 0 $ și în rest:
+\begin{align*}
+    a_n &= \dfrac{1}{\pi} \int_0^{2\pi} f(x) \cos (nx) dx, \quad n \geq 1 \\
+    b_n &= \dfrac{1}{\pi} \int_0^{2\pi} f(x) \sin (nx) dx, \quad n \geq 1.
+\end{align*}
+
+De asemenea, scurtături de calcul ne mai ajută să concluzionăm că:
+\begin{itemize}
+    \item Dacă $ f $ este impară, atunci toți coeficienții $ b_n = 0 $;
+    \item Dacă $ f $ este pară, atunci toți coeficienții $ a_n = 0 $.
+\end{itemize}
+
+Problema convergenței seriei Fourier este rezolvată de rezultatele de mai jos.
+
+\begin{theorem}[G.\ L.\ Dirichlet]
+    \label{thm:dirichlet}
+    Fie $ f : \RR \to \RR $ o funcție periodică (de perioadă $ T = 2\pi $),
+    mărginită, cu un număr finit de discontinuități de speța întîi și cu derivate
+    laterale în orice punct.
+
+    Atunci seria Fourier asociată lui $ f $ converge punctual în orice $ x \in \RR $ la
+    \[
+        \dfrac{1}{2} \left[ f(x + 0) + f(x - 0) \right].
+    \]
+    În particular, dacă $ f $ este continuă, atunci suma seriei Fourier este chiar
+    funcția $ f(x) $ și avem:
+    \[
+        f(x) = \ds\sum_{n \geq 0} \left[ a_n \cos nx + b_n \sin nx \right], \quad \forall x \in \RR.
+    \]
+    
+    Convergența uniformă se obține dacă $ f $ este de clasă $ \kal{C}^1 $ (măcar pe porțiuni)
+    pe domeniul de definiție.
+\end{theorem}
+
+În exerciții, mai este de folos și \textbf{identitatea lui Parseval}:
+\[
+    \dfrac{|a_0|^2}{2} + \ds\sum_{n \geq 1} |a_n|^2 + |b_n|^2 = \dfrac{1}{\pi} \int_0^{2\pi} |f(x)|^2 dx.
+\]
+
+\vspace{0.3cm}
+
+\textbf{Exemplu:} Fie funcția $ f(x) = |x| $, cu $ x \in [-\pi, \pi] $.
+\begin{enumerate}[(a)]
+    \item Calculați coeficienții Fourier și seria Fourier a lui $ f $, prelungind-o la $ \RR $.
+    \item Calculați suma seriei $ \dfrac{1}{1^2} + \dfrac{1}{3^2} + \dfrac{1}{5^2} + \dots $.
+\end{enumerate}
+
+\emph{Soluție:} Prelungim funcția la $ \RR $ prin \qq{repetarea} acesteia pe toată axa reală.
+Apoi, calculăm coeficienții, pe rînd:
+\begin{itemize}
+    \item $ a_0 = \dfrac{1}{\pi} \ds\int_{-\pi}^{\pi} |x| dx = \pi $;
+    \item $ a_n = \dfrac{1}{\pi} \ds\int_{-\pi}^{\pi} |x| \cos nx dx = \dfrac{2}{\pi n^2} \left( (-1)^n - 1 \right) $;
+    \item $ b_n = 0, \forall n \geq 0 $, deoarece $ f $ este impară.
+\end{itemize}
+
+Așadar, seria Fourier (care este convergentă, deoarece $ f $ este de clasă $ \kal{C}^1 $ pe porțiuni) este:
+\[
+    f(x) = |x| = \dfrac{\pi}{2} + \sum_{n \geq 1} \dfrac{2}{\pi n^2} \left[ (-1)^n - 1 \right] \cos nx.
+\]
+
+Remarcăm, în plus, că pentru $ n $ par, seria este nulă.
+
+În plus, pentru $ n = 0 $, se obține exact suma seriei cerute, anume:
+\[
+    \dfrac{1}{1^2} + \dfrac{1}{3^2} + \dfrac{1}{5^2} + \dots = \dfrac{\pi^2}{8}.
+\]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exerciții}
+
+Găsiți dezvoltarea în serie Fourier pentru funcțiile: % OLTEANU & COSTACHE
+\begin{enumerate}[(1)]
+    \item $ f(x) = x, x \in (-\pi, \pi) $.
+    \item $ f(x) = x^2, x \in (-\pi, \pi] $. Calculați apoi suma $ \ds\sum_{n \geq 1} \dfrac{1}{n^2} $.
+    \item $ f(x) = e^{ax}, x \in (-\pi, \pi] $, cu $ a \in \RR $. Calculați apoi suma $ \ds\sum_{n \geq 1} \dfrac{1}{n^2 + a^2} $.
+    \item $ f(x) = \dfrac{\pi - x}{2}, x \in [0, 2\pi) $.
+    \item $ f(x) = \pi^2 - x^2, x \in (-\pi, \pi ) $. Calculați apoi suma $ \ds\sum_{n \geq 1} \dfrac{1}{n^2} $.
+    \item $ f(x) = | \sin x |, x \in (-\pi, \pi] $.
+    \item $ f(x) = | \cos x |, x \in (-\pi, \pi) $.
+\end{enumerate}

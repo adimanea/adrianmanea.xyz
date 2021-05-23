@@ -1,4 +1,5 @@
-% ! TEX root = ../am2-19-20.tex
+% ! TEX root = ../am2-20-21.tex
+
 \chapter{Transformata Laplace}
 
 \section{Definiții și proprietăți}
@@ -66,7 +67,7 @@ regăsește direct într-un tabel de valori.
       f(t - \tau), & t \geq \tau
     \end{cases}.
   \]
-  Atunci, dacă $ \Lap f(t) = F(s) $, $ \Lap f_\tau (t) = e^{-st} F(s) $;
+  Atunci, dacă $ \Lap f(t) = F(s) $, $ \Lap f_\tau (t) = e^{-s\tau} F(s) $;
 \item \textbf{Teorema derivării imaginii:}
   \[
     \Lap \big( t^n f(t) \big) = (-1)^n F^{(n)} (s);
@@ -75,12 +76,22 @@ regăsește direct într-un tabel de valori.
   $ g(t) = \ds\int_0^t f(\tau) d\tau $. Atunci:
   \[
     \Lap g(t) = \dfrac{1}{s} F(s);
-  \]
+\]
 \item \textbf{Teorema integrării imaginii:} Fie $ \Lap f(t) = F(s) $ și $ G $ o primitivă a
-  lui $ F $ în $ S(s_0) $, cu $ G(\infty) = 0 $. Atunci:
-  \[
-    \Lap \dfrac{f(t)}{t} = -G(s).
-  \]
+    lui $ F $ în $ S(s_0) $, cu $ G(\infty) = 0 $. Atunci:
+    \[
+        \Lap \dfrac{f(t)}{t} = -G(s).
+    \]
+
+\item \textbf{Teorema de convoluție:} Definim \emph{produsul de convoluție} al două
+    funcții, $ h = f \ast g $, prin formula:
+    \[
+        h(t) = \int_0^t f(\tau) \cdot g(t - \tau) d\tau
+    \]
+    și fie $ F, G $ transformatele Laplace ale funcțiilor $ f $ și respectiv $ g $,
+    presupuse original. Dacă $ H $ este imaginea Laplace a funcției $ h $, atunci
+    $ H(s) = F(s) \cdot G(s) $. Cu alte cuvinte, transformata Laplace acționează
+    ca înmulțire pe produsul de convoluție.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -91,31 +102,31 @@ regăsește direct într-un tabel de valori.
 adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind, de fapt,
 înmulțite cu \emph{funcția lui Heaviside}:
 \[
-  u(t) =
-  \begin{cases}
-    1, & t \geq 0 \\
-    0, & t < 0 
-  \end{cases}.
+    u(t) =
+    \begin{cases}
+        1, & t \geq 0 \\
+        0, & t < 0 
+    \end{cases}.
 \]
 
 \begin{center}
-\begin{tabular}{c | c}
-  $ f(t) = \Lap^{-1} (F(s)) $ & $ F(s) = \Lap(f(t)) $ \\
-  \hline\hline
-  $ u(t) $ & $ \dfrac{1}{s} $ \\
-  $ u(t - \tau) $ & $ \dfrac{1}{s} e^{-\tau s} $ \\
-  $ t $ & $ \dfrac{1}{s^2} $ \\
-  $ t^n $ & $ \dfrac{n!}{s^{n+1}} $ \\
-  $ t^n e^{-\alpha t} $ & $ \dfrac{n!}{(s + \alpha)^{n+1}} $ \\
-  $ e^{-\alpha t} $ & $ \dfrac{1}{s + \alpha} $ \\
-  $ \sin (\omega t) $ & $ \dfrac{\omega}{s^2 + \omega^2} $ \\
-  $ \cos (\omega t) $ & $ \dfrac{s}{s^2 + \omega^2} $ \\
-  $ \sinh(\alpha t) $ & $ \dfrac{\alpha}{s^2 - \alpha^2} $ \\
-  $ \cosh(\alpha t) $ & $ \dfrac{s}{s^2 - \alpha^2} $ \\
-  $ e^{-\alpha t}\sin(\omega t) $ & $ \dfrac{\omega}{(s + \alpha)^2 + \omega^2} $ \\
-  $ e^{-\alpha t}\cos(\omega t) $ & $ \dfrac{s + \alpha}{(s + \alpha^2) + \omega^2} $ \\
-  $ \ln t $ & $ -\dfrac{1}{s} \big( \ln s + \gamma\footnotemark \big) $
-\end{tabular}
+    \begin{tabular}{c | c}
+        $ f(t) = \Lap^{-1} (F(s)) $ & $ F(s) = \Lap(f(t)) $ \\
+        \hline\hline
+        $ u(t) $ & $ \dfrac{1}{s} $ \\
+        $ u(t - \tau) $ & $ \dfrac{1}{s} e^{-\tau s} $ \\
+        $ t $ & $ \dfrac{1}{s^2} $ \\
+        $ t^n $ & $ \dfrac{n!}{s^{n+1}} $ \\
+        $ t^n e^{-\alpha t} $ & $ \dfrac{n!}{(s + \alpha)^{n+1}} $ \\
+        $ e^{-\alpha t} $ & $ \dfrac{1}{s + \alpha} $ \\
+        $ \sin (\omega t) $ & $ \dfrac{\omega}{s^2 + \omega^2} $ \\
+        $ \cos (\omega t) $ & $ \dfrac{s}{s^2 + \omega^2} $ \\
+        $ \sinh(\alpha t) $ & $ \dfrac{\alpha}{s^2 - \alpha^2} $ \\
+        $ \cosh(\alpha t) $ & $ \dfrac{s}{s^2 - \alpha^2} $ \\
+        $ e^{-\alpha t}\sin(\omega t) $ & $ \dfrac{\omega}{(s + \alpha)^2 + \omega^2} $ \\
+        $ e^{-\alpha t}\cos(\omega t) $ & $ \dfrac{s + \alpha}{(s + \alpha^2) + \omega^2} $ \\
+        $ \ln t $ & $ -\dfrac{1}{s} \big( \ln s + \gamma\footnotemark \big) $
+    \end{tabular}
 \end{center}
 
 \footnotetext{Constanta Euler-Mascheroni, $ \gamma \simeq 0,577\dots \in \RR - \QQ $}
@@ -127,28 +138,28 @@ adică nule pentru argument negativ. Echivalent, putem gîndi $ f(t) $ ca fiind,
 
 1. Calculați transformatele Laplace pentru funcțiile (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = 1, t \geq 0 $;
-\item $ f(t) = t, t \geq 0 $;
-\item $ f(t) = t^n, n \in \NN $;
-\item $ f(t) = e^{at}, t \geq 0, a \in \RR $;
-\item $ f(t) = \sin(at), t \geq 0, a \in \RR $.
+    \item $ f(t) = 1, t \geq 0 $;
+    \item $ f(t) = t, t \geq 0 $;
+    \item $ f(t) = t^n, n \in \NN $;
+    \item $ f(t) = e^{at}, t \geq 0, a \in \RR $;
+    \item $ f(t) = \sin(at), t \geq 0, a \in \RR $.
 \end{enumerate}
 
 \emph{Soluție:} (a) Avem direct din definiție:
 \[
-  F(s) = \int_0^\infty e^{-st} dt = \lim_{n \to \infty} \int_0^n e^{-st} dt = \frac{1}{s}, s > 0.
+    F(s) = \int_0^\infty e^{-st} dt = \lim_{n \to \infty} \int_0^n e^{-st} dt = \frac{1}{s}, s > 0.
 \]
 
 (b) Integrăm prin părți și obținem $ F(s) = \dfrac{1}{s^2} $.
 
 (c) Facem substituția $ st = \tau $ și găsim:
 \[
-  F(s) = \int_0^\infty e^{-st} t^n dt = \frac{1}{s^{n+1}} \int_0^\infty e^{-\tau} \tau^n d\tau = %
-  \frac{n!}{s^{n+1}},
+    F(s) = \int_0^\infty e^{-st} t^n dt = \frac{1}{s^{n+1}} \int_0^\infty e^{-\tau} \tau^n d\tau = %
+    \frac{n!}{s^{n+1}},
 \]
 pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
 \[
-  \Gamma(a) = \int_0^\infty x^{a-1}e^{-x} dx, a > 0, \quad \Gamma(n + 1) = n!, n \in \NN.
+    \Gamma(a) = \int_0^\infty x^{a-1}e^{-x} dx, a > 0, \quad \Gamma(n + 1) = n!, n \in \NN.
 \]
 
 (d) $ F(s) = \ds\int_0^\infty e^{at} e^{-st} dt = \ds\int_0^\infty e^{-(s - a)t} dt = %
@@ -156,27 +167,27 @@ pentru $ s > 0 $, folosind funcția Gamma a lui Euler:
 
 (e) Integrăm prin părți și ajungem la:
 \[
-  F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
+    F(s) = \frac{1}{a} - \frac{s^2}{a^2} F(s) \Rightarrow F(s) = \frac{a}{s^2 + a^2}, s > 0.
 \]
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 2. Folosind tabelul de valori și proprietățile, să se determine transformatele Laplace
 pentru funcțiile (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = 5 $;
-\item $ f(t) = 3t + 6t^2 $;
-\item $ f(t) = e^{-3t} $;
-\item $ f(t) = 5e^{-3t} $;
-\item $ f(t) = \cos (5t) $;
-\item $ f(t) = \sin (3t) $;
-\item $ f(t) = 3(t-1) + e^{-t-1} $;
-\item $ f(t) = 3t^3(t - 1) + e^{-5t} $;
-\item $ f(t) = 5e^{-3t} \cos (5t) $;
-\item $ f(t) = e^{2t} \sin (3t) $;
-\item $ f(t) = te^{-t} \cos (4t) $;
-\item $ f(t) = t^2 \sin (3t) $;
-\item $ f(t) = t^3 \cos t $.
+    \item $ f(t) = 5 $;
+    \item $ f(t) = 3t + 6t^2 $;
+    \item $ f(t) = e^{-3t} $;
+    \item $ f(t) = 5e^{-3t} $;
+    \item $ f(t) = \cos (5t) $;
+    \item $ f(t) = \sin (3t) $;
+    \item $ f(t) = 3(t-1) + e^{-t-1} $;
+    \item $ f(t) = 3t^3(t - 1) + e^{-5t} $;
+    \item $ f(t) = 5e^{-3t} \cos (5t) $;
+    \item $ f(t) = e^{2t} \sin (3t) $;
+    \item $ f(t) = te^{-t} \cos (4t) $;
+    \item $ f(t) = t^2 \sin (3t) $;
+    \item $ f(t) = t^3 \cos t $.
 \end{enumerate}
 
 \emph{Indicații:} În majoritatea cazurilor, se folosește tabelul și proprietatea de liniaritate.
@@ -188,36 +199,36 @@ pentru funcțiile (presupuse original):
 
 (l) Folosim $ \Lap(t^n f(t)) = (-1)^n \dfrac{d^n F(s)}{ds^n} $;
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 3. Folosind teorema derivării imaginii, să se determine transformatele Laplace pentru funcțiile
 (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = t $;
-\item $ f(t) = t^2 $;
-\item $ f(t) = t\sin t $;
-\item $ f(t) = te^t $.
+    \item $ f(t) = t $;
+    \item $ f(t) = t^2 $;
+    \item $ f(t) = t\sin t $;
+    \item $ f(t) = te^t $.
 \end{enumerate}
 
 \emph{Indicație:} Conform proprietății de derivare a imaginii, avem:
 \[
-  \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
+    \Lap (t f(t)) = -\frac{d}{ds} \Lap (f(t)).
 \]
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 4. Folosind teorema integrării originalului, să se determine transformatele Laplace pentru
 funcțiile (presupuse original):
 \begin{enumerate}[(a)]
-\item $ f(t) = \ds\int_0^t \cos (2\tau) d\tau $;
-\item $ f(t) = \ds\int_0^t e^{3 \tau} \cos(2 \tau) d\tau $;
-\item $ f(t) = \ds\int_0^t \tau e^{-3\tau} d\tau $.
+    \item $ f(t) = \ds\int_0^t \cos (2\tau) d\tau $;
+    \item $ f(t) = \ds\int_0^t e^{3 \tau} \cos(2 \tau) d\tau $;
+    \item $ f(t) = \ds\int_0^t \tau e^{-3\tau} d\tau $.
 \end{enumerate}
 
 \emph{Indicație:} Conform proprietății de integrare a originalului,
 avem:
 \[
-  \Lap \int_0^t f(\tau) d\tau = \frac{F(s)}{s}.
+    \Lap \int_0^t f(\tau) d\tau = \frac{F(s)}{s}.
 \]
 
 
@@ -231,82 +242,82 @@ sistemelor diferențiale de ordinul întîi sau superior.
 Aceste aplicații se bazează pe calculele care se pot obține imediat din definiția
 transformatei Laplace și a proprietăților sale:
 \begin{align*}
-  \Lap f' &= s \Lap f - f(0) \\
-  \Lap f^{''} &= s^2 \Lap f - sf(0) - f'(0).
+    \Lap f' &= s \Lap f - f(0) \\
+    \Lap f^{''} &= s^2 \Lap f - sf(0) - f'(0).
 \end{align*}
 
 De fapt, în general, avem:
 \[
-  \Lap f^{(n)} = s^n \Lap f - s^{n-1} f(0) - s^{n-2} f'(0) - \dots - f^{(n-1)}(0).
+    \Lap f^{(n)} = s^n \Lap f - s^{n-1} f(0) - s^{n-2} f'(0) - \dots - f^{(n-1)}(0).
 \]
 
 De asemenea, pentru integrale, știm deja teorema integrării originalului:
 \[
-  \Lap \int_0^t f(\tau) d\tau = \dfrac{1}{s} F(s), \quad F(s) = \Lap f(t).
+    \Lap \int_0^t f(\tau) d\tau = \dfrac{1}{s} F(s), \quad F(s) = \Lap f(t).
 \]
 
 Rezultă, folosind transformarea inversă:
 \[
-  \int_0^t f(\tau) d\tau = \Lap^{-1} \Big( \dfrac{1}{s} F(s) \Big).
+    \int_0^t f(\tau) d\tau = \Lap^{-1} \Big( \dfrac{1}{s} F(s) \Big).
 \]
 
 De exemplu, pentru a rezolva ecuația diferențială:
 \[
-  y^{\prime \prime} + ay^\prime + by = r(t), \quad y(0) = K_0, y'(0) = K_1,
+    y^{\prime \prime} + ay^\prime + by = r(t), \quad y(0) = K_0, y'(0) = K_1,
 \]
 aplicăm transformata Laplace și folosim proprietățile de mai sus. Fie $ Y = \Lap y(t) $
 
 Se obține ecuația algebrică:
 \[
-  (s^2 Y - sy(0) - y'(0)) + a(sY - y(0)) + bY = R(s),
+    (s^2 Y - sy(0) - y'(0)) + a(sY - y(0)) + bY = R(s),
 \]
 unde $ R(s) = \Lap r $. Forma echivalentă este:
 \[
-  (s^2 + as + b) Y = (s + a)y(0) + y'(0) + R(s).
+    (s^2 + as + b) Y = (s + a)y(0) + y'(0) + R(s).
 \]
 
 Împărțim prin $ s^2 + as + b $ și folosim formula:
 \[
-  Q(s) = \frac{1}{s^2 + as + b} =
-  \frac{1}{(s + \frac{1}{2}a)^2 + b - \frac{1}{4}a^2},
+    Q(s) = \frac{1}{s^2 + as + b} =
+    \frac{1}{(s + \frac{1}{2}a)^2 + b - \frac{1}{4}a^2},
 \]
 de unde rezultă:
 \[
-  Y(s) = \big( (s + a) y(0) + y'(0)\big) Q(s) + R(s) Q(s).
+    Y(s) = \big( (s + a) y(0) + y'(0)\big) Q(s) + R(s) Q(s).
 \]
 
 În forma aceasta, descompunem $ Y(s) $ în fracții simple, dacă este nevoie și
 folosim tabelul de transformate Laplace, pentru a afla $ y = \Lap^{-1}(Y) $.
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 De exemplu:
 \[
-  y^{\prime\prime} - y = t, \quad y(0) = 1, y'(0) = 1.
+    y^{\prime\prime} - y = t, \quad y(0) = 1, y'(0) = 1.
 \]
 
 \emph{Soluție:} Aplicăm transformata Laplace și ajungem la ecuația:
 \begin{align*}
-  s^2 Y - sy(0) - y'(0) - Y &= \frac{1}{s^2} \\
-  (s^2 - 1)Y &= s + 1 + \frac{1}{s^2}.
+    s^2 Y - sy(0) - y'(0) - Y &= \frac{1}{s^2} \\
+    (s^2 - 1)Y &= s + 1 + \frac{1}{s^2}.
 \end{align*}
 
 Rezultă $ Q = \dfrac{1}{s^2 - 1} $ și ecuația devine:
 \begin{align*}
-  Y &= (s + 1)Q + \frac{1}{s^2} Q \\
-    &= \frac{s + 1}{s^2 - 1} + \frac{1}{s^2(s^2 - 1)} \\
-    &= \frac{1}{s - 1} + \Big( \frac{1}{s^2 - 1} - \frac{1}{s^2} \Big)
+    Y &= (s + 1)Q + \frac{1}{s^2} Q \\
+      &= \frac{s + 1}{s^2 - 1} + \frac{1}{s^2(s^2 - 1)} \\
+      &= \frac{1}{s - 1} + \Big( \frac{1}{s^2 - 1} - \frac{1}{s^2} \Big)
 \end{align*}
 
 Folosind tabelul și proprietățile transformatei Laplace, obținem soluția:
 \begin{align*}
-  y(t) &= \Lap^{-1} Y \\
-       &= \Lap^{-1} \Big( \frac{1}{s^{-1}} \Big) + \Lap^{-1} \Big( \frac{1}{s^2 - 1} \Big) - %
+    y(t) &= \Lap^{-1} Y \\
+         &= \Lap^{-1} \Big( \frac{1}{s^{-1}} \Big) + \Lap^{-1} \Big( \frac{1}{s^2 - 1} \Big) - %
          \Lap^{-1} \Big( \frac{1}{s^2} \Big) \\
-       &= e^t + \sinh t - t.
+         &= e^t + \sinh t - t.
 \end{align*}
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -315,46 +326,55 @@ Folosind tabelul și proprietățile transformatei Laplace, obținem soluția:
 \indent\indent 1. Să se rezolve următoarele probleme Cauchy, folosind transformata
 Laplace:
 \begin{enumerate}[(a)]
-\item $ y'(t) + 2y(t) = 4t, y(0) = 1 $ ;
-\item $ y'(t) + y(t) = \sin 4t, y(0) = 0 $;
-\item $ y^{\prime\prime}(t) + 2y'(t) + 5y(t) = 0, y(0) = 0, y'(0) = 0 $;
-\item $ 2y^{\prime\prime}(t) - 6y'(t) + 4y(t) = 3e^{3t}, y(0) = 1, y'(0) = -1 $;
-\item $ y^{\prime\prime}(t) - 2y(t) + y(t) = e^t, y(0) = -2, y'(0) = -3 $;
-\item $ y^{\prime\prime}(t) + 4y(t) = 3\cos^2(t), y(0) = 1, y'(0) = 2 $.  
+    \item $ y'(t) + 2y(t) = 4t, y(0) = 1 $ ;
+    \item $ y'(t) + y(t) = \sin 4t, y(0) = 0 $;
+    \item $ y^{\prime\prime}(t) + 2y'(t) + 5y(t) = 1, y(0) = 1, y'(0) = 0 $;
+    \item $ 2y^{\prime\prime}(t) - 6y'(t) + 4y(t) = 3e^{3t}, y(0) = 1, y'(0) = -1 $;
+    \item $ y^{\prime\prime}(t) - 2y'(t) + y(t) = e^t, y(0) = -2, y'(0) = -3 $;
+    \item $ y^{\prime\prime}(t) + 4y(t) = 3\cos^2(t), y(0) = 1, y'(0) = 2 $.  
 \end{enumerate}
 
 
-\vspace{1cm}
+\vspace{0.3cm}
 
 2. Să se rezolve următoarele sisteme diferențiale:
 \begin{enumerate}[(a)]
-\item $
-  \begin{cases}
-    x' + x + 4y &= 10 \\
-    x - y' - y &= 0 \\
-    x(0) = 4, & y(0) = 3
-  \end{cases}
-  $
-\item $
-  \begin{cases}
-    x' + x - y &= e^t \\
-    y' + y - x &= e^t \\
-    x(0) = 1, & y(0) = 1
-  \end{cases}
-  $
-\item $
-  \begin{cases}
-    x' + 2y' + x - y &= 5 \sin t \\
-    2x' + 3y' + x - y &= e^t \\
-    x(0) = 2, & y(0) = 1
-  \end{cases}
-  $
+    \item $
+        \begin{cases}
+            x' + x + 4y &= 10 \\
+            x - y' - y &= 0 \\
+            x(0) = 4, & y(0) = 3
+        \end{cases}
+        $
+    \item $
+        \begin{cases}
+            x' + x - y &= e^t \\
+            y' + y - x &= e^t \\
+            x(0) = 1, & y(0) = 1
+        \end{cases}
+        $
+    \item $
+        \begin{cases}
+            x' + 2y' + x - y &= 5 \sin t \\
+            2x' + 3y' + x - y &= e^t \\
+            x(0) = 2, & y(0) = 1
+        \end{cases}
+        $
 \end{enumerate}
 
 \emph{Indicație:} Aplicăm transformata Laplace fiecărei ecuații
 și notăm $ \Lap x(t) = X(s) $ și $ \Lap y(t) = Y(s) $. Apoi rezolvăm sistemul
 \emph{algebric} obținut cu necunoscutele $ X $ și $ Y $, cărora la final le
 aplicăm transformata Laplace inversă.
+
+\vspace{0.3cm}
+
+3. Folosind transformata Laplace, rezolvați ecuația integrală:
+
+\[
+    x(t) = t + 2 \int_0^t \left[ t - \tau - \sin(t - \tau) \right] \cdot x(\tau) d \tau
+\]
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Formula de inversare Mellin-Fourier}
@@ -369,47 +389,47 @@ Mellin-Fourier, pe care o prezentăm mai jos într-o variantă simplificată,
 mai potrivită pentru aplicații.
 
 \begin{theorem}[Mellin-Fourier]\label{thm:mellin-fourier}
-  \index{teorema!Mellin-Fourier}
-  Fie $ f $ o funcție original, $ F = \Lap f $.
+    \index{teorema!Mellin-Fourier}
+    Fie $ f $ o funcție original, $ F = \Lap f $.
 
-  Atunci are loc egalitatea:
-  \[
-    f(t) = \sum_{k=1}^n \Rez\left(F(p)e^{pt}, p_k\right).
-  \]
+    Atunci are loc egalitatea:
+    \[
+        f(t) = \sum_{k=1}^n \Rez\left(F(s)e^{st}, s_k\right).
+    \]
 \end{theorem}
 
 Deoarece avem mai multe moduri particulare de a calcula reziduurile, distingem
 și aici două calcule speciale:
 \begin{itemize}
-\item Dacă $ p_1, p_2, \dots, p_r $ sînt poli de ordin $ n_1, n_2, \dots, n_r $, atunci
-  formula de inversare se mai scrie:
-  \[
-    f(t) = \sum_{k=1}^r \dfrac{1}{(n_k - 1)!} \cdot %
-    \lim_{p \to p_k} \dfrac{d^{n_k - 1}}{dp^{n_k - 1}} \left[ %
-      F(p)(p - p_k)^{n_k} e^{pt} \right];
-  \]
-\item Dacă imaginea Laplace se poate scrie $ F(p) = \dfrac{A(p)}{B(p)} $,
-  unde $ A $ și $ B $ sînt polinoame cu coeficienți reali, astfel încît
-  $ \dr{grad}(A) < \dr{grad}B $, atunci formula de inversare devine:
-  \[
-    f(t) = \sum_k \Rez\left(\dfrac{A(p)}{B(p)}e^{pt}, p_k\right) + %
-    \sum_k 2 \dr{Re} \left( \Rez \left( \dfrac{A(p)}{B(p)}e^{pt}, p_k \right) \right),
-  \]
-  unde prima sumă se calculează pentru polii reali, iar cea de-a doua, pentru
-  polii complecși cu partea imaginară pozitivă.
+    \item Dacă $ s_1, s_2, \dots, s_r $ sînt poli de ordin $ n_1, n_2, \dots, n_r $, atunci
+        formula de inversare se mai scrie:
+        \[
+            f(t) = \sum_{k=1}^r \dfrac{1}{(n_k - 1)!} \cdot %
+            \lim_{s \to s_k} \dfrac{d^{n_k - 1}}{ds^{n_k - 1}} \left[ %
+            F(s)(s - s_k)^{n_k} e^{st} \right];
+        \]
+    \item Dacă imaginea Laplace se poate scrie $ F(s) = \dfrac{A(s)}{B(s)} $,
+        unde $ A $ și $ B $ sînt polinoame cu coeficienți reali, astfel încît
+        $ \dr{grad}(A) < \dr{grad}B $, atunci formula de inversare devine:
+        \[
+            f(t) = \sum_k \Rez\left(\dfrac{A(s)}{B(s)}e^{st}, s_k\right) + %
+            \sum_k 2 \dr{Re} \left( \Rez \left( \dfrac{A(s)}{B(s)}e^{st}, s_k \right) \right),
+        \]
+        unde prima sumă se calculează pentru polii reali, iar cea de-a doua, pentru
+        polii complecși cu partea imaginară pozitivă.
 \end{itemize}
 
 \textbf{Exemplu:} Determinați funcția original corespunzătoare imaginii
 Laplace:
 \[
-  F(p) = \dfrac{3p - 4}{p^2 - p - 6}.
+    F(s) = \dfrac{3s - 4}{s^2 - s - 6}.
 \]
 
-\emph{Soluție:} Observăm că avem $ p_1 = 3, p_2 = -2 $ poli simpli.
+\emph{Soluție:} Observăm că avem $ s_1 = 3, s_2 = -2 $ poli simpli.
 Atunci rezultă:
 \[
-  f(t) = \Rez\left( \dfrac{3p - 4}{p^2 - p - 6} e^{pt}, 3\right) + %
-  \Rez\left( \dfrac{3p - 4}{p^2 - p - 6} e^{pt}, -2 \right).
+    f(t) = \Rez\left( \dfrac{3s - 4}{s^2 - s - s} e^{st}, 3\right) + %
+    \Rez\left( \dfrac{3s - 4}{s^2 - s - 6} e^{st}, -2 \right).
 \]
 
 Cum ambii sînt poli simpli, reziduurile se calculează folosind
@@ -417,24 +437,29 @@ formula din teorma \ref{thm:calc-rez}(3) și se obține în final
 $ f(t) = e^{3t} + 2e^{-2t} $.
 
 \begin{remark}\label{rk:no-mellin}
-  Această problemă, ca și altele, pot fi rezolvate și fără formula de inversare.
-  Trebuie doar atenție și suficient exercițiu astfel încît, în afară de citirea
-  \qq{invers} a tabelului de transformate Laplace, să putem folosi și teoreme
-  de tip întîrziere, derivarea originalului etc. De exemplu, exercițiul de mai
-  sus putea începe cu descompunerea în fracții simple:
-  \[
-    \dfrac{3p - 4}{p^2 - p - 6} = \dfrac{A}{p - 3} + \dfrac{B}{p + 2}.
-  \]
-  Se determină $ A $ și $ B $, apoi se folosește tabelul de transformate.
+    Această problemă, ca și altele, pot fi rezolvate și fără formula de inversare.
+    Trebuie doar atenție și suficient exercițiu astfel încît, în afară de citirea
+    \qq{invers} a tabelului de transformate Laplace, să putem folosi și teoreme
+    de tip întîrziere, derivarea originalului etc. De exemplu, exercițiul de mai
+    sus putea începe cu descompunerea în fracții simple:
+    \[
+        \dfrac{3s - 4}{s^2 - s - 6} = \dfrac{A}{s - 3} + \dfrac{B}{s + 2}.
+    \]
+    Se determină $ A $ și $ B $, apoi se folosește tabelul de transformate.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exerciții}
 
-
-
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../am2-19-20"
-%%% End:
+Folosind, eventual, formula de inversare Mellin-Fourier, aflați funcțiile original
+care au transformatele Laplace date:
+\begin{enumerate}[(1)]
+    \item $ F(s) = \dfrac{s + 3}{s^3 + 4s^2} $;
+    \item $ F(s) = \dfrac{s^2 + 3s + 1}{(s + 1)(s + 2)(s + 3)} $;
+    \item $ F(s) = \dfrac{2s + 1}{s(s + 1)} $;
+    \item $ F(s) = \dfrac{4s + 10}{s^2 - 12s + 32} $;
+    \item $ F(s) = \dfrac{5s + 1}{s^2 + 1} $;
+    \item $ F(s) = \dfrac{s + 2}{s^2(s + 3)} $;
+    \item $ F(s) = \dfrac{1}{s^2(s - 2)^2} $;
+    \item $ F(s) = \dfrac{2s - 7}{s^2 + 2s + 6} $.
+\end{enumerate}
