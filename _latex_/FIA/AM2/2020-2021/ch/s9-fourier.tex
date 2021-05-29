@@ -45,10 +45,23 @@ Prelucrări simple conduc apoi și la calculul celorlalți coeficienți
     b_n &= \dfrac{1}{\pi} \int_0^{2\pi} f(x) \sin (nx) dx, \quad n \geq 1.
 \end{align*}
 
+Mai general, dacă funcția are perioada principală $ T = 2 \ell $, atunci coeficienții se calculează cu:
+\begin{align*}
+    a_0 &= \dfrac{1}{\ell} \int_{-\ell}^\ell f(x) dx \\
+    a_n &= \dfrac{1}{\ell} \int_{-\ell}^\ell f(x) \cos (nx) dx, \quad n \geq 1 \\
+    b_n &= \dfrac{1}{\ell} \int_{-\ell}^\ell f(x) \sin (nx) dx, \quad n \geq 1.
+\end{align*}
+
 De asemenea, scurtături de calcul ne mai ajută să concluzionăm că:
 \begin{itemize}
-    \item Dacă $ f $ este impară, atunci toți coeficienții $ b_n = 0 $;
-    \item Dacă $ f $ este pară, atunci toți coeficienții $ a_n = 0 $.
+    \item Dacă $ f $ este impară, atunci toți coeficienții $ a_n = 0 $;
+    \item Dacă $ f $ este pară, atunci toți coeficienții $ b_n = 0 $.
+\end{itemize}
+
+Amintim, de asemenea, din liceu, că:
+\begin{itemize}
+    \item Dacă $ f $ este o funcție pară, atunci $ \ds\int_{-a}^a f(x) dx = 2 \cdot \ds\int_0^a f(x) dx $;
+    \item Dacă $ f $ este o funcție impară, atunci $ \ds\int_{-a}^a f(x) dx = 0 $.
 \end{itemize}
 
 Problema convergenței seriei Fourier este rezolvată de rezultatele de mai jos.
