@@ -1,5 +1,3 @@
-# Adrian Manea
-
 <img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
 
 Salutare!
