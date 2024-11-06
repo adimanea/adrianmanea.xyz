@@ -10,6 +10,6 @@ Pe această pagină minimalistă puteți găsi **[CV-ul meu](./assets/cv-manea-r
 - FIA = Facultatea de Inginerie Aerospațială.
 
 ## Colaborări și contact
-Dacă vreți să lucrăm împreună, îmi puteți scrie prin pagina de contact a [Poligon Educational](https://www.poligon-edu.ro/contact) sau direct prin email la `adrianmanea[at]poligon-edu.ro`.
+Dacă vreți să lucrăm împreună, îmi puteți scrie prin pagina de contact a [Poligon Educational](https://www.poligon-edu.ro/social) sau direct prin email la `adrianmanea[at]poligon-edu.ro`.
 
 Ne putem împrieteni și pe [Facebook](https://facebook.com/adriancostinmanea) sau [LinkedIn](https://www.linkedin.com/in/adrian-manea-89434221b/).
