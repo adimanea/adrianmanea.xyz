@@ -19,7 +19,6 @@ Puteți citi articolele mele de popularizare a științei, educație științifi
 
 ## Colaborări și contact
 Sînt mereu interesat de colaborări, discuții și schimb de experiență, așa că îmi puteți scrie:
-- prin pagina de contact a [Poligon Educational](https://poligon-edu.ro/contact);
 - prin email la `adrianmanea[at]poligon-edu.ro`;
 - pe [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
