@@ -55,7 +55,7 @@ My notes are linked, but they are also in Romanian.
 
 As such, you will perhaps find more information on the [Romanian]( ./index.md) page.
 
-## Private Tutoring
+## Tutoring, Speaking, Courses & Workshops
 In October 2023, I started [Poligon Educational](https://www.poligon-edu.ro/), an educational
 platform which I use for private tutoring, courses, and workshops.
 
