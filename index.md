@@ -1,6 +1,6 @@
 <img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
 
-English version **[here]( ./english.md)**.
+English version **[here](english.html)**.
 
 Salutare!
 

@@ -1,6 +1,11 @@
+---
+layout: default
+title: English Page
+---
+
 <img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
 
-Romanian version [here]( ./index.md)
+Romanian version **[here](index.html)**.
 
 Hello World!
 
