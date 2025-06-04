@@ -63,7 +63,8 @@ I teach high school and college Mathematics and Physics as private lessons, and
 organize courses on mathematics, its history and philosophy, aimed at the general public.
 
 Currently, the website and the information therein are in Romanian only, but
-do get in touch should you have any question or interest in my activity.
+I do teach international students and have spoken to international audiences as well.
+So do get in touch should you have any question or interest in my activity. 
 
 Speaking of which:
 
