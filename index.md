@@ -4,21 +4,21 @@ English version **[here](english.html)**.
 
 Salutare!
 
-Eu sînt Adrian Manea, matematician, profesor și fondator al **[Poligon Educational](https://poligon-edu.ro).**
+Eu sînt Adrian Manea, matematician, profesor și fondator al **[Poligon Educational](https://www.poligon-edu.ro).**
 
 Am și o activitate publicistică, în general de popularizare a științei, 
 cu aplicații, istorie și filosofie.
 
-## Didactică
-Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat **[pe YouTube](https://www.youtube.com/@adrianmanea/videos)** în perioada pandemiei de COVID-19. 
+## Poligon
+Din octombrie 2023, sînt fondator și profesor la Poligon Educational, un proiect
+prin care îmbin educația științifică cu istoria și filosofia științei, tehnologie
+și alte aplicații.
 
-Sînt seminarii de analiză reală și complexă, algebră liniară, statistică și probabilități,
-pe care le-am predat studenților de anul I ai facultăților de Automatică și Calculatoare
-(ACS), Electronică, Telecomunicații și Tehnologia Informației (ETTI) și Inginerie
-Aerospațială (FIA) de la Universitatea Națională de Știință și Tehnologie "Politehnica",
-București.
+Predau cursuri personalizate, dar și meditații la matematică și fizică,
+nivel liceu (inclusiv bacalaureat, SAT, IB) și facultate (inclusiv sesiune 
+și lucrări de diplomă), în română sau engleză.
 
-Pentru ele, am publicat și **[notițele didactice](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link)**.
+Toate detaliile pe site-ul **[Poligon Educational](https://www.poligon-edu.ro)**.
 
 ## Publicistică
 Puteți citi articolele mele de popularizare a științei, educație științifică și cronici de carte în:
@@ -31,6 +31,17 @@ Puteți citi articolele mele de popularizare a științei, educație științifi
 Scriu și pe Substack (ceva mai rar în ultima vreme):
 - [Laturi ale științei](https://poligonedu.substack.com/);
 - [Puncte de acumulare](https://punctedeacumulare.substack.com/).
+
+## Didactică
+Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat **[pe YouTube](https://www.youtube.com/@adrianmanea/videos)** în perioada pandemiei de COVID-19. 
+
+Sînt seminarii de analiză reală și complexă, algebră liniară, statistică și probabilități,
+pe care le-am predat studenților de anul I ai facultăților de Automatică și Calculatoare
+(ACS), Electronică, Telecomunicații și Tehnologia Informației (ETTI) și Inginerie
+Aerospațială (FIA) de la Universitatea Națională de Știință și Tehnologie "Politehnica",
+București.
+
+Pentru ele, am publicat și **[notițele cu exerciții și teorie](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link)**.
 
 ## Cercetare
 Sînt doctor în matematică din 2016, cu o teză coordonată de Prof. Dr. Dragoș Ștefan ([FMI @ UniBuc](http://old.fmi.unibuc.ro/ro/departamente/matematica/stefan_dragos/)),
