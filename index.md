@@ -1,25 +1,60 @@
 <img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
 
+English version **[here]( ./english.md)**.
+
 Salutare!
 
 Eu sînt Adrian Manea, matematician, profesor și fondator al **[Poligon Educational](https://poligon-edu.ro).**
 
-Pe această pagină minimalistă puteți găsi **[CV-ul meu](./assets/cv-manea-ro.pdf)** și **[notițele didactice](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link)** pentru **[seminariile de matematică](https://www.youtube.com/@adrianmanea/playlists)** pe care le-am ținut la trei dintre facultățile UPB în pandemie. 
-- ACS = Automatică și Calculatoare;
-- ETTI = Electronică, Telecomunicații și Tehnologia Informației;
-- FIA = Facultatea de Inginerie Aerospațială.
+Am și o activitate publicistică, în general de popularizare a științei, 
+cu aplicații, istorie și filosofie.
+
+## Didactică
+Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat **[pe YouTube](https://www.youtube.com/@adrianmanea/videos)** în perioada pandemiei de COVID-19. 
+
+Sînt seminarii de analiză reală și complexă, algebră liniară, statistică și probabilități,
+pe care le-am predat studenților de anul I ai facultăților de Automatică și Calculatoare
+(ACS), Electronică, Telecomunicații și Tehnologia Informației (ETTI) și Inginerie
+Aerospațială (FIA) de la Universitatea Națională de Știință și Tehnologie "Politehnica",
+București.
+
+Pentru ele, am publicat și **[notițele didactice](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link)**.
 
 ## Publicistică
 Puteți citi articolele mele de popularizare a științei, educație științifică și cronici de carte în:
 - [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/);
 - [Dilema](https://www.dilema.ro/autor/adrian-manea);
 - Dilema Veche: 
-  - [Fericirea, între matematica și ficțiune](https://dilemaveche.ro/sectiune/la-zi-in-cultura/carte/fericirea-intre-matematica-si-fictiune-2334311.html);
+  - [Fericirea, între matematică și ficțiune](https://dilemaveche.ro/sectiune/la-zi-in-cultura/carte/fericirea-intre-matematica-si-fictiune-2334311.html);
   - [Levitația electromagnetică în teseract](https://dilemaveche.ro/sectiune/regimul-artelor-si-munitiilor/levitatia-electromagnetica-in-tesseract-2343756.html).
+
+Scriu și pe Substack (ceva mai rar în ultima vreme):
+- [Laturi ale științei](https://poligonedu.substack.com/);
+- [Puncte de acumulare](https://punctedeacumulare.substack.com/).
+
+## Cercetare
+Sînt doctor în matematică din 2016, cu o teză coordonată de Prof. Dr. Dragoș Ștefan ([FMI @ UniBuc](http://old.fmi.unibuc.ro/ro/departamente/matematica/stefan_dragos/)),
+în care folosesc metode omologice de studiu al unor algebre necomutative.
+
+Pe această temă, am publicat trei articole de cercetare:
+- *On Koszulity of Finite Graded Posets* (cu Dragoș Ștefan), J. Algebra Appl. 16, 1750139 (2017), 20 pagini.
+- *The Ext Ring of a Koszul Ring*, Bull. Math. Soc. Sci. Math. Roumanie, Tome 59 (107), No. 1, 2016, pp. 51-63.
+- *Further Properties and Applications of Koszul Pairs* (cu Dragoș Ștefan), SIGMA 12 (2016), 092, 24 pagini.
+
+Am mai publicat și un articol academic de filosofia științei:
+- *The Technically Manifolded (Classical and Quantum) Space Ontology*, Society and Politics, Vol. 11, No. 1, 2017, pp. 91-93
+
+și am fost referent științific pentru traducerea în română a cărții *Linked, Noua știință a rețelelor* (Brumar, 2017), trad. Marius Cosmeanu, autor Albert László Barabási.
+
+**[Aici](./assets/cv-manea-ro.pdf)** este CV-ul meu, în care puteți citi astfel de detalii și altele.
 
 ## Colaborări și contact
 Sînt mereu interesat de colaborări, discuții și schimb de experiență, așa că îmi puteți scrie:
-- prin email la `adrianmanea[at]poligon-edu.ro`;
+- prin email la `adrianmanea[at]poligon-edu.ro` (profesional) sau `adrian.c.manea[at]gmail.com` (personal);
 - pe [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
 Ne putem împrieteni și pe [Facebook](https://facebook.com/adriancostinmanea), [LinkedIn](https://www.linkedin.com/in/adrian-manea-89434221b/) sau [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
+
+---
+
+*Ultima actualizare: iunie 2025.*
