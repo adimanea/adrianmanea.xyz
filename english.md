@@ -44,7 +44,7 @@ I taught mathematics seminars at the National University of Science and Technolo
 "Politehnica" of Bucharest, where I covered real and complex analysis, linear algebra,
 statistics and probability theory.
 
-During the COVID-19 pandemic, I have uploaded all my materials on [YouTube](https://www.youtube.com/@adrianmanea/videos) and [as notes](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link).
+During the COVID-19 pandemic, I have uploaded all my materials on [YouTube](https://www.youtube.com/@adrianmanea/videos) and [notes](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link).
 
 They are all in Romanian.
 
@@ -62,9 +62,8 @@ platform which I use for private tutoring, courses, and workshops.
 I teach high school and college Mathematics and Physics as private lessons, and
 organize courses on mathematics, its history and philosophy, aimed at the general public.
 
-Currently, the website and the information therein is in Romanian only, but
-I encourage you to get in touch should you have any question or interest in
-my activity.
+Currently, the website and the information therein are in Romanian only, but
+do get in touch should you have any question or interest in my activity.
 
 Speaking of which:
 
