@@ -1,6 +1,6 @@
 ---
 layout: default
-title: English Page
+title: English
 ---
 
 <img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
