@@ -4,7 +4,7 @@ English version **[here](english.html)**.
 
 Salutare!
 
-Eu sînt Adrian Manea, matematician, profesor și fondator al **[Poligon Educational](https://www.poligon-edu.ro).**
+Eu sînt Adrian Manea, matematician, profesor și fondator al **[Poligon Educational](https://www.poligon-edu.ro)**.
 
 Am și o activitate publicistică, în general de popularizare a științei, 
 cu aplicații, istorie și filosofie.
