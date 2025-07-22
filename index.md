@@ -32,6 +32,7 @@ Toate detaliile pe site-ul **[Poligon Educational](https://www.poligon-edu.ro)**
 
 ## Publicistică
 Puteți citi articolele mele de popularizare a științei, educație științifică și cronici de carte în:
+- [Școala9](https://scoala9.ro/redactia/adrian-manea/239);
 - [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/);
 - [Dilema](https://www.dilema.ro/autor/adrian-manea);
 - Dilema Veche: 

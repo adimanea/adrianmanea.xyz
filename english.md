@@ -41,7 +41,8 @@ If you prefer, check out my CV **[here]( ./assets/cv-manea-eng.pdf)**.
 
 ## Writing
 Since January 2024, my journalistic articles have appeared in the Romanian magazines
-[Dilema](https://www.dilema.ro/autor/adrian-manea) and [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/).
+[Dilema](https://www.dilema.ro/autor/adrian-manea), [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/),
+and [Școala9](https://scoala9.ro/redactia/adrian-manea/239).
 
 I cover popular science topics, book reviews, technology, history and philosophy of science,
 and science education.
