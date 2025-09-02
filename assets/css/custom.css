@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@700&family=Literata:ital,wght@0,400;1,400&display=swap');
+
+body {
+  font-family: 'Literata', serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Finlandica', sans-serif !important;
+}
+
+a {
+  color: #008e80 !important;
+  text-decoration: none !important;
+}
+
+a.action {
+  font-family: "Finlandica", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: larger !important;
+}
+
+/* Example blockquote styling */
+blockquote {
+  border-left: 4px solid #ccc;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  font-style: italic;
+}

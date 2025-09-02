@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VT5LTHWW6"></script>
 <script>
