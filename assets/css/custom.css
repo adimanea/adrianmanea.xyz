@@ -2,10 +2,33 @@
 
 body {
   font-family: 'Literata', serif !important;
+  color: #4f5a6a !important;
+  background-color: #fffdf0 !important;
+  font-size: medium !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Finlandica', sans-serif !important;
+    color: #3b4758 !important;
+}
+
+strong, b {
+  font-weight: 700 !important;
+  color: #3b4758 !important;
+}
+
+code {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #aa424e; /* crimson for emphasis */
+  font-weight: 500;
+}
+
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #3b4758;
+  background-color: #fffdf0;
+  padding: 1em;
+  border-left: 4px solid #008e80;
 }
 
 a {
