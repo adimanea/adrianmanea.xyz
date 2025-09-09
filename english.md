@@ -82,7 +82,7 @@ Speaking of which:
 ## Collaborations and Contact
 I'm always interested in collaborations and discussions, as my interests and
 curiosity are quite diverse. As such, don't hesitate to get in touch:
-- via email at `adrianmanea[at]poligon-edu.ro` (professional) or `adrian.c.manea[at]gmail.com` (personal);
+- via email at `hello@adrianmanea.xyz`;
 - via [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
 I'm not very active on social media, but you can find me on:
