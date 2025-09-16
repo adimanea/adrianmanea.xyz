@@ -44,7 +44,7 @@ Puteți citi articolele mele de popularizare a științei, educație științifi
   - [Fericirea, între matematică și ficțiune](https://dilemaveche.ro/sectiune/la-zi-in-cultura/carte/fericirea-intre-matematica-si-fictiune-2334311.html);
   - [Levitația electromagnetică în teseract](https://dilemaveche.ro/sectiune/regimul-artelor-si-munitiilor/levitatia-electromagnetica-in-tesseract-2343756.html).
 
-Blog-ul personal, la care vă puteți abona prin newsletter, este [Gradient](https://gradientul.xyz).
+Blog-ul personal, la care vă puteți abona prin newsletter, este [**Gradient**](https://gradientul.xyz).
 
 ## Didactică
 Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat **[pe YouTube](https://www.youtube.com/@adrianmanea/videos)** în perioada pandemiei de COVID-19. 
