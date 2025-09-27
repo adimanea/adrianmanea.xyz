@@ -40,15 +40,14 @@ translation by Marius Cosmeanu).
 If you prefer, check out my CV **[here]( ./assets/cv-manea-eng.pdf)**.
 
 ## Writing
-Since January 2024, my journalistic articles have appeared in the Romanian magazines
+Since January 2024, my essays have appeared in the Romanian magazines
 [Dilema](https://www.dilema.ro/autor/adrian-manea), [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/),
 and [Școala9](https://scoala9.ro/redactia/adrian-manea/239).
 
+My personal blog, which contains a newsletter you can subscribe to, is **[The Gradient](https://thegradient.xyz)**.
+
 I cover popular science topics, book reviews, technology, history and philosophy of science,
 and science education.
-
-I've also started a Substack, [Sides of Science](https://sidesofscience.substack.com/), but
-haven't been very active lately.
 
 ## Teaching
 I taught mathematics seminars at the National University of Science and Technology
@@ -67,7 +66,7 @@ My notes are linked, but they are also in Romanian.
 As such, you will perhaps find more information on the [Romanian]( ./index.md) page.
 
 ## Tutoring, Speaking, Courses & Workshops
-In October 2023, I started [Poligon Educational](https://www.poligon-edu.ro/), an educational
+In October 2023, I started [Poligon Educational](https://www.poligon-edu.ro/english.html), an educational
 platform which I use for private tutoring, courses, and workshops.
 
 I teach high school and college Mathematics and Physics as private lessons, and
@@ -82,7 +81,7 @@ Speaking of which:
 ## Collaborations and Contact
 I'm always interested in collaborations and discussions, as my interests and
 curiosity are quite diverse. As such, don't hesitate to get in touch:
-- via email at `adrianmanea[at]poligon-edu.ro` (professional) or `adrian.c.manea[at]gmail.com` (personal);
+- via email at `hello@adrianmanea.xyz`;
 - via [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
 I'm not very active on social media, but you can find me on:
