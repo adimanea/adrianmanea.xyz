@@ -89,6 +89,10 @@ I'm not very active on social media, but you can find me on:
 - [LinkedIn](https://www.linkedin.com/in/adrian-manea-89434221b/);
 - [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
 
+---
+
+## Gravatar
+
 <div class="gravatar-hovercard"><style></style>
 			<div class="gravatar-hovercard__inner">
 				<div class="gravatar-hovercard__header-image" style="background: url(&quot;https://0.gravatar.com/userimage/271829184/0358bc0cc5155729884f72a3f08c1014?size=1024&quot;) 50% 50% / 100% no-repeat;"></div>
