@@ -44,7 +44,7 @@ Since January 2024, my essays have appeared in the Romanian magazines
 [Dilema](https://www.dilema.ro/autor/adrian-manea), [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/),
 and [Școala9](https://scoala9.ro/redactia/adrian-manea/239).
 
-My personal blog and newsletter you can subscribe to is <a class="linear-text-gradient" href="https://thegradient.xyz">The Gradient</a>.
+My personal blog and newsletter you can subscribe to is <a class="linear-text-gradient" href="https://www.thegradient.xyz">The Gradient</a>.
 
 I write on popular science topics, book reviews, technology, history and philosophy of science, and STEM education.
 
