@@ -49,3 +49,12 @@ blockquote {
   margin: 1em 0;
   font-style: italic;
 }
+
+.linear-text-gradient {
+  background: linear-gradient(90deg, #008e80, #aa424e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-family: 'Finlandica', sans-serif;
+  font-size: x-large;
+}
