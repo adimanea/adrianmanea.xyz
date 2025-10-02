@@ -85,7 +85,7 @@ curiosity are quite diverse. As such, don't hesitate to get in touch:
 
 I'm not very active on social media, but you can find me on:
 - [Facebook](https://facebook.com/adriancostinmanea);
-- [LinkedIn](https://www.linkedin.com/in/adrian-manea-89434221b/);
+- [LinkedIn](https://www.linkedin.com/in/adrianmaneaxyz/);
 - [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
 
 ---

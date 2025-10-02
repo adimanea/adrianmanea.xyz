@@ -78,6 +78,6 @@ Sînt mereu interesat de colaborări, discuții și schimb de experiență, așa
 - prin email la `hello[at]adrianmanea.xyz`;
 - pe [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
-Ne putem împrieteni și pe [Facebook](https://facebook.com/adriancostinmanea), [LinkedIn](https://www.linkedin.com/in/adrian-manea-89434221b/) sau [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
+Ne putem împrieteni și pe [Facebook](https://facebook.com/adriancostinmanea), [LinkedIn](https://www.linkedin.com/in/adrianmaneaxyz/) sau [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
 
 *Ultima actualizare: septembrie 2025.*
