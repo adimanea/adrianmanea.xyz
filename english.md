@@ -84,7 +84,7 @@ curiosity are quite diverse. As such, don't hesitate to get in touch:
 - via [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
 I'm not very active on social media, but you can find me on:
-- [Facebook](https://facebook.com/adriancostinmanea);
+- [Facebook](https://facebook.com/adrianmaneaxyz);
 - [LinkedIn](https://www.linkedin.com/in/adrianmaneaxyz/);
 - [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
 
