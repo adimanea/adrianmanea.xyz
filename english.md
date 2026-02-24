@@ -13,11 +13,10 @@ title: English
   gtag('config', 'G-3VT5LTHWW6');
 </script>
 
-<img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
 
 Romanian version **[here](index.html)**.
 
-Hello World!
+# Hello World!
 
 I'm Adrian Manea, mathematician, teacher and freelance writer, in no particular order.
 

@@ -13,11 +13,9 @@ title: Home
   gtag('config', 'G-3VT5LTHWW6');
 </script>
 
-<img src="./img/profil_square.jpg" alt="Adrian Manea" width="200"/>
-
 English version **[here](english.html)**.
 
-Salutare!
+# Salutare!
 
 Eu sînt Adrian Manea, matematician, profesor și fondator al **[Poligon Educational](https://www.poligon-edu.ro)**.
 
