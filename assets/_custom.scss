@@ -1,0 +1,360 @@
+// 1. FONTS INGESTION
+@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap');
+
+// 2. LIGHT THEME CONFIGURATION (Your exact tokens)
+:root, html[data-theme="light"] {
+  --ivory: #fffdf0;       // Warm Cream Base
+  --navy: #3b4758;       // Deep Slate text
+  --burgundy: #aa424e;            // Crimson Accent
+  --teal: #008e80;        // Emerald Accent
+  --gray-100: #f7f4e6;              // Soft tinted elements (Code backings)
+  --gray-200: #e8e4d3;              // Muted guidelines
+}
+
+// 3. DARK THEME CONFIGURATION (Elegant inverted equivalents)
+html[data-theme="dark"] {
+  --ivory: #3b4758;       // Dark variant of your Slate color
+  --navy: #fffdf0;       // Cream text
+  --teal: #e56a77;            // Brightened Crimson for readability
+  --burgundy: #26bdae;    // Brightened Emerald for readability
+  --gray-100: #242b37;              // Deep inset code block backgrounds
+  --gray-200: #2d3748;              // Dark borders
+}
+
+// 4. UNIFY GLOBAL LAYOUT BACKGROUNDS (Fixes Sidebar Color Mismatch)
+body, html, .book-menu, .book-page, .book-navigation, .book-header {
+  background-color: var(--ivory) !important;
+  color: var(--navy) !important;
+}
+
+// 5. STRUCTURE GENERAL DESIGN
+body, html, button, input {
+  font-family: 'Finlandica', sans-serif;
+}
+
+// Educational Content Area (Serif)
+.markdown, .book-page, article {
+  font-family: 'Literata', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--navy);
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Finlandica', sans-serif;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  h1 {
+    margin-bottom: 5rem !important;
+  }
+
+  a {
+    color: var(--teal) !important;
+    &:hover, &.active {
+      color: var(--burgundy) !important;
+      opacity: 1.0 !important;
+    }
+    &[href*="gradient"] {
+      background: linear-gradient(90deg, #008e80, #aa424e) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      font-weight: 700 !important;
+      font-family: 'Finlandica', sans-serif !important;
+      font-size: 1.3rem !important;
+    }
+  }
+}
+
+// Sidebar Menu Anchor Tuning
+.book-menu {
+  border-right: 1px solid var(--gray-200);
+
+  nav a {
+    color: var(--navy) !important;
+
+    &:hover, &.active {
+      color: var(--burgundy) !important;
+      opacity: 1.0 !important;
+    }
+  }
+}
+
+// Tables and Search Input elements mapping
+.book-search input {
+  background-color: var(--gray-100) !important;
+  color: var(--navy) !important;
+  border: 1px solid var(--gray-200) !important;
+}
+
+// Technical blocks (Mono)
+code, pre, kbd, samp {
+  font-family: 'IBM Plex Mono', monospace !important;
+  background-color: var(--gray-100) !important;
+  color: var(--navy);
+}
+
+// Highlights blockquotes
+blockquote {
+  border-left: 4px solid var(--teal) !important;
+  background-color: var(--gray-100);
+  color: var(--navy);
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+
+  p { font-style: italic; }
+}
+
+// ==========================================
+// 8. FIXED SIDEBAR MENU TYPOGRAPHY
+// ==========================================
+
+// We remove the strict ">" after .book-menu so it finds the nav wherever it is
+.book-menu nav > ul > li {
+
+  // 1. Targets Top-Level Items Only (Standalone links & expandable folder labels)
+  > a, > label, > span {
+    font-size: 1.3rem !important;  
+    font-weight: 600 !important;     // Bold
+    display: inline-block !important;
+    margin-top: 0.6rem !important;   
+    letter-spacing: -0.01em;
+    color: var(--teal) !important;
+  }
+
+  // 2. Targets All Sub-Items Nested Inside Folders
+  ul li a {
+    font-size: 1.0rem !important;  // Smaller
+    font-weight: 500 !important;     // Regular reading weight
+    margin-top: 0.1rem !important;                 
+    margin-bottom: 0.1rem !important;
+  }
+}
+
+// ==========================================
+// 9. BRAND SITE TITLE CUSTOMIZATION
+// ==========================================
+.book-brand {
+  margin-bottom: 2rem !important; // Controls spacing above search bar
+  margin-top: 2rem !important;
+
+  a {
+    font-family: 'Finlandica', sans-serif; // Your primary signature UI font
+    font-size: 1.45rem !important;         // Upscale the title impact
+    font-weight: 700 !important;           // Thick structural weight
+    color: #3b4758 !important;             // Your exact Deep Slate Blue token
+    letter-spacing: -0.03em;               // Clean, tight kerning for a logo feel
+    text-decoration: none !important;
+
+    // Optional transition effect
+    &:hover {
+      color: var(--burgundy) !important;
+    }
+
+  }
+}
+
+// ==========================================
+// 10. CLEANUP: HIDE NATIVE LANGUAGE SWITCHER
+// ==========================================
+.book-languages {
+  display: none !important;
+}
+
+// ==========================================
+// 11. SPECIFIC SIDEBAR LINK STYLING
+// ==========================================
+
+// Target the specific link by its exact URL destination
+.book-menu nav a[href*="gradient"] {
+  background: linear-gradient(90deg, #008e80, #aa424e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-family: 'Finlandica', sans-serif;
+  font-size: 1.3rem !important;
+}
+
+
+
+// inject emoji
+.book-menu nav a[href*="anun"]::before,
+.book-menu nav a[href*="news"]::before {
+  content: "📌 ";
+}
+
+// small privacy & cookies
+.book-menu nav a[href*="privacy"],
+.book-menu nav a[href*="cookies"] {
+  color: var(--navy) !important;
+  font-weight: 500 !important;
+  font-size: small !important;
+}
+
+// ==========================================
+// 13. RIGHT SIDEBAR: TABLE OF CONTENTS (ToC)
+// ==========================================
+
+.book-toc {
+  // 1. Structural Column Layout & Symmetric Margins
+  border-left: 1px solid var(--gray-200);
+  padding: 0.1rem 0.1rem !important; // Perfectly balances the left and right breathing room
+
+  nav {
+    font-family: 'Finlandica', sans-serif;
+  }
+
+  // 2. Style the "On this page" Title Header (if your theme displays it)
+  strong, h5 {
+    font-family: 'Finlandica', sans-serif;
+    color: var(--navy);
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  // 3. Centralized Table of Contents Element Target
+  #TableOfContents {
+
+    // Obliterates the massive default browser list shifting for the main level
+    > ul {
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+      list-style: none !important;
+    }
+
+    // Completely flattens list items to stay square with the container boundaries
+    li {
+      list-style: none !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    // Styles Main Level Headings (H2 equivalent links)
+    a {
+      color: var(--navy) !important;
+      font-size: 1.0rem !important;
+      font-weight: 400;
+      line-height: 1.4;
+      display: inline-block;
+      padding: 0.25rem 0;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: var(--teal) !important; // Highlights smooth custom teal color on hover
+        text-decoration: none !important;
+      }
+    }
+
+    // Styles Nested Subheadings (H3, H4 equivalent deeper levels)
+    ul ul {
+      padding-left: 0.8rem !important;       // Clean, intentional, tight indentation
+      margin-left: 0 !important;
+      margin-top: 0.1rem;
+      margin-bottom: 0.1rem;
+      border-left: 1px solid var(--gray-200); // Visual depth line separating sub-items
+
+      a {
+        font-size: 0.9rem !important;
+        color: var(--navy) !important;
+        opacity: 0.85;                       // Slightly softer focus so top headers stand out
+      }
+    }
+  }
+}
+
+// ==========================================
+// BRAND LOGO & TEXT PERFECT ALIGNMENT
+// ==========================================
+
+.book-brand {
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important; 
+
+  // Targets the link containing both the image and text
+  a {
+    display: flex !important;
+    align-items: center !important;    // PERFECTLY CENTERS LOGO AND TEXT VERTICALLY
+    gap: 0.75rem !important;           // Clean horizontal spacing between icon and text
+    text-decoration: none !important;
+  }
+}
+
+.book-brand img {
+  max-height: 48px !important;       // Slightly adjusted for a balanced side-by-side look
+  width: auto !important;
+  margin-bottom: 0 !important;       // RESET THIS so it doesn't push the icon up!
+  margin-top: 0 !important;
+
+  // Smooth circular look
+  border-radius: 50%;             
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); 
+}
+
+// ==========================================
+// 15. DOCK CONTROLS TO THE SCREEN BOTTOM
+// ==========================================
+.book-menu-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important; // Forces container to match 100% of the screen height
+}
+
+// ==========================================
+// 16. SIDEBAR: PERSONAL PROFILE ALIGNMENT & COLOR FIX
+// ==========================================
+
+.sidebar-profile-box {
+  margin-top: -0.25rem; 
+  margin-bottom: 2rem;  
+  padding-left: 0 !important;  // Removes any extra padding shifting the profile box right
+  margin-left: 0 !important;   // Forces the block to sit flush left with "Adrian Manea"
+}
+
+// 1. FIXED LEFT ALIGNMENT FOR THE TEXT
+.profile-bio-text {
+  font-family: 'Finlandica', sans-serif;
+  font-size: 1.05rem !important;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+  padding-left: 0 !important; // Removes browser-default text shifts
+  margin-left: 0 !important;
+}
+
+// 2. BULLETPROOF THEME LIGHT/DARK TEXT COLOR SWITCH
+// Explicitly commands the text color to invert when clicking the theme toggle
+html[data-theme="light"] {
+  .profile-bio-text {
+    color: #3b4758 !important; // Crisp Deep Slate Navy for perfect light mode contrast
+    opacity: 0.85;
+  }
+}
+
+html[data-theme="dark"] {
+  .profile-bio-text {
+    color: #e9ecef !important; // High-visibility off-white for dark mode layouts
+    opacity: 0.9;
+  }
+}
+
+// 3. FIXED LEFT ALIGNMENT FOR THE PORTRAIT
+.profile-photo-wrapper {
+  width: 100%;
+  max-width: 240px;                 
+  border-radius: 4px;               
+  overflow: hidden;                 
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04); 
+  margin-left: 0 !important; // Snaps the photo border perfectly inline with the text
+
+  img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover;
+  }
+}

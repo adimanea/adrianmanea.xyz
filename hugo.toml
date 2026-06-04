@@ -1,0 +1,46 @@
+baseURL = "https://adrianmanea.xyz"
+title = "Adrian Manea"
+theme = "hugo-book"
+
+# Turn off things Hugo doesn't need for documentation sites
+disableKinds = ["taxonomy"]
+
+defaultContentLanguage = "ro"
+defaultContentLanguageInSubdir = false
+
+# ==========================================
+# HUGO BOOK LAYOUT CUSTOMIZATIONS
+# ==========================================
+[params]
+  BookTheme = "auto"      # Can be light, dark, or auto
+  BookToC = true          # Shows Table of Contents on the right side
+  BookSearch = false      # Enables built-in fast search bar
+
+# ==========================================
+# MULTI-LANGUAGE SANDBOX SETTINGS
+# ==========================================
+[languages]
+  [languages.ro]
+    languageName = "Română"
+    contentDir = "content/ro"
+    weight = 1
+
+  [languages.en]
+    languageName = "English"
+    contentDir = "content/en"
+    weight = 2
+
+# ==========================================
+# MARKUP PARSER ENGINE
+# ==========================================
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# ==========================================
+# THIRD-PARTY SERVICES
+# ==========================================
+[services]
+  [services.googleAnalytics]
+    id = "G-3VT5LTHWW6"

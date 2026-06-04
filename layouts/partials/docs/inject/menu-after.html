@@ -1,0 +1,53 @@
+<div class="sidebar-footer-controls" style="display: flex; gap: 0.5rem; margin-top: auto; position: sticky; bottom: 0; background-color: inherit; padding-top: 1.5rem; padding-bottom: 1rem; width: 100%; box-sizing: border-box; z-index: 100;">
+    
+    <div class="language-toggle-container" style="flex: 1;">
+        {{ if .IsTranslated }}
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" style="display: flex; align-items: center; justify-content: center; height: 2.5rem; border: 1px solid var(--gray-200); color: var(--navy); border-radius: 4px; text-align: center; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; box-sizing: border-box;">
+                {{ if eq .Lang "en" }}🇬🇧 English{{ else }}🇷🇴 Română{{ end }}
+            </a>
+            {{ end }}
+        {{ else }}
+            {{ if eq .Lang "ro" }}
+            <a href="/en/" style="display: flex; align-items: center; justify-content: center; height: 2.5rem; border: 1px solid var(--gray-200); color: var(--navy); border-radius: 4px; text-align: center; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; box-sizing: border-box;">
+                🇬🇧 English
+            </a>
+            {{ else }}
+            <a href="/" style="display: flex; align-items: center; justify-content: center; height: 2.5rem; border: 1px solid var(--gray-200); color: var(--navy); border-radius: 4px; text-align: center; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; box-sizing: border-box;">
+                🇷🇴 Română
+            </a>
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="theme-toggle-container" style="flex: 1;">
+        <button id="theme-toggle" style="background: none; border: 1px solid var(--gray-200); color: var(--navy); height: 2.5rem; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 500; width: 100%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; box-sizing: border-box;">
+            🌙 Mod întunecat
+        </button>
+    </div>
+
+</div>
+
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const isEnglishSite = {{ eq .Lang "en" }};
+
+    function updateButtonText(theme) {
+        if (theme === 'dark') {
+            toggleBtn.innerHTML = isEnglishSite ? '☀️ Light' : '☀️ Luminos';
+        } else {
+            toggleBtn.innerHTML = isEnglishSite ? '🌙 Dark' : '🌙 Întunecat';
+        }
+    }
+
+    updateButtonText(document.documentElement.getAttribute('data-theme'));
+
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateButtonText(newTheme);
+    });
+</script>
