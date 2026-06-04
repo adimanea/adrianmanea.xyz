@@ -1,6 +1,10 @@
 +++
 title = ""
 type = "docs"
+
+description = "Matematician și profesor. Scriu divers despre educație și științe"
+
+images = ["/images/profile.jpg"]
 +++
 
 # Salutare!

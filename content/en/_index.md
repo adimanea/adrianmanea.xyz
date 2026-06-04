@@ -1,6 +1,10 @@
 +++
 title = ""
 type = "docs"
+
+description = "Mathematician, teacher & freelance writer interested in STEM education and more"
+
+images = ["/images/profile.jpg"]
 +++
 
 # Hello World!
