@@ -5,7 +5,7 @@ public/
 .hugo_build.lock
 
 # Local resources cache (generated during hugo server)
-resources/_gen/
+resources/
 
 # Operating System files
 .DS_Store
