@@ -1,6 +1,8 @@
----
-title:
----
++++
+title = ""
+type = "docs"
++++
+
 # Salutare!
 
 Eu sînt Adrian Manea, matematician, profesor și fondator al [Poligon Educational](https://www.poligon-edu.ro).

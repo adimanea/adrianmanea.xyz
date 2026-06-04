@@ -1,24 +1,73 @@
 // 1. FONTS INGESTION
 @import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap');
 
-// 2. LIGHT THEME CONFIGURATION (Your exact tokens)
+// 2. GLOBAL LIGHT THEME TOKENS (Default & Explicit Light Toggle Switch)
 :root, html[data-theme="light"] {
   --ivory: #fffdf0;       // Warm Cream Base
   --navy: #3b4758;       // Deep Slate text
-  --burgundy: #aa424e;            // Crimson Accent
+  --burgundy: #aa424e;    // Crimson Accent
   --teal: #008e80;        // Emerald Accent
-  --gray-100: #f7f4e6;              // Soft tinted elements (Code backings)
-  --gray-200: #e8e4d3;              // Muted guidelines
+  --gray-100: #f7f4e6;    // Soft tinted elements (Code backings)
+  --gray-200: #e8e4d3;    // Muted guidelines
+
+  // Map directly into the Hugo Book native variable layer
+  --body-background: var(--ivory);
+  --body-font-color: var(--navy);
+  --menu-background: var(--ivory);
+  --menu-font-color: var(--navy);
+  --color-link: var(--teal);
 }
 
-// 3. DARK THEME CONFIGURATION (Elegant inverted equivalents)
+// 3. AUTOMATIC DARK THEME OVERRIDES (System Auto Preferences)
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ivory: #3b4758;       // Dark variant of your Slate color
+    --navy: #fffdf0;       // Cream text
+    --teal: #e56a77;        // Brightened Crimson for readability
+    --burgundy: #26bdae;    // Brightened Emerald for readability
+    --gray-100: #242b37;    // Deep inset code block backgrounds
+    --gray-200: #2d3748;    // Dark borders
+
+    // Re-map the layout engine to flip backgrounds dynamically
+    --body-background: var(--ivory);
+    --body-font-color: var(--navy);
+    --menu-background: var(--ivory);
+    --menu-font-color: var(--navy);
+    --color-link: var(--teal);
+  }
+}
+
+// MANUAL DARK THEME OVERRIDES (Explicit Toggle Switch)
 html[data-theme="dark"] {
   --ivory: #3b4758;       // Dark variant of your Slate color
   --navy: #fffdf0;       // Cream text
-  --teal: #e56a77;            // Brightened Crimson for readability
+  --teal: #e56a77;        // Brightened Crimson for readability
   --burgundy: #26bdae;    // Brightened Emerald for readability
-  --gray-100: #242b37;              // Deep inset code block backgrounds
-  --gray-200: #2d3748;              // Dark borders
+  --gray-100: #242b37;    // Deep inset code block backgrounds
+  --gray-200: #2d3748;    // Dark borders
+
+  // Re-map the layout engine to flip backgrounds dynamically
+  --body-background: var(--ivory);
+  --body-font-color: var(--navy);
+  --menu-background: var(--ivory);
+  --menu-font-color: var(--navy);
+  --color-link: var(--teal);
+}
+
+// FORCE LIGHT OVERRIDES (Ensures manual light selection overrides a dark system OS)
+html[data-theme="light"] {
+  --ivory: #fffdf0 !important;
+  --navy: #3b4758 !important;
+  --burgundy: #aa424e !important;
+  --teal: #008e80 !important;
+  --gray-100: #f7f4e6 !important;
+  --gray-200: #e8e4d3 !important;
+
+  --body-background: var(--ivory) !important;
+  --body-font-color: var(--navy) !important;
+  --menu-background: var(--ivory) !important;
+  --menu-font-color: var(--navy) !important;
+  --color-link: var(--teal) !important;
 }
 
 // 4. UNIFY GLOBAL LAYOUT BACKGROUNDS (Fixes Sidebar Color Mismatch)
@@ -175,8 +224,6 @@ blockquote {
   font-size: 1.3rem !important;
 }
 
-
-
 // inject emoji
 .book-menu nav a[href*="anun"]::before,
 .book-menu nav a[href*="news"]::before {
@@ -327,7 +374,6 @@ blockquote {
 }
 
 // 2. BULLETPROOF THEME LIGHT/DARK TEXT COLOR SWITCH
-// Explicitly commands the text color to invert when clicking the theme toggle
 html[data-theme="light"] {
   .profile-bio-text {
     color: #3b4758 !important; // Crisp Deep Slate Navy for perfect light mode contrast
@@ -339,6 +385,15 @@ html[data-theme="dark"] {
   .profile-bio-text {
     color: #e9ecef !important; // High-visibility off-white for dark mode layouts
     opacity: 0.9;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    .profile-bio-text {
+      color: #e9ecef !important;
+      opacity: 0.9;
+    }
   }
 }
 
@@ -356,5 +411,67 @@ html[data-theme="dark"] {
     height: auto !important;
     display: block !important;
     object-fit: cover;
+  }
+}
+
+// MOBILE LOOKS
+// ==========================================
+// 17. RE-CALIBRATE RESPONSIVE DRAWER & ICONS
+// ==========================================
+@media screen and (max-width: 56rem) {
+
+  // Fixes the left padding offset seen in image_5cd47b.png
+  .book-menu {
+    background-color: var(--menu-background) !important;
+    color: var(--menu-font-color) !important;
+    padding-left: 0 !important;  // Obliterates the unstyled outer left gap/padding completely
+    padding-right: 0 !important;
+
+    aside {
+      background-color: var(--menu-background) !important;
+      padding-left: 1.25rem !important;  // Safely moves padding inward so layouts sit flush
+      padding-right: 1.25rem !important;
+    }
+  }
+
+  // Forces mobile top header to adapt background cleanly
+  .book-header {
+    background-color: var(--body-background) !important;
+    color: var(--body-font-color) !important;
+    // border-bottom: 1px solid var(--gray-200) !important;
+
+    strong {
+      color: var(--body-font-color) !important;
+    }
+  }
+
+  // BULLETPROOF HAMBURGER & NAVIGATION ICONS CONTRAST
+  // Default Light State: Displays the native black icon directly against the warm ivory background
+  .book-header .book-icon,
+  .book-menu .book-icon {
+    filter: none !important;
+  }
+
+  // Manual Dark State: Inverts the asset lines to crisp white when user selects Dark mode
+  html[data-theme="dark"] {
+    .book-header .book-icon,
+    .book-menu .book-icon {
+      filter: invert(1) brightness(2) !important;
+    }
+  }
+
+  // 4. FORCE TABLE OF CONTENTS (TOC) TO SANS-SERIF ON MOBILE
+  .book-toc, #TableOfContents, #TableOfContents a {
+    font-family: 'Finlandica', sans-serif !important;
+  }
+
+  // Automatic Dark State: Inverts asset lines only if system is dark AND light mode hasn't been forced
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+      .book-header .book-icon,
+      .book-menu .book-icon {
+        filter: invert(1) brightness(2) !important;
+      }
+    }
   }
 }

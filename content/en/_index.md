@@ -1,6 +1,8 @@
----
-title:
----
++++
+title = ""
+type = "docs"
++++
+
 # Hello World!
 
 I'm Adrian Manea, mathematician, teacher and freelance writer, in no particular order.
