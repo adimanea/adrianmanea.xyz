@@ -30,7 +30,7 @@ Puteți citi articolele mele de popularizare a științei, educație științifi
 - [Gradient](https://gradientul.xyz);
 - [Școala9](https://scoala9.ro/redactia/adrian-manea/239);
 - [Vocativ](https://www.google.com/search?q=adrian+manea+site%3Avocativ.ro&oq=adrian+manea+site%3Avocativ.ro&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDM5NzhqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8);
-- [Mindcraft Stories](https://mindcraftstories.ro/author/adrian-manea/);
+- [Mindcraft Stories](https://web.archive.org/web/20260331172920/https://mindcraftstories.ro/author/adrian-manea/) (web archive);
 - [Dilema](https://www.dilema.ro/autor/adrian-manea);
 - Dilema Veche: 
   - [Fericirea, între matematică și ficțiune](https://dilemaveche.ro/sectiune/la-zi-in-cultura/carte/fericirea-intre-matematica-si-fictiune-2334311.html);
