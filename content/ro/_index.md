@@ -9,13 +9,13 @@ images = ["/images/profile.jpg"]
 
 # Salutare!
 
-Eu sînt Adrian Manea, matematician, profesor și fondator al [Poligon Educational](https://www.poligon-edu.ro).
+Eu sunt Adrian Manea, matematician, profesor și fondator al [Poligon Educational](https://www.poligon-edu.ro).
 
 Am și o activitate publicistică, în general de popularizare a științei, 
 cu aplicații, istorie și filosofie.
 
 ## Poligon Educational
-Din octombrie 2023, sînt fondator și profesor la Poligon Educational, un proiect
+Din octombrie 2023, sunt fondator și profesor la Poligon Educational, un proiect
 prin care îmbin educația științifică cu istoria și filosofia științei, tehnologie
 și alte aplicații.
 
@@ -40,7 +40,7 @@ Puteți citi articolele mele de popularizare a științei, educație științifi
 ## Didactică
 Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat [pe YouTube](https://www.youtube.com/@adrianmanea/videos) în perioada pandemiei de COVID-19. 
 
-Sînt seminarii de analiză reală și complexă, algebră liniară, statistică și probabilități,
+Sunt seminarii de analiză reală și complexă, algebră liniară, statistică și probabilități,
 pe care le-am predat studenților de anul I ai facultăților de Automatică și Calculatoare
 (ACS), Electronică, Telecomunicații și Tehnologia Informației (ETTI) și Inginerie
 Aerospațială (FIA) de la Universitatea Națională de Știință și Tehnologie "Politehnica",
@@ -49,7 +49,7 @@ București.
 Pentru ele, am publicat și [notițele cu exerciții și teorie](https://drive.google.com/drive/folders/17tAYZr1smXJ6DIyqr9s7MqV-RcfvyheH?usp=drive_link).
 
 ## Cercetare
-Sînt doctor în matematică din 2016, cu o teză coordonată de [Prof. Dr. Dragoș Ștefan](https://scholar.google.com/citations?user=R0lOY0gAAAAJ&hl=ro) în care folosesc metode omologice de studiu al unor algebre necomutative.
+Sunt doctor în matematică din 2016, cu o teză coordonată de [Prof. Dr. Dragoș Ștefan](https://scholar.google.com/citations?user=R0lOY0gAAAAJ&hl=ro) în care folosesc metode omologice de studiu al unor algebre necomutative.
 
 Pe această temă, am publicat trei articole de cercetare:
 - *On Koszulity of Finite Graded Posets* (cu Dragoș Ștefan), J. Algebra Appl. 16, 1750139 (2017), 20 pagini.
@@ -64,7 +64,7 @@ Am mai publicat și un articol academic de filosofia științei:
 [Aici](/docs/cv-manea-ro.pdf) este CV-ul meu, în care puteți citi astfel de detalii și altele.
 
 ## Colaborări și contact
-Sînt mereu interesat de colaborări, discuții și schimb de experiență, așa că îmi puteți scrie:
+Sunt mereu interesat de colaborări, discuții și schimb de experiență, așa că îmi puteți scrie:
 - prin email la [`hello@adrianmanea.xyz`](mailto:hello@adrianmanea.xyz);
 - pe [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
