@@ -12,35 +12,48 @@ defaultContentLanguageInSubdir = false
 # HUGO BOOK LAYOUT CUSTOMIZATIONS
 # ==========================================
 [params]
-  BookTheme = "auto"      # Can be light, dark, or auto
-  BookToC = true          # Shows Table of Contents on the right side
-  BookSearch = false      # Enables built-in fast search bar
+BookTheme = "auto"      # Can be light, dark, or auto
+BookToC = true          # Shows Table of Contents on the right side
+BookSearch = false      # Enables built-in fast search bar
+BookKatex = true
+BookSection = "*"
+BookFavicon = "/images/favicon.png"
 
 # ==========================================
 # MULTI-LANGUAGE SANDBOX SETTINGS
 # ==========================================
 [languages]
-  [languages.ro]
-    languageName = "Română"
-    contentDir = "content/ro"
-    weight = 1
+[languages.ro]
+label = "Română"
+contentDir = "content/ro"
+weight = 1
 
-  [languages.en]
-    languageName = "English"
-    contentDir = "content/en"
-    weight = 2
+[languages.en]
+label = "English"
+contentDir = "content/en"
+weight = 2
 
 # ==========================================
 # MARKUP PARSER ENGINE
 # ==========================================
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+codeFences = true
+guessSyntax = true
+style = "gruvbox"
+noClasses = true
+[markup.goldmark.extensions]
+[markup.goldmark.extensions.passthrough]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['$$', '$$'], ['\\[', '\\]']]
+inline = [['$', '$'], ['\\(', '\\)']]
 
 # ==========================================
 # THIRD-PARTY SERVICES
 # ==========================================
 [services]
-  [services.googleAnalytics]
-    id = "G-3VT5LTHWW6"
+[services.googleAnalytics]
+id = "G-3VT5LTHWW6"

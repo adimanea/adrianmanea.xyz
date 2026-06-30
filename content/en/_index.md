@@ -5,6 +5,8 @@ type = "docs"
 description = "Mathematician, teacher & freelance writer interested in STEM education and more"
 
 images = ["/images/profile.jpg"]
+
+bookHidden = true
 +++
 
 # Hello World!
