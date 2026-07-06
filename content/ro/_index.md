@@ -25,7 +25,7 @@ Predau cursuri personalizate, dar și meditații la matematică și fizică,
 nivel liceu (inclusiv bacalaureat, SAT, IB) și facultate (inclusiv sesiune 
 și lucrări de diplomă), în română sau engleză.
 
-Toate detaliile pe site-ul [Poligon Educational](https://www.poligon-edu.ro).
+Toate detaliile pe site-ul [Poligon Educational](https://poligon-edu.ro).
 
 ## Publicistică
 Puteți citi articolele mele de popularizare a științei, educație științifică și cronici de carte în:

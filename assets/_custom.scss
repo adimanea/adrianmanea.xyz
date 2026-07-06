@@ -1,7 +1,14 @@
+// ==========================================
 // 1. FONTS INGESTION
-@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap');
+// ==========================================
+// Crimson Pro (Prose) & Martian Mono (Data) via Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400..800;1,400..800&family=Martian+Mono:wght@400..800&display=swap');
+// Switzer (Editorial Sans) via Fontshare - Includes Light, Regular, Medium, Semibold, Bold, and Extrabold
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700,800&display=swap');
 
-// 2. GLOBAL LIGHT THEME TOKENS (Default & Explicit Light Toggle Switch)
+// ==========================================
+// 2. GLOBAL LIGHT THEME TOKENS
+// ==========================================
 :root, html[data-theme="light"] {
   --ivory: #fffdf0;       // Warm Cream Base
   --navy: #3b4758;       // Deep Slate text
@@ -18,17 +25,18 @@
   --color-link: var(--teal);
 }
 
-// 3. AUTOMATIC DARK THEME OVERRIDES (System Auto Preferences)
+// ==========================================
+// 3. DARK THEME OVERRIDES
+// ==========================================
 @media (prefers-color-scheme: dark) {
   :root {
-    --ivory: #3b4758;       // Dark variant of your Slate color
-    --navy: #fffdf0;       // Cream text
-    --teal: #e56a77;        // Brightened Crimson for readability
-    --burgundy: #26bdae;    // Brightened Emerald for readability
-    --gray-100: #242b37;    // Deep inset code block backgrounds
-    --gray-200: #2d3748;    // Dark borders
+    --ivory: #3b4758;       
+    --navy: #fffdf0;       
+    --teal: #e56a77;        
+    --burgundy: #26bdae;    
+    --gray-100: #242b37;    
+    --gray-200: #2d3748;    
 
-    // Re-map the layout engine to flip backgrounds dynamically
     --body-background: var(--ivory);
     --body-font-color: var(--navy);
     --menu-background: var(--ivory);
@@ -37,16 +45,14 @@
   }
 }
 
-// MANUAL DARK THEME OVERRIDES (Explicit Toggle Switch)
 html[data-theme="dark"] {
-  --ivory: #3b4758;       // Dark variant of your Slate color
-  --navy: #fffdf0;       // Cream text
-  --teal: #e56a77;        // Brightened Crimson for readability
-  --burgundy: #26bdae;    // Brightened Emerald for readability
-  --gray-100: #242b37;    // Deep inset code block backgrounds
-  --gray-200: #2d3748;    // Dark borders
+  --ivory: #3b4758;       
+  --navy: #fffdf0;       
+  --teal: #e56a77;        
+  --burgundy: #26bdae;    
+  --gray-100: #242b37;    
+  --gray-200: #2d3748;    
 
-  // Re-map the layout engine to flip backgrounds dynamically
   --body-background: var(--ivory);
   --body-font-color: var(--navy);
   --menu-background: var(--ivory);
@@ -54,7 +60,6 @@ html[data-theme="dark"] {
   --color-link: var(--teal);
 }
 
-// FORCE LIGHT OVERRIDES (Ensures manual light selection overrides a dark system OS)
 html[data-theme="light"] {
   --ivory: #fffdf0 !important;
   --navy: #3b4758 !important;
@@ -70,114 +75,226 @@ html[data-theme="light"] {
   --color-link: var(--teal) !important;
 }
 
-// 4. UNIFY GLOBAL LAYOUT BACKGROUNDS (Fixes Sidebar Color Mismatch)
+// ==========================================
+// 4. UNIFY LAYOUT BACKGROUNDS & BASE DESIGN
+// ==========================================
 body, html, .book-menu, .book-page, .book-navigation, .book-header {
   background-color: var(--ivory) !important;
   color: var(--navy) !important;
 }
 
-// 5. STRUCTURE GENERAL DESIGN
-body, html, button, input {
-  font-family: 'Finlandica', sans-serif;
+body, html {
+  font-family: 'Crimson Pro', serif; 
 }
 
-// Educational Content Area (Serif)
+button, input {
+  font-family: 'Switzer', sans-serif; 
+}
+
+// ==========================================
+// 5. EDUCATIONAL CONTENT AREA (PROSE SERIF)
+// ==========================================
 .markdown, .book-page, article {
-  font-family: 'Literata', serif;
-  font-size: 17px;
-  line-height: 1.7;
+  font-family: 'Crimson Pro', serif;
+  font-size: 20px;
+  line-height: 1.5;
   color: var(--navy);
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Finlandica', sans-serif;
+    font-family: 'Switzer', sans-serif;
     color: var(--navy);
-    font-weight: 700;
   }
 
-  h1 {
-    margin-bottom: 5rem !important;
-  }
+  h1 { font-weight: 800; }
+  h2, h3, h4, h5, h6 { font-weight: 700; }
 
   a {
     color: var(--teal) !important;
+
     &:hover, &.active {
       color: var(--burgundy) !important;
       opacity: 1.0 !important;
     }
+
+    // FIXED: Pulled out of the hover nested block so it applies universally
     &[href*="gradient"] {
       background: linear-gradient(90deg, #008e80, #aa424e) !important;
       -webkit-background-clip: text !important;
+      background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      font-weight: 700 !important;
-      font-family: 'Finlandica', sans-serif !important;
+      color: transparent !important; // Evaporates standard text color to expose gradient
+      font-weight: 800 !important;
+      font-family: 'Switzer', sans-serif !important;
       font-size: 1.3rem !important;
+      display: inline-block !important; 
     }
+  }
+
+  summary {
+    font-family: inherit;                      
+    font-size: 20px !important;
+    line-height: 1.7 !important;
+    color: var(--body-font-color) !important;  
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    cursor: pointer;
+    padding: 0.25rem 0;
   }
 }
 
-// Sidebar Menu Anchor Tuning
-.book-menu {
-  border-right: 1px solid var(--gray-200);
-
-  nav a {
-    color: var(--navy) !important;
-
-    &:hover, &.active {
-      color: var(--burgundy) !important;
-      opacity: 1.0 !important;
-    }
-  }
+// ==========================================
+// 6. TECHNICAL CODES & BLOCKS (BRUTALIST MONO)
+// ==========================================
+pre {
+  white-space: pre-wrap !important;       
+  white-space: -moz-pre-wrap !important;  
+  white-space: -pre-wrap !important;       
+  white-space: -o-pre-wrap !important;     
+  word-wrap: break-word !important;        
 }
 
-// Tables and Search Input elements mapping
-.book-search input {
-  background-color: var(--gray-100) !important;
-  color: var(--navy) !important;
-  border: 1px solid var(--gray-200) !important;
-}
-
-// Technical blocks (Mono)
 code, pre, kbd, samp {
-  font-family: 'IBM Plex Mono', monospace !important;
+  font-family: 'Martian Mono', monospace !important;
   background-color: var(--gray-100) !important;
   color: var(--navy);
 }
 
-// Highlights blockquotes
+/* Scaled Inline Code Elements */
+.markdown code {
+  font-size: 0.75em !important; 
+  padding: 0.15em 0.35em !important;
+  border-radius: 4px !important;
+  word-break: break-word !important; 
+}
+
+/* Structural Override to prevent block codes from shrinking */
+.markdown pre code {
+  font-size: 0.95em !important;
+  padding: 0 !important;
+}
+
+// ==========================================
+// 7. EDITORIAL BLOCKS & HIGHLIGHT CARDS
+// ==========================================
 blockquote {
   border-left: 4px solid var(--teal) !important;
   background-color: var(--gray-100);
   color: var(--navy);
   padding: 0.75rem 1rem;
   margin: 1.5rem 0;
-
   p { font-style: italic; }
 }
 
-// ==========================================
-// 8. FIXED SIDEBAR MENU TYPOGRAPHY
-// ==========================================
+.custom-block {
+  border-left: 4px solid var(--navy) !important;
+  background-color: var(--gray-100) !important;
+  color: var(--navy) !important;
+  padding: 0.85rem 1.15rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 4px !important;                                    
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) !important;             
+  font-family: 'Switzer', sans-serif;
+  font-size: 17px;
+  line-weight: 1.3;
+  p { font-style: normal !important; }
+}
 
-// We remove the strict ">" after .book-menu so it finds the nav wherever it is
+// ==========================================
+// 8. OPTICALLY BALANCED SIDEBAR NAVIGATION
+// ==========================================
+.book-menu {
+  font-family: 'Switzer', sans-serif !important;
+  border-right: 1px solid var(--gray-200);
+
+  nav a {
+    color: var(--navy) !important;
+    &:hover, &.active {
+      color: var(--burgundy) !important;
+      opacity: 1.0 !important;
+    }
+  }
+}
+
 .book-menu nav > ul > li {
-
-  // 1. Targets Top-Level Items Only (Standalone links & expandable folder labels)
-  > a, > label, > span {
-    font-size: 1.3rem !important;  
-    font-weight: 600 !important;     // Bold
-    display: inline-block !important;
-    margin-top: 0.6rem !important;   
-    letter-spacing: -0.01em;
+  // Top-Level Structural Parent Links
+  > a, > label, > span, .flex {
+    font-size: 1.2rem !important;  
+    font-weight: 700 !important;   
+    letter-spacing: -0.02em !important; 
     color: var(--teal) !important;
+    margin-top: 0.6rem !important;
+    text-decoration: none !important;
   }
 
-  // 2. Targets All Sub-Items Nested Inside Folders
-  ul li a {
-    font-size: 1.0rem !important;  // Smaller
-    font-weight: 500 !important;     // Regular reading weight
-    margin-top: 0.1rem !important;                 
-    margin-bottom: 0.1rem !important;
+  > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.35rem !important; 
   }
+
+  .flex {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important; 
+
+    a, label, span {
+      color: var(--teal) !important;
+      font-weight: 700 !important; 
+      letter-spacing: -0.02em !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 0.35rem !important;
+      margin: 0 !important;
+      &:hover { color: var(--burgundy) !important; }
+    }
+    img, .book-icon { margin: 0 !important; opacity: 0.7; }
+  }
+
+  // Nested Sub-Items Drawer
+  ul li a {
+    font-size: 1rem !important;
+    font-weight: 600 !important;   
+    letter-spacing: 0 !important;  
+    color: var(--navy) !important;
+    display: inline-block !important;
+    opacity: 0.85;                 
+    &:hover { opacity: 1 !important; }
+  }
+}
+
+// ==========================================
+// 8b. UNBEATABLE SPECIFICITY OVERRIDES (THE GRADIENT ENGINE)
+// ==========================================
+// Multi-chained rules to override all possible nesting permutations inside the layout
+.book-menu nav ul li a[href*="gradient"],
+.book-menu nav ul li .flex a[href*="gradient"],
+.book-menu nav a[href*="gradient"] {
+  background: linear-gradient(90deg, #008e80, #aa424e) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;              // Completely evaporates the inherited teal fill
+  font-family: 'Switzer', sans-serif !important;
+  font-size: 1.3rem !important;               // Pushes back up to your target impact scale
+  letter-spacing: -0.02em !important; 
+  opacity: 1 !important;             
+  display: inline-flex !important;            // Forces layout container stabilization for clipping
+}
+
+// Injected Emojis & Custom Structural Items
+.book-menu nav a[href*="evenimente"]::before,
+.book-menu nav a[href*="events"]::before {
+  content: "📌 ";
+}
+
+.book-menu nav a[href*="privacy"],
+.book-menu nav a[href*="cookies"] {
+  color: var(--navy) !important;
+  font-weight: 500 !important;
+  font-size: small !important;
 }
 
 // ==========================================
@@ -188,9 +305,9 @@ blockquote {
   margin-top: 2rem !important;
 
   a {
-    font-family: 'Finlandica', sans-serif; // Your primary signature UI font
-    font-size: 1.45rem !important;         // Upscale the title impact
-    font-weight: 700 !important;           // Thick structural weight
+    font-family: 'Switzer', sans-serif; // Your primary signature UI font
+    font-size: 1.5rem !important;         // Upscale the title impact
+    font-weight: 800 !important;           // Thick structural weight
     color: #3b4758 !important;             // Your exact Deep Slate Blue token
     letter-spacing: -0.03em;               // Clean, tight kerning for a logo feel
     text-decoration: none !important;
@@ -213,16 +330,7 @@ blockquote {
 // ==========================================
 // 11. SPECIFIC SIDEBAR LINK STYLING
 // ==========================================
-
-// Target the specific link by its exact URL destination
-.book-menu nav a[href*="gradient"] {
-  background: linear-gradient(90deg, #008e80, #aa424e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  font-family: 'Finlandica', sans-serif;
-  font-size: 1.3rem !important;
-}
+// FIXED: Duplicate plain gradient declaration removed here to prevent Section 8b overrides from being broken.
 
 // inject emoji
 .book-menu nav a[href*="anun"]::before,
@@ -248,12 +356,12 @@ blockquote {
   padding: 0.1rem 0.1rem !important; // Perfectly balances the left and right breathing room
 
   nav {
-    font-family: 'Finlandica', sans-serif;
+    font-family: 'Switzer', sans-serif;
   }
 
   // 2. Style the "On this page" Title Header (if your theme displays it)
   strong, h5 {
-    font-family: 'Finlandica', sans-serif;
+    font-family: 'Switzer', sans-serif;
     color: var(--navy);
     font-size: 0.9rem !important;
     font-weight: 700 !important;
@@ -363,7 +471,7 @@ blockquote {
 
 // 1. FIXED LEFT ALIGNMENT FOR THE TEXT
 .profile-bio-text {
-  font-family: 'Finlandica', sans-serif;
+  font-family: 'Switzer', sans-serif;
   font-size: 1.05rem !important;
   font-weight: 400;
   line-height: 1.4;
@@ -462,7 +570,7 @@ html[data-theme="dark"] {
 
   // 4. FORCE TABLE OF CONTENTS (TOC) TO SANS-SERIF ON MOBILE
   .book-toc, #TableOfContents, #TableOfContents a {
-    font-family: 'Finlandica', sans-serif !important;
+    font-family: 'Switzer', sans-serif !important;
   }
 
   // Automatic Dark State: Inverts asset lines only if system is dark AND light mode hasn't been forced

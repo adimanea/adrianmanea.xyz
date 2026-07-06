@@ -69,10 +69,11 @@ curiosity are quite diverse. As such, don't hesitate to get in touch:
 - via [WhatsApp](https://wa.me/message/TPGIYUVXOY7ND1).
 
 I'm not very active on social media, but you can find me on:
-- [Facebook](https://facebook.com/adrianmaneaxyz);
+- [Bluesky](https://bsky.app/profile/adrianmanea.xyz);
+- [Instagram](https://www.instagram.com/adrianmanea.xyz/);
 - [LinkedIn](https://www.linkedin.com/in/adrianmaneaxyz/);
 - [Goodreads](https://www.goodreads.com/user/show/25653821-adrian-manea).
 
 ---
 
-*Last update: September 2025.*
+*Last update: July 2026*
