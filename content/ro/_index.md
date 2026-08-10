@@ -13,7 +13,7 @@ bookHidden = true
 
 Eu sunt Adrian Manea, matematician, profesor și fondator al [Poligon Educational](https://www.poligon-edu.ro).
 
-Am și o activitate publicistică, în general de popularizare a științei, 
+Am și o activitate publicistică, în general de popularizare a științei,
 cu aplicații, istorie și filosofie.
 
 ## Poligon Educational
@@ -22,25 +22,25 @@ prin care îmbin educația științifică cu istoria și filosofia științei, t
 și alte aplicații.
 
 Predau cursuri personalizate, dar și meditații la matematică și fizică,
-nivel liceu (inclusiv bacalaureat, SAT, IB) și facultate (inclusiv sesiune 
+nivel liceu (inclusiv bacalaureat, SAT, IB) și facultate (inclusiv sesiune
 și lucrări de diplomă), în română sau engleză.
 
 Toate detaliile pe site-ul [Poligon Educational](https://poligon-edu.ro).
 
 ## Publicistică
 Puteți citi articolele mele de popularizare a științei, educație științifică și cronici de carte în:
-- [Gradient](https://gradientul.xyz);
+- [Blogul Poligon Educational](https://poligon-edu.ro/blog/);
 - [Școala9](https://scoala9.ro/redactia/adrian-manea/239);
 - [Vocativ](https://www.google.com/search?q=adrian+manea+site%3Avocativ.ro&oq=adrian+manea+site%3Avocativ.ro&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDM5NzhqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8);
 - [Mindcraft Stories](https://web.archive.org/web/20260331172920/https://mindcraftstories.ro/author/adrian-manea/) (web archive);
 - [Dilema](https://www.dilema.ro/autor/adrian-manea);
-- Dilema Veche: 
+- Dilema Veche:
   - [Fericirea, între matematică și ficțiune](https://dilemaveche.ro/sectiune/la-zi-in-cultura/carte/fericirea-intre-matematica-si-fictiune-2334311.html);
   - [Levitația electromagnetică în teseract](https://dilemaveche.ro/sectiune/regimul-artelor-si-munitiilor/levitatia-electromagnetica-in-tesseract-2343756.html).
 
 
 ## Didactică
-Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat [pe YouTube](https://www.youtube.com/@adrianmanea/videos) în perioada pandemiei de COVID-19. 
+Este posibil să mă cunoașteți prin seminariile de matematică pe care le-am încărcat [pe YouTube](https://www.youtube.com/@adrianmanea/videos) în perioada pandemiei de COVID-19.
 
 Sunt seminarii de analiză reală și complexă, algebră liniară, statistică și probabilități,
 pe care le-am predat studenților de anul I ai facultăților de Automatică și Calculatoare
