@@ -1,0 +1,23 @@
+{{ if .Params.isNote }}
+
+  {{ if .IsPage }}
+  <div class="post-actions">
+    <a class="btn-reply"
+       href="mailto:{{ .Site.Params.replyEmail }}?subject={{ (printf "Re: %s" .Title) | urlquery }}">
+      ✉&nbsp;&nbsp;Reply via email
+    </a>
+  </div>
+  {{ end }}
+
+  {{ if .IsSection }}
+  {{ $rss := .OutputFormats.Get "RSS" }}
+  {{ with $rss }}
+  <div class="section-actions">
+    <a class="btn-rss" href="{{ .Permalink }}">
+      📡&nbsp;&nbsp;RSS
+    </a>
+  </div>
+  {{ end }}
+  {{ end }}
+
+{{ end }}
