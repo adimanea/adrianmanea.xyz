@@ -2,19 +2,23 @@
 
   {{ if .IsPage }}
   <div class="post-actions">
-    <a class="btn-reply"
-       href="mailto:{{ .Site.Params.replyEmail }}?subject={{ (printf "Re: %s" .Title) | urlquery }}">
+    {{ if eq .Lang "ro" }}
+    <a class="btn-reply" href="mailto:{{ .Site.Params.replyEmail }}?subject={{ (printf "Re: %s" .Title) | urlquery }}">
+      ✉&nbsp;&nbsp;Răspunde prin email
+    </a>
+    {{ else }}
+    <a class="btn-reply" href="mailto:{{ .Site.Params.replyEmail }}?subject={{ (printf "Re: %s" .Title) | urlquery }}">
       ✉&nbsp;&nbsp;Reply via email
     </a>
+    {{ end }}
   </div>
   {{ end }}
 
   {{ if .IsSection }}
-  {{ $rss := .OutputFormats.Get "RSS" }}
-  {{ with $rss }}
+  {{ with .OutputFormats.Get "RSS" }}
   <div class="section-actions">
     <a class="btn-rss" href="{{ .Permalink }}">
-      📡&nbsp;&nbsp;RSS
+      📡&nbsp;&nbsp;{{ if eq .Lang "ro" }}Abonează-te via RSS{{ else }}Follow via RSS{{ end }}
     </a>
   </div>
   {{ end }}
