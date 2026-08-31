@@ -1,27 +1,28 @@
 {{ if .Params.isNote }}
 
-  {{ if .IsPage }}
-  <div class="post-actions">
+{{ if .IsPage }}
+<div class="post-actions">
     {{ if eq .Lang "ro" }}
     <a class="btn-reply" href="mailto:{{ .Site.Params.replyEmail }}?subject={{ (printf "Re: %s" .Title) | urlquery }}">
-      ✉&nbsp;&nbsp;Răspunde prin email
+        ✉&nbsp;&nbsp;Răspunde prin email
     </a>
     {{ else }}
     <a class="btn-reply" href="mailto:{{ .Site.Params.replyEmail }}?subject={{ (printf "Re: %s" .Title) | urlquery }}">
-      ✉&nbsp;&nbsp;Reply via email
+        ✉&nbsp;&nbsp;Reply via email
     </a>
     {{ end }}
-  </div>
-  {{ end }}
+</div>
+{{ end }}
 
-  {{ if .IsSection }}
-  {{ with .OutputFormats.Get "RSS" }}
-  <div class="section-actions">
+{{ if .IsSection }}
+{{ $lang := .Lang }}
+{{ with .OutputFormats.Get "RSS" }}
+<div class="section-actions">
     <a class="btn-rss" href="{{ .Permalink }}">
-      📡&nbsp;&nbsp;{{ if eq .Lang "ro" }}Abonează-te via RSS{{ else }}Follow via RSS{{ end }}
+        📡&nbsp;&nbsp;{{ if eq $lang "ro" }}Abonează-te via RSS{{ else }}Follow via RSS{{ end }}
     </a>
-  </div>
-  {{ end }}
-  {{ end }}
+</div>
+{{ end }}
+{{ end }}
 
 {{ end }}
