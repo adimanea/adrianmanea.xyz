@@ -17,11 +17,13 @@
 {{ if .IsSection }}
 {{ $lang := .Lang }}
 {{ with .OutputFormats.Get "RSS" }}
+<body>
 <div class="section-actions">
     <a class="btn-rss" href="{{ .Permalink }}">
         📡&nbsp;&nbsp;{{ if eq $lang "ro" }}Abonează-te via RSS{{ else }}Follow via RSS{{ end }}
     </a>
 </div>
+</body>
 {{ end }}
 {{ end }}
 

@@ -18,6 +18,7 @@ BookSearch = false      # Enables built-in fast search bar
 BookKatex = true
 BookSection = "*"
 BookFavicon = "favicon.png"
+replyEmail = "adrian@adrianmanea.xyz"
 
 # ==========================================
 # MULTI-LANGUAGE SANDBOX SETTINGS

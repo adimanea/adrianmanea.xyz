@@ -218,11 +218,11 @@ blockquote {
 .book-menu nav > ul > li {
   // Top-Level Structural Parent Links
   > a, > label, > span, .flex {
-    font-size: 1.2rem !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.02em !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.00em !important;
     color: var(--teal) !important;
-    margin-top: 0.6rem !important;
+    margin-top: 0.3rem !important;
     text-decoration: none !important;
   }
 
@@ -240,8 +240,8 @@ blockquote {
 
     a, label, span {
       color: var(--teal) !important;
-      font-weight: 700 !important;
-      letter-spacing: -0.02em !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.00em !important;
       text-decoration: none !important;
       display: inline-flex !important;
       align-items: center !important;
@@ -260,7 +260,7 @@ blockquote {
     letter-spacing: 0 !important;
     color: var(--navy) !important;
     display: inline-block !important;
-    opacity: 0.85;
+    opacity: 1.00;
     &:hover { opacity: 1 !important; }
   }
 }
