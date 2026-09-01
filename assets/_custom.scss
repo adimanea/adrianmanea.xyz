@@ -526,7 +526,17 @@ html[data-theme="dark"] {
 // ==========================================
 // 17. RE-CALIBRATE RESPONSIVE DRAWER & ICONS
 // ==========================================
+.menu-hidden-only {
+  display: none;
+}
+
 @media screen and (max-width: 56rem) {
+  .menu-hidden-only {
+    display: block;
+    margin: 1.2rem auto;
+    max-width: 50% !important;
+    height: auto;
+  }
 
   // Fixes the left padding offset seen in image_5cd47b.png
   .book-menu {

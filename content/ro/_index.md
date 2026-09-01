@@ -7,6 +7,8 @@ description = "Matematician și profesor. Scriu divers despre educație și ști
 images = ["/images/profile.jpg"]
 +++
 
+<img class="menu-hidden-only" src="/images/profile.jpg" alt="Adrian Manea">
+
 # Salutare!
 
 Eu sunt Adrian Manea, matematician, profesor și fondator al [Poligon Educational](https://www.poligon-edu.ro).
