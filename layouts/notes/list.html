@@ -1,6 +1,9 @@
 {{ define "main" }}
 <article class="markdown notes-list">
   <h1>{{ .Title }}</h1>
+
+    {{ .Content }}
+
   <ul class="notes-titles">
     {{ range .Pages.ByDate.Reverse }}
     <li>

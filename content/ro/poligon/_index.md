@@ -5,7 +5,7 @@ weight = 10
 slug = "poligon"
 bookTocHidden = "false"
 +++
-![Poligon Educational](/images/poligon_educational_navy_text.png#center)
+# Poligon Educational
 
 Mi-am dorit să pornesc un proiect educațional încă din facultate.
 Un hub în care să împărtășim din curiozitățile noastre, să discutăm
