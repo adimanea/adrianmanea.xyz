@@ -28,18 +28,29 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      # The Book theme compiles book.scss via css.Sass, which needs Hugo EXTENDED
-      # (embedded Dart Sass). peaceiris/actions-hugo with hugo-version 'latest'
-      # installed the STANDARD binary on the last run -> "no Dart Sass binary found
-      # in $PATH". Download the extended release directly, pinned, so the binary is
-      # guaranteed to be extended.
-      - name: Setup Hugo Extended (pinned)
+      # The Book theme compiles book.scss via css.Sass, which needs Sass support.
+      # peaceiris/actions-hugo with hugo-version 'latest' put the STANDARD Hugo
+      # 0.170.1 on PATH -> "no Dart Sass binary found in $PATH". Fix: install the
+      # pinned EXTENDED release into /tmp/hugo-bin and prepend it to PATH via
+      # $GITHUB_PATH so it shadows any image-provided hugo; also ship standalone
+      # dart-sass (provides `sass` in PATH) as a fallback that works with the
+      # standard binary too. Verified locally: extended hugo alone builds the
+      # site; standard hugo + dart-sass in PATH builds it as well.
+      - name: Setup Hugo Extended + Dart Sass
         run: |
+          set -e
           HUGO_VERSION="0.170.1"
-          curl -sL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" -o /tmp/hugo-extended.tar.gz
-          tar -xzf /tmp/hugo-extended.tar.gz -C /tmp
-          sudo install -m 0755 /tmp/hugo /usr/local/bin/hugo
+          SASS_VERSION="1.93.3"
+          mkdir -p /tmp/hugo-bin
+          curl -sfL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" -o /tmp/hugo-extended.tar.gz
+          tar -xzf /tmp/hugo-extended.tar.gz -C /tmp/hugo-bin
+          curl -sfL "https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-x64.tar.gz" -o /tmp/dart-sass.tar.gz
+          tar -xzf /tmp/dart-sass.tar.gz -C /tmp
+          echo "/tmp/hugo-bin" >> "$GITHUB_PATH"
+          echo "/tmp/dart-sass" >> "$GITHUB_PATH"
+          which hugo sass
           hugo version
+          sass --version
 
       - name: Build with Hugo
         run: |
