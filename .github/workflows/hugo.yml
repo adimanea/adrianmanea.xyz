@@ -28,11 +28,18 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: 'latest'
-          extended: true # The Book theme utilizes Sass/SCSS, which requires Hugo Extended
+      # The Book theme compiles book.scss via css.Sass, which needs Hugo EXTENDED
+      # (embedded Dart Sass). peaceiris/actions-hugo with hugo-version 'latest'
+      # installed the STANDARD binary on the last run -> "no Dart Sass binary found
+      # in $PATH". Download the extended release directly, pinned, so the binary is
+      # guaranteed to be extended.
+      - name: Setup Hugo Extended (pinned)
+        run: |
+          HUGO_VERSION="0.170.1"
+          curl -sL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" -o /tmp/hugo-extended.tar.gz
+          tar -xzf /tmp/hugo-extended.tar.gz -C /tmp
+          sudo install -m 0755 /tmp/hugo /usr/local/bin/hugo
+          hugo version
 
       - name: Build with Hugo
         run: |
