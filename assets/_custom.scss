@@ -1,77 +1,137 @@
 // ==========================================
 // 1. FONTS INGESTION
 // ==========================================
-// Crimson Pro (Prose) & Martian Mono (Data) via Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400..800;1,400..800&family=Martian+Mono:wght@400..800&display=swap');
-// Switzer (Editorial Sans) via Fontshare - Includes Light, Regular, Medium, Semibold, Bold, and Extrabold
-@import url('https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700,800&display=swap');
+// Self-hosted woff2 (Switzer, Crimson Pro, EB Garamond, IBM Plex Mono) — no CDN,
+// per the design guide. Files live in static/fonts/, declarations in _fontface.scss.
+@import "fontface";
 
 // ==========================================
 // 2. GLOBAL LIGHT THEME TOKENS
 // ==========================================
 :root, html[data-theme="light"] {
-  --ivory: #fffdf0;       // Warm Cream Base
-  --navy: #3b4758;       // Deep Slate text
-  --burgundy: #aa424e;    // Crimson Accent
-  --teal: #008e80;        // Emerald Accent
-  --gray-100: #f7f4e6;    // Soft tinted elements (Code backings)
-  --gray-200: #e8e4d3;    // Muted guidelines
+  // ---- Brand tokens (design guide v2: one shade per hue, all AAA on paper) ----
+  --paper: #fffdf0;        // ivory page background
+  --ink: #3b4758;          // navy, primary text (9.23:1 on paper)
+  --burgundy: #923540;     // the single burgundy (7.33:1, AAA)
+  --teal: #005f53;         // the single teal (7.44:1, AAA)
+  --ink-muted: #5b6575;    // captions / muted text (5.77:1, AA)
+  --rule: #d8d5c8;         // hairlines
+  --rule-cool: #c9cdd3;    // cool hairlines
+  --paper-tint: #f7f3e4;   // cards, code backings
+  --wash-burgundy: #f8ecea;
+  --wash-teal: #e7f2f0;
+  --wash-navy: #edeef0;
+
+  // ---- Type tokens ----
+  --font-sans: "Switzer", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Crimson Pro", "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  // Legacy aliases used throughout this file
+  --ivory: var(--paper);
+  --navy: var(--ink);
+  --gray-100: var(--paper-tint);
+  --gray-200: var(--rule);
 
   // Map directly into the Hugo Book native variable layer
-  --body-background: var(--ivory);
-  --body-font-color: var(--navy);
-  --menu-background: var(--ivory);
-  --menu-font-color: var(--navy);
-  --color-link: var(--teal);
+  --body-background: var(--paper);
+  --body-font-color: var(--ink);
+  --menu-background: var(--paper);
+  --menu-font-color: var(--ink);
+  --color-link: var(--teal);       // links teal, hover burgundy
 }
 
 // ==========================================
 // 3. DARK THEME OVERRIDES
 // ==========================================
+// Dark role (guide): page deepens to navy-deep, body text ivory,
+// burgundy/teal flip to their dark-surface tints, muted becomes ivory-shade.
 @media (prefers-color-scheme: dark) {
   :root {
-    --ivory: #3b4758;
-    --navy: #fffdf0;
-    --teal: #e56a77;
-    --burgundy: #26bdae;
-    --gray-100: #242b37;
-    --gray-200: #2d3748;
+    --paper: #252e3a;        // --navy-deep, dark page background
+    --ink: #fffdf0;          // ivory body text
+    --burgundy: #f2a2ac;     // --burgundy-soft, 6.89:1 on deep navy
+    --teal: #a8ded5;         // --teal-soft, 9.2:1 on deep navy
+    --ink-muted: #d8d5c8;    // --ivory-shade, captions on navy
+    --rule: #3d4859;         // dark hairline (navy tint)
+    --rule-cool: #3d4859;
+    --paper-tint: #2f3a49;   // dark navy tint, code backings
+    --wash-burgundy: rgba(242, 162, 172, 0.08);
+    --wash-teal: rgba(168, 222, 213, 0.08);
+    --wash-navy: rgba(216, 213, 200, 0.08);
 
-    --body-background: var(--ivory);
-    --body-font-color: var(--navy);
-    --menu-background: var(--ivory);
-    --menu-font-color: var(--navy);
+    // Named dark tokens from the guide
+    --navy-deep: #252e3a;
+    --burgundy-soft: #f2a2ac;
+    --teal-soft: #a8ded5;
+    --ivory-shade: #d8d5c8;
+
+    // Legacy aliases
+    --ivory: var(--paper);
+    --navy: var(--ink);
+    --gray-100: var(--paper-tint);
+    --gray-200: var(--rule);
+
+    --body-background: var(--paper);
+    --body-font-color: var(--ink);
+    --menu-background: var(--paper);
+    --menu-font-color: var(--ink);
     --color-link: var(--teal);
   }
 }
 
 html[data-theme="dark"] {
-  --ivory: #3b4758;
-  --navy: #fffdf0;
-  --teal: #e56a77;
-  --burgundy: #26bdae;
-  --gray-100: #242b37;
-  --gray-200: #2d3748;
+  --paper: #252e3a;
+  --ink: #fffdf0;
+  --burgundy: #f2a2ac;
+  --teal: #a8ded5;
+  --ink-muted: #d8d5c8;
+  --rule: #3d4859;
+  --rule-cool: #3d4859;
+  --paper-tint: #2f3a49;
+  --wash-burgundy: rgba(242, 162, 172, 0.08);
+  --wash-teal: rgba(168, 222, 213, 0.08);
+  --wash-navy: rgba(216, 213, 200, 0.08);
 
-  --body-background: var(--ivory);
-  --body-font-color: var(--navy);
-  --menu-background: var(--ivory);
-  --menu-font-color: var(--navy);
+  --navy-deep: #252e3a;
+  --burgundy-soft: #f2a2ac;
+  --teal-soft: #a8ded5;
+  --ivory-shade: #d8d5c8;
+
+  --ivory: var(--paper);
+  --navy: var(--ink);
+  --gray-100: var(--paper-tint);
+  --gray-200: var(--rule);
+
+  --body-background: var(--paper);
+  --body-font-color: var(--ink);
+  --menu-background: var(--paper);
+  --menu-font-color: var(--ink);
   --color-link: var(--teal);
 }
 
 html[data-theme="light"] {
-  --ivory: #fffdf0 !important;
-  --navy: #3b4758 !important;
-  --burgundy: #aa424e !important;
-  --teal: #008e80 !important;
-  --gray-100: #f7f4e6 !important;
-  --gray-200: #e8e4d3 !important;
+  --paper: #fffdf0 !important;
+  --ink: #3b4758 !important;
+  --burgundy: #923540 !important;
+  --teal: #005f53 !important;
+  --ink-muted: #5b6575 !important;
+  --rule: #d8d5c8 !important;
+  --rule-cool: #c9cdd3 !important;
+  --paper-tint: #f7f3e4 !important;
+  --wash-burgundy: #f8ecea !important;
+  --wash-teal: #e7f2f0 !important;
+  --wash-navy: #edeef0 !important;
 
-  --body-background: var(--ivory) !important;
-  --body-font-color: var(--navy) !important;
-  --menu-background: var(--ivory) !important;
-  --menu-font-color: var(--navy) !important;
+  --ivory: var(--paper) !important;
+  --navy: var(--ink) !important;
+  --gray-100: var(--paper-tint) !important;
+  --gray-200: var(--rule) !important;
+
+  --body-background: var(--paper) !important;
+  --body-font-color: var(--ink) !important;
+  --menu-background: var(--paper) !important;
+  --menu-font-color: var(--ink) !important;
   --color-link: var(--teal) !important;
 }
 
@@ -84,24 +144,30 @@ body, html, .book-menu, .book-page, .book-navigation, .book-header {
 }
 
 body, html {
-  font-family: 'Crimson Pro', serif;
+  font-family: var(--font-serif);
 }
 
 button, input {
-  font-family: 'Switzer', sans-serif;
+  font-family: var(--font-sans);
+}
+
+// Guide: 2px teal focus outline with a 2px offset (7.44:1, clears 3:1 non-text)
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
 }
 
 // ==========================================
 // 5. EDUCATIONAL CONTENT AREA (PROSE SERIF)
 // ==========================================
 .markdown, .book-page, article {
-  font-family: 'Crimson Pro', serif;
+  font-family: var(--font-serif);
   font-size: 20px;
   line-height: 1.5;
   color: var(--navy);
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Switzer', sans-serif;
+    font-family: var(--font-sans);
     color: var(--navy);
   }
 
@@ -109,6 +175,7 @@ button, input {
   h2, h3, h4, h5, h6 { font-weight: 700; }
 
   a {
+    // Links teal, hover burgundy
     color: var(--teal) !important;
 
     &:hover, &.active {
@@ -118,13 +185,13 @@ button, input {
 
     // FIXED: Pulled out of the hover nested block so it applies universally
     &[href*="gradient"] {
-      background: linear-gradient(90deg, #008e80, #aa424e) !important;
+      background: linear-gradient(90deg, var(--teal), var(--burgundy)) !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important; // Evaporates standard text color to expose gradient
       font-weight: 800 !important;
-      font-family: 'Switzer', sans-serif !important;
+      font-family: var(--font-sans) !important;
       font-size: 1rem !important;
       display: inline-block !important;
     }
@@ -154,7 +221,7 @@ pre {
 }
 
 code, pre, kbd, samp {
-  font-family: 'Martian Mono', monospace !important;
+  font-family: var(--font-mono) !important;
   background-color: var(--gray-100) !important;
   color: var(--navy);
 }
@@ -193,7 +260,7 @@ blockquote {
   margin: 1.5rem 0 !important;
   border-radius: 4px !important;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-  font-family: 'Switzer', sans-serif;
+  font-family: var(--font-sans);
   font-size: 17px;
   line-weight: 1.3;
   p { font-style: normal !important; }
@@ -203,7 +270,7 @@ blockquote {
 // 8. OPTICALLY BALANCED SIDEBAR NAVIGATION
 // ==========================================
 .book-menu {
-  font-family: 'Switzer', sans-serif !important;
+  font-family: var(--font-sans) !important;
   border-right: 1px solid var(--gray-200);
 
   nav a {
@@ -272,12 +339,12 @@ blockquote {
 .book-menu nav ul li a[href*="gradient"],
 .book-menu nav ul li .flex a[href*="gradient"],
 .book-menu nav a[href*="gradient"] {
-  background: linear-gradient(90deg, #008e80, #aa424e) !important;
+  background: linear-gradient(90deg, var(--teal), var(--burgundy)) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;              // Completely evaporates the inherited teal fill
-  font-family: 'Switzer', sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-size: 1rem !important;               // Pushes back up to your target impact scale
   letter-spacing: -0.02em !important;
   opacity: 1 !important;
@@ -305,10 +372,10 @@ blockquote {
   margin-top: 2rem !important;
 
   a {
-    font-family: 'Switzer', sans-serif; // Your primary signature UI font
+    font-family: var(--font-sans); // Your primary signature UI font
     font-size: 1.5rem !important;         // Upscale the title impact
     font-weight: 800 !important;           // Thick structural weight
-    color: #3b4758 !important;             // Your exact Deep Slate Blue token
+    color: var(--navy) !important;         // ink token (ivory in dark mode)
     letter-spacing: -0.03em;               // Clean, tight kerning for a logo feel
     text-decoration: none !important;
 
@@ -356,12 +423,12 @@ blockquote {
   padding: 0.1rem 0.1rem !important; // Perfectly balances the left and right breathing room
 
   nav {
-    font-family: 'Switzer', sans-serif;
+    font-family: var(--font-sans);
   }
 
   // 2. Style the "On this page" Title Header (if your theme displays it)
   strong, h5 {
-    font-family: 'Switzer', sans-serif;
+    font-family: var(--font-sans);
     color: var(--navy);
     font-size: 0.9rem !important;
     font-weight: 700 !important;
@@ -471,7 +538,7 @@ blockquote {
 
 // 1. FIXED LEFT ALIGNMENT FOR THE TEXT
 .profile-bio-text {
-  font-family: 'Switzer', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.05rem !important;
   font-weight: 400;
   line-height: 1.4;
@@ -482,25 +549,23 @@ blockquote {
 }
 
 // 2. BULLETPROOF THEME LIGHT/DARK TEXT COLOR SWITCH
+// Guide: muted text is --ink-muted on paper, --ivory-shade on dark surfaces
 html[data-theme="light"] {
   .profile-bio-text {
-    color: #3b4758 !important; // Crisp Deep Slate Navy for perfect light mode contrast
-    opacity: 0.85;
+    color: var(--ink-muted) !important;
   }
 }
 
 html[data-theme="dark"] {
   .profile-bio-text {
-    color: #e9ecef !important; // High-visibility off-white for dark mode layouts
-    opacity: 0.9;
+    color: var(--ivory-shade) !important;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
     .profile-bio-text {
-      color: #e9ecef !important;
-      opacity: 0.9;
+      color: var(--ivory-shade) !important;
     }
   }
 }
@@ -580,7 +645,7 @@ html[data-theme="dark"] {
 
   // 4. FORCE TABLE OF CONTENTS (TOC) TO SANS-SERIF ON MOBILE
   .book-toc, #TableOfContents, #TableOfContents a {
-    font-family: 'Switzer', sans-serif !important;
+    font-family: var(--font-sans) !important;
   }
 
   // Automatic Dark State: Inverts asset lines only if system is dark AND light mode hasn't been forced
@@ -596,7 +661,7 @@ html[data-theme="dark"] {
 
 // NOTES
 .notes-titles {
-  font-family: "Switzer" !important;
+  font-family: var(--font-sans) !important;
   font-weight: 600 !important;
   font-size: 1.1rem;
 
