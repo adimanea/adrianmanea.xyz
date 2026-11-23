@@ -48,12 +48,15 @@ jobs:
           tar -xzf /tmp/dart-sass.tar.gz -C /tmp
           echo "/tmp/hugo-bin" >> "$GITHUB_PATH"
           echo "/tmp/dart-sass" >> "$GITHUB_PATH"
-          which hugo sass
-          hugo version
-          sass --version
+          # $GITHUB_PATH only applies from the NEXT step, so verify via absolute paths here
+          ls -la /tmp/hugo-bin
+          /tmp/hugo-bin/hugo version
+          /tmp/dart-sass/sass --version
 
       - name: Build with Hugo
         run: |
+          which hugo sass || true
+          hugo version
           hugo \
           --gc \
           --minify \
