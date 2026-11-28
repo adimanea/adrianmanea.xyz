@@ -1,5 +1,7 @@
 # COGA / Accessibility Audit — adrianmanea.xyz
 
+[TOC]
+
 **Scope:** Hugo site (`hugo.toml`, theme `hugo-book` + overrides in `layouts/` and `assets/`),
 content in `content/ro` and `content/en`, static assets in `static/` (CV PDFs, images, self-hosted fonts).
 **Focus:** cognitive accessibility (COGA — [W3C "Making Content Usable for People with Cognitive and
@@ -271,3 +273,153 @@ Automated tools catch only ~30–40% of WCAG issues, and almost none of the COGA
 - Optionally, real **user testing** with people with cognitive disabilities — COGA's own guidance says this is the only way to validate the cognitive aspects.
 
 So: automated tools give you the green CI badge for WCAG 2.2 AA + PDF/UA-1; the manual Orca/keyboard/readability gates are what make it genuinely COGA-compliant — and they're also your portfolio evidence.
+
+---
+
+## Apple / WebKit-Specific Checks (iPhone, iPad, macOS Safari)
+
+Yes — and it's worth a dedicated layer in your audits, because in education Apple devices are over-represented and WebKit has its own quirks. Here's the full picture.
+
+### 1. Why the Apple world is a separate axis for you
+
+- **Every browser on iPhone/iPad is WebKit.** Chrome, Firefox, Edge on iOS are all WKWebView skins — Apple mandates the engine. So "test Safari on iOS" = "test all iOS browsers."
+- **iPads request desktop-class sites by default** (since iPadOS 13), but with a touch screen and ~1024 px width — you get your desktop layout with no hover. Test both the desktop and mobile breakpoints on iPad, plus Split View / Slide Over (~700 px) and iPhone SE (320 px, the WCAG 1.4.10 reflow test width).
+- **VoiceOver is the reference screen reader for WebKit** (macOS, iOS/iPadOS, visionOS). Safari + VoiceOver has **best-in-class MathML support** — your KaTeX `htmlAndMathml` output and the MathML on poligon-edu.ro will actually be read aloud properly on Apple devices. That's a genuine asset for your math materials.
+- Apple's own bar is stricter than WCAG in one place: the **HIG requires 44×44 pt minimum tap targets** (WCAG 2.5.8 asks 24×24 CSS px). Since you target classrooms, follow Apple's 44 pt.
+
+### 2. Concrete findings in your repos already
+
+- Viewport meta is fine: both themes use `width=device-width, initial-scale=1.0` — **no `user-scalable=no`**, so pinch-zoom is not blocked (never add it; disabling zoom is an automatic WCAG 1.4.4/1.4.10 failure).
+- **Real issue found:** `assets/_custom.scss` in *both* sites uses `height: 100vh !important` (adrianmanea.xyz:525; poligon-hugo:579, and the lightbox overlay `width:100vw; height:100vh` at poligon-hugo:639). On iOS Safari, `100vh` includes the area behind the collapsing toolbar → content is hidden under it. Fix: `height: 100vh; height: 100dvh;` (and `dvw` for the overlay), keeping the vh fallback.
+- The theme menu uses `&:hover > ul, &:focus-within > ul` — good, it already pairs hover with focus-within. Keep that pattern everywhere: on touch devices hover doesn't exist, so anything revealed on hover must also work on tap/focus.
+
+### 3. Apple-exclusive tools (all macOS-only — none run on Linux, and you can't legally VM macOS on Linux hardware)
+
+| Tool | What it's for |
+|---|---|
+| **Xcode** (free, Mac App Store) → **Simulator** | Run iPhone/iPad simulators; test at real device widths |
+| **Accessibility Inspector** (Xcode → Open Developer Tool) | Inspect the accessibility tree of any app/page; has a built-in **Audit** that flags WCAG-style issues (contrast, missing labels, small targets) |
+| **Safari Web Inspector** (Develop → Show Web Inspector, enable in Settings → Advanced) | **Accessibility pane** = the a11y tree in real Safari; **Audit tab** = Lighthouse-derived automated checks running *in WebKit itself* |
+| **VoiceOver** (macOS: Cmd+F5; iOS: Settings → Accessibility → VoiceOver) + **VoiceOver Utility** | The screen reader; use the **rotor** (VO+U → Headings / Links / Landmarks) to verify your heading tree, link names, skip link, carousel and lightbox announcements |
+| **Safari Technology Preview** | Early WebKit — catches engine changes before they hit students' devices |
+| iOS Settings → Accessibility: **Zoom, Reduce Motion, Increase Contrast, Differentiate Without Color, On/Off Labels, Reduce Transparency, Dynamic Type (text size), Voice Control, Switch Control, Guided Access** | Each maps to a web platform feature your CSS/JS must honor (see §5) |
+| **bugs.webkit.org** | File engine bugs you find (e.g., a MathML or `aria-roledescription` announcement issue) |
+| **wpt.fyi** | Web Platform Tests dashboard — check whether a CSS/JS feature you use is green in Safari before relying on it |
+
+Apple guidance to track: **Human Interface Guidelines → Accessibility** (developer.apple.com/design/human-interface-guidelines/accessibility) and the **Apple Developer Accessibility** docs; WWDC "What's new in Safari and WebKit" sessions each June.
+
+### 4. Automated WebKit checks you can run from your Linux machine
+
+1. **GitHub Actions `macos-latest` runner** — free for public repos (both your Hugo repos are public). Real WebKit in CI:
+   - Playwright with `--project=webkit` on the macOS runner (real WebKit build), inject **axe-core**, assert zero WCAG2AA violations at iPhone/iPad/macOS viewports; emulate `reducedMotion: 'reduce'`, `colorScheme: 'dark'`, `hasTouch: true` (catches hover-only UI).
+   - Or real Safari via `safaridriver` (`sudo safaridriver --enable` works on Actions runners) + Selenium/WebDriver + axe.
+   - Playwright's WebKit also has a Linux build — an approximation you can run locally, but only the macOS runner is the genuine engine.
+2. **Cloud device labs** (trigger from Linux CI or manually): **BrowserStack** (has a free tier for open-source projects), **Sauce Labs**, **LambdaTest/TestMu AI** — real Safari on macOS and real iPhones/iPads; run axe via their Automate; useful for one-off manual sessions too since you have no Mac.
+3. **In-browser on a Mac**: axe DevTools extension for Safari, Safari Web Inspector's Audit tab, Accessibility Inspector's Audit.
+4. Platform-independent checks from before (vnu.jar, lychee, markdownlint, veraPDF for PDFs — Evince/Okular on Linux, Preview + VoiceOver on macOS) stay valid; PDFs on iPad open in Books/Files — tagged PDF/UA matters there too.
+
+### 5. Manual checks to perform on Apple devices (the ones that matter for your sites)
+
+- **VoiceOver + Safari (macOS and iPhone)**: rotor → Headings shows exactly one h1 and a clean outline per page (fixes the multi-h1 material pages first); Links list must be descriptive (no "aici/here"); Landmarks list shows menu/main/ToC with labels; skip link is the first stop; carousel announces as carousel with slide position and is pausable; lightbox opens as a modal dialog and focus returns on close; **math is spoken from MathML** (verify a formula on `ecuatia-dreptei` — Safari+VO is the best combo for this); emoji flags/🌙 announce sanely or are aria-hidden.
+- **iOS touch**: every target ≥ 44×44 pt (WCAG 2.5.8's 24 px is the floor — Apple's is the one to satisfy in classrooms); nothing is hover-only; the sidebar menu opens/closes by tap with a visible focus state; no horizontal page scroll at 320 px (the `100dvh` fix + `overflow-x:auto` on `.katex-display`).
+- **Display accommodations**: Settings → Accessibility → **Reduce Motion** → `prefers-reduced-motion` must stop the poligon carousel; **Increase Contrast** and **Differentiate Without Color** → verify meaning survives without color (your LaTeX/figure color-coding fix matters here; on web, links must be underlined or otherwise non-color-only); **On/Off Labels** → switches get text; **Dynamic Type** to ~310% (≈ WCAG 1.4.4's 200%) → no clipped text in cards/captions; **dark mode** → `prefers-color-scheme: dark` respected with no stored choice; pinch zoom works (viewport already OK).
+- **Voice Control** (iOS/macOS "click" voice commands) uses accessible names — so your accessible-name fixes (aria-labels on icon buttons, real link text) directly improve Voice Control accuracy.
+- **Switch Control** (motor accessibility, common in special education): sequential scanning must reach every control — another reason the carousel dots must be real buttons and the lightbox keyboard-operable.
+- **iPad multitasking**: Split View (~744 px) and Slide Over — re-run the reflow and menu checks at those widths.
+- **visionOS (Vision Pro)**: Safari there renders standard web content — worth one pass in the simulator if you ever get access.
+
+### 6. Apple-specific metadata/quality touches for your two sites
+
+- `apple-touch-icon.png` (180×180) — poligon-hugo has it; **adrianmanea.xyz only ships `favicon.png`** → add `static/apple-touch-icon.png` + the link tags (the pattern already exists in poligon's `inject/head.html`).
+- `<meta name="theme-color">` with media-specific dark value (your existing dark mismatch note) — this colors the iOS Safari toolbar.
+- `apple-mobile-web-app-capable` / `mobile-web-app-capable` if you ever want "Add to Home Screen" to feel app-like; semantic HTML also powers iOS **Reader Mode** — another reason single-h1 + clean headings matter.
+- Keep an eye on **Safari Technology Preview** release notes for engine changes affecting `:focus-visible` (supported since 15.4), `<dialog>`, `aria-roledescription` announcements, service workers.
+
+### Suggested device matrix to keep green
+
+iPhone SE (320 px) · iPhone 15/16 · iPad (desktop-class 1024 px) · iPad Split View (~744 px) · macOS Safari stable · Safari Technology Preview · CI: Playwright WebKit on `macos-latest` + axe (0 violations) · optional BrowserStack real-device pass per release.
+
+---
+
+## Linux-Specific Checks (openSUSE Tumbleweed KDE and other distros)
+
+### 1. Why Linux is its own axis
+
+- It's your development platform **and** a common platform in schools/institutions (especially in the EU), and the whole free accessibility stack is native here — no Mac or Windows machine needed for the core passes.
+- **Orca** is the reference free screen reader on Linux (GNOME; also runs on KDE Plasma via the AT-SPI2 bridge). NVDA/JAWS/VoiceOver do not exist here — see the Windows/Apple sections for those.
+
+### 2. Linux-native tools
+
+| Tool | Install / where | What it's for |
+|---|---|---|
+| **Orca** + speech-dispatcher | `sudo zypper install orca speech-dispatcher-espeak-ng` (voices: espeak-ng, festival; Orca modifier key = Insert or Caps Lock) | Screen reader for Firefox/Chromium and for PDFs in Evince/Okular; structural navigation + flat review (Orca key + arrows) to walk headings, links, landmarks, form fields |
+| **Firefox DevTools → Accessibility pane** | Firefox on any distro; the **"Check for issues"** button runs axe-derived checks | A11y tree of the live page + automated issue check, all on Linux |
+| **accerciser** | `sudo zypper install accerciser` | Inspect the AT-SPI accessibility tree — catches missing accessible names/roles on your custom controls (theme toggle, carousel dots, lightbox) |
+| **dogtail / LDTP** | `pip install dogtail` | GUI test automation on Linux (can drive Firefox/Chromium in CI-style scripts) |
+| **brltty** | `sudo zypper install brltty` | Braille display support for Orca |
+| **KWin Zoom / GNOME Magnifier** | System Settings → Accessibility → Zoom | Screen magnification to ≥ 200% (WCAG 1.4.4) |
+| **KDE "Contrast"** app / WebAIM web checker | KDE Plasma widget, or web | Contrast measurement on Linux (Colour Contrast Analyser is Win/mac-only) |
+| **Evince** (Document Viewer) / **Okular** + Orca | `zypper install evince okular` | Read tagged PDFs aloud; `pdftotext -layout` for reading-order sanity |
+| KDE/GNOME accessibility settings | System Settings → Accessibility | High-contrast theme, large cursor, sticky/slow/bounce keys (motor impairments), visual bell |
+
+### 3. Automated checks — all native on Tumbleweed
+
+- The entire pipeline from **Final Automated and Manual Checks** runs natively: `pa11y-ci` and Lighthouse need Chromium (`sudo zypper install chromium`), plus `vnu.jar` (Java), `lychee`, `markdownlint-cli2`, `html-validate`, `veraPDF`, `poppler-utils`.
+- Playwright's **WebKit Linux build** is a local approximation of Safari's engine; real WebKit only exists on macOS (see the Apple section).
+- CI: `ubuntu-latest` GitHub runners (free for public repos) run the same suite.
+
+### 4. Manual checks on Linux
+
+- **Orca + Firefox**: structural navigation to list headings/links/landmarks (expect one h1 per page, descriptive link names, labelled nav regions, working skip link); carousel announces and pauses; lightbox dialog focus-managed; **Firefox reads MathML natively with Orca** (no add-on needed — unlike NVDA+Chrome, see Windows section).
+- **Orca + Evince/Okular**: tagged PDFs navigate by headings/bookmarks in your `materiale_edu` PDFs.
+- **Keyboard-only pass** on the whole site; KWin Zoom to ≥ 200 %; enable the system **high-contrast theme**; Firefox `prefers-contrast: more`; the **WCAG 1.4.12 text-spacing bookmarklet**; DevTools emulation of `forced-colors` and `prefers-contrast` in Chromium/Firefox.
+- **accerciser** to verify the AT-SPI tree exposes correct name/role/state for `#theme-toggle`, carousel buttons/dots, and the lightbox overlay.
+- Session note: test on both **Plasma Wayland** (Tumbleweed default) and X11 — AT-SPI2 works on both, but behavior can differ.
+
+### 5. Linux matrix to keep green
+
+openSUSE Tumbleweed KDE (Wayland + X11) · GNOME · Firefox + Chromium · Orca (+ brltty) · KWin Zoom · high-contrast theme · CI: ubuntu-latest with pa11y-ci/axe/vnu/lychee/veraPDF.
+
+---
+
+## Windows-Specific Checks (NVDA, JAWS, Narrator, Section 508)
+
+### 1. Why Windows is its own axis
+
+- Windows carries the largest desktop screen-reader market: **NVDA** (free) and **JAWS** (paid) dominate, **Narrator** is built in. If you ever sell to US institutions, procurement there runs on **Section 508 (WCAG 2.0 AA) + VPAT/ACR** — your axe/veraPDF reports become sales documents, so keep them archived per release.
+
+### 2. Windows-only tools
+
+| Tool | What it's for |
+|---|---|
+| **NVDA** (free, nvda-project.org) | Primary Windows screen reader for Chrome/Edge/Firefox |
+| **JAWS** (Freedom Scientific, paid) | The other major one; has a free demo mode |
+| **Narrator** (Win+Ctrl+Enter) | Built-in; scan mode for quick checks |
+| **Accessibility Insights for Windows** (desktop app, FastPass) | Automated WCAG checks on any window, including browsers — Windows-only |
+| **Inspect.exe** (Windows SDK) | UI Automation tree inspector |
+| **axe DevTools** extension for Edge/Chrome | In-browser automated audits on Windows |
+| **Edge DevTools** → Accessibility pane + Issues tool | A11y tree + issue reports in the browser most Windows users have |
+| **PowerToys** (Color Picker, Text Extractor OCR, Keyboard Manager, Mouse Utilities, Always on Top) | Productivity + vision/motor accommodations |
+| **Magnifier** (Win + "+") | Zoom to ≥ 200 % |
+| **Color filters** (Settings → Accessibility → Color filters) | System-level color-vision-deficiency simulation (ties to WCAG 1.4.1) |
+| **High Contrast themes** (left Alt + left Shift + PrtSc) | `forced-colors` — verify your custom controls stay visible |
+| **Voice Access** (Windows 11 22H2+) | Voice control ("click …") driven by **accessible names** — same rule as Apple Voice Control: names must match visible labels (WCAG 2.5.3) |
+| **Live Captions** | System captions for any audio |
+
+### 3. Automated checks on Windows
+
+- The same pipeline runs natively (Node.js, Java, Chrome/Edge headless): `pa11y-ci`, Lighthouse CI, `vnu.jar`, `lychee`, `markdownlint-cli2`, `veraPDF`.
+- CI: `windows-latest` GitHub runner + Edge WebDriver (Selenium) or Playwright Chromium, injecting axe-core, asserting 0 WCAG2AA violations.
+- Note for your content: **flag emoji render as plain letters ("GB"/"RO") on Windows** — another reason to drop them from the language switcher (already in your TODOs).
+
+### 4. Manual checks on Windows
+
+- **NVDA**: browse-mode quick keys — `H` headings, `K` links, `D` landmarks, `B` buttons, `Insert+F7` elements list; verify one h1 per page, descriptive link names, skip link, carousel buttons + pause, lightbox dialog focus handling, contact links. **Math note:** NVDA speaks MathML in Firefox natively, but in Chrome/Edge it needs the free **MathPlayer** add-on — install it before judging your KaTeX/MathML output on Windows.
+- **Narrator** scan mode as a second opinion; **JAWS** if budget allows (it's the reference in many US schools).
+- Magnifier ≥ 200 %; enable a **High Contrast** theme and re-check borders/focus rings on the sidebar toggles, carousel dots, and lightbox overlay; also emulate `forced-colors: active` in DevTools → Rendering.
+- **Color filters** on (e.g. deuteranopia) → confirm no meaning is color-only (links underlined, figures have style+label encoding).
+- **Voice Access**: try "click" commands against your buttons — fails loudly when accessible names are missing or emoji-only.
+
+### 5. Windows matrix to keep green
+
+Windows 10/11 · Edge + Chrome + Firefox · NVDA (free) + Narrator (+ JAWS if licensed) + MathPlayer for Chrome/Edge math · Magnifier · High Contrast / forced-colors · Color filters · Voice Access · CI: windows-latest runner + Edge WebDriver + axe.
