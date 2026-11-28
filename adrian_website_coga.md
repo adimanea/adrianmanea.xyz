@@ -210,3 +210,64 @@ Tools on **openSUSE Tumbleweed (Linux)** — install with `zypper install …` /
 - Orca: one `<h1>` per page, headings outline sensible, links list is descriptive, math announced via MathML, PDF CVs tagged (`Tagged: yes`) and read in order.
 - GA network requests fire **only** after consent (check DevTools Network with consent declined).
 - `prefers-reduced-motion: reduce` and OS dark mode are honored without a stored choice.
+
+---
+
+## Final Automated and Manual Checks
+
+Yes. There's a well-established stack for this, and on openSUSE Tumbleweed almost all of it runs natively. Here's the standard toolchain, what "all green" means, and exact commands.
+
+### The standards you're checking against
+
+| Target | What it is | Tool that checks it |
+|---|---|---|
+| **WCAG 2.2 AA** (web) | The W3C standard; includes the COGA-relevant SCs 2.4.11, 2.5.7, 2.5.8, 3.2.6, 3.3.7, 3.3.8 | axe-core, HTML_CodeSniffer, IBM Equal Access, WAVE, Lighthouse |
+| Valid HTML5 | prerequisite for everything else | W3C Nu validator (`vnu.jar`) |
+| **PDF/UA-1** (ISO 14289) for your PDFs | Tagged PDF standard | **veraPDF** (the reference validator) |
+| EN 301 549 / EAA | The EU procurement standard (in force since June 2025) — relevant if you sell courses to schools/NGOs; it references WCAG. You can produce a **VPAT/ACR** from your test reports | VPAT template (ITI) + your axe/veraPDF reports |
+
+### Install on openSUSE Tumbleweed
+
+```bash
+sudo zypper install hugo nodejs20 npm java-21-openjdk poppler-utils qpdf mupdf-tools \
+  orca speech-dispatcher-espeak lychee          # lychee falls back to: cargo install lychee
+npm install -g pa11y-ci axe-core html-validate markdownlint-cli2 lighthouse @lhci/cli
+# veraPDF (Java, runs fine on Linux): download GUI+CLI from https://verapdf.org/downloads
+# axe DevTools / WAVE / IBM Equal Access extensions: install in Firefox or Chrome on Linux
+```
+
+**Not available on Linux** (flagging per your request): NVDA & JAWS (Windows-only screen readers → use **Orca**), PAC 2024 and Adobe Acrobat Pro's accessibility checker (Windows / Win+mac), Colour Contrast Analyser (Win/mac → use KDE's Contrast widget or WebAIM's web checker), Accessibility Insights desktop app (Windows; its *web extension* works in Linux browsers).
+
+### The "all green" automated pipeline (per Hugo site)
+
+1. **Build:** `hugo --minify --gc` → `public/`
+2. **HTML validation — must be 0 errors:** `java -jar vnu.jar public/` (download `vnu.jar` from github.com/validator/validator releases)
+3. **Automated accessibility — must be 0 issues at WCAG2AA:** `pa11y-ci` with a `.pa11yci.json` at the repo root:
+   ```json
+   { "defaults": { "standard": "WCAG2AA", "runners": ["axe", "htmlcs"], "threshold": 0,
+                   "chromeLaunchConfig": { "args": ["--no-sandbox"] } },
+     "urls": ["http://localhost:1313/", "http://localhost:1313/en/",
+              "http://localhost:1313/materiale/ecuatia-dreptei/", "http://localhost:1313/contact/"] }
+   ```
+   Run `hugo server` in one terminal, `pa11y-ci` in another. `threshold: 0` = any violation fails.
+4. **Lighthouse CI** (`lhci autorun` with `lighthouserc.js`, budget: accessibility category = 100 on key pages) — catches things axe misses (target size, color contrast, tap targets).
+5. **Extra rule coverage:** IBM Equal Access Accessibility Checker — browser extension for manual passes, or Node CLI `@ibm/iba-ace-cli` in CI (`iba-ace-cli --ruleset latest ...`). Use it alongside axe, not instead.
+6. **Links:** `lychee public/` (plus `hugo --printPathWarnings` for broken `ref`/`relref`).
+7. **Content lint:** `markdownlint-cli2 "content/**/*.md"` with MD045 (image alt) enabled + a custom grep for bare `[aici]`/`[here]` link text and double `^# ` headings.
+8. **PDFs:** `verapdf --flavour ua1 static/documents/*.pdf` → 0 failed rules; plus `pdfinfo f.pdf | grep -E 'Tagged|Lang|Title'` → `Tagged: yes`. Same for `materiale_edu/*/tex/build/*.pdf`.
+9. **CI:** one GitHub Actions workflow (`.github/workflows/a11y.yml`) running steps 1–8 on every push; green = build passes. Ubuntu runners have Java and Node, so vnu/veraPDF/pa11y-ci all work there.
+
+### What automation can't cover (the COGA part — do these manually, they're the point of your specialization)
+
+Automated tools catch only ~30–40% of WCAG issues, and almost none of the COGA ones. The manual gates that "all green" must also include:
+
+- **Keyboard-only pass**: Tab from page load — skip link appears first, every control reachable with a *visible* focus ring (2.4.7/2.4.11), carousel pausable, lightbox focus-trapped, no traps.
+- **Screen-reader pass with Orca** (Firefox; Evince/Okular for PDFs): one h1 per page, sensible headings/links/landmarks lists, math announced via MathML, PDFs read in order with bookmarks.
+- **axe DevTools / WAVE** spot-checks in the browser on the live site (they see the real DOM, unlike static scans).
+- **Contrast**: axe/Lighthouse + KDE Contrast on your palette tokens (≥ 4.5:1 text, ≥ 3:1 UI).
+- **Media/user-preference emulation** in DevTools: `prefers-reduced-motion: reduce` (carousel stops), `prefers-color-scheme: dark` (respected), forced-colors mode, and the **WCAG 1.4.12 text-spacing bookmarklet** (from webstandards.org) — all must keep the site usable.
+- **Plain-language/readability** (COGA core): LanguageTool CLI for Romanian prose, `vale`/`proselint` for English, plus a reading-level check (e.g. `textstat`).
+- **Cognitive walkthrough**: can a first-time visitor find contact/prices in ≤ 3 clicks from any page (3.2.6 consistent help), is help in the same place on every page, no time limits, no CAPTCHA-style auth (3.3.8), no re-asking for info (3.3.7)?
+- Optionally, real **user testing** with people with cognitive disabilities — COGA's own guidance says this is the only way to validate the cognitive aspects.
+
+So: automated tools give you the green CI badge for WCAG 2.2 AA + PDF/UA-1; the manual Orca/keyboard/readability gates are what make it genuinely COGA-compliant — and they're also your portfolio evidence.
